@@ -1,0 +1,54 @@
+version: '3.1'
+services:
+  codi_core:
+    build:
+      context: ./backend
+      dockerfile: ./Codi.Core/Dockerfile
+      args:
+        - PROJECT_PORT=5050
+    container_name: 'codi_core'
+    restart: on-failure
+    ports:
+        - "5050:5050"
+    networks:
+        - back
+    environment:
+        ASPNETCORE_ENVIRONMENT: 'Development'
+        ConnectionStrings__codiCoreDBConnection: 'Server=sql_server;Database=CodiCoreDB;User ID=SA;Password=MySecretPassword!'
+        ElasticConfiguration__Uri: 'http://elasticsearch:9200'
+
+  codi_notifier:
+      build:
+        context: ./backend
+        dockerfile: ./Codi.Notifier/Dockerfile
+        args:
+          - PROJECT_PORT=5070
+      container_name: 'codi_notifier'
+      restart: on-failure
+      ports:
+          - "5070:5070"
+      networks:
+          - back
+      environment:
+          ASPNETCORE_ENVIRONMENT: 'Development'
+
+  codi_client:
+    depends_on:
+        - codi_core
+        - codi_notifier
+    build:
+        context: ./frontend
+        dockerfile: Dockerfile.dev
+    container_name: 'codi_frontend'
+    restart: on-failure
+    ports:
+        - "4200:80"
+    networks:
+        - back
+        - front
+
+networks:
+    back:
+        driver: bridge
+    front:
+        driver: bridge

@@ -1,0 +1,55 @@
+version: '3.1'
+services:
+
+    codi_core:
+        image: tatihutii/codi_core:latest
+        container_name: 'codi_core'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5050:5050"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Production
+        env_file:
+            - /etc/environment
+        volumes:
+           - ./resources:/app/Resources
+
+    codi_notifier:
+        image: tatihutii/codi_notifier:latest
+        container_name: 'codi_notifier'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5070:5070"
+        environment:
+            ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
+
+    codi_frontend:
+        depends_on:
+            - codi_core
+            - codi_notifier
+        image: tatihutii/codi_frontend:latest
+        container_name: 'codi_frontend'
+        restart: on-failure
+        networks:
+            - back
+            - front
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/cert.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/cert.pem
+           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/chain.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/chain.pem
+           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/fullchain.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/fullchain.pem
+           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/privkey.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/privkey.pem
+
+networks:
+    back:
+        driver: bridge
+    front:
+        driver: bridge
