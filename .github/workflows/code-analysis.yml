@@ -1,10 +1,10 @@
 name: Code Analysis
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ main, dev ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ master, dev ]
+    branches: [ main, dev ]
 jobs:
   analyze_frontend:
     runs-on: ubuntu-latest
@@ -55,6 +55,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"tatianahutii_init_structure_bsa_codi" /o:"tatianahutii" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"BinaryStudioAcademy_bsa-winter21-22-codi" /o:"bsa21-watchdog" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build backend/Codi.All.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
