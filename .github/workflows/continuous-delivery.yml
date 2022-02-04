@@ -2,7 +2,7 @@ name: Continuous Delivery
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build_core_service:
