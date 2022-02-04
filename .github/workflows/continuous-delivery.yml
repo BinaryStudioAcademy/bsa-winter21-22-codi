@@ -88,7 +88,7 @@ jobs:
     - name: Update PROD images
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.HOST_USERNAME }}
-        key: ${{ secrets.HOST_KEY }}
-        script: docker-compose -f docker-compose.apps.prod.yml stop && docker-compose -f docker-compose.apps.prod.yml pull && docker system prune -f && docker-compose -f docker-compose.apps.prod.yml up -d
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.HOST_USERNAME }}
+         password: ${{ secrets.HOST_PASSWORD }}
+         script: cd ~/bsa-winter21-22-codi && docker-compose -f docker-compose.apps.prod.yml stop && docker-compose -f docker-compose.apps.prod.yml pull && docker system prune -f && docker-compose -f docker-compose.apps.prod.yml up -d
