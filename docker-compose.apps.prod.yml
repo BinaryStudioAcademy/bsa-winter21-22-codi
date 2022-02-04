@@ -43,11 +43,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/cert.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/cert.pem
-           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/chain.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/chain.pem
-           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/fullchain.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/fullchain.pem
-           - /etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/privkey.pem:/etc/letsencrypt/live/bsa-codi.westeurope.cloudapp.azure.com/privkey.pem
-
+            - /etc/letsencrypt:/etc/letsencrypt
 networks:
     back:
         driver: bridge
