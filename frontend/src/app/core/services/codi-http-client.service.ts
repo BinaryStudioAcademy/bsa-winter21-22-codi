@@ -61,7 +61,7 @@ export class CodiHttpClientService {
     return JSON.stringify(payload);
   }
 
-  private handleError(error: HttpErrorResponse){
+  private handleError(error: HttpErrorResponse): Observable<any>{
     let errorMessage = '';
 
     if(error.error instanceof ErrorEvent){
@@ -72,7 +72,7 @@ export class CodiHttpClientService {
       errorMessage = `Error: ${error.status}, ` + `message: ${error.message}`;
     }
 
-    return throwError(errorMessage);
+    return throwError( () => errorMessage);
   }
 
 }
