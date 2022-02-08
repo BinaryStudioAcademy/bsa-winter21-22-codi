@@ -1,10 +1,13 @@
+@import "src/styles/variables"
+
 .wrapper
   height: 100vh
-  background-color: #0E1525
-  color: #fff
+  background-color: $background-root
+  color: $foreground-default
+  font-size: $font-size-default
 
 .header
-  background-color: #1C2333
+  background-color: $background-default
   height: 60px
   display: flex
   align-items: center
@@ -16,20 +19,20 @@
 
 a
   text-decoration: none
-  color: #0079F2
+  color: $accent-primary-stronger
 
 input
-  border-color: #70788C
-  background: #1C2333
+  border-color: $outline-dimmest
+  background: $background-default
   padding: 0 0 5px 8px
 
 input:focus
   box-shadow: none
   background-color: transparent
-  border-color: #0079F2
+  border-color: $accent-primary-stronger
 
 input:hover
-  border-color: #0079F2
+  border-color: $accent-primary-default
 
 button
   width: 100%
@@ -42,7 +45,7 @@ button
   transform: translate(-50%, -50%)
 
 .login-title
-  font-size: 20px
+  font-size: $font-size-subhead-big
   padding: 0 0 10px 0
 
 .switch-register
@@ -50,7 +53,7 @@ button
 
 .continue-with:before
   content: ''
-  background-color: #4E5569
+  background-color: $outline-dimmest
   height: 1px
   display: block
   margin-bottom: 3px
@@ -59,17 +62,15 @@ button
   padding: 5px 0
 
 .ctn
-  background-color: #3C445C
+  background-color: $background-default
   margin: 3px 0
-
 
 .btn-logo
   max-width: 30px
   float: left
   padding: 0
 
-
 .agreement
-  font-size: 12px
-  color: #C2C8CC
+  font-size: $font-size-small
+  color: $foreground-dimmer
 
