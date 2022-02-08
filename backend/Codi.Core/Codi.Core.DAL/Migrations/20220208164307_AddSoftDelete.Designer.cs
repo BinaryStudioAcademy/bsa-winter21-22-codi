@@ -4,6 +4,7 @@ using Codi.Core.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Codi.Core.DAL.Migrations
 {
     [DbContext(typeof(CodiCoreContext))]
-    partial class CodiCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220208164307_AddSoftDelete")]
+    partial class AddSoftDelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.CourseRole", b =>
@@ -87,7 +89,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CourseRoles", (string)null);
+                    b.ToTable("CourseRoles");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.CourseUser", b =>
@@ -119,7 +121,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("CourseRoleId");
 
-                    b.ToTable("CourseUsers", (string)null);
+                    b.ToTable("CourseUsers");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Image", b =>
@@ -145,7 +147,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.InvitedUser", b =>
@@ -172,7 +174,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("InvitedUsers", (string)null);
+                    b.ToTable("InvitedUsers");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Lesson", b =>
@@ -217,7 +219,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UnitId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lessons");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Project", b =>
@@ -254,7 +256,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Sample", b =>
@@ -284,7 +286,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Samples", (string)null);
+                    b.ToTable("Samples");
 
                     b.HasData(
                         new
@@ -417,7 +419,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Submissions", (string)null);
+                    b.ToTable("Submissions");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Thread", b =>
@@ -463,7 +465,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Threads", (string)null);
+                    b.ToTable("Threads");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.ThreadComment", b =>
@@ -499,7 +501,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("ThreadId");
 
-                    b.ToTable("ThreadComments", (string)null);
+                    b.ToTable("ThreadComments");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Unit", b =>
@@ -525,7 +527,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Units", (string)null);
+                    b.ToTable("Units");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.User", b =>
@@ -569,7 +571,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("AvatarId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Course", b =>
