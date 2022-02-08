@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using Codi.Core.DAL.Context;
 using Codi.Core.DAL.Entities;
+using Codi.Core.DAL.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Codi.Core.DAL.Context
@@ -9,6 +10,12 @@ namespace Codi.Core.DAL.Context
     {
         public static void Configure(this ModelBuilder modelBuilder)
         {
+            foreach (var type in modelBuilder.Model.GetEntityTypes())
+            {
+                if (typeof(ISoftDeletable).IsAssignableFrom(type.ClrType))
+                    modelBuilder.SetSoftDeleteFilter(type.ClrType);
+            }
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SampleConfig).Assembly);
         }
 

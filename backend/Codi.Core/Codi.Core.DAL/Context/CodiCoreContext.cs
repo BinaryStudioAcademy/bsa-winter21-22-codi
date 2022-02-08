@@ -1,5 +1,6 @@
 ﻿using Codi.Core.DAL.Context;
 using Codi.Core.DAL.Entities;
+using Codi.Core.DAL.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Thread = Codi.Core.DAL.Entities.Thread;
 
@@ -29,6 +30,32 @@ namespace Codi.Core.DAL
         {
             modelBuilder.Configure();
             modelBuilder.Seed();
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            OnBeforeSaveChanges();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
+        {
+            OnBeforeSaveChanges();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void OnBeforeSaveChanges()
+        {
+            var markedAsDeleted = ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted);
+
+            foreach (var item in markedAsDeleted)
+            {
+                if (item.Entity is ISoftDeletable entity)
+                {
+                    item.State = EntityState.Unchanged;
+                    entity.IsDeleted = true;
+                }
+            }
         }
     }
 }
