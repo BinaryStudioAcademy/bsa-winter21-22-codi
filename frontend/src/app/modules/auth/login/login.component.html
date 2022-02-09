@@ -1,41 +1,43 @@
 <div class="wrapper">
-<header class="header">
-  <div class="logo">Codi</div>
-</header>
-  <div class="login-wrapper">
-    <h4 class="login-title">Log in to your account</h4>
-    <form [formGroup]="form">
-      <div class="form-group">
-        <input type="text" placeholder="Email or Username" class="form-control" formControlName="login"/>
+  <header class="header">
+    <div class="logo">Codi</div>
+  </header>
+  <div class="center">
+    <div class="auth-wrapper">
+      <h4 class="auth-title">Log in to your account</h4>
+      <form [formGroup]="form">
+        <div class="form-group">
+          <input type="text" placeholder="Email or Username" class="form-control" formControlName="login"/>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="form-control" formControlName="password"/>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" [disabled]="!form.valid">
+            Log in
+          </button>
+        </div>
+      </form>
+      <a href="">Forgot password?</a>
+      <div class="switch-auth">
+        New to Codi?
+        <a [routerLink]="['/register']">Sign up</a>
       </div>
-      <div class="form-group">
-        <input type="password" placeholder="Password" class="form-control" formControlName="password"/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" [disabled]="!form.valid">
-          Log in
+      <div class="continue-with">
+        <button type="button" class="btn btn-secondary ctn">
+          <img src="assets/images/google.png" alt="google" class="btn-logo">
+          <div class="btn-text">Continue with Google</div>
+        </button>
+        <button type="button" class="btn btn-secondary ctn">
+          <img src="assets/images/github.png" alt="github" class="btn-logo">
+          <div class="btn-text">Continue with Github</div>
         </button>
       </div>
-    </form>
-    <a href="">Forgot password?</a>
-    <div class="switch-register">
-      New to Codi?
-      <a [routerLink]="['/register']">Sign up</a>
+      <p class="agreement">
+        By continuing, you agree to Codi's
+        <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>, and to receiving emails with updates.
+      </p>
     </div>
-    <div class="continue-with">
-      <button type="button" class="btn btn-secondary ctn">
-        <img src="assets/images/google.png" alt="google" class="btn-logo">
-        <div class="btn-text">Continue with Google</div>
-      </button>
-      <button type="button" class="btn btn-secondary ctn">
-        <img src="assets/images/github.png" alt="github" class="btn-logo">
-        <div class="btn-text">Continue with Github</div>
-      </button>
-    </div>
-    <p class="agreement">
-      By continuing, you agree to Codi's
-      <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>, and to receiving emails with updates.
-    </p>
   </div>
 </div>
 
