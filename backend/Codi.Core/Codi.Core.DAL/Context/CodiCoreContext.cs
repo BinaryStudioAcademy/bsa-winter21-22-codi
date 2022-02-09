@@ -8,19 +8,19 @@ namespace Codi.Core.DAL
 {
     public class CodiCoreContext : DbContext
     {
-        public DbSet<Sample> Samples { get; private set; } = default!;
-        public DbSet<Course> Courses { get; private set; } = default!;
-        public DbSet<CourseRole> CourseRoles { get; private set; } = default!;
-        public DbSet<CourseUser> CourseUsers { get; private set; } = default!;
-        public DbSet<Image> Images { get; private set; } = default!;
-        public DbSet<InvitedUser> InvitedUsers { get; private set; } = default!;
-        public DbSet<Lesson> Lessons { get; private set; } = default!;
-        public DbSet<Project> Projects { get; private set; } = default!;
-        public DbSet<Submission> Submissions { get; private set; } = default!;
-        public DbSet<Thread> Threads { get; private set; } = default!;
-        public DbSet<ThreadComment> ThreadComments { get; private set; } = default!;
-        public DbSet<Unit> Units { get; private set; } = default!;
-        public DbSet<User> Users { get; private set; } = default!;
+        public DbSet<Sample> Samples { get; private set; }
+        public DbSet<Course> Courses { get; private set; }
+        public DbSet<CourseRole> CourseRoles { get; private set; }
+        public DbSet<CourseUser> CourseUsers { get; private set; }
+        public DbSet<Image> Images { get; private set; }
+        public DbSet<InvitedUser> InvitedUsers { get; private set; }
+        public DbSet<Lesson> Lessons { get; private set; }
+        public DbSet<Project> Projects { get; private set; }
+        public DbSet<Submission> Submissions { get; private set; }
+        public DbSet<Thread> Threads { get; private set; }
+        public DbSet<ThreadComment> ThreadComments { get; private set; }
+        public DbSet<Unit> Units { get; private set; }
+        public DbSet<User> Users { get; private set; }
 
         public CodiCoreContext(DbContextOptions<CodiCoreContext> options) : base(options)
         {
