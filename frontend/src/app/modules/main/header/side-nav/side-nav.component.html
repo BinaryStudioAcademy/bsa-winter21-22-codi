@@ -1,0 +1,41 @@
+<nav id="sidebar" class="navbar" [ngClass]="{'hidden': sideNavService.hideSideNav }">
+    <div class="button-container">
+        <app-side-nav-create-button></app-side-nav-create-button>
+    </div>
+    <ul class="navbar-nav">
+        <div class="nav-item active">
+            <i class="fa fa-home"></i>
+            <a class="nav-link" routerLink="/main/home">Home</a>
+        </div>
+        <div class="nav-item active">
+            <i class="fa fa-laptop"></i>
+            <a class="nav-link" routerLink="/main/applications">Apps</a>
+        </div>
+        <div class="nav-item active">
+            <i class="fa fa-bolt"></i>
+            <a class="nav-link" routerLink="/main/myprojects">My Projects</a>
+        </div>
+        <div class="nav-item active"> 
+            <i class="fa fa-star"></i>
+            <a class="nav-link" routerLink="/main/courses">Courses</a>
+        </div>
+    </ul>
+    <div class="border"></div>
+    <ul class="navbar-nav-extra">
+        <div class="nav-item-extra active">
+            <a class="nav-link" routerLink="#">Blog</a>
+        </div>
+        <div class="nav-item-extra active">
+            <a class="nav-link" routerLink="#">About</a>
+        </div>
+        <div class="nav-item-extra active">
+            <a class="nav-link" routerLink="#">Careers</a>
+        </div>
+        <div class="nav-item-extra active">
+            <a class="nav-link" routerLink="#">Pricing</a>
+        </div>
+        <div class="nav-item-extra active">
+            <a class="nav-link" routerLink="#">Discord</a>
+        </div>
+    </ul>
+  </nav>

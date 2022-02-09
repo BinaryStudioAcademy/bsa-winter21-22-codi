@@ -1,0 +1,87 @@
+.all
+    display: flex
+    align-items: center
+    background-color: #1d1e22
+    height: 70px
+    justify-content: space-between
+
+.search-container
+    display: grid
+    grid-template-columns:1.5rem 4fr 1fr
+    width:300px
+    height: 35px
+    border: 3px solid #ccc
+    border-radius: 10px
+    overflow: hidden
+    background-color: #1e1f23
+    input
+        color: #a7a9ac
+    &:focus-within i
+      display: none
+      
+    .search-icon
+        color: #a7a9ac
+        padding: 0.5rem
+        grid-row: 1
+        grid-column: 1/2
+        z-index: 2  
+    .search-form
+        grid-column: 1/4
+        border: 0
+        padding: 0.5rem
+        grid-column: 2/4
+        grid-row: 1
+        outline: none
+        background-color: #1e1f23
+        color: #a7a9ac
+        &::placeholder
+            color: #a7a9ac
+
+.navbar-left
+    display: flex
+    align-items: center
+    width: 37%
+    justify-content: space-between
+
+    .navbar-logo
+        display: flex
+        flex-direction: row
+        align-items: center
+    .navbar-item
+        display: flex
+        align-items: center
+        color: #b9b8ba
+        margin-left: 20px
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        font-size: 40px
+
+.navbar-right
+    display: flex
+    align-items: center
+    padding-right: 20px
+    .user-container
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-right: 20px
+
+        .user-icon
+            display: flex
+            background-color: #ccc
+            border: 4px solid #ccc
+            border-radius: 50%
+            padding-top: 10px
+            padding-bottom: 10px
+            padding-left: 15px
+            padding-right: 15px
+            font-size: 30px    
+
+        .username
+            padding-left: 10px
+            color: #a7a9ac
+            font-size: 20px
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+    .button-container
+        
+    

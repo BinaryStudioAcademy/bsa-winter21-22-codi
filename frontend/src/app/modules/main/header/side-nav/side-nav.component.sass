@@ -1,0 +1,70 @@
+:host
+  background: #1e1e20
+
+#sidebar
+  min-width: 200px
+  max-width: 200px
+  min-height: 100vh
+  color: #75767a
+  transition: all 0.3s
+  font-weight: bold
+  font-size: 20px
+  line-height: 1.5
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  text-decoration: bold
+
+  &.hidden
+    margin-left: -200px
+
+a
+  &[data-toggle="collapse"]
+    position: relative
+
+  color: inherit
+
+  &:hover, &:focus
+    color: inherit
+
+@media (max-width: 575px)
+  #sidebar
+    margin-left: -200px
+
+    &.hidden
+      margin-left: 0
+
+#sidebar
+  .sidebar-header
+    padding: 20px
+
+  ul a 
+    // padding: 10px
+    display: block
+    width: 100%
+    text-decoration: none
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+.fa 
+    color: white
+    display: flex
+    align-items: center
+    padding-right: 10px
+
+.button-container
+  display: flex
+  align-items: center
+  justify-content: center
+.nav-item 
+    padding: 10px
+    display: flex
+.border
+  width: 75%
+  border-bottom: 3px solid #16171b
+  border-radius: 20px
+  margin-left: 25px
+.navbar-nav-extra
+  display: flex
+  flex-direction: column
+  align-items: start
+  padding: 80px
+  // margin-top: 50px
+  font-size: 15px
+  
