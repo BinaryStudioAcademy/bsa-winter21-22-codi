@@ -1,10 +1,10 @@
 <div class="wrapper">
-<header class="header">
-  <div class="logo">Codi</div>
-</header>
+  <header class="header">
+    <div class="logo">Codi</div>
+  </header>
   <div class="center">
-    <div class="login-wrapper">
-      <h4 class="login-title">Log in to your account</h4>
+    <div class="auth-wrapper">
+      <h4 class="auth-title">Log in to your account</h4>
       <form [formGroup]="form">
         <div class="form-group">
           <input type="text" placeholder="Email or Username" class="form-control" formControlName="login"/>
@@ -19,7 +19,7 @@
         </div>
       </form>
       <a href="">Forgot password?</a>
-      <div class="switch-register">
+      <div class="switch-auth">
         New to Codi?
         <a [routerLink]="['/register']">Sign up</a>
       </div>
@@ -39,6 +39,5 @@
       </p>
     </div>
   </div>
-
 </div>
 

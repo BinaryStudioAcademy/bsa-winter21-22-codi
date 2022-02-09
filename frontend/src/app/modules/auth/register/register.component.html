@@ -3,8 +3,8 @@
     <div class="logo">Codi</div>
   </header>
   <div class="center">
-    <div class="register-wrapper">
-      <h4>Create a Codi account</h4>
+    <div class="auth-wrapper">
+      <h4 class="auth-title">Create a Codi account</h4>
       <a href="" class="teacher-transition">Teacher?Sign up for our education product.</a>
       <form [formGroup]="form">
         <div class="form-group">
@@ -39,7 +39,7 @@
           </button>
         </div>
       </form>
-      <div class="switch-register">
+      <div class="switch-auth">
         Have an account?
         <a [routerLink]="['/login']">Log in</a>
       </div>
