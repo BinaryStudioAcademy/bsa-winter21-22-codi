@@ -11,5 +11,7 @@
         public long OwnerId { get; set; }
         public User Owner { get; set; } = default!;
         public List<CourseUser> CourseUsers { get; set; } = default!;
+        public List<Unit> Units { get; set; } = default!;
+        public List<Lesson> Lessons { get; set; } = default!;
     }
 }
