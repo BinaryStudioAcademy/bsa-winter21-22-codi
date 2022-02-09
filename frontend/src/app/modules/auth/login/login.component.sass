@@ -1,10 +1,12 @@
 @import "src/styles/variables"
 
 .wrapper
-  height: 100vh
+  min-height: 100vh
   background-color: $background-root
   color: $foreground-default
   font-size: $font-size-default
+  display: flex
+  flex-direction: column
 
 .header
   background-color: $background-default
@@ -37,12 +39,14 @@ input:hover
 button
   width: 100%
 
+.center
+  width: 100%
+  top: 60px
+  margin: auto
+
 .login-wrapper
   max-width: 280px
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+  margin: auto
 
 .login-title
   font-size: $font-size-subhead-big
