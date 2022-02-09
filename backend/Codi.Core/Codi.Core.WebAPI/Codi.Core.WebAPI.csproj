@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Codi. Core.DAL\Codi. Core.DAL.csproj" />
+    <ProjectReference Include="..\Codi.Core.DAL\Codi.Core.DAL.csproj" />
     <ProjectReference Include="..\Codi.Core.BLL\Codi.Core.BLL.csproj" />
   </ItemGroup>
 
