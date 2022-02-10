@@ -5,7 +5,7 @@
     </button>
 </div>
 
-<div *ngIf="options?.allowHtmlContent ?? false; else contentBody" class="modal-body"
+<div *ngIf="options?.allowHtmlContent; else contentBody" class="modal-body"
     [innerHTML]="sanitizer.bypassSecurityTrustHtml(content)">
 </div>
 
