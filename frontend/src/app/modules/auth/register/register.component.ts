@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CustomValidators} from "@modules/auth/shared/custom-validators";
 
 @Component({
   selector: 'app-register',
@@ -19,21 +18,19 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(15),
-          CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-          CustomValidators.patternValidator(/[a-zA-Z]/, { hasLetter: true })
-          ]),
+          Validators.pattern(/^[A-Za-z0-9]+$/)
+        ]),
       email: new FormControl('',
-        [Validators.required, Validators.email]),
+        [
+          Validators.required,
+          Validators.pattern(/^[a-zA-Z0-9]{1}[-a-zA-Z0-9._]{1,33}[a-zA-Z0-9]{1}@[a-zA-Z0-9]{1,17}[.][a-zA-Z]{1,17}$/)
+        ]),
       password: new FormControl('',
         [
           Validators.minLength(8),
           Validators.maxLength(35),
-          CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
-          CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
-          CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-          CustomValidators.patternValidator(/(?=.*[-_!@#$%^&*.])/, { hasSpecialCharacters: true })
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,\-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,\-./:;<=>?@[\]^_`{|}~]{8,35}$/)
         ])
     })
   }
-
 }
