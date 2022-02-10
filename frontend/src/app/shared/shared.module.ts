@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ],
     declarations: [
         LoadingSpinnerComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        ConfirmationDialogComponent
     ],
     exports: [
         CommonModule,
