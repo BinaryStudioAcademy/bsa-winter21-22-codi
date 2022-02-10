@@ -19,8 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         NgbModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot({
-            timeOut: 4000,
-            tapToDismiss: false,
+            timeOut: 6000,
+            tapToDismiss: true,
             positionClass: 'toast-bottom-right',
         })
     ],
