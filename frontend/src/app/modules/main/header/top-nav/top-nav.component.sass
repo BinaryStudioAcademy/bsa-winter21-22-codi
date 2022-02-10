@@ -1,0 +1,88 @@
+@import 'src/styles/global.sass'
+.all
+    display: flex
+    align-items: center
+    background-color: $background-color
+    height: 70px
+    justify-content: space-between
+
+.search-container
+    display: grid
+    grid-template-columns:1.5rem 4fr 1fr
+    width:300px
+    height: 35px
+    border: 3px solid $base-title-color
+    border-radius: 10px
+    overflow: hidden
+    background-color: $background-color
+    input
+        color: $base-title-color
+    &:focus-within i
+      display: none
+      
+    .search-icon
+        color: $base-title-color
+        padding: 0.5rem
+        grid-row: 1
+        grid-column: 1/2
+        z-index: 2  
+    .search-form
+        grid-column: 1/4
+        border: 0
+        padding: 0.5rem
+        grid-column: 2/4
+        grid-row: 1
+        outline: none
+        background-color: $background-color
+        color: $base-title-color
+        &::placeholder
+            color: $base-title-color
+
+.navbar-left
+    display: flex
+    align-items: center
+    grid-gap: 95px
+    justify-content: space-between
+
+    .navbar-logo
+        display: flex
+        flex-direction: row
+        align-items: center
+    .navbar-item
+        display: flex
+        align-items: center
+        color: $base-title-color
+        padding-left: 30px
+        margin: 0px
+        font-family: $default-font-family
+        font-size: 40px
+
+.navbar-right
+    display: flex
+    align-items: center
+    padding-right: 20px
+    .user-container
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-right: 20px
+
+        .user-icon
+            display: flex
+            background-color: $base-title-color
+            border: 4px solid $base-title-color
+            border-radius: 50%
+            padding-top: 10px
+            padding-bottom: 10px
+            padding-left: 15px
+            padding-right: 15px
+            font-size: 30px    
+
+        .username
+            padding-left: 10px
+            color: $base-title-color
+            font-size: 20px
+            font-family: $default-font-family
+
+        
+    
