@@ -1,7 +1,8 @@
+@import 'src/styles/global.sass'
 .all
     display: flex
     align-items: center
-    background-color: #1d1e22
+    background-color: $background-color
     height: 70px
     justify-content: space-between
 
@@ -10,17 +11,17 @@
     grid-template-columns:1.5rem 4fr 1fr
     width:300px
     height: 35px
-    border: 3px solid #ccc
+    border: 3px solid $base-title-color
     border-radius: 10px
     overflow: hidden
-    background-color: #1e1f23
+    background-color: $background-color
     input
-        color: #a7a9ac
+        color: $base-title-color
     &:focus-within i
       display: none
       
     .search-icon
-        color: #a7a9ac
+        color: $base-title-color
         padding: 0.5rem
         grid-row: 1
         grid-column: 1/2
@@ -32,15 +33,15 @@
         grid-column: 2/4
         grid-row: 1
         outline: none
-        background-color: #1e1f23
-        color: #a7a9ac
+        background-color: $background-color
+        color: $base-title-color
         &::placeholder
-            color: #a7a9ac
+            color: $base-title-color
 
 .navbar-left
     display: flex
     align-items: center
-    width: 37%
+    grid-gap: 95px
     justify-content: space-between
 
     .navbar-logo
@@ -50,9 +51,10 @@
     .navbar-item
         display: flex
         align-items: center
-        color: #b9b8ba
-        margin-left: 20px
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        color: $base-title-color
+        padding-left: 30px
+        margin: 0px
+        font-family: $default-font-family
         font-size: 40px
 
 .navbar-right
@@ -67,8 +69,8 @@
 
         .user-icon
             display: flex
-            background-color: #ccc
-            border: 4px solid #ccc
+            background-color: $base-title-color
+            border: 4px solid $base-title-color
             border-radius: 50%
             padding-top: 10px
             padding-bottom: 10px
@@ -78,10 +80,9 @@
 
         .username
             padding-left: 10px
-            color: #a7a9ac
+            color: $base-title-color
             font-size: 20px
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            font-family: $default-font-family
 
-    .button-container
         
     

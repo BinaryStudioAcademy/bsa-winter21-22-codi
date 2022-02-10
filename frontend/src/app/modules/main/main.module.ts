@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { TopNavComponent } from './header/top-nav/top-nav.component';
 import { SideNavTogglerComponent } from './header/side-nav-toggler/side-nav-toggler.component';
 import { SideNavComponent } from './header/side-nav/side-nav.component';
-import { MyprojectsPageComponent } from './myprojects-page/myprojects-page.component';
+import { MyProjectsPageComponent } from './myprojects-page/myprojects-page.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { CreateButtonComponent } from './create-button/create-button.component';
 import { SideNavCreateButtonComponent } from './create-button/side-nav-create-button/side-nav-create-button.component';
@@ -23,7 +23,7 @@ import { SideNavCreateButtonComponent } from './create-button/side-nav-create-bu
         TopNavComponent,
         SideNavTogglerComponent,
         SideNavComponent,
-        MyprojectsPageComponent,
+        MyProjectsPageComponent,
         CoursesPageComponent,
         CreateButtonComponent,
         SideNavCreateButtonComponent,

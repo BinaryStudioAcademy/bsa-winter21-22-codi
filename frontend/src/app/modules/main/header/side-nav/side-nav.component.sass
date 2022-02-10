@@ -1,5 +1,6 @@
+@import 'src/styles/global.sass'
 :host
-  background: #1e1e20
+  background: $background-color
 
 #sidebar
   min-width: 200px
@@ -10,20 +11,13 @@
   font-weight: bold
   font-size: 20px
   line-height: 1.5
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: $default-font-family
   text-decoration: bold
 
   &.hidden
     margin-left: -200px
 
-a
-  &[data-toggle="collapse"]
-    position: relative
 
-  color: inherit
-
-  &:hover, &:focus
-    color: inherit
 
 @media (max-width: 575px)
   #sidebar
@@ -36,17 +30,11 @@ a
   .sidebar-header
     padding: 20px
 
-  ul a 
-    // padding: 10px
+  ul 
     display: block
     width: 100%
     text-decoration: none
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-.fa 
-    color: white
-    display: flex
-    align-items: center
-    padding-right: 10px
+    font-family: $default-font-family
 
 .button-container
   display: flex
@@ -60,11 +48,38 @@ a
   border-bottom: 3px solid #16171b
   border-radius: 20px
   margin-left: 25px
+
 .navbar-nav-extra
   display: flex
   flex-direction: column
-  align-items: start
-  padding: 80px
-  // margin-top: 50px
+  align-items: flex-start
   font-size: 15px
+  padding: 0px
+  .nav-item-extra
+    padding: 5px 5px 5px 80px
+    display: flex
+    &:hover, &.active
+      .nav-link-extra
+        color: $text-color
+      cursor: pointer
+      background-color: $base-background-color
+
+.navbar-nav
+  display: flex
+  flex-direction: column
   
+  padding: 0px
+  .nav-item 
+    padding: 10px 10px 10px 50px
+    display: flex
+    align-items: center
+    &:hover, &.active
+      .nav-link
+        color: $text-color
+      i
+        color: $text-color
+      cursor: pointer
+      background-color: $base-background-color
+
+.nav-link 
+  padding-left: 10px
