@@ -124,6 +124,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "codi:build:production",
+            "firebaseProject": "codi-9ff49",
+            "firebaseHostingSite": "codi-9ff49"
+          }
         }
       }
     }

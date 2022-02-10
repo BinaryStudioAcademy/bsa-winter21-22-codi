@@ -12,6 +12,8 @@ builder.Services.RegisterCustomServices();
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
+builder.Services.ServiceJwtFirebase(builder.Configuration);
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -21,8 +23,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(opt => opt
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials()
+    .WithOrigins("http://localhost:4200"));
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

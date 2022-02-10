@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomValidators} from "@modules/auth/shared/custom-validators";
+import {AuthService} from "@core/services/auth.service";
+import {CurrentUser} from "@core/models/current-user";
+import {Subscription} from "rxjs";
+
 
 @Component({
   selector: 'app-register',
@@ -9,8 +13,15 @@ import {CustomValidators} from "@modules/auth/shared/custom-validators";
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup
+  currentUser: CurrentUser = new CurrentUser();
+  $authSubscription: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService)
+  {
+    this.$authSubscription = this.authService.user$.subscribe(u => {
+      this.currentUser = u;
+    });
+  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -36,4 +47,8 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  WithGoogle() {
+    this.authService.googleSignIn().then()
+
+  }
 }

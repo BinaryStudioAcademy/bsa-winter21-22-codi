@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from "@modules/auth/login/login.component";
 import { RegisterComponent } from "@modules/auth/register/register.component";
+import {SecretComponent} from "@modules/auth/secret/secret.component";
+import {AuthGuard} from "@core/guard/auth.guard";
 
 const routes: Routes = [
   {
@@ -11,6 +13,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'secret',
+    component: SecretComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
