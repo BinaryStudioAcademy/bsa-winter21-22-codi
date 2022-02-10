@@ -1,0 +1,41 @@
+<nav id="sidebar" class="navbar" [ngClass]="{'hidden': sideNavService.hideSideNav }">
+    <div class="button-container">
+        <app-side-nav-create-button></app-side-nav-create-button>
+    </div>
+    <ul class="navbar-nav">
+        <div class="nav-item" routerLink="/main/home" routerLinkActive="active">
+            <i class="fa fa-home"></i>
+            <span class="nav-link">Home</span>
+        </div>
+        <div class="nav-item" routerLink="/main/applications" routerLinkActive="active">
+            <i class="fa fa-laptop"></i>
+            <span class="nav-link">Apps</span>
+        </div>
+        <div class="nav-item " routerLink="/main/myprojects" routerLinkActive="active">
+            <i class="fa fa-bolt"></i>
+            <span class="nav-link" >My Projects</span>
+        </div>
+        <div class="nav-item" routerLink="/main/courses" routerLinkActive="active"> 
+            <i class="fa fa-star"></i>
+            <span class="nav-link">Courses</span>
+        </div>
+    </ul>
+    <div class="border"></div>
+    <ul class="navbar-nav-extra">
+        <div class="nav-item-extra" routerLink="#" routerLinkActive="active">
+            <span class="nav-link-extra">Blog</span>
+        </div>
+        <div class="nav-item-extra" routerLink="#" routerLinkActive="active">
+            <span class="nav-link-extra">About</span>
+        </div>
+        <div class="nav-item-extra" routerLink="#" routerLinkActive="active">
+            <span class="nav-link-extra">Careers</span>
+        </div>
+        <div class="nav-item-extra" routerLink="#" routerLinkActive="active">
+            <span class="nav-link-extra">Pricing</span>
+        </div>
+        <div class="nav-item-extra" routerLink="#" routerLinkActive="active">
+            <span class="nav-link-extra">Discord</span>
+        </div>
+    </ul>
+  </nav>
