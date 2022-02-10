@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Codi. Core.DAL\Codi. Core.DAL.csproj" />
+    <ProjectReference Include="..\Codi.Core.DAL\Codi.Core.DAL.csproj" />
     <ProjectReference Include="..\Codi.Core.Common\Codi.Core.Common.csproj" />
   </ItemGroup>
 
