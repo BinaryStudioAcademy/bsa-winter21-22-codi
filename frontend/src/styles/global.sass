@@ -1,3 +1,5 @@
+@import "variables"
+
 $base-background-color: #131416
 $background-color: #1d1e22
 $base-title-color: #bebdc1
@@ -12,3 +14,18 @@ body
     color: #c6c8c9
     font-family: $default-font-family
     font-weight: bold
+
+.modal-dialog .modal-content
+    background-color: $background-default
+    color: $foreground-default
+
+    & .modal-header .close
+        color: $foreground-default
+
+    & .modal-header
+        border: 0
+        padding-bottom: 0 
+
+    & .modal-footer
+        border: 0
+        padding-top: 0
