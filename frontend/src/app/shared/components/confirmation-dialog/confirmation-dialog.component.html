@@ -6,7 +6,7 @@
 </div>
 
 <div *ngIf="options?.allowHtmlContent; else contentBody" class="modal-body"
-    [innerHTML]="sanitizer.bypassSecurityTrustHtml(content)">
+    [innerHTML]="content">
 </div>
 
 <ng-template #contentBody>
