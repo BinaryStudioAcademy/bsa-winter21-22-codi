@@ -6,6 +6,10 @@ using Codi.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Codi.Core.BLL.RabbitMQ;
+using Codi.RabbitMQ.Interfaces;
+using Codi.RabbitMQ.Services;
+using RabbitMQ.Client;
 
 namespace Codi.Core.WebAPI.Extentions
 {
@@ -18,6 +22,7 @@ namespace Codi.Core.WebAPI.Extentions
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddTransient<ISampleService, SampleService>();
+            services.AddScoped<IMessageService, MessageService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
@@ -39,6 +44,16 @@ namespace Codi.Core.WebAPI.Extentions
                 options.UseSqlServer(
                     connectionsString,
                     opt => opt.MigrationsAssembly(typeof(CodiCoreContext).Assembly.GetName().Name)));
+        }
+        
+        public static void RegisterRabbitMQ(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IConnectionFactory>(x=> new ConnectionFactory()
+            {
+                Uri = new Uri(configuration.GetSection("Rabbit").Value)
+            });
+            services.AddSingleton<IMessageProducerScopeFactory, MessageProducerScopeFactory>();
+            services.AddSingleton<IMessageConsumerScopeFactory, MessageConsumerScopeFactory>();
         }
     }
 }
