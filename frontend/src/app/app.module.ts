@@ -9,8 +9,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {environment} from "@env/environment";
 import {CoreModule} from "@core/core.module";
-import {AngularFireModule} from "@angular/fire/compat";
-import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
+import {getAuth, provideAuth} from "@angular/fire/auth";
 
 
 @NgModule({
@@ -23,8 +23,8 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
         AppRoutingModule,
         NgbModule,
         BrowserAnimationsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireAuthModule,
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
         CoreModule,
         ToastrModule.forRoot({
             timeOut: 6000,

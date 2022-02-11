@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { NotificationService } from '@core/services/notification.service';
 import {AuthService} from "@core/services/auth.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,12 +32,26 @@ export class LoginComponent implements OnInit {
   }
 
   withGoogle() {
-    this.authService.GoogleAuth();
+    this.authService.withGoogle()
+      .subscribe( () => {
+        this.router.navigate(['main'])
+      });
+  }
+
+  withGit() {
+    this.authService.withGitHub()
+      .subscribe( () => {
+        this.router.navigate(['main'])
+      } )
   }
 
   submit() {
-    let userDate = this.form.value;
-    this.authService.SignIn(userDate.login, userDate.password)
+    const {login, password} = this.form.value;
+    this.authService.signIn(login, password)
+      .subscribe( () => {
+        this.router.navigate(['main'])
+      } )
+
 
   }
 }

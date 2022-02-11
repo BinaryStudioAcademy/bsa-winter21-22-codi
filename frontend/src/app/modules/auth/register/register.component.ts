@@ -40,15 +40,25 @@ export class RegisterComponent implements OnInit {
   }
 
   withGoogle() {
-    this.authService.GoogleAuth();
+    this.authService.withGoogle()
+      .subscribe(() => {
+        this.router.navigate(['main'])
+      })
+  }
 
+  withGit() {
+    this.authService.withGitHub()
+      .subscribe( () => {
+        this.router.navigate(['main'])
+      });
   }
 
   submit() {
-    let userReg = this.form.value;
-    this.authService.SignUp(userReg.username,userReg.email,userReg.password)
-      .then(() => {
-        this.router.navigate(['login'])
-      })
+    if(!this.form.valid) return;
+    const {username, email, password} = this.form.value;
+    this.authService.signUp(username,email,password)
+      .subscribe(() => {
+        this.router.navigate(['main'])
+      });
   }
 }
