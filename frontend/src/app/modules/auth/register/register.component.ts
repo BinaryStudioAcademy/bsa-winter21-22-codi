@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CustomValidators} from "@modules/auth/shared/custom-validators";
+import {regexs} from "@shared/constants/regexs";
 import {AuthService} from "@core/services/auth.service";
 import {Router} from "@angular/router";
-
 
 
 @Component({
@@ -24,19 +23,18 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(15),
-          CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-          CustomValidators.patternValidator(/[a-zA-Z]/, { hasLetter: true })
-          ]),
+          Validators.pattern(regexs.username)
+        ]),
       email: new FormControl('',
-        [Validators.required, Validators.email]),
+        [
+          Validators.required,
+          Validators.pattern(regexs.email)
+        ]),
       password: new FormControl('',
         [
           Validators.minLength(8),
           Validators.maxLength(35),
-          CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
-          CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
-          CustomValidators.patternValidator(/\d/, { hasNumber: true }),
-          CustomValidators.patternValidator(/(?=.*[-_!@#$%^&*.])/, { hasSpecialCharacters: true })
+          Validators.pattern(regexs.password)
         ])
     })
   }
