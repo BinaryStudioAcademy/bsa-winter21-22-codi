@@ -1,87 +1,102 @@
-import {Injectable} from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
+import { AngularFireAuth } from "@angular/fire/compat/auth";
 import {Router} from "@angular/router";
-import {AngularFireAuth} from "@angular/fire/compat/auth";
-import firebase from 'firebase/compat/app';
-import {BehaviorSubject, map, Observable} from "rxjs";
-import {CurrentUser} from "@core/models/current-user";
-import {HttpClient} from "@angular/common/http";
+import firebase from "firebase/compat/app";
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  userData: any;  // Save logged in user data
 
-  user$: BehaviorSubject<CurrentUser> = new BehaviorSubject<CurrentUser>(new CurrentUser());
   constructor(
-    private afAuth: AngularFireAuth,
-    private router: Router,
-    private http: HttpClient
+    public afAuth: AngularFireAuth,
+    public router: Router,
+    public ngZone: NgZone,
   ) {
-    this.afAuth.authState.subscribe((firebaseUser) => {
-      if (firebaseUser) {
-        this.configureAuthState(firebaseUser)
+    /* Saving user data in localstorage when
+    logged in and setting remove when logged out */
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user') as string);
+      } else {
+        localStorage.removeItem('user');
       }
     })
-
   }
 
-  configureAuthState(firebaseUser: firebase.User) {
-    if(firebaseUser) {
-      firebaseUser.getIdToken().then((theToken) => {
-        console.log('we have a token');
-        this.http.post('http://localhosts:5050/token/verify', {token: theToken})
-          .subscribe({
-            next: () => {
-              let theUser = new CurrentUser();
-              theUser.displayName = firebaseUser.displayName;
-              theUser.email = firebaseUser.email;
-              theUser.isSignedIn = true;
-              localStorage.setItem("jwt", theToken);
-              this.user$.next(theUser);
-            },
-            error: (err) => {
-              console.log('inside the error from server', err);
-              this.doSignedOutUser()
-            }
-          });
-      });
-    } else {
-      this.doSignedOutUser();
-    }
+  // Sign in with email/password
+  SignIn(email: string, password: string) {
+    return this.afAuth.signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['applications']);
+        });
+      }).catch((error) => {
+        window.alert(error.message)
+      })
   }
 
-  private doSignedOutUser() {
-    let theUser = new CurrentUser();
-    theUser.displayName = null;
-    theUser.email = null;
-    theUser.isSignedIn = false;
-    localStorage.removeItem("jwt");
-    this.user$.next(theUser);
+  // Sign up with email/password
+  SignUp(username:string, email: string, password: string) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.SendVerificationMail();
+      }).catch((error) => {
+        window.alert(error.message)
+      })
   }
 
- googleSignIn() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('email');
-    provider.addScope('profile')
-    return this.afAuth.signInWithPopup(provider);
+  // Reset Forgot password
+  ForgotPassword(passwordResetEmail: any) {
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        window.alert('Password reset email sent, check your inbox.');
+      }).catch((error) => {
+        window.alert(error)
+      })
   }
 
-  getToken() {
-    return localStorage.getItem("jwt");
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user') as string);
+    return (user !== null && user.emailVerified !== false);
   }
 
-  getUserObservable(): Observable<CurrentUser> {
-    return this.user$.asObservable();
+  // Sign in with Google
+  GoogleAuth() {
+    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
   }
 
-  getUserSecrets(): Observable<any> {
-    return this.http.get("https://localhost:5050/token/secrets").pipe(map((resp) => resp));
+  // Auth logic to run auth providers
+  AuthLogin(provider : any) {
+    return this.afAuth.signInWithPopup(provider)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['applications']);
+        })
+      }).catch((error) => {
+        window.alert(error)
+      })
   }
 
-  logout(): Promise<void> {
-    return this.afAuth.signOut();
+  // Sign out
+  SignOut() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['login']);
+    })
   }
-
-
+  SendVerificationMail() {
+    return this.afAuth.currentUser.then(u => u?.sendEmailVerification())
+      .then(() => {
+        this.router.navigate([/*need verify component*/]);
+      })
+  }
 }
+
+
+

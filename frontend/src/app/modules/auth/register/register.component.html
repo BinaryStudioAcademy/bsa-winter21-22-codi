@@ -6,7 +6,7 @@
     <div class="auth-wrapper">
       <h4 class="auth-title">Create a Codi account</h4>
       <a href="" class="teacher-transition">Teacher?Sign up for our education product.</a>
-      <form [formGroup]="form">
+      <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="form-group">
           <input type="text" placeholder="Username" class="form-control" aria-describedby="usernameError" formControlName="username"/>
           <ul>
@@ -34,7 +34,7 @@
           </ul>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" [disabled]="!form.valid">
+          <button class="btn btn-primary" [disabled]="!form.valid" type="submit">
             Create account
           </button>
         </div>
@@ -44,7 +44,7 @@
         <a [routerLink]="['/login']">Log in</a>
       </div>
       <div class="continue-with">
-        <button type="button" class="btn btn-secondary ctn" (click)="WithGoogle()">
+        <button type="button" class="btn btn-secondary ctn" (click)="withGoogle()">
           <img src="assets/images/google.png" alt="google" class="btn-logo">
           <div class="btn-text">Continue with Google</div>
         </button>

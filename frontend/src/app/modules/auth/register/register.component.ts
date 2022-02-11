@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomValidators} from "@modules/auth/shared/custom-validators";
 import {AuthService} from "@core/services/auth.service";
-import {CurrentUser} from "@core/models/current-user";
-import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
+
 
 
 @Component({
@@ -12,16 +12,10 @@ import {Subscription} from "rxjs";
   styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
-  form!: FormGroup
-  currentUser: CurrentUser = new CurrentUser();
-  $authSubscription: Subscription;
 
-  constructor(private authService: AuthService)
-  {
-    this.$authSubscription = this.authService.user$.subscribe(u => {
-      this.currentUser = u;
-    });
-  }
+  form!: FormGroup
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -47,8 +41,16 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  WithGoogle() {
-    this.authService.googleSignIn().then()
+  withGoogle() {
+    this.authService.GoogleAuth();
 
+  }
+
+  submit() {
+    let userReg = this.form.value;
+    this.authService.SignUp(userReg.username,userReg.email,userReg.password)
+      .then(() => {
+        this.router.navigate(['login'])
+      })
   }
 }

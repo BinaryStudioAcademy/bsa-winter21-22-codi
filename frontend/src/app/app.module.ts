@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "@env/environment";
-import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {CoreModule} from "@core/core.module";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 
 
 @NgModule({
@@ -31,8 +31,6 @@ import {CoreModule} from "@core/core.module";
             tapToDismiss: false,
             positionClass: 'toast-bottom-right',
         }),
-
-
     ],
     providers: [],
     bootstrap: [AppComponent]

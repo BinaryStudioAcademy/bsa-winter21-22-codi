@@ -47,20 +47,15 @@ namespace Codi.Core.WebAPI.Extentions
 
         public static void ServiceJwtFirebase(this IServiceCollection services, IConfiguration configuration)
         {
-            var pathToKey = Path.Combine(Directory.GetCurrentDirectory(), "keys", "firebase_admin_sdk.json");
-            FirebaseApp.Create(new AppOptions
-            {
-                Credential = GoogleCredential.FromFile(pathToKey)
-            });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
                     var firebaseProjectName = configuration["FirebaseProjectName"];
-                    options.Authority = "https://securetoken.google.com/" + firebaseProjectName;
+                    options.Authority = firebaseProjectName;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = "https://securetoken.google.com/" + firebaseProjectName,
+                        ValidIssuer = firebaseProjectName,
                         ValidateAudience = true,
                         ValidAudience = firebaseProjectName,
                         ValidateLifetime = true
