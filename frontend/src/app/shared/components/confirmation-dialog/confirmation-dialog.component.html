@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeDismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div *ngIf="options?.allowHtmlContent; else contentBody" class="modal-body"
+    [innerHTML]="content">
+</div>
+
+<ng-template #contentBody>
+    <div class="modal-body">
+        <p>{{content}}</p>
+    </div>
+</ng-template>
+
+<div class="modal-footer">
+    <button *ngIf="options?.cancelButton ?? true" type="button"
+        [ngClass]="options?.cancelButtonClass ?? 'btn btn-danger'" (click)="closeCancel()">
+        {{options?.cancelButtonText ?? "Cancel"}}
+    </button>
+    <button *ngIf="options?.confirmButton ?? true" type="button"
+        [ngClass]="options?.confirmButtonClass ?? 'btn btn-primary'" (click)="closeConfirm()">
+        {{options?.confirmButtonText ?? "Confirm"}}
+    </button>
+</div>

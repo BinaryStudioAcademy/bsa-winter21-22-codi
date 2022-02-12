@@ -1,0 +1,85 @@
+@import 'src/styles/global.sass'
+:host
+  background: $background-color
+
+#sidebar
+  min-width: 200px
+  max-width: 200px
+  min-height: 100vh
+  color: #75767a
+  transition: all 0.3s
+  font-weight: bold
+  font-size: 20px
+  line-height: 1.5
+  font-family: $default-font-family
+  text-decoration: bold
+
+  &.hidden
+    margin-left: -200px
+
+
+
+@media (max-width: 575px)
+  #sidebar
+    margin-left: -200px
+
+    &.hidden
+      margin-left: 0
+
+#sidebar
+  .sidebar-header
+    padding: 20px
+
+  ul 
+    display: block
+    width: 100%
+    text-decoration: none
+    font-family: $default-font-family
+
+.button-container
+  display: flex
+  align-items: center
+  justify-content: center
+.nav-item 
+    padding: 10px
+    display: flex
+.border
+  width: 75%
+  border-bottom: 3px solid #16171b
+  border-radius: 20px
+  margin-left: 25px
+
+.navbar-nav-extra
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  font-size: 15px
+  padding: 0px
+  .nav-item-extra
+    padding: 5px 5px 5px 80px
+    display: flex
+    &:hover, &.active
+      .nav-link-extra
+        color: $text-color
+      cursor: pointer
+      background-color: $base-background-color
+
+.navbar-nav
+  display: flex
+  flex-direction: column
+  
+  padding: 0px
+  .nav-item 
+    padding: 10px 10px 10px 50px
+    display: flex
+    align-items: center
+    &:hover, &.active
+      .nav-link
+        color: $text-color
+      i
+        color: $text-color
+      cursor: pointer
+      background-color: $base-background-color
+
+.nav-link 
+  padding-left: 10px
