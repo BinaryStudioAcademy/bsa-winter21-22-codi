@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Codi.RabbitMQ\Codi.RabbitMQ.csproj" />
     <ProjectReference Include="..\Codi.Core.DAL\Codi.Core.DAL.csproj" />
     <ProjectReference Include="..\Codi.Core.Common\Codi.Core.Common.csproj" />
   </ItemGroup>
