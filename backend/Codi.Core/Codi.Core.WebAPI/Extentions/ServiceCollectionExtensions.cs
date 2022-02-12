@@ -51,11 +51,12 @@ namespace Codi.Core.WebAPI.Extentions
                 .AddJwtBearer(options =>
                 {
                     var firebaseProjectName = configuration["FirebaseProjectName"];
-                    options.Authority = firebaseProjectName;
+                    var secureTokenUrl = configuration["SecureTokenUrl"];
+                    options.Authority = secureTokenUrl;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = firebaseProjectName,
+                        ValidIssuer = secureTokenUrl,
                         ValidateAudience = true,
                         ValidAudience = firebaseProjectName,
                         ValidateLifetime = true
