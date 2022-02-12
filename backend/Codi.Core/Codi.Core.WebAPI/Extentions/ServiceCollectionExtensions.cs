@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Codi.Core.BLL.RabbitMQ;
 using Codi.RabbitMQ.Interfaces;
+using Codi.RabbitMQ.Models;
 using Codi.RabbitMQ.Services;
 using RabbitMQ.Client;
 
@@ -22,7 +23,6 @@ namespace Codi.Core.WebAPI.Extentions
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddTransient<ISampleService, SampleService>();
-            services.AddScoped<IMessageService, MessageService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)
@@ -54,6 +54,15 @@ namespace Codi.Core.WebAPI.Extentions
             });
             services.AddSingleton<IMessageProducerScopeFactory, MessageProducerScopeFactory>();
             services.AddSingleton<IMessageConsumerScopeFactory, MessageConsumerScopeFactory>();
+            
+            var messageSettings = new MessageScopeSettings();
+            configuration
+                .GetSection("Queues:ExampleQueue")
+                .Bind(messageSettings);
+            services.AddScoped<IMessageService>(provider =>
+                new MessageService(
+                    provider.GetRequiredService<IMessageProducerScopeFactory>(),
+                    messageSettings));
         }
     }
 }
