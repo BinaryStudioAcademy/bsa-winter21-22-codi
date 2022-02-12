@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.authService.withGitHub()
       .subscribe( () => {
         this.router.navigate(['main'])
-      } )
+      });
   }
 
   submit() {
@@ -50,8 +50,6 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(login, password)
       .subscribe( () => {
         this.router.navigate(['main'])
-      } )
-
-
+      });
   }
 }

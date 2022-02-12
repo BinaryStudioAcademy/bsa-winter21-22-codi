@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     this.authService.withGoogle()
       .subscribe(() => {
         this.router.navigate(['main'])
-      })
+      });
   }
 
   withGit() {
