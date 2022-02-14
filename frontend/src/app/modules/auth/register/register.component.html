@@ -19,7 +19,9 @@
         <div class="form-group">
           <input type="email" placeholder="Email" class="form-control" formControlName="email"/>
           <ul>
-            <li class="error" *ngIf="form.controls['email'].hasError('email')">Wrong email</li>
+            <li class="error" *ngIf="form.controls['email'].hasError('pattern') || form.controls['email'].hasError('maxlength')">
+              Invalid email address
+            </li>
           </ul>
         </div>
         <div class="form-group">

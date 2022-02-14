@@ -28,7 +28,8 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('',
         [
           Validators.required,
-          Validators.pattern(regexs.email)
+          Validators.pattern(regexs.email),
+          Validators.maxLength(128)
         ]),
       password: new FormControl('',
         [

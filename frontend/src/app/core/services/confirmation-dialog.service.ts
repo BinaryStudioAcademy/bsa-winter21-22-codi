@@ -16,9 +16,7 @@ export class ConfirmationDialogService {
         let modalRef = this.modalService.open(ConfirmationDialogComponent);
         let component = modalRef.componentInstance as ConfirmationDialogComponent;
 
-        component.title = title;
-        component.content = content;
-        component.options = options;
+        component.setContent(title, content, options);
 
         return race([modalRef.closed, modalRef.dismissed.pipe(mapTo(ConfirmationDialogResult.Dismiss))]);
     }

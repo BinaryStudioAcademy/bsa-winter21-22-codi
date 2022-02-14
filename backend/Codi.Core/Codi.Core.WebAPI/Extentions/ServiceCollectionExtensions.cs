@@ -6,10 +6,16 @@ using Codi.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Codi.Core.BLL.RabbitMQ;
+using Codi.RabbitMQ.Interfaces;
+using Codi.RabbitMQ.Models;
+using Codi.RabbitMQ.Services;
+using RabbitMQ.Client;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+
 
 namespace Codi.Core.WebAPI.Extentions
 {
@@ -45,23 +51,40 @@ namespace Codi.Core.WebAPI.Extentions
                     opt => opt.MigrationsAssembly(typeof(CodiCoreContext).Assembly.GetName().Name)));
         }
 
+        public static void RegisterRabbitMQ(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IConnectionFactory>(x=> new ConnectionFactory()
+            {
+                Uri = new Uri(configuration.GetSection("Rabbit").Value)
+            });
+            services.AddSingleton<IMessageProducerScopeFactory, MessageProducerScopeFactory>();
+            services.AddSingleton<IMessageConsumerScopeFactory, MessageConsumerScopeFactory>();
+            
+            var messageSettings = new MessageScopeSettings();
+            configuration
+                .GetSection("Queues:ExampleQueue")
+                .Bind(messageSettings);
+            services.AddScoped<IMessageService>(provider =>
+                new MessageService(
+                    provider.GetRequiredService<IMessageProducerScopeFactory>(),
+                    messageSettings));
+            
+        }
+        
         public static void ServiceJwtFirebase(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    var firebaseProjectName = configuration["FirebaseProjectName"];
-                    var secureTokenUrl = configuration["SecureTokenUrl"];
-                    options.Authority = secureTokenUrl;
+                    options.Authority = configuration["Jwt:Firebase:ValidIssuer"];
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = secureTokenUrl,
+                        ValidIssuer = configuration["Jwt:Firebase:ValidIssuer"],
                         ValidateAudience = true,
-                        ValidAudience = firebaseProjectName,
+                        ValidAudience = configuration["Jwt:Firebase:ValidAudience"],
                         ValidateLifetime = true
                     };
                 });
-        }
     }
 }
