@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Codi.Core.BLL\Codi.Core.BLL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="keys\firebase_admin_sdk.json" />
-  </ItemGroup>
-
 </Project>

@@ -1,13 +1,6 @@
 import {Injectable} from '@angular/core';
 import { from, switchMap} from "rxjs";
-import {
-  Auth,
-  authState,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  updateProfile,
-} from "@angular/fire/auth";
+import {Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile,} from "@angular/fire/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 @Injectable({
@@ -23,11 +16,9 @@ export class AuthService {
       if (user) {
         user.getIdToken(true).then(theToken => {
           this.token = theToken
-          localStorage.setItem('jwt', JSON.stringify(this.token));
         })
       }
       else {
-        localStorage.removeItem('jwt');
         this.token = null;
       }
     })
