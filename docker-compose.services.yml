@@ -49,6 +49,17 @@ services:
             SA_PASSWORD: MySecretPassword!
             ACCEPT_EULA: "Y"
 
+    mongo:
+        image: mongo:latest
+        container_name: mongodb
+        ports:
+            - 27017:27017
+        networks:
+            - back
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+
 networks:
     back:
         driver: bridge
