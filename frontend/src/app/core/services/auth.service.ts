@@ -9,12 +9,6 @@ import {
   updateProfile,
 } from "@angular/fire/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
-import {deleteToken} from "@angular/fire/messaging";
-
-
-
-
-
 
 @Injectable({
   providedIn: 'root'
