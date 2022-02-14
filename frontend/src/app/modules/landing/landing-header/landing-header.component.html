@@ -1,5 +1,4 @@
 <div class="all">
-
   <div class="logoAndfeatures">
     <a routerLink="/landing-page" routerLinkActive="active"><img [src]=landingImage alt="Landing Logo" width="100"
         height="35"></a>
@@ -7,20 +6,18 @@
       <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
         <button class="btn btn-outline-primary mr-2" id="dropdownManual" ngbDropdownAnchor
           (focus)="myDrop.open()">Features</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownManual" style="background-color: rgb(28, 42, 73);">
-          <button ngbDropdownItem (click)="scrollFunc('features-block-1')" style=" color: white;">Feature 1</button>
-          <button ngbDropdownItem (click)="scrollFunc('features-block-2')" style=" color: white;">Feature 2</button>
-          <button ngbDropdownItem (click)="scrollFunc('features-block-3')" style=" color: white;">Feature 3</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownManual" class="dropdownlist">
+          <button ngbDropdownItem (click)="scrollFunc('features-block-1')" class="buttoncontent">Feature 1</button>
+          <button ngbDropdownItem (click)="scrollFunc('features-block-2')" class="buttoncontent">Feature 2</button>
+          <button ngbDropdownItem (click)="scrollFunc('features-block-3')" class="buttoncontent">Feature 3</button>
         </div>
       </div>
     </div>
-    <a style="color: rgb(173, 212, 255);" (click)="scrollFunc('summary-block')">Summary</a>
-    <a style="color: rgb(173, 212, 255);" (click)="scrollFunc('teamforeducation-block')">Team for Education</a>
+    <a (click)="scrollFunc('summary-block')">Summary</a>
+    <a (click)="scrollFunc('teamforeducation-block')">Team for Education</a>
   </div>
-
   <div class="buttons">
     <button class="logButton" type="Button">Log in</button>
     <button class="signButton" type="Button">Sign in</button>
   </div>
-
 </div>
