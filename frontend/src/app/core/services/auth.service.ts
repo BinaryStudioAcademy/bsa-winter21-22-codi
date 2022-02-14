@@ -37,7 +37,7 @@ export class AuthService {
 
   logOut() {
     return from(this.auth.signOut().then(() => {
-      localStorage.removeItem('jwt')
+      this.token = null;
     }));
   }
 
