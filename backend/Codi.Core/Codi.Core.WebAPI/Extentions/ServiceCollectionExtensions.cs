@@ -11,8 +11,6 @@ using Codi.RabbitMQ.Interfaces;
 using Codi.RabbitMQ.Models;
 using Codi.RabbitMQ.Services;
 using RabbitMQ.Client;
-using FirebaseAdmin;
-using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -25,7 +23,8 @@ namespace Codi.Core.WebAPI.Extentions
         {
             services
                 .AddControllers()
-                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddTransient<ISampleService, SampleService>();
         }
@@ -53,13 +52,13 @@ namespace Codi.Core.WebAPI.Extentions
 
         public static void RegisterRabbitMQ(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<IConnectionFactory>(x=> new ConnectionFactory()
+            services.AddSingleton<IConnectionFactory>(x => new ConnectionFactory()
             {
                 Uri = new Uri(configuration.GetSection("Rabbit").Value)
             });
             services.AddSingleton<IMessageProducerScopeFactory, MessageProducerScopeFactory>();
             services.AddSingleton<IMessageConsumerScopeFactory, MessageConsumerScopeFactory>();
-            
+
             var messageSettings = new MessageScopeSettings();
             configuration
                 .GetSection("Queues:ExampleQueue")
@@ -68,9 +67,8 @@ namespace Codi.Core.WebAPI.Extentions
                 new MessageService(
                     provider.GetRequiredService<IMessageProducerScopeFactory>(),
                     messageSettings));
-            
         }
-        
+
         public static void ServiceJwtFirebase(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -86,5 +84,6 @@ namespace Codi.Core.WebAPI.Extentions
                         ValidateLifetime = true
                     };
                 });
+        }
     }
 }
