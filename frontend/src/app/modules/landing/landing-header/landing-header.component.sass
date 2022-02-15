@@ -1,76 +1,60 @@
-@import '//src\styles\variables.sass'
-
+@import 'src/styles/variables.sass'
 .all
     padding-top: 5px
     background-color: var(--backgroundcolor)
     display: flex
     flex-direction: row
     justify-content: space-between
-    border-color: white
-
 .logButton
-    color: rgb(87,171,255)
-    background-color: rgb(43,50,69)
+    color: $accent-primary-stronger
+    background-color: $background-default
     width: 60px
     border-width: 2px
     border-radius: 5px
     margin-right: 10px
-
 .logButton:hover
-    color: #000000
-    background-color: #6e6e6e
-
+    color: $background-root
+    background-color: $outline-dimmest
 .signButton
-    color: rgb(252,244,250)
-    background-color: rgb(0,121,242)
+    color: $foreground-default
+    background-color: $accent-primary-default
     width: 70px
     border-width: 2px
     border-radius: 5px
-    
 .signButton:hover
-    color: #000000
-    background-color: #6e6e6e
-
+    color: $background-root
+    background-color: $outline-dimmest
 .logoAndfeatures
-    color: white
+    color: $foreground-default
     margin: 10px
-    font-size: 24px
+    font-size: $font-size-subhead-big
 .dropdownlist
-    background-color: rgb(28, 42, 73)
+    background-color: $background-default
 .buttons
     position: relative
     top: 0
     margin: 10px
-
 .logoImage
     width: 500px
-
 a
     display: inline
     margin-right: 20px
-    font-size: 16px
+    font-size: $font-size-default
     font-weight: bold
-    color: rgb(0, 123, 255)
-    
 a:hover 
     cursor: pointer
     border-bottom: solid
-    border-color: rgb(0, 123, 255)
     border-bottom-width: 2px
- 
 .drop-down
     display: inline
     margin-right: 20px
-    font-size: 16px
+    font-size: $font-size-default
     font-weight: bold
-    color: white
-
+    color: $foreground-default
 #dropdownManual
-    color: white
-
+    color: $foreground-default
 .buttoncontent
-    color: white
-
+    color: $foreground-default
 .buttoncontent:hover
-    color: black
+    color: $background-root
     
