@@ -52,11 +52,8 @@ export class AuthService {
   authLogin(provider:any) {
     return from(signInWithPopup(this.auth,provider))
   }
-  
+
   getAuthIdToken() {
     return from(idToken(this.auth))
   }
 }
-
-
-
