@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { from, switchMap} from "rxjs";
 import {Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile,} from "@angular/fire/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import {idToken} from "rxfire/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +10,16 @@ import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 export class AuthService {
 
   currentUser$ = authState(this.auth);
-  token?: any;
 
   constructor(private auth: Auth) {
     this.currentUser$.subscribe( user =>{
       if (user) {
-        user.getIdToken(true).then(theToken => {
-          this.token = theToken
-        })
+        user.getIdToken(true).then(token => {
+          localStorage.setItem('jwt', token)
+        });
       }
       else {
-        this.token = null;
+        localStorage.removeItem('jwt');
       }
     })
   }
@@ -37,7 +37,7 @@ export class AuthService {
 
   logOut() {
     return from(this.auth.signOut().then(() => {
-      this.token = null;
+      localStorage.removeItem('jwt')
     }));
   }
 
@@ -51,6 +51,9 @@ export class AuthService {
 
   authLogin(provider:any) {
     return from(signInWithPopup(this.auth,provider))
+  }
+  getAuthIdToken() {
+    return from(idToken(this.auth))
   }
 }
 
