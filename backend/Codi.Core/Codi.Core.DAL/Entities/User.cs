@@ -8,7 +8,7 @@
         public string? Bio { get; set; }
         public string Email { get; set; } = default!;
 
-        public long AvatarId { get; set; }
+        public long? AvatarId { get; set; }
         public Image? Avatar { get; set; }
         public List<Project> Projects { get; set; } = default!;
         public List<CourseUser> CourseUsers { get; set; } = default!;

@@ -6,6 +6,11 @@ using Codi.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Codi.Core.BLL.RabbitMQ;
+using Codi.RabbitMQ.Interfaces;
+using Codi.RabbitMQ.Models;
+using Codi.RabbitMQ.Services;
+using RabbitMQ.Client;
 
 namespace Codi.Core.WebAPI.Extentions
 {
@@ -39,6 +44,25 @@ namespace Codi.Core.WebAPI.Extentions
                 options.UseSqlServer(
                     connectionsString,
                     opt => opt.MigrationsAssembly(typeof(CodiCoreContext).Assembly.GetName().Name)));
+        }
+        
+        public static void RegisterRabbitMQ(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IConnectionFactory>(x=> new ConnectionFactory()
+            {
+                Uri = new Uri(configuration.GetSection("Rabbit").Value)
+            });
+            services.AddSingleton<IMessageProducerScopeFactory, MessageProducerScopeFactory>();
+            services.AddSingleton<IMessageConsumerScopeFactory, MessageConsumerScopeFactory>();
+            
+            var messageSettings = new MessageScopeSettings();
+            configuration
+                .GetSection("Queues:ExampleQueue")
+                .Bind(messageSettings);
+            services.AddScoped<IMessageService>(provider =>
+                new MessageService(
+                    provider.GetRequiredService<IMessageProducerScopeFactory>(),
+                    messageSettings));
         }
     }
 }

@@ -12,6 +12,9 @@ namespace Codi.Core.DAL.Context.EntityConfigurations
                 .WithMany(u => u.ThreadComments)
                 .HasForeignKey(s => s.AuthorId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Property(e => e.Body)
+                .HasMaxLength(2000);
         }
     }
 }
