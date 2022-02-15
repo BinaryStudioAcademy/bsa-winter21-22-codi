@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
 const routes: Routes = [
     {
@@ -19,7 +20,11 @@ const routes: Routes = [
           import('./modules/auth/auth.module')
             .then(m => m.AuthModule),
     },
-    { path: '**', redirectTo: '', pathMatch: 'full' },
+    {   
+        path: '**',
+        component: NotFoundComponent,
+        pathMatch: 'full'
+     },
 ];
 
 @NgModule({
