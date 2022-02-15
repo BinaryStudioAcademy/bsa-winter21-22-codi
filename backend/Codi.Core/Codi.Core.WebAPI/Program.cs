@@ -12,6 +12,7 @@ builder.Services.RegisterCustomServices();
 builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
+builder.Services.RegisterRabbitMQ(builder.Configuration);
 
 var app = builder.Build();
 

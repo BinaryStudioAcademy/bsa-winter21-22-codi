@@ -8,9 +8,10 @@ namespace Codi.Core.WebAPI.Controllers
     [Route("[controller]")]
     public class SampleController : ControllerBase
     {
-        public SampleController(ISampleService sampleService)
+        public SampleController(ISampleService sampleService, IMessageService messageService)
         {
             _sampleService = sampleService;
+            _messageService = messageService;
         }
 
         [HttpGet]
@@ -65,6 +66,14 @@ namespace Codi.Core.WebAPI.Controllers
             return NoContent();
         }
 
+        [HttpPost("/sendMessage")]
+        public IActionResult SendMessage(string message)
+        {
+            _messageService.SendMessage(message);
+            return Ok();
+        }
+
         private readonly ISampleService _sampleService;
+        private readonly IMessageService _messageService;
     }
 }
