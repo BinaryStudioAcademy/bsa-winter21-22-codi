@@ -13,6 +13,7 @@ import { MyProjectsPageComponent } from './myprojects-page/myprojects-page.compo
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { CreateButtonComponent } from './create-button/create-button.component';
 import { SideNavCreateButtonComponent } from './create-button/side-nav-create-button/side-nav-create-button.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -27,10 +28,12 @@ import { SideNavCreateButtonComponent } from './create-button/side-nav-create-bu
         CoursesPageComponent,
         CreateButtonComponent,
         SideNavCreateButtonComponent,
+        
     ],
     imports: [
         SharedModule,
-        MainRoutingModule
+        MainRoutingModule,
+        NgbModule
     ],
 })
 export class MainModule { }
