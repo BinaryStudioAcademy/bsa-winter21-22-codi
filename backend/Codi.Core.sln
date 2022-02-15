@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32106.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codi. Core.DAL", "Codi.Core\Codi. Core.DAL\Codi. Core.DAL.csproj", "{3FDE6F69-DC31-4654-8726-0391F6E2BD5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codi.Core.DAL", "Codi.Core\Codi.Core.DAL\Codi.Core.DAL.csproj", "{3FDE6F69-DC31-4654-8726-0391F6E2BD5C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codi.Core.BLL", "Codi.Core\Codi.Core.BLL\Codi.Core.BLL.csproj", "{B285D2B0-340E-446D-BF86-CCEDEEE8F167}"
 EndProject
