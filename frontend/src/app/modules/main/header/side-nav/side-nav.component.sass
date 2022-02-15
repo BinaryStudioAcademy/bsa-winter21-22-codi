@@ -3,17 +3,23 @@
   background: $background-color
 
 #sidebar
+  position: sticky
+  z-index: 100
   min-width: 200px
   max-width: 200px
-  min-height: 100vh
+  min-height: 93.5vh
+  top: 70px
   color: #75767a
   transition: all 0.3s
   font-weight: bold
   font-size: 20px
   line-height: 1.5
   font-family: $default-font-family
-  text-decoration: bold
-
+  padding: 0
+  display: flex
+  justify-content: flex-start
+  flex-direction: column
+  align-items: stretch
   &.hidden
     margin-left: -200px
 
@@ -43,11 +49,11 @@
 .nav-item 
     padding: 10px
     display: flex
-.border
+.sidebar-border
   width: 75%
-  border-bottom: 3px solid #16171b
+  border-bottom: 3px solid #161414
   border-radius: 20px
-  margin-left: 25px
+  margin:15px 0px 30px 25px
 
 .navbar-nav-extra
   display: flex
@@ -67,7 +73,6 @@
 .navbar-nav
   display: flex
   flex-direction: column
-  
   padding: 0px
   .nav-item 
     padding: 10px 10px 10px 50px
@@ -83,3 +88,9 @@
 
 .nav-link 
   padding-left: 10px
+
+.side-icon
+  display: flex
+  justify-content: center
+  height: 20px
+  width: 20px

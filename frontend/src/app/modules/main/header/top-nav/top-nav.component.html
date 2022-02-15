@@ -2,13 +2,15 @@
     <div class="navbar-left">
         <div class="navbar-logo">
             <h3 class="navbar-item">Codi</h3>  
-            <nav class="navbar navbar-dark bg-dark">
+            <nav class="navbar">
                 <app-side-nav-toggler></app-side-nav-toggler>
             </nav>
         </div>
+        <div class="search-container-box">
         <div class="search-container">
             <i class="search-icon fa fa-search"></i>
             <input class="search-form" type="search" placeholder="Search">
+        </div>
         </div>
     </div>
     <div class="navbar-right">
@@ -16,6 +18,31 @@
             <i class="user-icon fa fa-user"></i>
             <div class="username">
                 <span>Username</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div ngbDropdown class="dropdown-cont d-inline-block">
+                <button class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                </button>
+                <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownBasic1" style="top: 10px;left: 70px;">
+                    <button ngbDropdownItem class="dropdown-user">
+                        <div class="dropdown-user-container">
+                            <i class="dropdown-user-icon fa fa-user"></i>
+                            <div class="dropdown-username">
+                                <span class="username-color">Username</span>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="dropdown-create-button-container">
+                        <button ngbDropdownItem type="button" class="dropdown-create-button">
+                            <i class="dropdown-button fa fa-plus"></i>
+                            Create
+                        </button>
+                    </div>
+                    <button ngbDropdownItem class="custom-text">Logout</button>
+                </div>
+              </div>
             </div>
         </div>
         <div class="button-container">

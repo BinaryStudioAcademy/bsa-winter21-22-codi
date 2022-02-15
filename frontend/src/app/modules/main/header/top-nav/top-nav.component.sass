@@ -1,15 +1,22 @@
 @import 'src/styles/global.sass'
 .all
+    position: fixed
+    width: 100%
+    z-index: 1000
     display: flex
     align-items: center
     background-color: $background-color
     height: 70px
     justify-content: space-between
 
+.search-container-box
+    flex: 1 1 auto
+    max-width: 350px
 .search-container
     display: grid
+    align-content: center
     grid-template-columns:1.5rem 4fr 1fr
-    width:300px
+    width: 100%
     height: 35px
     border: 3px solid $base-title-color
     border-radius: 10px
@@ -29,33 +36,28 @@
     .search-form
         grid-column: 1/4
         border: 0
-        padding: 0.5rem
+        padding: 0
         grid-column: 2/4
         grid-row: 1
         outline: none
+        width: 100%
         background-color: $background-color
         color: $base-title-color
         &::placeholder
             color: $base-title-color
 
-.navbar-left
+.navbar-logo
+    display: flex
+    flex-direction: row
+    align-items: center
+.navbar-item
     display: flex
     align-items: center
-    grid-gap: 95px
-    justify-content: space-between
-
-    .navbar-logo
-        display: flex
-        flex-direction: row
-        align-items: center
-    .navbar-item
-        display: flex
-        align-items: center
-        color: $base-title-color
-        padding-left: 30px
-        margin: 0px
-        font-family: $default-font-family
-        font-size: 40px
+    color: $base-title-color
+    padding-left: 30px
+    margin: 0px
+    font-family: $default-font-family
+    font-size: 40px
 
 .navbar-right
     display: flex
@@ -65,7 +67,6 @@
         display: flex
         align-items: center
         justify-content: space-between
-        padding-right: 20px
 
         .user-icon
             display: flex
@@ -77,12 +78,148 @@
             padding-left: 15px
             padding-right: 15px
             font-size: 30px    
+            color: $background-color
 
         .username
             padding-left: 10px
             color: $base-title-color
             font-size: 20px
             font-family: $default-font-family
+            transition: all 0.3s
+.btn
+    color: #ccc
+    border: none
+    box-shadow: none
+    padding: 0
+.row
+    align-items: center
+    margin: 0
+.col
+    padding: 10px
+.dropdown-cont
+    position: relative !important
+.dropdown-custom
+    position: absolute !important
+    background-color: $background-color
+    border: none
+    border-radius: 0
+    width: 200px
+    top: 40px !important
+    left: 0px !important
+    will-change: auto !important
+    transform: none !important
+    margin-left: -110px !important
+    align-items: center
+    justify-content: center
+.dropdown-item
+    display: flex !important
+    width: 100% !important
+    align-items: center
+    justify-content: center
+.dropdown-user
+    font-family: $default-font-family
+    color: $base-title-color
+    font-weight: bold
+    .dropdown-user-container
+        display: flex
+        align-items: center
+        justify-content: space-between
+        .dropdown-user-icon
+            display: flex
+            background-color: $base-title-color
+            border: 4px solid $base-title-color
+            border-radius: 50%
+            padding-top: 10px
+            padding-bottom: 10px
+            padding-left: 15px
+            padding-right: 15px
+            font-size: 30px    
+            color: $background-color
 
-        
-    
+        .dropdown-username
+            padding-left: 10px
+            color: $base-title-color
+            font-size: 20px
+            font-family: $default-font-family
+            transition: all 0.3s
+    &:hover
+        color: $text-color 
+        background-color: $base-background-color   
+        .dropdown-user-container .dropdown-user-icon
+            color: $text-color
+        .username-color
+            color: $text-color
+.dropdown-create-button-container
+    display: flex
+    width: 100%
+    &:hover
+        background-color: $base-background-color
+    .dropdown-create-button
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 150px
+        background-color: $text-color
+        border: 4px solid $text-color
+        border-radius: 10px
+        height: 40px
+        font-size: 20px  
+        font-family: $default-font-family
+        color: $base-title-color
+        margin: 10px 20px 10px 20px
+        cursor: pointer
+        .dropdown-button
+            color: $base-title-color
+            padding-right: 10px
+            font-size: 10px
+.custom-text 
+    font-family: $default-font-family
+    color: $base-title-color
+    font-weight: bold
+    font-size: 20px
+    &:hover
+        color: $text-color 
+        background-color: $base-background-color 
+.navbar-left
+    display: flex
+    align-items: center
+    grid-gap: 35px
+    justify-content: flex-start
+    width: 80%
+    margin-right: 5px
+    transition: all 0.5s
+@media screen and ( min-width: 750px )
+    .navbar-left
+        display: flex
+        align-items: center
+        grid-gap: 95px
+        justify-content: flex-start
+        width: 55%
+        transition: all 0.5s
+    .dropdown-create-button-container
+        display: none
+        transition: all 0.3s
+    .dropdown-user .dropdown-user-container
+        display: none
+        transition: all 0.3s
+    .dropdown-user 
+        display: none !important
+
+@media screen and ( max-width: 750px  )   
+    .navbar-right
+         padding-right: 0
+    .navbar-right .user-container .username 
+        display: none
+        transition: all 0.3s
+    .navbar-right .user-container .user-icon 
+        display: none
+        transition: all 0.3s
+    .button-container
+        display: none
+        transition: all 0.3s
+    .dropdown-custom
+        margin-left: -180px !important
+@media screen and ( max-width: 450px  )
+    .navbar-left
+        width: 90%
+        grid-gap: 10px
