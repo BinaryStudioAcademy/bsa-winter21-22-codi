@@ -1,11 +1,13 @@
 using Codi.Core.WebAPI.Extentions;
+using Codi.Core.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddCodiCoreContext(builder.Configuration);
+builder.Services.ConfigureDALServices(builder.Configuration);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.RegisterCustomServices();
@@ -21,7 +23,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.MigrateDB();
 }
+
+app.SeedFileStorageData();
 
 app.UseHttpsRedirection();
 

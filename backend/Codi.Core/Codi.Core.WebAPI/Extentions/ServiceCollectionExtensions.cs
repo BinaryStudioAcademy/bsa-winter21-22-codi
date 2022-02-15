@@ -1,16 +1,14 @@
-﻿using Codi.Core.DAL;
-using Codi.Core.BL.Interfaces;
+﻿using Codi.Core.BL.Interfaces;
 using Codi.Core.BL.MappingProfiles;
 using Codi.Core.BL.Services;
-using Codi.Core.WebAPI.Validators;
 using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Codi.Core.BLL.RabbitMQ;
 using Codi.RabbitMQ.Interfaces;
 using Codi.RabbitMQ.Models;
 using Codi.RabbitMQ.Services;
 using RabbitMQ.Client;
+using Codi.Core.WebAPI.Validators;
 
 namespace Codi.Core.WebAPI.Extentions
 {
@@ -37,15 +35,6 @@ namespace Codi.Core.WebAPI.Extentions
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<NewSampleDtoValidator>());
         }
 
-        public static void AddCodiCoreContext(this IServiceCollection services, IConfiguration configuration)
-        {
-            var connectionsString = configuration.GetConnectionString("CodiCoreDBConnection");
-            services.AddDbContext<CodiCoreContext>(options =>
-                options.UseSqlServer(
-                    connectionsString,
-                    opt => opt.MigrationsAssembly(typeof(CodiCoreContext).Assembly.GetName().Name)));
-        }
-        
         public static void RegisterRabbitMQ(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IConnectionFactory>(x=> new ConnectionFactory()
