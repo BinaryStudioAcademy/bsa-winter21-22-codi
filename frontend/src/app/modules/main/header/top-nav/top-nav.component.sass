@@ -24,8 +24,8 @@
     background-color: $background-color
     input
         color: $base-title-color
-    &:focus-within i
-      display: none
+    // &:focus-within i
+    //   display: none
       
     .search-icon
         color: $base-title-color
@@ -37,6 +37,7 @@
         grid-column: 1/4
         border: 0
         padding: 0
+        margin-left: 5px
         grid-column: 2/4
         grid-row: 1
         outline: none
@@ -45,19 +46,20 @@
         color: $base-title-color
         &::placeholder
             color: $base-title-color
+        &::-webkit-search-cancel-button
+            display: none
 
 .navbar-logo
     display: flex
     flex-direction: row
     align-items: center
+
 .navbar-item
     display: flex
     align-items: center
-    color: $base-title-color
-    padding-left: 30px
-    margin: 0px
-    font-family: $default-font-family
-    font-size: 40px
+    margin-left: 30px
+    height: 50px
+    cursor: pointer
 
 .navbar-right
     display: flex
@@ -86,6 +88,7 @@
             font-size: 20px
             font-family: $default-font-family
             transition: all 0.3s
+            cursor: default
 .btn
     color: #ccc
     border: none
