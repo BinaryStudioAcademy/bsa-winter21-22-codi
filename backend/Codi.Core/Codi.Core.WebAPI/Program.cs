@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.MigrateDB();
 }
 
-app.SeedFileStorageData();
+await app.SeedFileStorageData();
 
 app.UseHttpsRedirection();
 

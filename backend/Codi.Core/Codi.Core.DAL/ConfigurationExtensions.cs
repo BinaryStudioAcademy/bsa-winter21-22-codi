@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson.Serialization.Conventions;
 using Microsoft.AspNetCore.Builder;
 using Codi.Core.DAL.NoSql.Seed;
+using MongoDB.Driver;
 
 namespace Codi.Core.DAL
 {
@@ -51,15 +52,21 @@ namespace Codi.Core.DAL
             return builder;
         }
 
-        public static IApplicationBuilder SeedFileStorageData(this IApplicationBuilder builder)
+        public static async Task<IApplicationBuilder> SeedFileStorageData(this IApplicationBuilder builder)
         {
             using var scope = builder.ApplicationServices.GetService<IServiceScopeFactory>()?.CreateScope();
             if (scope == null) return builder;
 
-            var fileRepository = scope.ServiceProvider.GetRequiredService<IFileRepository>();
-            var templateRepository = scope.ServiceProvider.GetRequiredService<ITemplateRepository>();
+            var context = scope.ServiceProvider.GetRequiredService<IMongoContext>();
+            var collectionNames = await context.Database.ListCollectionNames().ToListAsync();
 
-            CodiFileStorageSeed.SeedData(fileRepository, templateRepository);
+            if (!collectionNames.Any())
+            {
+                var fileRepository = scope.ServiceProvider.GetRequiredService<IFileRepository>();
+                var templateRepository = scope.ServiceProvider.GetRequiredService<ITemplateRepository>();
+
+                await CodiFileStorageSeed.SeedData(fileRepository, templateRepository);
+            }
 
             return builder;
         }
