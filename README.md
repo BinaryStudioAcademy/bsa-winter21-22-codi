@@ -69,7 +69,9 @@ This is a list of the required environment variables:
 #### RabbitMQ
 
 **RABBIT_MQ_USERNAME** - RabbitMQ username
+
 **RABBIT_MQ_PASSWORD** - RabbitMQ user password
+
 
 
 #### MSSQL Server
@@ -77,8 +79,10 @@ This is a list of the required environment variables:
 **SA_PASSWORD** - MSSQL Server "SA" user password
 
 
+
 #### MongoDB
 
 **MONGO_USERNAME** - MongoDB username
+
 **MONGO_PASSWORD** - MongoDB user password
 
