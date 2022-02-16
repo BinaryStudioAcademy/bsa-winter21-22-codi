@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 import {canActivate, redirectUnauthorizedTo, redirectLoggedInTo} from "@angular/fire/auth-guard";
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -25,7 +26,11 @@ const routes: Routes = [
             .then(m => m.AuthModule),
         ...canActivate(redirectToMain)
     },
-    { path: '**', redirectTo: '', pathMatch: 'full' },
+    {   
+        path: '**',
+        component: NotFoundComponent,
+        pathMatch: 'full'
+     },
 ];
 
 @NgModule({
