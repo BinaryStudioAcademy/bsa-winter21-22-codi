@@ -15,6 +15,8 @@ builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
 builder.Services.RegisterRabbitMQ(builder.Configuration);
+builder.Services.ServiceJwtFirebase(builder.Configuration);
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -25,10 +27,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MigrateDB();
 }
+app.UseCors(opt => opt
+    .AllowAnyHeader()
+    .AllowAnyOrigin());
 
 await app.SeedFileStorageData();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
