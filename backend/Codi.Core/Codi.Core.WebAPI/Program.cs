@@ -13,6 +13,8 @@ builder.Services.AddAutoMapper();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidation();
 builder.Services.RegisterRabbitMQ(builder.Configuration);
+builder.Services.ServiceJwtFirebase(builder.Configuration);
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -22,8 +24,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(opt => opt
+    .AllowAnyHeader()
+    .AllowAnyOrigin());
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
