@@ -27,10 +27,6 @@ const routes: Routes = [{
     },{
         path: 'home',
         component: HomePageComponent,
-    }, {
-        path: '**',
-        component: NotFoundComponent,
-        pathMatch: 'full'
     }]
 }];
 

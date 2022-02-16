@@ -37,7 +37,7 @@
           </ul>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" [disabled]="!form.valid">
+          <button class="btn btn-primary" [disabled]="!form.valid" type="submit">
             Create account
           </button>
         </div>
@@ -47,11 +47,11 @@
         <a [routerLink]="['/login']">Log in</a>
       </div>
       <div class="continue-with">
-        <button type="button" class="btn btn-secondary ctn">
+        <button type="button" class="btn btn-secondary ctn" (click)="withGoogle()">
           <img src="assets/images/google.png" alt="google" class="btn-logo">
           <div class="btn-text">Continue with Google</div>
         </button>
-        <button type="button" class="btn btn-secondary ctn">
+        <button type="button" class="btn btn-secondary ctn" (click)="withGit()">
           <img src="assets/images/github.png" alt="github" class="btn-logo">
           <div class="btn-text">Continue with Github</div>
         </button>

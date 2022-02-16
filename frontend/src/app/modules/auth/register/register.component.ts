@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {regexs} from "@shared/constants/regexs";
+import {AuthService} from "@core/services/auth.service";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-register',
@@ -8,9 +11,10 @@ import {regexs} from "@shared/constants/regexs";
   styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
+
   form!: FormGroup
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -34,5 +38,28 @@ export class RegisterComponent implements OnInit {
           Validators.pattern(regexs.password)
         ])
     })
+  }
+
+  withGoogle() {
+    this.authService.withGoogle()
+      .subscribe(() => {
+        this.router.navigate(['main'])
+      });
+  }
+
+  withGit() {
+    this.authService.withGitHub()
+      .subscribe( () => {
+        this.router.navigate(['main'])
+      });
+  }
+
+  submit() {
+    if(!this.form.valid) return;
+    const {username, email, password} = this.form.value;
+    this.authService.signUp(username,email,password)
+      .subscribe(() => {
+        this.router.navigate(['main'])
+      });
   }
 }
