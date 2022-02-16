@@ -25,13 +25,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.MigrateDB();
 }
+
+app.MigrateDB();
+await app.SeedFileStorageData();
+
 app.UseCors(opt => opt
     .AllowAnyHeader()
     .AllowAnyOrigin());
-
-await app.SeedFileStorageData();
 
 app.UseHttpsRedirection();
 
