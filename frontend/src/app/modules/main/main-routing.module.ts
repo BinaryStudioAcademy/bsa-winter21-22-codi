@@ -7,6 +7,7 @@ import { MyProjectsPageComponent } from './myprojects-page/myprojects-page.compo
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainComponent } from './main-page/main-page.component';
+import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
 
 const routes: Routes = [{
     path: '',
@@ -27,6 +28,13 @@ const routes: Routes = [{
     },{
         path: 'home',
         component: HomePageComponent,
+    }, {
+        path: 'userprofile',
+        component: UserProfilePageComponent
+    }, {
+        path: '**',
+        component: NotFoundComponent,
+        pathMatch: 'full'
     }]
 }];
 

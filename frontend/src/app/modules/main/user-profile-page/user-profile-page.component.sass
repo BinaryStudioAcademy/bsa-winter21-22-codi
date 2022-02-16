@@ -1,0 +1,178 @@
+@import 'src/styles/global.sass'
+
+.wrapper
+  font-size: $font-size-default
+  color: $foreground-default
+
+a
+  text-decoration: none
+
+input:focus
+  background-color: $background-default
+
+.container
+  max-width: 990px
+  margin: 0 auto
+
+.user-profile
+
+.version
+  border-radius: 5px
+  background-color: $accent-purple-default
+  padding: 3px
+  margin-bottom: 5px
+  width: fit-content
+  cursor: help
+
+.version-help
+  display: none
+  background-color: $outline-dimmest
+  padding: 3px
+  border-radius: 5px
+  max-width: 250px
+  font-weight: bold
+
+.version:hover + .version-help
+  display: block
+  position: absolute
+
+
+.user-profile-header
+  display: flex
+  justify-content: space-between
+  padding: 5px 0px 20px 0px
+
+.user-info
+  display: flex
+
+.main-info
+  display: flex
+
+.avatar
+  max-width: 118px
+  height: 118px
+  border-radius: 100%
+
+.names
+  padding: 10px 3px 0px 15px
+
+.btn
+  align-self: flex-start
+  color: $foreground-default
+
+.upgrade
+  border: 1px solid $outline-dimmest
+  border-radius: 10px
+  color: $foreground-default
+  font-size: $font-size-small
+
+.edit
+  border: 1px solid $outline-dimmest
+  border-radius: 5px
+  color: $accent-primary-stronger
+  background-color: $background-higher
+
+.edit:hover
+  color: $foreground-default
+  background-color: $accent-primary-stronger
+
+.name
+  font-size: $font-size-header-big
+
+.username
+  color: $foreground-dimmer
+
+.switch-item
+  font-size: $font-size-header-default
+  color: $foreground-default
+  opacity: 50%
+  transition: linear .1s
+  padding: 0 0 5px 10px
+
+.switch-item:hover
+  opacity: 100%
+
+.searching-panel
+  display: flex
+  justify-content: space-between
+  margin-bottom: 10px
+
+.repls-title, .repl-name
+  font-size: $font-size-header-big
+
+.search
+  max-width: 170px
+
+.repls-list, .showcase
+  border: 1px solid $outline-dimmest
+  border-radius: 5px
+  background: $background-default
+
+.repl-item, .repl-title
+  display: flex
+  align-items: center
+
+.repl-item
+  justify-content: space-between
+  padding: 15px 25px 15px 15px
+
+.repl-item:hover
+  background-color: $outline-dimmest
+  cursor: pointer
+
+.repl-icon
+  height: 32px
+  max-width: 32px
+  margin-right: 8px
+
+.change-date
+  color: $foreground-dimmer
+
+.manage
+  text-align: center
+  display: block
+  margin-top: 35px
+  color: $accent-primary-stronger
+
+.showcase
+  height: 65vh
+  width: 100%
+  margin: 20px 0 20px 0
+  z-index: 5
+
+ngb-carousel
+  height: inherit
+
+.slide-header
+  display: flex
+  justify-content: space-between
+  padding: 5px
+  border-bottom: 1px solid $outline-dimmest
+
+.right-header-part
+  display: flex
+  align-items: center
+
+.show-files
+  background-color: $outline-dimmest
+
+.likes-quantity
+  padding: 0 10px 0 10px
+
+.like
+  cursor: pointer
+
+.chosen-repl
+  display: flex
+  justify-content: space-between
+
+.settings
+  cursor: pointer
+  height: fit-content
+
+.settings:hover
+  background-color: $outline-dimmest
+  border-radius: 100%
+
+.repl-title
+  cursor: pointer
