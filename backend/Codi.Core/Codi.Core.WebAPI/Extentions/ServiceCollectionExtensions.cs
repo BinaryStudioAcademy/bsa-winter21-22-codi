@@ -10,7 +10,7 @@ using Codi.RabbitMQ.Services;
 using RabbitMQ.Client;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-
+using Codi.Core.WebAPI.Validators;
 
 namespace Codi.Core.WebAPI.Extentions
 {
