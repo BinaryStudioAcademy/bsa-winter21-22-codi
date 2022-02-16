@@ -33,6 +33,7 @@ By default, apps run on the following ports:
 | RabbitMQ | 5672 |
 | Elasticsearch | 9200 |
 | Kibana | 5601 |
+| MongoDB | 27017 |
 
 *Tip: If you want to connect to the specific service outside of docker, then use "localhost" as a service name, but if both services are inside docker, use service_name from a "docker-compose" file instead.*
 
@@ -61,3 +62,23 @@ Some extra extensions which can significantly help to work with Angular:
 - Angular Language Service (intelliSense for Angular templates)
 - Angular Snippets
 - Angular Schematics (working with Angular schematics via UI)
+
+## Environment variables
+This is a list of the required environment variables:
+
+#### RabbitMQ
+
+**RABBIT_MQ_USERNAME** - RabbitMQ username
+**RABBIT_MQ_PASSWORD** - RabbitMQ user password
+
+
+#### MSSQL Server
+
+**SA_PASSWORD** - MSSQL Server "SA" user password
+
+
+#### MongoDB
+
+**MONGO_USERNAME** - MongoDB username
+**MONGO_PASSWORD** - MongoDB user password
+
