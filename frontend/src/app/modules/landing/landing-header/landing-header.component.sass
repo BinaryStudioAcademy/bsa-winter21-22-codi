@@ -9,21 +9,22 @@
     color: $accent-primary-stronger
     background-color: $background-default
     width: 60px
-    border-width: 2px
-    border-radius: 5px
+    border: solid
+        radius: 5px
+        width: 1px
+        color: $accent-primary-default
     margin-right: 10px
 .logButton:hover
-    color: $background-root
-    background-color: $outline-dimmest
+    color: $foreground-default
+    background-color: $accent-primary-stronger
 .signButton
     color: $foreground-default
     background-color: $accent-primary-default
     width: 70px
-    border-width: 2px
     border-radius: 5px
+    border-width: 0px
 .signButton:hover
-    color: $background-root
-    background-color: $outline-dimmest
+    background-color: $accent-primary-stronger
 .logoAndfeatures
     color: $foreground-default
     margin: 10px
@@ -31,15 +32,15 @@
 .dropdownlist
     background-color: $background-default
 .buttons
-    position: relative
-    top: 0
     margin: 10px
 .logoImage
     width: 500px
+.hide
+    display: inline
 a
     display: inline
-    margin-right: 20px
-    font-size: $font-size-default
+    margin-right: 10px
+    font-size: $font-size-small
     font-weight: bold
 a:hover 
     cursor: pointer
@@ -47,7 +48,7 @@ a:hover
     border-bottom-width: 2px
 .drop-down
     display: inline
-    margin-right: 20px
+    margin-right: 4px
     font-size: $font-size-default
     font-weight: bold
     color: $foreground-default
@@ -57,4 +58,13 @@ a:hover
     color: $foreground-default
 .buttoncontent:hover
     color: $background-root
+.Logo:hover
+    border-width: 0
+@media screen and ( max-width: 1200px )
+    .logButton
+        margin: 10px
+@media screen and ( max-width: 750px )
+    .hide
+        display: none
+    
     

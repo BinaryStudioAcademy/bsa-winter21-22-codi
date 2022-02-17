@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingHeaderComponent implements OnInit {
 
-  landingImage:string = "assets/images/landinglogo.jpg";
+  landingImage:string = "assets/images/LandingPage/Logo.svg";
   
   constructor() { }
 
