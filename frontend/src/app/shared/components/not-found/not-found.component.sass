@@ -1,13 +1,15 @@
-@import 'src/styles/global.sass'
+@import 'src/styles/variables'
+
 .all
-  background-color: $base-background-color
+  background-color: $background-color
   height: 100vh
   display: flex
   justify-content: center
   align-items: center
   flex-direction: column
 .error-image
-  max-width: 100%
+  max-width: 500px
+  max-height: 500px
   margin-bottom: 20px
 .error-message-container
   margin: 10px
@@ -18,13 +20,12 @@
     height: 40px
     white-space: nowrap
     overflow: hidden
-    font-family: $default-font-family, monospace 
     font-size: 20px
     color: #f30000
     position: relative
     animation: typing 3.5s steps(57, end) 1s 1 normal both
   .typer
-    color: $text-color
+    color: $base-text-color
     position: absolute
     right: -15px
     width: 30px
@@ -37,9 +38,9 @@
     width: calc(100%  + 15px)
 @keyframes cursour
   from
-    color: $text-color
+    color: $base-text-color
   to
-    color: $base-background-color
+    color: $background-color
 @media screen and ( max-width: 550px )
   .error-message-container .error-message 
     -webkit-animation: none

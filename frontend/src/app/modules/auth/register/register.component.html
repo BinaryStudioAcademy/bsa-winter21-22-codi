@@ -1,18 +1,20 @@
 <div class="wrapper">
   <header class="header">
-    <div class="logo">Codi</div>
+    <div class="navbar-logo-container">
+      <img class="navbar-logo" src="assets/images/Logo.svg" routerLink="/">
+    </div>
   </header>
   <div class="center">
     <div class="auth-wrapper">
       <h4 class="auth-title">Create a Codi account</h4>
-      <form [formGroup]="form">
+      <form [formGroup]="form" (click)="submit()">
         <div class="form-group">
           <input type="text" placeholder="Username" class="form-control" aria-describedby="usernameError" formControlName="username"/>
           <ul>
-            <li class="error" *ngIf="form.controls['username'].hasError('minlength') || form.controls['username'].hasError('maxlength')">
+            <li class="text-danger" *ngIf="form.controls['username'].hasError('minlength') || form.controls['username'].hasError('maxlength')">
               Your username must be between 2 and 15 characters
             </li>
-            <li class="error" *ngIf="form.controls['username'].hasError('pattern')">
+            <li class="text-danger" *ngIf="form.controls['username'].hasError('pattern')">
               Your username can only contain latin letters, digits
             </li>
           </ul>
@@ -20,7 +22,7 @@
         <div class="form-group">
           <input type="text" placeholder="Email" class="form-control" formControlName="email"/>
           <ul>
-            <li class="error" *ngIf="form.controls['email'].hasError('pattern') || form.controls['email'].hasError('maxlength')">
+            <li class="text-danger" *ngIf="form.controls['email'].hasError('pattern') || form.controls['email'].hasError('maxlength')">
               Invalid email address
             </li>
           </ul>
@@ -28,10 +30,10 @@
         <div class="form-group">
           <input type="password" placeholder="Password" class="form-control" id="password" formControlName="password"/>
           <ul>
-            <li class="error" *ngIf="form.controls['password'].hasError('minlength') || form.controls['password'].hasError('maxlength')">
+            <li class="text-danger" *ngIf="form.controls['password'].hasError('minlength') || form.controls['password'].hasError('maxlength')">
               Your password must be between 8 and 35 characters
             </li>
-            <li class="error" *ngIf="form.controls['password'].hasError('pattern')">
+            <li class="text-danger" *ngIf="form.controls['password'].hasError('pattern')">
               Your Password must contain at least one lowercase latin letter, uppercase latin letter, digit, special character
             </li>
           </ul>
@@ -52,11 +54,11 @@
           <div class="btn-text">Continue with Google</div>
         </button>
         <button type="button" class="btn btn-secondary ctn" (click)="withGit()">
-          <img src="assets/images/github.png" alt="github" class="btn-logo">
+          <img src="assets/images/github_white.png" alt="github" class="btn-logo">
           <div class="btn-text">Continue with Github</div>
         </button>
       </div>
-      <p class="agreement">
+      <p class="agreement text-muted">
         By continuing, you agree to Codi's
         <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>, and to receiving emails with updates.
       </p>

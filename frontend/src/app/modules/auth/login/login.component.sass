@@ -1,2 +1,75 @@
-@import "src/styles/auth-pages"
+@import '~src/styles/variables'
 
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+button
+  width: 100%
+
+.wrapper
+  min-height: 100vh
+  background-color: $background-color
+  color: $base-text-color
+  font-size: $font-size-base
+  display: flex
+  flex-direction: column
+
+.header
+  background-color: $background-panel-color
+  height: 70px
+  display: flex
+  align-items: center
+
+.center
+  width: 100%
+  top: 60px
+  margin: auto
+
+.auth-wrapper
+  max-width: 280px
+  margin: auto
+
+.auth-title
+  font-size: $font-size-lg
+  padding: 0 0 10px 0
+
+.switch-auth
+  padding: 5px 0 10px 0
+
+.continue-with
+  padding: 5px 0
+
+.continue-with:before
+  content: ''
+  background-color: $background-panel-color
+  height: 1px
+  display: block
+  margin-bottom: 5px
+
+.ctn
+  background-color: $background-panel-color
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin: 5px 0
+
+  .btn-logo
+    max-width: 20px
+
+  .btn-text
+    flex-grow: 1
+
+.agreement
+  font-size: $font-size-sm
+
+.navbar-logo-container
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    .navbar-logo
+        margin-left: 30px
+        height: 50px
+        cursor: pointer

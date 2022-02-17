@@ -11,7 +11,8 @@ import {environment} from "@env/environment";
 import {CoreModule} from "@core/core.module";
 import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getAuth, provideAuth} from "@angular/fire/auth";
-
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,8 @@ import {getAuth, provideAuth} from "@angular/fire/auth";
             tapToDismiss: true,
             positionClass: 'toast-bottom-right',
         }),
+        FormsModule,
+        MonacoEditorModule.forRoot(),
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import { NotificationService } from '@core/services/notification.service';
 import {AuthService} from "@core/services/auth.service";
-import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,9 +13,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup
 
   constructor(
-    private notificationService: NotificationService,
     private authService: AuthService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,29 +23,16 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  showTestSuccessMessage() {
-    this.notificationService.showSuccessMessage("You have successfully logged in", "Welcome back!");
-  }
-
   withGoogle() {
-    this.authService.withGoogle()
-      .subscribe( () => {
-        this.router.navigate(['main'])
-      });
+    this.authService.withGoogle();
   }
 
   withGit() {
-    this.authService.withGitHub()
-      .subscribe( () => {
-        this.router.navigate(['main'])
-      });
+    this.authService.withGitHub();
   }
 
   submit() {
     const {login, password} = this.form.value;
-    this.authService.signIn(login, password)
-      .subscribe( () => {
-        this.router.navigate(['main'])
-      });
+    this.authService.signIn(login, password);
   }
 }
