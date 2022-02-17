@@ -25,13 +25,13 @@
     background-color: $background-color
     input
         color: $base-text-color
-      
+
     .search-icon
         color: $base-text-color
         padding: 0.5rem
         grid-row: 1
         grid-column: 1/2
-        z-index: 2  
+        z-index: 2
     .search-form
         grid-column: 1/4
         border: 0
@@ -62,7 +62,7 @@
     display: flex
     align-items: center
     padding-right: 20px
-    
+
     .user-container
         display: flex
         align-items: center
@@ -71,6 +71,13 @@
         .user-icon
             border-radius: 50%
             height: 45px
+
+        .generic-icon
+            background-color: $primary
+            color: $base-text-color
+            width: 45px
+            text-align: center
+            line-height: 45px
 
         .username
             padding-left: 10px
@@ -109,7 +116,7 @@
     align-items: center
     justify-content: center
 .dropdown-user
-    
+
     color: $base-text-color
     font-weight: bold
     .dropdown-user-container
@@ -122,7 +129,7 @@
             border: 4px solid $base-text-color
             border-radius: 50%
             padding: 10px 15px
-            font-size: 30px    
+            font-size: 30px
             color: $background-color
 
         .dropdown-username
@@ -131,8 +138,8 @@
             font-size: 20px
             transition: all 0.3s
     &:hover
-        color: $base-text-color 
-        background-color: $background-color   
+        color: $base-text-color
+        background-color: $background-color
         .dropdown-user-container .dropdown-user-icon
             color: $base-text-color
         .username-color
@@ -151,8 +158,8 @@
         border: 4px solid $base-text-color
         border-radius: 10px
         height: 40px
-        font-size: 20px  
-        
+        font-size: 20px
+
         color: $base-text-color
         margin: 10px 20px 10px 20px
         cursor: pointer
@@ -160,14 +167,14 @@
             color: $base-text-color
             padding-right: 10px
             font-size: 10px
-.custom-text 
-    
+.custom-text
+
     color: $base-text-color
     font-weight: bold
     font-size: 20px
     &:hover
-        color: $base-text-color 
-        background-color: $background-color 
+        color: $base-text-color
+        background-color: $background-color
 .navbar-left
     display: flex
     align-items: center
@@ -190,16 +197,16 @@
     .dropdown-user .dropdown-user-container
         display: none
         transition: all 0.3s
-    .dropdown-user 
+    .dropdown-user
         display: none !important
 
-@media screen and ( max-width: 750px  )   
+@media screen and ( max-width: 750px  )
     .navbar-right
          padding-right: 0
-    .navbar-right .user-container .username 
+    .navbar-right .user-container .username
         display: none
         transition: all 0.3s
-    .navbar-right .user-container .user-icon 
+    .navbar-right .user-container .user-icon
         display: none
         transition: all 0.3s
     .button-container
