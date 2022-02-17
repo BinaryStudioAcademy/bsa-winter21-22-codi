@@ -5,7 +5,7 @@
   <div class="center">
     <div class="auth-wrapper">
       <h4 class="auth-title">Create a Codi account</h4>
-      <form [formGroup]="form">
+      <form [formGroup]="form" (click)="submit()">
         <div class="form-group">
           <input type="text" placeholder="Username" class="form-control" aria-describedby="usernameError" formControlName="username"/>
           <ul>
