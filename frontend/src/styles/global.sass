@@ -1,0 +1,41 @@
+@import "variables"
+
+$base-background-color: #131416
+$background-color: #1d1e22
+$base-title-color: #bebdc1
+$base-text-color: #5a5b5f
+$text-color: #6a43a3
+$rating-color: #df7e27
+$default-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+body
+    margin: 0px
+.text
+    color: #c6c8c9
+    font-family: $default-font-family
+    font-weight: bold
+    cursor: default
+
+.modal-dialog .modal-content
+    background-color: $background-default
+    color: $foreground-default
+
+    & .modal-header .close
+        color: $foreground-default
+
+    & .modal-header
+        border: 0
+        padding-bottom: 0 
+
+    & .modal-footer
+        border: 0
+        padding-top: 0
+
+    & .close
+        padding: 0
+        margin: 0
+        user-select: none
+    
+    & .close:not(:disabled):not(:hover):not(.disabled):focus 
+        opacity: 0.5
+
