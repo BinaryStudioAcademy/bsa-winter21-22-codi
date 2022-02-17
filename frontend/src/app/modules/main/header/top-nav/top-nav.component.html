@@ -15,7 +15,12 @@
     </div>
     <div class="navbar-right" *ngIf="{currentUser: $currentUser | async} as data">
         <div class="user-container">
-            <img class="user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+            <img *ngIf="data.currentUser?.photoURL; else generic" class="user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+            <ng-template #generic>
+              <div class="user-icon generic-icon">
+                {{data.currentUser?.displayName?.substring(0,1)?.toUpperCase() ?? data.currentUser?.email?.substring(0,1)?.toUpperCase() ?? "New"}}
+              </div>
+            </ng-template>
             <div class="username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
                 <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
             </div>
