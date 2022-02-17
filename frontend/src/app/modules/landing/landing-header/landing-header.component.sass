@@ -1,60 +1,49 @@
-@import 'src/styles/variables.sass'
+@import 'src/styles/variables'
+
 .all
-    padding-top: 5px
-    background-color: var(--backgroundcolor)
+    background-color: $background-panel-color
     display: flex
-    flex-direction: row
     justify-content: space-between
-.logButton
-    color: $accent-primary-stronger
-    background-color: $background-default
-    width: 60px
-    border-width: 2px
-    border-radius: 5px
-    margin-right: 10px
-.logButton:hover
-    color: $background-root
-    background-color: $outline-dimmest
-.signButton
-    color: $foreground-default
-    background-color: $accent-primary-default
-    width: 70px
-    border-width: 2px
-    border-radius: 5px
-.signButton:hover
-    color: $background-root
-    background-color: $outline-dimmest
+    align-items: center
+    padding: 0 30px
+    height: 70px
+
 .logoAndfeatures
-    color: $foreground-default
-    margin: 10px
-    font-size: $font-size-subhead-big
+    font-size: $font-size-lg
+    color: $base-text-color
+
+    .logo
+        margin: 0px
+        font-size: 40px
+
+    a
+        display: inline
+        margin: 0 10px
+        font-size: $font-size-base
+        font-weight: bold
+
+    a:hover 
+        cursor: pointer
+        border-bottom: solid
+        border-bottom-width: 2px
+        background-color: $background-panel-color
+
 .dropdownlist
-    background-color: $background-default
-.buttons
-    position: relative
-    top: 0
-    margin: 10px
-.logoImage
-    width: 500px
-a
-    display: inline
-    margin-right: 20px
-    font-size: $font-size-default
-    font-weight: bold
-a:hover 
-    cursor: pointer
-    border-bottom: solid
-    border-bottom-width: 2px
+    background-color: $background-panel-color
+
 .drop-down
     display: inline
-    margin-right: 20px
-    font-size: $font-size-default
+    margin: 0 10px
+    font-size: $font-size-base
     font-weight: bold
-    color: $foreground-default
+    color: $base-text-color
+
 #dropdownManual
-    color: $foreground-default
+    color: $base-text-color
+
 .buttoncontent
-    color: $foreground-default
+    color: $base-text-color
+
 .buttoncontent:hover
-    color: $background-root
+    color: $background-color
     
