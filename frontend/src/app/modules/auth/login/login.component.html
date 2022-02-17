@@ -1,6 +1,8 @@
 <div class="wrapper">
   <header class="header">
-    <div class="logo">Codi</div>
+    <div class="navbar-logo-container">
+      <img class="navbar-logo" src="assets/images/Logo.svg" routerLink="/">
+    </div>
   </header>
   <div class="center">
     <div class="auth-wrapper">
@@ -29,11 +31,11 @@
           <div class="btn-text">Continue with Google</div>
         </button>
         <button type="button" class="btn btn-secondary ctn" (click)="withGit()">
-          <img src="assets/images/github.png" alt="github" class="btn-logo">
+          <img src="assets/images/github_white.png" alt="github" class="btn-logo">
           <div class="btn-text">Continue with Github</div>
         </button>
       </div>
-      <p class="agreement">
+      <p class="agreement text-muted">
         By continuing, you agree to Codi's
         <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>, and to receiving emails with updates.
       </p>
