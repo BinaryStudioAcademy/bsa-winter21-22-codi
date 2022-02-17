@@ -34,7 +34,7 @@ export class AuthService {
         })
       })
         .catch((error) => {
-          this.notificationService.showErrorMessage(this.formatError(error.code))
+          this.notificationService.showErrorMessage(this.formatError(error.code), "Error")
         })
     );
   }
@@ -46,7 +46,7 @@ export class AuthService {
       })
     })
       .catch((error) => {
-          this.notificationService.showErrorMessage(this.formatError(error.code))
+          this.notificationService.showErrorMessage(this.formatError(error.code),"Error")
       })
     );
   }
@@ -63,7 +63,7 @@ export class AuthService {
         this.notificationService.showSuccessMessage("You have successfully logged in", "Welcome back!")
       })
         .catch((error) => {
-          this.notificationService.showErrorMessage(this.formatError(error.code))
+          this.notificationService.showErrorMessage(this.formatError(error.code), "Error")
         })
     });
   }
@@ -74,7 +74,7 @@ export class AuthService {
         this.notificationService.showSuccessMessage("You have successfully logged in", "Welcome back!")
       })
         .catch((error) => {
-          this.notificationService.showErrorMessage(this.formatError(error.code))
+          this.notificationService.showErrorMessage(this.formatError(error.code), "Error")
         })
     });
   }
