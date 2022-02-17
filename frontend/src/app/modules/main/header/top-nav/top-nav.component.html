@@ -1,7 +1,7 @@
 <div class="all">
     <div class="navbar-left">
-        <div class="navbar-logo">
-            <img class="navbar-item" src="assets/images/Logo.svg" routerLink="/main">
+        <div class="navbar-logo-container">
+            <img class="navbar-logo" src="assets/images/Logo.svg" routerLink="/main">
             <nav class="navbar">
                 <app-side-nav-toggler></app-side-nav-toggler>
             </nav>
@@ -13,11 +13,11 @@
         </div>
         </div>
     </div>
-    <div class="navbar-right">
+    <div class="navbar-right" *ngIf="{currentUser: $currentUser | async} as data">
         <div class="user-container">
-            <i class="user-icon fa fa-user"></i>
+            <img class="user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
             <div class="username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
-                <span>Username</span>
+                <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
             </div>
         </div>
         <div class="row mr-2">
