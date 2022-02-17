@@ -30,12 +30,17 @@
               <div ngbDropdown #dropdownOptions="ngbDropdown" class="dropdown-cont d-inline-block">
                 <button class="btn dropdown-arrow-button" id="dropdownMenu" ngbDropdownToggle>
                 </button>
-                <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownMenu" style="top: 10px;left: 70px;">
+                <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownMenu">
                     <button ngbDropdownItem class="dropdown-user">
                         <div class="dropdown-user-container">
-                            <i class="dropdown-user-icon fa fa-user"></i>
-                            <div class="dropdown-username">
-                                <span class="username-color">Username</span>
+                            <img *ngIf="data.currentUser?.photoURL; else generic" class="dropdown-user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+                            <ng-template #generic>
+                              <div class="dropdown-user-icon generic-icon">
+                                {{data.currentUser?.displayName?.substring(0,1)?.toUpperCase() ?? data.currentUser?.email?.substring(0,1)?.toUpperCase() ?? "New"}}
+                              </div>
+                            </ng-template>
+                            <div class="dropdown-username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
+                                <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
                             </div>
                         </div>
                     </button>
