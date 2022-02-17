@@ -53,6 +53,9 @@ export class AuthService {
 
   logOut() {
     return from(this.auth.signOut().then(() => {
+      this.router.navigate(['login']).then(() => {
+        this.notificationService.showSuccessMessage("Good Luck!")
+      })
       localStorage.removeItem('jwt')
     }));
   }
