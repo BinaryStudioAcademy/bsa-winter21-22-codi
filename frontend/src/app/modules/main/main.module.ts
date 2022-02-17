@@ -14,6 +14,7 @@ import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
+import { PublishAppDialogComponent } from './applications/publish-app-dialog/publish-app-dialog.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
         SideNavTogglerComponent,
         SideNavComponent,
         MyProjectsPageComponent,
-        CoursesPageComponent
+        CoursesPageComponent,
+        PublishAppDialogComponent
         
     ],
     imports: [
