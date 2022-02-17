@@ -1,24 +1,25 @@
 <div class="all">
-  <div class="logoAndfeatures d-flex align-items-center">
-    <div class="navbar-logo-container">
-      <img class="navbar-logo" src="assets/images/Logo.svg" routerLink="/">
-    </div>
+  <div class="logoAndfeatures">
+    <img routerLink="" [src]=landingImage alt="Landing Logo" width="100"
+        height="35">
+        <div class="hide">
     <div class="drop-down">
       <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
         <button class="btn btn-outline-primary mr-2" id="dropdownManual" ngbDropdownAnchor
           (focus)="myDrop.open()">Features</button>
         <div ngbDropdownMenu aria-labelledby="dropdownManual" class="dropdownlist">
-          <button ngbDropdownItem (click)="scrollFunc('features-block-1')" class="buttoncontent">Feature 1</button>
-          <button ngbDropdownItem (click)="scrollFunc('features-block-2')" class="buttoncontent">Feature 2</button>
-          <button ngbDropdownItem (click)="scrollFunc('features-block-3')" class="buttoncontent">Feature 3</button>
+          <button ngbDropdownItem (click)="scrollFunc('feature-ide')" class="buttoncontent">IDE</button>
+          <button ngbDropdownItem (click)="scrollFunc('feature-multiplayer')" class="buttoncontent">Multiplayer</button>
+          <button ngbDropdownItem (click)="scrollFunc('feature-community')" class="buttoncontent">Community</button>
         </div>
       </div>
     </div>
     <a (click)="scrollFunc('summary-block')">Summary</a>
     <a (click)="scrollFunc('teamforeducation-block')">Team for Education</a>
   </div>
-  <div class="login-buttons">
-    <a routerLink="/login" class="btn btn-outline-primary" type="button">Log in</a>
-    <a routerLink="/register" class="btn btn-primary ml-2" type="button">Sign in</a>
+</div>
+  <div class="buttons">
+    <button  class="logButton" type="Button" [routerLink]="['/login']">Log in</button>
+    <button  class="signButton" type="Button" [routerLink]="['/register']">Sign in</button>
   </div>
 </div>

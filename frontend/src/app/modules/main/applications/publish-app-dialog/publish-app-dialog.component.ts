@@ -18,4 +18,8 @@ export class PublishAppDialogComponent implements OnInit {
         this.modal.close();
     }
 
+    closeDialog() {
+      this.modal.close();
+    }
+
 }

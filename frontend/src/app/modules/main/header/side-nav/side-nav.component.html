@@ -7,19 +7,19 @@
     </div>
     <div class="navbar-nav-container">
     <ul class="navbar-nav">
-        <div class="nav-item" routerLink="/main/home" routerLinkActive="active">
+        <div class="nav-item" (click)="sideNavService.toggleSideNav()" routerLink="/main/home" routerLinkActive="active">
             <i class="side-icon fa fa-home"></i>
             <span class="nav-link">Home</span>
         </div>
-        <div class="nav-item" routerLink="/main/applications" routerLinkActive="active">
+        <div class="nav-item" (click)="sideNavService.toggleSideNav()" routerLink="/main/applications" routerLinkActive="active">
             <i class="side-icon fa fa-laptop"></i>
             <span class="nav-link">Apps</span>
         </div>
-        <div class="nav-item " routerLink="/main/myprojects" routerLinkActive="active">
+        <div class="nav-item" (click)="sideNavService.toggleSideNav()" routerLink="/main/myprojects" routerLinkActive="active">
             <i class="side-icon fa fa-bolt"></i>
             <span class="nav-link" >My Projects</span>
         </div>
-        <div class="nav-item" routerLink="/main/courses" routerLinkActive="active"> 
+        <div class="nav-item" (click)="sideNavService.toggleSideNav()" routerLink="/main/courses" routerLinkActive="active"> 
             <i class="side-icon fa fa-star"></i>
             <span class="nav-link">Courses</span>
         </div>
