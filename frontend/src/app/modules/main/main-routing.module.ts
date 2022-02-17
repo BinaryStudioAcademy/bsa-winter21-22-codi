@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 import { ApplicationsComponent } from './applications/applicaions.component';
+import { MyProjectsPageComponent } from './myprojects-page/myprojects-page.component';
+import { CoursesPageComponent } from './courses-page/courses-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { MainComponent } from './main-page/main-page.component';
 
 const routes: Routes = [{
@@ -10,15 +13,20 @@ const routes: Routes = [{
     component: MainComponent,
     children: [{
         path: '',
-        redirectTo: 'applications',
+        redirectTo: 'home',
         pathMatch: 'full',
     }, {
         path: 'applications',
         component: ApplicationsComponent,
     }, {
-        path: '**',
-        component: NotFoundComponent,
-        pathMatch: 'full'
+        path: 'courses',
+        component: CoursesPageComponent,
+    },{
+        path: 'myprojects',
+        component: MyProjectsPageComponent,
+    },{
+        path: 'home',
+        component: HomePageComponent,
     }]
 }];
 

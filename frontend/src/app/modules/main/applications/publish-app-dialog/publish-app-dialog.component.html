@@ -1,0 +1,41 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+      <h3>Publish app</h3>
+      <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="project">Project</label>
+            <select id="project" class="custom-select">
+                <option selected>Select a project...</option>
+                <option value="1">Project One</option>
+                <option value="2">Project Two</option>
+                <option value="3">Project Three</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="project">Add tags</label>
+            <select id="project" class="custom-select">
+                <option selected>Add tag...</option>
+                <option value="1">Tag One</option>
+                <option value="2">Tag Two</option>
+                <option value="3">Tag Three</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="project">Icon</label>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
+                </div>
+              </div>
+        </div>
+
+        <button type="submit" (click)="publishProject()" class="btn btn-primary w-100 mt-3">Publish project</button>
+    </form>
+</div>

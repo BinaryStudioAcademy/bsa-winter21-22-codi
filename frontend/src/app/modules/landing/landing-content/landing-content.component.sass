@@ -1,27 +1,27 @@
 @import 'src/styles/variables.sass'
 .all-content
-    background-color: $background-root
-    color: $foreground-default
+    background-color: $background-color
+    color: $base-text-color
 h1
     text-align: center
     margin-bottom: 20px
     border-bottom: 10px
-    color: $foreground-dimmer
+    color: $muted-text-color
 h3
     text-align: center
     margin-bottom: 20px
-    color: $foreground-dimmer
+    color: $muted-text-color
 div
     display: flex
     flex-direction: column
 .image-svg
-    fill: $accent-primary-stronger
+    fill: $accent-text-color
 .svg-container
     margin-bottom: 10px
 .bracket-container
     position: relative
     top: -7px
-    color: $accent-primary-stronger
+    color: $accent-text-color
     margin-bottom: 2px
     font-size: 20px
 .center
@@ -33,11 +33,11 @@ div
     display: flex
     justify-content: center
     font-size: 60px
-    text-shadow: 0px 0px 30px $accent-primary-stronger
+    text-shadow: 0px 0px 30px $accent-text-color
     text-align: center
 .feature-shadow
     font-size: 36px
-    text-shadow: 0px 0px 30px $accent-primary-stronger
+    text-shadow: 0px 0px 30px $accent-text-color
     margin-bottom: 20px
 .featureImg
     width: 95%
@@ -46,37 +46,37 @@ div
     margin-left: 10px
 .feature-text
     display: block
-    font-size: $font-size-default
-    color: $foreground-dimmer
+    font-size: $font-size-base
+    color: $muted-text-color
     max-width: 350px
 .feature-text-header
-    color: $foreground-default
+    color: $base-text-color
 .feature-text-content
-    color: $foreground-dimmer
+    color: $muted-text-color
 .button-coding
     width: 180px
     height: 60px
     margin: 20px
-    color: $foreground-default
-    background-color: $accent-primary-default
+    color: $base-text-color
+    background-color: $primary
     border-width: 0
     border-radius: 5px
-    font-size: $font-size-subhead-big
+    font-size: $font-size-lg
 .button-coding:hover
     border: solid
     border-width: 3px
-    border-color: $accent-primary-stronger
+    border-color: $accent-text-color
 .container
     border: solid
-    border-color: $accent-primary-default
+    border-color: $primary
     border-width: 1px
     border-radius: 5px
     padding: 15px
-    background-color: $background-default
+    background-color: $background-panel-color
     width: 180px
     height: 190px
 .gradient
-    background: linear-gradient(180deg,$background-default 0%,$background-root 34%)
+    background: linear-gradient(180deg,$background-panel-color 0%,$background-color 34%)
     position:absolute
     left:0
     right:0
@@ -90,8 +90,8 @@ div
     padding-bottom: 76px
 .container-content
     margin-top: 10px
-    font-size: $font-size-small
-    color: $foreground-dimmer
+    font-size: $font-size-sm
+    color: $muted-text-color
 .heading
     margin-top: 50px
     margin-bottom: 20px
@@ -102,7 +102,7 @@ div
     align-items: center
     margin-top: 80px
 .header-grey-features
-    color: $outline-dimmest
+    color: $muted-text-color
 .feature-content
     margin: 15px
 .start-coding

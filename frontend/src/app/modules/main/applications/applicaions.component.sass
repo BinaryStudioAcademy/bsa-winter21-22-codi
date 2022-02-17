@@ -1,0 +1,66 @@
+@import 'src/styles/variables'
+
+.content
+    color: $base-text-color
+    padding: 20px
+    
+    .apps-collection-container
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
+        grid-gap: 20px
+
+        .app-card
+            border-radius: 10px
+            background-color: $background-panel-color
+            display: grid
+            grid-template-columns: auto 1fr
+            grid-gap: 20px
+            padding: 25px
+
+            .app-card-image
+                display: flex
+                justify-content: center
+                align-items: center
+
+            .app-card-image img
+                border-radius: 10px
+                width: 200px
+
+            .app-card-info
+                display: flex
+                flex-direction: column
+
+                .app-card-author img
+                    height: 20px
+                    border-radius: 50%
+                    margin-right: 3px
+
+                .app-card-description
+                    flex-grow: 1
+
+                .app-card-tag
+                    background: $background-color
+                    margin: 4px
+                    padding: 4px 6px
+                    border-radius: 5px
+                    color: $secondary
+                    cursor: pointer
+            
+
+.apps-header
+    .apps-header-title
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .btn
+            width: 150px
+    .apps-header-text
+        font-size: $font-size-base
+        color: $base-text-color
+        font-weight: bold
+
+
+@media screen and ( max-width: 750px )
+    .content .apps-collection-container
+        grid-template-columns: 1fr
