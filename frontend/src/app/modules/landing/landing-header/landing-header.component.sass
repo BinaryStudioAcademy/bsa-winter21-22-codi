@@ -4,13 +4,29 @@
     background-color: $background-panel-color
     display: flex
     justify-content: space-between
-    align-items: center
-    height: 70px
-
+.logButton
+    color: $base-text-color
+    background-color: $background-panel-color
+    width: 60px
+    border: 1px solid $primary
+    border-radius: 5px
+    margin-right: 10px
+.logButton:hover
+    color: $base-text-color
+    background-color: $primary
+.signButton
+    color: $base-text-color
+    background-color: $primary
+    width: 70px
+    border-radius: 5px
+    border-width: 0px
+.signButton:hover
+    background-color: $input-hover-outline
+    color: $background-color
 .logoAndfeatures
     font-size: $font-size-lg
     color: $base-text-color
-
+    margin: 10px
     .logo
         margin: 0px
         font-size: 40px
@@ -26,13 +42,29 @@
         border-bottom: solid
         border-bottom-width: 2px
         background-color: $background-panel-color
+    img:hover
+        cursor: pointer
 
 .dropdownlist
     background-color: $background-panel-color
-
+.buttons
+    margin: 10px
+.logoImage
+    width: 500px
+.hide
+    display: inline
+a
+    display: inline
+    margin-right: 10px
+    font-size: $font-size-sm
+    font-weight: bold
+a:hover 
+    cursor: pointer
+    border-bottom: solid
+    border-bottom-width: 2px
 .drop-down
     display: inline
-    margin: 0 10px
+    margin-right: 4px
     font-size: $font-size-base
     font-weight: bold
     color: $base-text-color
@@ -45,16 +77,13 @@
 
 .buttoncontent:hover
     color: $background-color
-
-.navbar-logo-container
-    display: flex
-    flex-direction: row
-    align-items: center
-
-    .navbar-logo
-        margin-left: 30px
-        height: 50px
-        cursor: pointer
-
-.login-buttons
-    margin-right: 20px
+.Logo:hover
+    border-width: 0
+@media screen and ( max-width: 1200px )
+    .logButton
+        margin: 10px
+@media screen and ( max-width: 750px )
+    .hide
+        display: none
+    
+    

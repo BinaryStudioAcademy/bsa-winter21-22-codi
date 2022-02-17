@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class LandingContentComponent implements OnInit {
 
   constructor() { }
-
+  
+  IDEimage:string = "assets/images/LandingPage/IDE.png";
+  MultiplayerIMG:string = "assets/images/LandingPage/multiplayer-cursors.png";
+  CommunityIMG:string = "assets/images/LandingPage/community.png";
   ngOnInit(): void {
   }
 }

@@ -6,6 +6,10 @@
     text-overflow: ellipsis
     max-width: 200px
 
+.content
+    min-height: calc( 100vh - 110px )
+    height: auto
+
 .content-container
     display: flex
     flex-direction: column
@@ -20,7 +24,6 @@
     display: flex
     justify-content: space-between
     padding-bottom: 10px
-    cursor: default
     .rating
         color:  $base-text-color
         padding-left: 5px 
@@ -86,6 +89,7 @@
     .external-content-container
         display: flex
         flex-wrap: wrap  
+        cursor: pointer
 
 @media screen and ( min-width: 750px )
     .content-container
