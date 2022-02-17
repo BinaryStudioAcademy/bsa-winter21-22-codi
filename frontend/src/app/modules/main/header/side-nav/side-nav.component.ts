@@ -14,4 +14,7 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
   }
 
+  hideNav(){
+    this.sideNavService.hideSideNav = true
+  }
 }
