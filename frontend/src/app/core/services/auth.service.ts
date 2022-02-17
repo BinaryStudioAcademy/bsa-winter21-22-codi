@@ -34,7 +34,7 @@ export class AuthService {
         })
       })
         .catch((error) => {
-          this.notificationService.showErrorMessage(error)
+          this.notificationService.showErrorMessage(this.formatError(error.code))
         })
     );
   }
@@ -46,7 +46,7 @@ export class AuthService {
       })
     })
       .catch((error) => {
-        this.notificationService.showErrorMessage(error)
+          this.notificationService.showErrorMessage(this.formatError(error.code))
       })
     );
   }
@@ -63,7 +63,7 @@ export class AuthService {
         this.notificationService.showSuccessMessage("You have successfully logged in", "Welcome back!")
       })
         .catch((error) => {
-          this.notificationService.showErrorMessage(error)
+          this.notificationService.showErrorMessage(this.formatError(error.code))
         })
     });
   }
@@ -74,7 +74,7 @@ export class AuthService {
         this.notificationService.showSuccessMessage("You have successfully logged in", "Welcome back!")
       })
         .catch((error) => {
-          this.notificationService.showErrorMessage(error)
+          this.notificationService.showErrorMessage(this.formatError(error.code))
         })
     });
   }
@@ -85,5 +85,12 @@ export class AuthService {
 
   getAuthIdToken() {
     return from(idToken(this.auth))
+  }
+
+  formatError(errorCode: string) : string  {
+      const errorParts = errorCode.split('/');
+      errorParts.shift();
+      const allNeedForError = errorParts.join('/').replace(/-/g,' ').toUpperCase();
+      return  allNeedForError;
   }
 }
