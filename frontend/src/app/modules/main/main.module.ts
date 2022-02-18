@@ -29,7 +29,7 @@ import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-p
         CoursesPageComponent,
         CreateButtonComponent,
         SideNavCreateButtonComponent,
-        UserProfilePageComponent
+        UserProfilePageComponent,
     ],
     imports: [
         SharedModule,

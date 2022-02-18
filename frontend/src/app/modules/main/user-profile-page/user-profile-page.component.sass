@@ -14,8 +14,6 @@ input:focus
   max-width: 990px
   margin: 0 auto
 
-.user-profile
-
 .version
   border-radius: 5px
   background-color: $accent-purple-default
@@ -36,7 +34,6 @@ input:focus
   display: block
   position: absolute
 
-
 .user-profile-header
   display: flex
   justify-content: space-between
@@ -45,16 +42,24 @@ input:focus
 .user-info
   display: flex
 
-.main-info
-  display: flex
-
 .avatar
   max-width: 118px
   height: 118px
   border-radius: 100%
 
-.names
+.generic-avatar
+  background-color: $background-color
+  color: $base-text-color
+  width: 118px
+  font-size: $font-size-subhead-big
+  text-align: center
+  line-height: 118px
+
+.info
   padding: 10px 3px 0px 15px
+
+.bio
+  margin-top: 10px
 
 .btn
   align-self: flex-start
@@ -65,6 +70,7 @@ input:focus
   border-radius: 10px
   color: $foreground-default
   font-size: $font-size-small
+  margin-left: 5px
 
 .edit
   border: 1px solid $outline-dimmest
@@ -106,7 +112,7 @@ input:focus
 .repls-list, .showcase
   border: 1px solid $outline-dimmest
   border-radius: 5px
-  background: $background-default
+  background: $background-color
 
 .repl-item, .repl-title
   display: flex
@@ -138,7 +144,6 @@ input:focus
   height: 65vh
   width: 100%
   margin: 20px 0 20px 0
-  z-index: 5
 
 ngb-carousel
   height: inherit

@@ -1,87 +1,75 @@
 <div class="wrapper">
-    <div class="user-profile">
-      <div class="container">
-        <div class="version">BETA</div>
-        <div class="version-help">This profile is using the beta layout and is subject to change.</div>
-        <div class="user-profile-header">
-          <div class="user-info">
-            <div class="main-info">
-              <img class="avatar" src="" alt="avatar">
-              <div class="names">
+    <div class="container">
+      <div class="version">BETA</div>
+      <div class="version-help">This profile is using the beta layout and is subject to change.</div>
+      <div class="user-profile-header">
+        <div class="user-info">
+          <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
+          <ng-template #generic>
+            <div class="avatar generic-avatar">
+              {{user.userName.substring(0,1)?.toUpperCase() ?? "New"}}
+            </div>
+          </ng-template>
+            <div class="info">
+              <div class="d-flex">
                 <div class="name">
-                  Vynnyk Vitalii
+                  {{user.firstName === null && user.lastName === null ?
+                  user.userName : user?.lastName + " " + user?.firstName}}
                 </div>
-                <div class="username">
-                  @IS-02-VitaliiVi
-                </div>
+                <button class="btn upgrade">Upgrade</button>
+              </div>
+              <div class="username">
+                @{{user.userName}}
+              </div>
+              <div class="bio">
+                {{user.bio}}
               </div>
             </div>
-            <button class="btn upgrade">Upgrade</button>
-          </div>
-          <button class="btn edit">Edit</button>
         </div>
-        <div class="action-info">
-          <div class="switch-buttons">
-            <a class="switch-item" href="">Repls</a>
-            <a class="switch-item" href="">Posts</a>
-          </div>
-          <div class="showcase">
-            <ngb-carousel>
-              <ng-template ngbSlide (slid)="changeRepl($event)")>
-                <div class="slide-header">
-                  <button class="btn show-files">Show files</button>
-                  <div class="right-header-part">
-                    <i class="fa fa-heart-o fa-2x like" aria-hidden="true"></i>
-                    <div class="likes-quantity">10</div>
-                    <button class="btn btn-success">Run</button>
-                  </div>
+        <button class="btn edit" [routerLink]="['/main/account']" *ngIf="!id">Edit</button>
+      </div>
+      <div class="action-info">
+        <div class="switch-buttons">
+          <a class="switch-item" href="">Repls</a>
+          <a class="switch-item" href="">Posts</a>
+        </div>
+        <div class="showcase">
+          <ngb-carousel>
+            <ng-template ngbSlide>
+              <div class="slide-header">
+                <button class="btn show-files">Show files</button>
+                <div class="right-header-part">
+                  <i class="fa fa-heart-o fa-2x like" aria-hidden="true"></i>
+                  <div class="likes-quantity">10</div>
+                  <button class="btn btn-success">Run</button>
                 </div>
-              </ng-template>
-              <ng-template ngbSlide (slid)="changeRepl($event)")>
-                <div class="slide-header">
-                  <button class="btn show-files">
-                    Show files
-                  </button>
-                  <div class="right-header-part">
-                    <i class="fa fa-heart-o fa-2x like" aria-hidden="true"></i>
-                    <div class="likes-quantity">10</div>
-                    <button class="btn btn-success">Run</button>
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-carousel>
-          </div>
-          <div class="chosen-repl">
-            <div class="repl-title">
-              <img class="repl-icon" src="" alt="icon">
-              <div class="repl-name">Html</div>
-            </div>
-            <i class="fa fa-cog fa-2x settings"></i>
-          </div>
-          <div class="repls">
-            <div class="searching-panel">
-              <div class="repls-title">All repls</div>
-              <input class="form-control search" type="text" placeholder="search in repls...">
-            </div>
-            <div class="repls-list">
-              <div class="repl-item">
-                <div class="repl-title">
-                  <img class="repl-icon" src="" alt="icon">
-                  <div class="repl-name">Html</div>
-                </div>
-                <div class="change-date">1 day ago</div>
               </div>
-              <div class="repl-item">
-                <div class="repl-title">
-                  <img class="repl-icon" src="" alt="icon">
-                  <div class="repl-name">Python</div>
-                </div>
-                <div class="change-date">1 week ago</div>
-              </div>
-            </div>
-            <a class="manage" href="">Manage my repls</a>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+        <div class="chosen-repl">
+          <div class="repl-title">
+            <img class="repl-icon" src="" alt="icon">
+            <div class="repl-name">Html</div>
           </div>
+          <i class="fa fa-cog fa-2x settings"></i>
         </div>
+        <div class="repls">
+          <div class="searching-panel">
+            <div class="repls-title">All repls</div>
+            <input class="form-control search" type="text" placeholder="search in repls...">
+          </div>
+          <div class="repls-list">
+            <div class="repl-item">
+              <div class="repl-title">
+                <img class="repl-icon" src="" alt="icon">
+                <div class="repl-name">Title</div>
+              </div>
+              <div class="change-date">creation date: 17.02.2022</div>
+            </div>
         </div>
+          <a class="manage" href="">Manage my repls</a>
+        </div>
+      </div>
     </div>
 </div>
