@@ -38,12 +38,10 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
         .subscribe((user) => this.user = user.body!);
     }
     else {
-      this.authService.currentUser$
-        .pipe(
-          switchMap((userResp) => this.userService.getCurrent(userResp?.email!)),
-          takeUntil(this.unsubscribe$)
-        )
-        .subscribe((user) => this.user = user.body!);
+      this.authService
+        .getCurrentUser()
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((user) => this.user = user);
     }
   }
 }
