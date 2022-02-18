@@ -28,9 +28,8 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateUserDto userDto)
+    public async Task<ActionResult<UserDto>> Update([FromBody] UpdateUserDto userDto)
     {
-        await _usersService.Update(userDto);
-        return NoContent();
+        return Ok(await _usersService.Update(userDto));
     }
 }

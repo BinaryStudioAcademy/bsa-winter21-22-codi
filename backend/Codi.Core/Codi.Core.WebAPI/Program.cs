@@ -32,6 +32,7 @@ await app.SeedFileStorageData();
 
 app.UseCors(opt => opt
     .AllowAnyHeader()
+    .AllowAnyMethod()
     .AllowAnyOrigin());
 
 app.UseHttpsRedirection();

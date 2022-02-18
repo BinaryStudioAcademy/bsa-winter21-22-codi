@@ -32,7 +32,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(userEntity);
     }
 
-    public async Task Update(UpdateUserDto user)
+    public async Task<UserDto> Update(UpdateUserDto user)
     {
         var userEntity = await _context.Users
             .Include(u=>u.Avatar)
@@ -71,5 +71,6 @@ public class UserService : BaseService, IUserService
 
         _context.Users.Update(userEntity);
         await _context.SaveChangesAsync();
+        return _mapper.Map<UserDto>(userEntity);
     }
 }

@@ -6,5 +6,5 @@ public interface IUserService
 {
     Task<UserDto> GetById(long id);
     Task<UserDto> GetByEmail(string email);
-    Task Update(UpdateUserDto user);
+    Task<UserDto> Update(UpdateUserDto user);
 }
