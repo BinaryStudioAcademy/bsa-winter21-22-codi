@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {from, map, of, Subject, switchMap, takeUntil} from "rxjs";
+import { from, map, of, Subject, switchMap } from "rxjs";
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile, } from "@angular/fire/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { idToken } from "rxfire/auth";
@@ -33,15 +33,18 @@ export class AuthService {
     return this.user
       ? of(this.user)
       : this.currentUser$
-      .pipe(
-        switchMap((userResp) => this.userService.getCurrent(userResp?.email!)),
-        takeUntil(this.unsubscribe$)
-      ).pipe(
-        map((resp) => {
-          this.user = resp.body!;
-          return this.user;
-        })
-      )
+        .pipe(
+          switchMap((userResp) => this.userService.getCurrent(userResp?.email!)
+            .pipe(
+              map((resp) => {
+                this.user = resp.body!;
+                return this.user;
+              }))
+        ))
+  }
+
+  public setUser(user: User) {
+    this.user = user;
   }
 
   signUp(username: string, email: string, password: string) {

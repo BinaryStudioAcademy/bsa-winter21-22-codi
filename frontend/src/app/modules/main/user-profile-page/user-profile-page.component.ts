@@ -3,7 +3,7 @@ import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
 import { UserService } from "@core/services/user.service";
 import { BaseComponent } from "@core/base/base.component";
 import { ActivatedRoute } from "@angular/router";
-import {switchMap, take, takeUntil} from "rxjs";
+import { switchMap, take, takeUntil } from "rxjs";
 import { User } from "@core/models/user/user";
 import { AuthService } from "@core/services/auth.service";
 
@@ -31,17 +31,29 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.getUser();
+  }
+
+  getUser() {
     if(this.id !== undefined) {
       this.userService
         .getById(this.id)
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe((user) => this.user = user.body!);
+        .subscribe(
+          (user) => {
+            this.user = user.body!
+          }
+        );
     }
     else {
       this.authService
         .getCurrentUser()
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe((user) => this.user = user);
+        .subscribe(
+          (user) => {
+            this.user = user
+          }
+        );
     }
   }
 }
