@@ -1,7 +1,7 @@
 <div class="all">
     <div class="navbar-left">
-        <div class="navbar-logo">
-            <img class="navbar-item" src="assets/images/Logo.svg" routerLink="/main">
+        <div class="navbar-logo-container">
+            <img class="navbar-logo" src="assets/images/Logo.svg" routerLink="/main">
             <nav class="navbar">
                 <app-side-nav-toggler></app-side-nav-toggler>
             </nav>
@@ -13,24 +13,34 @@
         </div>
         </div>
     </div>
-    <div class="navbar-right">
+    <div class="navbar-right" *ngIf="{currentUser: $currentUser | async} as data">
         <div class="user-container">
-            <i class="user-icon fa fa-user"></i>
-            <div class="username">
-                <span>Username</span>
+            <img *ngIf="data.currentUser?.photoURL; else generic" class="user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+            <ng-template #generic>
+              <div class="user-icon generic-icon">
+                {{data.currentUser?.displayName?.substring(0,1)?.toUpperCase() ?? data.currentUser?.email?.substring(0,1)?.toUpperCase() ?? "New"}}
+              </div>
+            </ng-template>
+            <div class="username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
+                <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
             </div>
         </div>
-        <div class="row">
+        <div class="row mr-2">
             <div class="col">
-              <div ngbDropdown class="dropdown-cont d-inline-block">
-                <button class="btn" id="dropdownBasic1" ngbDropdownToggle>
+              <div ngbDropdown #dropdownOptions="ngbDropdown" class="dropdown-cont d-inline-block">
+                <button class="btn dropdown-arrow-button" id="dropdownMenu" ngbDropdownToggle>
                 </button>
-                <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownBasic1" style="top: 10px;left: 70px;">
+                <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownMenu">
                     <button ngbDropdownItem class="dropdown-user">
                         <div class="dropdown-user-container">
-                            <i class="dropdown-user-icon fa fa-user"></i>
-                            <div class="dropdown-username">
-                                <span class="username-color">Username</span>
+                            <img *ngIf="data.currentUser?.photoURL; else generic" class="dropdown-user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+                            <ng-template #generic>
+                              <div class="dropdown-user-icon generic-icon">
+                                {{data.currentUser?.displayName?.substring(0,1)?.toUpperCase() ?? data.currentUser?.email?.substring(0,1)?.toUpperCase() ?? "New"}}
+                              </div>
+                            </ng-template>
+                            <div class="dropdown-username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
+                                <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
                             </div>
                         </div>
                     </button>
@@ -46,7 +56,9 @@
             </div>
         </div>
         <div class="button-container">
-            <app-create-button></app-create-button>
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                <i class="button fa fa-plus"></i>
+            </button>
         </div>
     </div>
 </div>

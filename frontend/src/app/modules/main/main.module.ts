@@ -11,9 +11,10 @@ import { SideNavTogglerComponent } from './header/side-nav-toggler/side-nav-togg
 import { SideNavComponent } from './header/side-nav/side-nav.component';
 import { MyProjectsPageComponent } from './myprojects-page/myprojects-page.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
-import { CreateButtonComponent } from './create-button/create-button.component';
-import { SideNavCreateButtonComponent } from './create-button/side-nav-create-button/side-nav-create-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { FormsModule } from '@angular/forms';
+import { PublishAppDialogComponent } from './applications/publish-app-dialog/publish-app-dialog.component';
 import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
 import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
 
@@ -28,15 +29,16 @@ import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-pa
         SideNavComponent,
         MyProjectsPageComponent,
         CoursesPageComponent,
-        CreateButtonComponent,
-        SideNavCreateButtonComponent,
+        PublishAppDialogComponent,
         UserProfilePageComponent,
         EditUserProfilePageComponent
     ],
     imports: [
         SharedModule,
         MainRoutingModule,
-        NgbModule
+        NgbModule,
+        FormsModule,
+        MonacoEditorModule,
     ],
 })
 export class MainModule { }

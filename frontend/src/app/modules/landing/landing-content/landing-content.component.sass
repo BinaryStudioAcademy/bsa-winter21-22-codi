@@ -1,19 +1,116 @@
 @import 'src/styles/variables.sass'
+.all-content
+    background-color: $background-color
+    color: $base-text-color
 h1
     text-align: center
     margin-bottom: 20px
     border-bottom: 10px
-    color: $foreground-dimmer
-    border-color: white
-    border-bottom: solid
+    color: $muted-text-color
 h3
     text-align: center
     margin-bottom: 20px
-    border-width: 40px
-    color: $foreground-dimmer
-    border-bottom: dotted
-div 
+    color: $muted-text-color
+div
     display: flex
     flex-direction: column
-.all-content
-    background-color: $background-root
+.image-svg
+    height: 24px
+    width: 24px
+    filter: invert(58%) sepia(67%) saturate(1382%) hue-rotate(185deg) brightness(101%) contrast(101%)
+.svg-container
+    margin-bottom: 10px
+.bracket-container
+    position: relative
+    top: -7px
+    color: $accent-text-color
+    margin-bottom: 2px
+    font-size: 20px
+.center
+    display: flex
+    justify-content: center
+    text-align: center
+    align-items: center
+.promo
+    display: flex
+    justify-content: center
+    font-size: 60px
+    text-shadow: 0px 0px 30px $accent-text-color
+    text-align: center
+.feature-shadow
+    font-size: 36px
+    text-shadow: 0px 0px 30px $accent-text-color
+    margin-bottom: 20px
+.featureImg
+    width: 95%
+    max-width: 400px
+    margin-right: 10px
+    margin-left: 10px
+.feature-text
+    display: block
+    font-size: $font-size-base
+    color: $muted-text-color
+    max-width: 350px
+.feature-text-header
+    color: $base-text-color
+.feature-text-content
+    color: $muted-text-color
+.button-coding
+    width: 180px
+    height: 60px
+    margin: 20px
+    color: $base-text-color
+    background-color: $primary
+    border-width: 0
+    border-radius: 5px
+    font-size: $font-size-lg
+.button-coding:hover
+    border: solid
+    border-width: 3px
+    border-color: $accent-text-color
+.container
+    border: solid
+    border-color: $primary
+    border-width: 1px
+    border-radius: 5px
+    padding: 15px
+    background-color: $background-panel-color
+    width: 180px
+    height: 190px
+.gradient
+    background: linear-gradient(180deg,$background-panel-color 0%,$background-color 34%)
+    position:absolute
+    left:0
+    right:0
+    width: 100%
+.features-blocks
+    display: grid
+    gap: calc(var(--space-16) * 2)
+    flex-wrap: wrap
+    justify-content: center
+    grid-template-columns: 200px 200px 200px 200px
+    padding-bottom: 76px
+.container-content
+    margin-top: 10px
+    font-size: $font-size-sm
+    color: $muted-text-color
+.heading
+    margin-top: 50px
+    margin-bottom: 20px
+.feature-ide-container
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    margin-top: 80px
+.header-grey-features
+    color: $muted-text-color
+.feature-content
+    margin: 15px
+.start-coding
+    margin-top: 80px
+    margin-bottom: 76px
+@media screen and ( max-width: 1200px  )
+    .features-blocks
+        grid-template-columns: 200px 200px
+        grid-template-rows: 210px 210px

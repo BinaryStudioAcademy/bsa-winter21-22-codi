@@ -1,19 +1,16 @@
 @import 'src/styles/variables.sass'
+
 header
-    background-color: $background-root
+    background-color: $background-color
     position: sticky
+    z-index: 1000
+    top: 0 
     border-bottom: 2px solid
-    border-color: $background-default
-main
-    background-color: $background-root
-    color: $foreground-default
-    padding-bottom: 1px
-    display: flex
-    justify-content: center
-    padding: 20px
+    border-color: $background-panel-color
 footer
-    color: $foreground-default
-    position: absolute
-    width: 100%
-    background-color: $background-default
+    color: $base-text-color
+    background-color: $background-panel-color
     padding: 20px
+.all
+    min-width: 600px
+    min-height: 600px

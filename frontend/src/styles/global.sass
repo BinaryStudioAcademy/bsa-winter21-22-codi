@@ -1,27 +1,18 @@
-@import "variables"
-
-$base-background-color: #131416
-$background-color: #1d1e22
-$base-title-color: #bebdc1
-$base-text-color: #5a5b5f
-$text-color: #6a43a3
-$rating-color: #df7e27
-$default-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+@import 'variables'
 
 body
     margin: 0px
 .text
     color: #c6c8c9
-    font-family: $default-font-family
     font-weight: bold
-    cursor: default
+
 
 .modal-dialog .modal-content
-    background-color: $background-default
-    color: $foreground-default
+    background-color: $background-panel-color
+    color: $base-text-color
 
     & .modal-header .close
-        color: $foreground-default
+        color: $base-text-color
 
     & .modal-header
         border: 0
@@ -39,15 +30,22 @@ body
     & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
 
-input
-  border-color: $outline-dimmest
-  background: $background-default
-  padding: 0 0 0 8px
+input.form-control
+    border-color: $input-outline
+    color: $input-text-color
+    background: $background-panel-color
 
-input:focus
-  box-shadow: none
-  background-color: $background-default
-  border-color: $accent-primary-stronger
+    &:hover
+        border-color: $input-hover-outline
 
-input:hover
-  border-color: $accent-primary-default
+    &:focus
+        border-color: $input-focus-outline
+        background: $background-panel-color
+        color: $input-text-color
+
+a
+  text-decoration: none
+  color: $accent-text-color
+  &:hover
+    text-decoration: none
+    color: $primary
