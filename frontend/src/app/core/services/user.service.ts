@@ -14,7 +14,7 @@ export class UserService {
   ) { }
 
   public update(user: UpdateUser) {
-    return this.httpService.putFullRequest(`${this.routePrefix}`, user);
+    return this.httpService.putFullRequest<User>(`${this.routePrefix}`, user);
   }
 
   public getById(id: number) {

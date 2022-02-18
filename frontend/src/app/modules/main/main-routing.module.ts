@@ -8,6 +8,7 @@ import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MainComponent } from './main-page/main-page.component';
 import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
+import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
 
 const routes: Routes = [{
     path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [{
         path: 'user/:id',
         component: UserProfilePageComponent,
         pathMatch: 'full'
+    }, {
+      path: 'account',
+      component: EditUserProfilePageComponent,
+      pathMatch: 'full'
     }, {
         path: '**',
         component: NotFoundComponent,

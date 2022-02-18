@@ -15,6 +15,7 @@ import { CreateButtonComponent } from './create-button/create-button.component';
 import { SideNavCreateButtonComponent } from './create-button/side-nav-create-button/side-nav-create-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
+import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-p
         CreateButtonComponent,
         SideNavCreateButtonComponent,
         UserProfilePageComponent,
+        EditUserProfilePageComponent
     ],
     imports: [
         SharedModule,

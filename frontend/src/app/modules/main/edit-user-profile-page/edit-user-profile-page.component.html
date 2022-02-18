@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="user-info">
+      <div class="title">Profile</div>
+      <form [formGroup]="form" class="edit-area">
+        <div class="avatar-container" (click)="file.click()">
+          <input hidden class="file-hide" #file accept="image/*" type="file" (change)="handleFileInput($event.target)">
+          <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
+          <ng-template #generic>
+            <div class="avatar generic-avatar">
+              {{user.userName.substring(0,1)?.toUpperCase() ?? "New"}}
+            </div>
+          </ng-template>
+        </div>
+        <div class="info">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input formControlName="userName" type="text" class="form-control" id="username">
+          </div>
+          <div class="name-inputs">
+            <div class="mb-3 firstname">
+              <label for="firstName" class="form-label">First name</label>
+              <input formControlName="firstName" type="text" class="form-control" id="firstName">
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last name</label>
+              <input formControlName="lastName" type="text" class="form-control" id="lastName">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <input formControlName="bio" type="text" class="form-control bio" id="bio">
+          </div>
+          <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
