@@ -55,7 +55,6 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         firstName : formValue.firstName,
         lastName : formValue.lastName,
         bio: formValue.bio,
-        avatar: "" //TODO saving image to database
       } as UpdateUser;
     this.userService
       .update(updatedUser)

@@ -1,14 +1,9 @@
-@import 'src/styles/global.sass'
+@import 'src/styles/global'
 
 .wrapper
-  font-size: $font-size-default
-  color: $foreground-default
-
-a
-  text-decoration: none
-
-input:focus
-  background-color: $background-default
+  color: $base-text-color
+  font-size: $font-size-base
+  cursor: default
 
 .container
   max-width: 990px
@@ -16,7 +11,7 @@ input:focus
 
 .version
   border-radius: 5px
-  background-color: $accent-purple-default
+  background-color: $primary
   padding: 3px
   margin-bottom: 5px
   width: fit-content
@@ -24,7 +19,7 @@ input:focus
 
 .version-help
   display: none
-  background-color: $outline-dimmest
+  background-color: $secondary
   padding: 3px
   border-radius: 5px
   max-width: 250px
@@ -42,58 +37,36 @@ input:focus
 .user-info
   display: flex
 
-.avatar
-  max-width: 118px
-  height: 118px
-  border-radius: 100%
-
-.generic-avatar
-  background-color: $background-color
-  color: $base-text-color
-  width: 118px
-  font-size: $font-size-subhead-big
-  text-align: center
-  line-height: 118px
-
 .info
   padding: 10px 3px 0px 15px
 
 .bio
   margin-top: 10px
+  font-size: $font-size-lg
+  word-wrap: anywhere
 
 .btn
   align-self: flex-start
-  color: $foreground-default
 
 .upgrade
-  border: 1px solid $outline-dimmest
+  border: 1px solid $secondary
   border-radius: 10px
-  color: $foreground-default
-  font-size: $font-size-small
+  color: $secondary
+  font-size: $font-size-sm
+  font-weight: bold
   margin-left: 5px
 
-.edit
-  border: 1px solid $outline-dimmest
-  border-radius: 5px
-  color: $accent-primary-stronger
-  background-color: $background-higher
-
-.edit:hover
-  color: $foreground-default
-  background-color: $accent-primary-stronger
-
 .name
-  font-size: $font-size-header-big
+  font-size: $h2-font-size
 
 .username
-  color: $foreground-dimmer
+  color: $muted-text-color
 
 .switch-item
-  font-size: $font-size-header-default
-  color: $foreground-default
-  opacity: 50%
-  transition: linear .1s
+  color: $primary
+  font-size: $h2-font-size
   padding: 0 0 5px 10px
+  opacity: 50%
 
 .switch-item:hover
   opacity: 100%
@@ -104,15 +77,15 @@ input:focus
   margin-bottom: 10px
 
 .repls-title, .repl-name
-  font-size: $font-size-header-big
+  font-size: $h2-font-size
 
 .search
   max-width: 170px
 
 .repls-list, .showcase
-  border: 1px solid $outline-dimmest
+  border: 1px solid $secondary
   border-radius: 5px
-  background: $background-color
+  background: $background-panel-color
 
 .repl-item, .repl-title
   display: flex
@@ -121,9 +94,10 @@ input:focus
 .repl-item
   justify-content: space-between
   padding: 15px 25px 15px 15px
+  opacity: 70%
 
 .repl-item:hover
-  background-color: $outline-dimmest
+  opacity: 100%
   cursor: pointer
 
 .repl-icon
@@ -132,13 +106,13 @@ input:focus
   margin-right: 8px
 
 .change-date
-  color: $foreground-dimmer
+  color: $muted-text-color
 
 .manage
   text-align: center
   display: block
   margin-top: 35px
-  color: $accent-primary-stronger
+  color: $primary
 
 .showcase
   height: 65vh
@@ -152,14 +126,14 @@ ngb-carousel
   display: flex
   justify-content: space-between
   padding: 5px
-  border-bottom: 1px solid $outline-dimmest
+  border-bottom: 1px solid $secondary
 
 .right-header-part
   display: flex
   align-items: center
 
 .show-files
-  background-color: $outline-dimmest
+  background-color: $secondary
 
 .likes-quantity
   padding: 0 10px 0 10px
@@ -170,13 +144,14 @@ ngb-carousel
 .chosen-repl
   display: flex
   justify-content: space-between
+  margin-bottom: 10px
 
 .settings
   cursor: pointer
   height: fit-content
 
 .settings:hover
-  background-color: $outline-dimmest
+  background-color: $secondary
   border-radius: 100%
 
 .repl-title
