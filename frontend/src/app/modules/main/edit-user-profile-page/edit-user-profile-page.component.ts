@@ -6,7 +6,6 @@ import { Router } from "@angular/router";
 import { BaseComponent } from "@core/base/base.component";
 import { takeUntil } from "rxjs";
 import { User } from "@core/models/user/user";
-import { UpdateUser } from "@core/models/user/update-user";
 import { NotificationService } from "@core/services/notification.service";
 
 @Component({
@@ -31,10 +30,14 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      userName: new FormControl('', Validators.required),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      bio: new FormControl('')
+      userName: new FormControl('',
+        [
+          Validators.required,
+          Validators.maxLength(25)
+        ]),
+      firstName: new FormControl('', Validators.maxLength(100)),
+      lastName: new FormControl('', Validators.maxLength(100)),
+      bio: new FormControl('', Validators.maxLength(500))
     });
 
     this.authService
@@ -55,12 +58,13 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         firstName : formValue.firstName,
         lastName : formValue.lastName,
         bio: formValue.bio,
-      } as UpdateUser;
+        email: this.user.email
+      } as User;
     this.userService
       .update(updatedUser)
       .subscribe((user) => {
         this.authService.setUser(user.body!);
-        this.router.navigate(['main/profile']);
+        this.router.navigate(['main/user', this.user.id]);
       });
   }
 

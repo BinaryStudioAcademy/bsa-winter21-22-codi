@@ -8,28 +8,40 @@
           <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
           <ng-template #generic>
             <div class="avatar generic-avatar">
-              {{user.userName.substring(0,1)?.toUpperCase() ?? "New"}}
+              {{user?.userName?.substring(0,1)?.toUpperCase()}}
             </div>
           </ng-template>
         </div>
         <div class="info">
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input formControlName="userName" type="text" class="form-control" id="username">
+            <input formControlName="userName" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+            <div id="usernameHelp" class="form-text text-danger" *ngIf="form.controls['userName'].hasError('maxlength')">
+              Username must be less than 25 characters
+            </div>
           </div>
           <div class="name-inputs">
-            <div class="mb-3 firstname">
+            <div class="mb-3 firstName">
               <label for="firstName" class="form-label">First name</label>
-              <input formControlName="firstName" type="text" class="form-control" id="firstName">
+              <input formControlName="firstName" type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp">
+              <div id="firstNameHelp" class="text-danger" *ngIf="form.controls['firstName'].hasError('maxlength')">
+                First name must be less than 100 characters
+              </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 lastName">
               <label for="lastName" class="form-label">Last name</label>
-              <input formControlName="lastName" type="text" class="form-control" id="lastName">
+              <input formControlName="lastName" type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp">
+              <div id="lastNameHelp" class="text-danger" *ngIf="form.controls['lastName'].hasError('maxlength')">
+                Last name must be less than 100 characters
+              </div>
             </div>
           </div>
           <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>
-            <input formControlName="bio" type="text" class="form-control bio" id="bio">
+            <input formControlName="bio" type="text" class="form-control bio" id="bio" aria-describedby="bioHelp">
+            <div id="bioHelp" class="form-text text-danger" *ngIf="form.controls['bio'].hasError('maxlength')">
+              Last name must be less than 500 characters
+            </div>
           </div>
           <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>
         </div>
