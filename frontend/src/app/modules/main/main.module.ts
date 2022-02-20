@@ -31,7 +31,7 @@ import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-pa
         CoursesPageComponent,
         PublishAppDialogComponent,
         UserProfilePageComponent,
-        EditUserProfilePageComponent
+        EditUserProfilePageComponent,
     ],
     imports: [
         SharedModule,
