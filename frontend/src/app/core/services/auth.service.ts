@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
-import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
+import { Auth, authState, createUserWithEmailAndPassword,
+    signInWithEmailAndPassword, signInWithPopup, updateProfile } from '@angular/fire/auth';
 import { GoogleAuthProvider, GithubAuthProvider, AuthProvider } from 'firebase/auth';
 import { idToken } from 'rxfire/auth';
 import { Router } from '@angular/router';
@@ -27,14 +28,15 @@ export class AuthService {
   }
 
   signUp(username: string, email: string, password: string) {
-      return from(createUserWithEmailAndPassword(this.auth, email, password).then(() => {
-          this.router.navigate(['main']).then(() => {
-              this.notificationService.showSuccessMessage('You have successfully register and logged in', 'Welcome back!');
-          });
-      })
-          .catch((error) => {
-              this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
-          }));
+    return from(createUserWithEmailAndPassword(this.auth, email, password)
+      .then((credential) => {
+        updateProfile(credential.user, {displayName: username})
+          .then(() => {
+            this.router.navigate(['main'])
+              .then(() => this.notificationService.showSuccessMessage('You have successfully register and logged in', 'Welcome back!'))
+        })})
+      .catch((error) => this.notificationService.showErrorMessage(this.formatError(error.code), 'Error'))
+    );
   }
 
   signIn(email: string, password: string) {
