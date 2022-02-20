@@ -7,16 +7,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {environment} from "@env/environment";
-import {CoreModule} from "@core/core.module";
-import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
-import {getAuth, provideAuth} from "@angular/fire/auth";
+import { environment } from '@env/environment';
+import { CoreModule } from '@core/core.module';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
@@ -36,6 +36,6 @@ import { FormsModule } from '@angular/forms';
         MonacoEditorModule.forRoot(),
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule { }

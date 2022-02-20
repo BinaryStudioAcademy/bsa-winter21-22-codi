@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ConfirmationDialogOptions } from '@core/models/confirmation-dialog/confirmation-dialog-options';
 import { ConfirmationDialogResult } from '@core/models/confirmation-dialog/confirmation-dialog-result';
@@ -6,13 +6,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     templateUrl: './confirmation-dialog.component.html',
-    styleUrls: ['./confirmation-dialog.component.sass']
+    styleUrls: ['./confirmation-dialog.component.sass'],
 })
-export class ConfirmationDialogComponent implements OnInit {
+export class ConfirmationDialogComponent {
+    title: string;
 
-    title : string;
     content: string | SafeHtml;
-    options? : Partial<ConfirmationDialogOptions>;
+
+    options?: Partial<ConfirmationDialogOptions>;
 
     constructor(public modal: NgbActiveModal, public sanitizer: DomSanitizer) {}
 
@@ -24,18 +25,15 @@ export class ConfirmationDialogComponent implements OnInit {
         this.options = options;
     }
 
-    ngOnInit(): void {
-    }
-
-    closeDismiss(){
+    closeDismiss() {
         this.modal.dismiss(ConfirmationDialogResult.Dismiss);
     }
 
-    closeCancel(){
+    closeCancel() {
         this.modal.close(ConfirmationDialogResult.Cancel);
     }
 
-    closeConfirm(){
+    closeConfirm() {
         this.modal.close(ConfirmationDialogResult.Confirm);
     }
 }

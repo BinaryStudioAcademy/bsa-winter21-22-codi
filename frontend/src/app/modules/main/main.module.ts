@@ -27,8 +27,8 @@ import { PublishAppDialogComponent } from './applications/publish-app-dialog/pub
         SideNavComponent,
         MyProjectsPageComponent,
         CoursesPageComponent,
-        PublishAppDialogComponent
-        
+        PublishAppDialogComponent,
+
     ],
     imports: [
         SharedModule,
