@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { User } from "@core/models/user/user";
+import { CreateUser } from "@core/models/user/create-user";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class UserService {
   constructor(
     private httpService: CodiHttpClientService
   ) { }
+
+  public create(user: CreateUser) {
+    return this.httpService.postFullRequest<User>(`${this.routePrefix}`, user);
+  }
 
   public update(user: User) {
     return this.httpService.putFullRequest<User>(`${this.routePrefix}`, user);

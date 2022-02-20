@@ -15,6 +15,12 @@ public class UsersController : ControllerBase
         _usersService = usersService;
     }
 
+    [HttpPost]
+    public async Task<ActionResult<UserDto>> Create([FromBody] CreateUserDto userDto)
+    {
+        return Ok(await _usersService.Create(userDto));
+    }
+
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDto>> GetUserById(long id)
     {

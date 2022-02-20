@@ -11,6 +11,20 @@ public class UserService : BaseService, IUserService
 {
     public UserService(CodiCoreContext context, IMapper mapper) : base(context, mapper) { }
 
+    public async Task<UserDto> Create(CreateUserDto userDto)
+    {
+        if (await _context.Users.AnyAsync(u => u.Email == userDto.Email))
+        {
+            throw new InvalidOperationException("Such email already exists");
+        }
+        var user = _mapper.Map<User>(userDto);
+
+        var createdUser = _context.Users.Add(user);
+        await _context.SaveChangesAsync();
+
+        return _mapper.Map<UserDto>(createdUser.Entity);
+    }
+
     public async Task<UserDto> GetById(long id)
     {
         var userEntity = await _context.Users

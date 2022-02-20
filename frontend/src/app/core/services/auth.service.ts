@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { from, map, of, Subject, switchMap } from "rxjs";
+import { from, map, of, Subject, switchMap, takeUntil } from "rxjs";
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile, } from "@angular/fire/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { idToken } from "rxfire/auth";
@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { NotificationService } from "@core/services/notification.service";
 import { UserService } from "@core/services/user.service";
 import { User } from "@core/models/user/user";
+import { CreateUser } from "@core/models/user/create-user";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class AuthService {
   ) {
     this.currentUser$.subscribe(user => {
       if (user) {
+        this.userService
+          .create({email: user.email} as CreateUser)
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((user) => {
+            this.user = user.body!;
+          })
         user.getIdToken(true).then(token => {
           localStorage.setItem('jwt', token)
         });
