@@ -7,7 +7,7 @@
           <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
           <ng-template #generic>
             <div class="avatar generic-avatar">
-              {{user.userName.substring(0,1)?.toUpperCase() ?? "New"}}
+              {{user.userName?.substring(0,1)?.toUpperCase()}}
             </div>
           </ng-template>
             <div class="info">
@@ -26,7 +26,7 @@
               </div>
             </div>
         </div>
-        <button class="btn btn-primary" [routerLink]="['/main/account']" *ngIf="!id">Edit</button>
+        <button class="btn btn-primary" [routerLink]="['/main/account']" *ngIf="currentUser.id === user.id">Edit</button>
       </div>
       <div class="action-info">
         <div class="switch-buttons">

@@ -1,22 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "@core/services/auth.service";
-import {Router} from "@angular/router";
-import { Observable } from 'rxjs';
-import { User } from 'firebase/auth';
+import { AuthService } from "@core/services/auth.service";
+import { User } from "@core/models/user/user";
+import { BaseComponent } from "@core/base/base.component";
+import { takeUntil } from "rxjs";
 
 @Component({
   selector: 'app-top-nav',
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.sass']
 })
-export class TopNavComponent implements OnInit {
+export class TopNavComponent extends BaseComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService
+  ) {
+    super();
+  }
 
-  $currentUser: Observable<User | null>
+  currentUser: User;
 
   ngOnInit(): void {
-    this.$currentUser = this.authService.currentUser$;
+    this.authService
+      .getCurrentUser()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((user) => this.currentUser = user);
   }
 
   logout() {

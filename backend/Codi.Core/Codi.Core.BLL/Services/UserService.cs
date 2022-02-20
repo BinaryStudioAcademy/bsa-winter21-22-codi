@@ -14,12 +14,12 @@ public class UserService : BaseService, IUserService
     public async Task<UserDto> GetById(long id)
     {
         var userEntity = await _context.Users
-            .Include(u=>u.Avatar)
+            .Include(u => u.Avatar)
             .FirstOrDefaultAsync(u => u.Id == id);
         
         if (userEntity is null)
         {
-            throw new NotFoundException<long>(nameof(User), id);
+            throw new NotFoundException(nameof(User), id);
         }
         return _mapper.Map<UserDto>(userEntity);
     }
@@ -27,50 +27,25 @@ public class UserService : BaseService, IUserService
     public async Task<UserDto> GetByEmail(string email)
     {
         var userEntity = await _context.Users
-            .Include(u=>u.Avatar)
+            .Include(u => u.Avatar)
             .FirstOrDefaultAsync(u => u.Email == email);
         return _mapper.Map<UserDto>(userEntity);
     }
 
-    public async Task<UserDto> Update(UpdateUserDto user)
+    public async Task<UserDto> Update(UserDto userDto)
     {
         var userEntity = await _context.Users
-            .Include(u=>u.Avatar)
-            .FirstOrDefaultAsync(u => u.Id == user.Id);
+            .Include(u => u.Avatar)
+            .FirstOrDefaultAsync(u => u.Id == userDto.Id);
         if (userEntity is null)
         {
-            throw new NotFoundException<long>(nameof(User), user.Id);
-        }
-        
-        userEntity.UserName = user.UserName;
-        userEntity.FirstName = user.FirstName;
-        userEntity.LastName = user.LastName;
-        userEntity.Bio = user.Bio;
-        
-        if (!string.IsNullOrEmpty(user.Avatar))
-        {
-            if (userEntity.Avatar == null)
-            {
-                userEntity.Avatar = new Image
-                {
-                    URL = user.Avatar
-                };
-            }
-            else
-            {
-                userEntity.Avatar.URL = user.Avatar;
-            }
-        }
-        else
-        {
-            if (userEntity.Avatar != null)
-            {
-                _context.Images.Remove(userEntity.Avatar);
-            }
+            throw new NotFoundException(nameof(User), userDto.Id);
         }
 
-        _context.Users.Update(userEntity);
+        var mergedUser = _mapper.Map(userDto, userEntity);
+
+        _context.Users.Update(mergedUser);
         await _context.SaveChangesAsync();
-        return _mapper.Map<UserDto>(userEntity);
+        return await GetById(userEntity.Id);
     }
 }

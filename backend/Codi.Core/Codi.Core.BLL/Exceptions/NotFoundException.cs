@@ -1,9 +1,8 @@
 ﻿namespace Codi.Core.BLL.Exceptions;
 
-public sealed class NotFoundException<T> : Exception
-    where T : struct
+public sealed class NotFoundException : Exception
 {
-    public NotFoundException(string name, T id)
+    public NotFoundException(string name, long id)
         : base($"Entity {name} with id ({id}) was not found.")
     {
     }

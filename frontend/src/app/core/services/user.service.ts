@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { User } from "@core/models/user/user";
-import { UpdateUser } from "@core/models/user/update-user";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class UserService {
     private httpService: CodiHttpClientService
   ) { }
 
-  public update(user: UpdateUser) {
+  public update(user: User) {
     return this.httpService.putFullRequest<User>(`${this.routePrefix}`, user);
   }
 
@@ -22,7 +21,7 @@ export class UserService {
   }
 
   public getCurrent(email: string) {
-    return this.httpService.getFullRequestWithHeader<User>(`${this.routePrefix}/email`, {
+    return this.httpService.getFullRequest<User>(`${this.routePrefix}/email`, {
       email: email
     });
   }

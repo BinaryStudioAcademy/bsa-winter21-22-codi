@@ -22,13 +22,13 @@ public class UsersController : ControllerBase
     }
     
     [HttpGet("email")]
-    public async Task<ActionResult<UserDto>> GetUserByEmail([FromHeader] string email)
+    public async Task<ActionResult<UserDto>> GetUserByEmail(string email)
     {
         return Ok(await _usersService.GetByEmail(email));
     }
 
     [HttpPut]
-    public async Task<ActionResult<UserDto>> Update([FromBody] UpdateUserDto userDto)
+    public async Task<ActionResult<UserDto>> Update([FromBody] UserDto userDto)
     {
         return Ok(await _usersService.Update(userDto));
     }

@@ -13,16 +13,16 @@
         </div>
         </div>
     </div>
-    <div class="navbar-right" *ngIf="{currentUser: $currentUser | async} as data">
+    <div class="navbar-right">
         <div class="user-container">
-            <img *ngIf="data.currentUser?.photoURL; else generic" class="user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+            <img *ngIf="currentUser?.avatar; else generic" class="user-icon" src="{{currentUser?.avatar}}" alt="User avatar">
             <ng-template #generic>
               <div class="user-icon generic-icon">
-                {{data.currentUser?.displayName?.substring(0,1)?.toUpperCase() ?? data.currentUser?.email?.substring(0,1)?.toUpperCase() ?? "New"}}
+                {{currentUser?.userName?.substring(0,1)?.toUpperCase()}}
               </div>
             </ng-template>
             <div class="username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
-                <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
+                <span>{{currentUser?.userName}}</span>
             </div>
         </div>
         <div class="row mr-2">
@@ -33,14 +33,14 @@
                 <div ngbDropdownMenu class="dropdown-custom" aria-labelledby="dropdownMenu">
                     <button ngbDropdownItem class="dropdown-user">
                         <div class="dropdown-user-container">
-                            <img *ngIf="data.currentUser?.photoURL; else generic" class="dropdown-user-icon" src="{{data.currentUser?.photoURL}}" alt="User avatar">
+                            <img *ngIf="currentUser?.avatar; else generic" class="dropdown-user-icon" src="{{currentUser?.avatar}}" alt="User avatar">
                             <ng-template #generic>
-                              <div class="dropdown-user-icon generic-icon">
-                                {{data.currentUser?.displayName?.substring(0,1)?.toUpperCase() ?? data.currentUser?.email?.substring(0,1)?.toUpperCase() ?? "New"}}
+                              <div class="user-icon generic-icon">
+                                {{currentUser?.userName?.substring(0,1)?.toUpperCase()}}
                               </div>
                             </ng-template>
                             <div class="dropdown-username user-select-none" role="button" (click)="$event.stopPropagation(); dropdownOptions.open();">
-                                <span>{{data.currentUser?.displayName ?? data.currentUser?.email ?? "Username"}}</span>
+                                <span>{{currentUser?.userName}}</span>
                             </div>
                         </div>
                     </button>
@@ -50,7 +50,7 @@
                             Create
                         </button>
                     </div>
-                    <button ngbDropdownItem class="custom-text" [routerLink]="['/main/profile']">Profile</button>
+                    <button ngbDropdownItem class="custom-text" [routerLink]="['/main/user', currentUser?.id]">Profile</button>
                     <button ngbDropdownItem class="custom-text" (click)="logout()">Logout</button>
                 </div>
               </div>

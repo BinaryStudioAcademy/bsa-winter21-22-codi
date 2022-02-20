@@ -30,10 +30,6 @@ const routes: Routes = [{
         path: 'home',
         component: HomePageComponent,
     }, {
-        path: 'profile',
-        component: UserProfilePageComponent,
-        pathMatch: 'full'
-    }, {
         path: 'user/:id',
         component: UserProfilePageComponent,
         pathMatch: 'full'

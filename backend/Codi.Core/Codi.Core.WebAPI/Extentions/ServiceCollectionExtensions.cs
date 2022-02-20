@@ -24,7 +24,7 @@ namespace Codi.Core.WebAPI.Extentions
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddTransient<ISampleService, SampleService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

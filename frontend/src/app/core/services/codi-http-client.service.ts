@@ -26,15 +26,6 @@ export class CodiHttpClientService {
 
   }
 
-  public getFullRequestWithHeader<T>(url: string, headers: any): Observable<HttpResponse<T>> {
-    return this.http.get<T>(this.buildUrl(url), { observe: 'response', headers: headers })
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-
-  }
-
   public postFullRequest<T>(url: string, payload: object): Observable<HttpResponse<T>> {
     return this.http.post<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), observe: 'response' })
       .pipe(
