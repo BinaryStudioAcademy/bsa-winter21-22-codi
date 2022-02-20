@@ -13,12 +13,12 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
     ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
-        ConfirmationDialogComponent
+        ConfirmationDialogComponent,
     ],
     exports: [
         CommonModule,
@@ -27,7 +27,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
         ReactiveFormsModule,
         RouterModule,
         LoadingSpinnerComponent,
-        NotFoundComponent
-    ]
+        NotFoundComponent,
+    ],
 })
 export class SharedModule { }

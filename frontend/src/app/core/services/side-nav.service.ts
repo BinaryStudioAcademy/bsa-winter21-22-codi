@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class SideNavService {
   hideSideNav: boolean = true;
@@ -9,6 +9,6 @@ export class SideNavService {
   constructor() { }
 
   toggleSideNav(): void {
-    this.hideSideNav = !this.hideSideNav;
+      this.hideSideNav = !this.hideSideNav;
   }
 }

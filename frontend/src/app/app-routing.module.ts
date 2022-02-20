@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
-import {canActivate, redirectUnauthorizedTo, redirectLoggedInTo} from "@angular/fire/auth-guard";
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToMain = () => redirectLoggedInTo(['main']);
@@ -17,24 +17,24 @@ const routes: Routes = [
         path: 'main',
         loadChildren: () => import('./modules/main/main.module')
             .then(m => m.MainModule),
-        ...canActivate(redirectToLogin)
+        ...canActivate(redirectToLogin),
     },
     {
         path: '',
         loadChildren: () =>
           import('./modules/auth/auth.module')
-            .then(m => m.AuthModule),
-        ...canActivate(redirectToMain)
+              .then(m => m.AuthModule),
+        ...canActivate(redirectToMain),
     },
-    {   
+    {
         path: '**',
         component: NotFoundComponent,
-        pathMatch: 'full'
-     },
+        pathMatch: 'full',
+    },
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule { }

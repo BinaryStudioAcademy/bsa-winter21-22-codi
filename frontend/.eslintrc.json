@@ -34,7 +34,22 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "no-console": "off",
+        "max-len": [
+          "warn",
+          {
+            "code": 140
+          }
+        ],
+        "no-multi-spaces": "warn",
+        "no-multiple-empty-lines": "warn",
+        "no-trailing-spaces": "warn",
+        "space-before-blocks": "warn",
+        "no-var": "warn",
+        "quotes": ["warn", "single"],
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "error"
       }
     },
     {
@@ -43,8 +58,7 @@
       ],
       "extends": [
         "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": {}
+      ]
     }
   ]
 }

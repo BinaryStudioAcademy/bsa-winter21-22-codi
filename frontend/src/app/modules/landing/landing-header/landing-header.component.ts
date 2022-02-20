@@ -1,19 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-landing-header',
-  templateUrl: './landing-header.component.html',
-  styleUrls: ['./landing-header.component.sass']
+    selector: 'app-landing-header',
+    templateUrl: './landing-header.component.html',
+    styleUrls: ['./landing-header.component.sass'],
 })
-export class LandingHeaderComponent implements OnInit {
+export class LandingHeaderComponent {
+  landingImage: string = 'assets/images/LandingPage/Logo.svg';
 
-  landingImage:string = "assets/images/LandingPage/Logo.svg";
-  
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-  scrollFunc(path:string){
-    document.getElementById(path)?.scrollIntoView({behavior:'smooth', block: "start", inline: "nearest"});
+  scrollFunc(path: string) {
+    document.getElementById(path)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 }
