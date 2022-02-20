@@ -11,88 +11,88 @@ import { NotificationService } from '@core/services/notification.service';
     providedIn: 'root',
 })
 export class AuthService {
-  currentUser$ = authState(this.auth);
+    currentUser$ = authState(this.auth);
 
-  constructor(
-      private auth: Auth,
-      private router: Router,
-      private notificationService: NotificationService,
-  ) {
-      this.currentUser$.subscribe(user => {
-          if (user) {
-              user.getIdToken(true).then(token => {
-                  localStorage.setItem('jwt', token);
-              });
-          }
-      });
-  }
+    constructor(
+        private auth: Auth,
+        private router: Router,
+        private notificationService: NotificationService,
+    ) {
+        this.currentUser$.subscribe(user => {
+            if (user) {
+                user.getIdToken(true).then(token => {
+                    localStorage.setItem('jwt', token);
+                });
+            }
+        });
+    }
 
-  signUp(username: string, email: string, password: string) {
-    return from(createUserWithEmailAndPassword(this.auth, email, password)
-      .then((credential) => {
-        updateProfile(credential.user, {displayName: username})
-          .then(() => {
-            this.router.navigate(['main'])
-              .then(() => this.notificationService.showSuccessMessage('You have successfully register and logged in', 'Welcome back!'))
-        })})
-      .catch((error) => this.notificationService.showErrorMessage(this.formatError(error.code), 'Error'))
-    );
-  }
+    signUp(username: string, email: string, password: string) {
+        return from(createUserWithEmailAndPassword(this.auth, email, password)
+            .then((credential) => {
+                updateProfile(credential.user, {displayName: username})
+                    .then(() => {
+                        this.router.navigate(['main'])
+                            .then(() => this.notificationService.showSuccessMessage('You have successfully register', 'Welcome back!'))
+                    })})
+            .catch((error) => this.notificationService.showErrorMessage(this.formatError(error.code), 'Error'))
+        );
+    }
 
-  signIn(email: string, password: string) {
-      return from(signInWithEmailAndPassword(this.auth, email, password).then(() => {
-          this.router.navigate(['main']).then(() => {
-              this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-          });
-      })
-          .catch((error) => {
-              this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
-          }));
-  }
+    signIn(email: string, password: string) {
+        return from(signInWithEmailAndPassword(this.auth, email, password).then(() => {
+            this.router.navigate(['main']).then(() => {
+                this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
+            });
+        })
+            .catch((error) => {
+                this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
+            }));
+    }
 
-  logOut() {
-      return from(this.auth.signOut().then(() => {
-          this.router.navigate(['login']).then(() => {
-              this.notificationService.showSuccessMessage('Good Luck!');
-          });
-          localStorage.removeItem('jwt');
-      }));
-  }
+    logOut() {
+        return from(this.auth.signOut().then(() => {
+            this.router.navigate(['login']).then(() => {
+                this.notificationService.showSuccessMessage('Good Luck!');
+            });
+            localStorage.removeItem('jwt');
+        }));
+    }
 
-  withGoogle() {
-      return from(this.authLogin(new GoogleAuthProvider())).subscribe(() => {
-          this.router.navigate(['main']).then(() => {
-              this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-          })
-              .catch((error) => {
-                  this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
-              });
-      });
-  }
+    withGoogle() {
+        return from(this.authLogin(new GoogleAuthProvider())).subscribe(() => {
+            this.router.navigate(['main']).then(() => {
+                this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
+            })
+                .catch((error) => {
+                    this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
+                });
+        });
+    }
 
-  withGitHub() {
-      return from(this.authLogin(new GithubAuthProvider())).subscribe(() => {
-          this.router.navigate(['main']).then(() => {
-              this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-          })
-              .catch((error) => {
-                  this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
-              });
-      });
-  }
+    withGitHub() {
+        return from(this.authLogin(new GithubAuthProvider())).subscribe(() => {
+            this.router.navigate(['main']).then(() => {
+                this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
+            })
+                .catch((error) => {
+                    this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
+                });
+        });
+    }
 
-  authLogin(provider: AuthProvider) {
-      return from(signInWithPopup(this.auth, provider));
-  }
+    authLogin(provider: AuthProvider) {
+        return from(signInWithPopup(this.auth, provider));
+    }
 
-  getAuthIdToken() {
-      return from(idToken(this.auth));
-  }
+    getAuthIdToken() {
+        return from(idToken(this.auth));
+    }
 
-  formatError(errorCode: string): string {
-      const errorParts = errorCode.split('/');
-      errorParts.shift();
-      const allNeedForError = errorParts.join('/').replace(/-/g, ' ').toUpperCase();
-      return allNeedForError;
-  }
+    formatError(errorCode: string): string {
+        const errorParts = errorCode.split('/');
+        errorParts.shift();
+        const allNeedForError = errorParts.join('/').replace(/-/g, ' ').toUpperCase();
+        return allNeedForError;
+    }
 }

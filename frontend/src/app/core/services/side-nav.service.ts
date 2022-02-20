@@ -4,11 +4,11 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 export class SideNavService {
-  hideSideNav: boolean = true;
+    hideSideNav: boolean = true;
 
-  constructor() { }
+    constructor() { }
 
-  toggleSideNav(): void {
-      this.hideSideNav = !this.hideSideNav;
-  }
+    toggleSideNav(): void {
+        this.hideSideNav = !this.hideSideNav;
+    }
 }

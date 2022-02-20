@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class LandingContentComponent {
 
-  IDEimage: string = 'assets/images/LandingPage/IDE.png';
+    IDEimage: string = 'assets/images/LandingPage/IDE.png';
 
-  MultiplayerIMG: string = 'assets/images/LandingPage/multiplayer-cursors.png';
+    MultiplayerIMG: string = 'assets/images/LandingPage/multiplayer-cursors.png';
 
-  CommunityIMG: string = 'assets/images/LandingPage/community.png';
+    CommunityIMG: string = 'assets/images/LandingPage/community.png';
 }

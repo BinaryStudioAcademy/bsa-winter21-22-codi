@@ -11,13 +11,13 @@ import { User } from 'firebase/auth';
 export class TopNavComponent implements OnInit {
     constructor(private authService: AuthService) { }
 
-  $currentUser: Observable<User | null>
+    $currentUser: Observable<User | null>
 
-  ngOnInit(): void {
-      this.$currentUser = this.authService.currentUser$;
-  }
+    ngOnInit(): void {
+        this.$currentUser = this.authService.currentUser$;
+    }
 
-  logout() {
-      this.authService.logOut();
-  }
+    logout() {
+        this.authService.logOut();
+    }
 }

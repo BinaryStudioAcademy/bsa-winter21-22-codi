@@ -8,29 +8,29 @@ import { AuthService } from '@core/services/auth.service';
     styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent implements OnInit {
-  form!: FormGroup
+    form!: FormGroup
 
-  constructor(
-      private authService: AuthService,
-  ) {}
+    constructor(
+        private authService: AuthService,
+    ) {}
 
-  ngOnInit(): void {
-      this.form = new FormGroup({
-          login: new FormControl('', Validators.required),
-          password: new FormControl('', Validators.required),
-      });
-  }
+    ngOnInit(): void {
+        this.form = new FormGroup({
+            login: new FormControl('', Validators.required),
+            password: new FormControl('', Validators.required),
+        });
+    }
 
-  withGoogle() {
-      this.authService.withGoogle();
-  }
+    withGoogle() {
+        this.authService.withGoogle();
+    }
 
-  withGit() {
-      this.authService.withGitHub();
-  }
+    withGit() {
+        this.authService.withGitHub();
+    }
 
-  submit() {
-      const { login, password } = this.form.value;
-      this.authService.signIn(login, password);
-  }
+    submit() {
+        const { login, password } = this.form.value;
+        this.authService.signIn(login, password);
+    }
 }

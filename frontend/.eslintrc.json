@@ -5,9 +5,7 @@
   ],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
         "project": [
           "tsconfig.json"
@@ -35,21 +33,20 @@
             "style": "kebab-case"
           }
         ],
+        "spaced-comment": "off",
+        "object-curly-newline": "off",
         "no-console": "off",
-        "max-len": [
-          "warn",
-          {
-            "code": 140
-          }
-        ],
-        "no-multi-spaces": "warn",
-        "no-multiple-empty-lines": "warn",
-        "no-trailing-spaces": "warn",
-        "space-before-blocks": "warn",
-        "no-var": "warn",
-        "quotes": ["warn", "single"],
-        "@typescript-eslint/no-unused-vars": "error",
-        "@typescript-eslint/no-explicit-any": "error"
+        "import/order": "off",
+        "max-len": ["error", { "code": 140, "ignoreRegExpLiterals": true }],
+        "linebreak-style": "off",
+        "import/prefer-default-export": "off",
+        "implicit-arrow-linebreak": "off",
+        "class-methods-use-this": "off",
+        "arrow-parens": "off",
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "@typescript-eslint/indent": ["error", 4],
+        "@typescript-eslint/comma-dangle": "off"
       }
     },
     {
@@ -58,7 +55,9 @@
       ],
       "extends": [
         "plugin:@angular-eslint/template/recommended"
-      ]
+      ],
+      "rules": {
+      }
     }
   ]
 }
