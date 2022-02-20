@@ -1,5 +1,6 @@
 using Codi.Core.WebAPI.Extentions;
 using Codi.Core.DAL;
+using Codi.Core.WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<GenericExceptionHandlerMiddleware>();
 
 app.MigrateDB();
 await app.SeedFileStorageData();
