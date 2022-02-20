@@ -3,18 +3,17 @@ import { ConfirmationDialogOptions } from '@core/models/confirmation-dialog/conf
 import { ConfirmationDialogResult } from '@core/models/confirmation-dialog/confirmation-dialog-result';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationDialogComponent } from '@shared/components/confirmation-dialog/confirmation-dialog.component';
-import { mapTo, Observable, race } from 'rxjs';
+import { mapTo, race } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class ConfirmationDialogService {
-
     constructor(private modalService: NgbModal) {}
 
-    openConfirmationDialog(title: string, content: string, options?: Partial<ConfirmationDialogOptions>) : Observable<ConfirmationDialogResult> {
-        let modalRef = this.modalService.open(ConfirmationDialogComponent);
-        let component = modalRef.componentInstance as ConfirmationDialogComponent;
+    openConfirmationDialog(title: string, content: string, options?: Partial<ConfirmationDialogOptions>) {
+        const modalRef = this.modalService.open(ConfirmationDialogComponent);
+        const component = modalRef.componentInstance as ConfirmationDialogComponent;
 
         component.setContent(title, content, options);
 

@@ -7,15 +7,16 @@ import { LandingHeaderComponent } from './landing-header/landing-header.componen
 import { LandingFooterComponent } from './landing-footer/landing-footer.component';
 import { LandingContentComponent } from './landing-content/landing-content.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
     declarations: [
         LandingPageComponent,
         LandingHeaderComponent,
         LandingFooterComponent,
-        LandingContentComponent
+        LandingContentComponent,
     ],
     imports: [
-        SharedModule, LandingRoutingModule, NgbModule
+        SharedModule, LandingRoutingModule, NgbModule,
     ],
 })
 export class LandingModule { }

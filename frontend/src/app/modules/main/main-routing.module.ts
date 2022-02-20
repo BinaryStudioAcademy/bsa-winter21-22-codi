@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 import { ApplicationsComponent } from './applications/applicaions.component';
 import { MyProjectsPageComponent } from './myprojects-page/myprojects-page.component';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
@@ -21,17 +19,17 @@ const routes: Routes = [{
     }, {
         path: 'courses',
         component: CoursesPageComponent,
-    },{
+    }, {
         path: 'myprojects',
         component: MyProjectsPageComponent,
-    },{
+    }, {
         path: 'home',
         component: HomePageComponent,
-    }]
+    }],
 }];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class MainRoutingModule { }

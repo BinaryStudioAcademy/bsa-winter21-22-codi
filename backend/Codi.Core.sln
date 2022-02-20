@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codi.Core.Common", "Codi.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codi.Core.WebAPI", "Codi.Core\Codi.Core.WebAPI\Codi.Core.WebAPI.csproj", "{72F9ED77-9DA2-4337-BF9B-38E4193A359A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codi.RabbitMQ", "Codi.RabbitMQ\Codi.RabbitMQ.csproj", "{7B73160E-7DF4-41B5-94BD-015DF41B831D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{72F9ED77-9DA2-4337-BF9B-38E4193A359A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72F9ED77-9DA2-4337-BF9B-38E4193A359A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72F9ED77-9DA2-4337-BF9B-38E4193A359A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B73160E-7DF4-41B5-94BD-015DF41B831D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B73160E-7DF4-41B5-94BD-015DF41B831D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B73160E-7DF4-41B5-94BD-015DF41B831D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B73160E-7DF4-41B5-94BD-015DF41B831D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

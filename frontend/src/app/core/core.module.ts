@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { BaseComponent } from './base/base.component';
-import {JwtInterceptor} from "@core/interceptors/jwt.interceptor";
+import { JwtInterceptor } from '@core/interceptors/jwt.interceptor';
 
 @NgModule({
     imports: [
@@ -13,10 +13,10 @@ import {JwtInterceptor} from "@core/interceptors/jwt.interceptor";
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     ],
     declarations: [
-      BaseComponent
+        BaseComponent,
     ],
 })
 export class CoreModule { }
