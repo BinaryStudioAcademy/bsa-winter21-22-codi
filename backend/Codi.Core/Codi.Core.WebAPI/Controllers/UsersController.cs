@@ -27,10 +27,10 @@ public class UsersController : ControllerBase
         return Ok(await _usersService.GetById(id));
     }
     
-    [HttpGet("email")]
-    public async Task<ActionResult<UserDto>> GetUserByEmail(string email)
+    [HttpGet("firebaseId")]
+    public async Task<ActionResult<UserDto>> GetUserByFirebaseId(string id)
     {
-        return Ok(await _usersService.GetByEmail(email));
+        return Ok(await _usersService.GetByFirebaseId(id));
     }
 
     [HttpPut]

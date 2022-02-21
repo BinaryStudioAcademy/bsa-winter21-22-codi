@@ -1,3 +1,5 @@
 export interface CreateUser {
-  email: string;
+  firebaseId: string;
+  email?: string;
+  username?: string;
 }

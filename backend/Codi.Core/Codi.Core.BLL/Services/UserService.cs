@@ -13,9 +13,9 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserDto> Create(CreateUserDto userDto)
     {
-        if (await _context.Users.AnyAsync(u => u.Email == userDto.Email))
+        if (await _context.Users.AnyAsync(u => u.FirebaseId == userDto.FirebaseId))
         {
-            throw new InvalidOperationException("Such email already exists");
+            throw new InvalidOperationException("Such user already exists");
         }
         var user = _mapper.Map<User>(userDto);
 
@@ -38,11 +38,11 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(userEntity);
     }
     
-    public async Task<UserDto> GetByEmail(string email)
+    public async Task<UserDto> GetByFirebaseId(string id)
     {
         var userEntity = await _context.Users
             .Include(u => u.Avatar)
-            .FirstOrDefaultAsync(u => u.Email == email);
+            .FirstOrDefaultAsync(u => u.FirebaseId == id);
         return _mapper.Map<UserDto>(userEntity);
     }
 

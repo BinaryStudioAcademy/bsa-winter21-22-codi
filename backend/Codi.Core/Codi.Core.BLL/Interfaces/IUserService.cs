@@ -6,6 +6,6 @@ public interface IUserService
 {
     Task<UserDto> Create(CreateUserDto user);
     Task<UserDto> GetById(long id);
-    Task<UserDto> GetByEmail(string email);
+    Task<UserDto> GetByFirebaseId(string id);
     Task<UserDto> Update(UserDto user);
 }

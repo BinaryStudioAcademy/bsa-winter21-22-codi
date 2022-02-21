@@ -25,9 +25,9 @@ export class UserService {
     return this.httpService.getFullRequest<User>(`${this.routePrefix}/${id}`);
   }
 
-  public getCurrent(email: string) {
-    return this.httpService.getFullRequest<User>(`${this.routePrefix}/email`, {
-      email: email
+  public getCurrent(firebaseId: string) {
+    return this.httpService.getFullRequest<User>(`${this.routePrefix}/firebaseId`, {
+      id: firebaseId
     });
   }
 }

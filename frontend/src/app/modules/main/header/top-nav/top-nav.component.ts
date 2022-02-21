@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "@core/services/auth.service";
 import { User } from "@core/models/user/user";
 import { BaseComponent } from "@core/base/base.component";
-import { takeUntil } from "rxjs";
+import {switchMap, takeUntil} from "rxjs";
+import { EventService } from "@core/services/event.service";
 
 @Component({
     selector: 'app-top-nav',
@@ -12,16 +13,26 @@ import { takeUntil } from "rxjs";
 export class TopNavComponent extends BaseComponent implements OnInit {
     currentUser: User;
     constructor(
-        private authService: AuthService
+        private authService: AuthService,
+        private eventService: EventService
     ) {
         super();
     }
 
     ngOnInit(): void {
+        this.getUser();
+        this.eventService.userChangedEvent$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => this.getUser());
+    }
+
+    getUser() {
         this.authService
             .getCurrentUser()
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe((user) => this.currentUser = user);
+            .subscribe((user) => {
+                this.currentUser = user;
+            })
     }
 
     logout() {
