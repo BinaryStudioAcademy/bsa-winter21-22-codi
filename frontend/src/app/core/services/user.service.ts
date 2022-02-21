@@ -7,7 +7,7 @@ import { CreateUser } from "@core/models/user/create-user";
     providedIn: 'root'
 })
 export class UserService {
-    public routePrefix = '/api/users';
+    public routePrefix = '/users';
 
     constructor(
         private httpService: CodiHttpClientService
