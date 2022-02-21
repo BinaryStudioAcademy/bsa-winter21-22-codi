@@ -23,7 +23,8 @@ namespace Codi.Core.DAL
 
         private static void AddCodiCoreContext(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionsString = configuration.GetConnectionString("CodiCoreDBConnection");
+            var connectionsString = configuration["ConnectionStrings:CodiCoreDBConnection"];
+
             services.AddDbContext<CodiCoreContext>(options =>
                 options.UseSqlServer(
                     connectionsString,
