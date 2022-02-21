@@ -8,7 +8,7 @@
 <div class="all-repl-content">
   <div class="repl-content">
     <div class="title-repl">
-        <span class="title-repl-text">Create a Repl</span>
+        <span class="title-repl-text">Create a project</span>
         <button type="button" class="btn btn-outline-primary btn-sm">
             <span class="repl-form-span">Import from GitHub</span>
         </button>
@@ -25,6 +25,7 @@
                 id="typeahead-focus"
                 type="text"
                 class="form-control"
+                placeholder="Search templates"
                 [(ngModel)]="model"
                 [ngbTypeahead]="search"
                 (focus)="focus$.next($any($event).target.value)"
@@ -39,7 +40,7 @@
             <label class="repl-form-label">
               <span class="repl-form-span">Title</span>
             </label>
-            <input spellcheck="false" id="modal1val-title" placeholder="Name your repl" class="form-control" value="">
+            <input  placeholder="Name your project" class="form-control" value="">
           </div>
           <div class="repl-form-title-box">
             <label class="repl-form-label">

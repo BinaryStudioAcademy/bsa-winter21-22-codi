@@ -32,7 +32,7 @@ export class CreateReplModalComponent implements OnInit {
 
     return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
       map(term => (term === '' ? templates
-        : templates.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
+        : templates.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 100))
     );
   }
 
