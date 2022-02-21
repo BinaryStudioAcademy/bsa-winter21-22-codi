@@ -21,22 +21,22 @@ export class AuthService {
     private unsubscribe$ = new Subject<void>();
 
     constructor(
-    private auth: Auth,
-    private router: Router,
-    private notificationService: NotificationService,
-    private userService: UserService,
-    private eventService: EventService
+        private auth: Auth,
+        private router: Router,
+        private notificationService: NotificationService,
+        private userService: UserService,
+        private eventService: EventService
     ) {
-    this.currentUser$.subscribe(user => {
-      if (user) {
-        user.getIdToken(true).then(token => {
-          localStorage.setItem('jwt', token)
-        });
-      }
-    })
+        this.currentUser$.subscribe(user => {
+            if (user) {
+                user.getIdToken(true).then(token => {
+                    localStorage.setItem('jwt', token)
+                });
+            }
+        })
     }
 
-saveUser(uid: string, email?: string, username?: string) {
+    saveUser(uid: string, email?: string, username?: string) {
         let user =  {
             firebaseId: uid,
             email: email ?? "",
@@ -50,25 +50,25 @@ saveUser(uid: string, email?: string, username?: string) {
             })
     }
 
-getCurrentUser() {
-    return this.user
-        ? of(this.user)
-        : this.currentUser$
-            .pipe(
-                switchMap((userResp) => this.userService.getCurrent(userResp?.uid!)
-                    .pipe(
-                        map((resp) => {
-                            this.user = resp.body!;
-                            this.eventService.userChanged(this.user);
-                            return this.user;
-                        }))
-                ))
-}
+    getCurrentUser() {
+        return this.user
+            ? of(this.user)
+            : this.currentUser$
+                .pipe(
+                    switchMap((userResp) => this.userService.getCurrent(userResp?.uid!)
+                        .pipe(
+                            map((resp) => {
+                                this.user = resp.body!;
+                                this.eventService.userChanged(this.user);
+                                return this.user;
+                            }))
+                    ))
+    }
 
-setUser(user: User) {
-    this.user = user;
-    this.eventService.userChanged(this.user);
-}
+    setUser(user: User) {
+        this.user = user;
+        this.eventService.userChanged(this.user);
+    }
 
     signUp(username: string, email: string, password: string) {
         return from(createUserWithEmailAndPassword(this.auth, email, password)

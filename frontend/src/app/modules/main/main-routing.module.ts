@@ -33,9 +33,9 @@ const routes: Routes = [{
         component: UserProfilePageComponent,
         pathMatch: 'full'
     }, {
-      path: 'account',
-      component: EditUserProfilePageComponent,
-      pathMatch: 'full'
+        path: 'account',
+        component: EditUserProfilePageComponent,
+        pathMatch: 'full'
     }, {
         path: '**',
         component: NotFoundComponent,
