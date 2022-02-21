@@ -1,4 +1,6 @@
-﻿namespace Codi.Core.WebAPI.Middlewares
+﻿using Codi.Core.BLL.Exceptions;
+
+namespace Codi.Core.WebAPI.Middlewares
 {
     public class GenericExceptionHandlerMiddleware
     {
@@ -31,6 +33,7 @@
             context.Response.StatusCode = exception switch
             {
                 ArgumentNullException => 400,
+                NotFoundException => 400,
                 _ => 500
             };
 

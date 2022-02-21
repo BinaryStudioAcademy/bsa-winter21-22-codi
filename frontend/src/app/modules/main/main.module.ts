@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
 import { PublishAppDialogComponent } from './applications/publish-app-dialog/publish-app-dialog.component';
+import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
+import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
 
 @NgModule({
     declarations: [
@@ -28,7 +30,8 @@ import { PublishAppDialogComponent } from './applications/publish-app-dialog/pub
         MyProjectsPageComponent,
         CoursesPageComponent,
         PublishAppDialogComponent,
-
+        UserProfilePageComponent,
+        EditUserProfilePageComponent,
     ],
     imports: [
         SharedModule,

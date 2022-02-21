@@ -87,6 +87,7 @@ namespace Codi.Core.DAL.Context
 
             return new Faker<User>()
                 .RuleFor(pi => pi.Id, f => f.IndexGlobal)
+                .RuleFor(pi => pi.FirebaseId, f => f.Random.Guid().ToString())
                 .RuleFor(pi => pi.UserName, f => f.Internet.UserName())
                 .RuleFor(pi => pi.FirstName, f => f.Name.FirstName())
                 .RuleFor(pi => pi.LastName, f => f.Name.LastName())
