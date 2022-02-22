@@ -1,11 +1,13 @@
 ﻿using Codi.Core.BL.Interfaces;
 using Codi.Core.DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Codi.Core.WebAPI.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Authorize]
+[Route("[controller]")]
 public class UsersController : ControllerBase
 {
     private readonly IUserService _usersService;
