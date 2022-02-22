@@ -12,7 +12,7 @@
   background-color: $background-panel-color
   box-shadow: 0 8px 16px 0 rgba(2, 2, 3, 0.32)
   border-radius: 8px
-  border: 1px solid #3C445C
+  border: 1px solid $secondary
   max-width: calc(550px + 32px)
 
 .repl-content
@@ -20,7 +20,6 @@
   border-width: 0
   padding: 16px
   flex-direction: column
-
 
 .title-repl
   border-width: 0
@@ -58,7 +57,7 @@
   justify-content: center
   border: 1px solid transparent
   color: inherit
-  background-color: #2B3245
+  background-color: $background-panel-color
   padding: 8px
   border-radius: 8px
   height: 28px
@@ -104,18 +103,9 @@
   border-width: 0
   margin-bottom: 8px
 
-.repl-form-input-box2
-  position: relative
-  border-width: 0
-
-.repl-form-input-box3
-  position: relative
-  border-width: 0
-  flex: 1 1 auto
-
 .repl-form-input
   border-radius: 8px
-  background-color: #2B3245
+  background-color: $background-panel-color
   outline: none 0
   border: 0 none
   font-size: 14px
@@ -123,66 +113,6 @@
   display: block
   width: 100%
   padding: 8px 32px
-
-.repl-form-input-box4
-  border-width: 0
-  border-style: solid
-  box-sizing: border-box
-  display: flex
-  flex-basis: auto
-  flex-direction: column
-  flex-shrink: 0
-  outline: none
-  min-height: 0
-  min-width: 0
-  position: absolute
-  top: 0
-  right: 0
-  height: 100%
-  align-items: center
-  justify-content: center
-
-.repl-form-dropdown-button
-  box-sizing: border-box
-  display: flex
-  flex-basis: auto
-  flex-direction: column
-  flex-shrink: 0
-  outline: none
-  min-height: 0
-  min-width: 0
-  border: 1px solid transparent
-  background: transparent
-  color: inherit
-  border-radius: 8px
-  align-items: center
-  justify-content: center
-  width: 24px
-  height: 24px
-
-.repl-form-box2
-  align-items: stretch
-  border-width: 0
-  flex: 1 0 auto
-  flex-direction: column
-  margin-bottom: 0
-
-.repl-form-box2-body
-  align-items: stretch
-  border-width: 0
-  display: flex
-  flex-direction: column
-  height: 100%
-
-.repl-form-body
-  align-items: stretch
-  display: flex
-  flex: 1 1 auto
-  padding: 16px
-  flex-direction: column
-  border: 1px solid #4E5569
-  border-radius: 8px
-  color: inherit
 
 .repl-form-title
   align-items: stretch
@@ -202,15 +132,6 @@
   border-width: 0
   display: flex
   flex-direction: column
-
-.repl-form-title-input
-  border-radius: 8px
-  background-color: #2B3245
-  padding: 8px
-  border: 0 none
-  font-size: 14px
-  line-height: 16px
-  width: 100%
 
 .repl-privacy-box
   border-width: 0
@@ -232,8 +153,25 @@
     width: 200px
     border-width: 1px
     border-style: solid
-    border-color: #4E5569
+    border-color: $secondary
     border-radius: 8px
+    background-color: $background-panel-color
+    &::-webkit-scrollbar
+        background-color: $background-panel-color
+        width: 8px
+        border-width: 0.5px
+        border-style: solid
+        border-color: $secondary
+        border-top-right-radius: 5px
+        border-bottom-right-radius: 5px
+
+    &::-webkit-scrollbar-thumb
+        background-color: $primary
+        border-radius: 10px
+        height: 1px
+
+::ng-deep .dropdown-item
+    color: $base-text-color
 
 
 
