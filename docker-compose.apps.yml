@@ -32,6 +32,21 @@ services:
       environment:
           ASPNETCORE_ENVIRONMENT: 'Development'
 
+  codi_builder:
+      build:
+        context: ./backend
+        dockerfile: ./Codi.Builder/Dockerfile
+        args:
+          - PROJECT_PORT=5090
+      container_name: 'codi_builder'
+      restart: on-failure
+      ports:
+          - "5090:5090"
+      networks:
+          - back
+      environment:
+          ASPNETCORE_ENVIRONMENT: 'Development'
+
   codi_client:
     depends_on:
         - codi_core
