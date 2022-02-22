@@ -19,9 +19,7 @@ export class CreateReplModalComponent implements OnInit {
   focus$ = new Subject<string>();
   click$ = new Subject<string>();
 
-  constructor(public activeModal: NgbActiveModal) {
-
-  }
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
   }
@@ -29,12 +27,10 @@ export class CreateReplModalComponent implements OnInit {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
     const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
     const inputFocus$ = this.focus$;
-
     return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
       map(term => (term === '' ? templates
         : templates.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 100))
     );
   }
-
 
 }
