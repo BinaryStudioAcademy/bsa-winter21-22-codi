@@ -2,6 +2,7 @@
 {
     public class User : AuditEntity<long>
     {
+        public string FirebaseId { get; set; } = default!;
         public string UserName { get; set; } = default!;
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

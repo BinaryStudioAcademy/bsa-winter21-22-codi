@@ -5,7 +5,7 @@ body
 .text
     color: #c6c8c9
     font-weight: bold
-    
+
 
 .modal-dialog .modal-content
     background-color: $background-panel-color
@@ -16,7 +16,7 @@ body
 
     & .modal-header
         border: 0
-        padding-bottom: 0 
+        padding-bottom: 0
 
     & .modal-footer
         border: 0
@@ -26,15 +26,15 @@ body
         padding: 0
         margin: 0
         user-select: none
-    
-    & .close:not(:disabled):not(:hover):not(.disabled):focus 
+
+    & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
 
 input.form-control
     border-color: $input-outline
     color: $input-text-color
     background: $background-panel-color
-    
+
     &:hover
         border-color: $input-hover-outline
 
@@ -49,3 +49,15 @@ a
   &:hover
     text-decoration: none
     color: $primary
+
+.avatar
+  min-width: 118px
+  max-width: 118px
+  height: 118px
+  border-radius: 100%
+  &.generic-avatar
+    background-color: $primary
+    color: $base-text-color
+    font-size: $h2-font-size
+    text-align: center
+    line-height: 118px
