@@ -30,21 +30,17 @@ services:
             - /etc/environment
 
     codi_builder:
-      build:
-        context: ./backend
-        dockerfile: ./Codi.Builder/Dockerfile
-        args:
-          - PROJECT_PORT=5090
-      container_name: 'codi_builder'
-      restart: on-failure
-      ports:
-          - "5090:5090"
-      networks:
-          - back
-      environment:
-            ASPNETCORE_ENVIRONMENT: 'Production'
-      env_file:
-          - /etc/environment
+        image: tatihutii/codi_builder:latest
+        container_name: 'codi_builder'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5090:5090"
+        environment:
+                ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
 
     codi_frontend:
         depends_on:
