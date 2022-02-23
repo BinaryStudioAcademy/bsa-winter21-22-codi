@@ -6,6 +6,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.WebHost.UseUrls("http://*:5090");
 
 var app = builder.Build();
 
@@ -20,6 +23,12 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseRouting();
+
+app.UseEndpoints(endpoinds =>
+{
+    endpoinds.MapHealthChecks("/health");
+    endpoinds.MapControllers();
+});
 
 app.Run();
