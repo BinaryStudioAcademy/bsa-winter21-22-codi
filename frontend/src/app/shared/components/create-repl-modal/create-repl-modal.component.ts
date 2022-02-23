@@ -13,13 +13,14 @@ import {NotificationService} from "@core/services/notification.service";
     styleUrls: ['./create-repl-modal.component.sass']
 })
 export class CreateReplModalComponent implements OnInit, OnDestroy {
-    form: FormGroup;
+
     @ViewChild('instance', {static: true}) instance: NgbTypeahead;
     focus$ = new Subject<string>();
     click$ = new Subject<string>();
     templates: Template [] = [];
     unsubscribe$ = new Subject<void>();
     project = {} as CreateProject;
+    form: FormGroup;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -51,8 +52,8 @@ export class CreateReplModalComponent implements OnInit, OnDestroy {
                 : this.templates.filter(t => t.name.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 100))
         );
     }
-    formatter = (x: {name: string}) => x.name;
 
+    formatter = (x: {name: string}) => x.name;
 
     getTemplates() {
         this.templateService.getNamesTemplate()
