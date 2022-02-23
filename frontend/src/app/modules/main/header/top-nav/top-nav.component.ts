@@ -4,6 +4,7 @@ import { User } from "@core/models/user/user";
 import { BaseComponent } from "@core/base/base.component";
 import {switchMap, takeUntil} from "rxjs";
 import { EventService } from "@core/services/event.service";
+import {ProjectCreationModalService} from "@core/services/project-creation-modal.service";
 
 @Component({
     selector: 'app-top-nav',
@@ -14,7 +15,8 @@ export class TopNavComponent extends BaseComponent implements OnInit {
     currentUser: User;
     constructor(
         private authService: AuthService,
-        private eventService: EventService
+        private eventService: EventService,
+        private modalService: ProjectCreationModalService
     ) {
         super();
     }
@@ -37,5 +39,9 @@ export class TopNavComponent extends BaseComponent implements OnInit {
 
     logout() {
         this.authService.logOut();
+    }
+
+    createRepl() {
+        this.modalService.openReplModal();
     }
 }
