@@ -26,6 +26,7 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<ISampleService, SampleService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IOrganizationService, OrganizationService>();
+            services.AddTransient<ICourseService, CourseService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

@@ -10,6 +10,8 @@ namespace Codi.Core.BL.MappingProfiles
         {
             CreateMap<Course, CourseDto>()
                 .ForMember(p => p.Avatar, o => o.MapFrom(c => c.Avatar == null ? "" : c.Avatar.URL));
+            CreateMap<CreateCourseDto, CourseDto>();
+            CreateMap<UpdateCourseDto, Course>();
         }
     }
 }
