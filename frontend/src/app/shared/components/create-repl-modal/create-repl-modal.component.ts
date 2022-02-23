@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProjectService} from "@core/services/project.service";
 import {CreateProject} from "@core/models/project/create-project";
 import {NotificationService} from "@core/services/notification.service";
+import {regexs} from "@shared/constants/regexs";
 
 @Component({
     templateUrl: './create-repl-modal.component.html',
@@ -32,7 +33,13 @@ export class CreateReplModalComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.getTemplates();
         this.form = new FormGroup({
-            projectName: new FormControl('', Validators.required),
+            projectName: new FormControl('',
+                [
+                    Validators.required,
+                    Validators.minLength(2),
+                    Validators.maxLength(15),
+                    Validators.pattern(regexs.username),
+                ]),
             privacy: new FormControl(false),
             template: new FormControl('', Validators.required)
         });

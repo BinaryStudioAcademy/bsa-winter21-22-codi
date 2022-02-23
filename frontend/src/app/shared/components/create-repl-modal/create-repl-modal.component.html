@@ -33,6 +33,7 @@
                 [ngbTypeahead]="search"
                 (focus)="focus$.next($any($event).target.value)"
                 (click)="click$.next($any($event).target.value)"
+                [editable]='false'
                 #instance="ngbTypeahead"
               />
             </div>
@@ -44,6 +45,14 @@
               <span class="repl-form-span">Title</span>
             </label>
             <input  placeholder="Name your project" class="form-control" formControlName="projectName">
+              <ul>
+                  <li class="text-danger" *ngIf="form.controls['projectName'].hasError('minlength') || form.controls['projectName'].hasError('maxlength')">
+                      <span class="repl-form-span">Your project name must be between 2 and 15 characters</span>
+                  </li>
+                  <li class="text-danger" *ngIf="form.controls['projectName'].hasError('pattern')">
+                      <span class="repl-form-span">Your project name can only contain latin letters, digits</span>
+                  </li>
+              </ul>
           </div>
           <div class="repl-form-title-box">
             <label class="repl-form-label">
