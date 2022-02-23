@@ -1,3 +1,77 @@
 <div class="content">
-    <p class="text">courses-page works!</p>
+    <div class="organizations-header">
+        <h1>Your Organizations</h1>
+    </div>
+    <div class="organization-type">
+        <div class="organization-type-header">
+            <i class="fa fa-book fa-lg mr-2"></i>
+            <h2 class="mr-2">Education</h2>
+            <span class="line"></span>
+        </div>
+        <div class="btn btn-primary">New Education Organization</div>
+        <div class="organizations-collection">
+            <div class="organization">
+                <div class="organization-header">
+                    <h3>Name</h3>
+                    <div class="btn-group" ngbDropdown role="group">
+                        <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
+                        <div class="dropdown-menu" ngbDropdownMenu>
+                            <button class="btn btn-primary mb-0">Org settings</button>
+                            <button class="btn btn-primary mb-0">Delete org</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="organization-subheader">
+                    <div class="org-info">
+                        <div class="org-info-item">1 User</div>
+                        <div class="org-info-item">You are an org owner</div>
+                    </div>
+                    <div class="courses-info">
+                        <span class="line"></span>
+                        <div>You are a member of 2 courses on the fs organization</div>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="courses-collection">
+                    <div class="course">
+                        <div class="course-container">
+                            <div class="course-info">
+                                <img class="avatar-sm" src="/assets/images/google.png" alt="course avatar">
+                                <div>Course title</div>
+                            </div>
+                            <div class="user-settings">
+                                <img class="avatar-sm" src="/assets/images/google.png" alt="user avatar">
+                                <div class="btn-group" ngbDropdown role="group">
+                                    <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
+                                    <div class="dropdown-menu" ngbDropdownMenu>
+                                        <button class="btn btn-primary mb-0">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="line"></span>
+                    <div class="course">
+                        <div class="course-container">
+                            <div class="course-info">
+                                <img class="avatar-sm" src="/assets/images/google.png" alt="course avatar">
+                                <div>Course title</div>
+                            </div>
+                            <div class="user-settings">
+                                <img class="avatar-sm" src="/assets/images/google.png" alt="user avatar">
+                                <div class="btn-group" ngbDropdown role="group">
+                                    <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
+                                    <div class="dropdown-menu" ngbDropdownMenu>
+                                        <button class="btn btn-primary mb-0">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div class="btn btn-primary mb-0">New course in (Org name)</div>
+        </div>
+    </div>
 </div>
