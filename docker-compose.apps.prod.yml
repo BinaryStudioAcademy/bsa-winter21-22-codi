@@ -29,6 +29,19 @@ services:
         env_file:
             - /etc/environment
 
+    codi_builder:
+        image: tatihutii/codi_builder:latest
+        container_name: 'codi_builder'
+        restart: on-failure
+        networks:
+            - back
+        ports:
+            - "5090:5090"
+        environment:
+                ASPNETCORE_ENVIRONMENT: 'Production'
+        env_file:
+            - /etc/environment
+
     codi_frontend:
         depends_on:
             - codi_core

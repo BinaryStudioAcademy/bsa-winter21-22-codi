@@ -29,6 +29,7 @@ By default, apps run on the following ports:
 |-|-|
 | Codi.**Core** | 5050 |
 | Codi.**Notifier** | 5070 |
+| Codi.**Builder** | 5090 |
 | Codi.**Frontend** | 80 or 4200 |
 | RabbitMQ | 5672 |
 | Elasticsearch | 9200 |
