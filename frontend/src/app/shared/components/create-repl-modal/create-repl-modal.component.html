@@ -1,6 +1,6 @@
 <div class="repl-close">
   <button class="btn btn-outline-primary btn-sm" (click)="activeModal.close()">
-    <svg preserveAspectRatio="xMidYMin" width="14" height="14" viewBox="0 0 24 24" color="currentColor" stroke="currentColor" stroke-width="2" fill="transparent" style="vertical-align: middle;">
+    <svg preserveAspectRatio="xMidYMin" width="14" height="14" viewBox="0 0 24 24" color="currentColor" stroke="currentColor" stroke-width="2" fill="transparent" style="vertical-align: middle">
       <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
   </button>
@@ -13,20 +13,25 @@
             <span class="repl-form-span">Import from GitHub</span>
         </button>
     </div>
-    <form>
+    <form [formGroup]="form">
       <div class="repl-create-form">
         <div class="repl-form-template">
           <div class="repl-form-box">
             <label class="repl-form-label">
               <span class="repl-form-span">Template</span>
             </label>
+              <ng-template #rt let-r="result" let-t="term">
+                  <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+              </ng-template>
             <div class="repl-form-input-box">
               <input
                 id="typeahead-focus"
                 type="text"
                 class="form-control"
                 placeholder="Search templates"
-                [(ngModel)]="model"
+                [inputFormatter]="formatter"
+                [resultTemplate]="rt"
+                formControlName="template"
                 [ngbTypeahead]="search"
                 (focus)="focus$.next($any($event).target.value)"
                 (click)="click$.next($any($event).target.value)"
@@ -40,7 +45,7 @@
             <label class="repl-form-label">
               <span class="repl-form-span">Title</span>
             </label>
-            <input  placeholder="Name your project" class="form-control" value="">
+            <input  placeholder="Name your project" class="form-control" formControlName="projectName">
           </div>
           <div class="repl-form-title-box">
             <label class="repl-form-label">
@@ -48,12 +53,14 @@
             </label>
             <div class="repl-privacy-box">
               <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" formControlName="privacy">
                 <label class="custom-control-label" for="customSwitch1"></label>
               </div>
               <span class="repl-form-span">Repl is public</span>
             </div>
-            <input class="btn btn-primary btn-sm" type="submit" value="Create project">
+              <button class="btn btn-primary btn-sm" [disabled]="!form.valid" type="submit" (click)="submit()">
+                  Create project
+              </button>
           </div>
         </div>
       </div>

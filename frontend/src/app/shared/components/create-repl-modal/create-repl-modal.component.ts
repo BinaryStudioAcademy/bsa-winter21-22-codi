@@ -1,34 +1,83 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgbActiveModal, NgbTypeahead} from "@ng-bootstrap/ng-bootstrap";
-import {debounceTime, distinctUntilChanged, filter, map, merge, Observable, OperatorFunction, Subject} from "rxjs";
-
-const templates = ['Clojure', 'Haskell', 'Kotlin', 'QBasic', 'Forth', 'LOLCODE', 'BrainF', 'Emoticon', 'Bloop', 'Unlambda',
-    'CoffeeScript', 'Scheme', 'APL', 'Lua', 'Ruby', 'Roy', 'Python', 'Node.js', 'Deno (beta)', 'Golang', 'C++', 'C', 'C#',
-    'F#', 'HTML', 'CSS', 'JS', 'Rust', 'Swift', 'Python', 'Basic (beta)', 'R', 'Bash', 'Crystal', 'Julia', 'Elixir', 'Nim', 'Dart',
-    'Reason Node.js', 'Tcl', 'Erlang', 'TypeScript', 'Pygame', 'Love2D', 'Emacs Lisp (Elisp)', 'PHP Web Server', 'SQLite', 'Java',
-    'PHP CLI', 'Pyxel', 'Raku', 'Scala (beta)', 'Nix (beta)', 'JavaScript'];
+import {debounceTime, distinctUntilChanged, filter, map, merge, Observable, OperatorFunction, Subject, takeUntil} from "rxjs";
+import {TemplateService} from "@core/services/template.service";
+import {Template} from "@core/models/template/template";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ProjectService} from "@core/services/project.service";
+import {CreateProject} from "@core/models/project/create-project";
+import {NotificationService} from "@core/services/notification.service";
 
 @Component({
     templateUrl: './create-repl-modal.component.html',
     styleUrls: ['./create-repl-modal.component.sass']
 })
-export class CreateReplModalComponent {
-
-    model: any;
+export class CreateReplModalComponent implements OnInit, OnDestroy {
+    form: FormGroup;
     @ViewChild('instance', {static: true}) instance: NgbTypeahead;
     focus$ = new Subject<string>();
     click$ = new Subject<string>();
+    templates: Template [] = [];
+    unsubscribe$ = new Subject<void>();
+    project = {} as CreateProject;
 
-    constructor(public activeModal: NgbActiveModal) {}
+    constructor(
+        public activeModal: NgbActiveModal,
+        private templateService: TemplateService,
+        private projectService: ProjectService,
+        private notificationService: NotificationService
+    ) {}
 
-    search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+    ngOnInit(): void {
+        this.getTemplates();
+        this.form = new FormGroup({
+            projectName: new FormControl('', Validators.required),
+            privacy: new FormControl(false),
+            template: new FormControl('', Validators.required)
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+
+    search: OperatorFunction<string, readonly Template[]> = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
         const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
         const inputFocus$ = this.focus$;
         return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-            map(term => (term === '' ? templates
-                : templates.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 100))
+            map(term => (term === '' ? this.templates
+                : this.templates.filter(t => t.name.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 100))
         );
     }
+    formatter = (x: {name: string}) => x.name;
 
+
+    getTemplates() {
+        this.templateService.getNamesTemplate()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(
+                (resp) => {
+                    if(resp.body) this.templates = resp.body
+                })
+    }
+
+    submit() {
+        this.project.isPublic = this.form.value.privacy;
+        this.project.templateId = this.form.value.template.id;
+        this.project.title = this.form.value.projectName;
+        this.projectService.createProject(this.project)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (resp) => {
+                    let proj = JSON.stringify(resp.body?.title)
+                    this.activeModal.close()
+                    this.notificationService.showSuccessMessage('Project created: ' + proj, 'Good job!')
+                },
+                error: () => {
+                    this.activeModal.close()
+                    this.notificationService.showErrorMessage('Something was wrong', 'Error')
+                }});
+    }
 }
