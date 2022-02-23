@@ -12,7 +12,7 @@ export class ConfirmationDialogService {
     constructor(private modalService: NgbModal) {}
 
     openConfirmationDialog(title: string, content: string, options?: Partial<ConfirmationDialogOptions>) {
-        const modalRef = this.modalService.open(ConfirmationDialogComponent);
+        const modalRef = this.modalService.open(ConfirmationDialogComponent, {centered: options?.centered ?? false});
         const component = modalRef.componentInstance as ConfirmationDialogComponent;
 
         component.setContent(title, content, options);
