@@ -30,6 +30,18 @@ body
     & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
 
+.dialog-container
+    padding: 20px
+
+    .dialog-header
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+
+        .close
+            color: $base-text-color
+            outline: none
+
 input.form-control
     border-color: $input-outline
     color: $input-text-color
@@ -61,3 +73,14 @@ a
     font-size: $h2-font-size
     text-align: center
     line-height: 118px
+
+.avatar-sm
+    max-width: 32px
+    max-height: 32px
+    margin-right: 5px
+    &.generic-avatar
+        background-color: $primary
+        color: $base-text-color
+        font-size: $h5-font-size
+        text-align: center
+        line-height: 32px

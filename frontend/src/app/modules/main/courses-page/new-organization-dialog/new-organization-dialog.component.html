@@ -1,0 +1,15 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+        <h3>New education Organization</h3>
+        <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="organization">Organization name</label>
+            <input type="text" class="form-control" id="organization" placeholder="What should the Organization be called?">
+        </div>
+        <button type="submit" (click)="createOrganization()" class="btn btn-primary w-100 mt-3">Create organization</button>
+    </form>
+</div>

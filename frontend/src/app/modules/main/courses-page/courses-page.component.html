@@ -8,7 +8,7 @@
             <h2 class="mr-2">Education</h2>
             <span class="line"></span>
         </div>
-        <div class="btn btn-primary">New Education Organization</div>
+        <button class="btn btn-primary" (click)="createOrganization()">New Education Organization</button>
         <div class="organizations-collection">
             <div class="organization">
                 <div class="organization-header">
@@ -71,7 +71,7 @@
                     <span class="line"></span>
                 </div>
             </div>
-            <div class="btn btn-primary mb-0">New course in (Org name)</div>
+            <div class="btn btn-primary mb-0" (click)="createCourse()">New course in (Org name)</div>
         </div>
     </div>
 </div>

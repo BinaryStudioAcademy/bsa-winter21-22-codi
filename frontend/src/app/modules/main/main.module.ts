@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { PublishAppDialogComponent } from './applications/publish-app-dialog/publish-app-dialog.component';
 import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
 import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
+import { NewOrganizationDialogComponent } from './courses-page/new-organization-dialog/new-organization-dialog.component';
+import { NewCourseDialogComponent } from './courses-page/new-course-dialog/new-course-dialog.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +34,8 @@ import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-pa
         PublishAppDialogComponent,
         UserProfilePageComponent,
         EditUserProfilePageComponent,
+        NewOrganizationDialogComponent,
+        NewCourseDialogComponent,
     ],
     imports: [
         SharedModule,
