@@ -28,7 +28,8 @@ namespace Codi.Core.DAL.Context
 
             var images = GenerateRandomImages(100);
             var users = GenerateRandomUsers(images, 50);
-            var courses = GenerateRandomCourses(images, users, 20);
+            var organizations = GenerateRandomOrganizations(users, 30);
+            var courses = GenerateRandomCourses(images, users, organizations, 20);
             var units = GenerateRandomUnits(courses, 40);
             var lessons = GenerateRandomLessons(units, 80);
             var courseRoles = GenerateRandomCourseRoles();
@@ -50,6 +51,7 @@ namespace Codi.Core.DAL.Context
             modelBuilder.Entity<CourseUser>().HasData(courseUsers);
             modelBuilder.Entity<Submission>().HasData(submissions);
             modelBuilder.Entity<Project>().HasData(projects);
+            modelBuilder.Entity<Organization>().HasData(organizations);
             modelBuilder.Entity<InvitedUser>().HasData(invitedUsers);
             modelBuilder.Entity<Thread>().HasData(threads);
             modelBuilder.Entity<ThreadComment>().HasData(threadComments);
@@ -99,7 +101,7 @@ namespace Codi.Core.DAL.Context
                 .Generate(count);
         }
 
-        public static IList<Course> GenerateRandomCourses(IList<Image> images, IList<User> users, int count)
+        public static IList<Course> GenerateRandomCourses(IList<Image> images, IList<User> users, IList<Organization> organizations, int count)
         {
             Faker.GlobalUniqueIndex = 1;
 
@@ -110,6 +112,7 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.AvatarId, f => f.PickRandom(images).Id)
                 .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
+                .RuleFor(pi => pi.OrganizationId, f => f.PickRandom(organizations).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
@@ -197,6 +200,19 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.Title, f => f.Lorem.Sentence())
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.IsPublic, f => f.Random.Bool())
+                .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
+                .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
+                .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
+                .Generate(count);
+        }
+        
+        public static IList<Organization> GenerateRandomOrganizations(IList<User> users, int count)
+        {
+            Faker.GlobalUniqueIndex = 1;
+
+            return new Faker<Organization>()
+                .RuleFor(pi => pi.Id, f => f.IndexGlobal)
+                .RuleFor(pi => pi.Name, f => f.Lorem.Sentence())
                 .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))

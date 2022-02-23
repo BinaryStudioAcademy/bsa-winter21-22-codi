@@ -8,6 +8,11 @@ namespace Codi.Core.DAL.Context.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Course> builder)
         {
+            builder.HasOne(c => c.Organization)
+                .WithMany(o => o.Courses)
+                .HasForeignKey(c => c.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
             builder.Property(e => e.Name)
                 .HasMaxLength(100);
 
