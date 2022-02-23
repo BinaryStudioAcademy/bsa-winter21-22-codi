@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Codi.Core.WebAPI.Controllers;
 
-[ApiController]
 [Authorize]
+[ApiController]
 [Route("[controller]")]
 public class UsersController : ControllerBase
 {
