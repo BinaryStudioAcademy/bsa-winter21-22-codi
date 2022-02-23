@@ -1,7 +1,7 @@
 @import 'variables'
 
 body
-    margin: 0px
+    margin: 0
 .text
     color: #c6c8c9
     font-weight: bold
@@ -61,3 +61,27 @@ a
     font-size: $h2-font-size
     text-align: center
     line-height: 118px
+
+.dropdown-menu
+    max-height: 140px
+    overflow-y: auto
+    width: 200px
+    border-width: 1px
+    border-style: solid
+    border-color: $secondary
+    border-radius: 8px
+    background-color: $background-panel-color
+    &::-webkit-scrollbar
+        background-color: $background-panel-color
+        width: 8px
+        border-width: 0.5px
+        border-style: solid
+        border-color: $secondary
+        border-top-right-radius: 5px
+        border-bottom-right-radius: 5px
+    &::-webkit-scrollbar-thumb
+        background-color: $primary
+        border-radius: 10px
+
+.dropdown-item
+    color: $base-text-color
