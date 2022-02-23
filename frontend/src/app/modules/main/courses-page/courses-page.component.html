@@ -9,42 +9,41 @@
             <span class="line"></span>
         </div>
         <button class="btn btn-primary" (click)="createOrganization()">New Education Organization</button>
-        <div class="organizations-collection">
+        <div class="organizations-collection" *ngFor="let org of organizations">
             <div class="organization">
                 <div class="organization-header">
-                    <h3>Name</h3>
+                    <h3>{{org.name}}</h3>
                     <div class="btn-group" ngbDropdown role="group">
                         <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                         <div class="dropdown-menu" ngbDropdownMenu>
-                            <button class="btn btn-primary mb-0">Org settings</button>
-                            <button class="btn btn-primary mb-0">Delete org</button>
+                            <button class="btn mb-0">Org settings</button>
+                            <button class="btn mb-0" (click)="deleteOrganization(org.id)">Delete org</button>
                         </div>
                     </div>
                 </div>
                 <div class="organization-subheader">
                     <div class="org-info">
-                        <div class="org-info-item">1 User</div>
                         <div class="org-info-item">You are an org owner</div>
                     </div>
                     <div class="courses-info">
                         <span class="line"></span>
-                        <div>You are a member of 2 courses on the fs organization</div>
+                        <div>You are a member of {{org.courses.length}} courses on the fs organization</div>
                         <span class="line"></span>
                     </div>
                 </div>
-                <div class="courses-collection">
+                <div class="courses-collection" *ngFor="let course of org.courses">
                     <div class="course">
                         <div class="course-container">
                             <div class="course-info">
                                 <img class="avatar-sm" src="/assets/images/google.png" alt="course avatar">
-                                <div>Course title</div>
+                                <div>{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">
                                 <img class="avatar-sm" src="/assets/images/google.png" alt="user avatar">
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn btn-primary mb-0">Delete</button>
+                                        <button class="btn mb-0">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -55,14 +54,14 @@
                         <div class="course-container">
                             <div class="course-info">
                                 <img class="avatar-sm" src="/assets/images/google.png" alt="course avatar">
-                                <div>Course title</div>
+                                <div>{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">
                                 <img class="avatar-sm" src="/assets/images/google.png" alt="user avatar">
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn btn-primary mb-0">Delete</button>
+                                        <button class="btn mb-0">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -70,8 +69,8 @@
                     </div>
                     <span class="line"></span>
                 </div>
+                <div class="btn btn-primary mb-0" (click)="createCourse()">New course in (Org name)</div>
             </div>
-            <div class="btn btn-primary mb-0" (click)="createCourse()">New course in (Org name)</div>
         </div>
     </div>
 </div>

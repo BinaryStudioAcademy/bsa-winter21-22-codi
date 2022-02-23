@@ -1,4 +1,4 @@
-@import '~src/styles/global'
+@import '~src/styles/variables'
 
 .line
     width: 100%
@@ -20,6 +20,13 @@
     background-color: $background-panel-color
     .btn
         width: 100%
+        background-color: $background-panel-color
+        color: $base-text-color
+        &:focus
+            outline: none
+            box-shadow: none
+        &:hover
+            background-color: $background-panel-color-light
 
 .toggle
     padding: 10px 20px
@@ -33,6 +40,8 @@
     color: $base-text-color
     cursor: default
     padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
     .organizations-header
         margin-bottom: 15px
 
@@ -45,13 +54,15 @@
             margin-bottom: 15px
 
         .organizations-collection
-            background-color: $background-panel-color
-            padding: 15px 10px
-            border: 2px solid $secondary
-            border-radius: 5px
+            margin-bottom: 15px
 
             .organization
-
+                background-color: $background-panel-color
+                padding: 15px 10px
+                border: 2px solid $secondary
+                border-radius: 5px
+                .create-course
+                    margin-top: 15px
                 .organization-header
                     display: flex
                     justify-content: space-between
@@ -74,6 +85,7 @@
                         align-items: center
                         color: $muted-text-color
                         font-size: $font-size-sm
+                        padding: 10px 0
                         div
                             padding: 0 5px
                             white-space: nowrap
@@ -81,7 +93,7 @@
                             width: 2%
 
             .courses-collection
-                margin-bottom: 15px
+
                 .course
 
                     .course-info
