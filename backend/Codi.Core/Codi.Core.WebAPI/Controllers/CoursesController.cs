@@ -1,5 +1,6 @@
 ﻿using Codi.Core.BL.Interfaces;
 using Codi.Core.Common.DTO.Course;
+using Codi.Core.DAL.Entities;
 using Codi.Core.WebAPI.Extentions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -57,6 +58,18 @@ public class CoursesController : ControllerBase
     public async Task<ActionResult> DeleteAsync(int courseId)
     {
         await _courseService.DeleteCourseAsync(courseId);
+        return NoContent();
+    }
+
+    [HttpDelete("leaveCourse/{courseId}")]
+    public async Task<ActionResult> LeaveAsync(int courseId)
+    {
+        var leaveCourseDto = new LeaveCourseDto()
+        {
+            CourseId = courseId,
+            UserId = (await _userService.GetByFirebaseId(this.GetUserIdFromToken())).Id
+        };
+        await _courseService.LeaveCourseAsync(leaveCourseDto);
         return NoContent();
     }
 }

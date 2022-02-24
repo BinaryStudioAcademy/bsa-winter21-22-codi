@@ -25,12 +25,25 @@ public class CourseService : BaseService, ICourseService
         {
             throw new InvalidOperationException($"Course with name {courseDto.Name} already exists.");
         }
+
+        var createdAt = DateTime.Now;
         var course = _mapper.Map<Course>(courseDto, opts => opts.AfterMap((src, dst) =>
         {
-            dst.CreatedAt = DateTime.Now;
+            dst.CreatedAt = createdAt;
         }));
 
         var createdCourse = _context.Add(course).Entity;
+        await _context.SaveChangesAsync();
+        
+        var courseUser = new CourseUser()
+        {
+            CourseId = createdCourse.Id,
+            UserId = courseDto.OwnerId,
+            CourseRoleId = (await _context.CourseRoles.FirstAsync(r => r.Name == "admin")).Id,
+            CreatedAt = createdAt
+        };
+        
+        _context.Add(courseUser);
         await _context.SaveChangesAsync();
 
         return _mapper.Map<CourseDto>(createdCourse);
@@ -75,6 +88,20 @@ public class CourseService : BaseService, ICourseService
         }
         _context.Remove(course);
 
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task LeaveCourseAsync(LeaveCourseDto leaveCourseDto)
+    {
+        var courseUser = await _context.CourseUsers
+            .FirstOrDefaultAsync(cu => cu.UserId == leaveCourseDto.UserId && cu.CourseId == leaveCourseDto.CourseId);
+
+        if (courseUser is null)
+        {
+            throw new NotFoundException(nameof(CourseUser));
+        }
+
+        _context.Remove(courseUser);
         await _context.SaveChangesAsync();
     }
 }

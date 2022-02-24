@@ -13,7 +13,7 @@
             <div class="organization">
                 <div class="organization-header">
                     <h3>{{org.name}}</h3>
-                    <div class="btn-group" ngbDropdown role="group">
+                    <div class="btn-group" ngbDropdown role="group" *ngIf="org.ownerId == user.id">
                         <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                         <div class="dropdown-menu" ngbDropdownMenu>
                             <button class="btn mb-0">Org settings</button>
@@ -39,11 +39,23 @@
                                 <div>{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">
-                                <img class="avatar-sm" src="/assets/images/google.png" alt="user avatar">
+                                <img *ngIf="course.owner?.avatar; else generic" class="avatar-sm" src="{{course.owner?.avatar}}" alt="User avatar" [routerLink]="['/main/user',course.owner.id]">
+                                <ng-template #generic>
+                                    <div class="avatar-sm generic-avatar" [routerLink]="['/main/user',course.owner.id]">
+                                        {{course.owner?.userName?.substring(0,1)?.toUpperCase()}}
+                                    </div>
+                                </ng-template>
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)">Delete</button>
+                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)" *ngIf="course.owner.id == user.id; else leave">
+                                            Delete
+                                        </button>
+                                        <ng-template #leave>
+                                            <button class="btn mb-0" (click)="leaveCourse(course.id, org.id)">
+                                                Leave
+                                            </button>
+                                        </ng-template>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +63,7 @@
                     </div>
                     <span class="line"></span>
                 </div>
-                <div class="btn btn-primary mb-0" *ngIf="org.ownerId === user.id" (click)="createCourse(org.id)">New course in {{org.name}}</div>
+                <div class="btn btn-primary mb-0" *ngIf="org.ownerId === user.id" (click)="createCourse(org)">New course in {{org.name}}</div>
             </div>
         </div>
     </div>

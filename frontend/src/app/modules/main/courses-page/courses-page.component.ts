@@ -9,12 +9,11 @@ import { Organization } from "@core/models/organization/organization";
 import { AuthService } from "@core/services/auth.service";
 import { OrganizationService } from "@core/services/organization.service";
 import { User } from "@core/models/user/user";
-import {flatMap, switchMap, takeUntil} from "rxjs";
+import { switchMap, takeUntil} from "rxjs";
 import { NotificationService } from "@core/services/notification.service";
 import { EventService } from "@core/services/event.service";
-import {ConfirmationDialogComponent} from "@shared/components/confirmation-dialog/confirmation-dialog.component";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
-import {CourseService} from "@core/services/course.service";
+import { CourseService } from "@core/services/course.service";
 
 @Component({
     selector: 'app-courses-page',
@@ -43,23 +42,27 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         this.authService
             .getCurrentUser()
             .pipe(
-                switchMap((u) => this.organizationService.getUserOrganizations(u.id)),
+                switchMap((u) => {
+                    this.user = u;
+                    return this.organizationService.getUserOrganizations(u.id);
+                }),
                 takeUntil(this.unsubscribe$)
             )
-            .subscribe((orgs) => this.organizations = orgs.body!);
+            .subscribe((orgs) => {this.organizations = orgs.body!
+                console.log(this.organizations)});
 
         this.eventService.userChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe((user) => {
             this.user = user;
         });
     }
 
-    createCourse(organizationId: number) {
+    createCourse(organization : Organization) {
         const modalRef = this.modalService.open(NewCourseDialogComponent, { centered: true })
-        modalRef.componentInstance.orgId = organizationId;
+        modalRef.componentInstance.org = organization;
         modalRef.result
             .then((result) => {
-                if(result !== null) {
-                    this.organizations.find(o => o.id === organizationId)?.courses.push(result);
+                if(result) {
+                    this.organizations.find(o => o.id === organization.id)?.courses.push(result);
                 }
             })
     }
@@ -94,17 +97,49 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
             });
     }
 
+    leaveCourse(courseId: number, orgId: number) {
+        let org = this.organizations.find(o => o.id === orgId);
+        let courseName = org?.courses.find(c => c.id === courseId)?.displayName;
+        this.confirmationDialogService
+            .openConfirmationDialog(
+                `Leave ${courseName}?`,
+                `Are you sure you want to leave this Team?
+                You will lose access to all of the Team's Repls and Folders.`,
+                {
+                    centered: true,
+                }
+            )
+            .subscribe((result) => {
+                if(!result) {
+                    this.coursesService
+                        .leaveCourse(courseId)
+                        .pipe(takeUntil(this.unsubscribe$))
+                        .subscribe(
+                            next => {
+                                org!.courses = org?.courses.filter(c => c.id !== courseId)!;
+                                if(!org!.courses.length){
+                                    this.organizations = this.organizations.filter(o => o.id !== org!.id);
+                                }
+                                this.notificationService.showSuccessMessage("You have successfully left course");
+                            },
+                            error => this.notificationService.showErrorMessage("Something went wrong...")
+                        );
+                }
+            });
+    }
+
     createOrganization() {
         this.modalService.open(NewOrganizationDialogComponent, { centered: true }).result
             .then((result) => {
-                if(result !== null) {
+                if(result) {
                     this.organizations.push(result);
                 }
             })
     }
 
     deleteOrganization(id: number) {
-        let orgName = this.organizations.find(o => o.id === id)?.name;
+        let org = this.organizations.find(o => o.id === id);
+        let orgName = org?.name;
         this.confirmationDialogService
             .openConfirmationDialog(
                 `Delete ${orgName}?`,
@@ -115,24 +150,22 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
             )
             .subscribe((result) => {
                 if(!result) {
-                    this.organizationService
-                        .delete(id)
-                        .pipe(takeUntil(this.unsubscribe$))
-                        .subscribe(
-                            next => {
-                                this.organizations = this.organizations.filter(o => o.id !== id);
-                                this.notificationService.showSuccessMessage("Organization successfully deleted");
-                            },
-                            error => this.notificationService.showErrorMessage("Something went wrong...")
-                        );
+                    if(org!.courses.length <= 0) {
+                        this.organizationService
+                            .delete(id)
+                            .pipe(takeUntil(this.unsubscribe$))
+                            .subscribe(
+                                next => {
+                                    this.organizations = this.organizations.filter(o => o.id !== id);
+                                    this.notificationService.showSuccessMessage("Organization successfully deleted");
+                                },
+                                error => this.notificationService.showErrorMessage("Something went wrong...")
+                            );
+                    }
+                    else {
+                        this.notificationService.showErrorMessage("You must delete all courses before this action")
+                    }
                 }
             });
-    }
-
-    private getOrganizations(id: number) {
-        this.organizationService
-            .getUserOrganizations(id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe((organizations) => this.organizations = organizations.body!);
     }
 }

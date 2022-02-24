@@ -1,12 +1,12 @@
 <div class="dialog-container">
     <div class="dialog-header">
-        <h3>New Course in (org name here)</h3>
+        <h3>New Course in {{org.name}}</h3>
         <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="remark">
-        This course is in (org name here). Organization owners can see the members and contents of this team.
+        This course is in {{org.name}}. Organization owner can see the members and contents of this team.
     </div>
     <form [formGroup]="form">
         <div class="form-group">

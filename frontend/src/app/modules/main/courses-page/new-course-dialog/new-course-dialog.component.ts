@@ -7,6 +7,7 @@ import { BaseComponent } from "@core/base/base.component";
 import { takeUntil } from "rxjs";
 import { CreateCourse } from "@core/models/course/create-course";
 import { Course } from "@core/models/course/course";
+import { Organization } from "@core/models/organization/organization";
 
 @Component({
   selector: 'app-new-course-dialog',
@@ -14,7 +15,7 @@ import { Course } from "@core/models/course/course";
   styleUrls: ['./new-course-dialog.component.sass']
 })
 export class NewCourseDialogComponent extends BaseComponent implements OnInit {
-    @Input() orgId: number;
+    @Input() org: Organization;
     form: FormGroup;
 
     constructor(
@@ -47,7 +48,7 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
             {
                 displayName: formValue.displayName,
                 name: formValue.name,
-                organizationId: this.orgId
+                organizationId: this.org.id
             } as CreateCourse;
         this.courseService
             .create(createCourse)
@@ -57,7 +58,7 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
                     createdCourse = org.body;
                     this.notificationsService.showSuccessMessage('Course successfully created');
                 },
-                (error) => this.notificationsService.showErrorMessage('Failed to create course'),
+                (error) => this.notificationsService.showErrorMessage('This username have already used'),
                 () => this.modal.close(createdCourse)
             );
     }

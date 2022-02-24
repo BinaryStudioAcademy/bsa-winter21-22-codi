@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Codi.Core.BL.Interfaces;
 using Codi.Core.BLL.Exceptions;
+using Codi.Core.Common.DTO.Course;
 using Codi.Core.Common.DTO.Organization;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
@@ -15,15 +16,37 @@ public class OrganizationService : BaseService, IOrganizationService
     public async Task<ICollection<OrganizationDto>> GetUserOrganizationsAsync(long userId)
     {
         var organizations = await _context.Organizations
-            .Where(o => o.OwnerId == userId)
-                .Include(o => o.Courses)
-                    .ThenInclude(c => c.CourseUsers)
-                        .ThenInclude(cu => cu.User)
-                            .ThenInclude(u => u.Avatar)
+            .Include(o => o.Courses)
+                .ThenInclude(c => c.Owner)
+                    .ThenInclude(u => u.Avatar)
+            .Select((org) => new
+            {
+                org = new OrganizationDto()
+                {
+                    Id = org.Id,
+                    Name = org.Name,
+                    OwnerId = org.OwnerId,
+                    CreatedAt = org.CreatedAt,
+                    Courses = _mapper.Map<ICollection<CourseDto>>(
+                        org.Courses
+                            .Select(course => new
+                            {
+                                course,
+                                courseUsers = course.CourseUsers
+                            })
+                            .Where(r => r.courseUsers.Any(u => u.UserId == userId))
+                            .Select(r => r.course))
+                },
+                isCourseMember = org.Courses
+                    .Select(c => c.CourseUsers)
+                    .Any(cu => cu.Any(u => u.UserId == userId))
+            })
+            .Where(r => r.org.OwnerId == userId || r.isCourseMember)
+            .Select(r => r.org)
             .AsSplitQuery()
             .ToListAsync();
 
-        return _mapper.Map<ICollection<OrganizationDto>>(organizations);
+        return organizations;
     }
 
     public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto organizationDto)
