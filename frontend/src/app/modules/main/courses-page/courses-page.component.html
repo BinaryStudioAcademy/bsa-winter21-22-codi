@@ -23,11 +23,11 @@
                 </div>
                 <div class="organization-subheader">
                     <div class="org-info">
-                        <div class="org-info-item">You are an org owner</div>
+                        <div class="org-info-item" *ngIf="org.ownerId === user.id">You are an org owner</div>
                     </div>
                     <div class="courses-info">
                         <span class="line"></span>
-                        <div>You are a member of {{org.courses.length}} courses on the fs organization</div>
+                        <div>You are a member of {{org.courses.length}} courses on the {{org.name}} organization</div>
                         <span class="line"></span>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <div class="course">
                         <div class="course-container">
                             <div class="course-info">
-                                <img class="avatar-sm" src="/assets/images/google.png" alt="course avatar">
+                                <img class="avatar-sm" src="/assets/images/robot.png" alt="course avatar">
                                 <div>{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">
@@ -43,25 +43,7 @@
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn mb-0">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="course">
-                        <div class="course-container">
-                            <div class="course-info">
-                                <img class="avatar-sm" src="/assets/images/google.png" alt="course avatar">
-                                <div>{{course.displayName}}</div>
-                            </div>
-                            <div class="user-settings">
-                                <img class="avatar-sm" src="/assets/images/google.png" alt="user avatar">
-                                <div class="btn-group" ngbDropdown role="group">
-                                    <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
-                                    <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn mb-0">Delete</button>
+                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +51,7 @@
                     </div>
                     <span class="line"></span>
                 </div>
-                <div class="btn btn-primary mb-0" (click)="createCourse()">New course in (Org name)</div>
+                <div class="btn btn-primary mb-0" *ngIf="org.ownerId === user.id" (click)="createCourse(org.id)">New course in {{org.name}}</div>
             </div>
         </div>
     </div>

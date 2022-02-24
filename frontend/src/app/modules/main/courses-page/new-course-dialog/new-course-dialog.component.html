@@ -8,11 +8,16 @@
     <div class="remark">
         This course is in (org name here). Organization owners can see the members and contents of this team.
     </div>
-    <form>
+    <form [formGroup]="form">
         <div class="form-group">
-            <label for="course">Course name</label>
-            <input type="text" class="form-control" id="course" placeholder="What should the Course be called?">
+            <label for="courseName">Course display name</label>
+            <input type="text" class="form-control" id="courseName" placeholder="What should the Course be called?" formControlName="displayName">
         </div>
-        <button type="submit" (click)="createCourse()" class="btn btn-primary w-100 mt-3">Create course</button>
+        <div class="form-group">
+            <label for="courseDisplayName">Course username</label>
+            <input type="text" class="form-control" id="courseDisplayName" placeholder="course-username" aria-describedby="courseNameHelp" formControlName="name">
+            <div id="courseNameHelp" class="form-text attention">You can't change this after creating a Course! So pick carefully.</div>
+        </div>
+        <button type="submit" (click)="createCourse()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Create course</button>
     </form>
 </div>

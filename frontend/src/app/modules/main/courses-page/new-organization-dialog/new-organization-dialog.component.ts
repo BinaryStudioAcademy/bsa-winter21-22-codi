@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { BaseComponent } from "@core/base/base.component";
 import { CreateOrganization } from "@core/models/organization/create-organization";
 import { takeUntil } from "rxjs";
+import { Organization } from "@core/models/organization/organization";
 
 @Component({
   selector: 'app-new-organization-dialog',
@@ -34,7 +35,7 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
     }
 
     createOrganization() {
-        let createdOrg: CreateOrganization | null = null;
+        let createdOrg: Organization | null = null;
         let formValue = this.form.value;
         let createOrganization =
             {
@@ -48,7 +49,7 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
                     createdOrg = org.body;
                     this.notificationsService.showSuccessMessage('Organization successfully created');
                 },
-                error => this.notificationsService.showSuccessMessage('error'),
+                error => this.notificationsService.showErrorMessage('Failed to create organization'),
                 () => this.modal.close(createdOrg)
             );
     }

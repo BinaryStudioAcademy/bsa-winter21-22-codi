@@ -14,6 +14,7 @@ import { NotificationService } from "@core/services/notification.service";
 import { EventService } from "@core/services/event.service";
 import {ConfirmationDialogComponent} from "@shared/components/confirmation-dialog/confirmation-dialog.component";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
+import {CourseService} from "@core/services/course.service";
 
 @Component({
     selector: 'app-courses-page',
@@ -29,6 +30,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         private modalService: NgbModal,
         private authService: AuthService,
         private organizationService: OrganizationService,
+        private coursesService: CourseService,
         private notificationService: NotificationService,
         private eventService: EventService,
         private confirmationDialogService: ConfirmationDialogService
@@ -51,14 +53,50 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         });
     }
 
-    createCourse() {
-        this.modalService.open(NewCourseDialogComponent, { centered: true });
+    createCourse(organizationId: number) {
+        const modalRef = this.modalService.open(NewCourseDialogComponent, { centered: true })
+        modalRef.componentInstance.orgId = organizationId;
+        modalRef.result
+            .then((result) => {
+                if(result !== null) {
+                    this.organizations.find(o => o.id === organizationId)?.courses.push(result);
+                }
+            })
+    }
+
+    deleteCourse(courseId: number, orgId: number) {
+        let org = this.organizations.find(o => o.id === orgId);
+        let courseName = org?.courses.find(c => c.id === courseId)?.displayName;
+        this.confirmationDialogService
+            .openConfirmationDialog(
+                `Delete ${courseName}?`,
+                `Deleting will remove the Course from this Organization,
+                and all Repls and Folders in this Course will be deleted.
+                Are you sure you want to delete this Course?
+                Be careful, deleting a course cannot be undone.`,
+                {
+                    centered: true,
+                }
+            )
+            .subscribe((result) => {
+                if(!result) {
+                    this.coursesService
+                        .delete(courseId)
+                        .pipe(takeUntil(this.unsubscribe$))
+                        .subscribe(
+                            next => {
+                                org!.courses = org?.courses.filter(c => c.id !== courseId)!;
+                                this.notificationService.showSuccessMessage("Course successfully deleted");
+                            },
+                            error => this.notificationService.showErrorMessage("Something went wrong...")
+                        );
+                }
+            });
     }
 
     createOrganization() {
         this.modalService.open(NewOrganizationDialogComponent, { centered: true }).result
             .then((result) => {
-                console.log(result)
                 if(result !== null) {
                     this.organizations.push(result);
                 }
@@ -69,7 +107,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         let orgName = this.organizations.find(o => o.id === id)?.name;
         this.confirmationDialogService
             .openConfirmationDialog(
-                `Delete ${orgName}`,
+                `Delete ${orgName}?`,
                 `Deleting ${orgName} will remove access to the Organization.\nThis cannot be undone!`,
                 {
                     centered: true,
