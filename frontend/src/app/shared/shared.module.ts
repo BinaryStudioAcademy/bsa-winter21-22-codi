@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import {CreateReplModalComponent} from "@shared/components/create-repl-modal/create-repl-modal.component";
+import {NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     imports: [
@@ -14,11 +16,13 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
+        NgbTypeaheadModule
     ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
         ConfirmationDialogComponent,
+        CreateReplModalComponent
     ],
     exports: [
         CommonModule,

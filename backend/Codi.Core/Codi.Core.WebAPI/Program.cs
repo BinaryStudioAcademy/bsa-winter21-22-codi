@@ -26,6 +26,9 @@ builder.Services.AddValidation();
 builder.Services.RegisterRabbitMQ(builder.Configuration);
 builder.Services.ServiceJwtFirebase(builder.Configuration);
 builder.Services.AddCors();
+builder.Services.AddHealthChecks();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.WebHost.UseUrls("http://*:5050");
 
 var app = builder.Build();
 
@@ -48,10 +51,16 @@ app.UseCors(opt => opt
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoinds =>
+{
+    endpoinds.MapHealthChecks("/health");
+    endpoinds.MapControllers();
+});
 
 app.Run();
