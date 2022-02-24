@@ -19,6 +19,9 @@ import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-p
 import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
 import { NewOrganizationDialogComponent } from './courses-page/new-organization-dialog/new-organization-dialog.component';
 import { NewCourseDialogComponent } from './courses-page/new-course-dialog/new-course-dialog.component';
+import {
+    UpdateOrganizationDialogComponent
+} from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
 
 @NgModule({
     declarations: [
@@ -36,6 +39,7 @@ import { NewCourseDialogComponent } from './courses-page/new-course-dialog/new-c
         EditUserProfilePageComponent,
         NewOrganizationDialogComponent,
         NewCourseDialogComponent,
+        UpdateOrganizationDialogComponent,
     ],
     imports: [
         SharedModule,

@@ -31,11 +31,13 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
             displayName: new FormControl('',
                 [
                     Validators.required,
+                    Validators.minLength(5),
                     Validators.maxLength(100)
                 ]),
             name: new FormControl('',
                 [
                     Validators.required,
+                    Validators.minLength(5),
                     Validators.maxLength(100)
                 ]),
         });

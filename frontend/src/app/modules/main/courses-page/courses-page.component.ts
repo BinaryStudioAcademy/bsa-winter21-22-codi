@@ -14,6 +14,9 @@ import { NotificationService } from "@core/services/notification.service";
 import { EventService } from "@core/services/event.service";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
 import { CourseService } from "@core/services/course.service";
+import {
+    UpdateOrganizationDialogComponent
+} from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
 
 @Component({
     selector: 'app-courses-page',
@@ -103,8 +106,8 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         this.confirmationDialogService
             .openConfirmationDialog(
                 `Leave ${courseName}?`,
-                `Are you sure you want to leave this Team?
-                You will lose access to all of the Team's Repls and Folders.`,
+                `Are you sure you want to leave this Course?
+                You will lose access to all of the Course's Repls and Folders.`,
                 {
                     centered: true,
                 }
@@ -133,6 +136,18 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
             .then((result) => {
                 if(result) {
                     this.organizations.push(result);
+                }
+            })
+    }
+
+    updateOrganization(orgId: number) {
+        const modalRef = this.modalService.open(UpdateOrganizationDialogComponent, { centered: true });
+        modalRef.componentInstance.orgId = orgId;
+        modalRef.result
+            .then((result) => {
+                if(result) {
+                    let org = this.organizations.find(org => org.id === orgId);
+                    org!.name = result.name;
                 }
             })
     }

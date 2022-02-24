@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotificationService } from "@core/services/notification.service";
 import { OrganizationService } from "@core/services/organization.service";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { BaseComponent } from "@core/base/base.component";
-import { CreateOrganization } from "@core/models/organization/create-organization";
 import { takeUntil } from "rxjs";
-import { Organization } from "@core/models/organization/organization";
+import { BaseComponent } from "@core/base/base.component";
+import { UpdateOrganization } from "@core/models/organization/update-organization";
 
 @Component({
-  selector: 'app-new-organization-dialog',
-  templateUrl: './new-organization-dialog.component.html',
-  styleUrls: ['./new-organization-dialog.component.sass']
+  selector: 'app-update-organization-dialog',
+  templateUrl: './update-organization-dialog.component.html',
+  styleUrls: ['./update-organization-dialog.component.sass']
 })
-export class NewOrganizationDialogComponent extends BaseComponent implements OnInit {
+export class UpdateOrganizationDialogComponent extends BaseComponent implements OnInit {
+    @Input() orgId: number;
     form: FormGroup;
 
     constructor(
@@ -35,23 +35,24 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
         });
     }
 
-    createOrganization() {
-        let createdOrg: Organization | null = null;
+    updateOrganization() {
+        let updatedOrg: UpdateOrganization | null = null;
         let formValue = this.form.value;
-        let createOrganization =
+        let updateOrganization =
             {
+                id: this.orgId,
                 name: formValue.name,
-            } as CreateOrganization;
+            } as UpdateOrganization;
         this.organizationService
-            .create(createOrganization)
+            .update(updateOrganization)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
                 (org) => {
-                    createdOrg = org.body;
-                    this.notificationsService.showSuccessMessage('Organization successfully created');
+                    updatedOrg = org.body;
+                    this.notificationsService.showSuccessMessage('Organization successfully updated');
                 },
-                error => this.notificationsService.showErrorMessage('Failed to create organization'),
-                () => this.modal.close(createdOrg)
+                error => this.notificationsService.showErrorMessage('Failed to update organization'),
+                () => this.modal.close(updatedOrg)
             );
     }
 

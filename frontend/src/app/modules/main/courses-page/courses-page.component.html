@@ -16,7 +16,7 @@
                     <div class="btn-group" ngbDropdown role="group" *ngIf="org.ownerId == user.id">
                         <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                         <div class="dropdown-menu" ngbDropdownMenu>
-                            <button class="btn mb-0">Org settings</button>
+                            <button class="btn mb-0" (click)="updateOrganization(org.id)">Org settings</button>
                             <button class="btn mb-0" (click)="deleteOrganization(org.id)">Delete org</button>
                         </div>
                     </div>
