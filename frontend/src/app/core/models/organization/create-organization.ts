@@ -1,3 +1,3 @@
 export interface CreateOrganization {
-     name: string;
+    name: string;
 }

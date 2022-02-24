@@ -5,7 +5,7 @@ import { Organization } from "@core/models/organization/organization";
 import { UpdateOrganization } from "@core/models/organization/update-organization";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class OrganizationService {
     public routePrefix = '/organizations';

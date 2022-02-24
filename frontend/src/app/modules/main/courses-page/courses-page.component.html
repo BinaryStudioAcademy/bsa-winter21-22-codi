@@ -13,7 +13,7 @@
             <div class="organization">
                 <div class="organization-header">
                     <h3>{{org.name}}</h3>
-                    <div class="btn-group" ngbDropdown role="group" *ngIf="org.ownerId == user.id">
+                    <div class="btn-group" ngbDropdown role="group" *ngIf="org.ownerId === user.id">
                         <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                         <div class="dropdown-menu" ngbDropdownMenu>
                             <button class="btn mb-0" (click)="updateOrganization(org.id)">Org settings</button>
@@ -48,7 +48,7 @@
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)" *ngIf="course.owner.id == user.id; else leave">
+                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)" *ngIf="course.owner.id === user.id; else leave">
                                             Delete
                                         </button>
                                         <ng-template #leave>

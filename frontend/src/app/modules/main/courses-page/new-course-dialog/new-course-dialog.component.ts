@@ -10,9 +10,9 @@ import { Course } from "@core/models/course/course";
 import { Organization } from "@core/models/organization/organization";
 
 @Component({
-  selector: 'app-new-course-dialog',
-  templateUrl: './new-course-dialog.component.html',
-  styleUrls: ['./new-course-dialog.component.sass']
+    selector: 'app-new-course-dialog',
+    templateUrl: './new-course-dialog.component.html',
+    styleUrls: ['./new-course-dialog.component.sass']
 })
 export class NewCourseDialogComponent extends BaseComponent implements OnInit {
     @Input() org: Organization;

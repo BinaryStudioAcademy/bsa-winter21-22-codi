@@ -36,7 +36,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         private notificationService: NotificationService,
         private eventService: EventService,
         private confirmationDialogService: ConfirmationDialogService
-        )
+    )
     {
         super();
     }
@@ -59,7 +59,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         });
     }
 
-    createCourse(organization : Organization) {
+    createCourse(organization: Organization) {
         const modalRef = this.modalService.open(NewCourseDialogComponent, { centered: true })
         modalRef.componentInstance.org = organization;
         modalRef.result

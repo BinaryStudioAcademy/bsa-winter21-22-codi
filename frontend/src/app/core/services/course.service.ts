@@ -6,7 +6,7 @@ import { UpdateCourse } from "@core/models/course/update-course";
 import {User} from "@core/models/user/user";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CourseService {
     public routePrefix = '/courses';

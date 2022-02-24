@@ -8,9 +8,9 @@ import { BaseComponent } from "@core/base/base.component";
 import { UpdateOrganization } from "@core/models/organization/update-organization";
 
 @Component({
-  selector: 'app-update-organization-dialog',
-  templateUrl: './update-organization-dialog.component.html',
-  styleUrls: ['./update-organization-dialog.component.sass']
+    selector: 'app-update-organization-dialog',
+    templateUrl: './update-organization-dialog.component.html',
+    styleUrls: ['./update-organization-dialog.component.sass']
 })
 export class UpdateOrganizationDialogComponent extends BaseComponent implements OnInit {
     @Input() orgId: number;
