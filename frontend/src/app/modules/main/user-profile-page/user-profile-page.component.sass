@@ -1,33 +1,11 @@
 @import 'src/styles/global'
 
-.wrapper
-  color: $base-text-color
-  font-size: $font-size-base
+.content
   cursor: default
 
 .container
   max-width: 990px
   margin: 0 auto
-
-.version
-  border-radius: 5px
-  background-color: $primary
-  padding: 3px
-  margin-bottom: 5px
-  width: fit-content
-  cursor: help
-
-.version-help
-  display: none
-  background-color: $secondary
-  padding: 3px
-  border-radius: 5px
-  max-width: 250px
-  font-weight: bold
-
-.version:hover + .version-help
-  display: block
-  position: absolute
 
 .user-profile-header
   display: flex
@@ -36,6 +14,8 @@
 
 .user-info
   display: flex
+  justify-content: flex-start
+  flex-wrap: wrap
 
 .info
   padding: 10px 3px 0px 15px
@@ -47,14 +27,6 @@
 
 .btn
   align-self: flex-start
-
-.upgrade
-  border: 1px solid $secondary
-  border-radius: 10px
-  color: $secondary
-  font-size: $font-size-sm
-  font-weight: bold
-  margin-left: 5px
 
 .name
   font-size: $h2-font-size

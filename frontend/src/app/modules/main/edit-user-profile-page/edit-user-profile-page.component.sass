@@ -1,8 +1,6 @@
 @import "src/styles/global"
 
-.wrapper
-  color: $base-text-color
-  font-size: $font-size-base
+.content
   cursor: default
 
 .container
@@ -14,16 +12,18 @@
   font-weight: bold
   margin: 20px 0 10px 0
 
-.avatar
-  margin-right: 15px
-
 .edit-area
   width: 100%
   background-color: $background-panel-color
   display: flex
+  justify-content: center
+  flex-wrap: wrap
   border: 1px solid $secondary
   border-radius: 5px
   padding: 15px
+
+.info
+    margin: 0 15px
 
 .name-inputs
   display: flex
@@ -32,7 +32,8 @@
   margin-right: 15px
 
 .bio
-  line-height: 2em
+  min-height: 150px
+  resize: none
 
 .save
   float: right

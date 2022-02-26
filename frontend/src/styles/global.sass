@@ -5,7 +5,11 @@ body
 .text
     color: #c6c8c9
     font-weight: bold
-
+.content
+    color: $base-text-color
+    padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
 
 .modal-dialog .modal-content
     background-color: $background-panel-color
@@ -30,7 +34,7 @@ body
     & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
 
-input.form-control
+input.form-control, textarea.form-control
     border-color: $input-outline
     color: $input-text-color
     background: $background-panel-color
