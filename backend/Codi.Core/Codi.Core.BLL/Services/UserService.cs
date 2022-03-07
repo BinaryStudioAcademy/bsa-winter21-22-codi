@@ -11,13 +11,12 @@ public class UserService : BaseService, IUserService
 {
     public UserService(CodiCoreContext context, IMapper mapper) : base(context, mapper) { }
 
-    public async Task<UserDto> Create(CreateUserDto userDto)
+    public async Task<UserDto> CreateUserAsync(CreateUserDto userDto)
     {
-        if (await _context.Users.AnyAsync(u => u.FirebaseId == userDto.FirebaseId))
+        var user = _mapper.Map<User>(userDto, opts => opts.AfterMap((src, dst) =>
         {
-            throw new InvalidOperationException("Such user already exists");
-        }
-        var user = _mapper.Map<User>(userDto);
+            dst.CreatedAt = DateTime.Now;
+        }));
 
         var createdUser = _context.Users.Add(user);
         await _context.SaveChangesAsync();
@@ -25,7 +24,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(createdUser.Entity);
     }
 
-    public async Task<UserDto> GetById(long id)
+    public async Task<UserDto> GetUserByIdAsync(long id)
     {
         var userEntity = await _context.Users
             .Include(u => u.Avatar)
@@ -38,7 +37,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(userEntity);
     }
     
-    public async Task<UserDto> GetByFirebaseId(string id)
+    public async Task<UserDto> GetUserByFirebaseIdAsync(string id)
     {
         var userEntity = await _context.Users
             .Include(u => u.Avatar)
@@ -46,7 +45,7 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(userEntity);
     }
 
-    public async Task<UserDto> Update(UserDto userDto)
+    public async Task<UserDto> UpdateUserAsync(UserDto userDto)
     {
         var userEntity = await _context.Users
             .Include(u => u.Avatar)
@@ -60,6 +59,6 @@ public class UserService : BaseService, IUserService
 
         _context.Users.Update(mergedUser);
         await _context.SaveChangesAsync();
-        return await GetById(userEntity.Id);
+        return await GetUserByIdAsync(userEntity.Id);
     }
 }
