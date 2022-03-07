@@ -39,8 +39,8 @@ export class AuthService {
     saveUser(uid: string, email?: string, username?: string) {
         let user =  {
             firebaseId: uid,
-            email: email ?? "",
-            username: username ?? ""
+            email: email,
+            username: username
         } as CreateUser;
         this.userService
             .create(user)

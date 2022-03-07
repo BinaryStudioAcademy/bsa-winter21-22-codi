@@ -18,12 +18,12 @@
   flex-wrap: wrap
 
 .info
-  padding: 10px 3px 0px 15px
+  padding: 0 3px 0px 15px
 
 .bio
   margin-top: 10px
   font-size: $font-size-lg
-  word-wrap: anywhere
+  max-width: 700px
 
 .btn
   align-self: flex-start
@@ -37,8 +37,9 @@
 .switch-item
   color: $primary
   font-size: $h2-font-size
-  padding: 0 0 5px 10px
   opacity: 50%
+  &:last-child
+      margin-left: 25px
 
 .switch-item:hover
   opacity: 100%

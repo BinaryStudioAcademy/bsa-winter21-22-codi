@@ -18,9 +18,9 @@
               <div class="username">
                 @{{user.userName}}
               </div>
-              <div class="bio">
+              <p class="bio">
                 {{user.bio}}
-              </div>
+              </p>
             </div>
         </div>
         <button class="btn btn-primary" [routerLink]="['/main/account']" *ngIf="currentUser.id === user.id">Edit</button>
