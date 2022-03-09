@@ -11,7 +11,6 @@ import { OrganizationService } from "@core/services/organization.service";
 import { User } from "@core/models/user/user";
 import { switchMap, takeUntil} from "rxjs";
 import { NotificationService } from "@core/services/notification.service";
-import { EventService } from "@core/services/event.service";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
 import { CourseService } from "@core/services/course.service";
 import {
@@ -34,7 +33,6 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         private organizationService: OrganizationService,
         private coursesService: CourseService,
         private notificationService: NotificationService,
-        private eventService: EventService,
         private confirmationDialogService: ConfirmationDialogService
     )
     {
@@ -51,12 +49,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 }),
                 takeUntil(this.unsubscribe$)
             )
-            .subscribe((orgs) => {this.organizations = orgs.body!
-                console.log(this.organizations)});
-
-        this.eventService.userChangedEvent$.pipe(takeUntil(this.unsubscribe$)).subscribe((user) => {
-            this.user = user;
-        });
+            .subscribe((orgs) => this.organizations = orgs.body!);
     }
 
     createCourse(organization: Organization) {
@@ -65,7 +58,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         modalRef.result
             .then((result) => {
                 if(result) {
-                    this.organizations.find(o => o.id === organization.id)?.courses.push(result);
+                    this.reloadOrganizations();
                 }
             })
     }
@@ -91,7 +84,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                         .pipe(takeUntil(this.unsubscribe$))
                         .subscribe(
                             next => {
-                                org!.courses = org?.courses.filter(c => c.id !== courseId)!;
+                                this.reloadOrganizations();
                                 this.notificationService.showSuccessMessage("Course successfully deleted");
                             },
                             error => this.notificationService.showErrorMessage("Something went wrong...")
@@ -119,10 +112,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                         .pipe(takeUntil(this.unsubscribe$))
                         .subscribe(
                             next => {
-                                org!.courses = org?.courses.filter(c => c.id !== courseId)!;
-                                if(!org!.courses.length){
-                                    this.organizations = this.organizations.filter(o => o.id !== org!.id);
-                                }
+                                this.reloadOrganizations();
                                 this.notificationService.showSuccessMessage("You have successfully left course");
                             },
                             error => this.notificationService.showErrorMessage("Something went wrong...")
@@ -135,19 +125,18 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         this.modalService.open(NewOrganizationDialogComponent, { centered: true }).result
             .then((result) => {
                 if(result) {
-                    this.organizations.push(result);
+                    this.reloadOrganizations();
                 }
             })
     }
 
-    updateOrganization(orgId: number) {
+    updateOrganization(org: Organization) {
         const modalRef = this.modalService.open(UpdateOrganizationDialogComponent, { centered: true });
-        modalRef.componentInstance.orgId = orgId;
+        modalRef.componentInstance.org = org;
         modalRef.result
             .then((result) => {
                 if(result) {
-                    let org = this.organizations.find(org => org.id === orgId);
-                    org!.name = result.name;
+                    this.reloadOrganizations();
                 }
             })
     }
@@ -165,13 +154,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
             )
             .subscribe((result) => {
                 if(!result) {
-                    if(org!.courses.length <= 0) {
+                    if(!org!.courses.length) {
                         this.organizationService
                             .delete(id)
                             .pipe(takeUntil(this.unsubscribe$))
                             .subscribe(
                                 next => {
-                                    this.organizations = this.organizations.filter(o => o.id !== id);
+                                    this.reloadOrganizations();
                                     this.notificationService.showSuccessMessage("Organization successfully deleted");
                                 },
                                 error => this.notificationService.showErrorMessage("Something went wrong...")
@@ -182,5 +171,12 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                     }
                 }
             });
+    }
+
+    private reloadOrganizations() {
+        this.organizationService
+            .getUserOrganizations(this.user.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((resp) => this.organizations = resp.body!);
     }
 }

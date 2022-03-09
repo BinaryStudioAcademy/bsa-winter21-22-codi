@@ -10,8 +10,7 @@ import { Organization } from "@core/models/organization/organization";
 
 @Component({
     selector: 'app-new-organization-dialog',
-    templateUrl: './new-organization-dialog.component.html',
-    styleUrls: ['./new-organization-dialog.component.sass']
+    templateUrl: './new-organization-dialog.component.html'
 })
 export class NewOrganizationDialogComponent extends BaseComponent implements OnInit {
     form: FormGroup;

@@ -1,6 +1,5 @@
 ﻿using Codi.Core.BL.Interfaces;
 using Codi.Core.Common.DTO.Course;
-using Codi.Core.DAL.Entities;
 using Codi.Core.WebAPI.Extentions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +20,10 @@ public class CoursesController : ControllerBase
         _userService = userService;
     }
 
-    [HttpGet("{courseName}")]
-    public async Task<ActionResult<CourseDto>> GetAsync(string courseName)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<CourseDto>> GetAsync(long id)
     {
-        var course = await _courseService.GetCourseAsync(courseName);
+        var course = await _courseService.GetCourseByIdAsync(id);
         return Ok(course);
     }
 

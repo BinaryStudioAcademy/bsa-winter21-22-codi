@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Codi.Core.BL.Interfaces;
 using Codi.Core.BLL.Exceptions;
-using Codi.Core.Common.DTO.Course;
 using Codi.Core.Common.DTO.Organization;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
@@ -15,38 +14,15 @@ public class OrganizationService : BaseService, IOrganizationService
 
     public async Task<ICollection<OrganizationDto>> GetUserOrganizationsAsync(long userId)
     {
-        var organizations = await _context.Organizations
-            .Include(o => o.Courses)
-                .ThenInclude(c => c.Owner)
-                    .ThenInclude(u => u.Avatar)
-            .Select((org) => new
-            {
-                org = new OrganizationDto()
-                {
-                    Id = org.Id,
-                    Name = org.Name,
-                    OwnerId = org.OwnerId,
-                    CreatedAt = org.CreatedAt,
-                    Courses = _mapper.Map<ICollection<CourseDto>>(
-                        org.Courses
-                            .Select(course => new
-                            {
-                                course,
-                                courseUsers = course.CourseUsers
-                            })
-                            .Where(r => r.courseUsers.Any(u => u.UserId == userId))
-                            .Select(r => r.course))
-                },
-                isCourseMember = org.Courses
-                    .Select(c => c.CourseUsers)
-                    .Any(cu => cu.Any(u => u.UserId == userId))
-            })
-            .Where(r => r.org.OwnerId == userId || r.isCourseMember)
-            .Select(r => r.org)
+        var organizations = (await _context.Organizations
+            .Include(o => o.Courses.Where(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
+            .ThenInclude(c => c.Owner)
+            .ThenInclude(u => u.Avatar)
             .AsSplitQuery()
-            .ToListAsync();
+            .ToListAsync())
+            .Where(o => o.OwnerId == userId || o.Courses.Any());
 
-        return organizations;
+        return _mapper.Map<ICollection<OrganizationDto>>(organizations);
     }
 
     public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto organizationDto)
@@ -59,10 +35,10 @@ public class OrganizationService : BaseService, IOrganizationService
         var createdOrganization = _context.Add(organization).Entity;
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<OrganizationDto>(createdOrganization);
+        return await GetOrganizationByIdAsync(createdOrganization.Id);
     }
 
-    public async Task<OrganizationDto> GetOrganizationAsync(long id)
+    public async Task<OrganizationDto> GetOrganizationByIdAsync(long id)
     {
         var organization = await _context.Organizations
             .FirstOrDefaultAsync(o => o.Id == id);
@@ -88,7 +64,7 @@ public class OrganizationService : BaseService, IOrganizationService
         var updatedOrganization = _context.Update(mergedOrganization).Entity;
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<OrganizationDto>(updatedOrganization);
+        return await GetOrganizationByIdAsync(updatedOrganization.Id);
     }
 
     public async Task DeleteOrganizationAsync(long id)

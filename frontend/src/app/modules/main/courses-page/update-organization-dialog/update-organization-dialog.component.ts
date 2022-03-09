@@ -6,14 +6,14 @@ import { OrganizationService } from "@core/services/organization.service";
 import { takeUntil } from "rxjs";
 import { BaseComponent } from "@core/base/base.component";
 import { UpdateOrganization } from "@core/models/organization/update-organization";
+import { Organization } from "@core/models/organization/organization";
 
 @Component({
     selector: 'app-update-organization-dialog',
-    templateUrl: './update-organization-dialog.component.html',
-    styleUrls: ['./update-organization-dialog.component.sass']
+    templateUrl: './update-organization-dialog.component.html'
 })
 export class UpdateOrganizationDialogComponent extends BaseComponent implements OnInit {
-    @Input() orgId: number;
+    @Input() org: Organization;
     form: FormGroup;
 
     constructor(
@@ -33,6 +33,7 @@ export class UpdateOrganizationDialogComponent extends BaseComponent implements 
                     Validators.maxLength(100)
                 ]),
         });
+        this.form.patchValue(this.org);
     }
 
     updateOrganization() {
@@ -40,7 +41,7 @@ export class UpdateOrganizationDialogComponent extends BaseComponent implements 
         let formValue = this.form.value;
         let updateOrganization =
             {
-                id: this.orgId,
+                id: this.org.id,
                 name: formValue.name,
             } as UpdateOrganization;
         this.organizationService

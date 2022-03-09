@@ -23,7 +23,7 @@ public class OrganizationsController : ControllerBase
     [HttpGet("{organizationId}")]
     public async Task<ActionResult<OrganizationDto>> GetAsync(int organizationId)
     {
-        var organization = await _organizationService.GetOrganizationAsync(organizationId);
+        var organization = await _organizationService.GetOrganizationByIdAsync(organizationId);
         return Ok(organization);
     }
 
