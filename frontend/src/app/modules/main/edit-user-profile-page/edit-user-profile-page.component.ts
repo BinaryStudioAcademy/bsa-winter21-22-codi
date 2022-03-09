@@ -35,7 +35,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
                 [
                     Validators.required,
                     Validators.minLength(2),
-                    Validators.maxLength(15),
+                    Validators.maxLength(25),
                     Validators.pattern(regexs.username)
                 ]),
             firstName: new FormControl('',

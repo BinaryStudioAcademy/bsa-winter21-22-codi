@@ -22,7 +22,7 @@
                     Username is required
                 </li>
                 <li class="text-danger" *ngIf="form.controls['userName'].hasError('minlength') || form.controls['userName'].hasError('maxlength')">
-                    Username must be between 2 and 15 characters
+                    Username must be between 2 and 25 characters
                 </li>
                 <li class="text-danger" *ngIf="form.controls['userName'].hasError('pattern')">
                     Username can only contain latin letters, digits
@@ -58,8 +58,8 @@
           <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>
             <textarea formControlName="bio" type="text" class="form-control bio" id="bio" aria-describedby="bioHelp"></textarea>
-            <div id="bioHelp" class="form-text bioHelp" [ngClass]="{'text-danger' : form.controls['bio'].value.length > 140}">
-                * {{form.controls['bio'].value.length}} / 140 characters is allowed
+            <div id="bioHelp" class="form-text bioHelp" [ngClass]="{'text-danger' : form.controls['bio'].value?.length > 140}">
+                * {{form.controls['bio'].value?.length ?? 0}} / 140 characters is allowed
             </div>
           </div>
           <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>
