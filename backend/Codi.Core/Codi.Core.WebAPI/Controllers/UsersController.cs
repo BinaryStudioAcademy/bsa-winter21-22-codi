@@ -20,8 +20,7 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<UserDto>> CreateAsync([FromBody] CreateUserDto userDto)
     {
-        var user = await _usersService.GetUserByFirebaseIdAsync(userDto.FirebaseId);
-        return Ok(user ?? await _usersService.CreateUserAsync(userDto));
+        return Ok(await _usersService.CreateUserAsync(userDto));
     }
 
     [HttpGet("{id}")]

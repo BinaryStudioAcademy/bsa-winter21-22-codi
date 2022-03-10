@@ -59,7 +59,7 @@
             <label for="bio" class="form-label">Bio</label>
             <textarea formControlName="bio" type="text" class="form-control bio" id="bio" aria-describedby="bioHelp"></textarea>
             <div id="bioHelp" class="form-text bioHelp" [ngClass]="{'text-danger' : form.controls['bio'].value?.length > 140}">
-                * {{form.controls['bio'].value?.length ?? 0}} / 140 characters is allowed
+                * {{form.controls['bio'].value?.length === null ? 0 : form.controls['bio'].value?.length}} / 140 characters is allowed
             </div>
           </div>
           <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>

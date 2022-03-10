@@ -13,6 +13,14 @@ public class UserService : BaseService, IUserService
 
     public async Task<UserDto> CreateUserAsync(CreateUserDto userDto)
     {
+        var existedUser = await _context.Users
+            .Include(u => u.Avatar)
+            .FirstOrDefaultAsync(u => u.FirebaseId == userDto.FirebaseId);
+        if (existedUser is not null)
+        {
+            return _mapper.Map<UserDto>(existedUser);
+        }
+
         var user = _mapper.Map<User>(userDto, opts => opts.AfterMap((src, dst) =>
         {
             dst.CreatedAt = DateTime.Now;
@@ -42,6 +50,11 @@ public class UserService : BaseService, IUserService
         var userEntity = await _context.Users
             .Include(u => u.Avatar)
             .FirstOrDefaultAsync(u => u.FirebaseId == id);
+        
+        if (userEntity is null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
         return _mapper.Map<UserDto>(userEntity);
     }
 
