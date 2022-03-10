@@ -1,57 +1,51 @@
 @import 'src/styles/variables'
 
-.content
-    color: $base-text-color
-    padding: 20px
-    min-height: calc( 100vh - 110px )
-    height: auto
-    
-    .apps-collection-container
+.apps-collection-container
+    display: grid
+    grid-gap: 20px
+    grid-template-columns: 1fr
+
+    .app-card
+        border-radius: 10px
+        background-color: $background-panel-color
         display: grid
-        grid-gap: 20px
         grid-template-columns: 1fr
+        grid-gap: 20px
+        padding: 25px
 
-        .app-card
+        .app-card-image
+            display: flex
+            justify-content: center
+            align-items: center
+
+        .app-card-image img
             border-radius: 10px
-            background-color: $background-panel-color
-            display: grid
-            grid-template-columns: 1fr
-            grid-gap: 20px
-            padding: 25px
+            width: 200px
 
-            .app-card-image
-                display: flex
-                justify-content: center
-                align-items: center
+        .app-card-info
+            display: flex
+            flex-direction: column
 
-            .app-card-image img
-                border-radius: 10px
-                width: 200px
+            .app-card-author img
+                height: 20px
+                border-radius: 50%
+                margin-right: 3px
 
-            .app-card-info
-                display: flex
-                flex-direction: column
+            .app-card-description
+                flex-grow: 1
+                display: -webkit-box
+                -webkit-line-clamp: 4
+                -webkit-box-orient: vertical
+                overflow: hidden
 
-                .app-card-author img
-                    height: 20px
-                    border-radius: 50%
-                    margin-right: 3px
+            .app-card-tag
+                background: $background-color
+                margin: 4px
+                padding: 4px 6px
+                border-radius: 5px
+                color: $secondary
+                cursor: pointer
 
-                .app-card-description
-                    flex-grow: 1
-                    display: -webkit-box
-                    -webkit-line-clamp: 4
-                    -webkit-box-orient: vertical
-                    overflow: hidden
-
-                .app-card-tag
-                    background: $background-color
-                    margin: 4px
-                    padding: 4px 6px
-                    border-radius: 5px
-                    color: $secondary
-                    cursor: pointer
-            
 
 .apps-header
     .apps-header-title

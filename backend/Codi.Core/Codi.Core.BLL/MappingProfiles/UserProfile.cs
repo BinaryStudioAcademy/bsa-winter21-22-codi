@@ -15,9 +15,7 @@ namespace Codi.Core.BL.MappingProfiles
                 .ForMember(p => p.Email,
                     o => o.MapFrom(c => c.Email ?? ""))
                 .ForMember(p => p.UserName,
-                    o => o.MapFrom(c => c.Username ?? (c.Email == null ? "" : c.Email.Substring(0,5))))
-                .ForMember(p => p.CreatedAt, o => o.MapFrom(c => DateTime.Now));
-            
+                    o => o.MapFrom(c => c.Username ?? (c.Email == null ? "" : c.Email.Substring(0, c.Email.IndexOf('@')))));
         }
     }
 }

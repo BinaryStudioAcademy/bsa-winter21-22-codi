@@ -2,10 +2,18 @@
 
 body
     margin: 0
+ul
+    list-style: none
+    padding: 0
+    margin: 0
 .text
     color: #c6c8c9
     font-weight: bold
-
+.content
+    color: $base-text-color
+    padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
 
 .modal-dialog .modal-content
     background-color: $background-panel-color
@@ -30,7 +38,7 @@ body
     & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
 
-input.form-control
+input.form-control, textarea.form-control
     border-color: $input-outline
     color: $input-text-color
     background: $background-panel-color
@@ -54,7 +62,7 @@ a
   min-width: 118px
   max-width: 118px
   height: 118px
-  border-radius: 100%
+  border-radius: 50%
   &.generic-avatar
     background-color: $primary
     color: $base-text-color
