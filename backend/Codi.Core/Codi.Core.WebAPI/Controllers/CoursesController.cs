@@ -35,7 +35,7 @@ public class CoursesController : ControllerBase
             return BadRequest();
         }
 
-        courseDto.OwnerId = (await _userService.GetByFirebaseId(this.GetUserIdFromToken())).Id;
+        courseDto.OwnerId = (await _userService.GetUserByFirebaseIdAsync(this.GetUserIdFromToken())).Id;
         var course = await _courseService.CreateCourseAsync(courseDto);
         return Ok(course);
     }
@@ -48,7 +48,7 @@ public class CoursesController : ControllerBase
             return BadRequest();
         }
 
-        courseDto.OwnerId = (await _userService.GetByFirebaseId(this.GetUserIdFromToken())).Id;
+        courseDto.OwnerId = (await _userService.GetUserByFirebaseIdAsync(this.GetUserIdFromToken())).Id;
         var course = await _courseService.UpdateCourseAsync(courseDto);
         return Ok(course);
     }
@@ -66,7 +66,7 @@ public class CoursesController : ControllerBase
         var leaveCourseDto = new LeaveCourseDto()
         {
             CourseId = courseId,
-            UserId = (await _userService.GetByFirebaseId(this.GetUserIdFromToken())).Id
+            UserId = (await _userService.GetUserByFirebaseIdAsync(this.GetUserIdFromToken())).Id
         };
         await _courseService.LeaveCourseAsync(leaveCourseDto);
         return NoContent();
