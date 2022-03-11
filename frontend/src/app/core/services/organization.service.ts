@@ -15,18 +15,18 @@ export class OrganizationService {
     ) { }
 
     public create(organization: CreateOrganization) {
-        return this.httpService.postFullRequest<Organization>(`${this.routePrefix}`, organization);
+        return this.httpService.postRequest<Organization>(`${this.routePrefix}`, organization);
     }
 
     public update(organization: UpdateOrganization) {
-        return this.httpService.putFullRequest<Organization>(`${this.routePrefix}`, organization);
+        return this.httpService.putRequest<Organization>(`${this.routePrefix}`, organization);
     }
 
     public getUserOrganizations(userId: number) {
-        return this.httpService.getFullRequest<Organization[]>(`${this.routePrefix}/user/${userId}`);
+        return this.httpService.getRequest<Organization[]>(`${this.routePrefix}/user/${userId}`);
     }
 
     public delete(id: number) {
-        return this.httpService.deleteFullRequest(`${this.routePrefix}/${id}`);
+        return this.httpService.deleteRequest(`${this.routePrefix}/${id}`);
     }
 }

@@ -46,7 +46,7 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
                 (org) => {
-                    createdOrg = org.body;
+                    createdOrg = org;
                     this.notificationsService.showSuccessMessage('Organization successfully created');
                 },
                 error => this.notificationsService.showErrorMessage('Failed to create organization'),

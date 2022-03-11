@@ -63,7 +63,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         this.userService
             .update(updatedUser)
             .subscribe((user) => {
-                this.authService.setUser(user.body!);
+                this.authService.setUser(user);
                 this.router.navigate(['main/user', this.user.id]);
             });
     }

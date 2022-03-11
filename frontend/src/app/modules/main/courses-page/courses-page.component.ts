@@ -49,7 +49,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 }),
                 takeUntil(this.unsubscribe$)
             )
-            .subscribe((orgs) => this.organizations = orgs.body!);
+            .subscribe((orgs) => this.organizations = orgs);
     }
 
     createCourse(organization: Organization) {
@@ -177,6 +177,6 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
         this.organizationService
             .getUserOrganizations(this.user.id)
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe((resp) => this.organizations = resp.body!);
+            .subscribe((resp) => this.organizations = resp);
     }
 }

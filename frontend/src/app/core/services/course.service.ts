@@ -3,7 +3,6 @@ import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { CreateCourse } from "@core/models/course/create-course";
 import { Course } from "@core/models/course/course";
 import { UpdateCourse } from "@core/models/course/update-course";
-import {User} from "@core/models/user/user";
 
 @Injectable({
     providedIn: 'root'
@@ -16,22 +15,22 @@ export class CourseService {
     ) { }
 
     public create(course: CreateCourse) {
-        return this.httpService.postFullRequest<Course>(`${this.routePrefix}`, course);
+        return this.httpService.postRequest<Course>(`${this.routePrefix}`, course);
     }
 
     public update(course: UpdateCourse) {
-        return this.httpService.putFullRequest<Course>(`${this.routePrefix}`, course);
+        return this.httpService.putRequest<Course>(`${this.routePrefix}`, course);
     }
 
     public getCourse(name: string) {
-        return this.httpService.getFullRequest<Course>(`${this.routePrefix}/${name}`);
+        return this.httpService.getRequest<Course>(`${this.routePrefix}/${name}`);
     }
 
     public delete(id: number) {
-        return this.httpService.deleteFullRequest(`${this.routePrefix}/${id}`);
+        return this.httpService.deleteRequest(`${this.routePrefix}/${id}`);
     }
 
     public leaveCourse(courseId: number) {
-        return this.httpService.deleteFullRequest(`${this.routePrefix}/leaveCourse/${courseId}`);
+        return this.httpService.deleteRequest(`${this.routePrefix}/leaveCourse/${courseId}`);
     }
 }

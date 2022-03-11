@@ -14,13 +14,13 @@ public class OrganizationService : BaseService, IOrganizationService
 
     public async Task<ICollection<OrganizationDto>> GetUserOrganizationsAsync(long userId)
     {
-        var organizations = (await _context.Organizations
+        var organizations = await _context.Organizations
             .Include(o => o.Courses.Where(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
             .ThenInclude(c => c.Owner)
             .ThenInclude(u => u.Avatar)
+            .Where(o => o.OwnerId == userId || o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
             .AsSplitQuery()
-            .ToListAsync())
-            .Where(o => o.OwnerId == userId || o.Courses.Any());
+            .ToListAsync();
 
         return _mapper.Map<ICollection<OrganizationDto>>(organizations);
     }
