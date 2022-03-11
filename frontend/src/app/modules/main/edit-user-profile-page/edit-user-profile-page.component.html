@@ -2,7 +2,7 @@
   <div class="container">
     <div class="user-info">
       <div class="title">Profile</div>
-      <form [formGroup]="form" class="edit-area">
+      <form [formGroup]="form" class="edit-area edit-user">
         <div class="avatar-container" (click)="file.click()">
           <input hidden class="file-hide" #file accept="image/*" type="file" (change)="handleFileInput($event.target)">
           <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
@@ -65,6 +65,29 @@
           <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>
         </div>
       </form>
+    </div>
+    <div class="connected-providers">
+        <div class="title">Connected services</div>
+        <div class="edit-area">
+            <div class="provider-item">
+                <div class="provider-title">
+                    Google
+                </div>
+                <button class="btn btn-primary" (click)="isGoogleLinked ? unlinkProvider(provider.google)
+                : linkProvider(provider.google)">
+                    {{isGoogleLinked ? 'Disconnect' : 'Connect'}}
+                </button>
+            </div>
+            <div class="provider-item">
+                <div class="provider-title">
+                    Github
+                </div>
+                <button class="btn btn-primary" (click)="isGitHubLinked ? unlinkProvider(provider.github)
+                : linkProvider(provider.github)">
+                    {{isGitHubLinked ? 'Disconnect' : 'Connect'}}
+                </button>
+            </div>
+        </div>
     </div>
   </div>
 </div>

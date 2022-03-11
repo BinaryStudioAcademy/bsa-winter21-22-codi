@@ -1,8 +1,17 @@
 import { Injectable } from '@angular/core';
 import { from, map, of, Subject, switchMap, takeUntil } from 'rxjs';
-import { Auth, authState, createUserWithEmailAndPassword,
-    signInWithEmailAndPassword, signInWithPopup, updateProfile } from '@angular/fire/auth';
-import { GoogleAuthProvider, GithubAuthProvider, AuthProvider } from 'firebase/auth';
+import {
+    Auth,
+    authState,
+    createUserWithEmailAndPassword,
+    fetchSignInMethodsForEmail, getAuth,
+    linkWithPopup,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    unlink,
+    updateProfile
+} from '@angular/fire/auth';
+import { AuthProvider, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { idToken } from 'rxfire/auth';
 import { Router } from '@angular/router';
 import { NotificationService } from '@core/services/notification.service';
@@ -10,6 +19,7 @@ import { UserService } from "@core/services/user.service";
 import { User } from "@core/models/user/user";
 import { CreateUser } from "@core/models/user/create-user";
 import { EventService } from "@core/services/event.service";
+import { Provider } from "@shared/constants/provider";
 
 @Injectable({
     providedIn: 'root',
@@ -112,23 +122,58 @@ export class AuthService {
             this.router.navigate(['main']).then(() => {
                 this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
             })
-                .catch((error) => {
-                    this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
-                });
+        },
+        error => {
+            if(error.code !== 'auth/popup-closed-by-user' )
+                this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
         });
     }
 
     withGitHub() {
-        return from(this.authLogin(new GithubAuthProvider())).subscribe((r) => {
+        let githubProvider = new GithubAuthProvider();
+        return from(this.authLogin(githubProvider)).subscribe((r) => {
             let user = r.user;
             this.saveUser(user.uid, user.email!);
             this.router.navigate(['main']).then(() => {
                 this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
             })
-                .catch((error) => {
-                    this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
-                });
+        },
+        error => {
+            if(error.code !== 'auth/popup-closed-by-user' )
+                this.notificationService.showErrorMessage(this.formatError(error.code), 'Error');
         });
+    }
+
+    linkProvider(providerId: Provider) {
+        let provider: AuthProvider;
+        switch (providerId) {
+            case Provider.google: {
+                provider = new GoogleAuthProvider();
+                break;
+            }
+            case Provider.github: {
+                provider = new GithubAuthProvider();
+                break;
+            }
+        }
+            return from(linkWithPopup(this.auth.currentUser!, provider!)
+                .then(() => {
+                    this.notificationService.showSuccessMessage(`${provider.providerId} was successfully linked`);
+                })
+                .catch(err => {
+                    this.notificationService.showErrorMessage('This account is already added to Codi!');
+                }));
+    }
+
+    unlinkProvider(providerId: Provider) {
+        return from(unlink(this.auth.currentUser!, providerId)
+            .then(() => {
+                this.notificationService.showSuccessMessage(`${providerId} was successfully unlinked`);
+            }));
+    }
+
+    getLinkedProviders() {
+        return from(fetchSignInMethodsForEmail(this.auth, this.auth.currentUser?.email!));
     }
 
     authLogin(provider: AuthProvider) {
