@@ -9,6 +9,11 @@ ul
     list-style: none
     padding: 0
     margin: 0
+.content
+    color: $base-text-color
+    padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
 
 .modal-dialog .modal-content
     background-color: $background-panel-color
@@ -48,7 +53,7 @@ ul
             color: $base-text-color
             outline: none
 
-input.form-control
+input.form-control, textarea.form-control
     border-color: $input-outline
     color: $input-text-color
     background: $background-panel-color

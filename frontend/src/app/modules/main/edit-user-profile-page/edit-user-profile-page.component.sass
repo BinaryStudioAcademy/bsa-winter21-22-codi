@@ -1,8 +1,6 @@
-@import "src/styles/global"
+@import "src/styles/variables"
 
-.wrapper
-  color: $base-text-color
-  font-size: $font-size-base
+.content
   cursor: default
 
 .container
@@ -14,16 +12,17 @@
   font-weight: bold
   margin: 20px 0 10px 0
 
-.avatar
-  margin-right: 15px
-
 .edit-area
   width: 100%
   background-color: $background-panel-color
   display: flex
+  justify-content: center
   border: 1px solid $secondary
   border-radius: 5px
   padding: 15px
+
+.info
+    margin: 0 15px
 
 .name-inputs
   display: flex
@@ -31,8 +30,16 @@
 .firstName
   margin-right: 15px
 
+.firstName, .lastName
+  flex: 0 1 100%
+
 .bio
-  line-height: 2em
+  min-height: 95px
+  resize: none
+  overflow-y: hidden
+
+.bioHelp
+  color: $muted-text-color
 
 .save
   float: right
@@ -42,6 +49,18 @@
   height: 118px
   cursor: pointer
   transition: linear .1s
+  text-align: center
+  margin-bottom: 25px
+  .change-avatar
+      font-weight: bold
 
 .avatar-container:hover
   opacity: 50%
+
+@media (max-width: 576px)
+  .edit-area
+    flex-wrap: wrap
+    .name-inputs
+      flex-wrap: wrap
+      .firstName
+        margin: 0
