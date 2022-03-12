@@ -4,8 +4,8 @@ namespace Codi.Core.BL.Interfaces;
 
 public interface IUserService
 {
-    Task<UserDto> Create(CreateUserDto user);
-    Task<UserDto> GetById(long id);
-    Task<UserDto> GetByFirebaseId(string id);
-    Task<UserDto> Update(UserDto user);
+    Task<UserDto> CreateUserAsync(CreateUserDto user);
+    Task<UserDto> GetUserByIdAsync(long id);
+    Task<UserDto> GetUserByFirebaseIdAsync(string id);
+    Task<UserDto> UpdateUserAsync(UserDto user);
 }

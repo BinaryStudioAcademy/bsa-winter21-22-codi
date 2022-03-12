@@ -7,6 +7,7 @@ import { BaseComponent } from "@core/base/base.component";
 import { takeUntil } from "rxjs";
 import { User } from "@core/models/user/user";
 import { NotificationService } from "@core/services/notification.service";
+import { regexs } from "@shared/constants/regexs";
 
 @Component({
     selector: 'app-edit-user-profile-page',
@@ -33,11 +34,25 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
             userName: new FormControl('',
                 [
                     Validators.required,
-                    Validators.maxLength(25)
+                    Validators.minLength(2),
+                    Validators.maxLength(25),
+                    Validators.pattern(regexs.username)
                 ]),
-            firstName: new FormControl('', Validators.maxLength(100)),
-            lastName: new FormControl('', Validators.maxLength(100)),
-            bio: new FormControl('', Validators.maxLength(500))
+            firstName: new FormControl('',
+                [
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.name)
+                ]),
+            lastName: new FormControl('',
+                [
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.name)
+                ]),
+            bio: new FormControl('',
+                [
+                    Validators.maxLength(140),
+                    Validators.pattern(/(?!^\s+$)^.*$/m)
+                ])
         });
 
         this.authService
