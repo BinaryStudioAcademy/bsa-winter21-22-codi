@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "@core/services/auth.service";
 import { User } from "@core/models/user/user";
 import { BaseComponent } from "@core/base/base.component";
-import {switchMap, takeUntil} from "rxjs";
+import { takeUntil} from "rxjs";
 import { EventService } from "@core/services/event.service";
-import {ProjectCreationModalService} from "@core/services/project-creation-modal.service";
+import { ProjectCreationModalService } from "@core/services/project-creation-modal.service";
+import {Router} from "@angular/router";
+import {NotificationService} from "@core/services/notification.service";
 
 @Component({
     selector: 'app-top-nav',
@@ -16,7 +18,9 @@ export class TopNavComponent extends BaseComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private eventService: EventService,
-        private modalService: ProjectCreationModalService
+        private modalService: ProjectCreationModalService,
+        private router: Router,
+        private notificationService: NotificationService
     ) {
         super();
     }
@@ -38,7 +42,12 @@ export class TopNavComponent extends BaseComponent implements OnInit {
     }
 
     logout() {
-        this.authService.logOut();
+        this.authService.logOut()
+            .subscribe(() => {
+                this.router.navigate(['login']).then(() => {
+                    this.notificationService.showSuccessMessage('Good Luck!');
+                });
+            });
     }
 
     createRepl() {
