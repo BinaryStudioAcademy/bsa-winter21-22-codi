@@ -12,4 +12,10 @@ export class LandingContentComponent {
     MultiplayerIMG: string = 'assets/images/LandingPage/multiplayer-cursors.png';
 
     CommunityIMG: string = 'assets/images/LandingPage/community.png';
+
+    isReadMore: boolean = true;
+
+    showText() {
+        this.isReadMore = !this.isReadMore
+    }
 }
