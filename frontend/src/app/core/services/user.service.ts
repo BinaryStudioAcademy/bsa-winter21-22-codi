@@ -14,19 +14,19 @@ export class UserService {
     ) { }
 
     public create(user: CreateUser) {
-        return this.httpService.postFullRequest<User>(`${this.routePrefix}`, user);
+        return this.httpService.postRequest<User>(`${this.routePrefix}`, user);
     }
 
     public update(user: User) {
-        return this.httpService.putFullRequest<User>(`${this.routePrefix}`, user);
+        return this.httpService.putRequest<User>(`${this.routePrefix}`, user);
     }
 
     public getById(id: number) {
-        return this.httpService.getFullRequest<User>(`${this.routePrefix}/${id}`);
+        return this.httpService.getRequest<User>(`${this.routePrefix}/${id}`);
     }
 
     public getCurrent(firebaseId: string) {
-        return this.httpService.getFullRequest<User>(`${this.routePrefix}/firebaseId`, {
+        return this.httpService.getRequest<User>(`${this.routePrefix}/firebaseId`, {
             id: firebaseId
         });
     }

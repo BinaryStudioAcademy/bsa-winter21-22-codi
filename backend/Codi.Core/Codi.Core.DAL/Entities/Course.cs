@@ -10,6 +10,8 @@
         public Image? Avatar { get; set; }
         public long OwnerId { get; set; }
         public User Owner { get; set; } = default!;
+        public long OrganizationId { get; set; }
+        public Organization Organization { get; set; } = default!;
         public List<CourseUser> CourseUsers { get; set; } = default!;
         public List<Unit> Units { get; set; } = default!;
         public List<Lesson> Lessons { get; set; } = default!;

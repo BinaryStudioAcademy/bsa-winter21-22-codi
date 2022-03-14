@@ -13,10 +13,10 @@ export class ProjectService {
     constructor(private httpService: CodiHttpClientService) { }
 
     public createProject(project: CreateProject) {
-        return this.httpService.postFullRequest<Project>(`${this.routePrefix}`, project);
+        return this.httpService.postRequest<Project>(`${this.routePrefix}`, project);
     }
 
     public updateProject(project: Project) {
-        return this.httpService.putFullRequest(`${this.routePrefix}`, project)
+        return this.httpService.putRequest(`${this.routePrefix}`, project)
     }
 }

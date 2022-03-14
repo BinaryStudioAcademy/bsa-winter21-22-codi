@@ -46,7 +46,7 @@ export class AuthService {
             .create(user)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((user) => {
-                this.user = user.body!;
+                this.user = user;
             })
     }
 
@@ -58,7 +58,7 @@ export class AuthService {
                     switchMap((userResp) => this.userService.getCurrent(userResp?.uid!)
                         .pipe(
                             map((resp) => {
-                                this.user = resp.body!;
+                                this.user = resp;
                                 this.eventService.userChanged(this.user);
                                 return this.user;
                             }))

@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { Params } from "@angular/router";
 
 @Injectable({
     providedIn: 'root',
@@ -17,42 +18,30 @@ export class CodiHttpClientService {
         return this.headers;
     }
 
-    public getFullRequest<T>(url: string, httpParams?: any): Observable<HttpResponse<T>> {
+    public getRequest<T>(url: string, httpParams?: Params): Observable<T> {
         return this.http.get<T>(this.buildUrl(url), {
-            observe: 'response',
             headers: this.getHeaders(),
-            params: httpParams })
-            .pipe(
-                retry(2),
-                catchError(this.handleError),
-            );
+            params: httpParams,
+        });
     }
 
-    public postFullRequest<T>(url: string, payload: object): Observable<HttpResponse<T>> {
-        return this.http.post<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), observe: 'response' })
-            .pipe(
-                retry(2),
-                catchError(this.handleError),
-            );
+    public postRequest<T>(url: string, payload: object): Observable<T> {
+        return this.http.post<T>(this.buildUrl(url), payload, {
+            headers: this.getHeaders(),
+        });
     }
 
-    public putFullRequest<T>(url: string, payload: object): Observable<HttpResponse<T>> {
-        return this.http.put<T>(this.buildUrl(url), payload, { headers: this.getHeaders(), observe: 'response' })
-            .pipe(
-                retry(2),
-                catchError(this.handleError),
-            );
+    public putRequest<T>(url: string, payload: object): Observable<T> {
+        return this.http.put<T>(this.buildUrl(url), payload, {
+            headers: this.getHeaders(),
+        });
     }
 
-    public deleteFullRequest<T>(url: string, httpParams?: any): Observable<HttpResponse<T>> {
+    public deleteRequest<T>(url: string, httpParams?: Params): Observable<T> {
         return this.http.delete<T>(this.buildUrl(url), {
             headers: this.getHeaders(),
-            observe: 'response',
-            params: httpParams })
-            .pipe(
-                retry(2),
-                catchError(this.handleError),
-            );
+            params: httpParams,
+        });
     }
 
     public buildUrl(url: string): string {

@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using Codi.Core.DAL.Context;
 using Codi.Core.DAL.Entities;
 using Codi.Core.DAL.Entities.Common;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +8,6 @@ namespace Codi.Core.DAL.Context
 {
     public static class ModelBuilderExtensions
     {
-        private static readonly string[] CourseRoles = {"admin", "member"};
-
         public static void Configure(this ModelBuilder modelBuilder)
         {
             foreach (var type in modelBuilder.Model.GetEntityTypes())
@@ -28,11 +25,11 @@ namespace Codi.Core.DAL.Context
 
             var images = GenerateRandomImages(100);
             var users = GenerateRandomUsers(images, 50);
-            var courses = GenerateRandomCourses(images, users, 20);
+            var organizations = GenerateRandomOrganizations(users, 30);
+            var courses = GenerateRandomCourses(images, users, organizations, 20);
             var units = GenerateRandomUnits(courses, 40);
             var lessons = GenerateRandomLessons(units, 80);
-            var courseRoles = GenerateRandomCourseRoles();
-            var courseUsers = GenerateRandomCourseUsers(courses, users, courseRoles, 70);
+            var courseUsers = GenerateRandomCourseUsers(courses, users, 70);
             var submissions = GenerateRandomSubmissions(lessons, users, 100);
             var projects = GenerateRandomProjects(users, 50);
             var invitedUsers = GenerateRandomInvitedUsers(users, projects, 100);
@@ -46,10 +43,10 @@ namespace Codi.Core.DAL.Context
             modelBuilder.Entity<Course>().HasData(courses);
             modelBuilder.Entity<Unit>().HasData(units);
             modelBuilder.Entity<Lesson>().HasData(lessons);
-            modelBuilder.Entity<CourseRole>().HasData(courseRoles);
             modelBuilder.Entity<CourseUser>().HasData(courseUsers);
             modelBuilder.Entity<Submission>().HasData(submissions);
             modelBuilder.Entity<Project>().HasData(projects);
+            modelBuilder.Entity<Organization>().HasData(organizations);
             modelBuilder.Entity<InvitedUser>().HasData(invitedUsers);
             modelBuilder.Entity<Thread>().HasData(threads);
             modelBuilder.Entity<ThreadComment>().HasData(threadComments);
@@ -99,7 +96,7 @@ namespace Codi.Core.DAL.Context
                 .Generate(count);
         }
 
-        public static IList<Course> GenerateRandomCourses(IList<Image> images, IList<User> users, int count)
+        public static IList<Course> GenerateRandomCourses(IList<Image> images, IList<User> users, IList<Organization> organizations, int count)
         {
             Faker.GlobalUniqueIndex = 1;
 
@@ -110,6 +107,7 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.AvatarId, f => f.PickRandom(images).Id)
                 .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
+                .RuleFor(pi => pi.OrganizationId, f => f.PickRandom(organizations).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
@@ -149,14 +147,7 @@ namespace Codi.Core.DAL.Context
                 .Generate(count);
         }
 
-        public static IList<CourseRole> GenerateRandomCourseRoles()
-        {   int id = 1;
-            return CourseRoles
-                .Select(n => new CourseRole { Id = id++, Name = n, CreatedBy = 1, CreatedAt = new DateTime(2000, 1, 1) })
-                .ToList();
-        }
-
-        public static IList<CourseUser> GenerateRandomCourseUsers(IList<Course> courses, IList<User> users, IList<CourseRole> roles, int count)
+        public static IList<CourseUser> GenerateRandomCourseUsers(IList<Course> courses, IList<User> users, int count)
         {
             Faker.GlobalUniqueIndex = 1;
 
@@ -164,7 +155,6 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.Id, f => f.IndexGlobal)
                 .RuleFor(pi => pi.UserId, f => f.PickRandom(users).Id)
                 .RuleFor(pi => pi.CourseId, f => f.PickRandom(courses).Id)
-                .RuleFor(pi => pi.CourseRoleId, f => f.PickRandom(roles).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count)
@@ -197,6 +187,19 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.Title, f => f.Lorem.Sentence())
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.IsPublic, f => f.Random.Bool())
+                .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
+                .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
+                .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
+                .Generate(count);
+        }
+        
+        public static IList<Organization> GenerateRandomOrganizations(IList<User> users, int count)
+        {
+            Faker.GlobalUniqueIndex = 1;
+
+            return new Faker<Organization>()
+                .RuleFor(pi => pi.Id, f => f.IndexGlobal)
+                .RuleFor(pi => pi.Name, f => f.Lorem.Sentence())
                 .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
