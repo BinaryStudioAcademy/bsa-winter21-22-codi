@@ -7,7 +7,7 @@ import {
     signInWithPopup,
     UserCredential,
     OAuthCredential,
-    OAuthProvider
+    OAuthProvider, Auth
 } from "@angular/fire/auth";
 import { from } from "rxjs";
 import { AuthService } from "@core/services/auth.service";
@@ -16,6 +16,7 @@ import { Router } from "@angular/router";
 import { NotificationService } from "@core/services/notification.service";
 import { RegistrationService } from "@core/services/registration.service";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
+import {User} from "@core/models/user/user";
 
 @Injectable({
     providedIn: 'root'
@@ -23,6 +24,7 @@ import { ConfirmationDialogService } from "@core/services/confirmation-dialog.se
 export class SignInService {
 
     constructor(
+        private auth: Auth,
         private authService: AuthService,
         private userService: UserService,
         private registrationService: RegistrationService,
@@ -33,7 +35,7 @@ export class SignInService {
 
     signInWithGithub(redirectUrl?: string) {
         let githubProvider = new GithubAuthProvider();
-        return signInWithPopup(this.authService.getAuth(), githubProvider).then(
+        return signInWithPopup(this.auth, githubProvider).then(
             (credential) => {
                 this.loginWithProviders(credential, redirectUrl);
             }
@@ -48,7 +50,7 @@ export class SignInService {
             .setCustomParameters({
                 prompt: 'select_account'
             });
-        return signInWithPopup(this.authService.getAuth(), googleProvider).then(
+        return signInWithPopup(this.auth, googleProvider).then(
             (credential) => {
                 this.loginWithProviders(credential, redirectUrl);
             }
@@ -63,27 +65,31 @@ export class SignInService {
             error.customData
         ) as OAuthCredential;
         let availableProviders: string = '';
-        fetchSignInMethodsForEmail(this.authService.getAuth(), error.customData.email)
+        fetchSignInMethodsForEmail(this.auth, error.customData.email)
             .then((providers => {
                 availableProviders = providers.toString().replace(',', ' or ');
                 switch (error.code) {
                     case 'auth/account-exists-with-different-credential': {
-                        this.confirmationDialogService
-                            .openConfirmationDialog(
-                                ``,
-                                `It seems that you would like to login with ${pendingCredential.providerId},
-                                but you've already had an account in Codi.
-                                To make it possible, firstly, login with ${availableProviders !== '' ? availableProviders : 'google.com'}
-                                and link with ${pendingCredential.providerId} in user settings.`,
-                                {
-                                    cancelButton: false
-                                }
-                            );
+                        this.showExistsAccountDialog(pendingCredential.providerId, availableProviders);
                         break;
                     }
                     case 'auth/cancelled-popup-request': break;
                 }
             }));
+    }
+
+    showExistsAccountDialog(pendingProvider: string, availableProviders: string) {
+        this.confirmationDialogService
+            .openConfirmationDialog(
+                ``,
+                `It seems that you would like to login with ${pendingProvider},
+                                but you've already had an account in Codi.
+                                To make it possible, firstly, login with ${availableProviders ? availableProviders : 'google.com'}
+                                and link with ${pendingProvider} in user settings.`,
+                {
+                    cancelButton: false
+                }
+            );
     }
 
     openVerificationEmail(email: string) {
@@ -103,20 +109,7 @@ export class SignInService {
         this.userService.getCurrent(credential.user.uid)
             .subscribe((resp) => {
                 if (resp.body) {
-                    this.authService.currentUser$
-                        .subscribe((user) => {
-                            if (!user?.emailVerified) {
-                                sendEmailVerification(user!).then(() => {
-                                    this.openVerificationEmail(credential.user?.email!);
-                                });
-                            }
-                            else {
-                                this.router.navigate(['main']).then(() => {
-                                    this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-                                });
-                                this.authService.setUser(resp.body!);
-                            }
-                        });
+                    this.setUserIfVerifiedEmail(credential.user?.email!, resp.body);
                 }
                 else {
                     this.registrationService.signUpWithProviders(credential);
@@ -135,8 +128,25 @@ export class SignInService {
             });
     }
 
+    setUserIfVerifiedEmail(email: string, currentUser: User) {
+        this.authService.currentUser$
+            .subscribe((user) => {
+                if (!user?.emailVerified) {
+                    sendEmailVerification(user!).then(() => {
+                        this.openVerificationEmail(email);
+                    });
+                }
+                else {
+                    this.router.navigate(['main']).then(() => {
+                        this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
+                    });
+                    this.authService.setUser(currentUser);
+                }
+            });
+    }
+
     signIn(email: string, password: string) {
-        return from(signInWithEmailAndPassword(this.authService.getAuth(), email, password).then((credential) => {
+        return from(signInWithEmailAndPassword(this.auth, email, password).then((credential) => {
             if(!credential.user.emailVerified){
                 sendEmailVerification(credential.user!).then(() => {
                     this.openVerificationEmail(credential.user?.email!);
@@ -150,15 +160,19 @@ export class SignInService {
         })
             .catch(
                 (error) => {
-                    switch(error.code) {
-                        case 'auth/wrong-password':
-                            this.notificationService.showErrorMessage('The email address or password is incorrect', 'Error');
-                            break;
-                        default:
-                            this.notificationService.showErrorMessage(error.code, 'Error');
-                            break;
-                    }
+                    this.showErrorSignInMessage(error);
                 }
             ))
+    }
+
+    showErrorSignInMessage(error: any) {
+        switch(error.code) {
+            case 'auth/wrong-password':
+                this.notificationService.showErrorMessage('The email address or password is incorrect', 'Error');
+                break;
+            default:
+                this.notificationService.showErrorMessage(error.code, 'Error');
+                break;
+        }
     }
 }

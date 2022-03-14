@@ -39,10 +39,6 @@ export class AuthService {
         })
     }
 
-    getAuth() {
-        return this.auth;
-    }
-
     getCurrentUser() {
         return this.user
             ? of(this.user)
@@ -69,26 +65,30 @@ export class AuthService {
     }
 
     linkProvider(providerId: Provider) {
-        let provider: AuthProvider;
-        switch (providerId) {
-            case Provider.google: {
-                provider = new GoogleAuthProvider().setCustomParameters({
-                    prompt: "select_account"
-                });
-                break;
-            }
-            case Provider.github: {
-                provider = new GithubAuthProvider();
-                break;
-            }
-        }
-        return from(linkWithPopup(this.auth.currentUser!, provider!)
+        let provider = this.getProvider(providerId);
+        return from(linkWithPopup(this.auth.currentUser!, provider)
             .then(() => {
                 this.notificationService.showSuccessMessage(`${provider.providerId} was successfully linked`);
             })
             .catch(err => {
                 this.notificationService.showErrorMessage('This account is already added to Codi!');
             }));
+    }
+
+    getProvider(providerId: Provider) {
+        let provider: AuthProvider;
+        switch (providerId) {
+            case Provider.google: {
+                provider = new GoogleAuthProvider().setCustomParameters({
+                    prompt: "select_account"
+                });
+                return provider;
+            }
+            case Provider.github: {
+                provider = new GithubAuthProvider();
+                return provider;
+            }
+        }
     }
 
     unlinkProvider(providerId: Provider) {

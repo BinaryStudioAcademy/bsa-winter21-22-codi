@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {from, Subject, takeUntil} from "rxjs";
 import {
+    Auth,
     createUserWithEmailAndPassword,
     UserCredential
 } from "@angular/fire/auth";
@@ -17,6 +18,7 @@ export class RegistrationService {
     private unsubscribe$ = new Subject<void>();
 
     constructor(
+        private auth: Auth,
         private authService: AuthService,
         private userService: UserService,
         private notificationService: NotificationService,
@@ -58,7 +60,7 @@ export class RegistrationService {
     }
 
     signUp(username: string, email: string, password: string) {
-        return from(createUserWithEmailAndPassword(this.authService.getAuth(), email, password)
+        return from(createUserWithEmailAndPassword(this.auth, email, password)
             .then((credential) => {
                 let newUser = {
                     firebaseId: credential.user.uid,
@@ -72,17 +74,21 @@ export class RegistrationService {
             })
             .catch(
                 (error) => {
-                    switch(error.code) {
-                        case 'auth/email-already-in-use':
-                            this.notificationService.showErrorMessage('Email already in use', 'Error');
-                            break;
-                        default:
-                            this.notificationService.showErrorMessage(error.code, 'Error');
-                            break;
-                    }
+                    this.showErrorSignUpMessage(error);
                 }
             )
         );
+    }
+
+    showErrorSignUpMessage(error: any) {
+        switch(error.code) {
+            case 'auth/email-already-in-use':
+                this.notificationService.showErrorMessage('Email already in use', 'Error');
+                break;
+            default:
+                this.notificationService.showErrorMessage(error.code, 'Error');
+                break;
+        }
     }
 
     saveUser(newUser: CreateUser) {
