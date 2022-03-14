@@ -96,7 +96,7 @@ export class RegistrationService {
             .create(newUser)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((user) => {
-                this.authService.setUser(user.body!);
+                this.authService.setUser(user);
             });
     }
 }

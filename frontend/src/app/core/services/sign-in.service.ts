@@ -107,9 +107,9 @@ export class SignInService {
 
     loginWithProviders(credential: UserCredential, redirectUrl?: string): void {
         this.userService.getCurrent(credential.user.uid)
-            .subscribe((resp) => {
-                if (resp.body) {
-                    this.setUserIfVerifiedEmail(credential.user?.email!, resp.body);
+            .subscribe((user) => {
+                if (user) {
+                    this.setUserIfVerifiedEmail(credential.user?.email!, user);
                 }
                 else {
                     this.registrationService.signUpWithProviders(credential);
