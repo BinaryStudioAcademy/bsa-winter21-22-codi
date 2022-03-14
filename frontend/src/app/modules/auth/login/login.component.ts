@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '@core/services/auth.service';
+import { SignInService } from "@core/services/sign-in.service";
 
 @Component({
     selector: 'app-login',
@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
     form!: FormGroup
 
     constructor(
-        private authService: AuthService,
+        private signInService: SignInService,
     ) {}
 
     ngOnInit(): void {
@@ -22,15 +22,15 @@ export class LoginComponent implements OnInit {
     }
 
     withGoogle() {
-        this.authService.withGoogle();
+        this.signInService.signInWithGoogle();
     }
 
     withGit() {
-        this.authService.withGitHub();
+        this.signInService.signInWithGithub();
     }
 
     submit() {
         const { login, password } = this.form.value;
-        this.authService.signIn(login, password);
+        this.signInService.signIn(login, password);
     }
 }

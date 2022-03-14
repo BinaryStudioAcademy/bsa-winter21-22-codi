@@ -8,6 +8,7 @@ import { takeUntil } from "rxjs";
 import { User } from "@core/models/user/user";
 import { NotificationService } from "@core/services/notification.service";
 import { regexs } from "@shared/constants/regexs";
+import { Provider } from "@shared/constants/provider";
 
 @Component({
     selector: 'app-edit-user-profile-page',
@@ -15,10 +16,12 @@ import { regexs } from "@shared/constants/regexs";
     styleUrls: ['./edit-user-profile-page.component.sass']
 })
 export class EditUserProfilePageComponent extends BaseComponent implements OnInit {
-
-    public user: User;
+    user: User;
     form: FormGroup;
-    public imageFile: File;
+    imageFile: File;
+    provider = Provider;
+    isGoogleLinked: boolean;
+    isGitHubLinked: boolean;
 
     constructor(
         private authService: AuthService,
@@ -61,7 +64,9 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
             .subscribe(user => {
                 this.user = user;
                 this.form.patchValue(user);
-            })
+            });
+
+        this.reloadLinkedProviders();
     }
 
     updateUser() {
@@ -83,7 +88,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
             });
     }
 
-    public handleFileInput(target: any) {
+    handleFileInput(target: any) {
         this.imageFile = target.files[0];
 
         if (!this.imageFile) {
@@ -100,5 +105,38 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         const reader = new FileReader();
         reader.addEventListener('load', () => (this.user.avatar = reader.result as string));
         reader.readAsDataURL(this.imageFile);
+    }
+
+    linkProvider(provider: Provider) {
+        this.authService
+            .linkProvider(provider)
+            .subscribe(() => {
+                this.reloadLinkedProviders();
+            });
+    }
+
+    unlinkProvider(provider: Provider) {
+        this.authService
+            .unlinkProvider(provider)
+            .subscribe(() => {
+                this.reloadLinkedProviders();
+            });
+    }
+
+    reloadLinkedProviders() {
+        this.authService.getLinkedProviders().subscribe((providers => {
+            this.isGitHubLinked = false;
+            this.isGoogleLinked = false;
+            providers.forEach(item => {
+                switch (item) {
+                    case this.provider.google:
+                        this.isGoogleLinked = true;
+                        break;
+                    case this.provider.github:
+                        this.isGitHubLinked = true;
+                        break;
+                }
+            })
+        }))
     }
 }
