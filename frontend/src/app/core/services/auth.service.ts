@@ -76,17 +76,15 @@ export class AuthService {
     }
 
     getProvider(providerId: Provider) {
-        let provider: AuthProvider;
         switch (providerId) {
             case Provider.google: {
-                provider = new GoogleAuthProvider().setCustomParameters({
+                return new GoogleAuthProvider().setCustomParameters({
                     prompt: "select_account"
                 });
-                return provider;
+
             }
             case Provider.github: {
-                provider = new GithubAuthProvider();
-                return provider;
+                return new GithubAuthProvider();
             }
         }
     }

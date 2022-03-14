@@ -46,8 +46,7 @@ export class RegistrationService {
     }
 
     signUpWithProviders(credential: UserCredential) {
-        let provider = credential.providerId;
-        switch (provider) {
+        switch (credential.providerId) {
             case 'google.com': {
                 this.signUpWithGoogle(credential);
                 break;
