@@ -11,6 +11,6 @@ export class TemplateService {
     constructor(private httpService: CodiHttpClientService) { }
 
     getNamesTemplate() {
-        return this.httpService.getFullRequest<Template[]>(`${this.routePrefix}/names`)
+        return this.httpService.getRequest<Template[]>(`${this.routePrefix}/names`)
     }
 }

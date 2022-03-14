@@ -17,5 +17,6 @@
         public List<Submission> Submissions { get; set; } = default!;
         public List<ThreadComment> ThreadComments { get; set; } = default!;
         public List<Thread> Threads { get; set; } = default!;
+        public List<Organization> Organizations { get; set; } = default!;
     }
 }

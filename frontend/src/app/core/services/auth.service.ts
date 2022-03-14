@@ -44,8 +44,8 @@ export class AuthService {
             ? of(this.user)
             : this.userService.getCurrent(this.auth.currentUser?.uid!)
                 .pipe(
-                    map((resp) => {
-                        this.user = resp.body!;
+                    map((user) => {
+                        this.user = user;
                         this.eventService.userChanged(this.user);
                         return this.user;
                     }));

@@ -2,13 +2,13 @@
 
 body
     margin: 0
+.text
+    color: #c6c8c9
+    font-weight: bold
 ul
     list-style: none
     padding: 0
     margin: 0
-.text
-    color: #c6c8c9
-    font-weight: bold
 .content
     color: $base-text-color
     padding: 20px
@@ -26,6 +26,9 @@ ul
         border: 0
         padding-bottom: 0
 
+    & .modal-body
+        white-space: pre-line
+
     & .modal-footer
         border: 0
         padding-top: 0
@@ -37,6 +40,18 @@ ul
 
     & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
+
+.dialog-container
+    padding: 20px
+
+    .dialog-header
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+
+        .close
+            color: $base-text-color
+            outline: none
 
 input.form-control, textarea.form-control
     border-color: $input-outline
@@ -69,6 +84,18 @@ a
     font-size: $h2-font-size
     text-align: center
     line-height: 118px
+
+.avatar-sm
+    min-width: 45px
+    max-width: 45px
+    height: 45px
+    border-radius: 50%
+    &.generic-avatar
+        background-color: $primary
+        color: $base-text-color
+        font-size: $h5-font-size
+        text-align: center
+        line-height: 45px
 
 .dropdown-menu
     max-height: 140px

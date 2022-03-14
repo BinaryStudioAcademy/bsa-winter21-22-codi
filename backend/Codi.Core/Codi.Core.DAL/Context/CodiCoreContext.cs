@@ -10,11 +10,11 @@ namespace Codi.Core.DAL
     {
         public DbSet<Sample> Samples { get; private set; }
         public DbSet<Course> Courses { get; private set; }
-        public DbSet<CourseRole> CourseRoles { get; private set; }
         public DbSet<CourseUser> CourseUsers { get; private set; }
         public DbSet<Image> Images { get; private set; }
         public DbSet<InvitedUser> InvitedUsers { get; private set; }
         public DbSet<Lesson> Lessons { get; private set; }
+        public DbSet<Organization> Organizations { get; private set; }
         public DbSet<Project> Projects { get; private set; }
         public DbSet<Submission> Submissions { get; private set; }
         public DbSet<Thread> Threads { get; private set; }

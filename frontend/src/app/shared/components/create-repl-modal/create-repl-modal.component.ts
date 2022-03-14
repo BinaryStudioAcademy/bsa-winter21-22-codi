@@ -67,7 +67,7 @@ export class CreateReplModalComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
                 (resp) => {
-                    if(resp.body) this.templates = resp.body
+                    if(resp) this.templates = resp
                 })
     }
 
@@ -79,7 +79,7 @@ export class CreateReplModalComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (resp) => {
-                    let proj = JSON.stringify(resp.body?.title)
+                    let proj = JSON.stringify(resp.title)
                     this.activeModal.close()
                     this.notificationService.showSuccessMessage('Project created: ' + proj, 'Good job!')
                 },
