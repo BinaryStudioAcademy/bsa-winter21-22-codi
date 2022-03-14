@@ -117,17 +117,17 @@ div
     text-align: left
     margin-top: 20px
     display: grid
-    grid-template-columns: 150px 150px 150px 150px 150px 150px
+    grid-template-columns: repeat(5, 150px)
 ul
     padding: 0
     margin: 0
 @media screen and ( max-width: 1200px )
     .language-list-content
         display: grid
-        grid-template-columns: 120px 120px 120px 120px
+        grid-template-columns: repeat(4, 120px)
 .limitTextHeight
-    height: 50px
     overflow: hidden
+    height: 50px
 a
     margin: 0
 a:hover

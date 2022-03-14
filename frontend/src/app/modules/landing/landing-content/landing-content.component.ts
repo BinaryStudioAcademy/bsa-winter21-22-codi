@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Languages} from "@shared/constants/languages";
 
 @Component({
     selector: 'app-landing-content',
@@ -13,9 +14,17 @@ export class LandingContentComponent {
 
     CommunityIMG: string = 'assets/images/LandingPage/community.png';
 
-    isReadMore: boolean = true;
+    showMoreLanguages: boolean = false;
 
-    showText() {
-        this.isReadMore = !this.isReadMore
+    languages = Languages;
+
+    enumKeys: any = [];
+
+    constructor() {
+        this.enumKeys = Object.keys(this.languages).filter(f => !isNaN(Number(f)));
+    }
+
+    showMoreItems() {
+        this.showMoreLanguages = !this.showMoreLanguages
     }
 }

@@ -121,69 +121,18 @@
                 </div>
             </div>
         </div>
-        <div id="supported-language">
-            <div class="center start-coding">
-                <h1>Languages</h1>
-                <ul class="language-list-content"  [ngClass]="{'limitTextHeight': isReadMore}">
-                    <ul>JavaScript</ul>
-                    <ul>TypeScript</ul>
-                    <ul>C#</ul>
-                    <ul>HTML, CSS, JS</ul>
-                    <ul>Python</ul>
-                    <ul>C++</ul>
-                    <ul>Java</ul>
-                    <ul>CoffeeScript</ul>
-                    <ul>C</ul>
-                    <ul>F#</ul>
-                    <ul>Clojure</ul>
-                    <ul>Haskell</ul>
-                    <ul>Kotlin</ul>
-                    <ul>QBasic</ul>
-                    <ul>Forth</ul>
-                    <ul>LOLCODE</ul>
-                    <ul>BrainF</ul>
-                    <ul>Emoticon</ul>
-                    <ul>Bloop</ul>
-                    <ul>Unlambda</ul>
-                    <ul>Scheme</ul>
-                    <ul>APL</ul>
-                    <ul>Lua</ul>
-                    <ul>Ruby</ul>
-                    <ul>Roy</ul>
-                    <ul>Node.js</ul>
-                    <ul>Deno(beta)</ul>
-                    <ul>Golang</ul>
-                    <ul>Rust</ul>
-                    <ul>Swift</ul>
-                    <ul>Basic(beta)</ul>
-                    <ul>R</ul>
-                    <ul>Bash</ul>
-                    <ul>Crystal</ul>
-                    <ul>Julia</ul>
-                    <ul>Elixir</ul>
-                    <ul>Nim</ul>
-                    <ul>Dart</ul>
-                    <ul>Reason Node.js</ul>
-                    <ul>Tcl</ul>
-                    <ul>Erlang</ul>
-                    <ul>Pygame</ul>
-                    <ul>Love2D</ul>
-                    <ul>Emacs Lisp(Elisp)</ul>
-                    <ul>PHP Web Server</ul>
-                    <ul>SQLite</ul>
-                    <ul>PHP CLI</ul>
-                    <ul>Pyxel</ul>
-                    <ul>Raku</ul>
-                    <ul>Scala(beta)</ul>
-                    <ul>Nix(beta)</ul>
-                    <ul>Python(with Turtle)</ul>
+        <div id="supported-language" class="center">
+            <h1>Languages</h1>
+            <div class="language-list-content" [ngClass]="{'limitTextHeight': showMoreLanguages === false}">
+                <ul *ngFor="let name of enumKeys">
+                    {{ languages[name] }}
                 </ul>
-                <p>
-                    <a type="button" class="button" (click)="showText()">
-                    {{ isReadMore ? 'Read More': 'Read Less' }}
-                    </a>
-                </p>
             </div>
+            <p>
+                <a type="button" class="button" (click)="showMoreItems()">
+                    {{ showMoreLanguages ? 'Read Less' : 'Read More' }}
+                </a>
+            </p>
         </div>
     </div>
     <div class="center start-coding">
