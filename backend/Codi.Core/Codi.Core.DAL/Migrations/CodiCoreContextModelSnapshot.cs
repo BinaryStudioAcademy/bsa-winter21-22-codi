@@ -55,12 +55,17 @@ namespace Codi.Core.DAL.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<long>("OrganizationId")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("OwnerId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AvatarId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("OwnerId");
 
@@ -70,287 +75,262 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            AvatarId = 93L,
-                            CreatedAt = new DateTime(2021, 7, 22, 0, 1, 31, 855, DateTimeKind.Unspecified).AddTicks(4664),
-                            CreatedBy = 2L,
-                            Description = "Corrupti quibusdam rem veritatis nesciunt sunt.\nNon reprehenderit iste.\nEum molestiae qui itaque ut nam ex aspernatur quia architecto.\nVero beatae a saepe quo.\nRatione vero quas soluta.",
-                            DisplayName = "Quos qui possimus et veniam facere aut natus doloremque.",
+                            AvatarId = 57L,
+                            CreatedAt = new DateTime(2021, 2, 26, 18, 16, 3, 183, DateTimeKind.Unspecified).AddTicks(3398),
+                            CreatedBy = 4L,
+                            Description = "Iste consequatur id consequatur ab aliquam.\nCumque odit libero blanditiis explicabo dicta molestiae.\nTotam exercitationem labore blanditiis aliquam libero facilis.",
+                            DisplayName = "Aut doloremque consequatur totam nam dolorem molestiae reiciendis vel.",
                             IsDeleted = false,
-                            Name = "wirelessnationalintermediateRefined",
-                            OwnerId = 42L
+                            Name = "depositFrozenPassage",
+                            OrganizationId = 9L,
+                            OwnerId = 5L
                         },
                         new
                         {
                             Id = 3L,
-                            AvatarId = 7L,
-                            CreatedAt = new DateTime(2021, 12, 20, 6, 12, 33, 503, DateTimeKind.Unspecified).AddTicks(9097),
-                            CreatedBy = 5L,
-                            Description = "Nemo sed recusandae unde nisi consectetur itaque.\nAut voluptatem id recusandae vel provident.",
-                            DisplayName = "Laborum eveniet eum repudiandae.",
+                            AvatarId = 91L,
+                            CreatedAt = new DateTime(2021, 12, 1, 4, 26, 2, 917, DateTimeKind.Unspecified).AddTicks(6885),
+                            CreatedBy = 2L,
+                            Description = "Nesciunt et recusandae quisquam eaque aut.\nHarum id molestiae amet est repudiandae qui provident.\nIn quia reprehenderit.\nTempora omnis minima ea fuga est ipsum dolorum consequatur et.\nOmnis omnis neque qui quam voluptas non.",
+                            DisplayName = "Laudantium expedita iure nulla quis asperiores aut deleniti.",
                             IsDeleted = false,
-                            Name = "sky blueTengeMississippi",
-                            OwnerId = 12L
+                            Name = "programCorporate",
+                            OrganizationId = 4L,
+                            OwnerId = 2L
                         },
                         new
                         {
                             Id = 4L,
-                            AvatarId = 37L,
-                            CreatedAt = new DateTime(2022, 1, 16, 8, 59, 35, 42, DateTimeKind.Unspecified).AddTicks(4357),
+                            AvatarId = 48L,
+                            CreatedAt = new DateTime(2021, 2, 8, 16, 17, 36, 847, DateTimeKind.Unspecified).AddTicks(9528),
                             CreatedBy = 5L,
-                            Description = "Ullam maxime ea laudantium perferendis mollitia rerum.\nAliquam delectus occaecati.\nItaque nesciunt velit reiciendis.\nSed earum dolorum voluptas consequatur ut soluta illum.",
-                            DisplayName = "Eum est totam inventore veritatis et vel.",
+                            Description = "Quis non aspernatur ut recusandae beatae.\nDolores aliquid voluptate sapiente placeat inventore fugit dolor.",
+                            DisplayName = "Sit mollitia natus sunt maiores.",
                             IsDeleted = false,
-                            Name = "functionalitiesCambridgeshiree-business",
-                            OwnerId = 16L
+                            Name = "Rwandacapacitor",
+                            OrganizationId = 13L,
+                            OwnerId = 23L
                         },
                         new
                         {
                             Id = 5L,
-                            AvatarId = 66L,
-                            CreatedAt = new DateTime(2022, 1, 25, 2, 28, 51, 529, DateTimeKind.Unspecified).AddTicks(1491),
-                            CreatedBy = 2L,
-                            Description = "Saepe corrupti illo vitae ex.\nOfficiis aut impedit recusandae quia soluta.",
-                            DisplayName = "Blanditiis natus expedita commodi consequatur tenetur quis in molestiae.",
+                            AvatarId = 41L,
+                            CreatedAt = new DateTime(2021, 12, 8, 15, 10, 52, 856, DateTimeKind.Unspecified).AddTicks(3516),
+                            CreatedBy = 4L,
+                            Description = "Cum ut aspernatur omnis asperiores aut velit.",
+                            DisplayName = "Omnis repudiandae repellat ab quibusdam fugiat et beatae.",
                             IsDeleted = false,
-                            Name = "back-endparse",
-                            OwnerId = 34L
+                            Name = "Outdoors, Books & Computerssecured linedeposit",
+                            OrganizationId = 5L,
+                            OwnerId = 8L
                         },
                         new
                         {
                             Id = 6L,
-                            AvatarId = 23L,
-                            CreatedAt = new DateTime(2021, 11, 7, 11, 24, 3, 857, DateTimeKind.Unspecified).AddTicks(4192),
-                            CreatedBy = 2L,
-                            Description = "Et delectus pariatur molestiae et quod enim qui dolore.\nAut impedit et recusandae voluptatem cupiditate ad rerum rerum itaque.\nAspernatur distinctio ullam.",
-                            DisplayName = "Quam illo ipsum dolores nam rem temporibus aut sit blanditiis.",
+                            AvatarId = 53L,
+                            CreatedAt = new DateTime(2021, 6, 11, 12, 51, 8, 980, DateTimeKind.Unspecified).AddTicks(2773),
+                            CreatedBy = 4L,
+                            Description = "Amet fugiat inventore et maiores quidem et corporis.\nCommodi voluptates consequuntur et odit aperiam aliquid odit nihil.",
+                            DisplayName = "Cumque est aut nulla.",
                             IsDeleted = false,
-                            Name = "Rustic Cotton ShirtGroup",
-                            OwnerId = 38L
+                            Name = "cross-platformSavings Account",
+                            OrganizationId = 31L,
+                            OwnerId = 45L
                         },
                         new
                         {
                             Id = 7L,
-                            AvatarId = 17L,
-                            CreatedAt = new DateTime(2021, 7, 27, 17, 57, 55, 913, DateTimeKind.Unspecified).AddTicks(5577),
-                            CreatedBy = 5L,
-                            Description = "Ut ipsa praesentium harum minus voluptatem ut fugiat.\nMolestias non quisquam assumenda corporis unde.\nQuas reprehenderit aperiam cum.",
-                            DisplayName = "Sequi dicta quia est nesciunt cum nobis.",
+                            AvatarId = 84L,
+                            CreatedAt = new DateTime(2021, 6, 4, 15, 7, 42, 761, DateTimeKind.Unspecified).AddTicks(9893),
+                            CreatedBy = 2L,
+                            Description = "Dolores velit quos sit voluptate voluptatem et ut eius.",
+                            DisplayName = "Incidunt vel eum natus vel deserunt.",
                             IsDeleted = false,
-                            Name = "Incrediblemint green",
-                            OwnerId = 28L
+                            Name = "Yuan RenminbiInvestment Account",
+                            OrganizationId = 8L,
+                            OwnerId = 7L
                         },
                         new
                         {
                             Id = 8L,
-                            AvatarId = 15L,
-                            CreatedAt = new DateTime(2021, 7, 3, 12, 52, 11, 722, DateTimeKind.Unspecified).AddTicks(2826),
-                            CreatedBy = 4L,
-                            Description = "Ut nobis nam repellendus eum.\nDistinctio molestias et veniam est voluptates natus perferendis tempora.\nRerum tenetur sint hic veniam deserunt et enim tempora vel.\nNostrum praesentium in omnis.\nEt necessitatibus iste magni at non reprehenderit qui expedita ipsa.",
-                            DisplayName = "Quia quaerat facere odit et dicta.",
+                            AvatarId = 52L,
+                            CreatedAt = new DateTime(2021, 2, 11, 16, 20, 18, 684, DateTimeKind.Unspecified).AddTicks(6932),
+                            CreatedBy = 1L,
+                            Description = "Similique nihil excepturi.\nProvident aut aut accusantium unde sunt corporis id quis.\nLaboriosam excepturi amet doloremque similique iusto.",
+                            DisplayName = "Qui sit velit molestiae animi.",
                             IsDeleted = false,
-                            Name = "compressknowledge useropen-sourcehuman-resource",
-                            OwnerId = 51L
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            AvatarId = 11L,
-                            CreatedAt = new DateTime(2021, 7, 13, 0, 22, 29, 979, DateTimeKind.Unspecified).AddTicks(9243),
-                            CreatedBy = 3L,
-                            Description = "Quas cumque odit libero blanditiis.",
-                            DisplayName = "Dignissimos reprehenderit iste consequatur id consequatur.",
-                            IsDeleted = false,
-                            Name = "SteelonlinedepositPrincipal",
+                            Name = "web-enabledhard drivecyan",
+                            OrganizationId = 21L,
                             OwnerId = 6L
                         },
                         new
                         {
-                            Id = 10L,
-                            AvatarId = 59L,
-                            CreatedAt = new DateTime(2021, 12, 3, 22, 58, 21, 595, DateTimeKind.Unspecified).AddTicks(1944),
-                            CreatedBy = 4L,
-                            Description = "Est laudantium expedita iure.\nQuis asperiores aut deleniti et deleniti nesciunt et recusandae.\nEaque aut cumque harum id molestiae amet est.\nQui provident odit in quia reprehenderit sint tempora omnis minima.\nFuga est ipsum dolorum consequatur et.",
-                            DisplayName = "Quasi quaerat et recusandae fugit dolor debitis.",
+                            Id = 9L,
+                            AvatarId = 24L,
+                            CreatedAt = new DateTime(2021, 7, 6, 14, 29, 31, 213, DateTimeKind.Unspecified).AddTicks(15),
+                            CreatedBy = 1L,
+                            Description = "Qui officia debitis deleniti quas.",
+                            DisplayName = "Ea mollitia suscipit vel est quis corporis sint.",
                             IsDeleted = false,
-                            Name = "coreForkpayment",
-                            OwnerId = 40L
+                            Name = "quantifyCambridgeshireBuckinghamshirerevolutionize",
+                            OrganizationId = 3L,
+                            OwnerId = 46L
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            AvatarId = 72L,
+                            CreatedAt = new DateTime(2021, 10, 14, 3, 15, 47, 596, DateTimeKind.Unspecified).AddTicks(1934),
+                            CreatedBy = 2L,
+                            Description = "Numquam debitis veritatis sed dolor voluptatum est cupiditate ea.\nAut ut optio culpa nobis dolore dolore sit dolorum fugit.\nTempora corrupti tenetur placeat exercitationem quasi.\nQuasi consequuntur quae perspiciatis officia quis nobis nesciunt.\nAutem exercitationem nemo.",
+                            DisplayName = "Fuga explicabo qui vel laudantium eum itaque.",
+                            IsDeleted = false,
+                            Name = "connectCustomermaroon",
+                            OrganizationId = 8L,
+                            OwnerId = 20L
                         },
                         new
                         {
                             Id = 11L,
-                            AvatarId = 101L,
-                            CreatedAt = new DateTime(2021, 4, 4, 9, 39, 41, 861, DateTimeKind.Unspecified).AddTicks(7700),
+                            AvatarId = 18L,
+                            CreatedAt = new DateTime(2021, 2, 25, 15, 32, 36, 19, DateTimeKind.Unspecified).AddTicks(7524),
                             CreatedBy = 4L,
-                            Description = "Sit mollitia natus sunt maiores.\nIn quis non aspernatur ut.\nBeatae et dolores aliquid voluptate sapiente placeat inventore fugit dolor.\nMolestiae vel quo voluptatibus officia accusantium.\nRerum doloremque ut nemo qui est aut est omnis repudiandae.",
-                            DisplayName = "Aliquam quas quod maxime.",
+                            Description = "Ea aut qui ut nulla similique vel voluptas eveniet non.\nAccusamus rerum enim ea.\nRepellat sit et.",
+                            DisplayName = "Aut esse maiores iure odit.",
                             IsDeleted = false,
-                            Name = "e-servicesInteractionsComputers",
-                            OwnerId = 4L
+                            Name = "GlobalDirectProfit-focused",
+                            OrganizationId = 18L,
+                            OwnerId = 20L
                         },
                         new
                         {
                             Id = 12L,
-                            AvatarId = 85L,
-                            CreatedAt = new DateTime(2021, 6, 30, 12, 37, 25, 293, DateTimeKind.Unspecified).AddTicks(6161),
+                            AvatarId = 86L,
+                            CreatedAt = new DateTime(2021, 8, 22, 19, 19, 31, 764, DateTimeKind.Unspecified).AddTicks(4136),
                             CreatedBy = 2L,
-                            Description = "Et non labore cumque est.\nNulla nisi porro amet fugiat inventore et maiores quidem.\nCorporis fugiat commodi voluptates consequuntur et odit aperiam aliquid.\nNihil occaecati debitis.\nFuga facilis amet nihil dolorem dolorum reprehenderit autem incidunt vel.",
-                            DisplayName = "Asperiores aut velit in magni magni impedit voluptatem ut.",
+                            Description = "Et quis earum ut omnis aut in.\nDoloribus quia blanditiis nostrum sint.",
+                            DisplayName = "Et id et asperiores praesentium id.",
                             IsDeleted = false,
-                            Name = "SmallCredit Card AccountDirect",
-                            OwnerId = 29L
+                            Name = "communitiesparseLilangeniFactors",
+                            OrganizationId = 17L,
+                            OwnerId = 18L
                         },
                         new
                         {
                             Id = 13L,
-                            AvatarId = 32L,
-                            CreatedAt = new DateTime(2021, 8, 9, 12, 2, 11, 320, DateTimeKind.Unspecified).AddTicks(7724),
-                            CreatedBy = 2L,
-                            Description = "Sed ut nam.\nVoluptas laudantium id natus amet officiis.\nQui sit velit molestiae animi.\nBeatae similique nihil excepturi accusamus provident aut.\nAccusantium unde sunt.",
-                            DisplayName = "Voluptate voluptatem et ut eius.",
+                            AvatarId = 76L,
+                            CreatedAt = new DateTime(2021, 4, 27, 23, 33, 33, 473, DateTimeKind.Unspecified).AddTicks(9034),
+                            CreatedBy = 3L,
+                            Description = "Earum in asperiores natus quidem eius eum animi impedit.\nCorrupti harum saepe inventore ad ea libero.\nQui laborum modi.\nLaborum eligendi in quis id animi.\nMaiores atque ut sit.",
+                            DisplayName = "Ea quibusdam qui alias quisquam repudiandae.",
                             IsDeleted = false,
-                            Name = "back-endconvergence",
-                            OwnerId = 38L
+                            Name = "IsleivoryUser-centric",
+                            OrganizationId = 29L,
+                            OwnerId = 47L
                         },
                         new
                         {
                             Id = 14L,
-                            AvatarId = 13L,
-                            CreatedAt = new DateTime(2021, 4, 21, 18, 56, 4, 190, DateTimeKind.Unspecified).AddTicks(1125),
-                            CreatedBy = 3L,
-                            Description = "Et deleniti porro ea qui et.\nMollitia suscipit vel est quis corporis.\nDolorem quaerat qui officia debitis deleniti quas modi eveniet aperiam.",
-                            DisplayName = "Aut rerum est.",
+                            AvatarId = 36L,
+                            CreatedAt = new DateTime(2021, 10, 25, 0, 39, 56, 770, DateTimeKind.Unspecified).AddTicks(5455),
+                            CreatedBy = 2L,
+                            Description = "Cupiditate temporibus corporis nesciunt aliquid et repellendus.\nEst beatae hic ullam ratione voluptatem.",
+                            DisplayName = "Occaecati quod suscipit nihil occaecati.",
                             IsDeleted = false,
-                            Name = "Cocos (Keeling) IslandsGrocery & BeautyGeneric",
-                            OwnerId = 30L
+                            Name = "Concreteconnectivoryleverage",
+                            OrganizationId = 29L,
+                            OwnerId = 45L
                         },
                         new
                         {
                             Id = 15L,
-                            AvatarId = 32L,
-                            CreatedAt = new DateTime(2021, 3, 1, 2, 30, 30, 793, DateTimeKind.Unspecified).AddTicks(9497),
-                            CreatedBy = 3L,
-                            Description = "Sint at numquam debitis veritatis sed dolor voluptatum est cupiditate.\nSaepe aut ut optio culpa.\nDolore dolore sit dolorum fugit iusto tempora corrupti.\nPlaceat exercitationem quasi tempore quasi consequuntur quae perspiciatis officia quis.\nNesciunt ab autem exercitationem nemo impedit autem tempora.",
-                            DisplayName = "Qui vel laudantium.",
+                            AvatarId = 78L,
+                            CreatedAt = new DateTime(2021, 5, 6, 21, 4, 26, 13, DateTimeKind.Unspecified).AddTicks(7604),
+                            CreatedBy = 2L,
+                            Description = "Eum qui modi est.\nMolestias nihil eum assumenda sed vel.\nIusto adipisci quia.\nIusto et dolore rerum explicabo mollitia quis autem architecto.\nEx nihil sint architecto ullam molestiae ipsam earum.",
+                            DisplayName = "Beatae rem est dolor voluptatem.",
                             IsDeleted = false,
-                            Name = "CustomermaroonNew York",
-                            OwnerId = 17L
+                            Name = "ViaexperiencesHandcrafted",
+                            OrganizationId = 21L,
+                            OwnerId = 12L
                         },
                         new
                         {
                             Id = 16L,
-                            AvatarId = 54L,
-                            CreatedAt = new DateTime(2021, 3, 15, 7, 45, 39, 618, DateTimeKind.Unspecified).AddTicks(4530),
-                            CreatedBy = 5L,
-                            Description = "Ut nulla similique vel voluptas eveniet.",
-                            DisplayName = "Maiores iure odit qui rerum ea.",
+                            AvatarId = 33L,
+                            CreatedAt = new DateTime(2021, 10, 25, 16, 34, 37, 38, DateTimeKind.Unspecified).AddTicks(4366),
+                            CreatedBy = 1L,
+                            Description = "Pariatur provident vel voluptatem porro laudantium eligendi qui rerum.\nQuos molestiae ut quia qui possimus deleniti ut.\nIusto architecto quaerat.\nVel nostrum aut.",
+                            DisplayName = "Minima est ipsa aut.",
                             IsDeleted = false,
-                            Name = "DirectProfit-focusedprojection",
-                            OwnerId = 11L
+                            Name = "AssociateIncredible Wooden CaractuatingInvestor",
+                            OrganizationId = 2L,
+                            OwnerId = 45L
                         },
                         new
                         {
                             Id = 17L,
-                            AvatarId = 26L,
-                            CreatedAt = new DateTime(2021, 9, 7, 11, 9, 49, 292, DateTimeKind.Unspecified).AddTicks(2291),
+                            AvatarId = 44L,
+                            CreatedAt = new DateTime(2021, 9, 10, 4, 52, 45, 31, DateTimeKind.Unspecified).AddTicks(6708),
                             CreatedBy = 3L,
-                            Description = "Optio assumenda rerum et velit et id et asperiores praesentium.\nQuia mollitia et quis earum ut omnis aut.\nEx doloribus quia blanditiis nostrum sint.\nSit occaecati voluptas ducimus laboriosam mollitia quis velit omnis.",
-                            DisplayName = "Neque consequatur iste est recusandae et in tempora.",
+                            Description = "Occaecati exercitationem architecto.\nAliquid optio officia.\nEt vero repudiandae sequi fugiat et minus.",
+                            DisplayName = "Voluptatum incidunt consequatur est quidem recusandae.",
                             IsDeleted = false,
-                            Name = "paradigmsOfficer",
-                            OwnerId = 49L
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            AvatarId = 24L,
-                            CreatedAt = new DateTime(2021, 5, 25, 17, 31, 16, 647, DateTimeKind.Unspecified).AddTicks(8802),
-                            CreatedBy = 4L,
-                            Description = "Ea libero perferendis qui laborum.",
-                            DisplayName = "Natus quidem eius eum animi impedit error corrupti harum saepe.",
-                            IsDeleted = false,
-                            Name = "SteelcircuitAccountsMarkets",
-                            OwnerId = 22L
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            AvatarId = 33L,
-                            CreatedAt = new DateTime(2021, 7, 26, 10, 48, 47, 301, DateTimeKind.Unspecified).AddTicks(7290),
-                            CreatedBy = 2L,
-                            Description = "Est quos adipisci omnis.",
-                            DisplayName = "Sit placeat et non cupiditate assumenda consequatur.",
-                            IsDeleted = false,
-                            Name = "matrixFerryAnalyst",
-                            OwnerId = 31L
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            AvatarId = 49L,
-                            CreatedAt = new DateTime(2022, 1, 25, 10, 56, 33, 422, DateTimeKind.Unspecified).AddTicks(4759),
-                            CreatedBy = 4L,
-                            Description = "Hic ullam ratione.\nUt debitis ut sed.\nIn qui molestiae esse non.\nNihil quaerat beatae.",
-                            DisplayName = "Aliquid et repellendus iure.",
-                            IsDeleted = false,
-                            Name = "cross-mediaGuadeloupeNebraskavirtual",
+                            Name = "Administrator1080pCommunicationsmethodical",
+                            OrganizationId = 15L,
                             OwnerId = 34L
                         },
                         new
                         {
-                            Id = 21L,
-                            AvatarId = 66L,
-                            CreatedAt = new DateTime(2021, 3, 3, 17, 33, 12, 393, DateTimeKind.Unspecified).AddTicks(179),
-                            CreatedBy = 4L,
-                            Description = "Iusto et dolore rerum explicabo mollitia quis autem architecto.",
-                            DisplayName = "Assumenda sed vel perferendis iusto adipisci.",
+                            Id = 18L,
+                            AvatarId = 81L,
+                            CreatedAt = new DateTime(2021, 12, 25, 14, 52, 32, 541, DateTimeKind.Unspecified).AddTicks(9008),
+                            CreatedBy = 2L,
+                            Description = "Temporibus et vero velit placeat harum quod eius ut dolores.\nNisi ducimus quidem cum dolores earum fugit adipisci in.\nEligendi est et.\nNam vel aspernatur natus necessitatibus.\nSed quae dolore quae corporis debitis incidunt voluptates vel.",
+                            DisplayName = "Quidem est et.",
                             IsDeleted = false,
-                            Name = "greyConcreteInvestment AccountIsle of Man",
-                            OwnerId = 19L
-                        });
-                });
-
-            modelBuilder.Entity("Codi.Core.DAL.Entities.CourseRole", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CourseRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreatedAt = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedBy = 1L,
-                            IsDeleted = false,
-                            Name = "admin"
+                            Name = "transmittingRielPlanner",
+                            OrganizationId = 6L,
+                            OwnerId = 10L
                         },
                         new
                         {
-                            Id = 2L,
-                            CreatedAt = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedBy = 1L,
+                            Id = 19L,
+                            AvatarId = 31L,
+                            CreatedAt = new DateTime(2021, 6, 21, 17, 45, 0, 559, DateTimeKind.Unspecified).AddTicks(3642),
+                            CreatedBy = 2L,
+                            Description = "Rerum expedita nisi tempore omnis.",
+                            DisplayName = "Totam ut explicabo consequatur nihil fugiat.",
                             IsDeleted = false,
-                            Name = "member"
+                            Name = "DirectorGlobalLibyan Dinar",
+                            OrganizationId = 19L,
+                            OwnerId = 12L
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            AvatarId = 66L,
+                            CreatedAt = new DateTime(2021, 9, 16, 19, 3, 11, 210, DateTimeKind.Unspecified).AddTicks(8905),
+                            CreatedBy = 2L,
+                            Description = "Blanditiis qui dolorem natus voluptatem occaecati.\nExpedita omnis et assumenda maxime unde sint maiores nostrum.\nEos architecto unde.\nExplicabo quo reprehenderit quia laudantium harum.\nUt consequatur quisquam eos.",
+                            DisplayName = "Quae dolor accusantium adipisci voluptas maxime in nisi.",
+                            IsDeleted = false,
+                            Name = "greyAuto Loan AccountLouisianarich",
+                            OrganizationId = 6L,
+                            OwnerId = 46L
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            AvatarId = 93L,
+                            CreatedAt = new DateTime(2021, 4, 14, 22, 37, 50, 440, DateTimeKind.Unspecified).AddTicks(5762),
+                            CreatedBy = 4L,
+                            Description = "Et ex nobis necessitatibus expedita enim maxime.\nEt aut nam facere tempore.",
+                            DisplayName = "Aut non aperiam nam porro ut ea eaque.",
+                            IsDeleted = false,
+                            Name = "GrovesfeedrebootProduct",
+                            OrganizationId = 14L,
+                            OwnerId = 15L
                         });
                 });
 
@@ -362,8 +342,8 @@ namespace Codi.Core.DAL.Migrations
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("CourseRoleId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("CourseRole")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -381,678 +361,646 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.HasIndex("CourseRoleId");
-
                     b.ToTable("CourseUsers");
 
                     b.HasData(
                         new
                         {
-                            UserId = 15L,
-                            CourseId = 17L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 11, 10, 12, 39, 13, 598, DateTimeKind.Unspecified).AddTicks(1584),
+                            UserId = 33L,
+                            CourseId = 4L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 2, 14, 52, 5, 486, DateTimeKind.Unspecified).AddTicks(7669),
                             CreatedBy = 5L,
                             Id = 2L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 33L,
-                            CourseId = 9L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 4, 26, 1, 42, 47, 668, DateTimeKind.Unspecified).AddTicks(9832),
-                            CreatedBy = 1L,
+                            UserId = 36L,
+                            CourseId = 7L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 1, 4, 29, 22, 482, DateTimeKind.Unspecified).AddTicks(4480),
+                            CreatedBy = 5L,
                             Id = 3L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 38L,
-                            CourseId = 11L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2022, 1, 28, 4, 6, 59, 994, DateTimeKind.Unspecified).AddTicks(6577),
+                            UserId = 17L,
+                            CourseId = 14L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 9, 2, 10, 11, 44, 81, DateTimeKind.Unspecified).AddTicks(8013),
                             CreatedBy = 1L,
                             Id = 4L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 46L,
-                            CourseId = 7L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 12, 4, 22, 24, 20, 942, DateTimeKind.Unspecified).AddTicks(1301),
-                            CreatedBy = 3L,
+                            UserId = 22L,
+                            CourseId = 21L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 7, 12, 19, 40, 55, 116, DateTimeKind.Unspecified).AddTicks(6164),
+                            CreatedBy = 2L,
                             Id = 5L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 40L,
-                            CourseId = 10L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 2, 8, 22, 1, 29, 684, DateTimeKind.Unspecified).AddTicks(5501),
-                            CreatedBy = 1L,
+                            UserId = 24L,
+                            CourseId = 17L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 18, 9, 50, 35, 137, DateTimeKind.Unspecified).AddTicks(1647),
+                            CreatedBy = 3L,
                             Id = 6L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 14L,
-                            CourseId = 14L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 6, 7, 13, 4, 23, 713, DateTimeKind.Unspecified).AddTicks(5650),
-                            CreatedBy = 1L,
+                            UserId = 30L,
+                            CourseId = 16L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 2, 7, 5, 22, 53, 748, DateTimeKind.Unspecified).AddTicks(2742),
+                            CreatedBy = 5L,
                             Id = 7L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 20L,
-                            CourseId = 18L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 11, 2, 10, 0, 36, 243, DateTimeKind.Unspecified).AddTicks(2588),
-                            CreatedBy = 5L,
+                            UserId = 31L,
+                            CourseId = 11L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 4, 2, 12, 30, 50, 306, DateTimeKind.Unspecified).AddTicks(5408),
+                            CreatedBy = 2L,
                             Id = 8L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 36L,
-                            CourseId = 17L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 10, 5, 13, 7, 17, 644, DateTimeKind.Unspecified).AddTicks(8285),
-                            CreatedBy = 2L,
+                            UserId = 26L,
+                            CourseId = 3L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 6, 22, 6, 9, 8, 797, DateTimeKind.Unspecified).AddTicks(1945),
+                            CreatedBy = 3L,
                             Id = 9L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 23L,
+                            UserId = 32L,
                             CourseId = 17L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 2, 10, 8, 45, 36, 787, DateTimeKind.Unspecified).AddTicks(4769),
-                            CreatedBy = 5L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 29, 7, 40, 52, 112, DateTimeKind.Unspecified).AddTicks(5490),
+                            CreatedBy = 2L,
                             Id = 10L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 51L,
-                            CourseId = 10L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 2, 9, 10, 42, 54, 734, DateTimeKind.Unspecified).AddTicks(978),
-                            CreatedBy = 4L,
+                            UserId = 40L,
+                            CourseId = 16L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 16, 13, 6, 6, 364, DateTimeKind.Unspecified).AddTicks(1851),
+                            CreatedBy = 1L,
                             Id = 11L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 39L,
+                            UserId = 6L,
                             CourseId = 16L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 7, 22, 1, 2, 24, 992, DateTimeKind.Unspecified).AddTicks(9657),
-                            CreatedBy = 4L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 10, 27, 6, 13, 20, 326, DateTimeKind.Unspecified).AddTicks(1462),
+                            CreatedBy = 5L,
                             Id = 12L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 43L,
-                            CourseId = 19L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 2, 8, 12, 10, 53, 142, DateTimeKind.Unspecified).AddTicks(822),
-                            CreatedBy = 5L,
-                            Id = 13L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 47L,
-                            CourseId = 21L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 10, 5, 23, 11, 17, 94, DateTimeKind.Unspecified).AddTicks(8307),
-                            CreatedBy = 5L,
-                            Id = 15L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 8L,
-                            CourseId = 2L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 5, 10, 6, 38, 40, 291, DateTimeKind.Unspecified).AddTicks(9520),
-                            CreatedBy = 1L,
-                            Id = 16L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 50L,
-                            CourseId = 3L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2022, 2, 1, 15, 36, 28, 649, DateTimeKind.Unspecified).AddTicks(681),
-                            CreatedBy = 2L,
-                            Id = 17L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 43L,
-                            CourseId = 17L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 3, 8, 14, 59, 36, 714, DateTimeKind.Unspecified).AddTicks(9774),
-                            CreatedBy = 1L,
-                            Id = 18L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 34L,
-                            CourseId = 14L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 8, 29, 13, 22, 4, 420, DateTimeKind.Unspecified).AddTicks(7070),
-                            CreatedBy = 2L,
-                            Id = 19L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 42L,
-                            CourseId = 20L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 10, 3, 6, 49, 0, 563, DateTimeKind.Unspecified).AddTicks(9047),
-                            CreatedBy = 2L,
-                            Id = 20L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 51L,
-                            CourseId = 2L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2022, 1, 8, 17, 48, 28, 146, DateTimeKind.Unspecified).AddTicks(9730),
-                            CreatedBy = 3L,
-                            Id = 21L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 2L,
+                            UserId = 19L,
                             CourseId = 4L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 3, 30, 15, 28, 23, 718, DateTimeKind.Unspecified).AddTicks(7269),
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 7, 23, 29, 48, 809, DateTimeKind.Unspecified).AddTicks(7024),
                             CreatedBy = 3L,
-                            Id = 22L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 37L,
-                            CourseId = 15L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 7, 8, 23, 16, 23, 614, DateTimeKind.Unspecified).AddTicks(7132),
-                            CreatedBy = 5L,
-                            Id = 23L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 38L,
-                            CourseId = 21L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 12, 4, 19, 40, 10, 533, DateTimeKind.Unspecified).AddTicks(2734),
-                            CreatedBy = 5L,
-                            Id = 24L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 12L,
-                            CourseId = 7L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 5, 4, 1, 16, 55, 208, DateTimeKind.Unspecified).AddTicks(8455),
-                            CreatedBy = 3L,
-                            Id = 25L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 15L,
-                            CourseId = 5L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 7, 25, 1, 57, 45, 520, DateTimeKind.Unspecified).AddTicks(783),
-                            CreatedBy = 3L,
-                            Id = 26L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 13L,
-                            CourseId = 17L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 5, 4, 9, 12, 46, 938, DateTimeKind.Unspecified).AddTicks(5230),
-                            CreatedBy = 4L,
-                            Id = 27L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 50L,
-                            CourseId = 5L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 2, 4, 10, 42, 6, 628, DateTimeKind.Unspecified).AddTicks(7462),
-                            CreatedBy = 1L,
-                            Id = 28L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 35L,
-                            CourseId = 18L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 11, 25, 8, 47, 8, 242, DateTimeKind.Unspecified).AddTicks(7846),
-                            CreatedBy = 2L,
-                            Id = 29L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 50L,
-                            CourseId = 12L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 5, 23, 6, 51, 36, 473, DateTimeKind.Unspecified).AddTicks(5802),
-                            CreatedBy = 4L,
-                            Id = 30L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 43L,
-                            CourseId = 7L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 12, 18, 10, 16, 37, 695, DateTimeKind.Unspecified).AddTicks(6182),
-                            CreatedBy = 1L,
-                            Id = 31L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 36L,
-                            CourseId = 9L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 4, 16, 15, 35, 31, 417, DateTimeKind.Unspecified).AddTicks(7149),
-                            CreatedBy = 5L,
-                            Id = 32L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 43L,
-                            CourseId = 5L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 6, 19, 7, 51, 56, 162, DateTimeKind.Unspecified).AddTicks(6992),
-                            CreatedBy = 5L,
-                            Id = 33L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 49L,
-                            CourseId = 21L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 6, 25, 18, 34, 31, 172, DateTimeKind.Unspecified).AddTicks(3818),
-                            CreatedBy = 2L,
-                            Id = 34L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 30L,
-                            CourseId = 14L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 8, 7, 14, 48, 49, 354, DateTimeKind.Unspecified).AddTicks(2157),
-                            CreatedBy = 5L,
-                            Id = 35L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 20L,
-                            CourseId = 13L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 4, 21, 23, 31, 23, 775, DateTimeKind.Unspecified).AddTicks(8339),
-                            CreatedBy = 2L,
-                            Id = 36L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 38L,
-                            CourseId = 9L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 5, 23, 5, 11, 31, 767, DateTimeKind.Unspecified).AddTicks(8652),
-                            CreatedBy = 4L,
-                            Id = 37L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 48L,
-                            CourseId = 10L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2022, 1, 14, 4, 25, 9, 375, DateTimeKind.Unspecified).AddTicks(7137),
-                            CreatedBy = 4L,
-                            Id = 38L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 31L,
-                            CourseId = 17L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 12, 4, 6, 58, 41, 812, DateTimeKind.Unspecified).AddTicks(4522),
-                            CreatedBy = 2L,
-                            Id = 39L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 27L,
-                            CourseId = 9L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 11, 9, 5, 5, 12, 55, DateTimeKind.Unspecified).AddTicks(5814),
-                            CreatedBy = 4L,
-                            Id = 40L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 11L,
-                            CourseId = 18L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 4, 30, 10, 12, 37, 302, DateTimeKind.Unspecified).AddTicks(5949),
-                            CreatedBy = 4L,
-                            Id = 42L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 7L,
-                            CourseId = 3L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2022, 1, 10, 3, 38, 10, 944, DateTimeKind.Unspecified).AddTicks(3290),
-                            CreatedBy = 1L,
-                            Id = 43L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 25L,
-                            CourseId = 19L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 5, 27, 17, 5, 43, 455, DateTimeKind.Unspecified).AddTicks(2703),
-                            CreatedBy = 2L,
-                            Id = 44L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 27L,
-                            CourseId = 10L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2022, 1, 25, 8, 58, 5, 660, DateTimeKind.Unspecified).AddTicks(5829),
-                            CreatedBy = 1L,
-                            Id = 45L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 41L,
-                            CourseId = 4L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 2, 10, 15, 18, 5, 995, DateTimeKind.Unspecified).AddTicks(7043),
-                            CreatedBy = 5L,
-                            Id = 46L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 51L,
-                            CourseId = 18L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 4, 12, 4, 35, 38, 602, DateTimeKind.Unspecified).AddTicks(3956),
-                            CreatedBy = 1L,
-                            Id = 47L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 30L,
-                            CourseId = 17L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 8, 2, 0, 8, 10, 96, DateTimeKind.Unspecified).AddTicks(8390),
-                            CreatedBy = 4L,
-                            Id = 48L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 8L,
-                            CourseId = 3L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 2, 25, 2, 37, 23, 406, DateTimeKind.Unspecified).AddTicks(3970),
-                            CreatedBy = 5L,
-                            Id = 49L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 26L,
-                            CourseId = 16L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 5, 21, 20, 3, 38, 976, DateTimeKind.Unspecified).AddTicks(2079),
-                            CreatedBy = 2L,
-                            Id = 50L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 32L,
-                            CourseId = 15L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 5, 14, 6, 31, 35, 255, DateTimeKind.Unspecified).AddTicks(9148),
-                            CreatedBy = 1L,
-                            Id = 51L,
+                            Id = 14L,
                             IsDeleted = false
                         },
                         new
                         {
                             UserId = 28L,
-                            CourseId = 10L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 10, 1, 14, 55, 3, 350, DateTimeKind.Unspecified).AddTicks(3768),
-                            CreatedBy = 1L,
-                            Id = 52L,
+                            CourseId = 21L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 10, 1, 24, 52, 962, DateTimeKind.Unspecified).AddTicks(8426),
+                            CreatedBy = 3L,
+                            Id = 15L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 5L,
-                            CourseId = 15L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 4, 25, 16, 30, 54, 528, DateTimeKind.Unspecified).AddTicks(7200),
-                            CreatedBy = 4L,
-                            Id = 53L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 17L,
-                            CourseId = 12L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 8, 7, 7, 27, 54, 274, DateTimeKind.Unspecified).AddTicks(2008),
+                            UserId = 18L,
+                            CourseId = 19L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 22, 16, 17, 22, 215, DateTimeKind.Unspecified).AddTicks(8052),
                             CreatedBy = 2L,
-                            Id = 54L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 35L,
-                            CourseId = 17L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 7, 16, 1, 8, 54, 515, DateTimeKind.Unspecified).AddTicks(7777),
-                            CreatedBy = 4L,
-                            Id = 55L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 22L,
-                            CourseId = 13L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 7, 26, 6, 18, 29, 333, DateTimeKind.Unspecified).AddTicks(1607),
-                            CreatedBy = 2L,
-                            Id = 56L,
+                            Id = 16L,
                             IsDeleted = false
                         },
                         new
                         {
                             UserId = 6L,
-                            CourseId = 14L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 9, 22, 5, 32, 26, 42, DateTimeKind.Unspecified).AddTicks(1327),
+                            CourseId = 21L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 8, 18, 0, 16, 927, DateTimeKind.Unspecified).AddTicks(5586),
                             CreatedBy = 1L,
-                            Id = 57L,
+                            Id = 17L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 17L,
-                            CourseId = 7L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 10, 21, 14, 41, 13, 380, DateTimeKind.Unspecified).AddTicks(8287),
-                            CreatedBy = 2L,
-                            Id = 58L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 10L,
-                            CourseId = 10L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 8, 28, 23, 16, 47, 317, DateTimeKind.Unspecified).AddTicks(9844),
-                            CreatedBy = 2L,
-                            Id = 59L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 25L,
-                            CourseId = 12L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 6, 16, 0, 16, 26, 622, DateTimeKind.Unspecified).AddTicks(3698),
-                            CreatedBy = 1L,
-                            Id = 60L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 51L,
-                            CourseId = 16L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2022, 1, 21, 0, 18, 42, 544, DateTimeKind.Unspecified).AddTicks(6662),
-                            CreatedBy = 5L,
-                            Id = 61L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 44L,
-                            CourseId = 14L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 10, 12, 21, 1, 31, 661, DateTimeKind.Unspecified).AddTicks(5377),
-                            CreatedBy = 3L,
-                            Id = 62L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 23L,
-                            CourseId = 18L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 8, 13, 7, 25, 14, 925, DateTimeKind.Unspecified).AddTicks(5579),
-                            CreatedBy = 2L,
-                            Id = 64L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 3L,
-                            CourseId = 20L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 10, 6, 18, 19, 34, 461, DateTimeKind.Unspecified).AddTicks(8559),
-                            CreatedBy = 5L,
-                            Id = 65L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 15L,
-                            CourseId = 16L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 12, 30, 23, 12, 4, 375, DateTimeKind.Unspecified).AddTicks(9261),
-                            CreatedBy = 2L,
-                            Id = 66L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 45L,
-                            CourseId = 9L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 7, 25, 4, 25, 12, 540, DateTimeKind.Unspecified).AddTicks(4924),
-                            CreatedBy = 4L,
-                            Id = 67L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 19L,
-                            CourseId = 10L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 7, 31, 14, 4, 53, 99, DateTimeKind.Unspecified).AddTicks(1111),
-                            CreatedBy = 1L,
-                            Id = 68L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            UserId = 35L,
+                            UserId = 4L,
                             CourseId = 11L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2021, 10, 9, 12, 41, 11, 459, DateTimeKind.Unspecified).AddTicks(4785),
-                            CreatedBy = 1L,
-                            Id = 69L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 6, 7, 4, 36, 12, 773, DateTimeKind.Unspecified).AddTicks(1216),
+                            CreatedBy = 5L,
+                            Id = 18L,
                             IsDeleted = false
                         },
                         new
                         {
-                            UserId = 34L,
-                            CourseId = 7L,
-                            CourseRoleId = 1L,
-                            CreatedAt = new DateTime(2022, 1, 31, 12, 48, 39, 18, DateTimeKind.Unspecified).AddTicks(7892),
-                            CreatedBy = 1L,
-                            Id = 70L,
+                            UserId = 31L,
+                            CourseId = 4L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 5, 19, 5, 10, 24, 60, DateTimeKind.Unspecified).AddTicks(2461),
+                            CreatedBy = 4L,
+                            Id = 19L,
                             IsDeleted = false
                         },
                         new
                         {
                             UserId = 33L,
                             CourseId = 3L,
-                            CourseRoleId = 2L,
-                            CreatedAt = new DateTime(2021, 6, 27, 22, 43, 6, 636, DateTimeKind.Unspecified).AddTicks(4875),
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 24, 18, 47, 16, 239, DateTimeKind.Unspecified).AddTicks(6868),
+                            CreatedBy = 2L,
+                            Id = 20L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 42L,
+                            CourseId = 12L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 18, 6, 1, 50, 575, DateTimeKind.Unspecified).AddTicks(5520),
+                            CreatedBy = 3L,
+                            Id = 21L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 23L,
+                            CourseId = 15L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 9, 17, 5, 31, 45, 103, DateTimeKind.Unspecified).AddTicks(1071),
+                            CreatedBy = 3L,
+                            Id = 22L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 32L,
+                            CourseId = 3L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 6, 19, 21, 43, 3, 218, DateTimeKind.Unspecified).AddTicks(7346),
+                            CreatedBy = 1L,
+                            Id = 23L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 16L,
+                            CourseId = 11L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 15, 10, 36, 37, 39, DateTimeKind.Unspecified).AddTicks(3850),
                             CreatedBy = 4L,
+                            Id = 24L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 22L,
+                            CourseId = 20L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 26, 3, 59, 35, 399, DateTimeKind.Unspecified).AddTicks(8451),
+                            CreatedBy = 2L,
+                            Id = 25L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 36L,
+                            CourseId = 15L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 24, 10, 4, 32, 706, DateTimeKind.Unspecified).AddTicks(5106),
+                            CreatedBy = 2L,
+                            Id = 26L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 47L,
+                            CourseId = 10L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 24, 11, 9, 57, 22, DateTimeKind.Unspecified).AddTicks(3823),
+                            CreatedBy = 5L,
+                            Id = 27L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 18L,
+                            CourseId = 16L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 20, 3, 34, 58, 940, DateTimeKind.Unspecified).AddTicks(7838),
+                            CreatedBy = 5L,
+                            Id = 28L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 32L,
+                            CourseId = 14L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 4, 21, 14, 2, 17, 597, DateTimeKind.Unspecified).AddTicks(9227),
+                            CreatedBy = 1L,
+                            Id = 29L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 25L,
+                            CourseId = 11L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 9, 6, 13, 25, 50, 369, DateTimeKind.Unspecified).AddTicks(5519),
+                            CreatedBy = 4L,
+                            Id = 30L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 26L,
+                            CourseId = 14L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 2, 16, 10, 44, 44, 139, DateTimeKind.Unspecified).AddTicks(7004),
+                            CreatedBy = 4L,
+                            Id = 31L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 21L,
+                            CourseId = 5L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 31, 14, 15, 15, 957, DateTimeKind.Unspecified).AddTicks(2900),
+                            CreatedBy = 2L,
+                            Id = 32L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 20L,
+                            CourseId = 20L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 5, 19, 9, 44, 31, 938, DateTimeKind.Unspecified).AddTicks(6517),
+                            CreatedBy = 2L,
+                            Id = 33L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 37L,
+                            CourseId = 7L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 12, 18, 33, 47, 851, DateTimeKind.Unspecified).AddTicks(5546),
+                            CreatedBy = 1L,
+                            Id = 34L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 18L,
+                            CourseId = 8L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2022, 1, 20, 13, 33, 47, 790, DateTimeKind.Unspecified).AddTicks(9417),
+                            CreatedBy = 5L,
+                            Id = 35L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 38L,
+                            CourseId = 8L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 21, 10, 45, 0, 605, DateTimeKind.Unspecified).AddTicks(2719),
+                            CreatedBy = 1L,
+                            Id = 36L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 14L,
+                            CourseId = 14L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 6, 4, 14, 57, 38, 734, DateTimeKind.Unspecified).AddTicks(6879),
+                            CreatedBy = 1L,
+                            Id = 37L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 10L,
+                            CourseId = 21L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2022, 1, 10, 6, 35, 41, 132, DateTimeKind.Unspecified).AddTicks(7949),
+                            CreatedBy = 4L,
+                            Id = 39L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 5L,
+                            CourseId = 6L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 5, 15, 6, 37, 46, 585, DateTimeKind.Unspecified).AddTicks(5444),
+                            CreatedBy = 4L,
+                            Id = 40L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 3L,
+                            CourseId = 19L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 27, 19, 41, 24, 300, DateTimeKind.Unspecified).AddTicks(4452),
+                            CreatedBy = 5L,
+                            Id = 41L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 24L,
+                            CourseId = 4L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 9, 28, 1, 52, 4, 463, DateTimeKind.Unspecified).AddTicks(5896),
+                            CreatedBy = 4L,
+                            Id = 42L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 24L,
+                            CourseId = 20L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 2, 12, 45, 7, 339, DateTimeKind.Unspecified).AddTicks(9936),
+                            CreatedBy = 3L,
+                            Id = 43L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 26L,
+                            CourseId = 16L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 28, 19, 13, 2, 676, DateTimeKind.Unspecified).AddTicks(5621),
+                            CreatedBy = 4L,
+                            Id = 44L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 31L,
+                            CourseId = 16L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 4, 29, 3, 53, 11, 424, DateTimeKind.Unspecified).AddTicks(3376),
+                            CreatedBy = 4L,
+                            Id = 45L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 10L,
+                            CourseId = 16L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 9, 14, 1, 7, 56, 693, DateTimeKind.Unspecified).AddTicks(7215),
+                            CreatedBy = 4L,
+                            Id = 46L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 26L,
+                            CourseId = 9L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 5, 13, 1, 7, 29, 486, DateTimeKind.Unspecified).AddTicks(5868),
+                            CreatedBy = 3L,
+                            Id = 47L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 34L,
+                            CourseId = 4L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2022, 1, 4, 14, 9, 27, 298, DateTimeKind.Unspecified).AddTicks(4286),
+                            CreatedBy = 1L,
+                            Id = 48L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 31L,
+                            CourseId = 7L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 19, 7, 41, 55, 577, DateTimeKind.Unspecified).AddTicks(3024),
+                            CreatedBy = 1L,
+                            Id = 49L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 45L,
+                            CourseId = 15L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 14, 17, 31, 37, 910, DateTimeKind.Unspecified).AddTicks(59),
+                            CreatedBy = 2L,
+                            Id = 51L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 28L,
+                            CourseId = 6L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 25, 2, 8, 47, 611, DateTimeKind.Unspecified).AddTicks(1564),
+                            CreatedBy = 3L,
+                            Id = 52L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 17L,
+                            CourseId = 10L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 10, 9, 12, 2, 55, 709, DateTimeKind.Unspecified).AddTicks(3065),
+                            CreatedBy = 3L,
+                            Id = 53L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 11L,
+                            CourseId = 10L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2022, 1, 1, 8, 0, 43, 579, DateTimeKind.Unspecified).AddTicks(9957),
+                            CreatedBy = 5L,
+                            Id = 55L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 32L,
+                            CourseId = 2L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 9, 29, 15, 56, 4, 706, DateTimeKind.Unspecified).AddTicks(8619),
+                            CreatedBy = 4L,
+                            Id = 56L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 45L,
+                            CourseId = 9L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 12, 6, 17, 13, 136, DateTimeKind.Unspecified).AddTicks(9133),
+                            CreatedBy = 3L,
+                            Id = 57L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 37L,
+                            CourseId = 17L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 2, 10, 11, 8, 33, 631, DateTimeKind.Unspecified).AddTicks(5249),
+                            CreatedBy = 4L,
+                            Id = 58L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 26L,
+                            CourseId = 6L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 5, 16, 40, 8, 932, DateTimeKind.Unspecified).AddTicks(5529),
+                            CreatedBy = 5L,
+                            Id = 60L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 46L,
+                            CourseId = 4L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 11, 16, 21, 8, 21, 868, DateTimeKind.Unspecified).AddTicks(5263),
+                            CreatedBy = 3L,
+                            Id = 61L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 33L,
+                            CourseId = 17L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 6, 18, 17, 16, 6, 830, DateTimeKind.Unspecified).AddTicks(1231),
+                            CreatedBy = 3L,
+                            Id = 62L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 37L,
+                            CourseId = 15L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2022, 1, 10, 4, 4, 38, 6, DateTimeKind.Unspecified).AddTicks(5322),
+                            CreatedBy = 4L,
+                            Id = 63L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 35L,
+                            CourseId = 8L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 31, 4, 38, 21, 637, DateTimeKind.Unspecified).AddTicks(6812),
+                            CreatedBy = 3L,
+                            Id = 64L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 50L,
+                            CourseId = 19L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 8, 17, 5, 52, 178, DateTimeKind.Unspecified).AddTicks(152),
+                            CreatedBy = 4L,
+                            Id = 65L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 34L,
+                            CourseId = 6L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 8, 3, 8, 31, 20, 83, DateTimeKind.Unspecified).AddTicks(2921),
+                            CreatedBy = 4L,
+                            Id = 66L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 39L,
+                            CourseId = 11L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 3, 8, 7, 14, 46, 769, DateTimeKind.Unspecified).AddTicks(774),
+                            CreatedBy = 5L,
+                            Id = 67L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 5L,
+                            CourseId = 2L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 2, 11, 10, 19, 46, 101, DateTimeKind.Unspecified).AddTicks(5568),
+                            CreatedBy = 5L,
+                            Id = 68L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 32L,
+                            CourseId = 11L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2021, 12, 26, 12, 30, 32, 369, DateTimeKind.Unspecified).AddTicks(9654),
+                            CreatedBy = 4L,
+                            Id = 70L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            UserId = 43L,
+                            CourseId = 21L,
+                            CourseRole = 0,
+                            CreatedAt = new DateTime(2022, 1, 24, 14, 17, 46, 65, DateTimeKind.Unspecified).AddTicks(5887),
+                            CreatedBy = 3L,
                             Id = 71L,
                             IsDeleted = false
                         });
@@ -1916,875 +1864,11 @@ namespace Codi.Core.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ProjectId = 10L,
-                            UserId = 34L,
-                            CreatedAt = new DateTime(2021, 9, 29, 14, 46, 29, 249, DateTimeKind.Unspecified).AddTicks(9262),
-                            CreatedBy = 5L,
-                            Id = 2L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 20L,
-                            UserId = 48L,
-                            CreatedAt = new DateTime(2021, 3, 26, 10, 14, 19, 972, DateTimeKind.Unspecified).AddTicks(5269),
-                            CreatedBy = 5L,
-                            Id = 3L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 13L,
-                            UserId = 19L,
-                            CreatedAt = new DateTime(2021, 8, 9, 3, 25, 29, 838, DateTimeKind.Unspecified).AddTicks(3383),
-                            CreatedBy = 5L,
-                            Id = 4L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 44L,
-                            UserId = 17L,
-                            CreatedAt = new DateTime(2021, 5, 19, 0, 8, 6, 368, DateTimeKind.Unspecified).AddTicks(320),
-                            CreatedBy = 1L,
-                            Id = 5L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 36L,
-                            UserId = 3L,
-                            CreatedAt = new DateTime(2022, 1, 24, 7, 9, 39, 295, DateTimeKind.Unspecified).AddTicks(258),
-                            CreatedBy = 1L,
-                            Id = 6L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 27L,
-                            UserId = 37L,
-                            CreatedAt = new DateTime(2021, 3, 28, 17, 6, 34, 786, DateTimeKind.Unspecified).AddTicks(5147),
-                            CreatedBy = 2L,
-                            Id = 7L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 5L,
-                            UserId = 2L,
-                            CreatedAt = new DateTime(2021, 6, 8, 2, 32, 6, 301, DateTimeKind.Unspecified).AddTicks(8606),
-                            CreatedBy = 1L,
-                            Id = 8L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 43L,
-                            UserId = 24L,
-                            CreatedAt = new DateTime(2021, 10, 26, 21, 29, 50, 833, DateTimeKind.Unspecified).AddTicks(503),
-                            CreatedBy = 3L,
-                            Id = 9L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 13L,
-                            UserId = 28L,
-                            CreatedAt = new DateTime(2021, 7, 12, 8, 11, 31, 993, DateTimeKind.Unspecified).AddTicks(1355),
-                            CreatedBy = 5L,
-                            Id = 10L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 11L,
-                            UserId = 16L,
-                            CreatedAt = new DateTime(2021, 9, 21, 7, 56, 45, 443, DateTimeKind.Unspecified).AddTicks(4477),
-                            CreatedBy = 3L,
-                            Id = 11L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 49L,
-                            UserId = 47L,
-                            CreatedAt = new DateTime(2021, 8, 13, 22, 46, 42, 587, DateTimeKind.Unspecified).AddTicks(6800),
-                            CreatedBy = 4L,
-                            Id = 12L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 31L,
-                            UserId = 30L,
-                            CreatedAt = new DateTime(2021, 8, 23, 3, 17, 9, 858, DateTimeKind.Unspecified).AddTicks(2296),
-                            CreatedBy = 2L,
-                            Id = 13L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 12L,
-                            UserId = 13L,
-                            CreatedAt = new DateTime(2021, 3, 12, 22, 41, 31, 653, DateTimeKind.Unspecified).AddTicks(2569),
-                            CreatedBy = 1L,
-                            Id = 14L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 30L,
-                            UserId = 5L,
-                            CreatedAt = new DateTime(2021, 12, 9, 6, 16, 43, 653, DateTimeKind.Unspecified).AddTicks(5085),
-                            CreatedBy = 5L,
-                            Id = 15L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 49L,
-                            UserId = 45L,
-                            CreatedAt = new DateTime(2021, 3, 21, 12, 6, 22, 283, DateTimeKind.Unspecified).AddTicks(805),
-                            CreatedBy = 2L,
-                            Id = 16L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 13L,
-                            UserId = 15L,
-                            CreatedAt = new DateTime(2021, 7, 31, 9, 36, 38, 881, DateTimeKind.Unspecified).AddTicks(8330),
-                            CreatedBy = 2L,
-                            Id = 17L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 30L,
-                            UserId = 39L,
-                            CreatedAt = new DateTime(2022, 1, 5, 9, 39, 45, 736, DateTimeKind.Unspecified).AddTicks(5427),
-                            CreatedBy = 5L,
-                            Id = 18L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 24L,
-                            UserId = 47L,
-                            CreatedAt = new DateTime(2021, 3, 26, 10, 19, 7, 536, DateTimeKind.Unspecified).AddTicks(447),
-                            CreatedBy = 3L,
-                            Id = 19L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 35L,
-                            UserId = 16L,
-                            CreatedAt = new DateTime(2021, 5, 5, 6, 48, 1, 676, DateTimeKind.Unspecified).AddTicks(7568),
-                            CreatedBy = 1L,
-                            Id = 20L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 43L,
-                            UserId = 45L,
-                            CreatedAt = new DateTime(2021, 8, 27, 2, 32, 0, 643, DateTimeKind.Unspecified).AddTicks(8748),
-                            CreatedBy = 2L,
-                            Id = 21L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 34L,
-                            UserId = 45L,
-                            CreatedAt = new DateTime(2021, 11, 3, 14, 39, 22, 362, DateTimeKind.Unspecified).AddTicks(4809),
-                            CreatedBy = 3L,
-                            Id = 22L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 30L,
-                            UserId = 41L,
-                            CreatedAt = new DateTime(2021, 2, 16, 21, 17, 55, 51, DateTimeKind.Unspecified).AddTicks(5371),
-                            CreatedBy = 1L,
-                            Id = 23L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 41L,
-                            UserId = 15L,
-                            CreatedAt = new DateTime(2021, 10, 5, 21, 4, 41, 244, DateTimeKind.Unspecified).AddTicks(4563),
-                            CreatedBy = 4L,
-                            Id = 24L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 28L,
-                            UserId = 44L,
-                            CreatedAt = new DateTime(2021, 5, 28, 5, 48, 50, 434, DateTimeKind.Unspecified).AddTicks(579),
-                            CreatedBy = 1L,
-                            Id = 25L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 7L,
-                            UserId = 29L,
-                            CreatedAt = new DateTime(2022, 1, 29, 14, 13, 12, 376, DateTimeKind.Unspecified).AddTicks(4676),
-                            CreatedBy = 4L,
-                            Id = 26L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 8L,
-                            UserId = 33L,
-                            CreatedAt = new DateTime(2021, 4, 27, 0, 1, 10, 273, DateTimeKind.Unspecified).AddTicks(2861),
-                            CreatedBy = 3L,
-                            Id = 27L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 11L,
-                            UserId = 41L,
-                            CreatedAt = new DateTime(2021, 9, 6, 15, 46, 0, 273, DateTimeKind.Unspecified).AddTicks(4472),
-                            CreatedBy = 4L,
-                            Id = 28L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 12L,
-                            UserId = 25L,
-                            CreatedAt = new DateTime(2022, 1, 24, 9, 7, 41, 313, DateTimeKind.Unspecified).AddTicks(9484),
-                            CreatedBy = 2L,
-                            Id = 29L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 46L,
-                            UserId = 35L,
-                            CreatedAt = new DateTime(2021, 6, 19, 11, 39, 58, 279, DateTimeKind.Unspecified).AddTicks(8027),
-                            CreatedBy = 1L,
-                            Id = 30L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 9L,
-                            UserId = 42L,
-                            CreatedAt = new DateTime(2021, 11, 29, 11, 53, 30, 364, DateTimeKind.Unspecified).AddTicks(726),
-                            CreatedBy = 4L,
-                            Id = 31L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 51L,
-                            UserId = 20L,
-                            CreatedAt = new DateTime(2021, 12, 17, 16, 35, 0, 41, DateTimeKind.Unspecified).AddTicks(4903),
-                            CreatedBy = 5L,
-                            Id = 32L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 7L,
-                            UserId = 39L,
-                            CreatedAt = new DateTime(2021, 5, 1, 16, 59, 8, 688, DateTimeKind.Unspecified).AddTicks(6324),
-                            CreatedBy = 5L,
-                            Id = 33L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 23L,
-                            UserId = 30L,
-                            CreatedAt = new DateTime(2021, 5, 3, 7, 5, 21, 39, DateTimeKind.Unspecified).AddTicks(135),
-                            CreatedBy = 1L,
-                            Id = 34L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 15L,
-                            UserId = 8L,
-                            CreatedAt = new DateTime(2021, 5, 7, 15, 13, 23, 199, DateTimeKind.Unspecified).AddTicks(9337),
-                            CreatedBy = 5L,
-                            Id = 35L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 35L,
-                            UserId = 7L,
-                            CreatedAt = new DateTime(2021, 6, 28, 9, 58, 9, 947, DateTimeKind.Unspecified).AddTicks(6934),
-                            CreatedBy = 3L,
-                            Id = 36L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 41L,
-                            UserId = 50L,
-                            CreatedAt = new DateTime(2022, 1, 6, 23, 40, 58, 378, DateTimeKind.Unspecified).AddTicks(8330),
-                            CreatedBy = 3L,
-                            Id = 37L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 35L,
-                            UserId = 27L,
-                            CreatedAt = new DateTime(2021, 2, 13, 22, 45, 42, 103, DateTimeKind.Unspecified).AddTicks(2766),
-                            CreatedBy = 4L,
-                            Id = 38L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 25L,
-                            UserId = 28L,
-                            CreatedAt = new DateTime(2021, 9, 6, 22, 53, 18, 406, DateTimeKind.Unspecified).AddTicks(9776),
-                            CreatedBy = 5L,
-                            Id = 39L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 28L,
-                            UserId = 22L,
-                            CreatedAt = new DateTime(2021, 6, 14, 4, 43, 46, 544, DateTimeKind.Unspecified).AddTicks(1870),
-                            CreatedBy = 4L,
-                            Id = 40L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 22L,
-                            UserId = 18L,
-                            CreatedAt = new DateTime(2021, 5, 28, 20, 52, 10, 180, DateTimeKind.Unspecified).AddTicks(3343),
-                            CreatedBy = 1L,
-                            Id = 41L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 44L,
-                            UserId = 11L,
-                            CreatedAt = new DateTime(2022, 1, 16, 14, 16, 15, 660, DateTimeKind.Unspecified).AddTicks(1647),
-                            CreatedBy = 5L,
-                            Id = 42L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 28L,
-                            UserId = 2L,
-                            CreatedAt = new DateTime(2021, 9, 6, 20, 16, 4, 114, DateTimeKind.Unspecified).AddTicks(9548),
-                            CreatedBy = 5L,
-                            Id = 43L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 15L,
-                            UserId = 6L,
-                            CreatedAt = new DateTime(2021, 12, 13, 22, 14, 37, 54, DateTimeKind.Unspecified).AddTicks(4097),
-                            CreatedBy = 3L,
-                            Id = 44L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 8L,
-                            UserId = 36L,
-                            CreatedAt = new DateTime(2021, 7, 7, 20, 55, 22, 809, DateTimeKind.Unspecified).AddTicks(9473),
-                            CreatedBy = 2L,
-                            Id = 45L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 38L,
-                            UserId = 27L,
-                            CreatedAt = new DateTime(2022, 1, 4, 15, 20, 0, 247, DateTimeKind.Unspecified).AddTicks(5087),
-                            CreatedBy = 4L,
-                            Id = 46L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 3L,
-                            UserId = 24L,
-                            CreatedAt = new DateTime(2021, 12, 26, 3, 19, 18, 894, DateTimeKind.Unspecified).AddTicks(1421),
-                            CreatedBy = 2L,
-                            Id = 47L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 41L,
-                            UserId = 28L,
-                            CreatedAt = new DateTime(2021, 7, 4, 15, 29, 37, 338, DateTimeKind.Unspecified).AddTicks(8467),
-                            CreatedBy = 2L,
-                            Id = 48L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 10L,
-                            UserId = 33L,
-                            CreatedAt = new DateTime(2021, 5, 18, 14, 1, 9, 360, DateTimeKind.Unspecified).AddTicks(5539),
-                            CreatedBy = 3L,
-                            Id = 49L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 41L,
-                            UserId = 34L,
-                            CreatedAt = new DateTime(2021, 12, 15, 23, 11, 43, 825, DateTimeKind.Unspecified).AddTicks(8465),
-                            CreatedBy = 3L,
-                            Id = 50L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 24L,
-                            UserId = 49L,
-                            CreatedAt = new DateTime(2021, 2, 7, 22, 45, 59, 579, DateTimeKind.Unspecified).AddTicks(2228),
-                            CreatedBy = 1L,
-                            Id = 51L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 14L,
-                            UserId = 40L,
-                            CreatedAt = new DateTime(2021, 10, 27, 22, 16, 3, 439, DateTimeKind.Unspecified).AddTicks(9400),
-                            CreatedBy = 5L,
-                            Id = 52L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 39L,
-                            UserId = 50L,
-                            CreatedAt = new DateTime(2021, 10, 22, 23, 14, 32, 974, DateTimeKind.Unspecified).AddTicks(9190),
-                            CreatedBy = 4L,
-                            Id = 53L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 5L,
-                            UserId = 18L,
-                            CreatedAt = new DateTime(2021, 6, 30, 11, 38, 38, 829, DateTimeKind.Unspecified).AddTicks(7407),
-                            CreatedBy = 1L,
-                            Id = 54L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 48L,
-                            UserId = 41L,
-                            CreatedAt = new DateTime(2021, 12, 6, 10, 32, 27, 235, DateTimeKind.Unspecified).AddTicks(1877),
-                            CreatedBy = 2L,
-                            Id = 55L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 38L,
-                            UserId = 32L,
-                            CreatedAt = new DateTime(2021, 11, 10, 15, 47, 45, 820, DateTimeKind.Unspecified).AddTicks(484),
-                            CreatedBy = 3L,
-                            Id = 56L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 18L,
-                            UserId = 10L,
-                            CreatedAt = new DateTime(2021, 3, 3, 16, 48, 4, 711, DateTimeKind.Unspecified).AddTicks(2639),
-                            CreatedBy = 4L,
-                            Id = 57L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 41L,
-                            UserId = 44L,
-                            CreatedAt = new DateTime(2021, 3, 8, 20, 16, 29, 638, DateTimeKind.Unspecified).AddTicks(8155),
-                            CreatedBy = 3L,
-                            Id = 58L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 5L,
-                            UserId = 37L,
-                            CreatedAt = new DateTime(2022, 1, 13, 12, 57, 30, 518, DateTimeKind.Unspecified).AddTicks(4614),
-                            CreatedBy = 4L,
-                            Id = 59L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 33L,
-                            UserId = 35L,
-                            CreatedAt = new DateTime(2021, 11, 18, 14, 8, 17, 243, DateTimeKind.Unspecified).AddTicks(6486),
-                            CreatedBy = 2L,
-                            Id = 60L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 50L,
-                            UserId = 9L,
-                            CreatedAt = new DateTime(2021, 4, 19, 4, 22, 21, 394, DateTimeKind.Unspecified).AddTicks(3275),
-                            CreatedBy = 1L,
-                            Id = 61L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 5L,
-                            UserId = 5L,
-                            CreatedAt = new DateTime(2021, 7, 15, 10, 18, 30, 627, DateTimeKind.Unspecified).AddTicks(918),
-                            CreatedBy = 2L,
-                            Id = 62L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 43L,
-                            UserId = 3L,
-                            CreatedAt = new DateTime(2021, 5, 19, 23, 59, 44, 389, DateTimeKind.Unspecified).AddTicks(7849),
-                            CreatedBy = 5L,
-                            Id = 63L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 14L,
-                            UserId = 29L,
-                            CreatedAt = new DateTime(2021, 11, 11, 1, 24, 29, 247, DateTimeKind.Unspecified).AddTicks(7429),
-                            CreatedBy = 3L,
-                            Id = 64L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 43L,
-                            UserId = 49L,
-                            CreatedAt = new DateTime(2021, 8, 20, 14, 46, 31, 50, DateTimeKind.Unspecified).AddTicks(9625),
-                            CreatedBy = 5L,
-                            Id = 65L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 50L,
-                            UserId = 25L,
-                            CreatedAt = new DateTime(2021, 12, 2, 20, 44, 11, 3, DateTimeKind.Unspecified).AddTicks(8545),
-                            CreatedBy = 3L,
-                            Id = 66L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 42L,
-                            UserId = 14L,
-                            CreatedAt = new DateTime(2021, 10, 26, 4, 37, 0, 94, DateTimeKind.Unspecified).AddTicks(4501),
-                            CreatedBy = 3L,
-                            Id = 67L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 6L,
-                            UserId = 24L,
-                            CreatedAt = new DateTime(2021, 12, 7, 23, 23, 47, 811, DateTimeKind.Unspecified).AddTicks(7006),
-                            CreatedBy = 5L,
-                            Id = 68L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 3L,
-                            UserId = 33L,
-                            CreatedAt = new DateTime(2021, 6, 7, 8, 3, 40, 578, DateTimeKind.Unspecified).AddTicks(6736),
-                            CreatedBy = 1L,
-                            Id = 69L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 37L,
-                            UserId = 31L,
-                            CreatedAt = new DateTime(2021, 12, 27, 14, 26, 15, 499, DateTimeKind.Unspecified).AddTicks(5990),
-                            CreatedBy = 1L,
-                            Id = 70L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 13L,
-                            UserId = 5L,
-                            CreatedAt = new DateTime(2022, 1, 24, 22, 49, 8, 763, DateTimeKind.Unspecified).AddTicks(9944),
-                            CreatedBy = 5L,
-                            Id = 71L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 41L,
-                            UserId = 45L,
-                            CreatedAt = new DateTime(2021, 8, 17, 16, 3, 11, 458, DateTimeKind.Unspecified).AddTicks(1583),
-                            CreatedBy = 2L,
-                            Id = 72L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 21L,
-                            UserId = 29L,
-                            CreatedAt = new DateTime(2021, 3, 31, 19, 38, 5, 454, DateTimeKind.Unspecified).AddTicks(3300),
-                            CreatedBy = 1L,
-                            Id = 73L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 44L,
-                            UserId = 43L,
-                            CreatedAt = new DateTime(2021, 11, 25, 20, 8, 42, 1, DateTimeKind.Unspecified).AddTicks(2794),
-                            CreatedBy = 4L,
-                            Id = 74L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 50L,
-                            UserId = 29L,
-                            CreatedAt = new DateTime(2021, 11, 2, 6, 55, 37, 146, DateTimeKind.Unspecified).AddTicks(1433),
-                            CreatedBy = 3L,
-                            Id = 75L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 50L,
-                            UserId = 27L,
-                            CreatedAt = new DateTime(2021, 2, 21, 19, 15, 39, 843, DateTimeKind.Unspecified).AddTicks(8851),
-                            CreatedBy = 1L,
-                            Id = 76L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 40L,
-                            UserId = 47L,
-                            CreatedAt = new DateTime(2021, 7, 25, 11, 11, 12, 13, DateTimeKind.Unspecified).AddTicks(4863),
-                            CreatedBy = 1L,
-                            Id = 77L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 44L,
-                            UserId = 14L,
-                            CreatedAt = new DateTime(2021, 11, 11, 22, 42, 58, 145, DateTimeKind.Unspecified).AddTicks(1234),
-                            CreatedBy = 4L,
-                            Id = 78L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 37L,
-                            UserId = 35L,
-                            CreatedAt = new DateTime(2021, 11, 8, 11, 42, 3, 228, DateTimeKind.Unspecified).AddTicks(8736),
-                            CreatedBy = 2L,
-                            Id = 79L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 21L,
-                            UserId = 5L,
-                            CreatedAt = new DateTime(2021, 8, 13, 21, 29, 50, 748, DateTimeKind.Unspecified).AddTicks(4802),
-                            CreatedBy = 2L,
-                            Id = 80L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 7L,
-                            UserId = 25L,
-                            CreatedAt = new DateTime(2022, 1, 8, 2, 1, 20, 738, DateTimeKind.Unspecified).AddTicks(218),
-                            CreatedBy = 4L,
-                            Id = 81L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 5L,
-                            UserId = 50L,
-                            CreatedAt = new DateTime(2021, 4, 22, 0, 44, 34, 46, DateTimeKind.Unspecified).AddTicks(3299),
-                            CreatedBy = 2L,
-                            Id = 82L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 43L,
-                            UserId = 16L,
-                            CreatedAt = new DateTime(2021, 6, 22, 5, 55, 57, 344, DateTimeKind.Unspecified).AddTicks(338),
-                            CreatedBy = 1L,
-                            Id = 83L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 47L,
-                            UserId = 11L,
-                            CreatedAt = new DateTime(2021, 12, 25, 5, 11, 28, 321, DateTimeKind.Unspecified).AddTicks(6155),
-                            CreatedBy = 3L,
-                            Id = 84L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 49L,
-                            UserId = 8L,
-                            CreatedAt = new DateTime(2021, 12, 26, 3, 36, 56, 881, DateTimeKind.Unspecified).AddTicks(7655),
-                            CreatedBy = 1L,
-                            Id = 85L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 43L,
-                            UserId = 37L,
-                            CreatedAt = new DateTime(2021, 5, 23, 8, 57, 52, 778, DateTimeKind.Unspecified).AddTicks(939),
-                            CreatedBy = 2L,
-                            Id = 86L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 46L,
-                            UserId = 39L,
-                            CreatedAt = new DateTime(2021, 12, 23, 3, 8, 59, 748, DateTimeKind.Unspecified).AddTicks(8781),
-                            CreatedBy = 1L,
-                            Id = 87L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 27L,
-                            UserId = 25L,
-                            CreatedAt = new DateTime(2021, 12, 11, 9, 54, 33, 627, DateTimeKind.Unspecified).AddTicks(1205),
-                            CreatedBy = 1L,
-                            Id = 88L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 5L,
-                            UserId = 35L,
-                            CreatedAt = new DateTime(2021, 9, 9, 7, 41, 4, 820, DateTimeKind.Unspecified).AddTicks(4664),
-                            CreatedBy = 4L,
-                            Id = 89L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 3L,
-                            UserId = 14L,
-                            CreatedAt = new DateTime(2021, 4, 7, 16, 7, 12, 969, DateTimeKind.Unspecified).AddTicks(5823),
-                            CreatedBy = 5L,
-                            Id = 90L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 16L,
-                            UserId = 23L,
-                            CreatedAt = new DateTime(2021, 8, 31, 15, 17, 40, 298, DateTimeKind.Unspecified).AddTicks(2375),
-                            CreatedBy = 2L,
-                            Id = 91L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 3L,
-                            UserId = 39L,
-                            CreatedAt = new DateTime(2021, 5, 2, 2, 4, 39, 752, DateTimeKind.Unspecified).AddTicks(1104),
-                            CreatedBy = 1L,
-                            Id = 92L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 15L,
-                            UserId = 7L,
-                            CreatedAt = new DateTime(2021, 12, 16, 5, 7, 12, 427, DateTimeKind.Unspecified).AddTicks(5296),
-                            CreatedBy = 1L,
-                            Id = 93L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 11L,
-                            UserId = 15L,
-                            CreatedAt = new DateTime(2021, 6, 16, 22, 1, 26, 635, DateTimeKind.Unspecified).AddTicks(394),
-                            CreatedBy = 4L,
-                            Id = 94L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 2L,
-                            UserId = 46L,
-                            CreatedAt = new DateTime(2022, 1, 2, 17, 57, 19, 366, DateTimeKind.Unspecified).AddTicks(2605),
-                            CreatedBy = 2L,
-                            Id = 95L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 12L,
-                            UserId = 47L,
-                            CreatedAt = new DateTime(2021, 4, 26, 1, 24, 37, 36, DateTimeKind.Unspecified).AddTicks(3950),
-                            CreatedBy = 2L,
-                            Id = 96L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ProjectId = 50L,
-                            UserId = 37L,
-                            CreatedAt = new DateTime(2021, 12, 21, 15, 46, 47, 190, DateTimeKind.Unspecified).AddTicks(304),
-                            CreatedBy = 5L,
-                            Id = 97L,
-                            IsDeleted = false
-                        },
-                        new
-                        {
                             ProjectId = 11L,
                             UserId = 8L,
                             CreatedAt = new DateTime(2021, 12, 25, 5, 40, 13, 834, DateTimeKind.Unspecified).AddTicks(8883),
                             CreatedBy = 5L,
-                            Id = 98L,
+                            Id = 2L,
                             IsDeleted = false
                         },
                         new
@@ -2793,7 +1877,7 @@ namespace Codi.Core.DAL.Migrations
                             UserId = 50L,
                             CreatedAt = new DateTime(2021, 8, 31, 8, 58, 16, 536, DateTimeKind.Unspecified).AddTicks(9673),
                             CreatedBy = 4L,
-                            Id = 99L,
+                            Id = 3L,
                             IsDeleted = false
                         },
                         new
@@ -2802,7 +1886,7 @@ namespace Codi.Core.DAL.Migrations
                             UserId = 31L,
                             CreatedAt = new DateTime(2021, 5, 12, 6, 25, 9, 503, DateTimeKind.Unspecified).AddTicks(1891),
                             CreatedBy = 5L,
-                            Id = 100L,
+                            Id = 4L,
                             IsDeleted = false
                         },
                         new
@@ -2811,7 +1895,853 @@ namespace Codi.Core.DAL.Migrations
                             UserId = 44L,
                             CreatedAt = new DateTime(2021, 11, 18, 9, 59, 52, 592, DateTimeKind.Unspecified).AddTicks(4394),
                             CreatedBy = 5L,
-                            Id = 101L,
+                            Id = 5L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 51L,
+                            UserId = 22L,
+                            CreatedAt = new DateTime(2021, 8, 8, 0, 12, 40, 830, DateTimeKind.Unspecified).AddTicks(5547),
+                            CreatedBy = 5L,
+                            Id = 6L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 10L,
+                            UserId = 17L,
+                            CreatedAt = new DateTime(2021, 11, 7, 6, 53, 41, 938, DateTimeKind.Unspecified).AddTicks(5605),
+                            CreatedBy = 3L,
+                            Id = 7L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 46L,
+                            UserId = 37L,
+                            CreatedAt = new DateTime(2021, 11, 13, 8, 17, 42, 111, DateTimeKind.Unspecified).AddTicks(9087),
+                            CreatedBy = 5L,
+                            Id = 8L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 25L,
+                            UserId = 51L,
+                            CreatedAt = new DateTime(2021, 4, 26, 11, 57, 0, 1, DateTimeKind.Unspecified).AddTicks(3987),
+                            CreatedBy = 4L,
+                            Id = 9L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 48L,
+                            UserId = 6L,
+                            CreatedAt = new DateTime(2021, 3, 2, 12, 19, 55, 763, DateTimeKind.Unspecified).AddTicks(6012),
+                            CreatedBy = 4L,
+                            Id = 10L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 18L,
+                            UserId = 28L,
+                            CreatedAt = new DateTime(2021, 12, 29, 17, 28, 25, 737, DateTimeKind.Unspecified).AddTicks(4815),
+                            CreatedBy = 1L,
+                            Id = 12L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 31L,
+                            UserId = 5L,
+                            CreatedAt = new DateTime(2021, 8, 8, 2, 19, 59, 370, DateTimeKind.Unspecified).AddTicks(4984),
+                            CreatedBy = 2L,
+                            Id = 13L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 7L,
+                            UserId = 13L,
+                            CreatedAt = new DateTime(2021, 5, 12, 16, 56, 24, 241, DateTimeKind.Unspecified).AddTicks(2443),
+                            CreatedBy = 2L,
+                            Id = 14L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 24L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 2, 16, 20, 56, 58, 492, DateTimeKind.Unspecified).AddTicks(677),
+                            CreatedBy = 5L,
+                            Id = 15L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 32L,
+                            UserId = 36L,
+                            CreatedAt = new DateTime(2022, 1, 5, 0, 57, 5, 923, DateTimeKind.Unspecified).AddTicks(1211),
+                            CreatedBy = 2L,
+                            Id = 16L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 24L,
+                            UserId = 20L,
+                            CreatedAt = new DateTime(2021, 12, 21, 14, 38, 52, 428, DateTimeKind.Unspecified).AddTicks(7869),
+                            CreatedBy = 3L,
+                            Id = 17L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 11L,
+                            UserId = 6L,
+                            CreatedAt = new DateTime(2021, 3, 5, 4, 9, 21, 569, DateTimeKind.Unspecified).AddTicks(5487),
+                            CreatedBy = 4L,
+                            Id = 18L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 5L,
+                            UserId = 41L,
+                            CreatedAt = new DateTime(2021, 9, 4, 0, 39, 11, 259, DateTimeKind.Unspecified).AddTicks(9092),
+                            CreatedBy = 4L,
+                            Id = 19L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 46L,
+                            UserId = 42L,
+                            CreatedAt = new DateTime(2021, 2, 13, 7, 34, 57, 428, DateTimeKind.Unspecified).AddTicks(112),
+                            CreatedBy = 5L,
+                            Id = 20L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 22L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 12, 20, 9, 7, 29, 337, DateTimeKind.Unspecified).AddTicks(3487),
+                            CreatedBy = 1L,
+                            Id = 21L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 23L,
+                            UserId = 34L,
+                            CreatedAt = new DateTime(2021, 3, 17, 11, 49, 45, 67, DateTimeKind.Unspecified).AddTicks(7286),
+                            CreatedBy = 5L,
+                            Id = 22L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 51L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 6, 14, 22, 29, 4, 650, DateTimeKind.Unspecified).AddTicks(9515),
+                            CreatedBy = 4L,
+                            Id = 23L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 35L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 4, 13, 22, 50, 8, 863, DateTimeKind.Unspecified).AddTicks(5276),
+                            CreatedBy = 2L,
+                            Id = 24L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 6L,
+                            UserId = 31L,
+                            CreatedAt = new DateTime(2022, 1, 2, 19, 42, 47, 951, DateTimeKind.Unspecified).AddTicks(7316),
+                            CreatedBy = 4L,
+                            Id = 25L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 48L,
+                            UserId = 46L,
+                            CreatedAt = new DateTime(2021, 3, 18, 6, 44, 55, 357, DateTimeKind.Unspecified).AddTicks(7512),
+                            CreatedBy = 1L,
+                            Id = 26L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 18L,
+                            UserId = 49L,
+                            CreatedAt = new DateTime(2021, 12, 9, 3, 46, 35, 522, DateTimeKind.Unspecified).AddTicks(9241),
+                            CreatedBy = 4L,
+                            Id = 27L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 49L,
+                            UserId = 17L,
+                            CreatedAt = new DateTime(2021, 11, 13, 7, 29, 50, 838, DateTimeKind.Unspecified).AddTicks(2035),
+                            CreatedBy = 5L,
+                            Id = 28L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 44L,
+                            UserId = 26L,
+                            CreatedAt = new DateTime(2021, 10, 27, 3, 21, 7, 394, DateTimeKind.Unspecified).AddTicks(4589),
+                            CreatedBy = 5L,
+                            Id = 29L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 15L,
+                            UserId = 23L,
+                            CreatedAt = new DateTime(2021, 2, 20, 8, 55, 35, 874, DateTimeKind.Unspecified).AddTicks(5516),
+                            CreatedBy = 3L,
+                            Id = 30L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 30L,
+                            UserId = 24L,
+                            CreatedAt = new DateTime(2021, 12, 30, 7, 38, 6, 320, DateTimeKind.Unspecified).AddTicks(1672),
+                            CreatedBy = 1L,
+                            Id = 31L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 2L,
+                            UserId = 27L,
+                            CreatedAt = new DateTime(2021, 12, 25, 7, 11, 56, 794, DateTimeKind.Unspecified).AddTicks(9842),
+                            CreatedBy = 4L,
+                            Id = 32L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 51L,
+                            UserId = 43L,
+                            CreatedAt = new DateTime(2021, 5, 10, 7, 36, 44, 771, DateTimeKind.Unspecified).AddTicks(1426),
+                            CreatedBy = 5L,
+                            Id = 33L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 45L,
+                            UserId = 16L,
+                            CreatedAt = new DateTime(2021, 11, 24, 18, 42, 58, 427, DateTimeKind.Unspecified).AddTicks(1643),
+                            CreatedBy = 1L,
+                            Id = 34L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 16L,
+                            UserId = 22L,
+                            CreatedAt = new DateTime(2021, 10, 5, 11, 58, 18, 327, DateTimeKind.Unspecified).AddTicks(9101),
+                            CreatedBy = 1L,
+                            Id = 35L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 44L,
+                            UserId = 38L,
+                            CreatedAt = new DateTime(2021, 12, 7, 1, 10, 52, 552, DateTimeKind.Unspecified).AddTicks(8361),
+                            CreatedBy = 3L,
+                            Id = 36L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 24L,
+                            UserId = 6L,
+                            CreatedAt = new DateTime(2021, 10, 24, 13, 47, 27, 704, DateTimeKind.Unspecified).AddTicks(567),
+                            CreatedBy = 1L,
+                            Id = 37L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 50L,
+                            UserId = 43L,
+                            CreatedAt = new DateTime(2021, 10, 8, 0, 50, 57, 60, DateTimeKind.Unspecified).AddTicks(8287),
+                            CreatedBy = 2L,
+                            Id = 38L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 34L,
+                            UserId = 35L,
+                            CreatedAt = new DateTime(2021, 10, 3, 23, 16, 22, 143, DateTimeKind.Unspecified).AddTicks(6289),
+                            CreatedBy = 4L,
+                            Id = 39L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 48L,
+                            UserId = 47L,
+                            CreatedAt = new DateTime(2021, 2, 23, 21, 6, 11, 196, DateTimeKind.Unspecified).AddTicks(6138),
+                            CreatedBy = 2L,
+                            Id = 40L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 31L,
+                            UserId = 28L,
+                            CreatedAt = new DateTime(2021, 10, 4, 23, 31, 39, 465, DateTimeKind.Unspecified).AddTicks(669),
+                            CreatedBy = 2L,
+                            Id = 41L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 10L,
+                            UserId = 8L,
+                            CreatedAt = new DateTime(2021, 6, 24, 12, 13, 7, 813, DateTimeKind.Unspecified).AddTicks(3696),
+                            CreatedBy = 5L,
+                            Id = 42L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 34L,
+                            UserId = 40L,
+                            CreatedAt = new DateTime(2021, 12, 12, 3, 9, 31, 281, DateTimeKind.Unspecified).AddTicks(4771),
+                            CreatedBy = 5L,
+                            Id = 43L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 6L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 6, 28, 13, 39, 23, 716, DateTimeKind.Unspecified).AddTicks(3779),
+                            CreatedBy = 2L,
+                            Id = 44L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 44L,
+                            UserId = 51L,
+                            CreatedAt = new DateTime(2022, 1, 6, 8, 33, 45, 580, DateTimeKind.Unspecified).AddTicks(1091),
+                            CreatedBy = 1L,
+                            Id = 45L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 28L,
+                            UserId = 44L,
+                            CreatedAt = new DateTime(2021, 3, 22, 15, 3, 5, 745, DateTimeKind.Unspecified).AddTicks(9097),
+                            CreatedBy = 2L,
+                            Id = 46L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 26L,
+                            UserId = 32L,
+                            CreatedAt = new DateTime(2021, 6, 17, 11, 2, 30, 530, DateTimeKind.Unspecified).AddTicks(5371),
+                            CreatedBy = 1L,
+                            Id = 47L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 39L,
+                            UserId = 14L,
+                            CreatedAt = new DateTime(2021, 8, 10, 8, 7, 10, 269, DateTimeKind.Unspecified).AddTicks(6305),
+                            CreatedBy = 2L,
+                            Id = 48L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 13L,
+                            UserId = 48L,
+                            CreatedAt = new DateTime(2021, 12, 18, 0, 14, 10, 585, DateTimeKind.Unspecified).AddTicks(4894),
+                            CreatedBy = 4L,
+                            Id = 49L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 14L,
+                            UserId = 28L,
+                            CreatedAt = new DateTime(2021, 3, 8, 9, 48, 26, 952, DateTimeKind.Unspecified).AddTicks(4244),
+                            CreatedBy = 1L,
+                            Id = 50L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 28L,
+                            UserId = 27L,
+                            CreatedAt = new DateTime(2021, 11, 27, 13, 3, 50, 209, DateTimeKind.Unspecified).AddTicks(3814),
+                            CreatedBy = 3L,
+                            Id = 51L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 13L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 7, 10, 21, 6, 3, 821, DateTimeKind.Unspecified).AddTicks(3169),
+                            CreatedBy = 2L,
+                            Id = 52L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 3L,
+                            UserId = 23L,
+                            CreatedAt = new DateTime(2022, 1, 9, 13, 8, 30, 765, DateTimeKind.Unspecified).AddTicks(6550),
+                            CreatedBy = 2L,
+                            Id = 53L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 16L,
+                            UserId = 47L,
+                            CreatedAt = new DateTime(2022, 1, 30, 21, 19, 51, 68, DateTimeKind.Unspecified).AddTicks(1680),
+                            CreatedBy = 1L,
+                            Id = 54L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 24L,
+                            UserId = 18L,
+                            CreatedAt = new DateTime(2021, 6, 13, 15, 22, 16, 781, DateTimeKind.Unspecified).AddTicks(671),
+                            CreatedBy = 4L,
+                            Id = 55L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 17L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2022, 1, 24, 20, 9, 56, 697, DateTimeKind.Unspecified).AddTicks(5148),
+                            CreatedBy = 2L,
+                            Id = 56L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 21L,
+                            UserId = 21L,
+                            CreatedAt = new DateTime(2021, 3, 20, 12, 53, 34, 227, DateTimeKind.Unspecified).AddTicks(7695),
+                            CreatedBy = 2L,
+                            Id = 57L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 6L,
+                            UserId = 16L,
+                            CreatedAt = new DateTime(2021, 5, 3, 9, 52, 26, 332, DateTimeKind.Unspecified).AddTicks(6590),
+                            CreatedBy = 1L,
+                            Id = 58L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 7L,
+                            UserId = 43L,
+                            CreatedAt = new DateTime(2021, 10, 7, 17, 12, 18, 574, DateTimeKind.Unspecified).AddTicks(3906),
+                            CreatedBy = 3L,
+                            Id = 59L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 6L,
+                            UserId = 2L,
+                            CreatedAt = new DateTime(2021, 9, 12, 14, 13, 24, 343, DateTimeKind.Unspecified).AddTicks(5320),
+                            CreatedBy = 4L,
+                            Id = 60L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 27L,
+                            UserId = 15L,
+                            CreatedAt = new DateTime(2021, 11, 19, 16, 53, 40, 933, DateTimeKind.Unspecified).AddTicks(4597),
+                            CreatedBy = 2L,
+                            Id = 61L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 12L,
+                            UserId = 22L,
+                            CreatedAt = new DateTime(2021, 6, 10, 13, 31, 40, 829, DateTimeKind.Unspecified).AddTicks(5703),
+                            CreatedBy = 3L,
+                            Id = 62L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 41L,
+                            UserId = 9L,
+                            CreatedAt = new DateTime(2022, 1, 1, 19, 56, 24, 117, DateTimeKind.Unspecified).AddTicks(5727),
+                            CreatedBy = 4L,
+                            Id = 63L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 21L,
+                            UserId = 28L,
+                            CreatedAt = new DateTime(2021, 11, 22, 19, 7, 1, 835, DateTimeKind.Unspecified).AddTicks(1074),
+                            CreatedBy = 5L,
+                            Id = 64L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 26L,
+                            UserId = 10L,
+                            CreatedAt = new DateTime(2021, 5, 15, 7, 31, 40, 404, DateTimeKind.Unspecified).AddTicks(8593),
+                            CreatedBy = 5L,
+                            Id = 65L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 19L,
+                            UserId = 2L,
+                            CreatedAt = new DateTime(2021, 10, 4, 21, 9, 49, 746, DateTimeKind.Unspecified).AddTicks(5852),
+                            CreatedBy = 2L,
+                            Id = 66L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 31L,
+                            UserId = 50L,
+                            CreatedAt = new DateTime(2021, 4, 14, 22, 56, 9, 590, DateTimeKind.Unspecified).AddTicks(5191),
+                            CreatedBy = 2L,
+                            Id = 67L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 39L,
+                            UserId = 38L,
+                            CreatedAt = new DateTime(2021, 11, 7, 4, 56, 54, 182, DateTimeKind.Unspecified).AddTicks(1601),
+                            CreatedBy = 5L,
+                            Id = 68L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 18L,
+                            UserId = 36L,
+                            CreatedAt = new DateTime(2021, 6, 29, 16, 43, 14, 471, DateTimeKind.Unspecified).AddTicks(3977),
+                            CreatedBy = 2L,
+                            Id = 69L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 10L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 11, 30, 19, 11, 13, 761, DateTimeKind.Unspecified).AddTicks(8843),
+                            CreatedBy = 4L,
+                            Id = 70L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 29L,
+                            UserId = 42L,
+                            CreatedAt = new DateTime(2021, 8, 2, 5, 56, 7, 43, DateTimeKind.Unspecified).AddTicks(7599),
+                            CreatedBy = 4L,
+                            Id = 71L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 50L,
+                            UserId = 17L,
+                            CreatedAt = new DateTime(2021, 8, 21, 15, 48, 58, 718, DateTimeKind.Unspecified).AddTicks(7478),
+                            CreatedBy = 2L,
+                            Id = 72L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 20L,
+                            UserId = 17L,
+                            CreatedAt = new DateTime(2021, 7, 24, 14, 3, 2, 4, DateTimeKind.Unspecified).AddTicks(7227),
+                            CreatedBy = 1L,
+                            Id = 73L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 4L,
+                            UserId = 16L,
+                            CreatedAt = new DateTime(2021, 2, 25, 1, 56, 20, 275, DateTimeKind.Unspecified).AddTicks(5195),
+                            CreatedBy = 2L,
+                            Id = 74L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 45L,
+                            UserId = 13L,
+                            CreatedAt = new DateTime(2021, 4, 9, 6, 42, 42, 53, DateTimeKind.Unspecified).AddTicks(7468),
+                            CreatedBy = 2L,
+                            Id = 75L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 40L,
+                            UserId = 50L,
+                            CreatedAt = new DateTime(2021, 9, 11, 18, 54, 13, 886, DateTimeKind.Unspecified).AddTicks(3052),
+                            CreatedBy = 5L,
+                            Id = 76L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 30L,
+                            UserId = 42L,
+                            CreatedAt = new DateTime(2021, 11, 19, 15, 0, 24, 613, DateTimeKind.Unspecified).AddTicks(480),
+                            CreatedBy = 3L,
+                            Id = 77L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 12L,
+                            UserId = 3L,
+                            CreatedAt = new DateTime(2022, 1, 30, 17, 44, 31, 548, DateTimeKind.Unspecified).AddTicks(148),
+                            CreatedBy = 1L,
+                            Id = 78L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 33L,
+                            UserId = 45L,
+                            CreatedAt = new DateTime(2021, 8, 18, 4, 41, 39, 816, DateTimeKind.Unspecified).AddTicks(6506),
+                            CreatedBy = 5L,
+                            Id = 79L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 40L,
+                            UserId = 33L,
+                            CreatedAt = new DateTime(2021, 2, 4, 13, 54, 55, 575, DateTimeKind.Unspecified).AddTicks(4558),
+                            CreatedBy = 1L,
+                            Id = 80L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 41L,
+                            UserId = 20L,
+                            CreatedAt = new DateTime(2021, 9, 27, 23, 41, 26, 176, DateTimeKind.Unspecified).AddTicks(9924),
+                            CreatedBy = 3L,
+                            Id = 81L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 25L,
+                            UserId = 32L,
+                            CreatedAt = new DateTime(2021, 6, 12, 22, 30, 23, 79, DateTimeKind.Unspecified).AddTicks(3734),
+                            CreatedBy = 5L,
+                            Id = 82L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 23L,
+                            UserId = 49L,
+                            CreatedAt = new DateTime(2021, 11, 7, 5, 25, 17, 623, DateTimeKind.Unspecified).AddTicks(7361),
+                            CreatedBy = 2L,
+                            Id = 83L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 41L,
+                            UserId = 48L,
+                            CreatedAt = new DateTime(2022, 1, 17, 6, 56, 18, 544, DateTimeKind.Unspecified).AddTicks(5508),
+                            CreatedBy = 1L,
+                            Id = 84L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 18L,
+                            UserId = 33L,
+                            CreatedAt = new DateTime(2021, 5, 8, 4, 48, 51, 687, DateTimeKind.Unspecified).AddTicks(5330),
+                            CreatedBy = 4L,
+                            Id = 85L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 3L,
+                            UserId = 30L,
+                            CreatedAt = new DateTime(2021, 12, 29, 4, 44, 43, 631, DateTimeKind.Unspecified).AddTicks(9481),
+                            CreatedBy = 3L,
+                            Id = 86L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 9L,
+                            UserId = 16L,
+                            CreatedAt = new DateTime(2021, 6, 6, 4, 10, 32, 715, DateTimeKind.Unspecified).AddTicks(5720),
+                            CreatedBy = 4L,
+                            Id = 87L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 47L,
+                            UserId = 8L,
+                            CreatedAt = new DateTime(2021, 8, 12, 9, 44, 52, 505, DateTimeKind.Unspecified).AddTicks(2270),
+                            CreatedBy = 2L,
+                            Id = 88L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 13L,
+                            UserId = 44L,
+                            CreatedAt = new DateTime(2021, 11, 23, 6, 24, 36, 20, DateTimeKind.Unspecified).AddTicks(9727),
+                            CreatedBy = 3L,
+                            Id = 89L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 30L,
+                            UserId = 15L,
+                            CreatedAt = new DateTime(2021, 10, 2, 6, 35, 1, 367, DateTimeKind.Unspecified).AddTicks(1687),
+                            CreatedBy = 4L,
+                            Id = 90L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 39L,
+                            UserId = 32L,
+                            CreatedAt = new DateTime(2021, 6, 28, 2, 40, 51, 751, DateTimeKind.Unspecified).AddTicks(8372),
+                            CreatedBy = 2L,
+                            Id = 91L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 44L,
+                            UserId = 44L,
+                            CreatedAt = new DateTime(2022, 1, 7, 8, 40, 38, 688, DateTimeKind.Unspecified).AddTicks(8322),
+                            CreatedBy = 1L,
+                            Id = 92L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 45L,
+                            UserId = 23L,
+                            CreatedAt = new DateTime(2021, 10, 17, 17, 52, 49, 347, DateTimeKind.Unspecified).AddTicks(9704),
+                            CreatedBy = 5L,
+                            Id = 93L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 16L,
+                            UserId = 5L,
+                            CreatedAt = new DateTime(2021, 9, 30, 23, 34, 1, 695, DateTimeKind.Unspecified).AddTicks(5568),
+                            CreatedBy = 3L,
+                            Id = 94L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 22L,
+                            UserId = 19L,
+                            CreatedAt = new DateTime(2021, 8, 16, 18, 52, 19, 61, DateTimeKind.Unspecified).AddTicks(6212),
+                            CreatedBy = 1L,
+                            Id = 95L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 16L,
+                            UserId = 42L,
+                            CreatedAt = new DateTime(2022, 1, 18, 10, 29, 40, 894, DateTimeKind.Unspecified).AddTicks(6696),
+                            CreatedBy = 3L,
+                            Id = 96L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 46L,
+                            UserId = 7L,
+                            CreatedAt = new DateTime(2021, 5, 24, 0, 31, 51, 112, DateTimeKind.Unspecified).AddTicks(8697),
+                            CreatedBy = 2L,
+                            Id = 97L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 2L,
+                            UserId = 19L,
+                            CreatedAt = new DateTime(2022, 1, 14, 1, 18, 38, 482, DateTimeKind.Unspecified).AddTicks(734),
+                            CreatedBy = 4L,
+                            Id = 98L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 20L,
+                            UserId = 29L,
+                            CreatedAt = new DateTime(2021, 4, 8, 19, 22, 52, 999, DateTimeKind.Unspecified).AddTicks(9748),
+                            CreatedBy = 1L,
+                            Id = 99L,
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ProjectId = 43L,
+                            UserId = 40L,
+                            CreatedAt = new DateTime(2021, 8, 25, 17, 46, 23, 740, DateTimeKind.Unspecified).AddTicks(5667),
+                            CreatedBy = 2L,
+                            Id = 100L,
                             IsDeleted = false
                         });
                 });
@@ -2866,251 +2796,110 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            CourseId = 19L,
-                            CreatedAt = new DateTime(2021, 9, 21, 13, 18, 42, 128, DateTimeKind.Unspecified).AddTicks(4628),
-                            CreatedBy = 4L,
-                            Description = "Nulla quae culpa in id corrupti aspernatur aut tempora et.\nVel sapiente et provident.",
-                            DueDate = new DateTime(2023, 12, 19, 22, 56, 22, 918, DateTimeKind.Unspecified).AddTicks(2279),
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 12, 21, 21, 58, 41, 323, DateTimeKind.Unspecified).AddTicks(814),
+                            CreatedBy = 3L,
+                            Description = "Exercitationem ab sit dolor.",
+                            DueDate = new DateTime(2023, 9, 3, 13, 55, 22, 545, DateTimeKind.Unspecified).AddTicks(541),
                             IsDeleted = false,
-                            IsPublished = true,
-                            Title = "Aperiam qui sit itaque placeat rerum perferendis voluptas rem.",
-                            UnitId = 12L
+                            IsPublished = false,
+                            Title = "Et aperiam ea est vitae molestiae est quas et consectetur.",
+                            UnitId = 25L
                         },
                         new
                         {
                             Id = 3L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 10, 30, 8, 42, 54, 335, DateTimeKind.Unspecified).AddTicks(5718),
-                            CreatedBy = 4L,
-                            Description = "Illo excepturi sint omnis.\nNemo in minima laudantium quaerat ad.\nNon reiciendis et voluptas illo architecto eius cumque sed.\nNihil et nobis qui quas aut.",
-                            DueDate = new DateTime(2023, 10, 27, 1, 49, 7, 384, DateTimeKind.Unspecified).AddTicks(9685),
+                            CourseId = 15L,
+                            CreatedAt = new DateTime(2021, 11, 15, 22, 59, 21, 336, DateTimeKind.Unspecified).AddTicks(2102),
+                            CreatedBy = 1L,
+                            Description = "Repellat aperiam sint quam eveniet quidem aspernatur ullam nihil.\nQui earum consectetur numquam repellat libero ut minima et sunt.\nEum qui eaque omnis sint voluptas.\nTenetur vitae tempore qui.",
+                            DueDate = new DateTime(2023, 9, 7, 14, 3, 12, 741, DateTimeKind.Unspecified).AddTicks(7395),
                             IsDeleted = false,
                             IsPublished = true,
-                            Title = "Ut est quo fuga veniam atque.",
-                            UnitId = 4L
+                            Title = "Qui id alias magnam voluptatem.",
+                            UnitId = 37L
                         },
                         new
                         {
                             Id = 4L,
-                            CourseId = 10L,
-                            CreatedAt = new DateTime(2021, 8, 13, 20, 42, 49, 66, DateTimeKind.Unspecified).AddTicks(3387),
+                            CourseId = 21L,
+                            CreatedAt = new DateTime(2021, 5, 19, 0, 53, 43, 126, DateTimeKind.Unspecified).AddTicks(2729),
                             CreatedBy = 3L,
-                            Description = "Voluptate molestiae natus.\nEum sunt quia voluptatem et quae iste aut est sunt.\nEt deserunt velit.",
-                            DueDate = new DateTime(2023, 1, 21, 12, 5, 8, 161, DateTimeKind.Unspecified).AddTicks(8974),
+                            Description = "Quia qui illo.\nQuasi doloremque aut blanditiis.\nIn laborum nemo aut rerum voluptatibus accusamus.\nUt nisi nostrum dolores qui excepturi voluptatem rerum qui explicabo.\nIpsam aut molestiae blanditiis.",
                             IsDeleted = false,
                             IsPublished = false,
-                            Title = "Distinctio ullam amet quam tempora ut et et.",
-                            UnitId = 11L
+                            Title = "Unde vitae dolores molestiae.",
+                            UnitId = 4L
                         },
                         new
                         {
                             Id = 5L,
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2021, 10, 1, 11, 48, 28, 418, DateTimeKind.Unspecified).AddTicks(3354),
-                            CreatedBy = 2L,
-                            Description = "Optio velit illum ad rem rerum eveniet.",
-                            DueDate = new DateTime(2023, 1, 20, 17, 51, 15, 247, DateTimeKind.Unspecified).AddTicks(2938),
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2021, 3, 25, 22, 46, 29, 556, DateTimeKind.Unspecified).AddTicks(468),
+                            CreatedBy = 1L,
+                            Description = "Voluptatem qui natus et.\nAut aperiam velit.\nRecusandae nulla qui est voluptatum sequi et.\nAperiam praesentium neque consequatur laudantium nostrum deserunt qui sapiente.",
+                            DueDate = new DateTime(2022, 7, 22, 16, 6, 20, 849, DateTimeKind.Unspecified).AddTicks(8891),
                             IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Doloremque et et doloribus.",
-                            UnitId = 2L
+                            IsPublished = true,
+                            Title = "Ab cumque asperiores sit minima culpa maxime suscipit ut dolorem.",
+                            UnitId = 40L
                         },
                         new
                         {
                             Id = 6L,
-                            CourseId = 6L,
-                            CreatedAt = new DateTime(2021, 4, 27, 18, 16, 53, 796, DateTimeKind.Unspecified).AddTicks(204),
+                            CourseId = 2L,
+                            CreatedAt = new DateTime(2021, 8, 28, 0, 47, 40, 552, DateTimeKind.Unspecified).AddTicks(172),
                             CreatedBy = 2L,
-                            Description = "Quia voluptatem qui molestiae qui qui sit nihil aliquid nihil.\nEnim omnis perspiciatis eos id autem vel.\nVero optio non architecto inventore nemo dolore.",
+                            Description = "Fugit at at sunt et.\nEnim corrupti sed nihil sint iure.\nExercitationem ut est quasi est deserunt asperiores dolores.\nRerum et quibusdam.\nVeniam sed tempore laudantium qui atque itaque velit.",
+                            DueDate = new DateTime(2022, 6, 9, 3, 43, 47, 362, DateTimeKind.Unspecified).AddTicks(7418),
                             IsDeleted = false,
                             IsPublished = true,
-                            Title = "At est aspernatur consequatur.",
-                            UnitId = 13L
+                            Title = "Consequatur omnis accusamus enim ipsum sunt rerum cum.",
+                            UnitId = 2L
                         },
                         new
                         {
                             Id = 7L,
-                            CourseId = 6L,
-                            CreatedAt = new DateTime(2021, 9, 7, 17, 59, 48, 616, DateTimeKind.Unspecified).AddTicks(8692),
-                            CreatedBy = 5L,
-                            Description = "Magni nihil odio vitae.\nLaudantium sit magnam eveniet veniam temporibus similique.\nMinima et reprehenderit quia.\nDoloribus exercitationem ex perferendis itaque enim nihil.",
-                            DueDate = new DateTime(2023, 3, 6, 11, 52, 12, 627, DateTimeKind.Unspecified).AddTicks(2582),
+                            CourseId = 12L,
+                            CreatedAt = new DateTime(2021, 12, 14, 9, 1, 41, 712, DateTimeKind.Unspecified).AddTicks(4789),
+                            CreatedBy = 3L,
+                            Description = "Debitis assumenda eaque.\nAliquid omnis aut eos adipisci vel id rerum doloremque qui.\nQuia tempora iusto nobis numquam in.\nEt quam et.\nVel est impedit est incidunt delectus.",
+                            DueDate = new DateTime(2023, 10, 2, 8, 52, 28, 942, DateTimeKind.Unspecified).AddTicks(309),
                             IsDeleted = false,
                             IsPublished = true,
-                            Title = "Numquam exercitationem vel placeat iure blanditiis sit.",
-                            UnitId = 16L
+                            Title = "Harum expedita aliquam quia quam sunt in nisi dignissimos et.",
+                            UnitId = 32L
                         },
                         new
                         {
                             Id = 8L,
-                            CourseId = 19L,
-                            CreatedAt = new DateTime(2021, 7, 2, 2, 32, 11, 600, DateTimeKind.Unspecified).AddTicks(4438),
-                            CreatedBy = 5L,
-                            Description = "Aspernatur odio atque dolores repellat delectus sit dolores.\nVoluptatem aut accusantium voluptatem quo.\nVoluptas ipsum autem.\nNumquam pariatur reprehenderit.\nMolestiae modi voluptas maxime deleniti accusamus.",
-                            DueDate = new DateTime(2023, 8, 21, 21, 28, 4, 491, DateTimeKind.Unspecified).AddTicks(1205),
+                            CourseId = 15L,
+                            CreatedAt = new DateTime(2022, 1, 5, 16, 11, 51, 668, DateTimeKind.Unspecified).AddTicks(8955),
+                            CreatedBy = 3L,
+                            Description = "Consequatur vel est.\nEst ut et laboriosam ut in quos.\nQuam qui est illo et qui.",
+                            DueDate = new DateTime(2022, 3, 13, 5, 2, 40, 545, DateTimeKind.Unspecified).AddTicks(1177),
                             IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Et quas quibusdam quis et tempora libero.",
-                            UnitId = 12L
+                            IsPublished = true,
+                            Title = "Laborum sit debitis optio illum sint quis sunt ut id.",
+                            UnitId = 37L
                         },
                         new
                         {
                             Id = 9L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 5, 19, 16, 34, 21, 42, DateTimeKind.Unspecified).AddTicks(4662),
-                            CreatedBy = 5L,
-                            Description = "Sed et nam soluta id ducimus.",
-                            DueDate = new DateTime(2023, 10, 16, 2, 49, 13, 886, DateTimeKind.Unspecified).AddTicks(3095),
+                            CourseId = 11L,
+                            CreatedAt = new DateTime(2021, 2, 6, 11, 19, 27, 975, DateTimeKind.Unspecified).AddTicks(3106),
+                            CreatedBy = 4L,
+                            Description = "Voluptatem inventore eveniet veniam.\nOccaecati et delectus numquam voluptas dignissimos ad.\nRatione voluptatem praesentium sunt.\nTotam distinctio quas id necessitatibus aut consequatur.",
+                            DueDate = new DateTime(2023, 10, 16, 6, 44, 40, 594, DateTimeKind.Unspecified).AddTicks(6448),
                             IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Qui est nihil in incidunt ut quas.",
-                            UnitId = 39L
+                            IsPublished = true,
+                            Title = "Voluptate ab et quaerat nostrum velit consequatur aliquam.",
+                            UnitId = 21L
                         },
                         new
                         {
                             Id = 10L,
-                            CourseId = 6L,
-                            CreatedAt = new DateTime(2021, 12, 15, 9, 52, 44, 746, DateTimeKind.Unspecified).AddTicks(4799),
-                            CreatedBy = 1L,
-                            Description = "Minus culpa unde.\nIn libero blanditiis maiores quas.\nEx dignissimos est ea beatae et voluptatem voluptas quae enim.\nMinus unde et saepe.\nAperiam ea est vitae molestiae est.",
-                            DueDate = new DateTime(2023, 2, 5, 0, 51, 30, 573, DateTimeKind.Unspecified).AddTicks(2199),
-                            IsDeleted = false,
-                            IsPublished = true,
-                            Title = "Ad tempore eius ut voluptatem culpa consequatur.",
-                            UnitId = 13L
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            CourseId = 3L,
-                            CreatedAt = new DateTime(2021, 2, 23, 18, 42, 4, 965, DateTimeKind.Unspecified).AddTicks(4949),
-                            CreatedBy = 3L,
-                            Description = "Officia fugit qui ut qui id alias magnam voluptatem.\nQui repellat aperiam sint quam eveniet quidem aspernatur.",
-                            DueDate = new DateTime(2022, 9, 7, 4, 5, 39, 568, DateTimeKind.Unspecified).AddTicks(4594),
-                            IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Sit dolor autem.",
-                            UnitId = 9L
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            CourseId = 7L,
-                            CreatedAt = new DateTime(2021, 3, 17, 16, 20, 25, 812, DateTimeKind.Unspecified).AddTicks(8783),
-                            CreatedBy = 2L,
-                            Description = "Quam eum qui.\nOmnis sint voluptas.\nTenetur vitae tempore qui.\nCum adipisci ab numquam debitis voluptatem unde vitae dolores.\nAt alias quia qui illo ratione quasi doloremque aut blanditiis.",
-                            DueDate = new DateTime(2023, 4, 27, 21, 37, 9, 595, DateTimeKind.Unspecified).AddTicks(4664),
-                            IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Repellat libero ut minima.",
-                            UnitId = 27L
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            CourseId = 3L,
-                            CreatedAt = new DateTime(2021, 3, 16, 17, 33, 0, 131, DateTimeKind.Unspecified).AddTicks(9297),
-                            CreatedBy = 1L,
-                            Description = "Consequuntur ipsam aut.\nBlanditiis officiis eaque id occaecati impedit quasi aut ab cumque.\nSit minima culpa maxime suscipit ut dolorem cum velit voluptatem.",
-                            DueDate = new DateTime(2023, 4, 5, 21, 46, 14, 478, DateTimeKind.Unspecified).AddTicks(6106),
-                            IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Accusamus aut ut nisi nostrum dolores qui excepturi voluptatem rerum.",
-                            UnitId = 3L
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2021, 7, 28, 8, 6, 22, 453, DateTimeKind.Unspecified).AddTicks(9976),
-                            CreatedBy = 4L,
-                            Description = "Sequi et nulla aperiam praesentium neque.\nLaudantium nostrum deserunt qui sapiente ut odio sed sed.\nSapiente rerum consequatur omnis accusamus enim ipsum sunt rerum.\nOfficiis voluptatem fugit at at sunt et nihil.",
-                            DueDate = new DateTime(2022, 9, 18, 10, 38, 24, 662, DateTimeKind.Unspecified).AddTicks(2574),
-                            IsDeleted = false,
-                            IsPublished = true,
-                            Title = "Et recusandae nulla qui.",
-                            UnitId = 17L
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            CourseId = 10L,
-                            CreatedAt = new DateTime(2021, 9, 13, 22, 27, 20, 922, DateTimeKind.Unspecified).AddTicks(2041),
-                            CreatedBy = 2L,
-                            Description = "Et quibusdam cumque veniam sed tempore laudantium qui atque itaque.",
-                            DueDate = new DateTime(2022, 6, 27, 19, 30, 44, 592, DateTimeKind.Unspecified).AddTicks(8707),
-                            IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Exercitationem ut est quasi est deserunt asperiores dolores.",
-                            UnitId = 19L
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 4, 24, 21, 30, 21, 401, DateTimeKind.Unspecified).AddTicks(5829),
-                            CreatedBy = 2L,
-                            Description = "Quam sunt in.\nDignissimos et doloribus vitae debitis.",
-                            IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Necessitatibus harum expedita.",
-                            UnitId = 6L
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2021, 6, 16, 23, 45, 34, 55, DateTimeKind.Unspecified).AddTicks(9940),
-                            CreatedBy = 3L,
-                            Description = "Atque quia tempora iusto nobis numquam.",
-                            DueDate = new DateTime(2023, 3, 30, 7, 12, 37, 665, DateTimeKind.Unspecified).AddTicks(100),
-                            IsDeleted = false,
-                            IsPublished = false,
-                            Title = "Adipisci vel id rerum.",
-                            UnitId = 17L
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 9, 9, 20, 25, 17, 338, DateTimeKind.Unspecified).AddTicks(8302),
-                            CreatedBy = 5L,
-                            Description = "Et dolores assumenda.\nLaborum sit debitis optio illum sint quis sunt ut id.\nFugit consequatur vel est quas est.",
-                            DueDate = new DateTime(2023, 11, 22, 6, 34, 14, 53, DateTimeKind.Unspecified).AddTicks(3236),
-                            IsDeleted = false,
-                            IsPublished = true,
-                            Title = "Est impedit est incidunt delectus fugiat.",
-                            UnitId = 21L
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            CourseId = 14L,
-                            CreatedAt = new DateTime(2021, 11, 11, 17, 34, 13, 89, DateTimeKind.Unspecified).AddTicks(4902),
-                            CreatedBy = 4L,
-                            Description = "Blanditiis et architecto rerum cumque voluptate ab et quaerat nostrum.",
-                            IsDeleted = false,
-                            IsPublished = true,
-                            Title = "Quam qui est illo et qui.",
-                            UnitId = 8L
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 2, 6, 11, 19, 27, 975, DateTimeKind.Unspecified).AddTicks(3106),
-                            CreatedBy = 4L,
-                            Description = "Delectus numquam voluptas dignissimos ad incidunt.\nVoluptatem praesentium sunt omnis.\nDistinctio quas id necessitatibus aut consequatur.",
-                            DueDate = new DateTime(2023, 10, 16, 6, 44, 40, 594, DateTimeKind.Unspecified).AddTicks(6448),
-                            IsDeleted = false,
-                            IsPublished = true,
-                            Title = "Eveniet veniam provident.",
-                            UnitId = 21L
-                        },
-                        new
-                        {
-                            Id = 21L,
-                            CourseId = 20L,
+                            CourseId = 2L,
                             CreatedAt = new DateTime(2022, 1, 22, 23, 46, 30, 637, DateTimeKind.Unspecified).AddTicks(591),
                             CreatedBy = 3L,
                             Description = "Cupiditate totam accusantium.\nEos ipsa aliquam dolores illum ex earum.\nQuo blanditiis temporibus repellat quisquam esse ipsum explicabo repudiandae.\nEa aliquid veniam tempora ex enim excepturi officiis.",
@@ -3122,8 +2911,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 22L,
-                            CourseId = 10L,
+                            Id = 11L,
+                            CourseId = 17L,
                             CreatedAt = new DateTime(2021, 5, 4, 13, 45, 37, 279, DateTimeKind.Unspecified).AddTicks(6304),
                             CreatedBy = 5L,
                             Description = "Doloremque eum voluptas rerum.\nDolorem quidem velit nulla.\nTempore dolore quidem.\nVoluptatibus dolorum rerum dolorem dolorum aspernatur vel molestiae.\nConsequatur placeat sed quia perspiciatis soluta est rerum numquam.",
@@ -3135,8 +2924,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 23L,
-                            CourseId = 6L,
+                            Id = 12L,
+                            CourseId = 7L,
                             CreatedAt = new DateTime(2021, 10, 17, 4, 26, 11, 227, DateTimeKind.Unspecified).AddTicks(2391),
                             CreatedBy = 4L,
                             Description = "Labore neque error laborum dicta itaque sint facere.\nId deserunt qui necessitatibus libero quas sunt sint velit.\nBlanditiis illum natus ea explicabo officiis.\nEt sed consequatur fugit et at voluptate accusantium.\nNesciunt reiciendis quasi natus nihil.",
@@ -3148,7 +2937,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 24L,
+                            Id = 13L,
                             CourseId = 5L,
                             CreatedAt = new DateTime(2021, 4, 16, 10, 45, 47, 335, DateTimeKind.Unspecified).AddTicks(1734),
                             CreatedBy = 4L,
@@ -3161,8 +2950,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 25L,
-                            CourseId = 21L,
+                            Id = 14L,
+                            CourseId = 12L,
                             CreatedAt = new DateTime(2021, 5, 5, 6, 12, 5, 214, DateTimeKind.Unspecified).AddTicks(7048),
                             CreatedBy = 5L,
                             Description = "Sed et ex molestias sit amet ut corporis non facilis.\nIste ea voluptatum quis et.",
@@ -3174,8 +2963,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 26L,
-                            CourseId = 19L,
+                            Id = 15L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 11, 26, 2, 15, 53, 505, DateTimeKind.Unspecified).AddTicks(43),
                             CreatedBy = 2L,
                             Description = "Aut ea sunt placeat facere.\nId fugit ducimus ducimus blanditiis non laborum enim et nesciunt.\nOmnis rem fugit et voluptates provident sequi aliquid velit consectetur.\nAut sit tempore doloremque sit ex voluptatem voluptatem enim.",
@@ -3187,8 +2976,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 27L,
-                            CourseId = 3L,
+                            Id = 16L,
+                            CourseId = 6L,
                             CreatedAt = new DateTime(2021, 9, 10, 6, 1, 31, 998, DateTimeKind.Unspecified).AddTicks(4248),
                             CreatedBy = 5L,
                             Description = "Ipsa et et.",
@@ -3200,8 +2989,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 28L,
-                            CourseId = 14L,
+                            Id = 17L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2021, 2, 4, 5, 5, 58, 590, DateTimeKind.Unspecified).AddTicks(705),
                             CreatedBy = 1L,
                             Description = "Sit aut eum aut.\nDolor eos autem.\nExercitationem voluptate quae quasi et incidunt.\nEos quasi minima suscipit sit voluptatibus accusamus.\nDolor quidem culpa et non unde rerum.",
@@ -3213,8 +3002,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 29L,
-                            CourseId = 10L,
+                            Id = 18L,
+                            CourseId = 17L,
                             CreatedAt = new DateTime(2021, 6, 25, 14, 54, 19, 404, DateTimeKind.Unspecified).AddTicks(1657),
                             CreatedBy = 1L,
                             Description = "A adipisci ratione adipisci voluptatum.\nItaque illum iste.\nAperiam recusandae enim cumque consequatur animi asperiores ut nulla.",
@@ -3226,8 +3015,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 30L,
-                            CourseId = 18L,
+                            Id = 19L,
+                            CourseId = 21L,
                             CreatedAt = new DateTime(2021, 10, 8, 8, 9, 34, 791, DateTimeKind.Unspecified).AddTicks(1560),
                             CreatedBy = 4L,
                             Description = "Tempore ab molestiae rerum sint et.\nDoloribus inventore corrupti.\nIllum sunt beatae suscipit ipsam sunt veniam vitae.",
@@ -3239,8 +3028,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 31L,
-                            CourseId = 19L,
+                            Id = 20L,
+                            CourseId = 2L,
                             CreatedAt = new DateTime(2021, 11, 29, 11, 22, 40, 703, DateTimeKind.Unspecified).AddTicks(120),
                             CreatedBy = 4L,
                             Description = "Molestiae dolorem quia numquam esse laudantium.",
@@ -3252,7 +3041,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 32L,
+                            Id = 21L,
                             CourseId = 7L,
                             CreatedAt = new DateTime(2021, 4, 22, 0, 7, 36, 83, DateTimeKind.Unspecified).AddTicks(1027),
                             CreatedBy = 5L,
@@ -3265,8 +3054,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 33L,
-                            CourseId = 4L,
+                            Id = 22L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 11, 8, 21, 41, 8, 389, DateTimeKind.Unspecified).AddTicks(5847),
                             CreatedBy = 1L,
                             Description = "Veniam nisi iste enim laborum.\nNemo similique ad itaque voluptatibus voluptas soluta recusandae aut ipsum.\nMolestiae ad laborum et ratione ipsam ullam.\nMolestiae accusamus tenetur ut perspiciatis numquam ipsam architecto non ab.",
@@ -3278,8 +3067,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 34L,
-                            CourseId = 21L,
+                            Id = 23L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 6, 15, 23, 3, 45, 61, DateTimeKind.Unspecified).AddTicks(2333),
                             CreatedBy = 1L,
                             Description = "Cupiditate ratione illum.",
@@ -3291,8 +3080,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 35L,
-                            CourseId = 6L,
+                            Id = 24L,
+                            CourseId = 14L,
                             CreatedAt = new DateTime(2021, 3, 6, 9, 39, 26, 81, DateTimeKind.Unspecified).AddTicks(469),
                             CreatedBy = 5L,
                             Description = "Libero minus quisquam libero voluptas.",
@@ -3304,8 +3093,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 36L,
-                            CourseId = 18L,
+                            Id = 25L,
+                            CourseId = 21L,
                             CreatedAt = new DateTime(2021, 6, 13, 13, 27, 42, 12, DateTimeKind.Unspecified).AddTicks(8813),
                             CreatedBy = 4L,
                             Description = "Saepe dolorem nisi consequatur.\nQuis provident rerum.\nIn repudiandae repellendus vitae ea blanditiis numquam labore reprehenderit porro.",
@@ -3317,8 +3106,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 37L,
-                            CourseId = 5L,
+                            Id = 26L,
+                            CourseId = 19L,
                             CreatedAt = new DateTime(2021, 6, 3, 9, 45, 43, 915, DateTimeKind.Unspecified).AddTicks(9319),
                             CreatedBy = 4L,
                             Description = "Culpa ea amet dolor omnis saepe aut.\nPlaceat omnis fugiat dolorem dolor velit.\nVoluptatem quibusdam in adipisci nihil vero aut aut qui et.\nSed voluptatum consectetur ipsa tenetur deserunt perspiciatis eligendi consequatur ex.",
@@ -3330,8 +3119,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 38L,
-                            CourseId = 20L,
+                            Id = 27L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 6, 18, 5, 15, 50, 506, DateTimeKind.Unspecified).AddTicks(4740),
                             CreatedBy = 5L,
                             Description = "Sit dolore dolorem nam delectus nobis.\nMagnam quae veniam et ea dolores.\nImpedit mollitia et veniam.\nIure fuga quis.\nEaque laudantium eaque quia.",
@@ -3343,8 +3132,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 39L,
-                            CourseId = 21L,
+                            Id = 28L,
+                            CourseId = 19L,
                             CreatedAt = new DateTime(2021, 9, 22, 3, 10, 41, 786, DateTimeKind.Unspecified).AddTicks(5061),
                             CreatedBy = 5L,
                             Description = "Consequatur sit odit non aliquid tempore autem.\nIpsam cupiditate aut ipsam.\nVelit blanditiis fugiat ipsa vitae.\nSed non commodi laborum pariatur praesentium nisi labore nam.\nEa voluptates totam enim impedit vitae.",
@@ -3356,8 +3145,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 40L,
-                            CourseId = 6L,
+                            Id = 29L,
+                            CourseId = 14L,
                             CreatedAt = new DateTime(2021, 8, 30, 22, 48, 0, 825, DateTimeKind.Unspecified).AddTicks(4773),
                             CreatedBy = 5L,
                             Description = "Qui est rerum quisquam quaerat.\nAut iusto quo eligendi a laborum.\nConsequatur similique fugit qui ipsam nobis ad nihil.\nVeritatis ea ut.",
@@ -3369,8 +3158,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 41L,
-                            CourseId = 16L,
+                            Id = 30L,
+                            CourseId = 7L,
                             CreatedAt = new DateTime(2021, 4, 30, 22, 13, 55, 230, DateTimeKind.Unspecified).AddTicks(2149),
                             CreatedBy = 3L,
                             Description = "Molestiae autem quia ab qui est voluptatem aspernatur enim.\nAccusamus magni odio repudiandae laborum qui veniam qui cumque.\nSuscipit et quis in velit.\nExcepturi quam molestias cum veritatis inventore.\nVoluptatum et quod rerum enim sed voluptates molestiae culpa.",
@@ -3382,8 +3171,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 42L,
-                            CourseId = 15L,
+                            Id = 31L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2022, 2, 1, 9, 37, 5, 467, DateTimeKind.Unspecified).AddTicks(6876),
                             CreatedBy = 5L,
                             Description = "Voluptas officia quidem dolor.\nSit delectus esse officiis optio aut sint temporibus aliquid.",
@@ -3395,8 +3184,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 43L,
-                            CourseId = 17L,
+                            Id = 32L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 2, 4, 22, 13, 41, 315, DateTimeKind.Unspecified).AddTicks(9874),
                             CreatedBy = 1L,
                             Description = "Velit et aut.",
@@ -3408,8 +3197,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 44L,
-                            CourseId = 20L,
+                            Id = 33L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 10, 16, 1, 23, 7, 244, DateTimeKind.Unspecified).AddTicks(2448),
                             CreatedBy = 3L,
                             Description = "Dolorem eum quibusdam harum expedita quo reprehenderit omnis.\nId enim qui.",
@@ -3421,8 +3210,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 45L,
-                            CourseId = 20L,
+                            Id = 34L,
+                            CourseId = 4L,
                             CreatedAt = new DateTime(2021, 4, 21, 17, 39, 26, 742, DateTimeKind.Unspecified).AddTicks(3053),
                             CreatedBy = 2L,
                             Description = "Et eos dolores ex quaerat.\nNon minus recusandae ullam aperiam.\nIpsam ipsa error itaque eligendi.\nQuod velit exercitationem recusandae voluptas qui.\nConsectetur rerum enim placeat doloribus hic saepe deleniti nihil impedit.",
@@ -3434,8 +3223,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 46L,
-                            CourseId = 18L,
+                            Id = 35L,
+                            CourseId = 21L,
                             CreatedAt = new DateTime(2021, 2, 8, 0, 14, 16, 243, DateTimeKind.Unspecified).AddTicks(1131),
                             CreatedBy = 5L,
                             Description = "Quia provident nihil architecto maiores voluptatem repudiandae.",
@@ -3447,8 +3236,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 47L,
-                            CourseId = 6L,
+                            Id = 36L,
+                            CourseId = 7L,
                             CreatedAt = new DateTime(2021, 2, 28, 11, 30, 15, 742, DateTimeKind.Unspecified).AddTicks(1052),
                             CreatedBy = 2L,
                             Description = "Qui a aut porro est sit in molestiae.\nEt qui tempore esse fuga commodi omnis ut quisquam est.\nNatus tempora suscipit qui mollitia ut.",
@@ -3459,8 +3248,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 48L,
-                            CourseId = 16L,
+                            Id = 37L,
+                            CourseId = 20L,
                             CreatedAt = new DateTime(2021, 12, 6, 11, 32, 58, 756, DateTimeKind.Unspecified).AddTicks(2281),
                             CreatedBy = 2L,
                             Description = "Omnis ratione qui autem enim provident est.\nAut perspiciatis est asperiores dolorem sunt sint dolorum ex.\nPraesentium officiis ex.\nPerspiciatis cumque repellendus consectetur quos ducimus temporibus debitis doloribus.\nRecusandae repudiandae aut beatae excepturi expedita.",
@@ -3472,8 +3261,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 49L,
-                            CourseId = 8L,
+                            Id = 38L,
+                            CourseId = 6L,
                             CreatedAt = new DateTime(2021, 6, 28, 0, 46, 39, 290, DateTimeKind.Unspecified).AddTicks(3097),
                             CreatedBy = 1L,
                             Description = "Et delectus nesciunt autem.\nQuia aut quia eaque minima maiores magni.\nRatione veritatis magnam vitae voluptas odit optio.",
@@ -3485,8 +3274,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 50L,
-                            CourseId = 18L,
+                            Id = 39L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2021, 4, 13, 7, 3, 35, 773, DateTimeKind.Unspecified).AddTicks(6420),
                             CreatedBy = 4L,
                             Description = "Ut possimus eius rem reprehenderit est neque optio.\nVeniam accusantium ad quia corporis.\nPlaceat quam nulla.\nEa architecto tempore quasi adipisci saepe quod deserunt magnam.",
@@ -3498,8 +3287,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 51L,
-                            CourseId = 14L,
+                            Id = 40L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2021, 12, 16, 9, 0, 54, 989, DateTimeKind.Unspecified).AddTicks(1757),
                             CreatedBy = 1L,
                             Description = "Cum doloremque maiores.\nSunt iusto quia fugit consequatur sint assumenda doloribus atque.\nQui exercitationem est voluptatem culpa.\nIllo repudiandae quia non magni tempora totam nobis.",
@@ -3511,7 +3300,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 52L,
+                            Id = 41L,
                             CourseId = 7L,
                             CreatedAt = new DateTime(2021, 7, 4, 21, 29, 44, 604, DateTimeKind.Unspecified).AddTicks(8805),
                             CreatedBy = 1L,
@@ -3524,8 +3313,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 53L,
-                            CourseId = 6L,
+                            Id = 42L,
+                            CourseId = 7L,
                             CreatedAt = new DateTime(2021, 4, 1, 18, 58, 51, 127, DateTimeKind.Unspecified).AddTicks(6501),
                             CreatedBy = 4L,
                             Description = "Sapiente nisi voluptates mollitia ad corrupti perferendis similique velit.",
@@ -3537,8 +3326,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 54L,
-                            CourseId = 20L,
+                            Id = 43L,
+                            CourseId = 4L,
                             CreatedAt = new DateTime(2021, 11, 9, 6, 57, 3, 393, DateTimeKind.Unspecified).AddTicks(3521),
                             CreatedBy = 3L,
                             Description = "Quo rerum cumque et sapiente.\nCorrupti voluptatum doloribus praesentium autem debitis distinctio consectetur.\nDolorem magni quidem aut aut enim odio veniam.",
@@ -3550,8 +3339,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 55L,
-                            CourseId = 6L,
+                            Id = 44L,
+                            CourseId = 14L,
                             CreatedAt = new DateTime(2021, 2, 26, 20, 29, 59, 219, DateTimeKind.Unspecified).AddTicks(4177),
                             CreatedBy = 4L,
                             Description = "Minima vitae est iusto ratione excepturi facere.\nQuia atque natus nemo.\nNulla in voluptatem.\nId aperiam voluptatem autem quia aliquam.\nIure et tempore.",
@@ -3563,8 +3352,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 56L,
-                            CourseId = 9L,
+                            Id = 45L,
+                            CourseId = 16L,
                             CreatedAt = new DateTime(2021, 10, 24, 10, 54, 26, 326, DateTimeKind.Unspecified).AddTicks(2431),
                             CreatedBy = 3L,
                             Description = "Nesciunt provident doloribus labore.",
@@ -3576,7 +3365,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 57L,
+                            Id = 46L,
                             CourseId = 7L,
                             CreatedAt = new DateTime(2021, 8, 14, 12, 54, 0, 489, DateTimeKind.Unspecified).AddTicks(9888),
                             CreatedBy = 1L,
@@ -3588,8 +3377,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 58L,
-                            CourseId = 4L,
+                            Id = 47L,
+                            CourseId = 17L,
                             CreatedAt = new DateTime(2021, 3, 25, 16, 31, 29, 597, DateTimeKind.Unspecified).AddTicks(8117),
                             CreatedBy = 5L,
                             Description = "Ullam qui corrupti.\nCulpa magnam architecto mollitia quis.",
@@ -3601,8 +3390,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 59L,
-                            CourseId = 8L,
+                            Id = 48L,
+                            CourseId = 19L,
                             CreatedAt = new DateTime(2021, 12, 27, 9, 39, 11, 866, DateTimeKind.Unspecified).AddTicks(3985),
                             CreatedBy = 3L,
                             Description = "Cupiditate quia quisquam a voluptatibus.\nRecusandae accusamus ipsam.\nA reiciendis odio dolor nulla.\nIste iste nihil unde voluptatem commodi unde et id natus.",
@@ -3613,8 +3402,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 60L,
-                            CourseId = 6L,
+                            Id = 49L,
+                            CourseId = 14L,
                             CreatedAt = new DateTime(2021, 6, 18, 6, 8, 39, 990, DateTimeKind.Unspecified).AddTicks(3904),
                             CreatedBy = 1L,
                             Description = "Qui alias debitis debitis deleniti tenetur voluptas vel et.",
@@ -3626,8 +3415,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 61L,
-                            CourseId = 10L,
+                            Id = 50L,
+                            CourseId = 20L,
                             CreatedAt = new DateTime(2021, 8, 29, 17, 45, 49, 19, DateTimeKind.Unspecified).AddTicks(6526),
                             CreatedBy = 5L,
                             Description = "Quia ullam illum soluta.\nVoluptatem praesentium eveniet.",
@@ -3639,8 +3428,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 62L,
-                            CourseId = 8L,
+                            Id = 51L,
+                            CourseId = 20L,
                             CreatedAt = new DateTime(2021, 7, 26, 3, 37, 40, 168, DateTimeKind.Unspecified).AddTicks(8371),
                             CreatedBy = 4L,
                             Description = "Sunt earum tempore consequatur molestias totam ab.\nVero iste culpa distinctio ad.\nSed dolorem tenetur doloribus sapiente deserunt nam eos fuga.\nQuo rerum eaque omnis voluptas dolor assumenda ut.\nEos voluptatum voluptatem.",
@@ -3652,8 +3441,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 63L,
-                            CourseId = 14L,
+                            Id = 52L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2021, 5, 30, 12, 49, 5, 83, DateTimeKind.Unspecified).AddTicks(5041),
                             CreatedBy = 3L,
                             Description = "Architecto non debitis impedit voluptatem non aut.",
@@ -3665,7 +3454,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 64L,
+                            Id = 53L,
                             CourseId = 5L,
                             CreatedAt = new DateTime(2021, 12, 20, 19, 51, 9, 35, DateTimeKind.Unspecified).AddTicks(5559),
                             CreatedBy = 1L,
@@ -3678,8 +3467,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 65L,
-                            CourseId = 20L,
+                            Id = 54L,
+                            CourseId = 4L,
                             CreatedAt = new DateTime(2021, 3, 5, 9, 17, 31, 145, DateTimeKind.Unspecified).AddTicks(9938),
                             CreatedBy = 1L,
                             Description = "Eaque sit in.\nPariatur quae atque.\nQuia sed accusantium voluptatem ea distinctio iusto ut magni similique.",
@@ -3691,8 +3480,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 66L,
-                            CourseId = 15L,
+                            Id = 55L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2021, 11, 19, 13, 46, 55, 178, DateTimeKind.Unspecified).AddTicks(5038),
                             CreatedBy = 3L,
                             Description = "Sit et odio nemo voluptatem eos consequatur culpa deleniti.",
@@ -3704,8 +3493,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 67L,
-                            CourseId = 9L,
+                            Id = 56L,
+                            CourseId = 14L,
                             CreatedAt = new DateTime(2021, 11, 19, 15, 43, 42, 171, DateTimeKind.Unspecified).AddTicks(2793),
                             CreatedBy = 1L,
                             Description = "Dolores et aliquam facilis iste et voluptas sit.",
@@ -3717,8 +3506,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 68L,
-                            CourseId = 9L,
+                            Id = 57L,
+                            CourseId = 15L,
                             CreatedAt = new DateTime(2021, 4, 13, 10, 30, 42, 417, DateTimeKind.Unspecified).AddTicks(9730),
                             CreatedBy = 4L,
                             Description = "Consequatur sed quaerat repellat ullam sit beatae ducimus.",
@@ -3730,7 +3519,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 69L,
+                            Id = 58L,
                             CourseId = 7L,
                             CreatedAt = new DateTime(2021, 5, 2, 20, 10, 53, 507, DateTimeKind.Unspecified).AddTicks(8685),
                             CreatedBy = 3L,
@@ -3743,8 +3532,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 70L,
-                            CourseId = 3L,
+                            Id = 59L,
+                            CourseId = 6L,
                             CreatedAt = new DateTime(2021, 3, 18, 3, 37, 13, 520, DateTimeKind.Unspecified).AddTicks(4200),
                             CreatedBy = 1L,
                             Description = "Eveniet cupiditate nesciunt voluptas.",
@@ -3756,8 +3545,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 71L,
-                            CourseId = 10L,
+                            Id = 60L,
+                            CourseId = 18L,
                             CreatedAt = new DateTime(2021, 2, 3, 6, 59, 24, 644, DateTimeKind.Unspecified).AddTicks(3663),
                             CreatedBy = 2L,
                             Description = "Consequatur necessitatibus id dignissimos inventore.",
@@ -3769,8 +3558,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 72L,
-                            CourseId = 3L,
+                            Id = 61L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 7, 14, 22, 35, 39, 632, DateTimeKind.Unspecified).AddTicks(5147),
                             CreatedBy = 1L,
                             Description = "Ipsa error aut quidem sed recusandae.",
@@ -3782,8 +3571,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 73L,
-                            CourseId = 20L,
+                            Id = 62L,
+                            CourseId = 13L,
                             CreatedAt = new DateTime(2021, 11, 2, 3, 36, 25, 623, DateTimeKind.Unspecified).AddTicks(3553),
                             CreatedBy = 4L,
                             Description = "Aut consequuntur dolore dolores vero veritatis commodi minus voluptas et.\nRepellendus consequatur magnam.\nMolestias ea dolores accusantium sed cum hic.",
@@ -3795,7 +3584,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 74L,
+                            Id = 63L,
                             CourseId = 7L,
                             CreatedAt = new DateTime(2021, 8, 3, 18, 29, 27, 737, DateTimeKind.Unspecified).AddTicks(1737),
                             CreatedBy = 1L,
@@ -3808,8 +3597,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 75L,
-                            CourseId = 19L,
+                            Id = 64L,
+                            CourseId = 2L,
                             CreatedAt = new DateTime(2021, 10, 8, 20, 54, 59, 986, DateTimeKind.Unspecified).AddTicks(518),
                             CreatedBy = 1L,
                             Description = "Iusto ab aut quis nihil molestiae.\nQui provident nisi ut rerum dolorem ratione laboriosam.",
@@ -3821,8 +3610,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 76L,
-                            CourseId = 16L,
+                            Id = 65L,
+                            CourseId = 7L,
                             CreatedAt = new DateTime(2022, 1, 8, 22, 19, 37, 131, DateTimeKind.Unspecified).AddTicks(5591),
                             CreatedBy = 3L,
                             Description = "Ipsam labore et et labore nihil aut dignissimos.\nMolestiae voluptatum laboriosam est rerum similique sint id.\nArchitecto sequi accusantium labore rerum nam soluta repellat.\nDeserunt nostrum iste ut iste et ratione pariatur.",
@@ -3834,8 +3623,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 77L,
-                            CourseId = 6L,
+                            Id = 66L,
+                            CourseId = 7L,
                             CreatedAt = new DateTime(2021, 6, 30, 12, 45, 44, 454, DateTimeKind.Unspecified).AddTicks(6586),
                             CreatedBy = 4L,
                             Description = "Culpa quo beatae mollitia assumenda natus labore maxime.\nSequi quia culpa et sed.\nAperiam expedita id ab numquam aut rerum.",
@@ -3847,8 +3636,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 78L,
-                            CourseId = 8L,
+                            Id = 67L,
+                            CourseId = 19L,
                             CreatedAt = new DateTime(2021, 12, 13, 0, 12, 36, 882, DateTimeKind.Unspecified).AddTicks(9197),
                             CreatedBy = 3L,
                             Description = "Numquam quia sint porro.",
@@ -3860,8 +3649,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 79L,
-                            CourseId = 9L,
+                            Id = 68L,
+                            CourseId = 16L,
                             CreatedAt = new DateTime(2021, 8, 20, 21, 36, 53, 739, DateTimeKind.Unspecified).AddTicks(5878),
                             CreatedBy = 3L,
                             Description = "Iste esse dolorem perferendis delectus aut sint totam.\nSunt quod beatae ipsam et quaerat nisi totam.\nAlias nobis accusantium iusto sed atque voluptas ipsa eius alias.\nQuia iste perspiciatis eos officia debitis ea corrupti.",
@@ -3873,8 +3662,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 80L,
-                            CourseId = 18L,
+                            Id = 69L,
+                            CourseId = 11L,
                             CreatedAt = new DateTime(2021, 6, 2, 6, 11, 25, 733, DateTimeKind.Unspecified).AddTicks(843),
                             CreatedBy = 2L,
                             Description = "Unde exercitationem sit id sed numquam nisi dolore molestiae.\nSint facere iste provident velit itaque qui consectetur.\nVero nisi voluptas libero veniam in ducimus voluptas recusandae vero.\nRatione dignissimos hic eum aut dolore quia voluptatibus possimus.",
@@ -3886,8 +3675,8 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 81L,
-                            CourseId = 6L,
+                            Id = 70L,
+                            CourseId = 14L,
                             CreatedAt = new DateTime(2021, 3, 17, 21, 0, 7, 821, DateTimeKind.Unspecified).AddTicks(2360),
                             CreatedBy = 3L,
                             Description = "Fuga id doloremque tempore quis voluptate reprehenderit quia sint.\nAut ipsum cupiditate hic vel placeat.\nPossimus quo laudantium sed repellat quibusdam.",
@@ -3895,6 +3684,452 @@ namespace Codi.Core.DAL.Migrations
                             IsPublished = true,
                             Title = "Iusto eum aliquid aut molestias aut expedita et.",
                             UnitId = 13L
+                        },
+                        new
+                        {
+                            Id = 71L,
+                            CourseId = 7L,
+                            CreatedAt = new DateTime(2021, 6, 7, 13, 4, 23, 713, DateTimeKind.Unspecified).AddTicks(5650),
+                            CreatedBy = 1L,
+                            Description = "Vitae est id atque odit sequi perferendis eveniet voluptatem nemo.\nNeque omnis dignissimos eveniet adipisci voluptatibus.",
+                            DueDate = new DateTime(2022, 7, 31, 23, 3, 19, 87, DateTimeKind.Unspecified).AddTicks(8477),
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Repellendus ipsa itaque tempora fuga.",
+                            UnitId = 16L
+                        },
+                        new
+                        {
+                            Id = 72L,
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2022, 2, 1, 15, 36, 28, 649, DateTimeKind.Unspecified).AddTicks(681),
+                            CreatedBy = 2L,
+                            Description = "Maiores reiciendis voluptatibus molestiae nulla.\nReiciendis placeat nihil sit porro provident qui rerum pariatur.\nVoluptatibus asperiores dignissimos quibusdam molestiae velit voluptates aut minima ut.\nDolores aperiam aut architecto minus.",
+                            DueDate = new DateTime(2024, 1, 6, 20, 27, 57, 243, DateTimeKind.Unspecified).AddTicks(4950),
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Excepturi eum magnam est omnis incidunt exercitationem voluptas molestiae.",
+                            UnitId = 34L
+                        },
+                        new
+                        {
+                            Id = 73L,
+                            CourseId = 10L,
+                            CreatedAt = new DateTime(2021, 2, 15, 4, 41, 52, 442, DateTimeKind.Unspecified).AddTicks(3314),
+                            CreatedBy = 4L,
+                            Description = "Enim suscipit voluptatibus alias molestiae.\nEt consequatur ratione earum blanditiis nulla porro.\nAut maiores similique qui aut harum a neque.\nQuis dolorum cupiditate placeat.\nDolor maiores voluptatum cupiditate modi.",
+                            DueDate = new DateTime(2023, 8, 11, 18, 58, 55, 430, DateTimeKind.Unspecified).AddTicks(206),
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Nesciunt quia et distinctio rerum autem exercitationem molestiae et.",
+                            UnitId = 8L
+                        },
+                        new
+                        {
+                            Id = 74L,
+                            CourseId = 21L,
+                            CreatedAt = new DateTime(2021, 8, 15, 14, 6, 4, 856, DateTimeKind.Unspecified).AddTicks(1148),
+                            CreatedBy = 1L,
+                            Description = "Delectus provident consequatur est.\nEum veniam ipsam voluptatem consequuntur optio vel in.",
+                            DueDate = new DateTime(2023, 9, 27, 5, 32, 54, 895, DateTimeKind.Unspecified).AddTicks(3257),
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Voluptatem asperiores tempore nulla cumque.",
+                            UnitId = 39L
+                        },
+                        new
+                        {
+                            Id = 75L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 12, 20, 20, 8, 38, 21, DateTimeKind.Unspecified).AddTicks(2165),
+                            CreatedBy = 3L,
+                            Description = "Corrupti commodi qui nostrum suscipit repellendus id consequatur voluptatem omnis.\nItaque ducimus unde et ab qui voluptas excepturi.\nNeque excepturi autem est nihil.",
+                            DueDate = new DateTime(2022, 7, 21, 13, 49, 35, 888, DateTimeKind.Unspecified).AddTicks(8372),
+                            IsDeleted = false,
+                            IsPublished = true,
+                            Title = "Tenetur asperiores quis ut id error harum.",
+                            UnitId = 7L
+                        },
+                        new
+                        {
+                            Id = 76L,
+                            CourseId = 5L,
+                            CreatedAt = new DateTime(2021, 5, 27, 17, 5, 43, 455, DateTimeKind.Unspecified).AddTicks(2703),
+                            CreatedBy = 2L,
+                            Description = "Et ipsa veritatis.",
+                            DueDate = new DateTime(2023, 1, 5, 2, 9, 54, 327, DateTimeKind.Unspecified).AddTicks(5115),
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Et aliquid distinctio omnis.",
+                            UnitId = 22L
+                        },
+                        new
+                        {
+                            Id = 77L,
+                            CourseId = 11L,
+                            CreatedAt = new DateTime(2021, 11, 9, 17, 6, 30, 174, DateTimeKind.Unspecified).AddTicks(1076),
+                            CreatedBy = 5L,
+                            Description = "Maiores consequatur qui aut consequatur sunt autem qui rerum quas.\nExplicabo rerum at itaque.\nCumque rem nostrum cumque laborum nobis.\nVoluptatem quisquam non voluptate reprehenderit aspernatur laboriosam.\nCum omnis nobis.",
+                            DueDate = new DateTime(2023, 8, 20, 14, 58, 10, 942, DateTimeKind.Unspecified).AddTicks(5599),
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Possimus sit voluptatem quibusdam sed consequuntur.",
+                            UnitId = 21L
+                        },
+                        new
+                        {
+                            Id = 78L,
+                            CourseId = 16L,
+                            CreatedAt = new DateTime(2021, 6, 16, 0, 16, 26, 622, DateTimeKind.Unspecified).AddTicks(3698),
+                            CreatedBy = 1L,
+                            Description = "Est quo aspernatur.\nUllam enim error vel veniam.\nIn quae corporis et.",
+                            DueDate = new DateTime(2023, 1, 3, 20, 6, 19, 720, DateTimeKind.Unspecified).AddTicks(2969),
+                            IsDeleted = false,
+                            IsPublished = true,
+                            Title = "Possimus ab qui omnis esse natus ut dolore.",
+                            UnitId = 41L
+                        },
+                        new
+                        {
+                            Id = 79L,
+                            CourseId = 20L,
+                            CreatedAt = new DateTime(2021, 3, 18, 11, 52, 35, 373, DateTimeKind.Unspecified).AddTicks(1015),
+                            CreatedBy = 1L,
+                            Description = "Ratione in et molestiae quo qui quia.\nAperiam itaque qui rerum quia ut.\nMaxime ullam sunt officiis ea qui laborum cupiditate.\nVoluptate eaque et molestias nam.\nExplicabo architecto ipsam distinctio aliquam rem.",
+                            IsDeleted = false,
+                            IsPublished = false,
+                            Title = "Et et aperiam vero quidem vel rem nemo.",
+                            UnitId = 26L
+                        },
+                        new
+                        {
+                            Id = 80L,
+                            CourseId = 7L,
+                            CreatedAt = new DateTime(2022, 1, 28, 0, 42, 13, 607, DateTimeKind.Unspecified).AddTicks(6629),
+                            CreatedBy = 2L,
+                            Description = "Iusto est est provident ab rerum.\nEt iure vel.\nSunt voluptas molestias harum nam perferendis labore nobis exercitationem.",
+                            DueDate = new DateTime(2023, 1, 9, 8, 1, 53, 529, DateTimeKind.Unspecified).AddTicks(832),
+                            IsDeleted = false,
+                            IsPublished = true,
+                            Title = "Veritatis sequi exercitationem voluptatum voluptas ratione saepe.",
+                            UnitId = 20L
+                        },
+                        new
+                        {
+                            Id = 81L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 8, 21, 13, 7, 1, 386, DateTimeKind.Unspecified).AddTicks(2162),
+                            CreatedBy = 1L,
+                            Description = "Porro quidem impedit aut est quam dolor maiores dolorem cumque.\nQuibusdam accusantium eius.\nDistinctio vel facere et quia eius repudiandae et.\nVoluptatum sint qui.",
+                            DueDate = new DateTime(2023, 6, 13, 6, 42, 56, 229, DateTimeKind.Unspecified).AddTicks(6908),
+                            IsDeleted = false,
+                            IsPublished = true,
+                            Title = "Aut natus ullam commodi.",
+                            UnitId = 3L
+                        });
+                });
+
+            modelBuilder.Entity("Codi.Core.DAL.Entities.Organization", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<long>("OwnerId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Organizations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2021, 5, 11, 18, 20, 16, 57, DateTimeKind.Unspecified).AddTicks(1242),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Sit aut voluptatem soluta ad unde architecto vero.",
+                            OwnerId = 40L
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2022, 1, 10, 13, 51, 59, 266, DateTimeKind.Unspecified).AddTicks(6152),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Et veniam facere aut natus doloremque officiis quam corrupti.",
+                            OwnerId = 41L
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedAt = new DateTime(2021, 4, 4, 16, 36, 42, 824, DateTimeKind.Unspecified).AddTicks(8395),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Sunt explicabo non reprehenderit.",
+                            OwnerId = 29L
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedAt = new DateTime(2021, 3, 13, 3, 44, 1, 343, DateTimeKind.Unspecified).AddTicks(1931),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Qui itaque ut nam ex aspernatur quia architecto ullam vero.",
+                            OwnerId = 6L
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreatedAt = new DateTime(2021, 7, 26, 11, 25, 58, 261, DateTimeKind.Unspecified).AddTicks(2647),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Neque ratione vero quas soluta voluptates aut quia sed.",
+                            OwnerId = 18L
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreatedAt = new DateTime(2021, 10, 12, 13, 36, 59, 124, DateTimeKind.Unspecified).AddTicks(6455),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Blanditiis unde totam non laborum eveniet eum repudiandae.",
+                            OwnerId = 19L
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreatedAt = new DateTime(2021, 12, 25, 22, 34, 0, 538, DateTimeKind.Unspecified).AddTicks(3831),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Recusandae unde nisi consectetur.",
+                            OwnerId = 48L
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreatedAt = new DateTime(2021, 12, 20, 6, 12, 33, 503, DateTimeKind.Unspecified).AddTicks(9097),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Id recusandae vel provident illo.",
+                            OwnerId = 12L
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreatedAt = new DateTime(2021, 6, 10, 20, 28, 15, 315, DateTimeKind.Unspecified).AddTicks(4147),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Ea eveniet totam fugiat qui accusamus.",
+                            OwnerId = 28L
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreatedAt = new DateTime(2021, 9, 23, 6, 29, 35, 43, DateTimeKind.Unspecified).AddTicks(3703),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            Name = "Inventore veritatis et vel et omnis.",
+                            OwnerId = 16L
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreatedAt = new DateTime(2021, 2, 25, 8, 25, 28, 958, DateTimeKind.Unspecified).AddTicks(7833),
+                            CreatedBy = 1L,
+                            IsDeleted = false,
+                            Name = "Perferendis mollitia rerum explicabo aliquam delectus.",
+                            OwnerId = 28L
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreatedAt = new DateTime(2021, 3, 31, 15, 59, 55, 366, DateTimeKind.Unspecified).AddTicks(8058),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            Name = "Velit reiciendis impedit sed.",
+                            OwnerId = 49L
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreatedAt = new DateTime(2021, 11, 20, 7, 52, 20, 253, DateTimeKind.Unspecified).AddTicks(1741),
+                            CreatedBy = 1L,
+                            IsDeleted = false,
+                            Name = "Ut soluta illum ea nostrum.",
+                            OwnerId = 48L
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CreatedAt = new DateTime(2021, 7, 5, 23, 30, 27, 897, DateTimeKind.Unspecified).AddTicks(8429),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Sed placeat voluptatibus facere blanditiis natus expedita commodi consequatur.",
+                            OwnerId = 49L
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CreatedAt = new DateTime(2021, 3, 20, 0, 24, 54, 315, DateTimeKind.Unspecified).AddTicks(6935),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Aliquid ea saepe corrupti illo vitae.",
+                            OwnerId = 19L
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CreatedAt = new DateTime(2021, 6, 7, 14, 50, 19, 143, DateTimeKind.Unspecified).AddTicks(3887),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            Name = "Impedit recusandae quia.",
+                            OwnerId = 36L
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CreatedAt = new DateTime(2021, 9, 6, 9, 48, 46, 878, DateTimeKind.Unspecified).AddTicks(9307),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Voluptatem ab illo voluptatem ea.",
+                            OwnerId = 22L
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            CreatedAt = new DateTime(2021, 3, 22, 10, 57, 36, 96, DateTimeKind.Unspecified).AddTicks(9700),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Quam illo ipsum dolores nam rem temporibus aut sit blanditiis.",
+                            OwnerId = 25L
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            CreatedAt = new DateTime(2021, 10, 8, 6, 24, 22, 535, DateTimeKind.Unspecified).AddTicks(5098),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Pariatur molestiae et quod enim qui dolore debitis aut impedit.",
+                            OwnerId = 26L
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            CreatedAt = new DateTime(2021, 5, 7, 21, 57, 25, 148, DateTimeKind.Unspecified).AddTicks(1174),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Ad rerum rerum itaque vitae aspernatur distinctio.",
+                            OwnerId = 17L
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            CreatedAt = new DateTime(2021, 12, 7, 15, 31, 15, 432, DateTimeKind.Unspecified).AddTicks(1791),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Labore qui aspernatur aliquid adipisci.",
+                            OwnerId = 11L
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            CreatedAt = new DateTime(2021, 7, 2, 18, 54, 43, 736, DateTimeKind.Unspecified).AddTicks(9580),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            Name = "Quia est nesciunt.",
+                            OwnerId = 35L
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            CreatedAt = new DateTime(2021, 7, 24, 16, 35, 49, 277, DateTimeKind.Unspecified).AddTicks(6747),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Ut ipsa praesentium harum minus voluptatem ut fugiat.",
+                            OwnerId = 21L
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            CreatedAt = new DateTime(2021, 4, 10, 2, 36, 34, 34, DateTimeKind.Unspecified).AddTicks(9891),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Assumenda corporis unde numquam quas reprehenderit aperiam cum.",
+                            OwnerId = 9L
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            CreatedAt = new DateTime(2021, 9, 13, 8, 57, 5, 814, DateTimeKind.Unspecified).AddTicks(5184),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            Name = "Asperiores omnis ut ipsam omnis temporibus ut.",
+                            OwnerId = 14L
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            CreatedAt = new DateTime(2021, 3, 19, 12, 5, 45, 756, DateTimeKind.Unspecified).AddTicks(5838),
+                            CreatedBy = 1L,
+                            IsDeleted = false,
+                            Name = "Quaerat facere odit.",
+                            OwnerId = 32L
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            CreatedAt = new DateTime(2021, 7, 31, 3, 40, 22, 142, DateTimeKind.Unspecified).AddTicks(4105),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            Name = "Ut nobis nam repellendus eum.",
+                            OwnerId = 41L
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            CreatedAt = new DateTime(2021, 2, 20, 0, 57, 35, 253, DateTimeKind.Unspecified).AddTicks(8009),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            Name = "Veniam est voluptates natus perferendis tempora earum rerum.",
+                            OwnerId = 49L
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            CreatedAt = new DateTime(2021, 8, 17, 19, 45, 54, 291, DateTimeKind.Unspecified).AddTicks(9401),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Deserunt et enim tempora vel.",
+                            OwnerId = 10L
+                        },
+                        new
+                        {
+                            Id = 31L,
+                            CreatedAt = new DateTime(2021, 9, 11, 10, 11, 6, 964, DateTimeKind.Unspecified).AddTicks(1993),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            Name = "Omnis hic et necessitatibus iste magni.",
+                            OwnerId = 44L
                         });
                 });
 
@@ -3940,138 +4175,17 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2022, 1, 6, 22, 9, 58, 974, DateTimeKind.Unspecified).AddTicks(7270),
-                            CreatedBy = 1L,
-                            Description = "Quia at animi eius consequatur aspernatur qui esse rerum ullam.\nEt dolorem cupiditate ducimus consectetur harum.\nNihil ab fuga eum.",
+                            CreatedAt = new DateTime(2021, 10, 24, 18, 52, 9, 721, DateTimeKind.Unspecified).AddTicks(3781),
+                            CreatedBy = 5L,
+                            Description = "Omnis voluptatem vel quas non libero.\nNobis amet nostrum qui inventore perferendis reiciendis cumque beatae.",
                             IsDeleted = false,
                             IsPublic = true,
-                            OwnerId = 42L,
-                            Title = "Facilis non quia quia corrupti odit."
+                            OwnerId = 40L,
+                            Title = "Vel voluptatem temporibus ducimus iste quibusdam voluptatibus quisquam voluptatem."
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2021, 10, 17, 8, 20, 24, 98, DateTimeKind.Unspecified).AddTicks(9199),
-                            CreatedBy = 1L,
-                            Description = "Et pariatur ex omnis sed quo.\nDucimus quia omnis perspiciatis.\nMagni nisi officia quia beatae recusandae corrupti.\nSoluta laudantium sit dolorem.",
-                            IsDeleted = false,
-                            IsPublic = false,
-                            OwnerId = 41L,
-                            Title = "Non asperiores soluta."
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreatedAt = new DateTime(2021, 4, 19, 4, 45, 26, 609, DateTimeKind.Unspecified).AddTicks(9086),
-                            CreatedBy = 3L,
-                            Description = "Sapiente aut ipsum.\nExpedita et et aut qui pariatur quo perspiciatis cum est.\nRerum magni inventore adipisci non eligendi.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 27L,
-                            Title = "Et nihil quia."
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreatedAt = new DateTime(2022, 2, 1, 21, 51, 46, 978, DateTimeKind.Unspecified).AddTicks(3562),
-                            CreatedBy = 1L,
-                            Description = "Hic sit minima similique dolor impedit minus.\nMaiores numquam sed dolores consequatur quia.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 20L,
-                            Title = "Non debitis ea vitae aliquid suscipit sit perferendis."
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreatedAt = new DateTime(2021, 6, 18, 18, 54, 40, 326, DateTimeKind.Unspecified).AddTicks(7170),
-                            CreatedBy = 4L,
-                            Description = "Est dolores quas cupiditate nam enim officiis.",
-                            IsDeleted = false,
-                            IsPublic = false,
-                            OwnerId = 49L,
-                            Title = "Est praesentium facilis odit repudiandae reprehenderit."
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreatedAt = new DateTime(2021, 12, 27, 10, 5, 15, 270, DateTimeKind.Unspecified).AddTicks(9147),
-                            CreatedBy = 3L,
-                            Description = "Et sequi ut.\nQuia sit officia est voluptatem nemo beatae commodi quia doloribus.\nDicta maiores atque.\nQui amet itaque enim neque qui iure et.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 17L,
-                            Title = "Maiores blanditiis doloremque perspiciatis in."
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CreatedAt = new DateTime(2021, 4, 9, 1, 25, 1, 124, DateTimeKind.Unspecified).AddTicks(3352),
-                            CreatedBy = 1L,
-                            Description = "Cumque quisquam et.\nEsse ducimus ea saepe consequatur ipsa inventore rerum ipsum.\nMagni aut consequatur voluptate itaque consequatur sequi nostrum quisquam.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 29L,
-                            Title = "Nostrum ea quia laudantium cum molestias dolor."
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            CreatedAt = new DateTime(2021, 12, 12, 22, 50, 5, 891, DateTimeKind.Unspecified).AddTicks(4657),
-                            CreatedBy = 2L,
-                            Description = "Itaque exercitationem perspiciatis hic.\nIpsa facilis sed molestias doloribus culpa.",
-                            IsDeleted = false,
-                            IsPublic = false,
-                            OwnerId = 7L,
-                            Title = "Et velit deleniti nemo sit vel atque numquam rerum."
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            CreatedAt = new DateTime(2021, 10, 12, 3, 19, 37, 413, DateTimeKind.Unspecified).AddTicks(2531),
-                            CreatedBy = 5L,
-                            Description = "Autem consequatur repudiandae labore occaecati labore repellat architecto.\nLaboriosam suscipit dolorem et tenetur enim debitis.\nPerspiciatis vel et.\nBlanditiis quasi eius.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 50L,
-                            Title = "Velit repellat nihil quia nisi et quos voluptatem a error."
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            CreatedAt = new DateTime(2021, 9, 3, 23, 26, 12, 531, DateTimeKind.Unspecified).AddTicks(8974),
-                            CreatedBy = 3L,
-                            Description = "Et et enim quasi nam quaerat quam iure voluptatem.\nNon velit amet est distinctio suscipit exercitationem.",
-                            IsDeleted = false,
-                            IsPublic = false,
-                            OwnerId = 3L,
-                            Title = "Veniam asperiores qui quis earum voluptas qui beatae laboriosam."
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            CreatedAt = new DateTime(2021, 4, 11, 9, 2, 14, 794, DateTimeKind.Unspecified).AddTicks(3353),
-                            CreatedBy = 1L,
-                            Description = "Velit sint qui reiciendis ratione alias omnis sapiente.\nIusto doloribus consectetur quasi qui quidem animi.\nAsperiores pariatur vel voluptatem temporibus.\nIste quibusdam voluptatibus quisquam voluptatem eum.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 40L,
-                            Title = "Enim voluptas ut excepturi debitis sapiente fuga dolorem."
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            CreatedAt = new DateTime(2021, 10, 24, 18, 52, 9, 721, DateTimeKind.Unspecified).AddTicks(3781),
-                            CreatedBy = 5L,
-                            Description = "Reiciendis cumque beatae.",
-                            IsDeleted = false,
-                            IsPublic = true,
-                            OwnerId = 40L,
-                            Title = "Non libero et nobis amet nostrum qui."
-                        },
-                        new
-                        {
-                            Id = 14L,
                             CreatedAt = new DateTime(2021, 2, 14, 2, 57, 22, 932, DateTimeKind.Unspecified).AddTicks(6614),
                             CreatedBy = 2L,
                             Description = "Ea culpa dicta cum quo.",
@@ -4082,7 +4196,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 15L,
+                            Id = 4L,
                             CreatedAt = new DateTime(2021, 8, 13, 4, 32, 10, 317, DateTimeKind.Unspecified).AddTicks(236),
                             CreatedBy = 1L,
                             Description = "A enim odit omnis consequuntur fugiat qui fugit.\nId animi quas voluptatem perferendis quod deleniti molestiae ullam.\nCumque eligendi qui voluptates ut vitae eum omnis sit.\nHarum deserunt velit praesentium.",
@@ -4093,7 +4207,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 16L,
+                            Id = 5L,
                             CreatedAt = new DateTime(2021, 2, 7, 23, 28, 49, 544, DateTimeKind.Unspecified).AddTicks(1619),
                             CreatedBy = 2L,
                             Description = "Explicabo repellendus perspiciatis et.\nPariatur ipsum asperiores voluptatem accusantium error commodi similique eligendi.",
@@ -4104,7 +4218,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 17L,
+                            Id = 6L,
                             CreatedAt = new DateTime(2021, 3, 13, 12, 0, 24, 212, DateTimeKind.Unspecified).AddTicks(4416),
                             CreatedBy = 5L,
                             Description = "Consequatur et facere vero quo et dolorem.\nEa maiores quae numquam soluta ut dolor.\nEsse odio quam possimus assumenda et.\nDolore non est totam in aliquid hic.",
@@ -4115,7 +4229,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 18L,
+                            Id = 7L,
                             CreatedAt = new DateTime(2021, 11, 23, 0, 59, 37, 299, DateTimeKind.Unspecified).AddTicks(5280),
                             CreatedBy = 3L,
                             Description = "Provident quidem iure officia assumenda id sequi recusandae quo.\nRepellat quas molestiae.",
@@ -4126,7 +4240,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 19L,
+                            Id = 8L,
                             CreatedAt = new DateTime(2021, 11, 6, 5, 9, 25, 836, DateTimeKind.Unspecified).AddTicks(3816),
                             CreatedBy = 1L,
                             Description = "Dolores quidem voluptatem tenetur quod.",
@@ -4137,7 +4251,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 20L,
+                            Id = 9L,
                             CreatedAt = new DateTime(2021, 12, 2, 0, 30, 15, 21, DateTimeKind.Unspecified).AddTicks(955),
                             CreatedBy = 4L,
                             Description = "Commodi perferendis nemo dolorum.\nAssumenda esse dolores quod quasi voluptas qui quos.\nSint repudiandae aut ex sunt excepturi.\nCumque earum quam molestiae minima quos repellendus odio id.\nEnim sunt quasi assumenda fuga quo suscipit aperiam eos culpa.",
@@ -4148,7 +4262,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 21L,
+                            Id = 10L,
                             CreatedAt = new DateTime(2021, 10, 23, 22, 17, 2, 787, DateTimeKind.Unspecified).AddTicks(7573),
                             CreatedBy = 3L,
                             Description = "Ratione in ex distinctio architecto.",
@@ -4159,7 +4273,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 22L,
+                            Id = 11L,
                             CreatedAt = new DateTime(2021, 11, 3, 15, 44, 47, 482, DateTimeKind.Unspecified).AddTicks(6129),
                             CreatedBy = 3L,
                             Description = "Quia tenetur non veniam sed dolor dolore.",
@@ -4170,7 +4284,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 23L,
+                            Id = 12L,
                             CreatedAt = new DateTime(2021, 5, 2, 8, 22, 14, 373, DateTimeKind.Unspecified).AddTicks(7594),
                             CreatedBy = 5L,
                             Description = "Qui id eos hic sint quos in rerum est.\nEnim facilis consequatur fuga alias.\nRem quasi blanditiis saepe.",
@@ -4181,7 +4295,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 24L,
+                            Id = 13L,
                             CreatedAt = new DateTime(2021, 3, 15, 7, 3, 22, 371, DateTimeKind.Unspecified).AddTicks(9042),
                             CreatedBy = 3L,
                             Description = "Quis ea quisquam sunt voluptatibus.\nImpedit animi est natus quia magnam id dolorum earum.\nUt eius facilis et expedita amet sed.",
@@ -4192,7 +4306,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 25L,
+                            Id = 14L,
                             CreatedAt = new DateTime(2021, 5, 28, 21, 43, 18, 248, DateTimeKind.Unspecified).AddTicks(9890),
                             CreatedBy = 5L,
                             Description = "Corporis iusto eius minima aut corrupti nemo placeat.\nDoloremque eum sint quas dolor.\nEt illo qui.",
@@ -4203,7 +4317,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 26L,
+                            Id = 15L,
                             CreatedAt = new DateTime(2021, 5, 2, 21, 51, 40, 110, DateTimeKind.Unspecified).AddTicks(1577),
                             CreatedBy = 4L,
                             Description = "Rerum laboriosam libero omnis sunt ullam sit quisquam.\nAccusamus qui laboriosam et commodi.\nIllum dolore animi repellendus.\nOmnis ut debitis nemo quas quod dolorum magnam perferendis quia.\nQuasi molestiae sunt.",
@@ -4214,7 +4328,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 27L,
+                            Id = 16L,
                             CreatedAt = new DateTime(2021, 6, 2, 3, 10, 51, 408, DateTimeKind.Unspecified).AddTicks(2202),
                             CreatedBy = 3L,
                             Description = "Eum harum alias aut quod praesentium commodi aliquam.\nSoluta non nihil sapiente facere distinctio repudiandae vel quo.",
@@ -4225,7 +4339,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 28L,
+                            Id = 17L,
                             CreatedAt = new DateTime(2021, 8, 7, 13, 46, 50, 192, DateTimeKind.Unspecified).AddTicks(5321),
                             CreatedBy = 2L,
                             Description = "Corporis eius et laborum minus odio nihil maiores.\nIncidunt aliquid dolores aut quibusdam eveniet quasi consequatur est consectetur.\nNumquam id similique veniam numquam quo quia tenetur voluptas.\nAut et rem sed vel quo beatae.",
@@ -4236,7 +4350,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 29L,
+                            Id = 18L,
                             CreatedAt = new DateTime(2021, 9, 13, 6, 55, 38, 674, DateTimeKind.Unspecified).AddTicks(1978),
                             CreatedBy = 2L,
                             Description = "Reiciendis quos cumque et ut.\nVoluptatem fugit rem distinctio corporis sed.\nAccusantium voluptatibus quam sit asperiores praesentium.",
@@ -4247,7 +4361,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 30L,
+                            Id = 19L,
                             CreatedAt = new DateTime(2021, 12, 25, 13, 20, 39, 493, DateTimeKind.Unspecified).AddTicks(1451),
                             CreatedBy = 4L,
                             Description = "Et cum inventore qui hic repellat.\nSit ipsum et.\nCorporis aut officia.\nUt quo eos.",
@@ -4258,7 +4372,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 31L,
+                            Id = 20L,
                             CreatedAt = new DateTime(2021, 8, 10, 17, 1, 5, 802, DateTimeKind.Unspecified).AddTicks(9842),
                             CreatedBy = 1L,
                             Description = "Quod quia voluptatem molestias facere.\nUllam eius corporis eius incidunt et omnis est eum.\nNihil quo ut fugiat occaecati dolor quod sint assumenda sed.",
@@ -4269,7 +4383,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 32L,
+                            Id = 21L,
                             CreatedAt = new DateTime(2021, 12, 18, 10, 13, 19, 725, DateTimeKind.Unspecified).AddTicks(8611),
                             CreatedBy = 5L,
                             Description = "Ea rerum mollitia aut qui itaque.",
@@ -4280,7 +4394,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 33L,
+                            Id = 22L,
                             CreatedAt = new DateTime(2021, 9, 4, 8, 0, 56, 372, DateTimeKind.Unspecified).AddTicks(405),
                             CreatedBy = 4L,
                             Description = "Quasi a dicta qui est quod et voluptatem.\nMaiores laudantium et rerum molestiae voluptatum.\nAmet rerum suscipit fugiat autem tempora quas aut.\nExpedita accusantium placeat ea iure praesentium aspernatur dolorum iusto aliquid.",
@@ -4291,7 +4405,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 34L,
+                            Id = 23L,
                             CreatedAt = new DateTime(2021, 2, 5, 23, 23, 12, 898, DateTimeKind.Unspecified).AddTicks(3916),
                             CreatedBy = 5L,
                             Description = "Maxime perferendis et voluptas voluptas blanditiis beatae itaque aperiam.",
@@ -4302,7 +4416,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 35L,
+                            Id = 24L,
                             CreatedAt = new DateTime(2021, 2, 21, 3, 23, 19, 906, DateTimeKind.Unspecified).AddTicks(7557),
                             CreatedBy = 3L,
                             Description = "Eligendi temporibus doloremque facilis ut ex.\nCorrupti provident sed et porro dicta.",
@@ -4313,7 +4427,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 36L,
+                            Id = 25L,
                             CreatedAt = new DateTime(2021, 11, 17, 11, 9, 18, 472, DateTimeKind.Unspecified).AddTicks(3600),
                             CreatedBy = 3L,
                             Description = "Ut qui commodi.",
@@ -4324,7 +4438,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 37L,
+                            Id = 26L,
                             CreatedAt = new DateTime(2021, 8, 1, 12, 22, 56, 128, DateTimeKind.Unspecified).AddTicks(1832),
                             CreatedBy = 3L,
                             Description = "Tempora occaecati quo autem consequatur minima minus.\nInventore consequuntur aut qui nulla ea id.\nQui ipsam ab ad in sint iure voluptas.",
@@ -4335,7 +4449,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 38L,
+                            Id = 27L,
                             CreatedAt = new DateTime(2021, 5, 19, 2, 17, 24, 400, DateTimeKind.Unspecified).AddTicks(5885),
                             CreatedBy = 2L,
                             Description = "Occaecati perferendis aliquid velit voluptates sit aliquam omnis libero.\nId ex maiores quos.",
@@ -4346,7 +4460,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 39L,
+                            Id = 28L,
                             CreatedAt = new DateTime(2021, 2, 6, 22, 7, 42, 945, DateTimeKind.Unspecified).AddTicks(6116),
                             CreatedBy = 5L,
                             Description = "Ea maiores fugit.\nArchitecto blanditiis eaque voluptatem doloribus.",
@@ -4357,7 +4471,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 40L,
+                            Id = 29L,
                             CreatedAt = new DateTime(2021, 10, 1, 0, 59, 15, 148, DateTimeKind.Unspecified).AddTicks(2098),
                             CreatedBy = 4L,
                             Description = "Voluptatem earum error adipisci odio molestias porro repudiandae.\nQuia nisi omnis doloremque qui.\nMollitia nihil similique eaque repellat optio.\nIure modi aut omnis quis quidem beatae voluptatem.",
@@ -4368,7 +4482,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 41L,
+                            Id = 30L,
                             CreatedAt = new DateTime(2021, 4, 9, 17, 20, 29, 794, DateTimeKind.Unspecified).AddTicks(2974),
                             CreatedBy = 4L,
                             Description = "Laboriosam dignissimos eaque.\nEligendi suscipit voluptatem porro hic cum iste laboriosam sunt cum.\nBeatae quo aut quibusdam.\nVoluptates est nisi ab vitae dignissimos.",
@@ -4379,7 +4493,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 42L,
+                            Id = 31L,
                             CreatedAt = new DateTime(2021, 11, 12, 2, 15, 53, 75, DateTimeKind.Unspecified).AddTicks(8374),
                             CreatedBy = 2L,
                             Description = "Sed quo ipsum ipsum et officia.\nIpsa voluptas alias dolor.\nEst aspernatur maiores at.\nCommodi molestiae doloribus dolores.\nUt omnis ipsa aliquam vel deleniti eligendi ut aut.",
@@ -4390,7 +4504,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 43L,
+                            Id = 32L,
                             CreatedAt = new DateTime(2021, 3, 19, 15, 6, 14, 985, DateTimeKind.Unspecified).AddTicks(7202),
                             CreatedBy = 2L,
                             Description = "Eos culpa ea et assumenda quod laborum nostrum vel.\nEt itaque aliquam ut accusamus velit magni nam.\nQuo aliquid quam adipisci.",
@@ -4401,7 +4515,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 44L,
+                            Id = 33L,
                             CreatedAt = new DateTime(2021, 9, 28, 21, 11, 0, 808, DateTimeKind.Unspecified).AddTicks(4408),
                             CreatedBy = 5L,
                             Description = "Quidem accusamus ea delectus dolor recusandae.",
@@ -4412,7 +4526,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 45L,
+                            Id = 34L,
                             CreatedAt = new DateTime(2021, 10, 13, 10, 4, 54, 66, DateTimeKind.Unspecified).AddTicks(8454),
                             CreatedBy = 1L,
                             Description = "Quod quam accusamus quo aliquid ea nemo sint deleniti eveniet.\nDeleniti inventore asperiores sit sunt nulla rerum qui.",
@@ -4423,7 +4537,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 46L,
+                            Id = 35L,
                             CreatedAt = new DateTime(2021, 2, 12, 12, 45, 20, 284, DateTimeKind.Unspecified).AddTicks(393),
                             CreatedBy = 5L,
                             Description = "Assumenda doloremque illo.\nOfficiis quam error ratione ipsum et odio.",
@@ -4434,7 +4548,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 47L,
+                            Id = 36L,
                             CreatedAt = new DateTime(2021, 6, 14, 18, 29, 32, 451, DateTimeKind.Unspecified).AddTicks(8937),
                             CreatedBy = 4L,
                             Description = "Similique quis distinctio fugiat sapiente temporibus voluptatum nam id sed.\nIllum saepe rerum qui dicta iste nesciunt dolorem natus.\nEst id repellat.",
@@ -4445,7 +4559,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 48L,
+                            Id = 37L,
                             CreatedAt = new DateTime(2021, 6, 5, 0, 27, 5, 721, DateTimeKind.Unspecified).AddTicks(3779),
                             CreatedBy = 4L,
                             Description = "Omnis perspiciatis vitae illo sequi qui.\nModi quis veritatis a quae pariatur.",
@@ -4456,7 +4570,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 49L,
+                            Id = 38L,
                             CreatedAt = new DateTime(2021, 11, 8, 4, 40, 46, 524, DateTimeKind.Unspecified).AddTicks(8857),
                             CreatedBy = 1L,
                             Description = "Et velit maxime rerum.\nVoluptas eum aut dignissimos dolorem tempora ratione expedita.\nSint debitis ut velit natus impedit doloribus pariatur assumenda et.\nEt explicabo error.\nEt iste quae impedit voluptates ratione tenetur voluptas.",
@@ -4467,7 +4581,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 50L,
+                            Id = 39L,
                             CreatedAt = new DateTime(2021, 11, 8, 23, 1, 37, 68, DateTimeKind.Unspecified).AddTicks(8878),
                             CreatedBy = 4L,
                             Description = "Dolor inventore et.",
@@ -4478,7 +4592,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 51L,
+                            Id = 40L,
                             CreatedAt = new DateTime(2021, 6, 8, 11, 52, 38, 75, DateTimeKind.Unspecified).AddTicks(6014),
                             CreatedBy = 3L,
                             Description = "Error aperiam assumenda eum sint rem consequatur magnam dicta.\nReprehenderit necessitatibus autem sint veritatis quis magni.\nOfficia minus sunt cupiditate laboriosam id aut vel aut optio.\nEt et exercitationem ut sint vitae.",
@@ -4486,6 +4600,127 @@ namespace Codi.Core.DAL.Migrations
                             IsPublic = false,
                             OwnerId = 7L,
                             Title = "Quis sed laborum dolor iusto."
+                        },
+                        new
+                        {
+                            Id = 41L,
+                            CreatedAt = new DateTime(2021, 7, 22, 19, 9, 35, 433, DateTimeKind.Unspecified).AddTicks(1880),
+                            CreatedBy = 2L,
+                            Description = "Atque ullam pariatur perferendis impedit eaque optio doloremque voluptatem.\nEt enim pariatur sit et aspernatur et blanditiis.",
+                            IsDeleted = false,
+                            IsPublic = false,
+                            OwnerId = 25L,
+                            Title = "Ipsum aut nisi recusandae quis necessitatibus vero nisi."
+                        },
+                        new
+                        {
+                            Id = 42L,
+                            CreatedAt = new DateTime(2021, 5, 2, 12, 34, 20, 696, DateTimeKind.Unspecified).AddTicks(4680),
+                            CreatedBy = 3L,
+                            Description = "Sint a et rem similique.\nVelit ducimus modi non quae saepe quasi.\nHic voluptatem eos a quia accusamus ad.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 21L,
+                            Title = "Itaque natus veniam sit."
+                        },
+                        new
+                        {
+                            Id = 43L,
+                            CreatedAt = new DateTime(2021, 12, 18, 14, 10, 11, 519, DateTimeKind.Unspecified).AddTicks(6331),
+                            CreatedBy = 4L,
+                            Description = "Placeat officiis quo.\nIusto et est et dolore.\nIn velit a ad repellendus optio voluptas vero sed.\nNobis iste sed.",
+                            IsDeleted = false,
+                            IsPublic = false,
+                            OwnerId = 2L,
+                            Title = "Tenetur architecto repudiandae qui molestiae vero nostrum."
+                        },
+                        new
+                        {
+                            Id = 44L,
+                            CreatedAt = new DateTime(2021, 2, 2, 1, 48, 37, 773, DateTimeKind.Unspecified).AddTicks(5419),
+                            CreatedBy = 1L,
+                            Description = "Cum necessitatibus consequatur.\nEt voluptatem quisquam dolor commodi asperiores et.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 39L,
+                            Title = "Assumenda dolor consectetur animi voluptate totam sed."
+                        },
+                        new
+                        {
+                            Id = 45L,
+                            CreatedAt = new DateTime(2021, 8, 1, 6, 4, 23, 838, DateTimeKind.Unspecified).AddTicks(1687),
+                            CreatedBy = 2L,
+                            Description = "Animi reiciendis temporibus quos quasi molestias.\nEst delectus non totam rerum ea in ut.\nQuidem quia voluptate sit soluta consectetur nulla fugiat.\nPerferendis cupiditate ut.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 6L,
+                            Title = "Sunt nihil consectetur facere quia enim aut quod sed."
+                        },
+                        new
+                        {
+                            Id = 46L,
+                            CreatedAt = new DateTime(2021, 2, 15, 12, 47, 25, 481, DateTimeKind.Unspecified).AddTicks(4693),
+                            CreatedBy = 2L,
+                            Description = "Et beatae qui aperiam tempora aut sed repellendus.\nCulpa fuga dolorem esse impedit.\nDolor voluptate magni a ducimus inventore voluptatibus est.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 46L,
+                            Title = "Nobis quia velit sunt."
+                        },
+                        new
+                        {
+                            Id = 47L,
+                            CreatedAt = new DateTime(2021, 5, 18, 1, 53, 31, 265, DateTimeKind.Unspecified).AddTicks(2110),
+                            CreatedBy = 5L,
+                            Description = "Et qui molestias tempora.\nVoluptatem dolor sint nulla.",
+                            IsDeleted = false,
+                            IsPublic = false,
+                            OwnerId = 26L,
+                            Title = "Quisquam minima laboriosam architecto eos deserunt temporibus itaque."
+                        },
+                        new
+                        {
+                            Id = 48L,
+                            CreatedAt = new DateTime(2021, 12, 2, 20, 44, 11, 3, DateTimeKind.Unspecified).AddTicks(8545),
+                            CreatedBy = 3L,
+                            Description = "Quia voluptatem sapiente qui autem.\nArchitecto et omnis.\nDolorem et impedit.\nMagnam excepturi tempora earum eum consequatur qui.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 50L,
+                            Title = "Et illo tempore."
+                        },
+                        new
+                        {
+                            Id = 49L,
+                            CreatedAt = new DateTime(2021, 9, 9, 22, 6, 57, 527, DateTimeKind.Unspecified).AddTicks(287),
+                            CreatedBy = 1L,
+                            Description = "Quidem accusantium consequatur expedita.\nPorro neque aspernatur beatae tempora necessitatibus voluptatem.\nRepellendus ex praesentium iste iure fugit voluptas dolorem pariatur.\nAmet ut aut sed magnam quas ut explicabo.\nUt assumenda quasi cupiditate et vero quidem modi libero quo.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 13L,
+                            Title = "Vel similique enim blanditiis vitae."
+                        },
+                        new
+                        {
+                            Id = 50L,
+                            CreatedAt = new DateTime(2021, 5, 7, 2, 4, 35, 798, DateTimeKind.Unspecified).AddTicks(8026),
+                            CreatedBy = 3L,
+                            Description = "Sit repellendus veniam.\nFugit et dolor voluptates deserunt odit dolores earum sed.\nQuo eum eius.\nPlaceat necessitatibus quia aut voluptatum molestias aut qui.\nVeritatis autem in aliquam accusantium aut qui odio.",
+                            IsDeleted = false,
+                            IsPublic = true,
+                            OwnerId = 14L,
+                            Title = "Rem praesentium odit porro et."
+                        },
+                        new
+                        {
+                            Id = 51L,
+                            CreatedAt = new DateTime(2021, 12, 21, 15, 46, 47, 190, DateTimeKind.Unspecified).AddTicks(304),
+                            CreatedBy = 5L,
+                            Description = "Magni minima consectetur.\nEt necessitatibus sit voluptatem vitae et eius nemo est.",
+                            IsDeleted = false,
+                            IsPublic = false,
+                            OwnerId = 50L,
+                            Title = "Quae possimus sed."
                         });
                 });
 
@@ -4655,1195 +4890,1199 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            AuthorId = 40L,
-                            CreatedAt = new DateTime(2021, 7, 29, 12, 24, 39, 856, DateTimeKind.Unspecified).AddTicks(6892),
-                            CreatedBy = 5L,
+                            AuthorId = 8L,
+                            CreatedAt = new DateTime(2021, 6, 18, 18, 2, 6, 115, DateTimeKind.Unspecified).AddTicks(2987),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 10, 9, 38, 27, 511, DateTimeKind.Unspecified).AddTicks(6602),
-                            LessonId = 13L,
-                            StartedDate = new DateTime(2020, 1, 10, 18, 25, 2, 266, DateTimeKind.Unspecified).AddTicks(2740),
-                            SubmittedDate = new DateTime(2021, 2, 26, 9, 27, 56, 848, DateTimeKind.Unspecified).AddTicks(922)
+                            LastReviewed = new DateTime(2022, 1, 11, 0, 16, 21, 524, DateTimeKind.Unspecified).AddTicks(1073),
+                            LessonId = 6L,
+                            StartedDate = new DateTime(2019, 12, 26, 0, 48, 16, 135, DateTimeKind.Unspecified).AddTicks(67),
+                            SubmittedDate = new DateTime(2021, 8, 17, 0, 31, 26, 347, DateTimeKind.Unspecified).AddTicks(8058)
                         },
                         new
                         {
                             Id = 3L,
-                            AuthorId = 28L,
-                            CreatedAt = new DateTime(2022, 1, 25, 16, 47, 8, 57, DateTimeKind.Unspecified).AddTicks(9401),
-                            CreatedBy = 5L,
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 12, 15, 19, 0, 14, 671, DateTimeKind.Unspecified).AddTicks(1117),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 20, 9, 54, 2, 598, DateTimeKind.Unspecified).AddTicks(3610),
-                            LessonId = 5L,
-                            StartedDate = new DateTime(2019, 9, 16, 12, 31, 25, 749, DateTimeKind.Unspecified).AddTicks(5592),
-                            SubmittedDate = new DateTime(2021, 6, 8, 17, 11, 0, 7, DateTimeKind.Unspecified).AddTicks(437)
+                            LastReviewed = new DateTime(2022, 1, 19, 15, 11, 36, 370, DateTimeKind.Unspecified).AddTicks(162),
+                            LessonId = 76L,
+                            StartedDate = new DateTime(2019, 6, 27, 6, 18, 15, 285, DateTimeKind.Unspecified).AddTicks(2787),
+                            SubmittedDate = new DateTime(2021, 9, 14, 16, 5, 33, 235, DateTimeKind.Unspecified).AddTicks(9047)
                         },
                         new
                         {
                             Id = 4L,
-                            AuthorId = 30L,
-                            CreatedAt = new DateTime(2021, 6, 16, 13, 44, 5, 333, DateTimeKind.Unspecified).AddTicks(8004),
+                            AuthorId = 45L,
+                            CreatedAt = new DateTime(2021, 2, 16, 19, 21, 18, 426, DateTimeKind.Unspecified).AddTicks(4382),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 27, 1, 6, 58, 453, DateTimeKind.Unspecified).AddTicks(1201),
-                            LessonId = 69L,
-                            StartedDate = new DateTime(2019, 4, 16, 5, 33, 0, 92, DateTimeKind.Unspecified).AddTicks(9639),
-                            SubmittedDate = new DateTime(2021, 5, 22, 10, 25, 28, 28, DateTimeKind.Unspecified).AddTicks(9318)
+                            LastReviewed = new DateTime(2022, 1, 18, 23, 16, 37, 27, DateTimeKind.Unspecified).AddTicks(5956),
+                            LessonId = 59L,
+                            StartedDate = new DateTime(2019, 4, 28, 16, 0, 50, 883, DateTimeKind.Unspecified).AddTicks(607),
+                            SubmittedDate = new DateTime(2021, 8, 23, 2, 37, 17, 833, DateTimeKind.Unspecified).AddTicks(8262)
                         },
                         new
                         {
                             Id = 5L,
-                            AuthorId = 16L,
-                            CreatedAt = new DateTime(2021, 8, 10, 0, 18, 14, 935, DateTimeKind.Unspecified).AddTicks(8036),
-                            CreatedBy = 4L,
+                            AuthorId = 9L,
+                            CreatedAt = new DateTime(2021, 5, 22, 14, 15, 9, 915, DateTimeKind.Unspecified).AddTicks(3191),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 8, 16, 34, 51, 662, DateTimeKind.Unspecified).AddTicks(8594),
-                            LessonId = 39L,
-                            StartedDate = new DateTime(2019, 6, 4, 6, 58, 52, 766, DateTimeKind.Unspecified).AddTicks(3658),
-                            SubmittedDate = new DateTime(2021, 1, 5, 12, 19, 47, 337, DateTimeKind.Unspecified).AddTicks(929)
+                            LastReviewed = new DateTime(2022, 1, 8, 18, 0, 43, 155, DateTimeKind.Unspecified).AddTicks(9820),
+                            LessonId = 42L,
+                            StartedDate = new DateTime(2019, 12, 11, 13, 36, 36, 444, DateTimeKind.Unspecified).AddTicks(201),
+                            SubmittedDate = new DateTime(2021, 12, 27, 20, 17, 40, 256, DateTimeKind.Unspecified).AddTicks(5375)
                         },
                         new
                         {
                             Id = 6L,
-                            AuthorId = 7L,
-                            CreatedAt = new DateTime(2021, 9, 22, 8, 39, 3, 132, DateTimeKind.Unspecified).AddTicks(8829),
-                            CreatedBy = 2L,
+                            AuthorId = 11L,
+                            CreatedAt = new DateTime(2022, 1, 28, 2, 41, 0, 797, DateTimeKind.Unspecified).AddTicks(9358),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 15, 20, 49, 18, 3, DateTimeKind.Unspecified).AddTicks(3562),
-                            LessonId = 46L,
-                            StartedDate = new DateTime(2019, 11, 16, 14, 39, 46, 314, DateTimeKind.Unspecified).AddTicks(8354),
-                            SubmittedDate = new DateTime(2021, 1, 5, 23, 17, 46, 392, DateTimeKind.Unspecified).AddTicks(3371)
+                            LastReviewed = new DateTime(2022, 1, 13, 16, 25, 9, 352, DateTimeKind.Unspecified).AddTicks(4791),
+                            LessonId = 3L,
+                            StartedDate = new DateTime(2019, 5, 10, 9, 31, 42, 404, DateTimeKind.Unspecified).AddTicks(203),
+                            SubmittedDate = new DateTime(2021, 9, 13, 22, 53, 26, 31, DateTimeKind.Unspecified).AddTicks(4383)
                         },
                         new
                         {
                             Id = 7L,
-                            AuthorId = 37L,
-                            CreatedAt = new DateTime(2021, 9, 1, 2, 57, 30, 519, DateTimeKind.Unspecified).AddTicks(3030),
-                            CreatedBy = 4L,
+                            AuthorId = 8L,
+                            CreatedAt = new DateTime(2021, 5, 31, 8, 25, 45, 583, DateTimeKind.Unspecified).AddTicks(7182),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 23, 21, 46, 54, 103, DateTimeKind.Unspecified).AddTicks(3806),
-                            LessonId = 79L,
-                            StartedDate = new DateTime(2019, 4, 26, 17, 24, 33, 224, DateTimeKind.Unspecified).AddTicks(7212),
-                            SubmittedDate = new DateTime(2021, 12, 12, 5, 30, 35, 521, DateTimeKind.Unspecified).AddTicks(4688)
+                            LastReviewed = new DateTime(2022, 1, 12, 21, 48, 21, 627, DateTimeKind.Unspecified).AddTicks(660),
+                            LessonId = 45L,
+                            StartedDate = new DateTime(2019, 8, 18, 1, 52, 19, 111, DateTimeKind.Unspecified).AddTicks(7500),
+                            SubmittedDate = new DateTime(2021, 3, 11, 20, 25, 26, 211, DateTimeKind.Unspecified).AddTicks(412)
                         },
                         new
                         {
                             Id = 8L,
-                            AuthorId = 5L,
-                            CreatedAt = new DateTime(2021, 11, 13, 16, 31, 22, 622, DateTimeKind.Unspecified).AddTicks(7540),
+                            AuthorId = 21L,
+                            CreatedAt = new DateTime(2021, 9, 15, 9, 46, 2, 353, DateTimeKind.Unspecified).AddTicks(4500),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 27, 8, 29, 22, 99, DateTimeKind.Unspecified).AddTicks(9449),
-                            LessonId = 65L,
-                            StartedDate = new DateTime(2019, 11, 29, 3, 7, 53, 756, DateTimeKind.Unspecified).AddTicks(7999),
-                            SubmittedDate = new DateTime(2021, 12, 26, 3, 58, 29, 39, DateTimeKind.Unspecified).AddTicks(1509)
+                            LastReviewed = new DateTime(2022, 1, 11, 19, 6, 46, 6, DateTimeKind.Unspecified).AddTicks(6275),
+                            LessonId = 67L,
+                            StartedDate = new DateTime(2020, 1, 23, 6, 53, 47, 199, DateTimeKind.Unspecified).AddTicks(2844),
+                            SubmittedDate = new DateTime(2021, 8, 1, 1, 33, 49, 717, DateTimeKind.Unspecified).AddTicks(2438)
                         },
                         new
                         {
                             Id = 9L,
-                            AuthorId = 47L,
-                            CreatedAt = new DateTime(2021, 3, 6, 4, 32, 22, 514, DateTimeKind.Unspecified).AddTicks(1008),
-                            CreatedBy = 2L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2021, 12, 27, 5, 6, 53, 347, DateTimeKind.Unspecified).AddTicks(8906),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 26, 23, 5, 54, 966, DateTimeKind.Unspecified).AddTicks(3022),
-                            LessonId = 18L,
-                            StartedDate = new DateTime(2019, 6, 11, 18, 15, 17, 434, DateTimeKind.Unspecified).AddTicks(6440),
-                            SubmittedDate = new DateTime(2021, 8, 30, 19, 27, 7, 888, DateTimeKind.Unspecified).AddTicks(6749)
+                            LastReviewed = new DateTime(2022, 1, 27, 18, 23, 22, 945, DateTimeKind.Unspecified).AddTicks(3079),
+                            LessonId = 8L,
+                            StartedDate = new DateTime(2019, 12, 14, 5, 58, 49, 714, DateTimeKind.Unspecified).AddTicks(8551),
+                            SubmittedDate = new DateTime(2021, 5, 9, 23, 57, 53, 935, DateTimeKind.Unspecified).AddTicks(7873)
                         },
                         new
                         {
                             Id = 10L,
-                            AuthorId = 31L,
-                            CreatedAt = new DateTime(2021, 11, 7, 4, 7, 57, 618, DateTimeKind.Unspecified).AddTicks(5254),
+                            AuthorId = 28L,
+                            CreatedAt = new DateTime(2021, 5, 4, 23, 3, 39, 632, DateTimeKind.Unspecified).AddTicks(5361),
                             CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 16, 4, 38, 3, 244, DateTimeKind.Unspecified).AddTicks(9827),
-                            LessonId = 56L,
-                            StartedDate = new DateTime(2019, 6, 8, 20, 23, 4, 897, DateTimeKind.Unspecified).AddTicks(2230),
-                            SubmittedDate = new DateTime(2021, 2, 15, 10, 29, 3, 323, DateTimeKind.Unspecified).AddTicks(3586)
+                            LastReviewed = new DateTime(2022, 1, 30, 7, 34, 17, 768, DateTimeKind.Unspecified).AddTicks(7614),
+                            LessonId = 28L,
+                            StartedDate = new DateTime(2019, 9, 14, 17, 12, 51, 224, DateTimeKind.Unspecified).AddTicks(4248),
+                            SubmittedDate = new DateTime(2021, 11, 19, 3, 3, 10, 385, DateTimeKind.Unspecified).AddTicks(8161)
                         },
                         new
                         {
                             Id = 11L,
-                            AuthorId = 8L,
-                            CreatedAt = new DateTime(2021, 5, 25, 3, 11, 24, 122, DateTimeKind.Unspecified).AddTicks(6274),
+                            AuthorId = 19L,
+                            CreatedAt = new DateTime(2021, 6, 28, 21, 14, 40, 106, DateTimeKind.Unspecified).AddTicks(5473),
                             CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 2, 6, 33, 35, 780, DateTimeKind.Unspecified).AddTicks(5478),
-                            LessonId = 71L,
-                            StartedDate = new DateTime(2020, 1, 1, 8, 2, 55, 804, DateTimeKind.Unspecified).AddTicks(5853),
-                            SubmittedDate = new DateTime(2021, 6, 14, 10, 52, 58, 613, DateTimeKind.Unspecified).AddTicks(7838)
+                            LastReviewed = new DateTime(2022, 1, 8, 11, 44, 2, 619, DateTimeKind.Unspecified).AddTicks(528),
+                            LessonId = 51L,
+                            StartedDate = new DateTime(2019, 3, 21, 13, 27, 18, 761, DateTimeKind.Unspecified).AddTicks(2673),
+                            SubmittedDate = new DateTime(2021, 7, 20, 1, 56, 10, 643, DateTimeKind.Unspecified).AddTicks(9483)
                         },
                         new
                         {
                             Id = 12L,
-                            AuthorId = 34L,
-                            CreatedAt = new DateTime(2021, 9, 3, 15, 55, 13, 292, DateTimeKind.Unspecified).AddTicks(4153),
-                            CreatedBy = 3L,
+                            AuthorId = 10L,
+                            CreatedAt = new DateTime(2021, 3, 3, 20, 1, 13, 761, DateTimeKind.Unspecified).AddTicks(8678),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 17, 4, 52, 0, 1, DateTimeKind.Unspecified).AddTicks(5388),
-                            LessonId = 8L,
-                            StartedDate = new DateTime(2019, 10, 19, 19, 38, 28, 188, DateTimeKind.Unspecified).AddTicks(3044),
-                            SubmittedDate = new DateTime(2021, 10, 26, 20, 20, 8, 548, DateTimeKind.Unspecified).AddTicks(7930)
+                            LastReviewed = new DateTime(2022, 1, 15, 8, 30, 42, 917, DateTimeKind.Unspecified).AddTicks(2092),
+                            LessonId = 12L,
+                            StartedDate = new DateTime(2019, 3, 23, 1, 41, 41, 976, DateTimeKind.Unspecified).AddTicks(6419),
+                            SubmittedDate = new DateTime(2021, 7, 26, 18, 7, 42, 831, DateTimeKind.Unspecified).AddTicks(6378)
                         },
                         new
                         {
                             Id = 13L,
-                            AuthorId = 39L,
-                            CreatedAt = new DateTime(2021, 7, 11, 15, 51, 13, 490, DateTimeKind.Unspecified).AddTicks(9800),
-                            CreatedBy = 3L,
+                            AuthorId = 11L,
+                            CreatedAt = new DateTime(2021, 9, 18, 7, 49, 58, 629, DateTimeKind.Unspecified).AddTicks(9631),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 18, 21, 37, 0, 921, DateTimeKind.Unspecified).AddTicks(2829),
-                            LessonId = 45L,
-                            StartedDate = new DateTime(2019, 2, 6, 20, 38, 22, 621, DateTimeKind.Unspecified).AddTicks(8373),
-                            SubmittedDate = new DateTime(2021, 3, 31, 6, 31, 12, 348, DateTimeKind.Unspecified).AddTicks(5356)
+                            LastReviewed = new DateTime(2022, 2, 1, 17, 40, 23, 513, DateTimeKind.Unspecified).AddTicks(5926),
+                            LessonId = 52L,
+                            StartedDate = new DateTime(2019, 7, 14, 9, 38, 49, 510, DateTimeKind.Unspecified).AddTicks(1328),
+                            SubmittedDate = new DateTime(2021, 1, 6, 2, 2, 58, 405, DateTimeKind.Unspecified).AddTicks(1646)
                         },
                         new
                         {
                             Id = 14L,
-                            AuthorId = 26L,
-                            CreatedAt = new DateTime(2021, 8, 4, 6, 29, 21, 871, DateTimeKind.Unspecified).AddTicks(6453),
-                            CreatedBy = 5L,
+                            AuthorId = 33L,
+                            CreatedAt = new DateTime(2021, 5, 23, 21, 31, 27, 8, DateTimeKind.Unspecified).AddTicks(8312),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 2, 1, 13, 0, 27, 507, DateTimeKind.Unspecified).AddTicks(6),
-                            LessonId = 18L,
-                            StartedDate = new DateTime(2019, 5, 12, 22, 44, 58, 209, DateTimeKind.Unspecified).AddTicks(2881),
-                            SubmittedDate = new DateTime(2021, 10, 21, 11, 29, 13, 380, DateTimeKind.Unspecified).AddTicks(7858)
+                            LastReviewed = new DateTime(2022, 1, 16, 13, 42, 7, 686, DateTimeKind.Unspecified).AddTicks(780),
+                            LessonId = 37L,
+                            StartedDate = new DateTime(2019, 5, 13, 10, 3, 53, 574, DateTimeKind.Unspecified).AddTicks(3551),
+                            SubmittedDate = new DateTime(2021, 4, 10, 1, 5, 22, 531, DateTimeKind.Unspecified).AddTicks(6126)
                         },
                         new
                         {
                             Id = 15L,
-                            AuthorId = 39L,
-                            CreatedAt = new DateTime(2021, 4, 25, 23, 44, 30, 362, DateTimeKind.Unspecified).AddTicks(8774),
+                            AuthorId = 31L,
+                            CreatedAt = new DateTime(2021, 7, 27, 15, 9, 33, 82, DateTimeKind.Unspecified).AddTicks(6140),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 20, 16, 53, 6, 954, DateTimeKind.Unspecified).AddTicks(7665),
-                            LessonId = 33L,
-                            StartedDate = new DateTime(2020, 1, 5, 2, 38, 25, 699, DateTimeKind.Unspecified).AddTicks(385),
-                            SubmittedDate = new DateTime(2021, 8, 2, 18, 27, 56, 571, DateTimeKind.Unspecified).AddTicks(216)
+                            LastReviewed = new DateTime(2022, 1, 11, 6, 55, 11, 280, DateTimeKind.Unspecified).AddTicks(1400),
+                            LessonId = 38L,
+                            StartedDate = new DateTime(2019, 6, 15, 11, 31, 56, 202, DateTimeKind.Unspecified).AddTicks(8759),
+                            SubmittedDate = new DateTime(2021, 8, 4, 2, 33, 58, 145, DateTimeKind.Unspecified).AddTicks(6314)
                         },
                         new
                         {
                             Id = 16L,
-                            AuthorId = 37L,
-                            CreatedAt = new DateTime(2021, 7, 8, 0, 9, 14, 403, DateTimeKind.Unspecified).AddTicks(2696),
-                            CreatedBy = 2L,
+                            AuthorId = 33L,
+                            CreatedAt = new DateTime(2021, 10, 31, 7, 32, 50, 156, DateTimeKind.Unspecified).AddTicks(9252),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LessonId = 74L,
-                            StartedDate = new DateTime(2019, 5, 7, 13, 40, 46, 624, DateTimeKind.Unspecified).AddTicks(5583),
-                            SubmittedDate = new DateTime(2021, 2, 13, 6, 24, 30, 457, DateTimeKind.Unspecified).AddTicks(118)
+                            LastReviewed = new DateTime(2022, 1, 9, 23, 9, 7, 143, DateTimeKind.Unspecified).AddTicks(5339),
+                            LessonId = 73L,
+                            StartedDate = new DateTime(2019, 7, 28, 13, 52, 38, 822, DateTimeKind.Unspecified).AddTicks(7073),
+                            SubmittedDate = new DateTime(2021, 3, 29, 4, 30, 7, 451, DateTimeKind.Unspecified).AddTicks(4658)
                         },
                         new
                         {
                             Id = 17L,
-                            AuthorId = 8L,
-                            CreatedAt = new DateTime(2021, 7, 20, 11, 15, 54, 190, DateTimeKind.Unspecified).AddTicks(5920),
+                            AuthorId = 18L,
+                            CreatedAt = new DateTime(2021, 11, 5, 1, 8, 58, 977, DateTimeKind.Unspecified).AddTicks(691),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 17, 23, 56, 48, 704, DateTimeKind.Unspecified).AddTicks(6786),
-                            LessonId = 38L,
-                            StartedDate = new DateTime(2019, 5, 20, 3, 19, 12, 594, DateTimeKind.Unspecified).AddTicks(8401),
-                            SubmittedDate = new DateTime(2021, 1, 22, 23, 1, 46, 555, DateTimeKind.Unspecified).AddTicks(4990)
+                            LastReviewed = new DateTime(2022, 1, 4, 21, 45, 54, 652, DateTimeKind.Unspecified).AddTicks(8481),
+                            LessonId = 11L,
+                            StartedDate = new DateTime(2019, 7, 4, 21, 9, 49, 32, DateTimeKind.Unspecified).AddTicks(6080),
+                            SubmittedDate = new DateTime(2021, 12, 31, 5, 8, 2, 686, DateTimeKind.Unspecified).AddTicks(8024)
                         },
                         new
                         {
                             Id = 18L,
-                            AuthorId = 46L,
-                            CreatedAt = new DateTime(2022, 1, 3, 3, 6, 28, 297, DateTimeKind.Unspecified).AddTicks(7985),
-                            CreatedBy = 1L,
+                            AuthorId = 8L,
+                            CreatedAt = new DateTime(2021, 9, 1, 19, 49, 20, 960, DateTimeKind.Unspecified).AddTicks(9057),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 29, 20, 7, 40, 890, DateTimeKind.Unspecified).AddTicks(9289),
-                            LessonId = 28L,
-                            StartedDate = new DateTime(2019, 2, 5, 3, 16, 26, 249, DateTimeKind.Unspecified).AddTicks(515),
-                            SubmittedDate = new DateTime(2021, 6, 24, 4, 25, 40, 987, DateTimeKind.Unspecified).AddTicks(8537)
+                            LessonId = 49L,
+                            StartedDate = new DateTime(2019, 9, 29, 18, 55, 1, 684, DateTimeKind.Unspecified).AddTicks(2355),
+                            SubmittedDate = new DateTime(2021, 11, 10, 17, 55, 28, 503, DateTimeKind.Unspecified).AddTicks(5344)
                         },
                         new
                         {
                             Id = 19L,
-                            AuthorId = 25L,
-                            CreatedAt = new DateTime(2021, 7, 2, 16, 44, 22, 808, DateTimeKind.Unspecified).AddTicks(1424),
-                            CreatedBy = 4L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2021, 12, 29, 13, 26, 32, 869, DateTimeKind.Unspecified).AddTicks(9048),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LessonId = 66L,
-                            StartedDate = new DateTime(2019, 2, 8, 15, 9, 1, 144, DateTimeKind.Unspecified).AddTicks(6661),
-                            SubmittedDate = new DateTime(2021, 1, 4, 1, 59, 59, 389, DateTimeKind.Unspecified).AddTicks(1973)
+                            LastReviewed = new DateTime(2022, 1, 31, 4, 38, 30, 188, DateTimeKind.Unspecified).AddTicks(2685),
+                            LessonId = 38L,
+                            StartedDate = new DateTime(2019, 9, 1, 19, 38, 0, 938, DateTimeKind.Unspecified).AddTicks(2410),
+                            SubmittedDate = new DateTime(2021, 10, 2, 15, 6, 47, 783, DateTimeKind.Unspecified).AddTicks(2490)
                         },
                         new
                         {
                             Id = 20L,
-                            AuthorId = 6L,
-                            CreatedAt = new DateTime(2021, 4, 9, 23, 39, 14, 566, DateTimeKind.Unspecified).AddTicks(6421),
-                            CreatedBy = 5L,
+                            AuthorId = 19L,
+                            CreatedAt = new DateTime(2021, 4, 2, 18, 38, 28, 977, DateTimeKind.Unspecified).AddTicks(6903),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 23, 16, 30, 38, 986, DateTimeKind.Unspecified).AddTicks(4990),
-                            LessonId = 31L,
-                            StartedDate = new DateTime(2019, 12, 9, 9, 47, 55, 538, DateTimeKind.Unspecified).AddTicks(9154),
-                            SubmittedDate = new DateTime(2021, 10, 15, 4, 3, 35, 246, DateTimeKind.Unspecified).AddTicks(2610)
+                            LastReviewed = new DateTime(2022, 1, 11, 2, 28, 55, 828, DateTimeKind.Unspecified).AddTicks(6631),
+                            LessonId = 79L,
+                            StartedDate = new DateTime(2019, 2, 8, 23, 11, 42, 206, DateTimeKind.Unspecified).AddTicks(6639),
+                            SubmittedDate = new DateTime(2021, 6, 22, 14, 59, 38, 784, DateTimeKind.Unspecified).AddTicks(5297)
                         },
                         new
                         {
                             Id = 21L,
-                            AuthorId = 35L,
-                            CreatedAt = new DateTime(2021, 6, 21, 4, 6, 31, 122, DateTimeKind.Unspecified).AddTicks(321),
+                            AuthorId = 18L,
+                            CreatedAt = new DateTime(2021, 7, 27, 8, 41, 36, 650, DateTimeKind.Unspecified).AddTicks(145),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 29, 2, 53, 25, 648, DateTimeKind.Unspecified).AddTicks(1708),
-                            LessonId = 41L,
-                            StartedDate = new DateTime(2019, 7, 21, 6, 17, 26, 293, DateTimeKind.Unspecified).AddTicks(680),
-                            SubmittedDate = new DateTime(2021, 5, 31, 18, 46, 20, 654, DateTimeKind.Unspecified).AddTicks(9953)
+                            LastReviewed = new DateTime(2022, 1, 22, 1, 46, 3, 832, DateTimeKind.Unspecified).AddTicks(2726),
+                            LessonId = 52L,
+                            StartedDate = new DateTime(2019, 10, 2, 22, 29, 24, 570, DateTimeKind.Unspecified).AddTicks(9802),
+                            SubmittedDate = new DateTime(2021, 3, 25, 22, 5, 14, 76, DateTimeKind.Unspecified).AddTicks(2521)
                         },
                         new
                         {
                             Id = 22L,
-                            AuthorId = 26L,
-                            CreatedAt = new DateTime(2021, 9, 7, 8, 9, 44, 308, DateTimeKind.Unspecified).AddTicks(1835),
-                            CreatedBy = 5L,
+                            AuthorId = 27L,
+                            CreatedAt = new DateTime(2021, 3, 3, 15, 58, 13, 151, DateTimeKind.Unspecified).AddTicks(9508),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 20, 21, 49, 58, 731, DateTimeKind.Unspecified).AddTicks(5082),
-                            LessonId = 63L,
-                            StartedDate = new DateTime(2019, 12, 28, 6, 2, 14, 619, DateTimeKind.Unspecified).AddTicks(2759),
-                            SubmittedDate = new DateTime(2021, 1, 29, 5, 6, 45, 393, DateTimeKind.Unspecified).AddTicks(3974)
+                            LastReviewed = new DateTime(2022, 1, 17, 5, 28, 49, 683, DateTimeKind.Unspecified).AddTicks(8614),
+                            LessonId = 78L,
+                            StartedDate = new DateTime(2020, 1, 24, 22, 35, 0, 817, DateTimeKind.Unspecified).AddTicks(2757),
+                            SubmittedDate = new DateTime(2021, 1, 29, 9, 34, 43, 266, DateTimeKind.Unspecified).AddTicks(1655)
                         },
                         new
                         {
                             Id = 23L,
-                            AuthorId = 35L,
-                            CreatedAt = new DateTime(2021, 3, 9, 18, 6, 57, 980, DateTimeKind.Unspecified).AddTicks(8250),
-                            CreatedBy = 1L,
+                            AuthorId = 49L,
+                            CreatedAt = new DateTime(2021, 12, 16, 13, 47, 8, 428, DateTimeKind.Unspecified).AddTicks(7237),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 4, 7, 36, 21, 882, DateTimeKind.Unspecified).AddTicks(7533),
-                            LessonId = 18L,
-                            StartedDate = new DateTime(2019, 3, 2, 1, 18, 7, 327, DateTimeKind.Unspecified).AddTicks(1830),
-                            SubmittedDate = new DateTime(2021, 5, 20, 14, 0, 21, 933, DateTimeKind.Unspecified).AddTicks(6134)
+                            LastReviewed = new DateTime(2022, 1, 27, 7, 24, 19, 505, DateTimeKind.Unspecified).AddTicks(1383),
+                            LessonId = 30L,
+                            StartedDate = new DateTime(2019, 10, 25, 23, 43, 57, 704, DateTimeKind.Unspecified).AddTicks(3943),
+                            SubmittedDate = new DateTime(2021, 11, 11, 1, 53, 59, 316, DateTimeKind.Unspecified).AddTicks(8392)
                         },
                         new
                         {
                             Id = 24L,
-                            AuthorId = 39L,
-                            CreatedAt = new DateTime(2021, 6, 21, 12, 34, 27, 656, DateTimeKind.Unspecified).AddTicks(3980),
-                            CreatedBy = 3L,
+                            AuthorId = 41L,
+                            CreatedAt = new DateTime(2021, 9, 16, 9, 26, 9, 970, DateTimeKind.Unspecified).AddTicks(1765),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 7, 2, 18, 31, 493, DateTimeKind.Unspecified).AddTicks(9281),
-                            LessonId = 70L,
-                            StartedDate = new DateTime(2019, 9, 7, 20, 22, 0, 671, DateTimeKind.Unspecified).AddTicks(3794),
-                            SubmittedDate = new DateTime(2021, 12, 11, 13, 53, 0, 845, DateTimeKind.Unspecified).AddTicks(8829)
+                            LastReviewed = new DateTime(2022, 1, 18, 2, 12, 34, 800, DateTimeKind.Unspecified).AddTicks(9120),
+                            LessonId = 52L,
+                            StartedDate = new DateTime(2019, 6, 5, 22, 26, 42, 67, DateTimeKind.Unspecified).AddTicks(537),
+                            SubmittedDate = new DateTime(2021, 1, 11, 2, 57, 5, 628, DateTimeKind.Unspecified).AddTicks(9532)
                         },
                         new
                         {
                             Id = 25L,
-                            AuthorId = 24L,
-                            CreatedAt = new DateTime(2021, 8, 8, 23, 36, 3, 399, DateTimeKind.Unspecified).AddTicks(4230),
-                            CreatedBy = 3L,
+                            AuthorId = 48L,
+                            CreatedAt = new DateTime(2021, 4, 20, 9, 38, 12, 466, DateTimeKind.Unspecified).AddTicks(8816),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 26, 2, 38, 55, 333, DateTimeKind.Unspecified).AddTicks(8808),
-                            LessonId = 62L,
-                            StartedDate = new DateTime(2019, 6, 22, 0, 47, 2, 772, DateTimeKind.Unspecified).AddTicks(4595),
-                            SubmittedDate = new DateTime(2021, 1, 31, 22, 14, 21, 603, DateTimeKind.Unspecified).AddTicks(7995)
+                            LastReviewed = new DateTime(2022, 1, 24, 19, 7, 28, 138, DateTimeKind.Unspecified).AddTicks(23),
+                            LessonId = 28L,
+                            StartedDate = new DateTime(2019, 12, 19, 9, 52, 14, 122, DateTimeKind.Unspecified).AddTicks(7071),
+                            SubmittedDate = new DateTime(2021, 2, 15, 9, 26, 54, 733, DateTimeKind.Unspecified).AddTicks(8444)
                         },
                         new
                         {
                             Id = 26L,
-                            AuthorId = 11L,
-                            CreatedAt = new DateTime(2021, 9, 17, 22, 26, 47, 317, DateTimeKind.Unspecified).AddTicks(3571),
-                            CreatedBy = 1L,
+                            AuthorId = 49L,
+                            CreatedAt = new DateTime(2022, 1, 23, 12, 32, 28, 315, DateTimeKind.Unspecified).AddTicks(3837),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 31, 17, 36, 1, 390, DateTimeKind.Unspecified).AddTicks(4920),
-                            LessonId = 32L,
-                            StartedDate = new DateTime(2019, 6, 16, 16, 28, 15, 507, DateTimeKind.Unspecified).AddTicks(6956),
-                            SubmittedDate = new DateTime(2021, 8, 13, 10, 6, 14, 194, DateTimeKind.Unspecified).AddTicks(4736)
+                            LastReviewed = new DateTime(2022, 1, 18, 16, 16, 9, 838, DateTimeKind.Unspecified).AddTicks(5675),
+                            LessonId = 51L,
+                            StartedDate = new DateTime(2019, 9, 10, 20, 34, 11, 100, DateTimeKind.Unspecified).AddTicks(2885),
+                            SubmittedDate = new DateTime(2021, 6, 4, 18, 8, 17, 234, DateTimeKind.Unspecified).AddTicks(9516)
                         },
                         new
                         {
                             Id = 27L,
-                            AuthorId = 15L,
-                            CreatedAt = new DateTime(2021, 10, 5, 16, 51, 4, 725, DateTimeKind.Unspecified).AddTicks(8981),
-                            CreatedBy = 1L,
+                            AuthorId = 9L,
+                            CreatedAt = new DateTime(2021, 2, 12, 5, 19, 50, 269, DateTimeKind.Unspecified).AddTicks(6878),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 23, 16, 6, 36, 980, DateTimeKind.Unspecified).AddTicks(7209),
-                            LessonId = 15L,
-                            StartedDate = new DateTime(2019, 3, 10, 9, 19, 47, 714, DateTimeKind.Unspecified).AddTicks(3539),
-                            SubmittedDate = new DateTime(2021, 4, 22, 2, 59, 20, 247, DateTimeKind.Unspecified).AddTicks(9374)
+                            LastReviewed = new DateTime(2022, 1, 22, 11, 4, 12, 857, DateTimeKind.Unspecified).AddTicks(6426),
+                            LessonId = 70L,
+                            StartedDate = new DateTime(2020, 1, 1, 23, 12, 28, 684, DateTimeKind.Unspecified).AddTicks(4243),
+                            SubmittedDate = new DateTime(2021, 5, 25, 21, 46, 57, 447, DateTimeKind.Unspecified).AddTicks(6393)
                         },
                         new
                         {
                             Id = 28L,
-                            AuthorId = 17L,
-                            CreatedAt = new DateTime(2021, 11, 5, 17, 35, 5, 75, DateTimeKind.Unspecified).AddTicks(4082),
-                            CreatedBy = 5L,
+                            AuthorId = 6L,
+                            CreatedAt = new DateTime(2021, 9, 10, 4, 26, 45, 827, DateTimeKind.Unspecified).AddTicks(916),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 2, 2, 9, 51, 536, DateTimeKind.Unspecified).AddTicks(1366),
-                            LessonId = 5L,
-                            StartedDate = new DateTime(2019, 10, 13, 19, 9, 6, 638, DateTimeKind.Unspecified).AddTicks(4941),
-                            SubmittedDate = new DateTime(2021, 12, 23, 12, 5, 7, 405, DateTimeKind.Unspecified).AddTicks(2730)
+                            LastReviewed = new DateTime(2022, 2, 1, 2, 14, 34, 4, DateTimeKind.Unspecified).AddTicks(8521),
+                            LessonId = 41L,
+                            StartedDate = new DateTime(2019, 4, 23, 12, 27, 41, 123, DateTimeKind.Unspecified).AddTicks(4188),
+                            SubmittedDate = new DateTime(2021, 7, 12, 22, 41, 55, 890, DateTimeKind.Unspecified).AddTicks(5827)
                         },
                         new
                         {
                             Id = 29L,
-                            AuthorId = 51L,
-                            CreatedAt = new DateTime(2021, 12, 3, 18, 56, 33, 573, DateTimeKind.Unspecified).AddTicks(6989),
+                            AuthorId = 12L,
+                            CreatedAt = new DateTime(2021, 2, 25, 10, 34, 50, 809, DateTimeKind.Unspecified).AddTicks(4643),
                             CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 22, 5, 59, 13, 206, DateTimeKind.Unspecified).AddTicks(8219),
-                            LessonId = 35L,
-                            StartedDate = new DateTime(2019, 6, 19, 15, 18, 15, 665, DateTimeKind.Unspecified).AddTicks(8188),
-                            SubmittedDate = new DateTime(2021, 1, 2, 14, 51, 24, 437, DateTimeKind.Unspecified).AddTicks(6634)
+                            LastReviewed = new DateTime(2022, 1, 20, 4, 7, 44, 403, DateTimeKind.Unspecified).AddTicks(5900),
+                            LessonId = 40L,
+                            StartedDate = new DateTime(2019, 11, 28, 7, 39, 15, 896, DateTimeKind.Unspecified).AddTicks(8970),
+                            SubmittedDate = new DateTime(2021, 2, 16, 11, 56, 51, 676, DateTimeKind.Unspecified).AddTicks(7204)
                         },
                         new
                         {
                             Id = 30L,
-                            AuthorId = 14L,
-                            CreatedAt = new DateTime(2022, 1, 23, 7, 30, 29, 405, DateTimeKind.Unspecified).AddTicks(4053),
-                            CreatedBy = 4L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2022, 1, 16, 19, 32, 53, 840, DateTimeKind.Unspecified).AddTicks(1681),
+                            CreatedBy = 1L,
                             IsDeleted = false,
+                            LastReviewed = new DateTime(2022, 1, 16, 16, 5, 40, 345, DateTimeKind.Unspecified).AddTicks(595),
                             LessonId = 59L,
-                            StartedDate = new DateTime(2019, 2, 10, 20, 33, 47, 696, DateTimeKind.Unspecified).AddTicks(8347),
-                            SubmittedDate = new DateTime(2021, 8, 14, 19, 36, 27, 999, DateTimeKind.Unspecified).AddTicks(5779)
+                            StartedDate = new DateTime(2019, 4, 28, 21, 39, 33, 497, DateTimeKind.Unspecified).AddTicks(396),
+                            SubmittedDate = new DateTime(2021, 1, 13, 11, 36, 17, 447, DateTimeKind.Unspecified).AddTicks(3653)
                         },
                         new
                         {
                             Id = 31L,
-                            AuthorId = 9L,
-                            CreatedAt = new DateTime(2021, 8, 22, 5, 3, 43, 173, DateTimeKind.Unspecified).AddTicks(2632),
+                            AuthorId = 49L,
+                            CreatedAt = new DateTime(2021, 10, 26, 16, 24, 25, 788, DateTimeKind.Unspecified).AddTicks(4023),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 14, 20, 49, 37, 814, DateTimeKind.Unspecified).AddTicks(7555),
-                            LessonId = 62L,
-                            StartedDate = new DateTime(2019, 3, 26, 19, 51, 43, 196, DateTimeKind.Unspecified).AddTicks(8271),
-                            SubmittedDate = new DateTime(2021, 10, 25, 11, 16, 50, 294, DateTimeKind.Unspecified).AddTicks(9749)
+                            LastReviewed = new DateTime(2022, 1, 25, 23, 35, 2, 926, DateTimeKind.Unspecified).AddTicks(6872),
+                            LessonId = 35L,
+                            StartedDate = new DateTime(2019, 8, 27, 18, 37, 3, 897, DateTimeKind.Unspecified).AddTicks(5241),
+                            SubmittedDate = new DateTime(2021, 7, 5, 11, 29, 42, 763, DateTimeKind.Unspecified).AddTicks(2858)
                         },
                         new
                         {
                             Id = 32L,
-                            AuthorId = 38L,
-                            CreatedAt = new DateTime(2021, 7, 2, 15, 57, 42, 419, DateTimeKind.Unspecified).AddTicks(3876),
-                            CreatedBy = 1L,
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 3, 9, 8, 27, 14, 660, DateTimeKind.Unspecified).AddTicks(7246),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 6, 9, 20, 12, 507, DateTimeKind.Unspecified).AddTicks(1786),
-                            LessonId = 56L,
-                            StartedDate = new DateTime(2019, 2, 22, 7, 11, 50, 544, DateTimeKind.Unspecified).AddTicks(6459),
-                            SubmittedDate = new DateTime(2021, 6, 17, 2, 48, 47, 127, DateTimeKind.Unspecified).AddTicks(9755)
+                            LastReviewed = new DateTime(2022, 1, 4, 21, 22, 15, 583, DateTimeKind.Unspecified).AddTicks(1758),
+                            LessonId = 65L,
+                            StartedDate = new DateTime(2019, 11, 8, 20, 46, 41, 470, DateTimeKind.Unspecified).AddTicks(672),
+                            SubmittedDate = new DateTime(2021, 10, 9, 15, 43, 9, 343, DateTimeKind.Unspecified).AddTicks(7768)
                         },
                         new
                         {
                             Id = 33L,
-                            AuthorId = 37L,
-                            CreatedAt = new DateTime(2021, 8, 8, 6, 37, 24, 653, DateTimeKind.Unspecified).AddTicks(4566),
-                            CreatedBy = 2L,
+                            AuthorId = 2L,
+                            CreatedAt = new DateTime(2021, 6, 28, 16, 51, 30, 781, DateTimeKind.Unspecified).AddTicks(1984),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 25, 10, 42, 21, 25, DateTimeKind.Unspecified).AddTicks(8115),
-                            LessonId = 56L,
-                            StartedDate = new DateTime(2019, 5, 6, 3, 8, 45, 200, DateTimeKind.Unspecified).AddTicks(2545),
-                            SubmittedDate = new DateTime(2021, 9, 20, 6, 50, 20, 935, DateTimeKind.Unspecified).AddTicks(7078)
+                            LastReviewed = new DateTime(2022, 1, 18, 13, 10, 14, 993, DateTimeKind.Unspecified).AddTicks(8968),
+                            LessonId = 19L,
+                            StartedDate = new DateTime(2019, 5, 21, 5, 49, 9, 963, DateTimeKind.Unspecified).AddTicks(5839),
+                            SubmittedDate = new DateTime(2021, 2, 26, 19, 46, 8, 48, DateTimeKind.Unspecified).AddTicks(2525)
                         },
                         new
                         {
                             Id = 34L,
-                            AuthorId = 7L,
-                            CreatedAt = new DateTime(2021, 7, 4, 4, 16, 1, 22, DateTimeKind.Unspecified).AddTicks(1398),
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2022, 1, 12, 2, 41, 4, 945, DateTimeKind.Unspecified).AddTicks(8513),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 24, 5, 29, 25, 524, DateTimeKind.Unspecified).AddTicks(4636),
-                            LessonId = 8L,
-                            StartedDate = new DateTime(2019, 9, 24, 12, 20, 7, 184, DateTimeKind.Unspecified).AddTicks(7020),
-                            SubmittedDate = new DateTime(2021, 7, 18, 9, 12, 1, 635, DateTimeKind.Unspecified).AddTicks(471)
+                            LastReviewed = new DateTime(2022, 1, 24, 1, 30, 5, 461, DateTimeKind.Unspecified).AddTicks(471),
+                            LessonId = 31L,
+                            StartedDate = new DateTime(2019, 9, 2, 17, 4, 2, 533, DateTimeKind.Unspecified).AddTicks(254),
+                            SubmittedDate = new DateTime(2021, 9, 26, 5, 36, 2, 466, DateTimeKind.Unspecified).AddTicks(9497)
                         },
                         new
                         {
                             Id = 35L,
-                            AuthorId = 32L,
-                            CreatedAt = new DateTime(2021, 3, 21, 9, 24, 33, 908, DateTimeKind.Unspecified).AddTicks(4565),
-                            CreatedBy = 1L,
+                            AuthorId = 37L,
+                            CreatedAt = new DateTime(2021, 4, 27, 21, 10, 12, 516, DateTimeKind.Unspecified).AddTicks(9304),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 29, 0, 38, 24, 387, DateTimeKind.Unspecified).AddTicks(7434),
-                            LessonId = 36L,
-                            StartedDate = new DateTime(2019, 10, 31, 5, 17, 6, 9, DateTimeKind.Unspecified).AddTicks(1826),
-                            SubmittedDate = new DateTime(2021, 1, 3, 17, 56, 41, 614, DateTimeKind.Unspecified).AddTicks(4636)
+                            LastReviewed = new DateTime(2022, 1, 28, 14, 28, 7, 626, DateTimeKind.Unspecified).AddTicks(8525),
+                            LessonId = 27L,
+                            StartedDate = new DateTime(2019, 9, 29, 21, 24, 17, 991, DateTimeKind.Unspecified).AddTicks(1218),
+                            SubmittedDate = new DateTime(2021, 12, 5, 11, 22, 47, 958, DateTimeKind.Unspecified).AddTicks(119)
                         },
                         new
                         {
                             Id = 36L,
-                            AuthorId = 14L,
-                            CreatedAt = new DateTime(2021, 10, 15, 10, 41, 36, 101, DateTimeKind.Unspecified).AddTicks(4122),
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 2, 14, 19, 33, 5, 714, DateTimeKind.Unspecified).AddTicks(6561),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 16, 0, 22, 12, 785, DateTimeKind.Unspecified).AddTicks(9721),
-                            LessonId = 39L,
-                            StartedDate = new DateTime(2019, 6, 7, 7, 16, 31, 98, DateTimeKind.Unspecified).AddTicks(7469),
-                            SubmittedDate = new DateTime(2021, 3, 20, 14, 6, 4, 438, DateTimeKind.Unspecified).AddTicks(5753)
+                            LastReviewed = new DateTime(2022, 1, 5, 13, 26, 29, 640, DateTimeKind.Unspecified).AddTicks(7532),
+                            LessonId = 47L,
+                            StartedDate = new DateTime(2019, 3, 14, 14, 3, 55, 47, DateTimeKind.Unspecified).AddTicks(6456),
+                            SubmittedDate = new DateTime(2021, 5, 1, 8, 45, 12, 891, DateTimeKind.Unspecified).AddTicks(8511)
                         },
                         new
                         {
                             Id = 37L,
-                            AuthorId = 49L,
-                            CreatedAt = new DateTime(2021, 11, 28, 6, 19, 55, 694, DateTimeKind.Unspecified).AddTicks(1890),
-                            CreatedBy = 2L,
+                            AuthorId = 10L,
+                            CreatedAt = new DateTime(2021, 11, 15, 12, 38, 50, 554, DateTimeKind.Unspecified).AddTicks(2279),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 11, 3, 1, 13, 362, DateTimeKind.Unspecified).AddTicks(4718),
-                            LessonId = 45L,
-                            StartedDate = new DateTime(2019, 8, 25, 9, 10, 29, 323, DateTimeKind.Unspecified).AddTicks(8600),
-                            SubmittedDate = new DateTime(2021, 6, 23, 9, 22, 1, 286, DateTimeKind.Unspecified).AddTicks(5927)
+                            LastReviewed = new DateTime(2022, 1, 27, 3, 58, 21, 593, DateTimeKind.Unspecified).AddTicks(1643),
+                            LessonId = 31L,
+                            StartedDate = new DateTime(2019, 9, 29, 11, 42, 33, 5, DateTimeKind.Unspecified).AddTicks(146),
+                            SubmittedDate = new DateTime(2021, 8, 3, 2, 16, 56, 721, DateTimeKind.Unspecified).AddTicks(5594)
                         },
                         new
                         {
                             Id = 38L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 3, 23, 3, 49, 43, 602, DateTimeKind.Unspecified).AddTicks(6524),
-                            CreatedBy = 2L,
+                            AuthorId = 36L,
+                            CreatedAt = new DateTime(2021, 3, 23, 22, 0, 40, 90, DateTimeKind.Unspecified).AddTicks(5322),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 3, 18, 37, 44, 672, DateTimeKind.Unspecified).AddTicks(4387),
-                            LessonId = 57L,
-                            StartedDate = new DateTime(2019, 8, 29, 11, 35, 13, 11, DateTimeKind.Unspecified).AddTicks(3036),
-                            SubmittedDate = new DateTime(2021, 12, 12, 10, 56, 0, 353, DateTimeKind.Unspecified).AddTicks(113)
+                            LastReviewed = new DateTime(2022, 2, 1, 12, 18, 27, 396, DateTimeKind.Unspecified).AddTicks(1062),
+                            LessonId = 12L,
+                            StartedDate = new DateTime(2019, 5, 24, 21, 0, 21, 886, DateTimeKind.Unspecified).AddTicks(6998),
+                            SubmittedDate = new DateTime(2021, 3, 8, 15, 51, 54, 788, DateTimeKind.Unspecified).AddTicks(7243)
                         },
                         new
                         {
                             Id = 39L,
-                            AuthorId = 41L,
-                            CreatedAt = new DateTime(2021, 10, 8, 12, 44, 35, 359, DateTimeKind.Unspecified).AddTicks(6803),
-                            CreatedBy = 5L,
+                            AuthorId = 48L,
+                            CreatedAt = new DateTime(2021, 9, 14, 12, 12, 38, 458, DateTimeKind.Unspecified).AddTicks(3085),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 8, 3, 59, 8, 875, DateTimeKind.Unspecified).AddTicks(6679),
-                            LessonId = 56L,
-                            StartedDate = new DateTime(2019, 9, 16, 7, 1, 45, 573, DateTimeKind.Unspecified).AddTicks(5959),
-                            SubmittedDate = new DateTime(2021, 8, 2, 15, 30, 53, 682, DateTimeKind.Unspecified).AddTicks(1462)
+                            LastReviewed = new DateTime(2022, 1, 3, 3, 53, 28, 895, DateTimeKind.Unspecified).AddTicks(8180),
+                            LessonId = 10L,
+                            StartedDate = new DateTime(2019, 6, 24, 11, 25, 56, 908, DateTimeKind.Unspecified).AddTicks(9887),
+                            SubmittedDate = new DateTime(2021, 1, 24, 11, 41, 51, 441, DateTimeKind.Unspecified).AddTicks(4501)
                         },
                         new
                         {
                             Id = 40L,
-                            AuthorId = 12L,
-                            CreatedAt = new DateTime(2021, 3, 13, 15, 13, 53, 763, DateTimeKind.Unspecified).AddTicks(4372),
+                            AuthorId = 5L,
+                            CreatedAt = new DateTime(2021, 3, 29, 13, 26, 11, 536, DateTimeKind.Unspecified).AddTicks(8884),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 17, 16, 12, 47, 584, DateTimeKind.Unspecified).AddTicks(9471),
-                            LessonId = 70L,
-                            StartedDate = new DateTime(2019, 6, 19, 2, 17, 11, 594, DateTimeKind.Unspecified).AddTicks(1000),
-                            SubmittedDate = new DateTime(2021, 11, 23, 5, 31, 22, 484, DateTimeKind.Unspecified).AddTicks(1190)
+                            LastReviewed = new DateTime(2022, 1, 30, 16, 36, 42, 394, DateTimeKind.Unspecified).AddTicks(3449),
+                            LessonId = 32L,
+                            StartedDate = new DateTime(2019, 5, 17, 12, 56, 32, 772, DateTimeKind.Unspecified).AddTicks(3252),
+                            SubmittedDate = new DateTime(2021, 10, 13, 1, 8, 59, 791, DateTimeKind.Unspecified).AddTicks(659)
                         },
                         new
                         {
                             Id = 41L,
-                            AuthorId = 40L,
-                            CreatedAt = new DateTime(2021, 5, 17, 0, 59, 55, 256, DateTimeKind.Unspecified).AddTicks(5821),
-                            CreatedBy = 4L,
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2021, 2, 11, 15, 20, 45, 859, DateTimeKind.Unspecified).AddTicks(9750),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 7, 18, 16, 2, 27, DateTimeKind.Unspecified).AddTicks(9648),
-                            LessonId = 45L,
-                            StartedDate = new DateTime(2019, 12, 26, 12, 39, 10, 753, DateTimeKind.Unspecified).AddTicks(7964),
-                            SubmittedDate = new DateTime(2021, 6, 5, 9, 34, 6, 614, DateTimeKind.Unspecified).AddTicks(8254)
+                            LastReviewed = new DateTime(2022, 1, 25, 10, 3, 7, 78, DateTimeKind.Unspecified).AddTicks(4094),
+                            LessonId = 42L,
+                            StartedDate = new DateTime(2019, 12, 4, 12, 48, 7, 736, DateTimeKind.Unspecified).AddTicks(3598),
+                            SubmittedDate = new DateTime(2021, 10, 3, 20, 55, 41, 754, DateTimeKind.Unspecified).AddTicks(7249)
                         },
                         new
                         {
                             Id = 42L,
                             AuthorId = 18L,
-                            CreatedAt = new DateTime(2021, 2, 16, 11, 43, 17, 827, DateTimeKind.Unspecified).AddTicks(5436),
-                            CreatedBy = 5L,
+                            CreatedAt = new DateTime(2021, 5, 1, 15, 7, 55, 913, DateTimeKind.Unspecified).AddTicks(9195),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 3, 0, 2, 13, 435, DateTimeKind.Unspecified).AddTicks(438),
-                            LessonId = 41L,
-                            StartedDate = new DateTime(2019, 5, 24, 20, 26, 41, 511, DateTimeKind.Unspecified).AddTicks(4173),
-                            SubmittedDate = new DateTime(2021, 9, 11, 22, 38, 0, 116, DateTimeKind.Unspecified).AddTicks(8866)
+                            LastReviewed = new DateTime(2022, 1, 29, 16, 5, 34, 571, DateTimeKind.Unspecified).AddTicks(3230),
+                            LessonId = 19L,
+                            StartedDate = new DateTime(2019, 3, 10, 12, 18, 53, 532, DateTimeKind.Unspecified).AddTicks(1543),
+                            SubmittedDate = new DateTime(2021, 8, 25, 8, 55, 55, 48, DateTimeKind.Unspecified).AddTicks(143)
                         },
                         new
                         {
                             Id = 43L,
-                            AuthorId = 14L,
-                            CreatedAt = new DateTime(2021, 5, 3, 5, 37, 17, 665, DateTimeKind.Unspecified).AddTicks(1337),
-                            CreatedBy = 3L,
+                            AuthorId = 27L,
+                            CreatedAt = new DateTime(2021, 11, 5, 7, 28, 9, 139, DateTimeKind.Unspecified).AddTicks(9419),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 5, 20, 19, 52, 137, DateTimeKind.Unspecified).AddTicks(8178),
-                            LessonId = 59L,
-                            StartedDate = new DateTime(2019, 3, 20, 17, 57, 50, 854, DateTimeKind.Unspecified).AddTicks(5628),
-                            SubmittedDate = new DateTime(2021, 8, 9, 10, 18, 5, 692, DateTimeKind.Unspecified).AddTicks(6465)
+                            LastReviewed = new DateTime(2022, 1, 27, 13, 25, 43, 197, DateTimeKind.Unspecified).AddTicks(7944),
+                            LessonId = 12L,
+                            StartedDate = new DateTime(2019, 8, 31, 10, 7, 51, 714, DateTimeKind.Unspecified).AddTicks(8861),
+                            SubmittedDate = new DateTime(2021, 4, 12, 22, 19, 44, 430, DateTimeKind.Unspecified).AddTicks(3729)
                         },
                         new
                         {
                             Id = 44L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 7, 7, 10, 34, 54, 69, DateTimeKind.Unspecified).AddTicks(1932),
-                            CreatedBy = 5L,
+                            AuthorId = 24L,
+                            CreatedAt = new DateTime(2021, 10, 8, 18, 16, 8, 845, DateTimeKind.Unspecified).AddTicks(8317),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LessonId = 67L,
-                            StartedDate = new DateTime(2019, 8, 4, 3, 29, 25, 81, DateTimeKind.Unspecified).AddTicks(8824),
-                            SubmittedDate = new DateTime(2021, 12, 31, 0, 41, 39, 650, DateTimeKind.Unspecified).AddTicks(3737)
+                            LastReviewed = new DateTime(2022, 1, 31, 2, 28, 17, 595, DateTimeKind.Unspecified).AddTicks(7584),
+                            LessonId = 29L,
+                            StartedDate = new DateTime(2019, 9, 11, 0, 23, 9, 64, DateTimeKind.Unspecified).AddTicks(8059),
+                            SubmittedDate = new DateTime(2021, 6, 7, 23, 1, 26, 5, DateTimeKind.Unspecified).AddTicks(3389)
                         },
                         new
                         {
                             Id = 45L,
-                            AuthorId = 26L,
-                            CreatedAt = new DateTime(2021, 4, 4, 2, 24, 16, 638, DateTimeKind.Unspecified).AddTicks(3447),
-                            CreatedBy = 1L,
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 12, 26, 18, 50, 7, 732, DateTimeKind.Unspecified).AddTicks(4602),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 17, 1, 7, 1, 612, DateTimeKind.Unspecified).AddTicks(1454),
-                            LessonId = 59L,
-                            StartedDate = new DateTime(2019, 5, 20, 20, 23, 50, 714, DateTimeKind.Unspecified).AddTicks(4358),
-                            SubmittedDate = new DateTime(2021, 3, 13, 7, 13, 10, 183, DateTimeKind.Unspecified).AddTicks(4415)
+                            LastReviewed = new DateTime(2022, 1, 2, 19, 39, 50, 892, DateTimeKind.Unspecified).AddTicks(8649),
+                            LessonId = 12L,
+                            StartedDate = new DateTime(2019, 2, 20, 6, 38, 18, 828, DateTimeKind.Unspecified).AddTicks(9020),
+                            SubmittedDate = new DateTime(2021, 2, 20, 0, 4, 12, 773, DateTimeKind.Unspecified).AddTicks(7246)
                         },
                         new
                         {
                             Id = 46L,
-                            AuthorId = 33L,
-                            CreatedAt = new DateTime(2021, 12, 14, 23, 19, 23, 364, DateTimeKind.Unspecified).AddTicks(1708),
-                            CreatedBy = 5L,
+                            AuthorId = 12L,
+                            CreatedAt = new DateTime(2021, 8, 6, 16, 24, 42, 707, DateTimeKind.Unspecified).AddTicks(5220),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 1, 17, 41, 1, 57, DateTimeKind.Unspecified).AddTicks(2635),
-                            LessonId = 27L,
-                            StartedDate = new DateTime(2019, 2, 16, 15, 12, 59, 487, DateTimeKind.Unspecified).AddTicks(7307),
-                            SubmittedDate = new DateTime(2021, 7, 5, 18, 42, 42, 119, DateTimeKind.Unspecified).AddTicks(6688)
+                            LastReviewed = new DateTime(2022, 1, 18, 4, 3, 1, 879, DateTimeKind.Unspecified).AddTicks(3529),
+                            LessonId = 55L,
+                            StartedDate = new DateTime(2019, 11, 27, 23, 22, 27, 64, DateTimeKind.Unspecified).AddTicks(4016),
+                            SubmittedDate = new DateTime(2021, 2, 4, 7, 13, 54, 827, DateTimeKind.Unspecified).AddTicks(8986)
                         },
                         new
                         {
                             Id = 47L,
-                            AuthorId = 37L,
-                            CreatedAt = new DateTime(2021, 9, 16, 21, 14, 50, 719, DateTimeKind.Unspecified).AddTicks(6461),
-                            CreatedBy = 4L,
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2022, 1, 22, 23, 34, 6, 910, DateTimeKind.Unspecified).AddTicks(4551),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 21, 0, 15, 35, 792, DateTimeKind.Unspecified).AddTicks(6313),
-                            LessonId = 48L,
-                            StartedDate = new DateTime(2020, 1, 14, 13, 50, 15, 878, DateTimeKind.Unspecified).AddTicks(1999),
-                            SubmittedDate = new DateTime(2021, 7, 24, 16, 39, 13, 93, DateTimeKind.Unspecified).AddTicks(3466)
+                            LastReviewed = new DateTime(2022, 1, 9, 10, 31, 56, 361, DateTimeKind.Unspecified).AddTicks(39),
+                            LessonId = 76L,
+                            StartedDate = new DateTime(2019, 5, 20, 13, 32, 27, 112, DateTimeKind.Unspecified).AddTicks(391),
+                            SubmittedDate = new DateTime(2021, 3, 4, 7, 21, 36, 974, DateTimeKind.Unspecified).AddTicks(4165)
                         },
                         new
                         {
                             Id = 48L,
-                            AuthorId = 34L,
-                            CreatedAt = new DateTime(2021, 3, 18, 22, 50, 1, 607, DateTimeKind.Unspecified).AddTicks(1598),
-                            CreatedBy = 4L,
+                            AuthorId = 30L,
+                            CreatedAt = new DateTime(2021, 7, 12, 16, 0, 23, 244, DateTimeKind.Unspecified).AddTicks(5061),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 5, 5, 26, 6, 932, DateTimeKind.Unspecified).AddTicks(9436),
-                            LessonId = 46L,
-                            StartedDate = new DateTime(2019, 3, 1, 5, 54, 33, 301, DateTimeKind.Unspecified).AddTicks(8825),
-                            SubmittedDate = new DateTime(2021, 6, 17, 8, 28, 55, 796, DateTimeKind.Unspecified).AddTicks(6074)
+                            LastReviewed = new DateTime(2022, 1, 13, 5, 25, 8, 773, DateTimeKind.Unspecified).AddTicks(5327),
+                            LessonId = 41L,
+                            StartedDate = new DateTime(2019, 5, 12, 5, 54, 44, 806, DateTimeKind.Unspecified).AddTicks(7889),
+                            SubmittedDate = new DateTime(2021, 7, 9, 20, 7, 28, 3, DateTimeKind.Unspecified).AddTicks(487)
                         },
                         new
                         {
                             Id = 49L,
-                            AuthorId = 51L,
-                            CreatedAt = new DateTime(2021, 12, 6, 0, 31, 25, 900, DateTimeKind.Unspecified).AddTicks(6950),
-                            CreatedBy = 3L,
+                            AuthorId = 10L,
+                            CreatedAt = new DateTime(2021, 10, 17, 18, 35, 23, 438, DateTimeKind.Unspecified).AddTicks(3224),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 31, 16, 50, 44, 83, DateTimeKind.Unspecified).AddTicks(1616),
-                            LessonId = 21L,
-                            StartedDate = new DateTime(2019, 5, 14, 15, 2, 13, 781, DateTimeKind.Unspecified).AddTicks(5567),
-                            SubmittedDate = new DateTime(2021, 6, 28, 6, 30, 16, 62, DateTimeKind.Unspecified).AddTicks(6610)
+                            LastReviewed = new DateTime(2022, 1, 19, 12, 17, 13, 958, DateTimeKind.Unspecified).AddTicks(8461),
+                            LessonId = 13L,
+                            StartedDate = new DateTime(2019, 7, 31, 8, 42, 32, 80, DateTimeKind.Unspecified).AddTicks(8947),
+                            SubmittedDate = new DateTime(2021, 7, 30, 18, 49, 45, 49, DateTimeKind.Unspecified).AddTicks(9841)
                         },
                         new
                         {
                             Id = 50L,
-                            AuthorId = 37L,
-                            CreatedAt = new DateTime(2021, 11, 26, 8, 6, 0, 591, DateTimeKind.Unspecified).AddTicks(2315),
+                            AuthorId = 31L,
+                            CreatedAt = new DateTime(2021, 5, 11, 6, 2, 30, 86, DateTimeKind.Unspecified).AddTicks(9852),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 23, 9, 24, 8, 993, DateTimeKind.Unspecified).AddTicks(7254),
-                            LessonId = 33L,
-                            StartedDate = new DateTime(2019, 8, 3, 1, 11, 21, 937, DateTimeKind.Unspecified).AddTicks(3881),
-                            SubmittedDate = new DateTime(2021, 4, 27, 9, 18, 24, 460, DateTimeKind.Unspecified).AddTicks(3295)
+                            LastReviewed = new DateTime(2022, 1, 4, 20, 15, 27, 668, DateTimeKind.Unspecified).AddTicks(9645),
+                            LessonId = 61L,
+                            StartedDate = new DateTime(2019, 2, 13, 13, 14, 24, 405, DateTimeKind.Unspecified).AddTicks(6602),
+                            SubmittedDate = new DateTime(2021, 9, 23, 17, 30, 22, 332, DateTimeKind.Unspecified).AddTicks(3028)
                         },
                         new
                         {
                             Id = 51L,
-                            AuthorId = 11L,
-                            CreatedAt = new DateTime(2021, 12, 19, 9, 11, 51, 184, DateTimeKind.Unspecified).AddTicks(9328),
-                            CreatedBy = 5L,
+                            AuthorId = 5L,
+                            CreatedAt = new DateTime(2022, 1, 26, 8, 12, 8, 286, DateTimeKind.Unspecified).AddTicks(8031),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 1, 10, 17, 6, 998, DateTimeKind.Unspecified).AddTicks(5371),
-                            LessonId = 31L,
-                            StartedDate = new DateTime(2020, 1, 26, 16, 57, 11, 250, DateTimeKind.Unspecified).AddTicks(5246),
-                            SubmittedDate = new DateTime(2021, 10, 9, 16, 4, 36, 595, DateTimeKind.Unspecified).AddTicks(934)
+                            LastReviewed = new DateTime(2022, 1, 23, 0, 0, 42, 421, DateTimeKind.Unspecified).AddTicks(4155),
+                            LessonId = 29L,
+                            StartedDate = new DateTime(2019, 9, 15, 17, 0, 28, 278, DateTimeKind.Unspecified).AddTicks(4643),
+                            SubmittedDate = new DateTime(2021, 6, 14, 1, 6, 10, 909, DateTimeKind.Unspecified).AddTicks(1414)
                         },
                         new
                         {
                             Id = 52L,
-                            AuthorId = 31L,
-                            CreatedAt = new DateTime(2021, 9, 9, 14, 28, 9, 333, DateTimeKind.Unspecified).AddTicks(7433),
-                            CreatedBy = 1L,
+                            AuthorId = 39L,
+                            CreatedAt = new DateTime(2021, 5, 26, 1, 21, 8, 813, DateTimeKind.Unspecified).AddTicks(223),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LessonId = 28L,
-                            StartedDate = new DateTime(2019, 7, 17, 16, 21, 56, 337, DateTimeKind.Unspecified).AddTicks(4728),
-                            SubmittedDate = new DateTime(2021, 2, 14, 21, 59, 22, 233, DateTimeKind.Unspecified).AddTicks(1794)
+                            LastReviewed = new DateTime(2022, 1, 7, 15, 39, 36, 428, DateTimeKind.Unspecified).AddTicks(135),
+                            LessonId = 17L,
+                            StartedDate = new DateTime(2019, 4, 19, 6, 0, 35, 653, DateTimeKind.Unspecified).AddTicks(4478),
+                            SubmittedDate = new DateTime(2021, 1, 11, 17, 36, 45, 532, DateTimeKind.Unspecified).AddTicks(1959)
                         },
                         new
                         {
                             Id = 53L,
-                            AuthorId = 19L,
-                            CreatedAt = new DateTime(2021, 4, 12, 23, 32, 13, 126, DateTimeKind.Unspecified).AddTicks(1195),
-                            CreatedBy = 1L,
+                            AuthorId = 6L,
+                            CreatedAt = new DateTime(2021, 7, 10, 13, 1, 15, 189, DateTimeKind.Unspecified).AddTicks(9043),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 13, 5, 43, 8, 505, DateTimeKind.Unspecified).AddTicks(9989),
-                            LessonId = 68L,
-                            StartedDate = new DateTime(2019, 4, 10, 13, 30, 28, 642, DateTimeKind.Unspecified).AddTicks(1525),
-                            SubmittedDate = new DateTime(2021, 2, 23, 8, 32, 15, 541, DateTimeKind.Unspecified).AddTicks(5711)
+                            LastReviewed = new DateTime(2022, 1, 25, 23, 47, 33, 458, DateTimeKind.Unspecified).AddTicks(1226),
+                            LessonId = 70L,
+                            StartedDate = new DateTime(2019, 7, 11, 23, 42, 32, 503, DateTimeKind.Unspecified).AddTicks(7701),
+                            SubmittedDate = new DateTime(2021, 12, 23, 11, 57, 27, 805, DateTimeKind.Unspecified).AddTicks(8747)
                         },
                         new
                         {
                             Id = 54L,
-                            AuthorId = 46L,
-                            CreatedAt = new DateTime(2021, 7, 23, 22, 11, 29, 353, DateTimeKind.Unspecified).AddTicks(5971),
-                            CreatedBy = 4L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2021, 2, 5, 16, 4, 38, 692, DateTimeKind.Unspecified).AddTicks(4870),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 4, 5, 24, 13, 76, DateTimeKind.Unspecified).AddTicks(3493),
-                            LessonId = 75L,
-                            StartedDate = new DateTime(2020, 1, 1, 18, 2, 20, 481, DateTimeKind.Unspecified).AddTicks(7869),
-                            SubmittedDate = new DateTime(2021, 6, 20, 6, 29, 19, 785, DateTimeKind.Unspecified).AddTicks(3963)
+                            LastReviewed = new DateTime(2022, 1, 27, 12, 11, 49, 461, DateTimeKind.Unspecified).AddTicks(2296),
+                            LessonId = 77L,
+                            StartedDate = new DateTime(2019, 4, 22, 13, 5, 45, 108, DateTimeKind.Unspecified).AddTicks(4967),
+                            SubmittedDate = new DateTime(2021, 12, 21, 0, 43, 26, 931, DateTimeKind.Unspecified).AddTicks(230)
                         },
                         new
                         {
                             Id = 55L,
-                            AuthorId = 29L,
-                            CreatedAt = new DateTime(2021, 9, 27, 11, 0, 42, 965, DateTimeKind.Unspecified).AddTicks(2786),
-                            CreatedBy = 4L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2021, 12, 3, 6, 58, 1, 323, DateTimeKind.Unspecified).AddTicks(3135),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 24, 22, 30, 15, 265, DateTimeKind.Unspecified).AddTicks(927),
-                            LessonId = 20L,
-                            StartedDate = new DateTime(2019, 10, 4, 9, 22, 20, 190, DateTimeKind.Unspecified).AddTicks(4531),
-                            SubmittedDate = new DateTime(2021, 12, 12, 13, 5, 45, 920, DateTimeKind.Unspecified).AddTicks(1198)
+                            LastReviewed = new DateTime(2022, 1, 24, 14, 44, 32, 74, DateTimeKind.Unspecified).AddTicks(2190),
+                            LessonId = 22L,
+                            StartedDate = new DateTime(2019, 8, 10, 1, 12, 22, 926, DateTimeKind.Unspecified).AddTicks(2345),
+                            SubmittedDate = new DateTime(2021, 8, 26, 16, 51, 12, 35, DateTimeKind.Unspecified).AddTicks(921)
                         },
                         new
                         {
                             Id = 56L,
-                            AuthorId = 30L,
-                            CreatedAt = new DateTime(2021, 12, 4, 4, 41, 40, 450, DateTimeKind.Unspecified).AddTicks(4834),
+                            AuthorId = 48L,
+                            CreatedAt = new DateTime(2021, 4, 24, 9, 24, 48, 173, DateTimeKind.Unspecified).AddTicks(5974),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 20, 2, 56, 14, 894, DateTimeKind.Unspecified).AddTicks(7685),
-                            LessonId = 37L,
-                            StartedDate = new DateTime(2019, 6, 21, 14, 49, 16, 632, DateTimeKind.Unspecified).AddTicks(2411),
-                            SubmittedDate = new DateTime(2021, 11, 2, 13, 50, 32, 758, DateTimeKind.Unspecified).AddTicks(4946)
+                            LastReviewed = new DateTime(2022, 1, 13, 23, 33, 25, 272, DateTimeKind.Unspecified).AddTicks(3385),
+                            LessonId = 45L,
+                            StartedDate = new DateTime(2019, 4, 14, 12, 18, 33, 744, DateTimeKind.Unspecified).AddTicks(8949),
+                            SubmittedDate = new DateTime(2021, 7, 24, 11, 51, 11, 879, DateTimeKind.Unspecified).AddTicks(8911)
                         },
                         new
                         {
                             Id = 57L,
-                            AuthorId = 2L,
-                            CreatedAt = new DateTime(2021, 11, 28, 0, 12, 38, 595, DateTimeKind.Unspecified).AddTicks(4431),
-                            CreatedBy = 5L,
+                            AuthorId = 49L,
+                            CreatedAt = new DateTime(2021, 7, 24, 13, 21, 8, 78, DateTimeKind.Unspecified).AddTicks(1037),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 30, 9, 13, 32, 163, DateTimeKind.Unspecified).AddTicks(3431),
-                            LessonId = 81L,
-                            StartedDate = new DateTime(2019, 12, 17, 9, 40, 1, 67, DateTimeKind.Unspecified).AddTicks(4996),
-                            SubmittedDate = new DateTime(2021, 4, 21, 0, 12, 59, 418, DateTimeKind.Unspecified).AddTicks(4241)
+                            LastReviewed = new DateTime(2022, 1, 28, 1, 54, 12, 182, DateTimeKind.Unspecified).AddTicks(9533),
+                            LessonId = 34L,
+                            StartedDate = new DateTime(2019, 11, 23, 12, 56, 47, 313, DateTimeKind.Unspecified).AddTicks(3850),
+                            SubmittedDate = new DateTime(2021, 6, 6, 21, 40, 0, 37, DateTimeKind.Unspecified).AddTicks(1492)
                         },
                         new
                         {
                             Id = 58L,
-                            AuthorId = 15L,
-                            CreatedAt = new DateTime(2021, 6, 17, 1, 28, 45, 262, DateTimeKind.Unspecified).AddTicks(4075),
+                            AuthorId = 27L,
+                            CreatedAt = new DateTime(2021, 3, 27, 14, 50, 18, 872, DateTimeKind.Unspecified).AddTicks(5795),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 12, 23, 34, 34, 640, DateTimeKind.Unspecified).AddTicks(6608),
-                            LessonId = 40L,
-                            StartedDate = new DateTime(2019, 6, 18, 12, 18, 19, 784, DateTimeKind.Unspecified).AddTicks(1982),
-                            SubmittedDate = new DateTime(2021, 3, 16, 20, 51, 12, 328, DateTimeKind.Unspecified).AddTicks(1837)
+                            LastReviewed = new DateTime(2022, 1, 16, 15, 11, 4, 323, DateTimeKind.Unspecified).AddTicks(7205),
+                            LessonId = 78L,
+                            StartedDate = new DateTime(2019, 12, 18, 21, 3, 35, 69, DateTimeKind.Unspecified).AddTicks(8806),
+                            SubmittedDate = new DateTime(2021, 2, 14, 11, 39, 19, 59, DateTimeKind.Unspecified).AddTicks(1745)
                         },
                         new
                         {
                             Id = 59L,
-                            AuthorId = 31L,
-                            CreatedAt = new DateTime(2021, 7, 4, 23, 35, 58, 515, DateTimeKind.Unspecified).AddTicks(7239),
+                            AuthorId = 24L,
+                            CreatedAt = new DateTime(2021, 10, 15, 12, 17, 50, 1, DateTimeKind.Unspecified).AddTicks(4991),
                             CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 23, 6, 39, 39, 221, DateTimeKind.Unspecified).AddTicks(1436),
-                            LessonId = 27L,
-                            StartedDate = new DateTime(2019, 8, 23, 5, 52, 21, 15, DateTimeKind.Unspecified).AddTicks(7362),
-                            SubmittedDate = new DateTime(2021, 2, 23, 13, 45, 43, 769, DateTimeKind.Unspecified).AddTicks(8789)
+                            LessonId = 35L,
+                            StartedDate = new DateTime(2019, 6, 27, 16, 0, 12, 944, DateTimeKind.Unspecified).AddTicks(6223),
+                            SubmittedDate = new DateTime(2021, 3, 21, 13, 12, 2, 324, DateTimeKind.Unspecified).AddTicks(5157)
                         },
                         new
                         {
                             Id = 60L,
-                            AuthorId = 13L,
-                            CreatedAt = new DateTime(2021, 6, 14, 11, 37, 41, 256, DateTimeKind.Unspecified).AddTicks(2047),
-                            CreatedBy = 2L,
+                            AuthorId = 24L,
+                            CreatedAt = new DateTime(2021, 11, 5, 17, 15, 53, 191, DateTimeKind.Unspecified).AddTicks(2914),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 17, 14, 27, 6, 469, DateTimeKind.Unspecified).AddTicks(4695),
-                            LessonId = 24L,
-                            StartedDate = new DateTime(2019, 8, 17, 20, 12, 16, 640, DateTimeKind.Unspecified).AddTicks(2279),
-                            SubmittedDate = new DateTime(2021, 1, 13, 1, 14, 40, 611, DateTimeKind.Unspecified).AddTicks(8286)
+                            LastReviewed = new DateTime(2022, 1, 27, 8, 20, 40, 427, DateTimeKind.Unspecified).AddTicks(4574),
+                            LessonId = 17L,
+                            StartedDate = new DateTime(2019, 8, 5, 22, 28, 42, 729, DateTimeKind.Unspecified).AddTicks(9680),
+                            SubmittedDate = new DateTime(2021, 8, 13, 8, 21, 6, 80, DateTimeKind.Unspecified).AddTicks(239)
                         },
                         new
                         {
                             Id = 61L,
-                            AuthorId = 51L,
-                            CreatedAt = new DateTime(2021, 10, 1, 9, 12, 25, 892, DateTimeKind.Unspecified).AddTicks(3688),
-                            CreatedBy = 3L,
+                            AuthorId = 6L,
+                            CreatedAt = new DateTime(2022, 1, 6, 22, 9, 58, 974, DateTimeKind.Unspecified).AddTicks(7270),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 9, 5, 7, 28, 643, DateTimeKind.Unspecified).AddTicks(7764),
-                            LessonId = 11L,
-                            StartedDate = new DateTime(2019, 3, 14, 15, 25, 24, 596, DateTimeKind.Unspecified).AddTicks(6648),
-                            SubmittedDate = new DateTime(2021, 12, 8, 23, 34, 47, 102, DateTimeKind.Unspecified).AddTicks(5928)
+                            LastReviewed = new DateTime(2022, 1, 20, 23, 12, 49, 739, DateTimeKind.Unspecified).AddTicks(4298),
+                            LessonId = 66L,
+                            StartedDate = new DateTime(2019, 8, 31, 7, 2, 19, 855, DateTimeKind.Unspecified).AddTicks(3251),
+                            SubmittedDate = new DateTime(2021, 1, 19, 18, 2, 10, 465, DateTimeKind.Unspecified).AddTicks(7478)
                         },
                         new
                         {
                             Id = 62L,
-                            AuthorId = 44L,
-                            CreatedAt = new DateTime(2021, 12, 16, 5, 21, 40, 551, DateTimeKind.Unspecified).AddTicks(5680),
-                            CreatedBy = 1L,
+                            AuthorId = 40L,
+                            CreatedAt = new DateTime(2021, 3, 29, 14, 21, 42, 512, DateTimeKind.Unspecified).AddTicks(7875),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 8, 19, 9, 53, 843, DateTimeKind.Unspecified).AddTicks(1063),
-                            LessonId = 78L,
-                            StartedDate = new DateTime(2019, 12, 22, 2, 50, 19, 552, DateTimeKind.Unspecified).AddTicks(8614),
-                            SubmittedDate = new DateTime(2021, 7, 27, 1, 8, 58, 962, DateTimeKind.Unspecified).AddTicks(9070)
+                            LastReviewed = new DateTime(2022, 2, 1, 19, 19, 27, 717, DateTimeKind.Unspecified).AddTicks(9258),
+                            LessonId = 32L,
+                            StartedDate = new DateTime(2020, 1, 30, 23, 6, 0, 448, DateTimeKind.Unspecified).AddTicks(8313),
+                            SubmittedDate = new DateTime(2021, 3, 18, 21, 45, 21, 424, DateTimeKind.Unspecified).AddTicks(6638)
                         },
                         new
                         {
                             Id = 63L,
-                            AuthorId = 39L,
-                            CreatedAt = new DateTime(2021, 4, 13, 18, 5, 45, 356, DateTimeKind.Unspecified).AddTicks(5960),
-                            CreatedBy = 3L,
+                            AuthorId = 10L,
+                            CreatedAt = new DateTime(2021, 4, 24, 21, 47, 25, 246, DateTimeKind.Unspecified).AddTicks(3620),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 14, 10, 17, 42, 52, DateTimeKind.Unspecified).AddTicks(7425),
-                            LessonId = 77L,
-                            StartedDate = new DateTime(2019, 6, 28, 21, 54, 25, 670, DateTimeKind.Unspecified).AddTicks(7565),
-                            SubmittedDate = new DateTime(2021, 12, 20, 4, 14, 5, 155, DateTimeKind.Unspecified).AddTicks(8601)
+                            LastReviewed = new DateTime(2022, 1, 18, 2, 59, 11, 888, DateTimeKind.Unspecified).AddTicks(2965),
+                            LessonId = 37L,
+                            StartedDate = new DateTime(2019, 9, 25, 22, 41, 41, 599, DateTimeKind.Unspecified).AddTicks(5317),
+                            SubmittedDate = new DateTime(2021, 7, 21, 16, 32, 9, 10, DateTimeKind.Unspecified).AddTicks(1910)
                         },
                         new
                         {
                             Id = 64L,
-                            AuthorId = 25L,
-                            CreatedAt = new DateTime(2021, 9, 28, 18, 22, 58, 140, DateTimeKind.Unspecified).AddTicks(1317),
-                            CreatedBy = 5L,
+                            AuthorId = 31L,
+                            CreatedAt = new DateTime(2021, 2, 26, 3, 24, 35, 267, DateTimeKind.Unspecified).AddTicks(6425),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 4, 0, 27, 55, 145, DateTimeKind.Unspecified).AddTicks(6522),
-                            LessonId = 27L,
-                            StartedDate = new DateTime(2019, 8, 21, 7, 22, 40, 603, DateTimeKind.Unspecified).AddTicks(8843),
-                            SubmittedDate = new DateTime(2021, 5, 4, 3, 34, 44, 753, DateTimeKind.Unspecified).AddTicks(8561)
+                            LastReviewed = new DateTime(2022, 1, 5, 3, 0, 37, 0, DateTimeKind.Unspecified).AddTicks(4883),
+                            LessonId = 11L,
+                            StartedDate = new DateTime(2019, 7, 18, 21, 38, 13, 270, DateTimeKind.Unspecified).AddTicks(4782),
+                            SubmittedDate = new DateTime(2021, 7, 19, 9, 15, 27, 713, DateTimeKind.Unspecified).AddTicks(3098)
                         },
                         new
                         {
                             Id = 65L,
-                            AuthorId = 13L,
-                            CreatedAt = new DateTime(2021, 10, 6, 19, 22, 53, 774, DateTimeKind.Unspecified).AddTicks(7845),
+                            AuthorId = 18L,
+                            CreatedAt = new DateTime(2021, 4, 17, 22, 45, 44, 614, DateTimeKind.Unspecified).AddTicks(5886),
                             CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 27, 18, 13, 23, 596, DateTimeKind.Unspecified).AddTicks(4765),
-                            LessonId = 54L,
-                            StartedDate = new DateTime(2019, 2, 15, 9, 28, 51, 714, DateTimeKind.Unspecified).AddTicks(589),
-                            SubmittedDate = new DateTime(2021, 9, 27, 3, 47, 42, 626, DateTimeKind.Unspecified).AddTicks(2416)
+                            LastReviewed = new DateTime(2022, 1, 22, 20, 15, 45, 897, DateTimeKind.Unspecified).AddTicks(5521),
+                            LessonId = 67L,
+                            StartedDate = new DateTime(2019, 8, 7, 20, 58, 1, 305, DateTimeKind.Unspecified).AddTicks(845),
+                            SubmittedDate = new DateTime(2021, 4, 1, 0, 42, 48, 133, DateTimeKind.Unspecified).AddTicks(7279)
                         },
                         new
                         {
                             Id = 66L,
-                            AuthorId = 5L,
-                            CreatedAt = new DateTime(2021, 8, 3, 11, 0, 42, 396, DateTimeKind.Unspecified).AddTicks(3821),
-                            CreatedBy = 4L,
+                            AuthorId = 23L,
+                            CreatedAt = new DateTime(2021, 12, 21, 12, 4, 53, 977, DateTimeKind.Unspecified).AddTicks(1825),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LessonId = 42L,
-                            StartedDate = new DateTime(2019, 6, 16, 9, 59, 48, 471, DateTimeKind.Unspecified).AddTicks(3594),
-                            SubmittedDate = new DateTime(2021, 5, 11, 11, 40, 58, 883, DateTimeKind.Unspecified).AddTicks(5376)
+                            LastReviewed = new DateTime(2022, 1, 3, 21, 46, 37, 211, DateTimeKind.Unspecified).AddTicks(964),
+                            LessonId = 18L,
+                            StartedDate = new DateTime(2019, 11, 26, 9, 56, 29, 854, DateTimeKind.Unspecified).AddTicks(97),
+                            SubmittedDate = new DateTime(2021, 4, 18, 15, 39, 35, 901, DateTimeKind.Unspecified).AddTicks(801)
                         },
                         new
                         {
                             Id = 67L,
-                            AuthorId = 45L,
-                            CreatedAt = new DateTime(2021, 2, 22, 0, 52, 5, 181, DateTimeKind.Unspecified).AddTicks(6019),
-                            CreatedBy = 5L,
+                            AuthorId = 34L,
+                            CreatedAt = new DateTime(2021, 2, 11, 10, 0, 28, 901, DateTimeKind.Unspecified).AddTicks(4358),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 30, 9, 34, 50, 463, DateTimeKind.Unspecified).AddTicks(3906),
-                            LessonId = 67L,
-                            StartedDate = new DateTime(2019, 2, 18, 10, 39, 13, 891, DateTimeKind.Unspecified).AddTicks(2803),
-                            SubmittedDate = new DateTime(2021, 5, 22, 14, 12, 7, 468, DateTimeKind.Unspecified).AddTicks(9540)
+                            LastReviewed = new DateTime(2022, 1, 6, 11, 34, 51, 804, DateTimeKind.Unspecified).AddTicks(8203),
+                            LessonId = 75L,
+                            StartedDate = new DateTime(2019, 2, 15, 19, 2, 45, 646, DateTimeKind.Unspecified).AddTicks(3942),
+                            SubmittedDate = new DateTime(2021, 12, 23, 3, 2, 31, 138, DateTimeKind.Unspecified).AddTicks(4732)
                         },
                         new
                         {
                             Id = 68L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 4, 16, 8, 39, 3, 848, DateTimeKind.Unspecified).AddTicks(5499),
-                            CreatedBy = 5L,
+                            AuthorId = 35L,
+                            CreatedAt = new DateTime(2021, 3, 16, 0, 54, 7, 383, DateTimeKind.Unspecified).AddTicks(5543),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 5, 3, 47, 19, 151, DateTimeKind.Unspecified).AddTicks(4544),
-                            LessonId = 44L,
-                            StartedDate = new DateTime(2019, 9, 22, 17, 9, 34, 301, DateTimeKind.Unspecified).AddTicks(2925),
-                            SubmittedDate = new DateTime(2021, 6, 14, 10, 32, 55, 199, DateTimeKind.Unspecified).AddTicks(6709)
+                            LastReviewed = new DateTime(2022, 1, 27, 20, 18, 54, 594, DateTimeKind.Unspecified).AddTicks(3762),
+                            LessonId = 57L,
+                            StartedDate = new DateTime(2019, 5, 12, 8, 46, 50, 939, DateTimeKind.Unspecified).AddTicks(2775),
+                            SubmittedDate = new DateTime(2021, 11, 6, 15, 49, 22, 586, DateTimeKind.Unspecified).AddTicks(7334)
                         },
                         new
                         {
                             Id = 69L,
-                            AuthorId = 8L,
-                            CreatedAt = new DateTime(2021, 2, 24, 6, 49, 13, 132, DateTimeKind.Unspecified).AddTicks(6155),
-                            CreatedBy = 5L,
+                            AuthorId = 36L,
+                            CreatedAt = new DateTime(2021, 7, 24, 1, 39, 36, 882, DateTimeKind.Unspecified).AddTicks(3294),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 13, 3, 38, 38, 249, DateTimeKind.Unspecified).AddTicks(1900),
-                            LessonId = 61L,
-                            StartedDate = new DateTime(2019, 6, 18, 18, 8, 14, 990, DateTimeKind.Unspecified).AddTicks(1840),
-                            SubmittedDate = new DateTime(2021, 11, 24, 17, 13, 59, 163, DateTimeKind.Unspecified).AddTicks(626)
+                            LastReviewed = new DateTime(2022, 1, 7, 4, 23, 49, 928, DateTimeKind.Unspecified).AddTicks(7900),
+                            LessonId = 17L,
+                            StartedDate = new DateTime(2019, 12, 15, 18, 14, 40, 835, DateTimeKind.Unspecified).AddTicks(2046),
+                            SubmittedDate = new DateTime(2021, 1, 22, 22, 4, 42, 50, DateTimeKind.Unspecified).AddTicks(2338)
                         },
                         new
                         {
                             Id = 70L,
-                            AuthorId = 23L,
-                            CreatedAt = new DateTime(2021, 2, 22, 9, 53, 22, 310, DateTimeKind.Unspecified).AddTicks(4282),
-                            CreatedBy = 4L,
+                            AuthorId = 19L,
+                            CreatedAt = new DateTime(2021, 10, 2, 1, 15, 7, 757, DateTimeKind.Unspecified).AddTicks(9296),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 26, 5, 8, 19, 290, DateTimeKind.Unspecified).AddTicks(5748),
-                            LessonId = 46L,
-                            StartedDate = new DateTime(2019, 10, 2, 13, 9, 6, 894, DateTimeKind.Unspecified).AddTicks(9300),
-                            SubmittedDate = new DateTime(2021, 2, 4, 23, 33, 32, 813, DateTimeKind.Unspecified).AddTicks(8788)
+                            LastReviewed = new DateTime(2022, 1, 17, 22, 0, 50, 584, DateTimeKind.Unspecified).AddTicks(1386),
+                            LessonId = 8L,
+                            StartedDate = new DateTime(2019, 4, 19, 4, 45, 26, 609, DateTimeKind.Unspecified).AddTicks(9086),
+                            SubmittedDate = new DateTime(2021, 9, 28, 6, 34, 43, 340, DateTimeKind.Unspecified).AddTicks(4711)
                         },
                         new
                         {
                             Id = 71L,
-                            AuthorId = 21L,
-                            CreatedAt = new DateTime(2021, 12, 12, 11, 26, 56, 694, DateTimeKind.Unspecified).AddTicks(5426),
-                            CreatedBy = 3L,
+                            AuthorId = 49L,
+                            CreatedAt = new DateTime(2021, 7, 9, 16, 25, 59, 548, DateTimeKind.Unspecified).AddTicks(226),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LessonId = 55L,
-                            StartedDate = new DateTime(2019, 6, 22, 2, 53, 48, 226, DateTimeKind.Unspecified).AddTicks(8856),
-                            SubmittedDate = new DateTime(2021, 8, 5, 21, 34, 9, 526, DateTimeKind.Unspecified).AddTicks(4773)
+                            LastReviewed = new DateTime(2022, 1, 13, 4, 4, 28, 159, DateTimeKind.Unspecified).AddTicks(5930),
+                            LessonId = 16L,
+                            StartedDate = new DateTime(2020, 1, 25, 21, 18, 19, 729, DateTimeKind.Unspecified).AddTicks(8985),
+                            SubmittedDate = new DateTime(2021, 1, 5, 13, 25, 3, 514, DateTimeKind.Unspecified).AddTicks(24)
                         },
                         new
                         {
                             Id = 72L,
-                            AuthorId = 28L,
-                            CreatedAt = new DateTime(2021, 12, 28, 8, 57, 2, 919, DateTimeKind.Unspecified).AddTicks(2616),
-                            CreatedBy = 2L,
+                            AuthorId = 51L,
+                            CreatedAt = new DateTime(2021, 8, 5, 8, 39, 18, 983, DateTimeKind.Unspecified).AddTicks(5714),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 2, 1, 2, 29, 29, 620, DateTimeKind.Unspecified).AddTicks(1918),
-                            LessonId = 79L,
-                            StartedDate = new DateTime(2019, 3, 27, 17, 27, 48, 334, DateTimeKind.Unspecified).AddTicks(3048),
-                            SubmittedDate = new DateTime(2021, 11, 22, 6, 13, 36, 203, DateTimeKind.Unspecified).AddTicks(9116)
+                            LastReviewed = new DateTime(2022, 1, 24, 12, 17, 7, 280, DateTimeKind.Unspecified).AddTicks(9905),
+                            LessonId = 19L,
+                            StartedDate = new DateTime(2019, 11, 28, 19, 20, 47, 518, DateTimeKind.Unspecified).AddTicks(5391),
+                            SubmittedDate = new DateTime(2021, 9, 16, 13, 52, 48, 45, DateTimeKind.Unspecified).AddTicks(3891)
                         },
                         new
                         {
                             Id = 73L,
-                            AuthorId = 8L,
-                            CreatedAt = new DateTime(2021, 11, 16, 21, 2, 32, 965, DateTimeKind.Unspecified).AddTicks(3693),
-                            CreatedBy = 2L,
+                            AuthorId = 2L,
+                            CreatedAt = new DateTime(2021, 4, 26, 2, 50, 40, 888, DateTimeKind.Unspecified).AddTicks(2919),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 13, 16, 42, 21, 954, DateTimeKind.Unspecified).AddTicks(8851),
-                            LessonId = 49L,
-                            StartedDate = new DateTime(2019, 8, 6, 12, 6, 56, 439, DateTimeKind.Unspecified).AddTicks(5640),
-                            SubmittedDate = new DateTime(2021, 9, 20, 23, 57, 27, 198, DateTimeKind.Unspecified).AddTicks(5354)
+                            LastReviewed = new DateTime(2022, 1, 4, 12, 53, 18, 231, DateTimeKind.Unspecified).AddTicks(8394),
+                            LessonId = 2L,
+                            StartedDate = new DateTime(2019, 4, 12, 1, 53, 37, 701, DateTimeKind.Unspecified).AddTicks(3861),
+                            SubmittedDate = new DateTime(2021, 3, 17, 4, 47, 45, 572, DateTimeKind.Unspecified).AddTicks(6230)
                         },
                         new
                         {
                             Id = 74L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 4, 12, 8, 28, 56, 522, DateTimeKind.Unspecified).AddTicks(4533),
-                            CreatedBy = 3L,
+                            AuthorId = 21L,
+                            CreatedAt = new DateTime(2021, 6, 10, 21, 35, 3, 347, DateTimeKind.Unspecified).AddTicks(5895),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 30, 22, 40, 40, 257, DateTimeKind.Unspecified).AddTicks(8004),
-                            LessonId = 41L,
-                            StartedDate = new DateTime(2019, 8, 8, 6, 20, 57, 903, DateTimeKind.Unspecified).AddTicks(2259),
-                            SubmittedDate = new DateTime(2021, 12, 24, 14, 50, 59, 980, DateTimeKind.Unspecified).AddTicks(6647)
+                            LastReviewed = new DateTime(2022, 1, 4, 8, 33, 30, 61, DateTimeKind.Unspecified).AddTicks(3037),
+                            LessonId = 17L,
+                            StartedDate = new DateTime(2019, 8, 17, 22, 34, 34, 921, DateTimeKind.Unspecified).AddTicks(2182),
+                            SubmittedDate = new DateTime(2021, 8, 23, 14, 30, 24, 31, DateTimeKind.Unspecified).AddTicks(614)
                         },
                         new
                         {
                             Id = 75L,
-                            AuthorId = 27L,
-                            CreatedAt = new DateTime(2021, 2, 18, 13, 9, 26, 647, DateTimeKind.Unspecified).AddTicks(6694),
-                            CreatedBy = 3L,
+                            AuthorId = 17L,
+                            CreatedAt = new DateTime(2021, 2, 20, 8, 8, 2, 443, DateTimeKind.Unspecified).AddTicks(2360),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 2, 10, 3, 21, 745, DateTimeKind.Unspecified).AddTicks(5195),
-                            LessonId = 64L,
-                            StartedDate = new DateTime(2019, 5, 14, 9, 46, 36, 177, DateTimeKind.Unspecified).AddTicks(5675),
-                            SubmittedDate = new DateTime(2021, 3, 9, 20, 6, 13, 881, DateTimeKind.Unspecified).AddTicks(7045)
+                            LastReviewed = new DateTime(2022, 1, 17, 19, 58, 54, 29, DateTimeKind.Unspecified).AddTicks(4935),
+                            LessonId = 71L,
+                            StartedDate = new DateTime(2019, 8, 4, 20, 12, 41, 16, DateTimeKind.Unspecified).AddTicks(5190),
+                            SubmittedDate = new DateTime(2021, 7, 3, 6, 28, 19, 225, DateTimeKind.Unspecified).AddTicks(327)
                         },
                         new
                         {
                             Id = 76L,
-                            AuthorId = 40L,
-                            CreatedAt = new DateTime(2021, 9, 22, 4, 59, 1, 12, DateTimeKind.Unspecified).AddTicks(7738),
+                            AuthorId = 24L,
+                            CreatedAt = new DateTime(2021, 7, 6, 23, 26, 24, 435, DateTimeKind.Unspecified).AddTicks(9970),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 9, 14, 52, 6, 287, DateTimeKind.Unspecified).AddTicks(442),
-                            LessonId = 11L,
-                            StartedDate = new DateTime(2019, 9, 4, 10, 29, 3, 379, DateTimeKind.Unspecified).AddTicks(9666),
-                            SubmittedDate = new DateTime(2021, 3, 29, 2, 0, 46, 724, DateTimeKind.Unspecified).AddTicks(3660)
+                            LastReviewed = new DateTime(2022, 1, 12, 3, 12, 7, 183, DateTimeKind.Unspecified).AddTicks(7899),
+                            LessonId = 4L,
+                            StartedDate = new DateTime(2019, 4, 22, 23, 58, 41, 210, DateTimeKind.Unspecified).AddTicks(2443),
+                            SubmittedDate = new DateTime(2021, 8, 17, 5, 5, 19, 673, DateTimeKind.Unspecified).AddTicks(2830)
                         },
                         new
                         {
                             Id = 77L,
-                            AuthorId = 9L,
-                            CreatedAt = new DateTime(2022, 1, 26, 19, 14, 35, 330, DateTimeKind.Unspecified).AddTicks(3344),
-                            CreatedBy = 5L,
+                            AuthorId = 50L,
+                            CreatedAt = new DateTime(2022, 1, 25, 23, 26, 32, 751, DateTimeKind.Unspecified).AddTicks(5423),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 29, 21, 36, 53, 947, DateTimeKind.Unspecified).AddTicks(5529),
-                            LessonId = 45L,
-                            StartedDate = new DateTime(2019, 4, 16, 2, 6, 27, 782, DateTimeKind.Unspecified).AddTicks(3835),
-                            SubmittedDate = new DateTime(2021, 9, 9, 23, 18, 50, 452, DateTimeKind.Unspecified).AddTicks(3799)
+                            LastReviewed = new DateTime(2022, 1, 3, 4, 19, 54, 341, DateTimeKind.Unspecified).AddTicks(4135),
+                            LessonId = 81L,
+                            StartedDate = new DateTime(2019, 6, 19, 13, 14, 9, 911, DateTimeKind.Unspecified).AddTicks(7939),
+                            SubmittedDate = new DateTime(2021, 1, 13, 7, 45, 10, 958, DateTimeKind.Unspecified).AddTicks(9021)
                         },
                         new
                         {
                             Id = 78L,
-                            AuthorId = 38L,
-                            CreatedAt = new DateTime(2021, 9, 22, 11, 17, 30, 395, DateTimeKind.Unspecified).AddTicks(1396),
+                            AuthorId = 5L,
+                            CreatedAt = new DateTime(2021, 2, 5, 20, 23, 27, 915, DateTimeKind.Unspecified).AddTicks(4446),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 20, 3, 19, 19, 164, DateTimeKind.Unspecified).AddTicks(3881),
-                            LessonId = 59L,
-                            StartedDate = new DateTime(2019, 11, 14, 5, 58, 13, 343, DateTimeKind.Unspecified).AddTicks(2962),
-                            SubmittedDate = new DateTime(2021, 10, 25, 8, 30, 4, 649, DateTimeKind.Unspecified).AddTicks(9857)
+                            LastReviewed = new DateTime(2022, 1, 5, 20, 3, 37, 530, DateTimeKind.Unspecified).AddTicks(3497),
+                            LessonId = 31L,
+                            StartedDate = new DateTime(2019, 7, 1, 12, 46, 10, 405, DateTimeKind.Unspecified).AddTicks(5538),
+                            SubmittedDate = new DateTime(2021, 8, 10, 22, 19, 9, 583, DateTimeKind.Unspecified).AddTicks(6498)
                         },
                         new
                         {
                             Id = 79L,
-                            AuthorId = 48L,
-                            CreatedAt = new DateTime(2021, 5, 18, 11, 7, 20, 447, DateTimeKind.Unspecified).AddTicks(898),
-                            CreatedBy = 3L,
+                            AuthorId = 36L,
+                            CreatedAt = new DateTime(2021, 2, 24, 14, 12, 35, 19, DateTimeKind.Unspecified).AddTicks(5187),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 2, 19, 57, 3, 347, DateTimeKind.Unspecified).AddTicks(2130),
-                            LessonId = 71L,
-                            StartedDate = new DateTime(2019, 9, 19, 22, 46, 1, 379, DateTimeKind.Unspecified).AddTicks(5349),
-                            SubmittedDate = new DateTime(2021, 3, 1, 3, 9, 6, 252, DateTimeKind.Unspecified).AddTicks(7656)
+                            LastReviewed = new DateTime(2022, 2, 1, 14, 34, 2, 288, DateTimeKind.Unspecified).AddTicks(8598),
+                            LessonId = 38L,
+                            StartedDate = new DateTime(2019, 12, 30, 1, 2, 12, 196, DateTimeKind.Unspecified).AddTicks(1331),
+                            SubmittedDate = new DateTime(2021, 2, 2, 1, 57, 50, 771, DateTimeKind.Unspecified).AddTicks(3875)
                         },
                         new
                         {
                             Id = 80L,
-                            AuthorId = 18L,
-                            CreatedAt = new DateTime(2021, 9, 21, 15, 21, 44, 398, DateTimeKind.Unspecified).AddTicks(8247),
-                            CreatedBy = 3L,
+                            AuthorId = 34L,
+                            CreatedAt = new DateTime(2021, 8, 29, 7, 59, 52, 140, DateTimeKind.Unspecified).AddTicks(1218),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 25, 13, 23, 55, 614, DateTimeKind.Unspecified).AddTicks(9540),
-                            LessonId = 13L,
-                            StartedDate = new DateTime(2019, 10, 8, 17, 36, 31, 505, DateTimeKind.Unspecified).AddTicks(2754),
-                            SubmittedDate = new DateTime(2021, 6, 11, 8, 42, 40, 820, DateTimeKind.Unspecified).AddTicks(5777)
+                            LastReviewed = new DateTime(2022, 1, 19, 15, 28, 49, 999, DateTimeKind.Unspecified).AddTicks(8155),
+                            LessonId = 36L,
+                            StartedDate = new DateTime(2019, 10, 26, 5, 20, 47, 257, DateTimeKind.Unspecified).AddTicks(8317),
+                            SubmittedDate = new DateTime(2021, 2, 28, 16, 23, 32, 275, DateTimeKind.Unspecified).AddTicks(1541)
                         },
                         new
                         {
                             Id = 81L,
-                            AuthorId = 31L,
-                            CreatedAt = new DateTime(2021, 11, 30, 13, 45, 23, 451, DateTimeKind.Unspecified).AddTicks(7030),
+                            AuthorId = 8L,
+                            CreatedAt = new DateTime(2021, 7, 31, 16, 8, 55, 519, DateTimeKind.Unspecified).AddTicks(6195),
                             CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 31, 21, 2, 11, 663, DateTimeKind.Unspecified).AddTicks(3726),
-                            LessonId = 67L,
-                            StartedDate = new DateTime(2019, 7, 9, 3, 37, 50, 996, DateTimeKind.Unspecified).AddTicks(1371),
-                            SubmittedDate = new DateTime(2021, 7, 28, 18, 24, 10, 203, DateTimeKind.Unspecified).AddTicks(3095)
+                            LastReviewed = new DateTime(2022, 1, 10, 7, 29, 26, 622, DateTimeKind.Unspecified).AddTicks(9657),
+                            LessonId = 39L,
+                            StartedDate = new DateTime(2019, 12, 27, 10, 5, 15, 270, DateTimeKind.Unspecified).AddTicks(9147),
+                            SubmittedDate = new DateTime(2021, 7, 13, 6, 18, 31, 697, DateTimeKind.Unspecified).AddTicks(7425)
                         },
                         new
                         {
                             Id = 82L,
-                            AuthorId = 11L,
-                            CreatedAt = new DateTime(2021, 5, 25, 11, 51, 39, 420, DateTimeKind.Unspecified).AddTicks(354),
-                            CreatedBy = 2L,
+                            AuthorId = 38L,
+                            CreatedAt = new DateTime(2021, 9, 3, 6, 4, 46, 339, DateTimeKind.Unspecified).AddTicks(3140),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 7, 21, 6, 57, 47, DateTimeKind.Unspecified).AddTicks(3006),
-                            LessonId = 80L,
-                            StartedDate = new DateTime(2019, 9, 20, 6, 3, 32, 131, DateTimeKind.Unspecified).AddTicks(1468),
-                            SubmittedDate = new DateTime(2021, 1, 10, 23, 41, 41, 490, DateTimeKind.Unspecified).AddTicks(1663)
+                            LastReviewed = new DateTime(2022, 1, 3, 9, 13, 46, 435, DateTimeKind.Unspecified).AddTicks(420),
+                            LessonId = 52L,
+                            StartedDate = new DateTime(2019, 11, 29, 1, 18, 58, 654, DateTimeKind.Unspecified).AddTicks(8467),
+                            SubmittedDate = new DateTime(2021, 7, 4, 23, 21, 30, 275, DateTimeKind.Unspecified).AddTicks(4520)
                         },
                         new
                         {
                             Id = 83L,
-                            AuthorId = 5L,
-                            CreatedAt = new DateTime(2021, 2, 24, 22, 23, 32, 276, DateTimeKind.Unspecified).AddTicks(1699),
-                            CreatedBy = 3L,
+                            AuthorId = 4L,
+                            CreatedAt = new DateTime(2021, 12, 1, 17, 2, 44, 544, DateTimeKind.Unspecified).AddTicks(9149),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 28, 14, 58, 7, 992, DateTimeKind.Unspecified).AddTicks(629),
-                            LessonId = 7L,
-                            StartedDate = new DateTime(2019, 12, 15, 22, 55, 59, 133, DateTimeKind.Unspecified).AddTicks(7261),
-                            SubmittedDate = new DateTime(2021, 11, 27, 18, 53, 4, 606, DateTimeKind.Unspecified).AddTicks(7373)
+                            LastReviewed = new DateTime(2022, 1, 29, 13, 40, 0, 767, DateTimeKind.Unspecified).AddTicks(4744),
+                            LessonId = 6L,
+                            StartedDate = new DateTime(2019, 8, 22, 6, 6, 34, 511, DateTimeKind.Unspecified).AddTicks(870),
+                            SubmittedDate = new DateTime(2021, 5, 11, 20, 9, 49, 855, DateTimeKind.Unspecified).AddTicks(5483)
                         },
                         new
                         {
                             Id = 84L,
-                            AuthorId = 41L,
-                            CreatedAt = new DateTime(2022, 1, 5, 6, 17, 17, 683, DateTimeKind.Unspecified).AddTicks(1369),
-                            CreatedBy = 4L,
+                            AuthorId = 22L,
+                            CreatedAt = new DateTime(2021, 12, 7, 19, 6, 20, 267, DateTimeKind.Unspecified).AddTicks(2379),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 13, 7, 36, 32, 135, DateTimeKind.Unspecified).AddTicks(1620),
+                            LastReviewed = new DateTime(2022, 1, 29, 5, 29, 25, 702, DateTimeKind.Unspecified).AddTicks(3343),
                             LessonId = 76L,
-                            StartedDate = new DateTime(2019, 12, 27, 4, 14, 23, 865, DateTimeKind.Unspecified).AddTicks(727),
-                            SubmittedDate = new DateTime(2021, 3, 12, 2, 40, 5, 786, DateTimeKind.Unspecified).AddTicks(3653)
+                            StartedDate = new DateTime(2019, 3, 29, 4, 21, 9, 623, DateTimeKind.Unspecified).AddTicks(3226),
+                            SubmittedDate = new DateTime(2021, 2, 17, 11, 7, 7, 976, DateTimeKind.Unspecified).AddTicks(2663)
                         },
                         new
                         {
                             Id = 85L,
-                            AuthorId = 39L,
-                            CreatedAt = new DateTime(2021, 7, 15, 9, 34, 48, 926, DateTimeKind.Unspecified).AddTicks(5653),
-                            CreatedBy = 4L,
+                            AuthorId = 5L,
+                            CreatedAt = new DateTime(2021, 6, 16, 21, 40, 27, 153, DateTimeKind.Unspecified).AddTicks(2362),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 28, 3, 5, 45, 509, DateTimeKind.Unspecified).AddTicks(947),
-                            LessonId = 63L,
-                            StartedDate = new DateTime(2019, 9, 18, 2, 44, 13, 40, DateTimeKind.Unspecified).AddTicks(8682),
-                            SubmittedDate = new DateTime(2021, 3, 26, 22, 30, 13, 617, DateTimeKind.Unspecified).AddTicks(6263)
+                            LastReviewed = new DateTime(2022, 1, 7, 14, 33, 23, 815, DateTimeKind.Unspecified).AddTicks(9644),
+                            LessonId = 67L,
+                            StartedDate = new DateTime(2019, 10, 18, 19, 25, 1, 709, DateTimeKind.Unspecified).AddTicks(9587),
+                            SubmittedDate = new DateTime(2021, 9, 21, 11, 48, 43, 345, DateTimeKind.Unspecified).AddTicks(6735)
                         },
                         new
                         {
                             Id = 86L,
-                            AuthorId = 34L,
-                            CreatedAt = new DateTime(2021, 10, 3, 4, 14, 32, 742, DateTimeKind.Unspecified).AddTicks(1116),
-                            CreatedBy = 3L,
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 6, 12, 17, 2, 24, 333, DateTimeKind.Unspecified).AddTicks(3569),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 2, 1, 3, 43, 3, 376, DateTimeKind.Unspecified).AddTicks(6597),
-                            LessonId = 73L,
-                            StartedDate = new DateTime(2019, 7, 31, 16, 35, 49, 176, DateTimeKind.Unspecified).AddTicks(5286),
-                            SubmittedDate = new DateTime(2021, 11, 19, 11, 4, 18, 505, DateTimeKind.Unspecified).AddTicks(8517)
+                            LastReviewed = new DateTime(2022, 1, 10, 19, 0, 38, 202, DateTimeKind.Unspecified).AddTicks(3459),
+                            LessonId = 40L,
+                            StartedDate = new DateTime(2019, 9, 4, 19, 54, 23, 304, DateTimeKind.Unspecified).AddTicks(6290),
+                            SubmittedDate = new DateTime(2021, 6, 25, 4, 33, 25, 376, DateTimeKind.Unspecified).AddTicks(9263)
                         },
                         new
                         {
                             Id = 87L,
-                            AuthorId = 15L,
-                            CreatedAt = new DateTime(2021, 8, 2, 19, 30, 59, 964, DateTimeKind.Unspecified).AddTicks(607),
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2022, 1, 17, 19, 24, 29, 982, DateTimeKind.Unspecified).AddTicks(2289),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 25, 5, 30, 42, 111, DateTimeKind.Unspecified).AddTicks(6564),
-                            LessonId = 68L,
-                            StartedDate = new DateTime(2019, 11, 12, 20, 31, 50, 64, DateTimeKind.Unspecified).AddTicks(8032),
-                            SubmittedDate = new DateTime(2021, 1, 28, 14, 41, 26, 903, DateTimeKind.Unspecified).AddTicks(1050)
+                            LastReviewed = new DateTime(2022, 1, 31, 1, 0, 23, 381, DateTimeKind.Unspecified).AddTicks(9174),
+                            LessonId = 77L,
+                            StartedDate = new DateTime(2019, 10, 19, 16, 27, 10, 935, DateTimeKind.Unspecified).AddTicks(3240),
+                            SubmittedDate = new DateTime(2021, 3, 2, 22, 9, 16, 649, DateTimeKind.Unspecified).AddTicks(7101)
                         },
                         new
                         {
                             Id = 88L,
-                            AuthorId = 23L,
-                            CreatedAt = new DateTime(2021, 8, 24, 22, 17, 13, 191, DateTimeKind.Unspecified).AddTicks(6438),
-                            CreatedBy = 2L,
+                            AuthorId = 31L,
+                            CreatedAt = new DateTime(2021, 11, 5, 23, 14, 1, 845, DateTimeKind.Unspecified).AddTicks(8181),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 8, 18, 36, 39, 308, DateTimeKind.Unspecified).AddTicks(2791),
-                            LessonId = 77L,
-                            StartedDate = new DateTime(2019, 12, 14, 13, 14, 0, 825, DateTimeKind.Unspecified).AddTicks(9047),
-                            SubmittedDate = new DateTime(2021, 1, 11, 2, 50, 26, 561, DateTimeKind.Unspecified).AddTicks(5138)
+                            LastReviewed = new DateTime(2022, 1, 17, 6, 44, 52, 377, DateTimeKind.Unspecified).AddTicks(6024),
+                            LessonId = 71L,
+                            StartedDate = new DateTime(2019, 6, 11, 23, 29, 3, 564, DateTimeKind.Unspecified).AddTicks(818),
+                            SubmittedDate = new DateTime(2021, 2, 13, 22, 14, 12, 588, DateTimeKind.Unspecified).AddTicks(1171)
                         },
                         new
                         {
                             Id = 89L,
-                            AuthorId = 8L,
-                            CreatedAt = new DateTime(2021, 9, 20, 11, 35, 17, 996, DateTimeKind.Unspecified).AddTicks(8328),
-                            CreatedBy = 5L,
+                            AuthorId = 23L,
+                            CreatedAt = new DateTime(2021, 6, 17, 4, 41, 33, 386, DateTimeKind.Unspecified).AddTicks(7518),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 11, 4, 34, 44, 923, DateTimeKind.Unspecified).AddTicks(1052),
-                            LessonId = 6L,
-                            StartedDate = new DateTime(2019, 9, 30, 20, 18, 30, 287, DateTimeKind.Unspecified).AddTicks(6482),
-                            SubmittedDate = new DateTime(2021, 2, 20, 17, 38, 27, 128, DateTimeKind.Unspecified).AddTicks(9090)
+                            LastReviewed = new DateTime(2022, 1, 14, 3, 38, 45, 484, DateTimeKind.Unspecified).AddTicks(7573),
+                            LessonId = 27L,
+                            StartedDate = new DateTime(2019, 12, 12, 22, 50, 5, 891, DateTimeKind.Unspecified).AddTicks(4657),
+                            SubmittedDate = new DateTime(2021, 12, 2, 23, 52, 49, 291, DateTimeKind.Unspecified).AddTicks(9357)
                         },
                         new
                         {
                             Id = 90L,
-                            AuthorId = 6L,
-                            CreatedAt = new DateTime(2021, 11, 19, 4, 48, 0, 69, DateTimeKind.Unspecified).AddTicks(2251),
-                            CreatedBy = 2L,
+                            AuthorId = 39L,
+                            CreatedAt = new DateTime(2021, 9, 21, 11, 32, 19, 354, DateTimeKind.Unspecified).AddTicks(9934),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 4, 6, 18, 17, 404, DateTimeKind.Unspecified).AddTicks(2775),
-                            LessonId = 44L,
-                            StartedDate = new DateTime(2019, 12, 16, 15, 32, 28, 276, DateTimeKind.Unspecified).AddTicks(5637),
-                            SubmittedDate = new DateTime(2021, 4, 24, 11, 34, 8, 836, DateTimeKind.Unspecified).AddTicks(331)
+                            LastReviewed = new DateTime(2022, 1, 31, 14, 6, 10, 441, DateTimeKind.Unspecified).AddTicks(7614),
+                            LessonId = 58L,
+                            StartedDate = new DateTime(2019, 8, 7, 3, 18, 34, 788, DateTimeKind.Unspecified).AddTicks(8492),
+                            SubmittedDate = new DateTime(2021, 4, 6, 18, 33, 43, 407, DateTimeKind.Unspecified).AddTicks(2415)
                         },
                         new
                         {
                             Id = 91L,
-                            AuthorId = 10L,
-                            CreatedAt = new DateTime(2021, 7, 18, 1, 24, 27, 640, DateTimeKind.Unspecified).AddTicks(7107),
+                            AuthorId = 51L,
+                            CreatedAt = new DateTime(2021, 9, 30, 11, 41, 55, 956, DateTimeKind.Unspecified).AddTicks(8551),
                             CreatedBy = 4L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 16, 17, 18, 3, 159, DateTimeKind.Unspecified).AddTicks(8885),
-                            LessonId = 23L,
-                            StartedDate = new DateTime(2019, 6, 4, 18, 20, 38, 977, DateTimeKind.Unspecified).AddTicks(8206),
-                            SubmittedDate = new DateTime(2021, 1, 19, 16, 1, 54, 283, DateTimeKind.Unspecified).AddTicks(8032)
+                            LastReviewed = new DateTime(2022, 1, 17, 16, 11, 4, 656, DateTimeKind.Unspecified).AddTicks(3563),
+                            LessonId = 7L,
+                            StartedDate = new DateTime(2019, 3, 5, 14, 10, 10, 891, DateTimeKind.Unspecified).AddTicks(6341),
+                            SubmittedDate = new DateTime(2021, 3, 29, 16, 39, 56, 875, DateTimeKind.Unspecified).AddTicks(6076)
                         },
                         new
                         {
                             Id = 92L,
-                            AuthorId = 28L,
-                            CreatedAt = new DateTime(2021, 7, 10, 1, 17, 17, 378, DateTimeKind.Unspecified).AddTicks(1479),
+                            AuthorId = 17L,
+                            CreatedAt = new DateTime(2021, 7, 18, 5, 37, 27, 79, DateTimeKind.Unspecified).AddTicks(4057),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 1, 21, 4, 44, 106, DateTimeKind.Unspecified).AddTicks(4806),
-                            LessonId = 32L,
-                            StartedDate = new DateTime(2019, 2, 26, 22, 26, 10, 542, DateTimeKind.Unspecified).AddTicks(989),
-                            SubmittedDate = new DateTime(2021, 5, 7, 6, 4, 48, 427, DateTimeKind.Unspecified).AddTicks(1724)
+                            LastReviewed = new DateTime(2022, 1, 29, 22, 22, 24, 106, DateTimeKind.Unspecified).AddTicks(3123),
+                            LessonId = 72L,
+                            StartedDate = new DateTime(2019, 10, 2, 7, 10, 37, 152, DateTimeKind.Unspecified).AddTicks(6078),
+                            SubmittedDate = new DateTime(2021, 3, 2, 3, 56, 41, 8, DateTimeKind.Unspecified).AddTicks(731)
                         },
                         new
                         {
                             Id = 93L,
-                            AuthorId = 30L,
-                            CreatedAt = new DateTime(2021, 12, 3, 14, 34, 28, 686, DateTimeKind.Unspecified).AddTicks(5440),
-                            CreatedBy = 1L,
+                            AuthorId = 5L,
+                            CreatedAt = new DateTime(2021, 2, 15, 0, 35, 11, 497, DateTimeKind.Unspecified).AddTicks(2586),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 18, 21, 56, 20, 975, DateTimeKind.Unspecified).AddTicks(8241),
-                            LessonId = 48L,
-                            StartedDate = new DateTime(2019, 8, 6, 22, 1, 18, 251, DateTimeKind.Unspecified).AddTicks(3794),
-                            SubmittedDate = new DateTime(2021, 7, 14, 6, 56, 27, 331, DateTimeKind.Unspecified).AddTicks(6688)
+                            LastReviewed = new DateTime(2022, 1, 2, 9, 9, 39, 806, DateTimeKind.Unspecified).AddTicks(5265),
+                            LessonId = 19L,
+                            StartedDate = new DateTime(2019, 9, 16, 23, 25, 54, 910, DateTimeKind.Unspecified).AddTicks(7497),
+                            SubmittedDate = new DateTime(2021, 1, 24, 15, 49, 25, 91, DateTimeKind.Unspecified).AddTicks(3265)
                         },
                         new
                         {
                             Id = 94L,
-                            AuthorId = 38L,
-                            CreatedAt = new DateTime(2021, 6, 28, 9, 11, 5, 387, DateTimeKind.Unspecified).AddTicks(2733),
-                            CreatedBy = 3L,
+                            AuthorId = 51L,
+                            CreatedAt = new DateTime(2021, 2, 23, 9, 52, 8, 799, DateTimeKind.Unspecified).AddTicks(1794),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 10, 9, 36, 50, 547, DateTimeKind.Unspecified).AddTicks(8731),
-                            LessonId = 11L,
-                            StartedDate = new DateTime(2019, 12, 13, 0, 31, 11, 922, DateTimeKind.Unspecified).AddTicks(1347),
-                            SubmittedDate = new DateTime(2021, 5, 22, 20, 27, 22, 82, DateTimeKind.Unspecified).AddTicks(9132)
+                            LastReviewed = new DateTime(2022, 1, 26, 17, 20, 16, 308, DateTimeKind.Unspecified).AddTicks(1504),
+                            LessonId = 67L,
+                            StartedDate = new DateTime(2019, 4, 6, 18, 51, 19, 925, DateTimeKind.Unspecified).AddTicks(1083),
+                            SubmittedDate = new DateTime(2021, 4, 23, 20, 40, 22, 586, DateTimeKind.Unspecified).AddTicks(7469)
                         },
                         new
                         {
                             Id = 95L,
-                            AuthorId = 24L,
-                            CreatedAt = new DateTime(2022, 1, 5, 2, 26, 33, 780, DateTimeKind.Unspecified).AddTicks(3488),
+                            AuthorId = 19L,
+                            CreatedAt = new DateTime(2022, 1, 8, 14, 49, 40, 832, DateTimeKind.Unspecified).AddTicks(3915),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 24, 9, 16, 3, 280, DateTimeKind.Unspecified).AddTicks(451),
-                            LessonId = 57L,
-                            StartedDate = new DateTime(2019, 5, 8, 13, 50, 6, 114, DateTimeKind.Unspecified).AddTicks(3019),
-                            SubmittedDate = new DateTime(2021, 1, 14, 21, 19, 50, 929, DateTimeKind.Unspecified).AddTicks(2832)
+                            LastReviewed = new DateTime(2022, 1, 3, 11, 32, 42, 332, DateTimeKind.Unspecified).AddTicks(5392),
+                            LessonId = 71L,
+                            StartedDate = new DateTime(2019, 10, 5, 9, 40, 57, 258, DateTimeKind.Unspecified).AddTicks(5447),
+                            SubmittedDate = new DateTime(2021, 2, 22, 4, 30, 24, 287, DateTimeKind.Unspecified).AddTicks(213)
                         },
                         new
                         {
                             Id = 96L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 5, 5, 2, 21, 10, 224, DateTimeKind.Unspecified).AddTicks(6705),
-                            CreatedBy = 5L,
+                            AuthorId = 23L,
+                            CreatedAt = new DateTime(2021, 6, 23, 9, 45, 59, 969, DateTimeKind.Unspecified).AddTicks(3552),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 1, 14, 0, 34, 780, DateTimeKind.Unspecified).AddTicks(3351),
-                            LessonId = 18L,
-                            StartedDate = new DateTime(2019, 9, 30, 1, 44, 30, 757, DateTimeKind.Unspecified).AddTicks(5812),
-                            SubmittedDate = new DateTime(2021, 10, 10, 7, 8, 18, 794, DateTimeKind.Unspecified).AddTicks(8791)
+                            LastReviewed = new DateTime(2022, 1, 22, 5, 32, 0, 650, DateTimeKind.Unspecified).AddTicks(4780),
+                            LessonId = 33L,
+                            StartedDate = new DateTime(2019, 10, 11, 19, 33, 56, 833, DateTimeKind.Unspecified).AddTicks(1477),
+                            SubmittedDate = new DateTime(2021, 1, 26, 12, 2, 8, 517, DateTimeKind.Unspecified).AddTicks(3678)
                         },
                         new
                         {
                             Id = 97L,
-                            AuthorId = 50L,
-                            CreatedAt = new DateTime(2022, 1, 1, 21, 59, 42, 570, DateTimeKind.Unspecified).AddTicks(9086),
-                            CreatedBy = 4L,
+                            AuthorId = 34L,
+                            CreatedAt = new DateTime(2021, 5, 23, 18, 46, 6, 992, DateTimeKind.Unspecified).AddTicks(6273),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 23, 2, 7, 1, 364, DateTimeKind.Unspecified).AddTicks(3378),
-                            LessonId = 64L,
-                            StartedDate = new DateTime(2019, 11, 24, 3, 49, 36, 232, DateTimeKind.Unspecified).AddTicks(627),
-                            SubmittedDate = new DateTime(2021, 7, 15, 6, 27, 9, 645, DateTimeKind.Unspecified).AddTicks(6877)
+                            LastReviewed = new DateTime(2022, 1, 6, 22, 22, 5, 755, DateTimeKind.Unspecified).AddTicks(2149),
+                            LessonId = 28L,
+                            StartedDate = new DateTime(2019, 11, 16, 10, 45, 7, 24, DateTimeKind.Unspecified).AddTicks(6698),
+                            SubmittedDate = new DateTime(2021, 5, 31, 2, 59, 7, 430, DateTimeKind.Unspecified).AddTicks(7468)
                         },
                         new
                         {
                             Id = 98L,
-                            AuthorId = 50L,
-                            CreatedAt = new DateTime(2021, 4, 11, 18, 45, 1, 766, DateTimeKind.Unspecified).AddTicks(2258),
-                            CreatedBy = 5L,
+                            AuthorId = 15L,
+                            CreatedAt = new DateTime(2021, 7, 29, 9, 42, 35, 666, DateTimeKind.Unspecified).AddTicks(2186),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 19, 2, 24, 32, 860, DateTimeKind.Unspecified).AddTicks(632),
-                            LessonId = 68L,
-                            StartedDate = new DateTime(2019, 3, 27, 3, 39, 20, 200, DateTimeKind.Unspecified).AddTicks(3606),
-                            SubmittedDate = new DateTime(2021, 4, 29, 22, 9, 45, 979, DateTimeKind.Unspecified).AddTicks(220)
+                            LastReviewed = new DateTime(2022, 1, 14, 5, 46, 11, 723, DateTimeKind.Unspecified).AddTicks(2309),
+                            LessonId = 28L,
+                            StartedDate = new DateTime(2020, 1, 25, 11, 8, 12, 741, DateTimeKind.Unspecified).AddTicks(3546),
+                            SubmittedDate = new DateTime(2021, 7, 23, 5, 11, 32, 733, DateTimeKind.Unspecified).AddTicks(8225)
                         },
                         new
                         {
                             Id = 99L,
-                            AuthorId = 34L,
-                            CreatedAt = new DateTime(2021, 4, 14, 20, 39, 22, 120, DateTimeKind.Unspecified).AddTicks(6496),
+                            AuthorId = 41L,
+                            CreatedAt = new DateTime(2021, 7, 28, 21, 42, 47, 655, DateTimeKind.Unspecified).AddTicks(4314),
                             CreatedBy = 1L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 2, 1, 16, 16, 41, 320, DateTimeKind.Unspecified).AddTicks(1107),
-                            LessonId = 61L,
-                            StartedDate = new DateTime(2019, 2, 24, 15, 10, 16, 780, DateTimeKind.Unspecified).AddTicks(8683),
-                            SubmittedDate = new DateTime(2021, 6, 6, 9, 36, 58, 476, DateTimeKind.Unspecified).AddTicks(8182)
+                            LastReviewed = new DateTime(2022, 1, 21, 0, 49, 12, 921, DateTimeKind.Unspecified).AddTicks(998),
+                            LessonId = 58L,
+                            StartedDate = new DateTime(2019, 3, 19, 7, 54, 57, 543, DateTimeKind.Unspecified).AddTicks(8921),
+                            SubmittedDate = new DateTime(2021, 12, 18, 10, 3, 55, 11, DateTimeKind.Unspecified).AddTicks(8046)
                         },
                         new
                         {
                             Id = 100L,
-                            AuthorId = 30L,
-                            CreatedAt = new DateTime(2021, 2, 26, 21, 38, 35, 554, DateTimeKind.Unspecified).AddTicks(1634),
-                            CreatedBy = 1L,
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2021, 8, 26, 9, 11, 32, 2, DateTimeKind.Unspecified).AddTicks(1763),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 6, 7, 44, 23, 555, DateTimeKind.Unspecified).AddTicks(2164),
-                            LessonId = 34L,
-                            StartedDate = new DateTime(2019, 10, 29, 11, 24, 42, 502, DateTimeKind.Unspecified).AddTicks(2710),
-                            SubmittedDate = new DateTime(2021, 6, 26, 10, 26, 10, 535, DateTimeKind.Unspecified).AddTicks(8427)
+                            LessonId = 78L,
+                            StartedDate = new DateTime(2019, 4, 8, 3, 0, 19, 71, DateTimeKind.Unspecified).AddTicks(8791),
+                            SubmittedDate = new DateTime(2021, 12, 23, 9, 4, 16, 750, DateTimeKind.Unspecified).AddTicks(5840)
                         },
                         new
                         {
                             Id = 101L,
-                            AuthorId = 23L,
-                            CreatedAt = new DateTime(2021, 2, 17, 15, 13, 10, 871, DateTimeKind.Unspecified).AddTicks(124),
-                            CreatedBy = 4L,
+                            AuthorId = 33L,
+                            CreatedAt = new DateTime(2021, 2, 4, 18, 26, 50, 788, DateTimeKind.Unspecified).AddTicks(7190),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            LastReviewed = new DateTime(2022, 1, 25, 20, 44, 30, 625, DateTimeKind.Unspecified).AddTicks(8764),
-                            LessonId = 69L,
-                            StartedDate = new DateTime(2019, 7, 19, 19, 49, 51, 917, DateTimeKind.Unspecified).AddTicks(2053),
-                            SubmittedDate = new DateTime(2021, 7, 19, 7, 45, 46, 786, DateTimeKind.Unspecified).AddTicks(3481)
+                            LastReviewed = new DateTime(2022, 1, 3, 4, 44, 46, 880, DateTimeKind.Unspecified).AddTicks(94),
+                            LessonId = 50L,
+                            StartedDate = new DateTime(2019, 2, 5, 17, 1, 10, 82, DateTimeKind.Unspecified).AddTicks(8644),
+                            SubmittedDate = new DateTime(2021, 3, 11, 19, 16, 35, 984, DateTimeKind.Unspecified).AddTicks(1962)
                         });
                 });
 
@@ -5896,582 +6135,6 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            AuthorId = 26L,
-                            CreatedAt = new DateTime(2021, 12, 5, 6, 30, 38, 947, DateTimeKind.Unspecified).AddTicks(269),
-                            CreatedBy = 2L,
-                            EndPosition = 991,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 13L,
-                            StartPosition = 205
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            AuthorId = 13L,
-                            CreatedAt = new DateTime(2021, 8, 14, 6, 9, 17, 731, DateTimeKind.Unspecified).AddTicks(9278),
-                            CreatedBy = 5L,
-                            EndPosition = 946,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 40L,
-                            StartPosition = 355
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            AuthorId = 48L,
-                            CreatedAt = new DateTime(2021, 2, 3, 21, 56, 37, 556, DateTimeKind.Unspecified).AddTicks(9854),
-                            CreatedBy = 3L,
-                            EndPosition = 965,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 80L,
-                            StartPosition = 43
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            AuthorId = 6L,
-                            CreatedAt = new DateTime(2021, 7, 1, 17, 26, 9, 580, DateTimeKind.Unspecified).AddTicks(7868),
-                            CreatedBy = 1L,
-                            EndPosition = 668,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 40L,
-                            StartPosition = 264
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            AuthorId = 38L,
-                            CreatedAt = new DateTime(2021, 8, 21, 22, 31, 33, 334, DateTimeKind.Unspecified).AddTicks(6753),
-                            CreatedBy = 1L,
-                            EndPosition = 550,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 49L,
-                            StartPosition = 112
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            AuthorId = 5L,
-                            CreatedAt = new DateTime(2021, 8, 24, 1, 29, 16, 142, DateTimeKind.Unspecified).AddTicks(3044),
-                            CreatedBy = 2L,
-                            EndPosition = 807,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 11L,
-                            StartPosition = 343
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            AuthorId = 47L,
-                            CreatedAt = new DateTime(2022, 1, 6, 8, 42, 52, 614, DateTimeKind.Unspecified).AddTicks(5592),
-                            CreatedBy = 4L,
-                            EndPosition = 592,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 22L,
-                            StartPosition = 41
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            AuthorId = 50L,
-                            CreatedAt = new DateTime(2021, 9, 2, 22, 28, 21, 237, DateTimeKind.Unspecified).AddTicks(5880),
-                            CreatedBy = 1L,
-                            EndPosition = 942,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 11L,
-                            StartPosition = 410
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            AuthorId = 46L,
-                            CreatedAt = new DateTime(2021, 2, 6, 10, 50, 40, 773, DateTimeKind.Unspecified).AddTicks(2520),
-                            CreatedBy = 1L,
-                            EndPosition = 715,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 33L,
-                            StartPosition = 327
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            AuthorId = 42L,
-                            CreatedAt = new DateTime(2022, 1, 1, 17, 0, 10, 174, DateTimeKind.Unspecified).AddTicks(1167),
-                            CreatedBy = 3L,
-                            EndPosition = 838,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 6L,
-                            StartPosition = 59
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            AuthorId = 45L,
-                            CreatedAt = new DateTime(2021, 10, 6, 9, 2, 35, 254, DateTimeKind.Unspecified).AddTicks(8560),
-                            CreatedBy = 5L,
-                            EndPosition = 964,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 9L,
-                            StartPosition = 447
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            AuthorId = 13L,
-                            CreatedAt = new DateTime(2021, 3, 31, 13, 36, 47, 920, DateTimeKind.Unspecified).AddTicks(1196),
-                            CreatedBy = 3L,
-                            EndPosition = 976,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 15L,
-                            StartPosition = 156
-                        },
-                        new
-                        {
-                            Id = 14L,
-                            AuthorId = 49L,
-                            CreatedAt = new DateTime(2021, 7, 11, 23, 56, 58, 601, DateTimeKind.Unspecified).AddTicks(2655),
-                            CreatedBy = 3L,
-                            EndPosition = 638,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 9L,
-                            StartPosition = 220
-                        },
-                        new
-                        {
-                            Id = 15L,
-                            AuthorId = 7L,
-                            CreatedAt = new DateTime(2021, 2, 8, 5, 29, 59, 735, DateTimeKind.Unspecified).AddTicks(8250),
-                            CreatedBy = 5L,
-                            EndPosition = 503,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 38L,
-                            StartPosition = 260
-                        },
-                        new
-                        {
-                            Id = 16L,
-                            AuthorId = 11L,
-                            CreatedAt = new DateTime(2021, 10, 16, 22, 27, 34, 245, DateTimeKind.Unspecified).AddTicks(1654),
-                            CreatedBy = 3L,
-                            EndPosition = 940,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 28L,
-                            StartPosition = 141
-                        },
-                        new
-                        {
-                            Id = 17L,
-                            AuthorId = 9L,
-                            CreatedAt = new DateTime(2021, 8, 23, 13, 26, 20, 279, DateTimeKind.Unspecified).AddTicks(7900),
-                            CreatedBy = 1L,
-                            EndPosition = 924,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 24L,
-                            StartPosition = 363
-                        },
-                        new
-                        {
-                            Id = 18L,
-                            AuthorId = 18L,
-                            CreatedAt = new DateTime(2021, 6, 8, 17, 46, 25, 820, DateTimeKind.Unspecified).AddTicks(565),
-                            CreatedBy = 4L,
-                            EndPosition = 985,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 18L,
-                            StartPosition = 418
-                        },
-                        new
-                        {
-                            Id = 19L,
-                            AuthorId = 49L,
-                            CreatedAt = new DateTime(2021, 6, 28, 10, 16, 1, 959, DateTimeKind.Unspecified).AddTicks(5819),
-                            CreatedBy = 3L,
-                            EndPosition = 961,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 28L,
-                            StartPosition = 459
-                        },
-                        new
-                        {
-                            Id = 20L,
-                            AuthorId = 32L,
-                            CreatedAt = new DateTime(2021, 6, 8, 20, 56, 37, 592, DateTimeKind.Unspecified).AddTicks(2012),
-                            CreatedBy = 4L,
-                            EndPosition = 587,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 9L,
-                            StartPosition = 68
-                        },
-                        new
-                        {
-                            Id = 21L,
-                            AuthorId = 31L,
-                            CreatedAt = new DateTime(2021, 3, 27, 10, 7, 30, 363, DateTimeKind.Unspecified).AddTicks(5234),
-                            CreatedBy = 5L,
-                            EndPosition = 548,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 7L,
-                            StartPosition = 53
-                        },
-                        new
-                        {
-                            Id = 22L,
-                            AuthorId = 45L,
-                            CreatedAt = new DateTime(2021, 8, 5, 4, 58, 11, 558, DateTimeKind.Unspecified).AddTicks(8477),
-                            CreatedBy = 4L,
-                            EndPosition = 761,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 52L,
-                            StartPosition = 430
-                        },
-                        new
-                        {
-                            Id = 23L,
-                            AuthorId = 26L,
-                            CreatedAt = new DateTime(2021, 11, 9, 3, 59, 40, 77, DateTimeKind.Unspecified).AddTicks(5103),
-                            CreatedBy = 5L,
-                            EndPosition = 872,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 8L,
-                            StartPosition = 121
-                        },
-                        new
-                        {
-                            Id = 24L,
-                            AuthorId = 47L,
-                            CreatedAt = new DateTime(2021, 7, 20, 14, 45, 0, 239, DateTimeKind.Unspecified).AddTicks(4253),
-                            CreatedBy = 3L,
-                            EndPosition = 620,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 11L,
-                            StartPosition = 267
-                        },
-                        new
-                        {
-                            Id = 25L,
-                            AuthorId = 30L,
-                            CreatedAt = new DateTime(2022, 1, 19, 0, 22, 22, 67, DateTimeKind.Unspecified).AddTicks(4748),
-                            CreatedBy = 3L,
-                            EndPosition = 612,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 7L,
-                            StartPosition = 52
-                        },
-                        new
-                        {
-                            Id = 26L,
-                            AuthorId = 2L,
-                            CreatedAt = new DateTime(2021, 8, 22, 14, 31, 4, 294, DateTimeKind.Unspecified).AddTicks(94),
-                            CreatedBy = 2L,
-                            EndPosition = 644,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 33L,
-                            StartPosition = 455
-                        },
-                        new
-                        {
-                            Id = 27L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 9, 14, 19, 45, 14, 531, DateTimeKind.Unspecified).AddTicks(3028),
-                            CreatedBy = 2L,
-                            EndPosition = 655,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 71L,
-                            StartPosition = 52
-                        },
-                        new
-                        {
-                            Id = 28L,
-                            AuthorId = 39L,
-                            CreatedAt = new DateTime(2021, 12, 25, 3, 18, 27, 890, DateTimeKind.Unspecified).AddTicks(4759),
-                            CreatedBy = 5L,
-                            EndPosition = 549,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 18L,
-                            StartPosition = 149
-                        },
-                        new
-                        {
-                            Id = 29L,
-                            AuthorId = 21L,
-                            CreatedAt = new DateTime(2021, 7, 31, 21, 26, 43, 116, DateTimeKind.Unspecified).AddTicks(640),
-                            CreatedBy = 2L,
-                            EndPosition = 544,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 18L,
-                            StartPosition = 7
-                        },
-                        new
-                        {
-                            Id = 30L,
-                            AuthorId = 34L,
-                            CreatedAt = new DateTime(2021, 4, 18, 6, 20, 57, 950, DateTimeKind.Unspecified).AddTicks(2585),
-                            CreatedBy = 1L,
-                            EndPosition = 603,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 6L,
-                            StartPosition = 203
-                        },
-                        new
-                        {
-                            Id = 31L,
-                            AuthorId = 11L,
-                            CreatedAt = new DateTime(2021, 8, 8, 12, 22, 19, 769, DateTimeKind.Unspecified).AddTicks(5391),
-                            CreatedBy = 1L,
-                            EndPosition = 691,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 37L,
-                            StartPosition = 264
-                        },
-                        new
-                        {
-                            Id = 32L,
-                            AuthorId = 18L,
-                            CreatedAt = new DateTime(2021, 7, 2, 20, 15, 3, 76, DateTimeKind.Unspecified).AddTicks(5411),
-                            CreatedBy = 5L,
-                            EndPosition = 671,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 66L,
-                            StartPosition = 10
-                        },
-                        new
-                        {
-                            Id = 33L,
-                            AuthorId = 13L,
-                            CreatedAt = new DateTime(2021, 10, 7, 1, 1, 18, 722, DateTimeKind.Unspecified).AddTicks(5949),
-                            CreatedBy = 4L,
-                            EndPosition = 880,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 49L,
-                            StartPosition = 361
-                        },
-                        new
-                        {
-                            Id = 34L,
-                            AuthorId = 10L,
-                            CreatedAt = new DateTime(2021, 7, 12, 23, 55, 5, 704, DateTimeKind.Unspecified).AddTicks(5935),
-                            CreatedBy = 5L,
-                            EndPosition = 582,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            ProjectId = 27L,
-                            StartPosition = 55
-                        },
-                        new
-                        {
-                            Id = 35L,
-                            AuthorId = 24L,
-                            CreatedAt = new DateTime(2021, 9, 19, 2, 41, 17, 952, DateTimeKind.Unspecified).AddTicks(8216),
-                            CreatedBy = 2L,
-                            EndPosition = 990,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 44L,
-                            StartPosition = 151
-                        },
-                        new
-                        {
-                            Id = 36L,
-                            AuthorId = 48L,
-                            CreatedAt = new DateTime(2021, 3, 20, 18, 31, 38, 293, DateTimeKind.Unspecified).AddTicks(3757),
-                            CreatedBy = 2L,
-                            EndPosition = 521,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 67L,
-                            StartPosition = 145
-                        },
-                        new
-                        {
-                            Id = 37L,
-                            AuthorId = 21L,
-                            CreatedAt = new DateTime(2021, 7, 12, 6, 12, 43, 437, DateTimeKind.Unspecified).AddTicks(1489),
-                            CreatedBy = 5L,
-                            EndPosition = 885,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 18L,
-                            StartPosition = 488
-                        },
-                        new
-                        {
-                            Id = 38L,
-                            AuthorId = 2L,
-                            CreatedAt = new DateTime(2021, 6, 17, 16, 22, 56, 153, DateTimeKind.Unspecified).AddTicks(2820),
-                            CreatedBy = 5L,
-                            EndPosition = 604,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 24L,
-                            StartPosition = 12
-                        },
-                        new
-                        {
-                            Id = 39L,
-                            AuthorId = 51L,
-                            CreatedAt = new DateTime(2021, 4, 22, 16, 2, 25, 896, DateTimeKind.Unspecified).AddTicks(3052),
-                            CreatedBy = 2L,
-                            EndPosition = 882,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 29L,
-                            StartPosition = 312
-                        },
-                        new
-                        {
-                            Id = 40L,
-                            AuthorId = 34L,
-                            CreatedAt = new DateTime(2021, 8, 31, 16, 25, 27, 702, DateTimeKind.Unspecified).AddTicks(2488),
-                            CreatedBy = 5L,
-                            EndPosition = 733,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 21L,
-                            StartPosition = 305
-                        },
-                        new
-                        {
-                            Id = 41L,
-                            AuthorId = 4L,
-                            CreatedAt = new DateTime(2021, 10, 5, 3, 8, 32, 646, DateTimeKind.Unspecified).AddTicks(7519),
-                            CreatedBy = 4L,
-                            EndPosition = 900,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 38L,
-                            StartPosition = 467
-                        },
-                        new
-                        {
-                            Id = 42L,
-                            AuthorId = 6L,
-                            CreatedAt = new DateTime(2021, 12, 11, 3, 39, 51, 599, DateTimeKind.Unspecified).AddTicks(3856),
-                            CreatedBy = 2L,
-                            EndPosition = 510,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 34L,
-                            StartPosition = 290
-                        },
-                        new
-                        {
-                            Id = 43L,
-                            AuthorId = 25L,
-                            CreatedAt = new DateTime(2021, 11, 7, 5, 48, 18, 595, DateTimeKind.Unspecified).AddTicks(3250),
-                            CreatedBy = 5L,
-                            EndPosition = 956,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 17L,
-                            StartPosition = 68
-                        },
-                        new
-                        {
-                            Id = 44L,
-                            AuthorId = 18L,
-                            CreatedAt = new DateTime(2021, 4, 30, 18, 41, 7, 553, DateTimeKind.Unspecified).AddTicks(9375),
-                            CreatedBy = 4L,
-                            EndPosition = 790,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 49L,
-                            StartPosition = 135
-                        },
-                        new
-                        {
-                            Id = 45L,
-                            AuthorId = 5L,
-                            CreatedAt = new DateTime(2021, 3, 23, 10, 42, 40, 117, DateTimeKind.Unspecified).AddTicks(6412),
-                            CreatedBy = 3L,
-                            EndPosition = 924,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            ProjectId = 16L,
-                            StartPosition = 427
-                        },
-                        new
-                        {
-                            Id = 46L,
-                            AuthorId = 18L,
-                            CreatedAt = new DateTime(2021, 9, 7, 10, 31, 27, 433, DateTimeKind.Unspecified).AddTicks(578),
-                            CreatedBy = 2L,
-                            EndPosition = 645,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 39L,
-                            StartPosition = 32
-                        },
-                        new
-                        {
-                            Id = 47L,
-                            AuthorId = 3L,
-                            CreatedAt = new DateTime(2021, 3, 17, 18, 20, 37, 677, DateTimeKind.Unspecified).AddTicks(4052),
-                            CreatedBy = 1L,
-                            EndPosition = 645,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 57L,
-                            StartPosition = 404
-                        },
-                        new
-                        {
-                            Id = 48L,
-                            AuthorId = 4L,
-                            CreatedAt = new DateTime(2021, 9, 21, 11, 54, 37, 20, DateTimeKind.Unspecified).AddTicks(2389),
-                            CreatedBy = 3L,
-                            EndPosition = 501,
-                            IsDeleted = false,
-                            IsResolved = false,
-                            LessonId = 67L,
-                            StartPosition = 171
-                        },
-                        new
-                        {
-                            Id = 49L,
-                            AuthorId = 23L,
-                            CreatedAt = new DateTime(2021, 7, 2, 10, 12, 15, 113, DateTimeKind.Unspecified).AddTicks(5783),
-                            CreatedBy = 1L,
-                            EndPosition = 914,
-                            IsDeleted = false,
-                            IsResolved = true,
-                            LessonId = 23L,
-                            StartPosition = 385
-                        },
-                        new
-                        {
-                            Id = 50L,
                             AuthorId = 29L,
                             CreatedAt = new DateTime(2021, 12, 21, 4, 44, 20, 278, DateTimeKind.Unspecified).AddTicks(6650),
                             CreatedBy = 5L,
@@ -6483,7 +6146,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 51L,
+                            Id = 3L,
                             AuthorId = 18L,
                             CreatedAt = new DateTime(2021, 11, 16, 13, 6, 3, 818, DateTimeKind.Unspecified).AddTicks(714),
                             CreatedBy = 2L,
@@ -6495,7 +6158,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 52L,
+                            Id = 4L,
                             AuthorId = 23L,
                             CreatedAt = new DateTime(2021, 4, 24, 14, 36, 52, 329, DateTimeKind.Unspecified).AddTicks(7400),
                             CreatedBy = 1L,
@@ -6507,7 +6170,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 53L,
+                            Id = 5L,
                             AuthorId = 28L,
                             CreatedAt = new DateTime(2021, 6, 19, 22, 23, 50, 401, DateTimeKind.Unspecified).AddTicks(5997),
                             CreatedBy = 1L,
@@ -6519,7 +6182,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 54L,
+                            Id = 6L,
                             AuthorId = 6L,
                             CreatedAt = new DateTime(2021, 3, 31, 17, 57, 53, 215, DateTimeKind.Unspecified).AddTicks(1616),
                             CreatedBy = 3L,
@@ -6531,7 +6194,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 55L,
+                            Id = 7L,
                             AuthorId = 13L,
                             CreatedAt = new DateTime(2021, 4, 13, 13, 23, 8, 37, DateTimeKind.Unspecified).AddTicks(5818),
                             CreatedBy = 5L,
@@ -6543,7 +6206,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 56L,
+                            Id = 8L,
                             AuthorId = 36L,
                             CreatedAt = new DateTime(2021, 4, 15, 3, 12, 39, 921, DateTimeKind.Unspecified).AddTicks(8542),
                             CreatedBy = 5L,
@@ -6555,7 +6218,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 57L,
+                            Id = 9L,
                             AuthorId = 13L,
                             CreatedAt = new DateTime(2021, 10, 10, 9, 46, 50, 270, DateTimeKind.Unspecified).AddTicks(5106),
                             CreatedBy = 3L,
@@ -6567,7 +6230,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 58L,
+                            Id = 10L,
                             AuthorId = 2L,
                             CreatedAt = new DateTime(2021, 9, 7, 14, 42, 1, 841, DateTimeKind.Unspecified).AddTicks(7608),
                             CreatedBy = 2L,
@@ -6579,7 +6242,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 59L,
+                            Id = 11L,
                             AuthorId = 11L,
                             CreatedAt = new DateTime(2021, 7, 25, 5, 49, 34, 668, DateTimeKind.Unspecified).AddTicks(7406),
                             CreatedBy = 2L,
@@ -6591,7 +6254,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 60L,
+                            Id = 12L,
                             AuthorId = 46L,
                             CreatedAt = new DateTime(2021, 5, 23, 21, 13, 50, 269, DateTimeKind.Unspecified).AddTicks(4408),
                             CreatedBy = 4L,
@@ -6603,7 +6266,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 61L,
+                            Id = 13L,
                             AuthorId = 39L,
                             CreatedAt = new DateTime(2021, 6, 12, 17, 5, 5, 986, DateTimeKind.Unspecified).AddTicks(8756),
                             CreatedBy = 3L,
@@ -6615,7 +6278,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 62L,
+                            Id = 14L,
                             AuthorId = 28L,
                             CreatedAt = new DateTime(2021, 7, 17, 17, 52, 20, 277, DateTimeKind.Unspecified).AddTicks(759),
                             CreatedBy = 3L,
@@ -6627,7 +6290,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 63L,
+                            Id = 15L,
                             AuthorId = 19L,
                             CreatedAt = new DateTime(2021, 2, 2, 19, 7, 5, 924, DateTimeKind.Unspecified).AddTicks(411),
                             CreatedBy = 3L,
@@ -6639,7 +6302,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 64L,
+                            Id = 16L,
                             AuthorId = 28L,
                             CreatedAt = new DateTime(2021, 4, 10, 21, 21, 39, 563, DateTimeKind.Unspecified).AddTicks(4556),
                             CreatedBy = 1L,
@@ -6651,7 +6314,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 65L,
+                            Id = 17L,
                             AuthorId = 32L,
                             CreatedAt = new DateTime(2021, 5, 1, 23, 24, 12, 630, DateTimeKind.Unspecified).AddTicks(1136),
                             CreatedBy = 3L,
@@ -6663,7 +6326,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 66L,
+                            Id = 18L,
                             AuthorId = 32L,
                             CreatedAt = new DateTime(2021, 10, 3, 10, 42, 27, 603, DateTimeKind.Unspecified).AddTicks(4061),
                             CreatedBy = 2L,
@@ -6675,7 +6338,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 67L,
+                            Id = 19L,
                             AuthorId = 15L,
                             CreatedAt = new DateTime(2022, 1, 31, 9, 23, 34, 334, DateTimeKind.Unspecified).AddTicks(1669),
                             CreatedBy = 3L,
@@ -6687,7 +6350,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 68L,
+                            Id = 20L,
                             AuthorId = 22L,
                             CreatedAt = new DateTime(2021, 12, 11, 14, 48, 0, 923, DateTimeKind.Unspecified).AddTicks(963),
                             CreatedBy = 3L,
@@ -6699,7 +6362,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 69L,
+                            Id = 21L,
                             AuthorId = 29L,
                             CreatedAt = new DateTime(2021, 5, 24, 6, 4, 24, 455, DateTimeKind.Unspecified).AddTicks(4657),
                             CreatedBy = 3L,
@@ -6711,7 +6374,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 70L,
+                            Id = 22L,
                             AuthorId = 8L,
                             CreatedAt = new DateTime(2021, 8, 18, 14, 19, 31, 530, DateTimeKind.Unspecified).AddTicks(338),
                             CreatedBy = 1L,
@@ -6723,7 +6386,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 71L,
+                            Id = 23L,
                             AuthorId = 45L,
                             CreatedAt = new DateTime(2021, 2, 2, 4, 31, 12, 244, DateTimeKind.Unspecified).AddTicks(6771),
                             CreatedBy = 4L,
@@ -6735,7 +6398,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 72L,
+                            Id = 24L,
                             AuthorId = 27L,
                             CreatedAt = new DateTime(2021, 5, 5, 16, 5, 7, 462, DateTimeKind.Unspecified).AddTicks(6790),
                             CreatedBy = 5L,
@@ -6747,7 +6410,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 73L,
+                            Id = 25L,
                             AuthorId = 10L,
                             CreatedAt = new DateTime(2021, 10, 28, 7, 28, 4, 994, DateTimeKind.Unspecified).AddTicks(7622),
                             CreatedBy = 4L,
@@ -6759,7 +6422,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 74L,
+                            Id = 26L,
                             AuthorId = 10L,
                             CreatedAt = new DateTime(2021, 6, 30, 22, 48, 14, 413, DateTimeKind.Unspecified).AddTicks(6957),
                             CreatedBy = 3L,
@@ -6771,7 +6434,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 75L,
+                            Id = 27L,
                             AuthorId = 38L,
                             CreatedAt = new DateTime(2021, 3, 26, 5, 4, 34, 91, DateTimeKind.Unspecified).AddTicks(2329),
                             CreatedBy = 2L,
@@ -6783,7 +6446,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 76L,
+                            Id = 28L,
                             AuthorId = 35L,
                             CreatedAt = new DateTime(2021, 4, 5, 14, 16, 39, 766, DateTimeKind.Unspecified).AddTicks(5317),
                             CreatedBy = 4L,
@@ -6795,7 +6458,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 77L,
+                            Id = 29L,
                             AuthorId = 23L,
                             CreatedAt = new DateTime(2021, 9, 27, 23, 59, 31, 596, DateTimeKind.Unspecified).AddTicks(3721),
                             CreatedBy = 2L,
@@ -6807,7 +6470,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 78L,
+                            Id = 30L,
                             AuthorId = 30L,
                             CreatedAt = new DateTime(2021, 7, 16, 23, 13, 14, 386, DateTimeKind.Unspecified).AddTicks(5703),
                             CreatedBy = 5L,
@@ -6819,7 +6482,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 79L,
+                            Id = 31L,
                             AuthorId = 26L,
                             CreatedAt = new DateTime(2021, 5, 21, 19, 57, 29, 205, DateTimeKind.Unspecified).AddTicks(5319),
                             CreatedBy = 3L,
@@ -6831,7 +6494,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 80L,
+                            Id = 32L,
                             AuthorId = 8L,
                             CreatedAt = new DateTime(2021, 11, 9, 7, 11, 32, 677, DateTimeKind.Unspecified).AddTicks(5129),
                             CreatedBy = 1L,
@@ -6843,7 +6506,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 81L,
+                            Id = 33L,
                             AuthorId = 33L,
                             CreatedAt = new DateTime(2021, 6, 26, 9, 13, 17, 475, DateTimeKind.Unspecified).AddTicks(301),
                             CreatedBy = 1L,
@@ -6852,6 +6515,582 @@ namespace Codi.Core.DAL.Migrations
                             IsResolved = true,
                             ProjectId = 12L,
                             StartPosition = 486
+                        },
+                        new
+                        {
+                            Id = 34L,
+                            AuthorId = 27L,
+                            CreatedAt = new DateTime(2021, 12, 17, 18, 43, 15, 647, DateTimeKind.Unspecified).AddTicks(7107),
+                            CreatedBy = 5L,
+                            EndPosition = 612,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 65L,
+                            StartPosition = 300
+                        },
+                        new
+                        {
+                            Id = 35L,
+                            AuthorId = 40L,
+                            CreatedAt = new DateTime(2021, 6, 10, 15, 52, 58, 652, DateTimeKind.Unspecified).AddTicks(271),
+                            CreatedBy = 5L,
+                            EndPosition = 785,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 12L,
+                            StartPosition = 81
+                        },
+                        new
+                        {
+                            Id = 36L,
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 6, 12, 13, 16, 25, 526, DateTimeKind.Unspecified).AddTicks(9908),
+                            CreatedBy = 3L,
+                            EndPosition = 805,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 31L,
+                            StartPosition = 242
+                        },
+                        new
+                        {
+                            Id = 37L,
+                            AuthorId = 20L,
+                            CreatedAt = new DateTime(2021, 4, 1, 3, 20, 37, 712, DateTimeKind.Unspecified).AddTicks(7852),
+                            CreatedBy = 2L,
+                            EndPosition = 938,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 15L,
+                            StartPosition = 233
+                        },
+                        new
+                        {
+                            Id = 38L,
+                            AuthorId = 18L,
+                            CreatedAt = new DateTime(2021, 3, 29, 17, 49, 35, 77, DateTimeKind.Unspecified).AddTicks(4086),
+                            CreatedBy = 4L,
+                            EndPosition = 878,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 40L,
+                            StartPosition = 499
+                        },
+                        new
+                        {
+                            Id = 39L,
+                            AuthorId = 23L,
+                            CreatedAt = new DateTime(2021, 7, 11, 15, 47, 15, 636, DateTimeKind.Unspecified).AddTicks(5066),
+                            CreatedBy = 3L,
+                            EndPosition = 522,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 27L,
+                            StartPosition = 214
+                        },
+                        new
+                        {
+                            Id = 40L,
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2021, 7, 28, 2, 56, 26, 586, DateTimeKind.Unspecified).AddTicks(8394),
+                            CreatedBy = 1L,
+                            EndPosition = 536,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 49L,
+                            StartPosition = 335
+                        },
+                        new
+                        {
+                            Id = 41L,
+                            AuthorId = 3L,
+                            CreatedAt = new DateTime(2022, 1, 15, 2, 3, 24, 94, DateTimeKind.Unspecified).AddTicks(4641),
+                            CreatedBy = 3L,
+                            EndPosition = 660,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 17L,
+                            StartPosition = 134
+                        },
+                        new
+                        {
+                            Id = 42L,
+                            AuthorId = 7L,
+                            CreatedAt = new DateTime(2021, 7, 6, 19, 4, 5, 436, DateTimeKind.Unspecified).AddTicks(4664),
+                            CreatedBy = 4L,
+                            EndPosition = 764,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 52L,
+                            StartPosition = 16
+                        },
+                        new
+                        {
+                            Id = 43L,
+                            AuthorId = 25L,
+                            CreatedAt = new DateTime(2021, 7, 26, 0, 17, 41, 66, DateTimeKind.Unspecified).AddTicks(3434),
+                            CreatedBy = 4L,
+                            EndPosition = 893,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 74L,
+                            StartPosition = 340
+                        },
+                        new
+                        {
+                            Id = 44L,
+                            AuthorId = 12L,
+                            CreatedAt = new DateTime(2021, 2, 3, 14, 27, 13, 241, DateTimeKind.Unspecified).AddTicks(9533),
+                            CreatedBy = 4L,
+                            EndPosition = 640,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 40L,
+                            StartPosition = 330
+                        },
+                        new
+                        {
+                            Id = 45L,
+                            AuthorId = 25L,
+                            CreatedAt = new DateTime(2021, 3, 8, 3, 31, 50, 307, DateTimeKind.Unspecified).AddTicks(5280),
+                            CreatedBy = 4L,
+                            EndPosition = 971,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 32L,
+                            StartPosition = 33
+                        },
+                        new
+                        {
+                            Id = 46L,
+                            AuthorId = 47L,
+                            CreatedAt = new DateTime(2021, 12, 25, 17, 33, 21, 236, DateTimeKind.Unspecified).AddTicks(3013),
+                            CreatedBy = 4L,
+                            EndPosition = 823,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 6L,
+                            StartPosition = 266
+                        },
+                        new
+                        {
+                            Id = 47L,
+                            AuthorId = 15L,
+                            CreatedAt = new DateTime(2021, 11, 13, 22, 4, 59, 537, DateTimeKind.Unspecified).AddTicks(1235),
+                            CreatedBy = 3L,
+                            EndPosition = 754,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 61L,
+                            StartPosition = 334
+                        },
+                        new
+                        {
+                            Id = 48L,
+                            AuthorId = 14L,
+                            CreatedAt = new DateTime(2021, 10, 10, 23, 58, 24, 559, DateTimeKind.Unspecified).AddTicks(8819),
+                            CreatedBy = 2L,
+                            EndPosition = 574,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 3L,
+                            StartPosition = 85
+                        },
+                        new
+                        {
+                            Id = 49L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2021, 2, 28, 19, 16, 3, 327, DateTimeKind.Unspecified).AddTicks(6),
+                            CreatedBy = 3L,
+                            EndPosition = 650,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 40L,
+                            StartPosition = 160
+                        },
+                        new
+                        {
+                            Id = 50L,
+                            AuthorId = 3L,
+                            CreatedAt = new DateTime(2021, 11, 5, 9, 56, 1, 844, DateTimeKind.Unspecified).AddTicks(5861),
+                            CreatedBy = 1L,
+                            EndPosition = 787,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 46L,
+                            StartPosition = 274
+                        },
+                        new
+                        {
+                            Id = 51L,
+                            AuthorId = 11L,
+                            CreatedAt = new DateTime(2021, 2, 25, 14, 38, 38, 822, DateTimeKind.Unspecified).AddTicks(8659),
+                            CreatedBy = 1L,
+                            EndPosition = 807,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 44L,
+                            StartPosition = 354
+                        },
+                        new
+                        {
+                            Id = 52L,
+                            AuthorId = 34L,
+                            CreatedAt = new DateTime(2021, 2, 3, 14, 26, 28, 834, DateTimeKind.Unspecified).AddTicks(2280),
+                            CreatedBy = 3L,
+                            EndPosition = 661,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 19L,
+                            StartPosition = 331
+                        },
+                        new
+                        {
+                            Id = 53L,
+                            AuthorId = 25L,
+                            CreatedAt = new DateTime(2021, 4, 28, 14, 6, 42, 548, DateTimeKind.Unspecified).AddTicks(447),
+                            CreatedBy = 1L,
+                            EndPosition = 685,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 39L,
+                            StartPosition = 11
+                        },
+                        new
+                        {
+                            Id = 54L,
+                            AuthorId = 51L,
+                            CreatedAt = new DateTime(2021, 11, 3, 12, 24, 22, 49, DateTimeKind.Unspecified).AddTicks(7450),
+                            CreatedBy = 2L,
+                            EndPosition = 546,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 48L,
+                            StartPosition = 335
+                        },
+                        new
+                        {
+                            Id = 55L,
+                            AuthorId = 38L,
+                            CreatedAt = new DateTime(2021, 8, 25, 23, 37, 21, 622, DateTimeKind.Unspecified).AddTicks(5353),
+                            CreatedBy = 4L,
+                            EndPosition = 906,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 21L,
+                            StartPosition = 15
+                        },
+                        new
+                        {
+                            Id = 56L,
+                            AuthorId = 11L,
+                            CreatedAt = new DateTime(2021, 11, 23, 18, 39, 7, 516, DateTimeKind.Unspecified).AddTicks(4070),
+                            CreatedBy = 4L,
+                            EndPosition = 601,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 46L,
+                            StartPosition = 193
+                        },
+                        new
+                        {
+                            Id = 57L,
+                            AuthorId = 39L,
+                            CreatedAt = new DateTime(2021, 6, 13, 4, 18, 50, 409, DateTimeKind.Unspecified).AddTicks(7546),
+                            CreatedBy = 4L,
+                            EndPosition = 862,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 77L,
+                            StartPosition = 270
+                        },
+                        new
+                        {
+                            Id = 58L,
+                            AuthorId = 3L,
+                            CreatedAt = new DateTime(2021, 3, 1, 9, 32, 15, 531, DateTimeKind.Unspecified).AddTicks(7827),
+                            CreatedBy = 2L,
+                            EndPosition = 897,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 22L,
+                            StartPosition = 16
+                        },
+                        new
+                        {
+                            Id = 59L,
+                            AuthorId = 38L,
+                            CreatedAt = new DateTime(2021, 10, 12, 13, 54, 18, 814, DateTimeKind.Unspecified).AddTicks(6413),
+                            CreatedBy = 3L,
+                            EndPosition = 691,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 48L,
+                            StartPosition = 349
+                        },
+                        new
+                        {
+                            Id = 60L,
+                            AuthorId = 44L,
+                            CreatedAt = new DateTime(2021, 9, 10, 2, 52, 5, 118, DateTimeKind.Unspecified).AddTicks(6136),
+                            CreatedBy = 4L,
+                            EndPosition = 602,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 40L,
+                            StartPosition = 233
+                        },
+                        new
+                        {
+                            Id = 61L,
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2021, 3, 19, 7, 23, 21, 830, DateTimeKind.Unspecified).AddTicks(3757),
+                            CreatedBy = 2L,
+                            EndPosition = 587,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 33L,
+                            StartPosition = 432
+                        },
+                        new
+                        {
+                            Id = 62L,
+                            AuthorId = 51L,
+                            CreatedAt = new DateTime(2021, 3, 22, 8, 16, 57, 256, DateTimeKind.Unspecified).AddTicks(2678),
+                            CreatedBy = 5L,
+                            EndPosition = 796,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 38L,
+                            StartPosition = 158
+                        },
+                        new
+                        {
+                            Id = 63L,
+                            AuthorId = 13L,
+                            CreatedAt = new DateTime(2021, 8, 3, 2, 57, 1, 110, DateTimeKind.Unspecified).AddTicks(8123),
+                            CreatedBy = 3L,
+                            EndPosition = 867,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 20L,
+                            StartPosition = 318
+                        },
+                        new
+                        {
+                            Id = 64L,
+                            AuthorId = 24L,
+                            CreatedAt = new DateTime(2021, 6, 13, 7, 0, 35, 98, DateTimeKind.Unspecified).AddTicks(4199),
+                            CreatedBy = 3L,
+                            EndPosition = 714,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 52L,
+                            StartPosition = 142
+                        },
+                        new
+                        {
+                            Id = 65L,
+                            AuthorId = 3L,
+                            CreatedAt = new DateTime(2022, 1, 28, 16, 21, 11, 209, DateTimeKind.Unspecified).AddTicks(9767),
+                            CreatedBy = 3L,
+                            EndPosition = 520,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 67L,
+                            StartPosition = 336
+                        },
+                        new
+                        {
+                            Id = 66L,
+                            AuthorId = 45L,
+                            CreatedAt = new DateTime(2021, 8, 19, 7, 4, 5, 883, DateTimeKind.Unspecified).AddTicks(743),
+                            CreatedBy = 4L,
+                            EndPosition = 615,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 31L,
+                            StartPosition = 55
+                        },
+                        new
+                        {
+                            Id = 67L,
+                            AuthorId = 46L,
+                            CreatedAt = new DateTime(2021, 3, 15, 12, 41, 57, 981, DateTimeKind.Unspecified).AddTicks(931),
+                            CreatedBy = 5L,
+                            EndPosition = 817,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 20L,
+                            StartPosition = 16
+                        },
+                        new
+                        {
+                            Id = 68L,
+                            AuthorId = 42L,
+                            CreatedAt = new DateTime(2021, 4, 7, 4, 6, 1, 297, DateTimeKind.Unspecified).AddTicks(8125),
+                            CreatedBy = 3L,
+                            EndPosition = 610,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 35L,
+                            StartPosition = 43
+                        },
+                        new
+                        {
+                            Id = 69L,
+                            AuthorId = 46L,
+                            CreatedAt = new DateTime(2021, 12, 12, 13, 17, 33, 828, DateTimeKind.Unspecified).AddTicks(5314),
+                            CreatedBy = 4L,
+                            EndPosition = 530,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 33L,
+                            StartPosition = 135
+                        },
+                        new
+                        {
+                            Id = 70L,
+                            AuthorId = 19L,
+                            CreatedAt = new DateTime(2021, 11, 12, 22, 49, 17, 830, DateTimeKind.Unspecified).AddTicks(5716),
+                            CreatedBy = 1L,
+                            EndPosition = 833,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 43L,
+                            StartPosition = 278
+                        },
+                        new
+                        {
+                            Id = 71L,
+                            AuthorId = 47L,
+                            CreatedAt = new DateTime(2021, 8, 26, 17, 8, 57, 525, DateTimeKind.Unspecified).AddTicks(5515),
+                            CreatedBy = 3L,
+                            EndPosition = 843,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 41L,
+                            StartPosition = 384
+                        },
+                        new
+                        {
+                            Id = 72L,
+                            AuthorId = 14L,
+                            CreatedAt = new DateTime(2021, 9, 20, 7, 32, 16, 373, DateTimeKind.Unspecified).AddTicks(6443),
+                            CreatedBy = 4L,
+                            EndPosition = 906,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 24L,
+                            StartPosition = 69
+                        },
+                        new
+                        {
+                            Id = 73L,
+                            AuthorId = 29L,
+                            CreatedAt = new DateTime(2021, 4, 22, 20, 30, 20, 846, DateTimeKind.Unspecified).AddTicks(7395),
+                            CreatedBy = 1L,
+                            EndPosition = 870,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 46L,
+                            StartPosition = 195
+                        },
+                        new
+                        {
+                            Id = 74L,
+                            AuthorId = 14L,
+                            CreatedAt = new DateTime(2021, 7, 12, 5, 38, 42, 414, DateTimeKind.Unspecified).AddTicks(6237),
+                            CreatedBy = 4L,
+                            EndPosition = 799,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 70L,
+                            StartPosition = 324
+                        },
+                        new
+                        {
+                            Id = 75L,
+                            AuthorId = 47L,
+                            CreatedAt = new DateTime(2021, 2, 28, 0, 19, 44, 281, DateTimeKind.Unspecified).AddTicks(3661),
+                            CreatedBy = 3L,
+                            EndPosition = 723,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 68L,
+                            StartPosition = 301
+                        },
+                        new
+                        {
+                            Id = 76L,
+                            AuthorId = 46L,
+                            CreatedAt = new DateTime(2021, 5, 10, 6, 46, 20, 596, DateTimeKind.Unspecified).AddTicks(2348),
+                            CreatedBy = 1L,
+                            EndPosition = 763,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 11L,
+                            StartPosition = 168
+                        },
+                        new
+                        {
+                            Id = 77L,
+                            AuthorId = 19L,
+                            CreatedAt = new DateTime(2022, 1, 7, 19, 17, 57, 558, DateTimeKind.Unspecified).AddTicks(4872),
+                            CreatedBy = 4L,
+                            EndPosition = 922,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 51L,
+                            StartPosition = 219
+                        },
+                        new
+                        {
+                            Id = 78L,
+                            AuthorId = 43L,
+                            CreatedAt = new DateTime(2021, 8, 9, 14, 43, 27, 946, DateTimeKind.Unspecified).AddTicks(2224),
+                            CreatedBy = 1L,
+                            EndPosition = 764,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            LessonId = 48L,
+                            StartPosition = 391
+                        },
+                        new
+                        {
+                            Id = 79L,
+                            AuthorId = 16L,
+                            CreatedAt = new DateTime(2021, 10, 6, 18, 50, 18, 292, DateTimeKind.Unspecified).AddTicks(9340),
+                            CreatedBy = 2L,
+                            EndPosition = 543,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            ProjectId = 25L,
+                            StartPosition = 269
+                        },
+                        new
+                        {
+                            Id = 80L,
+                            AuthorId = 32L,
+                            CreatedAt = new DateTime(2022, 1, 24, 15, 51, 46, 566, DateTimeKind.Unspecified).AddTicks(2784),
+                            CreatedBy = 1L,
+                            EndPosition = 883,
+                            IsDeleted = false,
+                            IsResolved = true,
+                            ProjectId = 47L,
+                            StartPosition = 243
+                        },
+                        new
+                        {
+                            Id = 81L,
+                            AuthorId = 47L,
+                            CreatedAt = new DateTime(2021, 2, 28, 0, 19, 22, 606, DateTimeKind.Unspecified).AddTicks(1668),
+                            CreatedBy = 4L,
+                            EndPosition = 572,
+                            IsDeleted = false,
+                            IsResolved = false,
+                            LessonId = 44L,
+                            StartPosition = 357
                         });
                 });
 
@@ -6895,128 +7134,8 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            AuthorId = 39L,
-                            Body = "Et sint eveniet consequuntur.\nTemporibus nesciunt similique quibusdam dolor et.\nVoluptates sed atque est perspiciatis vel sint rerum.\nQui laudantium officiis id autem ad voluptas ut ut repellat.",
-                            CreatedAt = new DateTime(2021, 4, 16, 20, 32, 42, 837, DateTimeKind.Unspecified).AddTicks(6009),
-                            CreatedBy = 2L,
-                            IsDeleted = false,
-                            ThreadId = 73L
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            AuthorId = 12L,
-                            Body = "Omnis molestiae quae delectus iusto iusto error numquam quia libero.\nRatione perspiciatis inventore.\nEligendi a ut voluptatem ab accusantium cupiditate.\nExcepturi voluptatem doloremque.\nDolor aut placeat in ea quidem cum.\nTenetur rem cum cupiditate voluptatem ut distinctio minima impedit.",
-                            CreatedAt = new DateTime(2021, 11, 17, 11, 36, 5, 506, DateTimeKind.Unspecified).AddTicks(2915),
-                            CreatedBy = 5L,
-                            IsDeleted = false,
-                            ThreadId = 57L
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            AuthorId = 15L,
-                            Body = "Earum et deleniti.\nEt labore vel provident facilis ea et dolor odit.\nExplicabo libero molestias et ad error eius.",
-                            CreatedAt = new DateTime(2021, 12, 9, 14, 9, 10, 114, DateTimeKind.Unspecified).AddTicks(9370),
-                            CreatedBy = 1L,
-                            IsDeleted = false,
-                            ThreadId = 61L
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            AuthorId = 37L,
-                            Body = "Nisi enim fuga aperiam.\nUllam quae consequatur molestias molestiae.\nEst unde in earum doloremque sed et quia omnis.",
-                            CreatedAt = new DateTime(2021, 11, 26, 0, 13, 7, 461, DateTimeKind.Unspecified).AddTicks(6716),
-                            CreatedBy = 3L,
-                            IsDeleted = false,
-                            ThreadId = 51L
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            AuthorId = 3L,
-                            Body = "Repudiandae nulla distinctio quia nemo est ut asperiores aperiam eius.",
-                            CreatedAt = new DateTime(2021, 8, 10, 19, 48, 30, 40, DateTimeKind.Unspecified).AddTicks(4013),
-                            CreatedBy = 3L,
-                            IsDeleted = false,
-                            ThreadId = 31L
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            AuthorId = 48L,
-                            Body = "Qui quod libero explicabo est doloribus minima dolore fuga.",
-                            CreatedAt = new DateTime(2021, 7, 21, 22, 31, 4, 876, DateTimeKind.Unspecified).AddTicks(488),
-                            CreatedBy = 5L,
-                            IsDeleted = false,
-                            ThreadId = 4L
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            AuthorId = 25L,
-                            Body = "Odio et eum iure sed ratione amet et consectetur.\nOmnis ut est aut.\nEt rerum dolores earum doloremque autem sint eaque.\nMolestiae similique esse optio.\nDolorum qui praesentium nemo odio culpa.",
-                            CreatedAt = new DateTime(2021, 3, 26, 14, 6, 27, 536, DateTimeKind.Unspecified).AddTicks(2975),
-                            CreatedBy = 1L,
-                            IsDeleted = false,
-                            ThreadId = 18L
-                        },
-                        new
-                        {
-                            Id = 9L,
-                            AuthorId = 16L,
-                            Body = "Quia voluptatum eos quia qui iste.\nDebitis enim iure ipsam.\nOptio voluptatibus et accusamus quia praesentium quidem.\nCorrupti ut sunt et sunt incidunt veniam molestiae.",
-                            CreatedAt = new DateTime(2021, 6, 13, 7, 0, 35, 98, DateTimeKind.Unspecified).AddTicks(4199),
-                            CreatedBy = 3L,
-                            IsDeleted = false,
-                            ThreadId = 37L
-                        },
-                        new
-                        {
-                            Id = 10L,
-                            AuthorId = 32L,
-                            Body = "Tempore ipsa quia aperiam rem aut dolor qui.\nIncidunt esse accusamus.",
-                            CreatedAt = new DateTime(2021, 6, 28, 19, 24, 54, 385, DateTimeKind.Unspecified).AddTicks(738),
-                            CreatedBy = 4L,
-                            IsDeleted = false,
-                            ThreadId = 38L
-                        },
-                        new
-                        {
-                            Id = 11L,
-                            AuthorId = 15L,
-                            Body = "Eius rerum voluptates rerum ut commodi vitae eius.",
-                            CreatedAt = new DateTime(2021, 4, 7, 4, 6, 1, 297, DateTimeKind.Unspecified).AddTicks(8125),
-                            CreatedBy = 3L,
-                            IsDeleted = false,
-                            ThreadId = 66L
-                        },
-                        new
-                        {
-                            Id = 12L,
-                            AuthorId = 28L,
-                            Body = "Enim veritatis enim aut eligendi qui maiores fuga.\nNam consequuntur nisi dicta modi dolorum dolorem.\nNobis quam repudiandae quam iusto est repellendus eos vel.\nAliquam quod consequatur incidunt veniam reprehenderit quod animi omnis ratione.\nEt necessitatibus facilis mollitia sit et possimus natus ad.\nAnimi dignissimos ipsa et voluptate non aliquam fugiat suscipit.",
-                            CreatedAt = new DateTime(2021, 11, 24, 2, 49, 46, 886, DateTimeKind.Unspecified).AddTicks(6133),
-                            CreatedBy = 5L,
-                            IsDeleted = false,
-                            ThreadId = 61L
-                        },
-                        new
-                        {
-                            Id = 13L,
-                            AuthorId = 47L,
-                            Body = "Amet iusto voluptas tenetur ut fuga quasi soluta maiores dolor.\nUt qui odit atque accusantium in sed.\nEt exercitationem voluptas.\nDebitis praesentium atque voluptas numquam.\nEaque voluptatem optio repudiandae quo qui aut.",
-                            CreatedAt = new DateTime(2021, 11, 6, 18, 29, 11, 56, DateTimeKind.Unspecified).AddTicks(3147),
-                            CreatedBy = 5L,
-                            IsDeleted = false,
-                            ThreadId = 50L
-                        },
-                        new
-                        {
-                            Id = 14L,
                             AuthorId = 41L,
-                            Body = "Illo quia debitis distinctio et qui at et dolorem.\nAut vitae officia vero aut.\nQuos eos vero at veritatis rerum possimus eum ex aut.\nCum aut ut est pariatur quia non ad velit repellat.",
+                            Body = "Quia debitis distinctio.\nQui at et dolorem nisi aut.\nOfficia vero aut.\nQuos eos vero at veritatis rerum possimus eum ex aut.\nCum aut ut est pariatur quia non ad velit repellat.",
                             CreatedAt = new DateTime(2021, 9, 22, 22, 19, 30, 418, DateTimeKind.Unspecified).AddTicks(973),
                             CreatedBy = 1L,
                             IsDeleted = false,
@@ -7024,7 +7143,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 15L,
+                            Id = 3L,
                             AuthorId = 21L,
                             Body = "Cum mollitia fugiat quia quis eligendi hic sed et.",
                             CreatedAt = new DateTime(2021, 12, 25, 1, 56, 36, 460, DateTimeKind.Unspecified).AddTicks(6660),
@@ -7034,7 +7153,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 16L,
+                            Id = 4L,
                             AuthorId = 6L,
                             Body = "Nemo quia voluptas.\nIure velit id aliquam.\nInventore qui repudiandae delectus eligendi consequatur qui quos rerum architecto.",
                             CreatedAt = new DateTime(2021, 2, 7, 14, 37, 14, 811, DateTimeKind.Unspecified).AddTicks(4929),
@@ -7044,7 +7163,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 17L,
+                            Id = 5L,
                             AuthorId = 13L,
                             Body = "Nesciunt at ut totam dignissimos eum dolorem fugiat hic corrupti.\nEnim amet qui cum earum laboriosam officiis et.\nDolor maiores nihil aliquam natus sit possimus aperiam.\nVel temporibus laboriosam sunt adipisci.\nUt adipisci temporibus sint.",
                             CreatedAt = new DateTime(2022, 1, 27, 16, 44, 10, 519, DateTimeKind.Unspecified).AddTicks(8163),
@@ -7054,7 +7173,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 18L,
+                            Id = 6L,
                             AuthorId = 10L,
                             Body = "Unde nemo numquam.\nEos eveniet est sint aut sed.",
                             CreatedAt = new DateTime(2021, 3, 8, 16, 30, 30, 744, DateTimeKind.Unspecified).AddTicks(3389),
@@ -7064,7 +7183,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 19L,
+                            Id = 7L,
                             AuthorId = 43L,
                             Body = "Dolores unde dolores.\nIure sit asperiores et sit maxime unde ex.",
                             CreatedAt = new DateTime(2021, 2, 12, 9, 57, 38, 101, DateTimeKind.Unspecified).AddTicks(4368),
@@ -7074,7 +7193,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 20L,
+                            Id = 8L,
                             AuthorId = 51L,
                             Body = "Perferendis debitis ut quidem.\nSint eos quam fugit.",
                             CreatedAt = new DateTime(2021, 3, 6, 13, 27, 21, 222, DateTimeKind.Unspecified).AddTicks(7305),
@@ -7084,7 +7203,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 21L,
+                            Id = 9L,
                             AuthorId = 30L,
                             Body = "Sequi minima non debitis et.\nCommodi ipsam porro et reprehenderit ut nostrum dicta.\nEt sed quia aut necessitatibus eum provident et.\nEius error ut et alias dignissimos.\nQuo nam aut cum consequatur quia.\nPorro atque est.",
                             CreatedAt = new DateTime(2021, 5, 2, 19, 58, 43, 511, DateTimeKind.Unspecified).AddTicks(8277),
@@ -7094,7 +7213,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 22L,
+                            Id = 10L,
                             AuthorId = 37L,
                             Body = "Suscipit molestiae quos at impedit et asperiores officiis fuga.\nConsequuntur distinctio itaque quisquam ullam enim enim et iste.\nConsectetur voluptate soluta voluptas aut quos fuga labore.\nImpedit recusandae est est porro quidem rerum molestias deserunt.",
                             CreatedAt = new DateTime(2021, 11, 11, 11, 16, 51, 772, DateTimeKind.Unspecified).AddTicks(5368),
@@ -7104,7 +7223,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 23L,
+                            Id = 11L,
                             AuthorId = 19L,
                             Body = "Quae iusto dolor omnis.",
                             CreatedAt = new DateTime(2021, 3, 5, 6, 48, 32, 975, DateTimeKind.Unspecified).AddTicks(1990),
@@ -7114,7 +7233,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 24L,
+                            Id = 12L,
                             AuthorId = 2L,
                             Body = "Expedita non placeat dolorem maxime eius quia facere inventore repudiandae.\nVoluptatum perferendis modi dicta distinctio aut soluta hic cupiditate.",
                             CreatedAt = new DateTime(2021, 8, 20, 4, 35, 10, 372, DateTimeKind.Unspecified).AddTicks(6151),
@@ -7124,7 +7243,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 25L,
+                            Id = 13L,
                             AuthorId = 44L,
                             Body = "Quo et rerum similique nesciunt sit qui possimus.\nNihil necessitatibus laboriosam.",
                             CreatedAt = new DateTime(2021, 3, 3, 14, 25, 28, 308, DateTimeKind.Unspecified).AddTicks(8673),
@@ -7134,7 +7253,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 26L,
+                            Id = 14L,
                             AuthorId = 16L,
                             Body = "Vel similique quam iste.\nEligendi ducimus officiis delectus cum rerum eligendi in.",
                             CreatedAt = new DateTime(2021, 7, 31, 22, 42, 52, 133, DateTimeKind.Unspecified).AddTicks(5285),
@@ -7144,7 +7263,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 27L,
+                            Id = 15L,
                             AuthorId = 11L,
                             Body = "Corrupti possimus eum accusantium aliquam dolorem vel assumenda laudantium.\nPraesentium nam sunt quibusdam quia architecto impedit aliquam sequi.",
                             CreatedAt = new DateTime(2021, 10, 21, 2, 56, 8, 619, DateTimeKind.Unspecified).AddTicks(7270),
@@ -7154,7 +7273,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 28L,
+                            Id = 16L,
                             AuthorId = 35L,
                             Body = "Officiis consequatur magni mollitia qui dolor reiciendis perspiciatis ab.",
                             CreatedAt = new DateTime(2021, 7, 18, 14, 16, 13, 766, DateTimeKind.Unspecified).AddTicks(9543),
@@ -7164,7 +7283,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 29L,
+                            Id = 17L,
                             AuthorId = 41L,
                             Body = "Exercitationem molestiae voluptatibus ipsa quas aut.",
                             CreatedAt = new DateTime(2021, 11, 14, 3, 55, 49, 415, DateTimeKind.Unspecified).AddTicks(7157),
@@ -7174,7 +7293,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 30L,
+                            Id = 18L,
                             AuthorId = 3L,
                             Body = "Aliquid quia tempore consequatur rem omnis magnam eum quibusdam.\nIpsum perferendis illo atque sed.",
                             CreatedAt = new DateTime(2021, 7, 26, 3, 2, 24, 986, DateTimeKind.Unspecified).AddTicks(5854),
@@ -7184,7 +7303,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 31L,
+                            Id = 19L,
                             AuthorId = 9L,
                             Body = "Voluptas eveniet ut.",
                             CreatedAt = new DateTime(2021, 4, 28, 10, 55, 57, 528, DateTimeKind.Unspecified).AddTicks(8464),
@@ -7194,7 +7313,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 32L,
+                            Id = 20L,
                             AuthorId = 20L,
                             Body = "Omnis vel enim delectus et nihil.",
                             CreatedAt = new DateTime(2021, 4, 24, 18, 55, 10, 361, DateTimeKind.Unspecified).AddTicks(5571),
@@ -7204,7 +7323,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 33L,
+                            Id = 21L,
                             AuthorId = 13L,
                             Body = "Deserunt ipsa possimus delectus doloribus voluptatem saepe omnis dolor.\nOptio perferendis est qui modi voluptate tempora.",
                             CreatedAt = new DateTime(2021, 10, 12, 2, 18, 9, 868, DateTimeKind.Unspecified).AddTicks(5777),
@@ -7214,7 +7333,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 34L,
+                            Id = 22L,
                             AuthorId = 28L,
                             Body = "Temporibus maxime dicta at eligendi expedita.\nEt placeat officiis enim quia at molestias quia aliquam.",
                             CreatedAt = new DateTime(2021, 5, 26, 0, 40, 43, 540, DateTimeKind.Unspecified).AddTicks(3180),
@@ -7224,7 +7343,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 35L,
+                            Id = 23L,
                             AuthorId = 50L,
                             Body = "Aliquam labore ipsa velit ut vitae est unde.\nTotam voluptatem omnis delectus eius ut ipsum velit aut.",
                             CreatedAt = new DateTime(2021, 12, 12, 3, 59, 9, 521, DateTimeKind.Unspecified).AddTicks(4097),
@@ -7234,7 +7353,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 36L,
+                            Id = 24L,
                             AuthorId = 29L,
                             Body = "Quis eveniet ab aut cumque est.\nQuidem veniam odit corrupti pariatur consequatur quos est quisquam numquam.\nVeritatis voluptas voluptates corporis.",
                             CreatedAt = new DateTime(2021, 9, 24, 8, 6, 8, 95, DateTimeKind.Unspecified).AddTicks(1537),
@@ -7244,7 +7363,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 37L,
+                            Id = 25L,
                             AuthorId = 19L,
                             Body = "Quo error minus fugit.\nHarum eum architecto doloremque porro pariatur sed voluptatum et.\nEos minus illo ea nihil.\nAliquam et placeat vitae sunt et.\nEx explicabo dolorum.",
                             CreatedAt = new DateTime(2021, 3, 2, 6, 53, 41, 178, DateTimeKind.Unspecified).AddTicks(9590),
@@ -7254,7 +7373,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 38L,
+                            Id = 26L,
                             AuthorId = 48L,
                             Body = "Quis voluptatem quia nam laborum.\nDolores ut vero commodi veniam aperiam nobis tempora.\nRepellat ut et praesentium dolores.\nAperiam aliquam dolores voluptas quisquam itaque aspernatur molestias ut cumque.\nOmnis corrupti ea doloremque sit ipsa et error.",
                             CreatedAt = new DateTime(2021, 11, 18, 0, 44, 15, 636, DateTimeKind.Unspecified).AddTicks(6531),
@@ -7264,7 +7383,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 39L,
+                            Id = 27L,
                             AuthorId = 18L,
                             Body = "Libero accusamus voluptatem.\nSapiente aut praesentium culpa iure.",
                             CreatedAt = new DateTime(2021, 3, 10, 15, 44, 16, 910, DateTimeKind.Unspecified).AddTicks(9018),
@@ -7274,7 +7393,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 40L,
+                            Id = 28L,
                             AuthorId = 28L,
                             Body = "In voluptas deserunt nam culpa deleniti adipisci et ut.\nNon alias eveniet sed qui vel quae sint minus.\nEt omnis neque.\nEst et ut aspernatur sit.\nEos qui voluptates consequatur provident.\nHarum perspiciatis rerum omnis rem alias ab.",
                             CreatedAt = new DateTime(2021, 7, 11, 2, 28, 39, 965, DateTimeKind.Unspecified).AddTicks(1804),
@@ -7284,7 +7403,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 41L,
+                            Id = 29L,
                             AuthorId = 11L,
                             Body = "Non quisquam consequuntur dolorem voluptas est dolorum soluta veniam.\nSuscipit excepturi aspernatur pariatur consequatur cum temporibus sunt sunt libero.\nDolor et ad.",
                             CreatedAt = new DateTime(2021, 5, 11, 22, 5, 44, 98, DateTimeKind.Unspecified).AddTicks(2176),
@@ -7294,7 +7413,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 42L,
+                            Id = 30L,
                             AuthorId = 4L,
                             Body = "Facere soluta officia exercitationem quos.\nPerferendis aut et quia voluptates debitis ut.\nCorporis eaque autem sequi quae at et.\nVoluptatum quo dolor ut modi pariatur maiores ut fuga saepe.",
                             CreatedAt = new DateTime(2021, 6, 7, 7, 18, 1, 940, DateTimeKind.Unspecified).AddTicks(7407),
@@ -7304,7 +7423,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 43L,
+                            Id = 31L,
                             AuthorId = 4L,
                             Body = "Ea laudantium nam vel accusantium delectus possimus ratione fugiat.\nAut qui sed voluptates nobis dolor doloremque accusamus sed debitis.\nQui voluptatem neque maiores quibusdam et sit.\nSuscipit quam est sed sunt quibusdam culpa consectetur molestiae.\nMolestias a quidem sint voluptas debitis nulla et quo.\nVoluptatem reiciendis voluptatem qui.",
                             CreatedAt = new DateTime(2021, 12, 10, 20, 56, 19, 476, DateTimeKind.Unspecified).AddTicks(6285),
@@ -7314,7 +7433,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 44L,
+                            Id = 32L,
                             AuthorId = 7L,
                             Body = "Tempora totam id enim dolores rem voluptas accusantium harum.\nOdit deserunt id.\nOptio sint officiis.\nDoloribus veniam qui minus repellendus vel sunt ex.",
                             CreatedAt = new DateTime(2021, 10, 23, 18, 30, 34, 596, DateTimeKind.Unspecified).AddTicks(5174),
@@ -7324,7 +7443,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 45L,
+                            Id = 33L,
                             AuthorId = 36L,
                             Body = "Est animi et eaque eius voluptas.\nVero omnis qui.\nMollitia aut libero autem corporis possimus.\nQuam officia sequi numquam.",
                             CreatedAt = new DateTime(2021, 3, 1, 4, 36, 46, 202, DateTimeKind.Unspecified).AddTicks(6727),
@@ -7334,7 +7453,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 46L,
+                            Id = 34L,
                             AuthorId = 6L,
                             Body = "Consequatur dolores tenetur aliquid.\nTempore et alias eum expedita cumque unde.\nDolores minus quia ullam amet impedit et.\nQuibusdam iusto rerum vero doloribus minima rem sint dolores ex.\nOfficia debitis corrupti esse et.",
                             CreatedAt = new DateTime(2021, 4, 30, 4, 45, 59, 691, DateTimeKind.Unspecified).AddTicks(7247),
@@ -7344,7 +7463,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 47L,
+                            Id = 35L,
                             AuthorId = 34L,
                             Body = "Aut molestiae officiis reiciendis sit deleniti ea adipisci dolores numquam.\nNesciunt similique optio aut dolores perspiciatis reprehenderit iusto dicta.\nUllam ea a minus.",
                             CreatedAt = new DateTime(2021, 11, 13, 21, 2, 13, 368, DateTimeKind.Unspecified).AddTicks(4529),
@@ -7354,7 +7473,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 48L,
+                            Id = 36L,
                             AuthorId = 51L,
                             Body = "Qui est debitis suscipit sint.",
                             CreatedAt = new DateTime(2021, 2, 5, 19, 47, 14, 271, DateTimeKind.Unspecified).AddTicks(8322),
@@ -7364,7 +7483,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 49L,
+                            Id = 37L,
                             AuthorId = 26L,
                             Body = "Eos beatae possimus porro sint quisquam vero qui occaecati eaque.\nVeniam tempore et voluptatem repudiandae.\nQuis neque ut aut.\nItaque est omnis eligendi commodi.",
                             CreatedAt = new DateTime(2021, 12, 16, 0, 35, 55, 674, DateTimeKind.Unspecified).AddTicks(5286),
@@ -7374,7 +7493,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 50L,
+                            Id = 38L,
                             AuthorId = 26L,
                             Body = "Nemo iusto voluptas sed sit minus mollitia.\nHarum id labore illum quia sed provident.\nQuasi assumenda necessitatibus dolorem et ut.",
                             CreatedAt = new DateTime(2021, 12, 4, 13, 12, 49, 653, DateTimeKind.Unspecified).AddTicks(2873),
@@ -7384,7 +7503,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 51L,
+                            Id = 39L,
                             AuthorId = 40L,
                             Body = "Commodi architecto maiores et aut.\nConsequatur commodi optio quo modi rerum similique ullam laboriosam.",
                             CreatedAt = new DateTime(2021, 11, 10, 7, 53, 26, 136, DateTimeKind.Unspecified).AddTicks(5424),
@@ -7394,7 +7513,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 52L,
+                            Id = 40L,
                             AuthorId = 19L,
                             Body = "Alias odio voluptas et dolorum aut suscipit earum amet.\nVero molestias et labore.\nDolorum sit itaque sunt quo dolorem autem.",
                             CreatedAt = new DateTime(2021, 10, 30, 15, 51, 52, 4, DateTimeKind.Unspecified).AddTicks(6718),
@@ -7404,7 +7523,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 53L,
+                            Id = 41L,
                             AuthorId = 40L,
                             Body = "Minus dignissimos velit recusandae id cupiditate ea harum.\nNam quaerat officiis doloremque.\nExcepturi culpa consequatur magni quia veritatis.",
                             CreatedAt = new DateTime(2021, 2, 26, 12, 1, 35, 855, DateTimeKind.Unspecified).AddTicks(3844),
@@ -7414,7 +7533,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 54L,
+                            Id = 42L,
                             AuthorId = 44L,
                             Body = "Nam quia dicta eius doloribus commodi non nihil.\nQuod recusandae et est.\nDebitis molestiae qui nam cum optio aut maxime.\nEst quia sed recusandae nostrum.",
                             CreatedAt = new DateTime(2021, 10, 28, 3, 37, 20, 886, DateTimeKind.Unspecified).AddTicks(3829),
@@ -7424,7 +7543,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 55L,
+                            Id = 43L,
                             AuthorId = 18L,
                             Body = "Eos sequi unde.\nCum eveniet nisi.",
                             CreatedAt = new DateTime(2021, 6, 10, 19, 45, 53, 208, DateTimeKind.Unspecified).AddTicks(997),
@@ -7434,7 +7553,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 56L,
+                            Id = 44L,
                             AuthorId = 44L,
                             Body = "Est sit at placeat optio.\nSapiente pariatur et et enim.\nAccusamus molestiae labore.",
                             CreatedAt = new DateTime(2021, 6, 2, 19, 19, 7, 873, DateTimeKind.Unspecified).AddTicks(6561),
@@ -7444,7 +7563,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 57L,
+                            Id = 45L,
                             AuthorId = 35L,
                             Body = "Vero quisquam vel reprehenderit doloribus omnis aliquid deleniti.\nExcepturi consequuntur qui omnis voluptas odit repellat.\nVel aut ipsam ut earum incidunt labore a aut.\nOdit rem officia odit reiciendis quibusdam.",
                             CreatedAt = new DateTime(2021, 8, 13, 6, 42, 6, 75, DateTimeKind.Unspecified).AddTicks(5875),
@@ -7454,7 +7573,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 58L,
+                            Id = 46L,
                             AuthorId = 9L,
                             Body = "Voluptatum est consequatur iure velit sit ipsam odit.\nMagni at repellendus.\nDistinctio suscipit blanditiis repudiandae quos.",
                             CreatedAt = new DateTime(2021, 10, 12, 7, 34, 38, 444, DateTimeKind.Unspecified).AddTicks(5294),
@@ -7464,7 +7583,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 59L,
+                            Id = 47L,
                             AuthorId = 43L,
                             Body = "Earum voluptate voluptatem.\nSunt sunt est non deleniti tempore provident nihil et omnis.",
                             CreatedAt = new DateTime(2021, 5, 22, 23, 42, 34, 208, DateTimeKind.Unspecified).AddTicks(457),
@@ -7474,7 +7593,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 60L,
+                            Id = 48L,
                             AuthorId = 17L,
                             Body = "Et aut qui voluptatem laudantium numquam quo ut sit molestiae.\nDolorem commodi ea dignissimos alias aperiam eum.\nNon atque voluptas.",
                             CreatedAt = new DateTime(2021, 6, 16, 21, 27, 26, 493, DateTimeKind.Unspecified).AddTicks(6199),
@@ -7484,7 +7603,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 61L,
+                            Id = 49L,
                             AuthorId = 26L,
                             Body = "Libero dicta temporibus atque earum.\nReprehenderit eos qui eum totam.\nId cum adipisci iste ratione commodi laboriosam quas aut qui.\nQuaerat soluta quo.",
                             CreatedAt = new DateTime(2021, 11, 16, 12, 40, 4, 378, DateTimeKind.Unspecified).AddTicks(5308),
@@ -7494,7 +7613,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 62L,
+                            Id = 50L,
                             AuthorId = 42L,
                             Body = "Fuga rem ullam et dolores eaque tempora aspernatur ut.\nQuam sed repudiandae eos autem.",
                             CreatedAt = new DateTime(2021, 8, 17, 2, 3, 25, 915, DateTimeKind.Unspecified).AddTicks(4962),
@@ -7504,7 +7623,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 63L,
+                            Id = 51L,
                             AuthorId = 13L,
                             Body = "Dicta aliquam pariatur et provident.\nAut est aut quidem quis rerum quidem magnam voluptatem.\nHic quam odit eos et provident.\nEa illum nisi perspiciatis quae est sequi facere placeat.\nUt ut eius qui dolor id.",
                             CreatedAt = new DateTime(2021, 3, 22, 13, 48, 54, 546, DateTimeKind.Unspecified).AddTicks(9572),
@@ -7514,7 +7633,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 64L,
+                            Id = 52L,
                             AuthorId = 2L,
                             Body = "Error minima rerum.\nMolestiae sit voluptas ex fuga ab omnis.\nDucimus magnam consectetur quaerat inventore vitae.\nRerum fuga non explicabo quo ipsa molestiae est illum accusamus.",
                             CreatedAt = new DateTime(2021, 12, 13, 16, 12, 11, 763, DateTimeKind.Unspecified).AddTicks(1740),
@@ -7524,7 +7643,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 65L,
+                            Id = 53L,
                             AuthorId = 26L,
                             Body = "Et expedita sint quaerat ut.\nQui et quos maiores assumenda consequatur.\nVelit reiciendis et et sint dolor nihil ex sit ipsum.",
                             CreatedAt = new DateTime(2021, 7, 30, 6, 22, 31, 852, DateTimeKind.Unspecified).AddTicks(1431),
@@ -7534,7 +7653,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 66L,
+                            Id = 54L,
                             AuthorId = 35L,
                             Body = "Dolores rerum enim sunt repellat consequuntur id.\nQui reiciendis laudantium tempora voluptate id qui.\nEt nulla ea saepe hic.",
                             CreatedAt = new DateTime(2021, 2, 26, 16, 38, 36, 562, DateTimeKind.Unspecified).AddTicks(6656),
@@ -7544,7 +7663,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 67L,
+                            Id = 55L,
                             AuthorId = 49L,
                             Body = "Atque doloremque possimus iste voluptates voluptates consectetur ea aut praesentium.\nNon quis autem cupiditate nihil itaque ipsam adipisci rerum culpa.\nNumquam qui similique odit deserunt distinctio.\nEos tenetur nesciunt aspernatur et sed.\nEt quam omnis voluptatem numquam et et.\nConsequatur repudiandae fugit occaecati molestiae dolore consequatur ipsa id.",
                             CreatedAt = new DateTime(2021, 4, 9, 15, 45, 38, 982, DateTimeKind.Unspecified).AddTicks(4744),
@@ -7554,7 +7673,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 68L,
+                            Id = 56L,
                             AuthorId = 45L,
                             Body = "Aut voluptatem provident saepe sapiente quas facere eum quae aliquam.\nEx sint voluptas.",
                             CreatedAt = new DateTime(2021, 4, 10, 15, 20, 24, 246, DateTimeKind.Unspecified).AddTicks(6945),
@@ -7564,7 +7683,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 69L,
+                            Id = 57L,
                             AuthorId = 15L,
                             Body = "Et doloribus quasi ut eius voluptas voluptates.\nRatione earum beatae eligendi eveniet et.\nRepellat nobis ut nam enim aliquam vitae quasi.",
                             CreatedAt = new DateTime(2021, 10, 18, 8, 54, 51, 263, DateTimeKind.Unspecified).AddTicks(2466),
@@ -7574,7 +7693,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 70L,
+                            Id = 58L,
                             AuthorId = 6L,
                             Body = "Modi delectus tempora quam deserunt suscipit vel dolore exercitationem.\nQuidem deserunt sit nobis odit dolor ipsam praesentium.",
                             CreatedAt = new DateTime(2022, 1, 16, 3, 48, 0, 652, DateTimeKind.Unspecified).AddTicks(9794),
@@ -7584,7 +7703,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 71L,
+                            Id = 59L,
                             AuthorId = 32L,
                             Body = "Sunt quia similique et.\nIllum voluptas aperiam harum error molestiae aut pariatur ad.\nExplicabo recusandae facere iure tempore.\nPorro molestiae in.\nDicta aspernatur et quia voluptatem voluptatibus quia reiciendis beatae sit.\nAssumenda saepe odio voluptatum aliquid.",
                             CreatedAt = new DateTime(2021, 4, 30, 1, 45, 54, 355, DateTimeKind.Unspecified).AddTicks(2369),
@@ -7594,7 +7713,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 72L,
+                            Id = 60L,
                             AuthorId = 34L,
                             Body = "Ipsa nesciunt asperiores vitae consequuntur.",
                             CreatedAt = new DateTime(2021, 9, 19, 7, 11, 13, 409, DateTimeKind.Unspecified).AddTicks(1402),
@@ -7604,7 +7723,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 73L,
+                            Id = 61L,
                             AuthorId = 33L,
                             Body = "Tenetur quisquam porro eveniet.\nQuis culpa placeat repellat est rerum doloremque voluptas ipsa.\nVoluptates voluptatem nihil possimus sequi.",
                             CreatedAt = new DateTime(2022, 1, 11, 10, 48, 33, 143, DateTimeKind.Unspecified).AddTicks(1656),
@@ -7614,7 +7733,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 74L,
+                            Id = 62L,
                             AuthorId = 2L,
                             Body = "Sit vero occaecati distinctio.\nA debitis animi itaque porro omnis blanditiis est officia amet.",
                             CreatedAt = new DateTime(2021, 12, 28, 21, 40, 32, 674, DateTimeKind.Unspecified).AddTicks(6306),
@@ -7624,7 +7743,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 75L,
+                            Id = 63L,
                             AuthorId = 8L,
                             Body = "Eaque vel maxime repellat optio et et provident.",
                             CreatedAt = new DateTime(2021, 6, 18, 20, 21, 27, 998, DateTimeKind.Unspecified).AddTicks(9354),
@@ -7634,7 +7753,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 76L,
+                            Id = 64L,
                             AuthorId = 6L,
                             Body = "Est incidunt suscipit qui.\nSequi qui aut mollitia voluptatem et et dolorem ut fuga.\nQuia sapiente qui unde qui quae est nam.\nNisi quidem et illum possimus.",
                             CreatedAt = new DateTime(2021, 9, 9, 10, 54, 34, 371, DateTimeKind.Unspecified).AddTicks(4620),
@@ -7644,7 +7763,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 77L,
+                            Id = 65L,
                             AuthorId = 24L,
                             Body = "Quibusdam minus aut reiciendis itaque itaque numquam deserunt magni.\nDucimus enim voluptates.\nFacere optio atque et ab soluta.",
                             CreatedAt = new DateTime(2021, 6, 12, 16, 22, 28, 283, DateTimeKind.Unspecified).AddTicks(9904),
@@ -7654,7 +7773,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 78L,
+                            Id = 66L,
                             AuthorId = 8L,
                             Body = "Quis voluptas ab aperiam quos assumenda quas voluptas.\nRem at neque est quia eum dolor provident non eveniet.\nNesciunt qui alias ea ut.\nAliquid repellendus voluptas.",
                             CreatedAt = new DateTime(2021, 8, 18, 13, 51, 14, 358, DateTimeKind.Unspecified).AddTicks(9932),
@@ -7664,7 +7783,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 79L,
+                            Id = 67L,
                             AuthorId = 15L,
                             Body = "Autem ut aspernatur omnis cum voluptas quasi sint.\nNulla voluptatem praesentium voluptas pariatur.",
                             CreatedAt = new DateTime(2021, 5, 6, 4, 34, 37, 818, DateTimeKind.Unspecified).AddTicks(542),
@@ -7674,7 +7793,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 80L,
+                            Id = 68L,
                             AuthorId = 27L,
                             Body = "Necessitatibus quo est est ea quam quisquam.",
                             CreatedAt = new DateTime(2021, 9, 14, 16, 40, 7, 709, DateTimeKind.Unspecified).AddTicks(8276),
@@ -7684,7 +7803,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 81L,
+                            Id = 69L,
                             AuthorId = 24L,
                             Body = "Iste blanditiis quidem iusto expedita.\nMollitia dicta debitis porro.\nAccusantium harum molestias recusandae ab maiores illum.\nCorporis est possimus sed saepe voluptate voluptatem quaerat.\nIste quod voluptatibus.",
                             CreatedAt = new DateTime(2021, 10, 20, 16, 39, 1, 740, DateTimeKind.Unspecified).AddTicks(2800),
@@ -7694,7 +7813,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 82L,
+                            Id = 70L,
                             AuthorId = 28L,
                             Body = "Nihil optio cupiditate natus esse perferendis sed sunt.\nEst repudiandae temporibus laudantium temporibus atque distinctio ea.\nEt sint maxime accusantium molestias sapiente omnis.",
                             CreatedAt = new DateTime(2021, 12, 27, 8, 23, 18, 3, DateTimeKind.Unspecified).AddTicks(9514),
@@ -7704,7 +7823,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 83L,
+                            Id = 71L,
                             AuthorId = 12L,
                             Body = "Modi ut voluptate veniam quia velit quod.\nMaxime esse aut maxime vel.\nAliquam sunt tenetur dolores quibusdam.",
                             CreatedAt = new DateTime(2021, 8, 12, 19, 39, 12, 437, DateTimeKind.Unspecified).AddTicks(3503),
@@ -7714,7 +7833,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 84L,
+                            Id = 72L,
                             AuthorId = 33L,
                             Body = "Amet error aut rerum officiis eum doloribus aliquam.\nEligendi dolore illo quas ea.\nDistinctio sed illo quas itaque minima.\nEt exercitationem odio sit.\nCorporis adipisci recusandae id.\nExcepturi id itaque.",
                             CreatedAt = new DateTime(2021, 3, 21, 6, 49, 40, 64, DateTimeKind.Unspecified).AddTicks(6762),
@@ -7724,7 +7843,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 85L,
+                            Id = 73L,
                             AuthorId = 20L,
                             Body = "Quos odit expedita aut aperiam ducimus eos suscipit omnis.",
                             CreatedAt = new DateTime(2021, 2, 17, 13, 53, 56, 219, DateTimeKind.Unspecified).AddTicks(2700),
@@ -7734,7 +7853,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 86L,
+                            Id = 74L,
                             AuthorId = 41L,
                             Body = "Rerum quo dignissimos.\nQui nobis inventore suscipit tenetur dolor perspiciatis ut.\nDolorem molestiae minus sit totam quia.",
                             CreatedAt = new DateTime(2021, 10, 21, 7, 52, 12, 576, DateTimeKind.Unspecified).AddTicks(2896),
@@ -7744,7 +7863,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 87L,
+                            Id = 75L,
                             AuthorId = 27L,
                             Body = "Aut delectus rerum similique corporis explicabo omnis sed.\nEst voluptatem accusantium dolor saepe magni et est cumque fugiat.\nUnde quo excepturi et harum dolore.",
                             CreatedAt = new DateTime(2022, 1, 20, 14, 34, 50, 47, DateTimeKind.Unspecified).AddTicks(8846),
@@ -7754,7 +7873,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 88L,
+                            Id = 76L,
                             AuthorId = 27L,
                             Body = "Ipsa tenetur eaque quisquam esse assumenda.\nDicta doloribus cumque perspiciatis dolores et nihil consequatur.\nAsperiores ex magnam voluptatem qui repudiandae consectetur.\nBlanditiis perferendis recusandae inventore officia quisquam.\nNulla nihil deserunt maiores tempora at voluptate.\nAlias ab placeat.",
                             CreatedAt = new DateTime(2021, 9, 17, 20, 38, 10, 366, DateTimeKind.Unspecified).AddTicks(1806),
@@ -7764,7 +7883,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 89L,
+                            Id = 77L,
                             AuthorId = 35L,
                             Body = "Et non quo quaerat repellendus est reiciendis consequuntur voluptas est.\nEa quo deserunt dolores enim.\nOptio et enim.\nOmnis quisquam qui laboriosam dolore non nihil velit.\nModi beatae nostrum consequatur illum.",
                             CreatedAt = new DateTime(2022, 1, 10, 5, 56, 3, 366, DateTimeKind.Unspecified).AddTicks(3709),
@@ -7774,7 +7893,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 90L,
+                            Id = 78L,
                             AuthorId = 39L,
                             Body = "Vero laudantium quia qui laborum dolorem blanditiis.\nIncidunt minus rem rerum velit.\nLaudantium non aliquam et.\nExcepturi enim porro quam molestiae consectetur aut.\nOmnis fugiat reprehenderit repellendus quidem ducimus optio eos ipsam.\nDignissimos est vitae facere qui sit est.",
                             CreatedAt = new DateTime(2021, 4, 17, 11, 26, 32, 214, DateTimeKind.Unspecified).AddTicks(8122),
@@ -7784,7 +7903,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 91L,
+                            Id = 79L,
                             AuthorId = 26L,
                             Body = "Et ea cupiditate rem nisi qui.\nDolor tenetur et.\nSoluta quam voluptas hic quo.",
                             CreatedAt = new DateTime(2021, 12, 9, 19, 31, 57, 683, DateTimeKind.Unspecified).AddTicks(8040),
@@ -7794,7 +7913,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 92L,
+                            Id = 80L,
                             AuthorId = 32L,
                             Body = "Velit blanditiis possimus qui provident vel cum illo incidunt.\nNihil eum omnis.\nAut reiciendis ex porro ad minus.\nModi placeat architecto doloremque nisi distinctio.\nQuidem dolorem ducimus sed facere qui sed quasi quo occaecati.",
                             CreatedAt = new DateTime(2021, 3, 11, 22, 8, 16, 225, DateTimeKind.Unspecified).AddTicks(6162),
@@ -7804,7 +7923,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 93L,
+                            Id = 81L,
                             AuthorId = 36L,
                             Body = "Quaerat aperiam beatae similique est.\nEx et officiis delectus ipsam reiciendis impedit.",
                             CreatedAt = new DateTime(2021, 12, 8, 20, 3, 58, 315, DateTimeKind.Unspecified).AddTicks(5921),
@@ -7814,7 +7933,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 94L,
+                            Id = 82L,
                             AuthorId = 5L,
                             Body = "Veritatis officia eius harum earum dolor.\nUt fugiat odit.\nFuga mollitia tenetur.\nVel repellat voluptatem explicabo consectetur sed.\nIllum sit temporibus quas tempora commodi doloremque minus quam.",
                             CreatedAt = new DateTime(2021, 11, 18, 20, 55, 4, 355, DateTimeKind.Unspecified).AddTicks(887),
@@ -7824,7 +7943,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 95L,
+                            Id = 83L,
                             AuthorId = 8L,
                             Body = "Ea dolores iure.\nMagnam cupiditate cupiditate eum laboriosam porro accusantium quaerat.\nAutem molestiae inventore similique corporis magnam assumenda necessitatibus voluptas.\nHic cum ut aspernatur nobis delectus.\nQuia maxime quod omnis deserunt.",
                             CreatedAt = new DateTime(2021, 3, 23, 5, 35, 24, 670, DateTimeKind.Unspecified).AddTicks(4538),
@@ -7834,7 +7953,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 96L,
+                            Id = 84L,
                             AuthorId = 10L,
                             Body = "Et ducimus temporibus sed odit.\nEarum dolores voluptatem omnis.",
                             CreatedAt = new DateTime(2021, 12, 9, 21, 9, 27, 623, DateTimeKind.Unspecified).AddTicks(3095),
@@ -7844,7 +7963,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 97L,
+                            Id = 85L,
                             AuthorId = 11L,
                             Body = "Iusto aut sit nihil quo eos veritatis mollitia.\nSint explicabo sed quibusdam aliquid.\nIusto delectus rem.\nQui est placeat sunt architecto nesciunt.",
                             CreatedAt = new DateTime(2021, 2, 21, 17, 20, 20, 506, DateTimeKind.Unspecified).AddTicks(4379),
@@ -7854,7 +7973,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 98L,
+                            Id = 86L,
                             AuthorId = 31L,
                             Body = "Et doloremque molestiae ut quos pariatur et praesentium quidem.\nConsectetur molestiae officia et quod optio.\nQuo id maiores totam possimus dolorem ab est.\nEarum voluptatem facilis sint natus et.\nPorro laudantium ipsum consequatur vitae sunt.",
                             CreatedAt = new DateTime(2021, 5, 3, 14, 55, 18, 241, DateTimeKind.Unspecified).AddTicks(1429),
@@ -7864,7 +7983,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 99L,
+                            Id = 87L,
                             AuthorId = 41L,
                             Body = "Dolorem voluptatibus consequatur quam dolores ad.",
                             CreatedAt = new DateTime(2021, 10, 3, 6, 46, 1, 963, DateTimeKind.Unspecified).AddTicks(7871),
@@ -7874,7 +7993,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 100L,
+                            Id = 88L,
                             AuthorId = 7L,
                             Body = "Vel culpa ab et animi vel quisquam eum ut.\nOfficiis id similique voluptas qui eos.\nRerum qui consequatur nesciunt.\nEt praesentium recusandae nulla voluptatem rerum assumenda.\nCum eum mollitia enim doloribus quas.\nNobis quas velit doloremque dolor sint eum.",
                             CreatedAt = new DateTime(2021, 12, 3, 14, 2, 40, 799, DateTimeKind.Unspecified).AddTicks(843),
@@ -7884,7 +8003,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 101L,
+                            Id = 89L,
                             AuthorId = 38L,
                             Body = "Inventore et aut eos nihil repellendus porro deserunt.\nFacere nam beatae inventore aspernatur omnis corrupti consequatur quaerat laboriosam.\nEt totam eum.\nAut reiciendis cum deleniti ut.\nAsperiores maiores tenetur sed eum possimus quas.",
                             CreatedAt = new DateTime(2021, 4, 20, 13, 48, 35, 758, DateTimeKind.Unspecified).AddTicks(9682),
@@ -7894,7 +8013,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 102L,
+                            Id = 90L,
                             AuthorId = 45L,
                             Body = "Placeat sed tenetur quia illum dolorum dolorum qui.\nDolorem id eaque deserunt ut et rerum.\nOdit labore et odio omnis soluta consequuntur earum.\nConsequatur maiores ad est dolores exercitationem nobis facere.\nPorro voluptatem vero vero vero qui dolores in.\nUt beatae autem numquam.",
                             CreatedAt = new DateTime(2021, 12, 28, 16, 22, 55, 886, DateTimeKind.Unspecified).AddTicks(4156),
@@ -7904,7 +8023,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 103L,
+                            Id = 91L,
                             AuthorId = 28L,
                             Body = "Ad doloribus at eum dolor odit et quidem.\nRerum eligendi enim.\nVoluptas et voluptates et accusamus.\nVel sint nemo commodi.",
                             CreatedAt = new DateTime(2021, 3, 3, 2, 17, 33, 487, DateTimeKind.Unspecified).AddTicks(2019),
@@ -7914,7 +8033,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 104L,
+                            Id = 92L,
                             AuthorId = 11L,
                             Body = "Molestiae assumenda eaque.\nAlias deleniti facilis et adipisci cum facere et.\nAut blanditiis totam.\nQui tenetur enim.\nVoluptatibus perferendis nulla ipsum dolorem ut fuga sit ab voluptatem.",
                             CreatedAt = new DateTime(2021, 5, 24, 14, 55, 58, 248, DateTimeKind.Unspecified).AddTicks(2886),
@@ -7924,7 +8043,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 105L,
+                            Id = 93L,
                             AuthorId = 39L,
                             Body = "Similique ut ea quaerat quae tempore consectetur dolores.\nNihil exercitationem voluptates illo.",
                             CreatedAt = new DateTime(2021, 8, 11, 2, 59, 32, 664, DateTimeKind.Unspecified).AddTicks(9692),
@@ -7934,7 +8053,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 106L,
+                            Id = 94L,
                             AuthorId = 28L,
                             Body = "Facere consectetur sunt fugiat excepturi sit.",
                             CreatedAt = new DateTime(2021, 7, 9, 22, 20, 8, 306, DateTimeKind.Unspecified).AddTicks(8477),
@@ -7944,7 +8063,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 107L,
+                            Id = 95L,
                             AuthorId = 25L,
                             Body = "Ipsam minima vel totam vel deserunt ab.\nEnim dolorem aliquid aperiam quod tempore porro ad nemo sit.\nNisi quis dolore nihil.",
                             CreatedAt = new DateTime(2021, 3, 28, 17, 3, 2, 998, DateTimeKind.Unspecified).AddTicks(838),
@@ -7954,7 +8073,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 108L,
+                            Id = 96L,
                             AuthorId = 13L,
                             Body = "Non fugiat non porro vero reiciendis et.\nEnim facere autem molestiae.",
                             CreatedAt = new DateTime(2021, 4, 1, 7, 35, 59, 215, DateTimeKind.Unspecified).AddTicks(830),
@@ -7964,7 +8083,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 109L,
+                            Id = 97L,
                             AuthorId = 44L,
                             Body = "Quo corporis voluptatem.\nQuia ut architecto adipisci quasi at aliquid voluptatum et.\nConsequatur voluptate dolor doloribus quam ipsam rerum optio.\nAperiam aperiam et.",
                             CreatedAt = new DateTime(2021, 12, 23, 16, 16, 38, 159, DateTimeKind.Unspecified).AddTicks(4359),
@@ -7974,7 +8093,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 110L,
+                            Id = 98L,
                             AuthorId = 12L,
                             Body = "Qui quam perferendis itaque dolore eligendi expedita.\nFacilis distinctio et omnis necessitatibus quibusdam rerum.\nEt qui ex itaque quam tempora quia eos.",
                             CreatedAt = new DateTime(2021, 5, 6, 9, 31, 38, 3, DateTimeKind.Unspecified).AddTicks(8430),
@@ -7984,7 +8103,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 111L,
+                            Id = 99L,
                             AuthorId = 29L,
                             Body = "Illo a ex minus.\nDucimus qui officiis.\nDicta suscipit voluptas libero.\nTemporibus enim qui labore.",
                             CreatedAt = new DateTime(2021, 10, 9, 0, 43, 5, 480, DateTimeKind.Unspecified).AddTicks(7270),
@@ -7994,7 +8113,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 112L,
+                            Id = 100L,
                             AuthorId = 44L,
                             Body = "Sed tempora non officiis est sit eveniet.\nArchitecto corrupti id rerum quam nesciunt assumenda odio ut maxime.\nUt animi in iste voluptatibus aliquid ut vitae.\nVelit exercitationem vero id sed quibusdam non.\nUt at ratione qui consectetur quam voluptas dolor dolorum.",
                             CreatedAt = new DateTime(2021, 8, 14, 13, 57, 37, 263, DateTimeKind.Unspecified).AddTicks(4946),
@@ -8004,7 +8123,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 113L,
+                            Id = 101L,
                             AuthorId = 35L,
                             Body = "Omnis expedita corrupti a fuga.",
                             CreatedAt = new DateTime(2021, 4, 7, 15, 1, 58, 657, DateTimeKind.Unspecified).AddTicks(6797),
@@ -8014,7 +8133,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 114L,
+                            Id = 102L,
                             AuthorId = 14L,
                             Body = "Quo dolor harum et maxime.\nEt ut quia ab animi occaecati beatae.\nVel autem ea molestias.\nAspernatur sunt explicabo.\nCorporis vitae porro voluptas et magni alias sit quia quia.\nImpedit maiores unde possimus aspernatur enim ea et ut.",
                             CreatedAt = new DateTime(2021, 9, 6, 6, 15, 51, 816, DateTimeKind.Unspecified).AddTicks(508),
@@ -8024,7 +8143,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 115L,
+                            Id = 103L,
                             AuthorId = 5L,
                             Body = "Exercitationem accusamus perferendis vel quo dolore dolorum autem sit.\nAccusantium dolor est voluptas sed porro ad ipsam tempora.\nDolorem eum id voluptate quod id.\nAdipisci qui aliquid hic enim veritatis sunt.\nMagni ipsam excepturi consequatur id sunt consectetur numquam ut.",
                             CreatedAt = new DateTime(2021, 6, 6, 23, 49, 29, 96, DateTimeKind.Unspecified).AddTicks(9643),
@@ -8034,7 +8153,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 116L,
+                            Id = 104L,
                             AuthorId = 23L,
                             Body = "Cum illum sit corporis maiores laudantium ut.\nArchitecto aut expedita nihil et voluptatibus fugiat.\nQuisquam harum consequatur quasi ea voluptas hic dolorum.\nHarum laborum harum suscipit magnam aut.\nDolores amet tempore magni magni possimus odit quis et impedit.",
                             CreatedAt = new DateTime(2021, 6, 4, 11, 4, 16, 100, DateTimeKind.Unspecified).AddTicks(7149),
@@ -8044,7 +8163,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 117L,
+                            Id = 105L,
                             AuthorId = 34L,
                             Body = "Dolores ea assumenda alias.",
                             CreatedAt = new DateTime(2021, 3, 6, 4, 28, 7, 52, DateTimeKind.Unspecified).AddTicks(1993),
@@ -8054,7 +8173,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 118L,
+                            Id = 106L,
                             AuthorId = 48L,
                             Body = "Sint aliquid pariatur harum enim dolorem repellat.\nMolestiae aut nemo nihil qui sapiente non harum.\nEligendi voluptas nobis tempore.\nMolestias vel dolores aut deleniti aut minima accusamus.\nOmnis voluptatem similique.\nFacere occaecati incidunt iusto laborum ut eius id dolore.",
                             CreatedAt = new DateTime(2021, 4, 12, 22, 5, 28, 434, DateTimeKind.Unspecified).AddTicks(9752),
@@ -8064,7 +8183,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 119L,
+                            Id = 107L,
                             AuthorId = 4L,
                             Body = "Quam ducimus qui.\nRerum velit nulla rem.\nUllam nisi eveniet dignissimos.",
                             CreatedAt = new DateTime(2021, 8, 25, 1, 50, 58, 81, DateTimeKind.Unspecified).AddTicks(488),
@@ -8074,7 +8193,7 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 120L,
+                            Id = 108L,
                             AuthorId = 14L,
                             Body = "Omnis fugit aut.",
                             CreatedAt = new DateTime(2021, 8, 20, 8, 30, 53, 58, DateTimeKind.Unspecified).AddTicks(3331),
@@ -8084,13 +8203,133 @@ namespace Codi.Core.DAL.Migrations
                         },
                         new
                         {
-                            Id = 121L,
+                            Id = 109L,
                             AuthorId = 15L,
                             Body = "Qui et velit tempore et.\nQui animi dolor beatae soluta.\nEt ab explicabo eos enim consequatur omnis soluta.\nVel doloribus omnis est optio et.\nAmet et assumenda et numquam culpa.\nQuasi aspernatur tempore.",
                             CreatedAt = new DateTime(2021, 11, 8, 12, 17, 53, 802, DateTimeKind.Unspecified).AddTicks(2027),
                             CreatedBy = 4L,
                             IsDeleted = false,
                             ThreadId = 16L
+                        },
+                        new
+                        {
+                            Id = 110L,
+                            AuthorId = 48L,
+                            Body = "Suscipit deleniti accusamus et debitis.\nDucimus ab cum.\nPariatur architecto architecto odio maiores.",
+                            CreatedAt = new DateTime(2021, 9, 4, 18, 46, 20, 745, DateTimeKind.Unspecified).AddTicks(6003),
+                            CreatedBy = 1L,
+                            IsDeleted = false,
+                            ThreadId = 30L
+                        },
+                        new
+                        {
+                            Id = 111L,
+                            AuthorId = 5L,
+                            Body = "Dolore nihil voluptas doloremque accusantium.\nAnimi aspernatur mollitia.",
+                            CreatedAt = new DateTime(2021, 6, 17, 15, 1, 38, 939, DateTimeKind.Unspecified).AddTicks(7420),
+                            CreatedBy = 1L,
+                            IsDeleted = false,
+                            ThreadId = 16L
+                        },
+                        new
+                        {
+                            Id = 112L,
+                            AuthorId = 4L,
+                            Body = "Eum voluptas similique quasi.\nPorro possimus repudiandae minus rerum repellat.\nNobis laboriosam qui id qui inventore illo sunt.",
+                            CreatedAt = new DateTime(2021, 3, 27, 21, 21, 10, 234, DateTimeKind.Unspecified).AddTicks(231),
+                            CreatedBy = 1L,
+                            IsDeleted = false,
+                            ThreadId = 45L
+                        },
+                        new
+                        {
+                            Id = 113L,
+                            AuthorId = 27L,
+                            Body = "Hic vitae tempora tempore et dignissimos perferendis omnis aut.",
+                            CreatedAt = new DateTime(2021, 3, 12, 22, 52, 25, 95, DateTimeKind.Unspecified).AddTicks(9008),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            ThreadId = 36L
+                        },
+                        new
+                        {
+                            Id = 114L,
+                            AuthorId = 29L,
+                            Body = "Excepturi mollitia vitae accusantium autem repudiandae.\nEst rem ex rerum sunt suscipit voluptatem veniam aut.\nMaiores similique assumenda tempore est inventore aut omnis.\nEt ut corporis dolorem deleniti dolorem laudantium mollitia.",
+                            CreatedAt = new DateTime(2021, 4, 6, 19, 23, 18, 77, DateTimeKind.Unspecified).AddTicks(4489),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            ThreadId = 77L
+                        },
+                        new
+                        {
+                            Id = 115L,
+                            AuthorId = 34L,
+                            Body = "Adipisci enim facere voluptatem sed accusamus soluta fuga qui porro.\nEx quia dolorem qui qui sed sed rem.\nConsequatur occaecati rem corporis officiis dolor aut id.\nSuscipit pariatur necessitatibus minima harum sunt ea.\nQuod omnis nobis sapiente veniam esse qui ducimus quia voluptas.",
+                            CreatedAt = new DateTime(2021, 9, 4, 11, 28, 1, 107, DateTimeKind.Unspecified).AddTicks(3093),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            ThreadId = 64L
+                        },
+                        new
+                        {
+                            Id = 116L,
+                            AuthorId = 3L,
+                            Body = "Aut non tempore voluptas qui.\nLaboriosam omnis earum sit atque et.\nBeatae est magnam praesentium rerum quibusdam dignissimos temporibus voluptas.\nOdit rerum at facere itaque rem sapiente rerum.\nAspernatur ut corporis nihil ut occaecati atque exercitationem nihil molestiae.",
+                            CreatedAt = new DateTime(2021, 5, 15, 6, 26, 4, 917, DateTimeKind.Unspecified).AddTicks(507),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            ThreadId = 23L
+                        },
+                        new
+                        {
+                            Id = 117L,
+                            AuthorId = 10L,
+                            Body = "Sequi reprehenderit ipsam.\nEt enim error quia quia error tenetur mollitia eligendi.\nNostrum voluptatibus magni natus assumenda quis.\nMaiores ut itaque ea et voluptatem et maxime praesentium.",
+                            CreatedAt = new DateTime(2021, 5, 20, 9, 52, 1, 466, DateTimeKind.Unspecified).AddTicks(4088),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            ThreadId = 15L
+                        },
+                        new
+                        {
+                            Id = 118L,
+                            AuthorId = 39L,
+                            Body = "Est ab nemo.\nAut aspernatur dolores suscipit similique necessitatibus id voluptatem quidem.\nDolores consequatur tenetur.\nAd dolorem ipsa autem et.\nNostrum cumque praesentium.",
+                            CreatedAt = new DateTime(2021, 9, 22, 15, 38, 2, 296, DateTimeKind.Unspecified).AddTicks(2770),
+                            CreatedBy = 4L,
+                            IsDeleted = false,
+                            ThreadId = 33L
+                        },
+                        new
+                        {
+                            Id = 119L,
+                            AuthorId = 2L,
+                            Body = "Non sit beatae aliquam reiciendis enim tempore.\nPerferendis quis excepturi eveniet repellat tempora.\nVoluptas aut numquam eveniet et et eaque enim.\nAdipisci et ad quidem placeat earum dolor.\nDolorum voluptate molestiae nihil illo fugit aut.\nAnimi soluta accusantium.",
+                            CreatedAt = new DateTime(2021, 10, 18, 16, 4, 44, 926, DateTimeKind.Unspecified).AddTicks(6113),
+                            CreatedBy = 2L,
+                            IsDeleted = false,
+                            ThreadId = 75L
+                        },
+                        new
+                        {
+                            Id = 120L,
+                            AuthorId = 36L,
+                            Body = "Nihil qui in laudantium iste repellat ipsum veritatis praesentium.\nDeleniti eaque eaque.\nQuasi deserunt maiores ad deserunt et alias enim.",
+                            CreatedAt = new DateTime(2021, 4, 5, 3, 11, 52, 774, DateTimeKind.Unspecified).AddTicks(511),
+                            CreatedBy = 5L,
+                            IsDeleted = false,
+                            ThreadId = 21L
+                        },
+                        new
+                        {
+                            Id = 121L,
+                            AuthorId = 13L,
+                            Body = "Ut cumque aut.\nAut aut voluptas ex.\nVeritatis et velit aliquam.\nDeserunt illo quos maiores natus earum a velit.\nEarum cumque libero facere voluptatem saepe suscipit qui est veritatis.\nAutem omnis dicta ad.",
+                            CreatedAt = new DateTime(2021, 5, 17, 13, 53, 22, 284, DateTimeKind.Unspecified).AddTicks(1090),
+                            CreatedBy = 3L,
+                            IsDeleted = false,
+                            ThreadId = 14L
                         });
                 });
 
@@ -8129,362 +8368,362 @@ namespace Codi.Core.DAL.Migrations
                         new
                         {
                             Id = 2L,
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2021, 11, 18, 23, 9, 42, 199, DateTimeKind.Unspecified).AddTicks(6302),
-                            CreatedBy = 4L,
+                            CourseId = 2L,
+                            CreatedAt = new DateTime(2021, 11, 7, 19, 20, 21, 51, DateTimeKind.Unspecified).AddTicks(504),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Ullam molestiae ipsam."
+                            Title = "Voluptatem et totam et fugiat occaecati itaque enim ratione."
                         },
                         new
                         {
                             Id = 3L,
-                            CourseId = 3L,
-                            CreatedAt = new DateTime(2022, 1, 9, 13, 9, 32, 119, DateTimeKind.Unspecified).AddTicks(9793),
-                            CreatedBy = 2L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 11, 21, 15, 9, 23, 648, DateTimeKind.Unspecified).AddTicks(7887),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Exercitationem quod voluptas reiciendis quasi nesciunt ullam fugit."
+                            Title = "Aut facere rerum laudantium assumenda quam dicta iure doloremque."
                         },
                         new
                         {
                             Id = 4L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 5, 15, 22, 16, 34, 789, DateTimeKind.Unspecified).AddTicks(3978),
-                            CreatedBy = 1L,
+                            CourseId = 21L,
+                            CreatedAt = new DateTime(2021, 3, 28, 8, 59, 37, 146, DateTimeKind.Unspecified).AddTicks(5482),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Est numquam minima est ipsa aut temporibus assumenda pariatur provident."
+                            Title = "Ea sed quia in enim et animi veniam eaque et."
                         },
                         new
                         {
                             Id = 5L,
-                            CourseId = 21L,
-                            CreatedAt = new DateTime(2021, 12, 12, 13, 12, 47, 851, DateTimeKind.Unspecified).AddTicks(38),
-                            CreatedBy = 2L,
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2021, 2, 20, 12, 58, 2, 738, DateTimeKind.Unspecified).AddTicks(1217),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            Title = "Eligendi qui rerum cumque quos molestiae."
+                            Title = "Quisquam repellat animi laboriosam enim."
                         },
                         new
                         {
                             Id = 6L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 3, 24, 20, 51, 31, 421, DateTimeKind.Unspecified).AddTicks(5423),
-                            CreatedBy = 2L,
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2021, 9, 8, 22, 44, 12, 23, DateTimeKind.Unspecified).AddTicks(3386),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Deleniti ut accusantium iusto architecto quaerat consequatur vel nostrum."
+                            Title = "Delectus et harum nisi porro consequatur quis voluptatem qui impedit."
                         },
                         new
                         {
                             Id = 7L,
-                            CourseId = 21L,
-                            CreatedAt = new DateTime(2021, 4, 12, 14, 25, 8, 63, DateTimeKind.Unspecified).AddTicks(3524),
-                            CreatedBy = 3L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 12, 27, 10, 18, 1, 612, DateTimeKind.Unspecified).AddTicks(5640),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Voluptatem enim fugiat."
+                            Title = "Maxime optio explicabo quidem."
                         },
                         new
                         {
                             Id = 8L,
-                            CourseId = 14L,
-                            CreatedAt = new DateTime(2021, 9, 8, 6, 59, 17, 426, DateTimeKind.Unspecified).AddTicks(3809),
-                            CreatedBy = 5L,
+                            CourseId = 10L,
+                            CreatedAt = new DateTime(2021, 12, 7, 14, 39, 14, 365, DateTimeKind.Unspecified).AddTicks(187),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Non et quaerat id totam voluptatum incidunt consequatur est."
+                            Title = "Perferendis sint illo commodi iure et dolore nihil sit qui."
                         },
                         new
                         {
                             Id = 9L,
-                            CourseId = 3L,
-                            CreatedAt = new DateTime(2021, 5, 24, 3, 31, 58, 549, DateTimeKind.Unspecified).AddTicks(3260),
-                            CreatedBy = 2L,
+                            CourseId = 16L,
+                            CreatedAt = new DateTime(2021, 11, 18, 16, 55, 58, 427, DateTimeKind.Unspecified).AddTicks(6647),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            Title = "Occaecati exercitationem architecto."
+                            Title = "Cum sequi rerum sint placeat suscipit excepturi."
                         },
                         new
                         {
                             Id = 10L,
-                            CourseId = 16L,
-                            CreatedAt = new DateTime(2021, 6, 6, 9, 39, 33, 359, DateTimeKind.Unspecified).AddTicks(2613),
-                            CreatedBy = 3L,
+                            CourseId = 7L,
+                            CreatedAt = new DateTime(2021, 4, 9, 15, 23, 45, 900, DateTimeKind.Unspecified).AddTicks(768),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Non et vero repudiandae sequi fugiat et."
+                            Title = "Consequatur at facilis eius incidunt."
                         },
                         new
                         {
                             Id = 11L,
-                            CourseId = 10L,
-                            CreatedAt = new DateTime(2021, 6, 29, 2, 8, 17, 799, DateTimeKind.Unspecified).AddTicks(5700),
-                            CreatedBy = 5L,
+                            CourseId = 17L,
+                            CreatedAt = new DateTime(2022, 1, 19, 20, 16, 59, 880, DateTimeKind.Unspecified).AddTicks(8965),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Provident qui vel eum eos impedit."
+                            Title = "Repellendus quo nostrum aliquid reiciendis at quasi maxime autem est."
                         },
                         new
                         {
                             Id = 12L,
-                            CourseId = 19L,
-                            CreatedAt = new DateTime(2021, 4, 20, 15, 57, 9, 809, DateTimeKind.Unspecified).AddTicks(6671),
-                            CreatedBy = 5L,
+                            CourseId = 2L,
+                            CreatedAt = new DateTime(2021, 8, 13, 18, 4, 22, 185, DateTimeKind.Unspecified).AddTicks(8944),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Quidem est et."
+                            Title = "Sit itaque placeat rerum."
                         },
                         new
                         {
                             Id = 13L,
-                            CourseId = 6L,
-                            CreatedAt = new DateTime(2021, 5, 1, 10, 51, 40, 943, DateTimeKind.Unspecified).AddTicks(1932),
+                            CourseId = 14L,
+                            CreatedAt = new DateTime(2021, 12, 27, 17, 55, 10, 431, DateTimeKind.Unspecified).AddTicks(8159),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Vero velit placeat harum quod eius."
+                            Title = "Itaque nulla quae culpa in."
                         },
                         new
                         {
                             Id = 14L,
-                            CourseId = 4L,
-                            CreatedAt = new DateTime(2021, 9, 8, 18, 29, 0, 95, DateTimeKind.Unspecified).AddTicks(7224),
-                            CreatedBy = 1L,
+                            CourseId = 17L,
+                            CreatedAt = new DateTime(2021, 11, 1, 6, 32, 53, 45, DateTimeKind.Unspecified).AddTicks(3944),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Ducimus quidem cum dolores earum."
+                            Title = "Tempora et ipsum vel sapiente et provident itaque saepe ut."
                         },
                         new
                         {
                             Id = 15L,
-                            CourseId = 9L,
-                            CreatedAt = new DateTime(2021, 9, 16, 11, 45, 53, 29, DateTimeKind.Unspecified).AddTicks(7193),
-                            CreatedBy = 4L,
+                            CourseId = 14L,
+                            CreatedAt = new DateTime(2022, 1, 13, 11, 55, 51, 269, DateTimeKind.Unspecified).AddTicks(7658),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Eligendi est et."
+                            Title = "Ut est quo fuga veniam atque."
                         },
                         new
                         {
                             Id = 16L,
-                            CourseId = 6L,
-                            CreatedAt = new DateTime(2021, 11, 4, 8, 4, 48, 450, DateTimeKind.Unspecified).AddTicks(7657),
-                            CreatedBy = 1L,
+                            CourseId = 7L,
+                            CreatedAt = new DateTime(2021, 3, 30, 8, 20, 32, 866, DateTimeKind.Unspecified).AddTicks(8064),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Natus necessitatibus qui."
+                            Title = "Sint omnis dignissimos nemo in minima laudantium."
                         },
                         new
                         {
                             Id = 17L,
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2021, 4, 18, 13, 52, 44, 857, DateTimeKind.Unspecified).AddTicks(5568),
-                            CreatedBy = 5L,
+                            CourseId = 4L,
+                            CreatedAt = new DateTime(2021, 5, 20, 7, 40, 56, 673, DateTimeKind.Unspecified).AddTicks(2163),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Corporis debitis incidunt."
+                            Title = "Reiciendis et voluptas illo architecto eius cumque."
                         },
                         new
                         {
                             Id = 18L,
-                            CourseId = 21L,
-                            CreatedAt = new DateTime(2021, 3, 2, 17, 2, 13, 903, DateTimeKind.Unspecified).AddTicks(8822),
-                            CreatedBy = 2L,
+                            CourseId = 16L,
+                            CreatedAt = new DateTime(2021, 10, 15, 20, 20, 13, 323, DateTimeKind.Unspecified).AddTicks(9029),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Ratione sit odit consequatur."
+                            Title = "Nobis qui quas aut et voluptatibus quia et quaerat inventore."
                         },
                         new
                         {
                             Id = 19L,
-                            CourseId = 10L,
-                            CreatedAt = new DateTime(2022, 1, 1, 21, 21, 35, 426, DateTimeKind.Unspecified).AddTicks(2019),
-                            CreatedBy = 5L,
+                            CourseId = 18L,
+                            CreatedAt = new DateTime(2021, 12, 31, 13, 23, 53, 570, DateTimeKind.Unspecified).AddTicks(6682),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Optio dolores praesentium totam ut explicabo consequatur."
+                            Title = "Quam tempora ut et."
                         },
                         new
                         {
                             Id = 20L,
                             CourseId = 7L,
-                            CreatedAt = new DateTime(2021, 7, 1, 4, 35, 6, 878, DateTimeKind.Unspecified).AddTicks(3673),
-                            CreatedBy = 2L,
+                            CreatedAt = new DateTime(2022, 1, 15, 16, 3, 40, 270, DateTimeKind.Unspecified).AddTicks(2330),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            Title = "Rerum expedita nisi tempore omnis."
+                            Title = "Molestiae natus voluptates eum sunt quia."
                         },
                         new
                         {
                             Id = 21L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 9, 24, 14, 49, 52, 509, DateTimeKind.Unspecified).AddTicks(3348),
-                            CreatedBy = 3L,
+                            CourseId = 11L,
+                            CreatedAt = new DateTime(2021, 6, 6, 7, 57, 25, 386, DateTimeKind.Unspecified).AddTicks(8642),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Et impedit sed vel est."
+                            Title = "Aut est sunt ab et deserunt velit."
                         },
                         new
                         {
                             Id = 22L,
                             CourseId = 5L,
-                            CreatedAt = new DateTime(2021, 5, 6, 7, 0, 13, 128, DateTimeKind.Unspecified).AddTicks(9555),
-                            CreatedBy = 2L,
+                            CreatedAt = new DateTime(2021, 5, 24, 1, 45, 58, 258, DateTimeKind.Unspecified).AddTicks(7361),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Repellat eligendi quae dolor accusantium."
+                            Title = "Rem incidunt sed doloremque et et doloribus."
                         },
                         new
                         {
                             Id = 23L,
-                            CourseId = 5L,
-                            CreatedAt = new DateTime(2021, 4, 14, 12, 8, 24, 724, DateTimeKind.Unspecified).AddTicks(6615),
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2021, 9, 5, 17, 30, 5, 283, DateTimeKind.Unspecified).AddTicks(7129),
                             CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Nisi hic quos blanditiis qui dolorem natus."
+                            Title = "Illum ad rem rerum."
                         },
                         new
                         {
                             Id = 24L,
-                            CourseId = 3L,
-                            CreatedAt = new DateTime(2022, 1, 5, 12, 19, 47, 673, DateTimeKind.Unspecified).AddTicks(6028),
-                            CreatedBy = 5L,
+                            CourseId = 6L,
+                            CreatedAt = new DateTime(2021, 8, 21, 2, 26, 38, 732, DateTimeKind.Unspecified).AddTicks(6052),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Omnis et assumenda maxime unde sint maiores nostrum."
+                            Title = "Aliquid laboriosam aut adipisci at est aspernatur consequatur nihil rerum."
                         },
                         new
                         {
                             Id = 25L,
-                            CourseId = 4L,
-                            CreatedAt = new DateTime(2021, 4, 12, 21, 24, 28, 255, DateTimeKind.Unspecified).AddTicks(8016),
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 4, 30, 16, 1, 16, 645, DateTimeKind.Unspecified).AddTicks(3833),
                             CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Qui explicabo quo reprehenderit quia laudantium harum."
+                            Title = "Qui qui sit nihil aliquid nihil."
                         },
                         new
                         {
                             Id = 26L,
-                            CourseId = 8L,
-                            CreatedAt = new DateTime(2021, 5, 22, 21, 31, 26, 66, DateTimeKind.Unspecified).AddTicks(6517),
-                            CreatedBy = 4L,
+                            CourseId = 20L,
+                            CreatedAt = new DateTime(2022, 1, 11, 14, 30, 6, 354, DateTimeKind.Unspecified).AddTicks(9151),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Eos rerum aut neque ipsam vel illum blanditiis."
+                            Title = "Eos id autem vel culpa vero optio."
                         },
                         new
                         {
                             Id = 27L,
-                            CourseId = 7L,
-                            CreatedAt = new DateTime(2022, 1, 18, 20, 41, 42, 617, DateTimeKind.Unspecified).AddTicks(8558),
-                            CreatedBy = 3L,
+                            CourseId = 17L,
+                            CreatedAt = new DateTime(2021, 7, 10, 0, 18, 57, 905, DateTimeKind.Unspecified).AddTicks(4760),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Non molestiae ullam et aut non aperiam nam porro."
+                            Title = "Dolore laudantium eaque ut laboriosam."
                         },
                         new
                         {
                             Id = 28L,
-                            CourseId = 15L,
-                            CreatedAt = new DateTime(2021, 5, 6, 13, 3, 22, 901, DateTimeKind.Unspecified).AddTicks(3420),
-                            CreatedBy = 2L,
+                            CourseId = 11L,
+                            CreatedAt = new DateTime(2021, 6, 22, 21, 26, 43, 862, DateTimeKind.Unspecified).AddTicks(1070),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Natus et ex nobis necessitatibus."
+                            Title = "Exercitationem vel placeat iure."
                         },
                         new
                         {
                             Id = 29L,
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2021, 9, 7, 10, 27, 43, 309, DateTimeKind.Unspecified).AddTicks(1476),
-                            CreatedBy = 2L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 10, 3, 13, 46, 15, 184, DateTimeKind.Unspecified).AddTicks(1120),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Et aut nam facere tempore."
+                            Title = "Magni nihil odio vitae."
                         },
                         new
                         {
                             Id = 30L,
-                            CourseId = 8L,
-                            CreatedAt = new DateTime(2022, 1, 30, 14, 35, 13, 170, DateTimeKind.Unspecified).AddTicks(8732),
-                            CreatedBy = 1L,
+                            CourseId = 6L,
+                            CreatedAt = new DateTime(2021, 11, 5, 12, 32, 43, 227, DateTimeKind.Unspecified).AddTicks(3124),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Et facere voluptatem et totam et fugiat occaecati itaque."
+                            Title = "Eveniet veniam temporibus similique."
                         },
                         new
                         {
                             Id = 31L,
-                            CourseId = 10L,
-                            CreatedAt = new DateTime(2021, 9, 13, 13, 48, 2, 926, DateTimeKind.Unspecified).AddTicks(342),
-                            CreatedBy = 1L,
+                            CourseId = 20L,
+                            CreatedAt = new DateTime(2021, 5, 20, 12, 10, 4, 432, DateTimeKind.Unspecified).AddTicks(3484),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Ut nulla aut facere rerum laudantium assumenda."
+                            Title = "Quia sunt doloribus exercitationem ex perferendis."
                         },
                         new
                         {
                             Id = 32L,
-                            CourseId = 21L,
-                            CreatedAt = new DateTime(2021, 7, 20, 23, 26, 28, 66, DateTimeKind.Unspecified).AddTicks(5144),
-                            CreatedBy = 2L,
+                            CourseId = 12L,
+                            CreatedAt = new DateTime(2021, 9, 19, 7, 0, 8, 71, DateTimeKind.Unspecified).AddTicks(5699),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Officia sit velit."
+                            Title = "Dolore atque vero ea ea error et."
                         },
                         new
                         {
                             Id = 33L,
-                            CourseId = 14L,
-                            CreatedAt = new DateTime(2022, 1, 18, 22, 41, 12, 982, DateTimeKind.Unspecified).AddTicks(3061),
-                            CreatedBy = 2L,
+                            CourseId = 11L,
+                            CreatedAt = new DateTime(2021, 2, 14, 7, 38, 48, 794, DateTimeKind.Unspecified).AddTicks(64),
+                            CreatedBy = 5L,
                             IsDeleted = false,
-                            Title = "In enim et."
+                            Title = "Tempora libero repellat nihil aspernatur odio atque."
                         },
                         new
                         {
                             Id = 34L,
-                            CourseId = 8L,
-                            CreatedAt = new DateTime(2021, 4, 8, 5, 25, 40, 343, DateTimeKind.Unspecified).AddTicks(8302),
-                            CreatedBy = 5L,
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2021, 10, 7, 23, 39, 54, 168, DateTimeKind.Unspecified).AddTicks(8413),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Sapiente ducimus pariatur consequatur quisquam repellat animi laboriosam."
+                            Title = "Dolores ex voluptatem."
                         },
                         new
                         {
                             Id = 35L,
-                            CourseId = 16L,
-                            CreatedAt = new DateTime(2021, 12, 4, 20, 5, 41, 953, DateTimeKind.Unspecified).AddTicks(6540),
-                            CreatedBy = 5L,
+                            CourseId = 20L,
+                            CreatedAt = new DateTime(2021, 10, 6, 1, 49, 13, 107, DateTimeKind.Unspecified).AddTicks(2066),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Sint delectus et harum nisi porro consequatur quis voluptatem qui."
+                            Title = "Sed voluptas ipsum autem aperiam numquam pariatur reprehenderit dolores."
                         },
                         new
                         {
                             Id = 36L,
-                            CourseId = 17L,
-                            CreatedAt = new DateTime(2021, 2, 7, 21, 58, 5, 970, DateTimeKind.Unspecified).AddTicks(5876),
-                            CreatedBy = 1L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 4, 26, 2, 9, 35, 686, DateTimeKind.Unspecified).AddTicks(8160),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Consectetur maxime optio explicabo quidem natus."
+                            Title = "Deleniti accusamus omnis eveniet et asperiores officia aliquam."
                         },
                         new
                         {
                             Id = 37L,
-                            CourseId = 9L,
-                            CreatedAt = new DateTime(2021, 11, 3, 8, 1, 23, 268, DateTimeKind.Unspecified).AddTicks(2938),
-                            CreatedBy = 3L,
+                            CourseId = 15L,
+                            CreatedAt = new DateTime(2021, 6, 25, 19, 18, 54, 431, DateTimeKind.Unspecified).AddTicks(7253),
+                            CreatedBy = 4L,
                             IsDeleted = false,
-                            Title = "Sint illo commodi."
+                            Title = "In incidunt ut quas eos deleniti sed et."
                         },
                         new
                         {
                             Id = 38L,
-                            CourseId = 19L,
-                            CreatedAt = new DateTime(2021, 5, 4, 2, 54, 55, 722, DateTimeKind.Unspecified).AddTicks(7175),
-                            CreatedBy = 5L,
+                            CourseId = 13L,
+                            CreatedAt = new DateTime(2021, 6, 1, 8, 28, 50, 618, DateTimeKind.Unspecified).AddTicks(2407),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Sit qui voluptate dolorum sequi animi cum sequi."
+                            Title = "Pariatur quidem dolor at impedit rerum."
                         },
                         new
                         {
                             Id = 39L,
-                            CourseId = 18L,
-                            CreatedAt = new DateTime(2021, 6, 12, 7, 42, 39, 684, DateTimeKind.Unspecified).AddTicks(839),
-                            CreatedBy = 5L,
+                            CourseId = 21L,
+                            CreatedAt = new DateTime(2021, 5, 10, 21, 7, 42, 568, DateTimeKind.Unspecified).AddTicks(3975),
+                            CreatedBy = 1L,
                             IsDeleted = false,
-                            Title = "Excepturi quod voluptatibus quia voluptatem."
+                            Title = "Ut voluptatem culpa consequatur."
                         },
                         new
                         {
                             Id = 40L,
-                            CourseId = 21L,
-                            CreatedAt = new DateTime(2021, 5, 17, 9, 0, 9, 320, DateTimeKind.Unspecified).AddTicks(7853),
-                            CreatedBy = 4L,
+                            CourseId = 19L,
+                            CreatedAt = new DateTime(2021, 8, 23, 18, 16, 19, 678, DateTimeKind.Unspecified).AddTicks(8850),
+                            CreatedBy = 2L,
                             IsDeleted = false,
-                            Title = "Incidunt voluptatem sit illum."
+                            Title = "Unde enim in libero blanditiis maiores quas."
                         },
                         new
                         {
                             Id = 41L,
-                            CourseId = 9L,
-                            CreatedAt = new DateTime(2021, 5, 2, 21, 16, 13, 223, DateTimeKind.Unspecified).AddTicks(8858),
-                            CreatedBy = 4L,
+                            CourseId = 16L,
+                            CreatedAt = new DateTime(2021, 6, 18, 3, 45, 1, 778, DateTimeKind.Unspecified).AddTicks(4316),
+                            CreatedBy = 3L,
                             IsDeleted = false,
-                            Title = "Aliquid reiciendis at quasi maxime."
+                            Title = "Ea beatae et voluptatem voluptas quae enim numquam."
                         });
                 });
 
@@ -9249,6 +9488,12 @@ namespace Codi.Core.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("AvatarId");
 
+                    b.HasOne("Codi.Core.DAL.Entities.Organization", "Organization")
+                        .WithMany("Courses")
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Codi.Core.DAL.Entities.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
@@ -9256,6 +9501,8 @@ namespace Codi.Core.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Avatar");
+
+                    b.Navigation("Organization");
 
                     b.Navigation("Owner");
                 });
@@ -9268,12 +9515,6 @@ namespace Codi.Core.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Codi.Core.DAL.Entities.CourseRole", "CourseRole")
-                        .WithMany()
-                        .HasForeignKey("CourseRoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Codi.Core.DAL.Entities.User", "User")
                         .WithMany("CourseUsers")
                         .HasForeignKey("UserId")
@@ -9281,8 +9522,6 @@ namespace Codi.Core.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Course");
-
-                    b.Navigation("CourseRole");
 
                     b.Navigation("User");
                 });
@@ -9321,6 +9560,17 @@ namespace Codi.Core.DAL.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Unit");
+                });
+
+            modelBuilder.Entity("Codi.Core.DAL.Entities.Organization", b =>
+                {
+                    b.HasOne("Codi.Core.DAL.Entities.User", "Owner")
+                        .WithMany("Organizations")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("Codi.Core.DAL.Entities.Project", b =>
@@ -9429,6 +9679,11 @@ namespace Codi.Core.DAL.Migrations
                     b.Navigation("Threads");
                 });
 
+            modelBuilder.Entity("Codi.Core.DAL.Entities.Organization", b =>
+                {
+                    b.Navigation("Courses");
+                });
+
             modelBuilder.Entity("Codi.Core.DAL.Entities.Project", b =>
                 {
                     b.Navigation("InvitedUsers");
@@ -9451,6 +9706,8 @@ namespace Codi.Core.DAL.Migrations
                     b.Navigation("CourseUsers");
 
                     b.Navigation("InvitedUsers");
+
+                    b.Navigation("Organizations");
 
                     b.Navigation("Projects");
 
