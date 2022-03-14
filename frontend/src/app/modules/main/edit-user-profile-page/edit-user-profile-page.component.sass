@@ -15,11 +15,12 @@
 .edit-area
   width: 100%
   background-color: $background-panel-color
-  display: flex
-  justify-content: center
   border: 1px solid $secondary
   border-radius: 5px
   padding: 15px
+  &.edit-user
+    display: flex
+    justify-content: center
 
 .info
     margin: 0 15px
@@ -64,3 +65,10 @@
       flex-wrap: wrap
       .firstName
         margin: 0
+
+.provider-item
+  display: flex
+  justify-content: space-between
+  padding: 10px 0
+  .provider-title
+    font-size: $h4-font-size
