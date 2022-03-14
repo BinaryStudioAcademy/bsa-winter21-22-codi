@@ -18,12 +18,6 @@ export class LandingContentComponent {
 
     languages = Languages;
 
-    enumKeys: any = [];
-
-    constructor() {
-        this.enumKeys = Object.keys(this.languages).filter(f => !isNaN(Number(f)));
-    }
-
     showMoreItems() {
         this.showMoreLanguages = !this.showMoreLanguages
     }

@@ -123,9 +123,9 @@
         </div>
         <div id="supported-language" class="center">
             <h1>Languages</h1>
-            <div class="language-list-content" [ngClass]="{'limitTextHeight': showMoreLanguages === false}">
-                <ul *ngFor="let name of enumKeys">
-                    {{ languages[name] }}
+            <div class="language-list-content" [ngClass]="{'limitTextHeight': !showMoreLanguages}">
+                <ul *ngFor="let language of languages | keyvalue">
+                    {{ language.value }}
                 </ul>
             </div>
             <p>
