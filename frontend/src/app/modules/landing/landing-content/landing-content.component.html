@@ -121,6 +121,19 @@
                 </div>
             </div>
         </div>
+        <div id="supported-language" class="center">
+            <h1>Languages</h1>
+            <div class="language-list-content" [ngClass]="{'limitTextHeight': !showMoreLanguages}">
+                <ul *ngFor="let language of languages | keyvalue">
+                    {{ language.value }}
+                </ul>
+            </div>
+            <p>
+                <a type="button" class="button" (click)="showMoreItems()">
+                    {{ showMoreLanguages ? 'Read Less' : 'Read More' }}
+                </a>
+            </p>
+        </div>
     </div>
     <div class="center start-coding">
         <h1>Get started in seconds</h1>
