@@ -16,6 +16,7 @@ import { CourseService } from "@core/services/course.service";
 import {
     UpdateOrganizationDialogComponent
 } from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
+import { Utils } from "@shared/common/utils";
 
 @Component({
     selector: 'app-courses-page',
@@ -60,7 +61,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 if(result) {
                     this.reloadOrganizations();
                 }
-            })
+            }).catch(Utils.noop);
     }
 
     deleteCourse(courseId: number, orgId: number) {
@@ -127,7 +128,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 if(result) {
                     this.reloadOrganizations();
                 }
-            })
+            }).catch(Utils.noop);
     }
 
     updateOrganization(org: Organization) {
@@ -138,7 +139,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 if(result) {
                     this.reloadOrganizations();
                 }
-            })
+            }).catch(Utils.noop);
     }
 
     deleteOrganization(id: number) {
