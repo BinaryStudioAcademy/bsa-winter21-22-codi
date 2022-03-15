@@ -51,7 +51,7 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
                 (user) => {
-                    this.user = user.body!
+                    this.user = user
                 },
                 error => {
                     this.router.navigate(['main/not-found']);

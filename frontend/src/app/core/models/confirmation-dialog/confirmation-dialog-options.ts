@@ -6,4 +6,5 @@ export interface ConfirmationDialogOptions {
     confirmButton: boolean;
     confirmButtonText: string;
     confirmButtonClass: string;
+    centered: boolean;
 }

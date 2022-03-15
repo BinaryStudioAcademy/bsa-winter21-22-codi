@@ -1,0 +1,20 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+        <h3>New education Organization</h3>
+        <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="organization">Organization name</label>
+            <input type="text" class="form-control" id="organization" placeholder="What should the Organization be called?" formControlName="name">
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['name'].hasError('minlength') || form.controls['name'].hasError('maxlength')">
+                    Your organization name must be between 5 and 100 characters
+                </li>
+            </ul>
+        </div>
+        <button type="submit" (click)="createOrganization()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Create organization</button>
+    </form>
+</div>

@@ -1,11 +1,19 @@
 @import 'variables'
 
 body
-    margin: 0px
+    margin: 0
 .text
     color: #c6c8c9
     font-weight: bold
-
+ul
+    list-style: none
+    padding: 0
+    margin: 0
+.content
+    color: $base-text-color
+    padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
 
 .modal-dialog .modal-content
     background-color: $background-panel-color
@@ -17,6 +25,9 @@ body
     & .modal-header
         border: 0
         padding-bottom: 0
+
+    & .modal-body
+        white-space: pre-line
 
     & .modal-footer
         border: 0
@@ -30,7 +41,19 @@ body
     & .close:not(:disabled):not(:hover):not(.disabled):focus
         opacity: 0.5
 
-input.form-control
+.dialog-container
+    padding: 20px
+
+    .dialog-header
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+
+        .close
+            color: $base-text-color
+            outline: none
+
+input.form-control, textarea.form-control
     border-color: $input-outline
     color: $input-text-color
     background: $background-panel-color
@@ -54,10 +77,46 @@ a
   min-width: 118px
   max-width: 118px
   height: 118px
-  border-radius: 100%
+  border-radius: 50%
   &.generic-avatar
     background-color: $primary
     color: $base-text-color
     font-size: $h2-font-size
     text-align: center
     line-height: 118px
+
+.avatar-sm
+    min-width: 45px
+    max-width: 45px
+    height: 45px
+    border-radius: 50%
+    &.generic-avatar
+        background-color: $primary
+        color: $base-text-color
+        font-size: $h5-font-size
+        text-align: center
+        line-height: 45px
+
+.dropdown-menu
+    max-height: 140px
+    overflow-y: auto
+    width: 200px
+    border-width: 1px
+    border-style: solid
+    border-color: $secondary
+    border-radius: 8px
+    background-color: $background-panel-color
+    &::-webkit-scrollbar
+        background-color: $background-panel-color
+        width: 8px
+        border-width: 0.5px
+        border-style: solid
+        border-color: $secondary
+        border-top-right-radius: 5px
+        border-bottom-right-radius: 5px
+    &::-webkit-scrollbar-thumb
+        background-color: $primary
+        border-radius: 10px
+
+.dropdown-item
+    color: $base-text-color

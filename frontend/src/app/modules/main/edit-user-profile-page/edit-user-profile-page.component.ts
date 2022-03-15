@@ -7,6 +7,8 @@ import { BaseComponent } from "@core/base/base.component";
 import { takeUntil } from "rxjs";
 import { User } from "@core/models/user/user";
 import { NotificationService } from "@core/services/notification.service";
+import { regexs } from "@shared/constants/regexs";
+import { Provider } from "@shared/constants/provider";
 
 @Component({
     selector: 'app-edit-user-profile-page',
@@ -14,10 +16,12 @@ import { NotificationService } from "@core/services/notification.service";
     styleUrls: ['./edit-user-profile-page.component.sass']
 })
 export class EditUserProfilePageComponent extends BaseComponent implements OnInit {
-
-    public user: User;
+    user: User;
     form: FormGroup;
-    public imageFile: File;
+    imageFile: File;
+    provider = Provider;
+    isGoogleLinked: boolean;
+    isGitHubLinked: boolean;
 
     constructor(
         private authService: AuthService,
@@ -33,11 +37,25 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
             userName: new FormControl('',
                 [
                     Validators.required,
-                    Validators.maxLength(25)
+                    Validators.minLength(2),
+                    Validators.maxLength(25),
+                    Validators.pattern(regexs.username)
                 ]),
-            firstName: new FormControl('', Validators.maxLength(100)),
-            lastName: new FormControl('', Validators.maxLength(100)),
-            bio: new FormControl('', Validators.maxLength(500))
+            firstName: new FormControl('',
+                [
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.name)
+                ]),
+            lastName: new FormControl('',
+                [
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.name)
+                ]),
+            bio: new FormControl('',
+                [
+                    Validators.maxLength(140),
+                    Validators.pattern(/(?!^\s+$)^.*$/m)
+                ])
         });
 
         this.authService
@@ -46,7 +64,9 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
             .subscribe(user => {
                 this.user = user;
                 this.form.patchValue(user);
-            })
+            });
+
+        this.reloadLinkedProviders();
     }
 
     updateUser() {
@@ -63,12 +83,12 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         this.userService
             .update(updatedUser)
             .subscribe((user) => {
-                this.authService.setUser(user.body!);
+                this.authService.setUser(user);
                 this.router.navigate(['main/user', this.user.id]);
             });
     }
 
-    public handleFileInput(target: any) {
+    handleFileInput(target: any) {
         this.imageFile = target.files[0];
 
         if (!this.imageFile) {
@@ -85,5 +105,38 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         const reader = new FileReader();
         reader.addEventListener('load', () => (this.user.avatar = reader.result as string));
         reader.readAsDataURL(this.imageFile);
+    }
+
+    linkProvider(provider: Provider) {
+        this.authService
+            .linkProvider(provider)
+            .subscribe(() => {
+                this.reloadLinkedProviders();
+            });
+    }
+
+    unlinkProvider(provider: Provider) {
+        this.authService
+            .unlinkProvider(provider)
+            .subscribe(() => {
+                this.reloadLinkedProviders();
+            });
+    }
+
+    reloadLinkedProviders() {
+        this.authService.getLinkedProviders().subscribe((providers => {
+            this.isGitHubLinked = false;
+            this.isGoogleLinked = false;
+            providers.forEach(item => {
+                switch (item) {
+                    case this.provider.google:
+                        this.isGoogleLinked = true;
+                        break;
+                    case this.provider.github:
+                        this.isGitHubLinked = true;
+                        break;
+                }
+            })
+        }))
     }
 }

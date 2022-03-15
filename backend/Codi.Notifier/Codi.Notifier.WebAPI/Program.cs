@@ -10,6 +10,8 @@ builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.WebHost.UseUrls("http://*:5070");
 
 var app = builder.Build();
 

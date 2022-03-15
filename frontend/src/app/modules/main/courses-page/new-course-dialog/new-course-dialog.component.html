@@ -1,0 +1,33 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+        <h3>New Course in {{org.name}}</h3>
+        <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="remark">
+        This course is in {{org.name}}. Organization owner can see the members and contents of this course.
+    </div>
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="courseName">Course display name</label>
+            <input type="text" class="form-control" id="courseName" placeholder="What should the Course be called?" formControlName="displayName">
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('minlength') || form.controls['displayName'].hasError('maxlength')">
+                    Your course name must be between 5 and 100 characters
+                </li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <label for="courseDisplayName">Course username</label>
+            <input type="text" class="form-control" id="courseDisplayName" placeholder="course-username" aria-describedby="courseNameHelp" formControlName="name">
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['name'].hasError('minlength') || form.controls['name'].hasError('maxlength')">
+                    Your course-username must be between 5 and 100 characters
+                </li>
+            </ul>
+            <div id="courseNameHelp" class="form-text attention">You can't change this after creating a Course! So pick carefully.</div>
+        </div>
+        <button type="submit" (click)="createCourse()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Create course</button>
+    </form>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { regexs } from '@shared/constants/regexs';
-import { AuthService } from '@core/services/auth.service';
+import { SignInService } from "@core/services/sign-in.service";
+import { RegistrationService } from "@core/services/registration.service";
 
 @Component({
     selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
     form!: FormGroup
 
     constructor(
-        private authService: AuthService,
+        private signInService: SignInService,
+        private registrationService: RegistrationService
     ) {}
 
     ngOnInit(): void {
@@ -21,7 +23,7 @@ export class RegisterComponent implements OnInit {
                 [
                     Validators.required,
                     Validators.minLength(2),
-                    Validators.maxLength(15),
+                    Validators.maxLength(25),
                     Validators.pattern(regexs.username),
                 ]),
             email: new FormControl('',
@@ -41,16 +43,16 @@ export class RegisterComponent implements OnInit {
     }
 
     withGoogle() {
-        this.authService.withGoogle();
+        this.signInService.signInWithGoogle();
     }
 
     withGit() {
-        this.authService.withGitHub();
+        this.signInService.signInWithGithub();
     }
 
     submit() {
         if (!this.form.valid) return;
         const { username, email, password } = this.form.value;
-        this.authService.signUp(username, email, password);
+        this.registrationService.signUp(username, email, password);
     }
 }

@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Codi.Core.WebAPI.Controllers;
 
-[ApiController]
 [Authorize]
+[ApiController]
 [Route("[controller]")]
 public class UsersController : ControllerBase
 {
@@ -18,26 +18,26 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<UserDto>> Create([FromBody] CreateUserDto userDto)
+    public async Task<ActionResult<UserDto>> CreateAsync([FromBody] CreateUserDto userDto)
     {
-        return Ok(await _usersService.Create(userDto));
+        return Ok(await _usersService.CreateUserAsync(userDto));
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserDto>> GetUserById(long id)
+    public async Task<ActionResult<UserDto>> GetByIdAsync(long id)
     {
-        return Ok(await _usersService.GetById(id));
+        return Ok(await _usersService.GetUserByIdAsync(id));
     }
     
     [HttpGet("firebaseId")]
-    public async Task<ActionResult<UserDto>> GetUserByFirebaseId(string id)
+    public async Task<ActionResult<UserDto>> GetByFirebaseIdAsync(string id)
     {
-        return Ok(await _usersService.GetByFirebaseId(id));
+        return Ok(await _usersService.GetUserByFirebaseIdAsync(id));
     }
 
     [HttpPut]
-    public async Task<ActionResult<UserDto>> Update([FromBody] UserDto userDto)
+    public async Task<ActionResult<UserDto>> UpdateAsync([FromBody] UserDto userDto)
     {
-        return Ok(await _usersService.Update(userDto));
+        return Ok(await _usersService.UpdateUserAsync(userDto));
     }
 }

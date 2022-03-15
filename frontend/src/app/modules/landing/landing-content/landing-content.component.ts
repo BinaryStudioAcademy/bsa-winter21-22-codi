@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Languages} from "@shared/constants/languages";
 
 @Component({
     selector: 'app-landing-content',
@@ -12,4 +13,12 @@ export class LandingContentComponent {
     MultiplayerIMG: string = 'assets/images/LandingPage/multiplayer-cursors.png';
 
     CommunityIMG: string = 'assets/images/LandingPage/community.png';
+
+    showMoreLanguages: boolean = false;
+
+    languages = Languages;
+
+    showMoreItems() {
+        this.showMoreLanguages = !this.showMoreLanguages
+    }
 }

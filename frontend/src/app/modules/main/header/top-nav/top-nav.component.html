@@ -15,9 +15,9 @@
     </div>
     <div class="navbar-right">
         <div class="user-container">
-            <img *ngIf="currentUser?.avatar; else generic" class="user-icon" src="{{currentUser?.avatar}}" alt="User avatar">
+            <img *ngIf="currentUser?.avatar; else generic" class="user-icon avatar-sm" src="{{currentUser?.avatar}}" alt="User avatar">
             <ng-template #generic>
-              <div class="user-icon generic-icon">
+              <div class="user-icon avatar-sm generic-avatar">
                 {{currentUser?.userName?.substring(0,1)?.toUpperCase()}}
               </div>
             </ng-template>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn btn-outline-primary btn-lg">
+            <button type="button" class="btn btn-outline-primary btn-lg" (click)="createRepl()">
                 <i class="button fa fa-plus"></i>
             </button>
         </div>

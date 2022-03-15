@@ -1,8 +1,8 @@
-<div class="wrapper">
+<div class="content">
   <div class="container">
     <div class="user-info">
       <div class="title">Profile</div>
-      <form [formGroup]="form" class="edit-area">
+      <form [formGroup]="form" class="edit-area edit-user">
         <div class="avatar-container" (click)="file.click()">
           <input hidden class="file-hide" #file accept="image/*" type="file" (change)="handleFileInput($event.target)">
           <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
@@ -11,41 +11,83 @@
               {{user?.userName?.substring(0,1)?.toUpperCase()}}
             </div>
           </ng-template>
+          <div class="change-avatar">change avatar</div>
         </div>
         <div class="info">
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input formControlName="userName" type="text" class="form-control" id="username" aria-describedby="usernameHelp">
-            <div id="usernameHelp" class="form-text text-danger" *ngIf="form.controls['userName'].hasError('maxlength')">
-              Username must be less than 25 characters
-            </div>
+            <input formControlName="userName" type="text" class="form-control" id="username">
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['userName'].hasError('required')">
+                    Username is required
+                </li>
+                <li class="text-danger" *ngIf="form.controls['userName'].hasError('minlength') || form.controls['userName'].hasError('maxlength')">
+                    Username must be between 2 and 25 characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['userName'].hasError('pattern')">
+                    Username can only contain latin letters, digits
+                </li>
+            </ul>
           </div>
           <div class="name-inputs">
             <div class="mb-3 firstName">
               <label for="firstName" class="form-label">First name</label>
-              <input formControlName="firstName" type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp">
-              <div id="firstNameHelp" class="text-danger" *ngIf="form.controls['firstName'].hasError('maxlength')">
-                First name must be less than 100 characters
-              </div>
+              <input formControlName="firstName" type="text" class="form-control" id="firstName">
+              <ul>
+                  <li class="text-danger" *ngIf="form.controls['firstName'].hasError('maxlength')">
+                      First name must be less than 100 characters
+                  </li>
+                  <li class="text-danger" *ngIf="form.controls['firstName'].hasError('pattern')">
+                      First name must only contain latin letters
+                  </li>
+              </ul>
             </div>
             <div class="mb-3 lastName">
               <label for="lastName" class="form-label">Last name</label>
-              <input formControlName="lastName" type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp">
-              <div id="lastNameHelp" class="text-danger" *ngIf="form.controls['lastName'].hasError('maxlength')">
-                Last name must be less than 100 characters
-              </div>
+              <input formControlName="lastName" type="text" class="form-control" id="lastName">
+              <ul>
+                  <li class="text-danger" *ngIf="form.controls['lastName'].hasError('maxlength')">
+                      Last name must be less than 100 characters
+                  </li>
+                  <li class="text-danger" *ngIf="form.controls['lastName'].hasError('pattern')">
+                      Last name must only contain latin letters
+                  </li>
+              </ul>
             </div>
           </div>
           <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>
-            <input formControlName="bio" type="text" class="form-control bio" id="bio" aria-describedby="bioHelp">
-            <div id="bioHelp" class="form-text text-danger" *ngIf="form.controls['bio'].hasError('maxlength')">
-              Last name must be less than 500 characters
+            <textarea formControlName="bio" type="text" class="form-control bio" id="bio" aria-describedby="bioHelp"></textarea>
+            <div id="bioHelp" class="form-text bioHelp" [ngClass]="{'text-danger' : form.controls['bio'].value?.length > 140}">
+                * {{form.controls['bio'].value?.length === null ? 0 : form.controls['bio'].value?.length}} / 140 characters is allowed
             </div>
           </div>
           <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>
         </div>
       </form>
+    </div>
+    <div class="connected-providers">
+        <div class="title">Connected services</div>
+        <div class="edit-area">
+            <div class="provider-item">
+                <div class="provider-title">
+                    Google
+                </div>
+                <button class="btn btn-primary" (click)="isGoogleLinked ? unlinkProvider(provider.google)
+                : linkProvider(provider.google)">
+                    {{isGoogleLinked ? 'Disconnect' : 'Connect'}}
+                </button>
+            </div>
+            <div class="provider-item">
+                <div class="provider-title">
+                    Github
+                </div>
+                <button class="btn btn-primary" (click)="isGitHubLinked ? unlinkProvider(provider.github)
+                : linkProvider(provider.github)">
+                    {{isGitHubLinked ? 'Disconnect' : 'Connect'}}
+                </button>
+            </div>
+        </div>
     </div>
   </div>
 </div>

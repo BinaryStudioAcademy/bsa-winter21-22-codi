@@ -12,7 +12,7 @@
           <input type="text" placeholder="Username" class="form-control" aria-describedby="usernameError" formControlName="username"/>
           <ul>
             <li class="text-danger" *ngIf="form.controls['username'].hasError('minlength') || form.controls['username'].hasError('maxlength')">
-              Your username must be between 2 and 15 characters
+              Your username must be between 2 and 25 characters
             </li>
             <li class="text-danger" *ngIf="form.controls['username'].hasError('pattern')">
               Your username can only contain latin letters, digits
@@ -34,7 +34,7 @@
               Your password must be between 8 and 35 characters
             </li>
             <li class="text-danger" *ngIf="form.controls['password'].hasError('pattern')">
-              Your Password must contain at least one lowercase latin letter, uppercase latin letter, digit, special character
+              Your Password must contain at least one lowercase latin letter, uppercase latin letter, digit
             </li>
           </ul>
         </div>

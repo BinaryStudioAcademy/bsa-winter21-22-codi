@@ -1,2 +1,107 @@
+@import '~src/styles/variables'
+
+.line
+    width: 100%
+    &:after
+        content: ''
+        display: block
+        height: 1px
+        width: 100%
+        background-color: $base-text-color
+
+.dropdown-toggle:after
+    display: none
+
+.dropdown-menu
+    right: 0 !important
+    left: auto !important
+    padding: 0
+    border: 2px solid $secondary
+    background-color: $background-panel-color
+    .btn
+        width: 100%
+        background-color: $background-panel-color
+        color: $base-text-color
+        &:focus
+            outline: none
+            box-shadow: none
+        &:hover
+            background-color: $background-panel-color-light
+
+.toggle
+    padding: 10px 20px
+    margin: auto
+    border-radius: 5px
+    cursor: pointer
+    transition: linear .1s
+    &:hover
+        background-color: $secondary
+
 .content
+    color: $base-text-color
+    cursor: default
+    padding: 20px
     min-height: calc( 100vh - 110px )
+    height: auto
+    .organizations-header
+        margin-bottom: 15px
+    .organization-type
+        .btn
+            margin-bottom: 15px
+        .organization-type-header
+            display: flex
+            align-items: center
+            margin-bottom: 15px
+        .organizations-collection
+            margin-bottom: 15px
+            .organization
+                background-color: $background-panel-color
+                padding: 15px 10px
+                border: 2px solid $secondary
+                border-radius: 5px
+                .create-course
+                    margin-top: 15px
+                .organization-header
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                .organization-subheader
+                    .org-info
+                        display: flex
+                        margin-bottom: 5px
+                        .org-info-item
+                            padding: 5px
+                            border-radius: 5px
+                            background-color: $background-panel-color-light
+                            color: $muted-text-color
+                            margin-right: 5px
+                    .courses-info
+                        display: flex
+                        align-items: center
+                        color: $muted-text-color
+                        font-size: $font-size-sm
+                        padding: 10px 0
+                        div
+                            padding: 0 5px
+                            white-space: nowrap
+                        .line:first-child
+                            width: 2%
+            .courses-collection
+                .line
+                    display: block
+                    margin-bottom: 10px
+                .course
+                    .course-info
+                        display: flex
+                        align-items: center
+                        cursor: pointer
+                    .avatar-sm
+                        margin-right: 5px
+                    .user-settings
+                        display: flex
+                        cursor: pointer
+                    .course-container
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+                        padding: 20px 0
