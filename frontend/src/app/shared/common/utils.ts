@@ -1,3 +1,1 @@
-export class Utils {
-    static noop = () => {}
-}
+export const noop = () => {};
