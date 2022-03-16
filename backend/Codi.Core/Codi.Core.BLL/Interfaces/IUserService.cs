@@ -1,4 +1,4 @@
-﻿using Codi.Core.DAL.Entities;
+﻿using Codi.Core.Common.DTO.User;
 
 namespace Codi.Core.BL.Interfaces;
 

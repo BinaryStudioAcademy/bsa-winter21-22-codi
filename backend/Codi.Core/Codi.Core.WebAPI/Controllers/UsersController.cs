@@ -1,4 +1,5 @@
 ﻿using Codi.Core.BL.Interfaces;
+using Codi.Core.Common.DTO.User;
 using Codi.Core.DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

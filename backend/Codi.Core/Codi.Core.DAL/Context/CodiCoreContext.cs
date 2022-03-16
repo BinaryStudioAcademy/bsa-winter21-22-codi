@@ -21,6 +21,9 @@ namespace Codi.Core.DAL
         public DbSet<ThreadComment> ThreadComments { get; private set; }
         public DbSet<Unit> Units { get; private set; }
         public DbSet<User> Users { get; private set; }
+        public DbSet<App> Apps { get; private set; }
+        public DbSet<Tag> Tags { get; private set; }
+        public DbSet<AppTag> AppTags { get; private set; }
 
         public CodiCoreContext(DbContextOptions<CodiCoreContext> options) : base(options)
         {
