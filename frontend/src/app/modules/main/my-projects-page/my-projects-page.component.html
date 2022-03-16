@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="projects-header">
+        <div class="projects-header-title">
+            <h1>My projects</h1>
+            <button (click)="createProject()" class="btn btn-primary">Create new</button>
+        </div>
+        <div class="muted-text">
+            <p></p>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!loading" class="mt-4">
+        <table class="table">
+            <tr *ngFor="let project of projects">
+                <td class="vertical-center"><i
+                        class="fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i></td>
+                <td class="vertical-center">{{project.title}}</td>
+                <td class="vertical-center">{{project.createdAt | date}}</td>
+                <td class="min-width">
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <span *ngIf="projects.length === 0" class="alert alert-danger" role="alert">
+            You don't have any projects. Create a new one!
+        </span>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="modal-header d-flex justify-content-between align-items-start">
+    <h3>Create project</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="activeModal.close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    <button class="btn btn-outline-primary btn-sm">Import from GitHub</button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="form-group w100-dropdown-container">
+            <label for="template">Template</label>
+
+            <input id="template" type="text" class="form-control" placeholder="Search templates"
+                [resultFormatter]="resultFormatter"
+                [inputFormatter]="inputFormatter"
+                formControlName="template" [ngbTypeahead]="search"
+                (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
+                [editable]='false' #instance="ngbTypeahead"
+                [class.is-invalid]="form.controls['template'].touched && form.controls['template'].invalid" />
+        </div>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" formControlName="title"
+                [class.is-invalid]="form.controls['title'].touched && form.controls['title'].invalid"
+                placeholder="Name your project" class="form-control">
+            <div class="invalid-feedback">
+                <ul>
+                    <li
+                        *ngIf="form.controls['title'].hasError('minlength') || form.controls['title'].hasError('maxlength')">
+                        Your project name must be between 2 and 100 characters
+                    </li>
+                    <li *ngIf="form.controls['title'].hasError('pattern')">
+                        Your project name can only contain latin letters, digits
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Privacy</label>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="isPublic" formControlName="isPublic">
+                <label class="custom-control-label" for="isPublic">Project is public</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="submit" [disabled]="!form.valid" (click)="submit()" class="btn btn-primary w-100">Create
+        project</button>
+</div>

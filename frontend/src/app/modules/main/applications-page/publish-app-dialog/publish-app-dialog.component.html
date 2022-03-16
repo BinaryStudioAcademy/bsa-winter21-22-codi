@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h3>Publish app</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="closeDialog()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+
+<div class="modal-body">
+    <div *ngIf="userProjects.length === 0" class="alert alert-danger" role="alert">
+        You don't have any projects. Create a new one!
+    </div>
+
+    <form [formGroup]="form">
+        <div class="form-group w100-dropdown-container">
+            <label for="project">Project</label>
+
+            <ng-template #projectTemplate let-r="result" let-t="term">
+                <div class="d-flex flex-column">
+                    <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>
+                    <span>{{r.createdAt | date}}</span>
+                </div>
+              </ng-template>
+
+            <input id="project" type="text" class="form-control" placeholder="Select project"
+                [resultTemplate]="projectTemplate"
+                [inputFormatter]="projectInputFormatter"
+                formControlName="project" [ngbTypeahead]="searchProjects"
+                (focus)="projectsFocus$.next($any($event).target.value)" (click)="projectsClick$.next($any($event).target.value)"
+                [editable]='false' #projectInstance="ngbTypeahead"
+                [class.is-invalid]="form.controls['project'].touched && form.controls['project'].invalid" />
+        </div>
+
+        <div class="form-group w100-dropdown-container">
+            <label>Add tags</label>
+
+            <input id="tagSelect" type="text" class="form-control" placeholder="Add tag"
+                (selectItem)="selectTag($event)"
+                [resultFormatter]="tagFormatter"
+                [inputFormatter]="tagFormatter"
+                [ngbTypeahead]="searchTags"
+                (focus)="tagsFocus$.next($any($event).target.value)" (click)="tagsClick$.next($any($event).target.value)"
+                [editable]='false' #tagsInstance="ngbTypeahead"/>
+
+                <div class="d-flex flex-wrap mt-2">
+                    <span class="d-flex justify-content-center align-items-center" *ngFor="let tag of selectedTags" class="tag">
+                        {{tag.name}}
+                        <i class="fa fa-times-circle ml-1" (click)="deleteTag(tag)"></i>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="project">Icon(todo)</label>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!form.valid"  (click)="publishApp()" class="btn btn-primary w-100 mt-3">Publish app</button>
+    </form>
+</div>
