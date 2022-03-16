@@ -5,4 +5,4 @@ export interface PaginatedList<T> {
     totalCount?: number;
     hasPreviousPage?: boolean;
     hasNextPage?: boolean;
-  }
+}

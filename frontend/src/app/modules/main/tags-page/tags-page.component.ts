@@ -21,7 +21,7 @@ export class TagsPageComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.tagService
-        .getAllTags()
+            .getAllTags()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next: (resp) => {

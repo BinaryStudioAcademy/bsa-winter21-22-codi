@@ -6,12 +6,9 @@ import { App } from '@core/models/app/app';
     templateUrl: './app-card.component.html',
     styleUrls: ['./app-card.component.sass']
 })
-export class AppCardComponent implements OnInit {
+export class AppCardComponent {
 
     @Input() public app: App;
 
     constructor() {}
-
-    ngOnInit(): void {
-    }
 }

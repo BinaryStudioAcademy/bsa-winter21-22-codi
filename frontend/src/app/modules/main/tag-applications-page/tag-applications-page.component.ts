@@ -10,8 +10,8 @@ import { TagService } from '@core/services/tag.service';
 import { forkJoin, takeUntil, tap } from 'rxjs';
 
 @Component({
-  templateUrl: './tag-applications-page.component.html',
-  styleUrls: ['./tag-applications-page.component.sass']
+    templateUrl: './tag-applications-page.component.html',
+    styleUrls: ['./tag-applications-page.component.sass']
 })
 export class TagApplicationsPageComponent extends BaseComponent implements OnInit {
 
