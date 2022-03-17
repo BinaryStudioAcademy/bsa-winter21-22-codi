@@ -170,6 +170,9 @@ export class SignInService {
             case 'auth/wrong-password':
                 this.notificationService.showErrorMessage('The email address or password is incorrect', 'Error');
                 break;
+            case 'auth/user-not-found':
+                this.notificationService.showErrorMessage('Invalid email or password. Please try again', 'Error');
+                break;
             default:
                 this.notificationService.showErrorMessage(error.code, 'Error');
                 break;
