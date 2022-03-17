@@ -15,7 +15,6 @@
 .user-info
   display: flex
   justify-content: flex-start
-  flex-wrap: wrap
 
 .info
   padding: 0 3px 0px 15px
@@ -47,6 +46,7 @@
 .searching-panel
   display: flex
   justify-content: space-between
+  align-items: center
   margin-bottom: 10px
 
 .repls-title, .repl-name
@@ -128,3 +128,10 @@ ngb-carousel
 
 .repl-title
   cursor: pointer
+
+@media (max-width: 1080px)
+    .user-info
+        flex-wrap: wrap
+    .info
+        word-wrap: anywhere
+        padding: 0 0
