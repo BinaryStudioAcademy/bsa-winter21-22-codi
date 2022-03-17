@@ -7,5 +7,5 @@ public interface IUserService
     Task<UserDto> CreateUserAsync(CreateUserDto user);
     Task<UserDto> GetUserByIdAsync(long id);
     Task<UserDto> GetUserByFirebaseIdAsync(string id);
-    Task<UserDto> UpdateUserAsync(UserDto user);
+    Task<UserDto> UpdateUserAsync(long userId, UserDto user);
 }

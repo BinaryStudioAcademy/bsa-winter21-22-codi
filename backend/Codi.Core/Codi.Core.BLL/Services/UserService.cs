@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Codi.Core.BL.Interfaces;
 using Codi.Core.BLL.Exceptions;
+using Codi.Core.Common.Helpers;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,7 @@ public class UserService : BaseService, IUserService
 
         var user = _mapper.Map<User>(userDto, opts => opts.AfterMap((src, dst) =>
         {
+            dst.UserName = UsernameHelper.OmitSpecialCharacters(dst.UserName);
             dst.CreatedAt = DateTime.Now;
         }));
 
@@ -58,14 +60,14 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(userEntity);
     }
 
-    public async Task<UserDto> UpdateUserAsync(UserDto userDto)
+    public async Task<UserDto> UpdateUserAsync(long userId, UserDto userDto)
     {
         var userEntity = await _context.Users
             .Include(u => u.Avatar)
-            .FirstOrDefaultAsync(u => u.Id == userDto.Id);
-        if (userEntity is null)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+        if (userEntity is null || userDto.Id != userEntity.Id)
         {
-            throw new NotFoundException(nameof(User), userDto.Id);
+            throw new NotFoundException(nameof(User), userId);
         }
 
         var mergedUser = _mapper.Map(userDto, userEntity);
