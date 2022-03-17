@@ -1,4 +1,5 @@
 @import 'src/styles/variables'
+// @import url(src/app/modules/main/header/top-nav/top-nav.compunent.style2.sass)
 
 .all
     position: fixed
@@ -20,7 +21,7 @@
     width: 100%
     height: 35px
     border: 3px solid $base-text-color
-    border-radius: 10px
+    border-radius: $border-radius
     overflow: hidden
     background-color: transperent
     input
@@ -139,7 +140,7 @@
         width: 150px
         background-color: $primary
         border: 4px solid $primary
-        border-radius: 10px
+        border-radius: $border-radius
         height: 40px
         font-size: 20px
         font-weight: bold
@@ -167,71 +168,6 @@
     margin-right: 5px
     transition: all 0.5s
 
-.project-container
-    display: flex
-    align-items: center
-    .project-name
-        color: $base-text-color
-        font-family: $font-family-base
-        font-weight: bold
-        white-space: nowrap
-        max-width: 150px
-        max-height: 25px
-        overflow: hidden
-        text-overflow: ellipsis
-        overflow-y: hidden
-    .proj-changes-history-icon
-        padding: 10px
-        filter: $icon-filter-grey
-        &:hover
-            cursor: pointer
-.navbar-center
-    width: 33%
-    .buttons-container
-        display: flex
-        align-items: center
-        .run-button-container
-            padding: 10px
-            background-color: $custom-run-button-color
-            border-radius: 10px
-            margin-right: 10px
-            border: none
-            .run-button-icon
-                padding: 5px
-                height: 25px
-                width: 25px
-                filter: $icon-filter-purple
-        .build-button-container
-            padding: 10px
-            background-color: $custom-build-button-color
-            margin-left: 10px
-            border-radius: 10px
-            border: none
-            .build-button-icon
-                padding: 5px
-                height: 25px
-                width: 25px
-                filter: $icon-filter-cyan
-
-.button-text
-    color: $base-text-color
-    font-family: $font-family-base
-    font-weight: bold
-
-.worksapce-search-container-box
-    margin-left: 10px
-
-.btn 
-    font-family: $font-family-base
-    font-weight: bold
-    color: $base-text-color
-
-.search-container-button
-    border: 3px solid $base-text-color
-    border-radius: 10px
-    background-color: $background-panel-color
-    .search-icon
-        color: $base-text-color
 
 @media screen and ( min-width: 751px )
     .navbar-left

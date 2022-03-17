@@ -11,7 +11,7 @@ import {NotificationService} from "@core/services/notification.service";
 @Component({
     selector: 'app-top-nav',
     templateUrl: './top-nav.component.html',
-    styleUrls: ['./top-nav.component.sass'],
+    styleUrls: ['./top-nav.component.sass', 'top-nav.compunent.style2.sass'],
 })
 export class TopNavComponent extends BaseComponent implements OnInit {
     currentUser: User;
