@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {NgbActiveModal, NgbTypeahead} from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal, NgbModal, NgbTypeahead} from "@ng-bootstrap/ng-bootstrap";
 import {debounceTime, distinctUntilChanged, filter, map, merge, Observable, OperatorFunction, Subject, takeUntil} from "rxjs";
 import {TemplateService} from "@core/services/template.service";
 import {Template} from "@core/models/template/template";
@@ -8,6 +8,9 @@ import {ProjectService} from "@core/services/project.service";
 import {CreateProject} from "@core/models/project/create-project";
 import {NotificationService} from "@core/services/notification.service";
 import {regexs} from "@shared/constants/regexs";
+import {
+    ImportGithubProjectModalComponent
+} from "@shared/components/import-github-project-modal/import-github-project-modal.component";
 
 @Component({
     templateUrl: './create-repl-modal.component.html',
@@ -25,6 +28,7 @@ export class CreateReplModalComponent implements OnInit, OnDestroy {
 
     constructor(
         public activeModal: NgbActiveModal,
+        private modalService: NgbModal,
         private templateService: TemplateService,
         private projectService: ProjectService,
         private notificationService: NotificationService
@@ -69,6 +73,11 @@ export class CreateReplModalComponent implements OnInit, OnDestroy {
                 (resp) => {
                     if(resp) this.templates = resp
                 })
+    }
+
+    openImportGithubProject() {
+        this.activeModal.close();
+        this.modalService.open(ImportGithubProjectModalComponent, {centered: true});
     }
 
     submit() {

@@ -34,7 +34,8 @@ export class SignInService {
     ) { }
 
     signInWithGithub(redirectUrl?: string) {
-        let githubProvider = new GithubAuthProvider();
+        const githubProvider = new GithubAuthProvider();
+        githubProvider.addScope('repo');
         return signInWithPopup(this.auth, githubProvider).then(
             (credential) => {
                 this.loginWithProviders(credential, redirectUrl);
