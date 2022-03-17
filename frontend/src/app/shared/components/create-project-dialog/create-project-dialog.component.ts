@@ -76,7 +76,7 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
             .subscribe({
                 next: (resp) => {
                     this.activeModal.close(resp)
-                    this.notificationService.showSuccessMessage(`Project created: ${resp.title}(ID = ${resp.id})`, 'Good job!')
+                    this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success')
                 },
                 error: () => {
                     this.activeModal.close()

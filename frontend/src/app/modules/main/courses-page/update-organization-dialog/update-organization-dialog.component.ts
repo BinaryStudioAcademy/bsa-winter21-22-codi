@@ -54,9 +54,9 @@ export class UpdateOrganizationDialogComponent extends BaseComponent implements 
             .subscribe(
                 (org) => {
                     updatedOrg = org;
-                    this.notificationsService.showSuccessMessage('Organization successfully updated');
+                    this.notificationsService.showSuccessMessage('Organization updated', 'Success');
                 },
-                error => this.notificationsService.showErrorMessage('Failed to update organization'),
+                error => this.notificationsService.showErrorMessage('Failed to update organization', 'Error'),
                 () => this.modal.close(updatedOrg)
             );
     }
