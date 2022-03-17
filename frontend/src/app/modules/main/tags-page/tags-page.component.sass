@@ -1,0 +1,21 @@
+@import 'src/styles/variables'
+
+.content
+    color: $base-text-color
+    padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
+
+    .tag
+        background: $background-panel-color
+        margin: 4px
+        padding: 6px 16px
+        border-radius: 34px
+        color: $secondary
+        cursor: pointer
+        font-size: 18px
+
+        &:hover
+            background: $primary
+            color: $background-color
+            transition: all .2s ease

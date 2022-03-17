@@ -131,7 +131,7 @@
                             </div>
                         </button>
                         <div class="dropdown-create-button-container">
-                            <button ngbDropdownItem type="button" class="dropdown-create-button">
+                            <button ngbDropdownItem type="button" class="dropdown-create-button" (click)="createProject()">
                                 <i class="dropdown-button fa fa-plus"></i>
                                 Create
                             </button>
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="button-container">
-                <button type="button" class="btn btn-outline-primary btn-lg" (click)="createRepl()">
+                <button type="button" class="btn btn-outline-primary btn-lg" (click)="createProject()">
                     <i class="button fa fa-plus"></i>
                 </button>
             </div>

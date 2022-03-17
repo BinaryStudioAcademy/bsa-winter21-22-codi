@@ -1,0 +1,29 @@
+@import 'src/styles/variables'
+
+.content
+    color: $base-text-color
+    padding: 20px
+    min-height: calc( 100vh - 110px )
+    height: auto
+
+    .apps-collection-container
+        display: grid
+        grid-gap: 20px
+        grid-template-columns: 1fr
+
+.apps-header
+    .apps-header-title
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .btn
+            width: 150px
+
+@media screen and ( min-width: 1200px )
+    .content .apps-collection-container
+        grid-template-columns: 1fr  1fr
+
+@media screen and ( min-width: 1800px )
+    .content .apps-collection-container
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)  minmax(0, 1fr)

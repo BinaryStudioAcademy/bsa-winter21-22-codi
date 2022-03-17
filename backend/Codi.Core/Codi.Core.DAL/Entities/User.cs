@@ -18,5 +18,6 @@
         public List<ThreadComment> ThreadComments { get; set; } = default!;
         public List<Thread> Threads { get; set; } = default!;
         public List<Organization> Organizations { get; set; } = default!;
+        public List<App> Apps { get; set; } = default!;
     }
 }

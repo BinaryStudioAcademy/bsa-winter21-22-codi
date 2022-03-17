@@ -18,9 +18,9 @@ export class TopNavComponent extends BaseComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private eventService: EventService,
-        private modalService: ProjectCreationModalService,
         public router: Router,
-        private notificationService: NotificationService
+        private notificationService: NotificationService,
+        private modalService: ProjectCreationModalService,
     ) {
         super();
     }
@@ -50,7 +50,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
             });
     }
 
-    createRepl() {
-        this.modalService.openReplModal();
+    createProject() {
+        this.modalService.openCreateDialog();
     }
 }

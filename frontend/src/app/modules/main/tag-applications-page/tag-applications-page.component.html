@@ -1,0 +1,30 @@
+<div class="content" >
+    <div class="apps-header">
+        <div class="apps-header-title">
+            <h1>{{tagInfo?.name}} &centerdot; {{tagInfo?.count | i18nPlural: countPluralMarring}}</h1>
+        </div>
+        <div class="muted-text">
+            <p>{{tagInfo?.description}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+    <div *ngIf="!loading" class="apps-collection mt-4">
+        <div class="apps-collection-container">
+            <app-card *ngFor="let app of apps?.items" [app]="app"></app-card>
+        </div>
+
+        <ngb-pagination class="d-flex justify-content-center mt-4" [maxSize]="6" (pageChange)="loadApps($event, tagId)" [pageSize]="pageSize" [collectionSize]="apps?.totalCount ?? 10" [page]="apps?.pageNumber ?? 1" [rotate]="true" ></ngb-pagination>
+    </div>
+
+    <div class="mt-4">
+        <a routerLink="/main/tags" class="h4 d-flex justify-content-center align-items-center text-primary">
+            <i class="fa fa-tags mr-2"></i> See all tags...
+        </a>
+    </div>
+</div>

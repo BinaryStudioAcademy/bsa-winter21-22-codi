@@ -1,0 +1,17 @@
+<div class="app-card">
+    <div class="app-card-image">
+        <img src="{{app.image ? app.image : 'assets/images/placeholder.png'}}" alt="app image">
+    </div>
+
+    <div class="app-card-info">
+        <div class="app-card-author d-flex align-items-center mb-2">
+            <img class="user-drag-none" src="{{app.owner.avatar ?? 'https://picsum.photos/id/1080/300/300'}}" alt="author avatar">
+            <a class="ml-1" href="/main/apps">{{app.owner.userName}}</a>
+        </div>
+        <h4 class="app-card-title">{{app.name}}</h4>
+        <div class="app-card-description">{{app.description}}</div>
+        <div class="d-flex flex-wrap mt-3">
+            <span [routerLink]="['/main/apps/tag', tag.id]" *ngFor="let tag of app.tags" class="app-card-tag">{{tag.name}}</span>
+        </div>
+    </div>
+</div>
