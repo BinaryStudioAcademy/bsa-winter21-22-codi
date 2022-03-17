@@ -126,7 +126,7 @@ export class PublishAppDialogComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (resp) => {
                     this.modal.close(resp)
-                    this.notificationService.showSuccessMessage(`App "${resp.name}"(ID = ${resp.id}) successfully published`, 'Success')
+                    this.notificationService.showSuccessMessage(`App "${resp.name}" successfully published`, 'Success')
                 },
                 error: (error) => {
                     this.modal.close()
