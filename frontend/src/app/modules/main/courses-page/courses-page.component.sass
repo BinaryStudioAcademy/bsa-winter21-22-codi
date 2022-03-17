@@ -64,7 +64,7 @@
                 .organization-header
                     display: flex
                     justify-content: space-between
-                    align-items: center
+                    align-items: flex-start
                 .organization-subheader
                     .org-info
                         display: flex
@@ -81,11 +81,12 @@
                         color: $muted-text-color
                         font-size: $font-size-sm
                         padding: 10px 0
-                        div
+                        .member
                             padding: 0 5px
-                            white-space: nowrap
+                            width: 100%
+                            max-width: fit-content
                         .line:first-child
-                            width: 2%
+                            width: 5%
             .courses-collection
                 .line
                     display: block
@@ -93,12 +94,17 @@
                 .course
                     .course-info
                         display: flex
-                        align-items: center
+                        align-items: flex-start
                         cursor: pointer
+                        .course-name
+                            align-self: center
+                            word-wrap: anywhere
+                            padding: 0 10px 0 5px
                     .avatar-sm
                         margin-right: 5px
                     .user-settings
                         display: flex
+                        align-self: flex-start
                         cursor: pointer
                     .course-container
                         display: flex
