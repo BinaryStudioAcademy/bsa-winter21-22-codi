@@ -25,6 +25,7 @@ import { AppCardComponent } from './applications-page/app-card/app-card.componen
 import { TagApplicationsPageComponent } from './tag-applications-page/tag-applications-page.component';
 import { TagsPageComponent } from './tags-page/tags-page.component';
 import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
+import { WorkspacePageComponent } from './workspace-page/workspace-page.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.com
         AppCardComponent,
         TagApplicationsPageComponent,
         TagsPageComponent,
+        WorkspacePageComponent,
     ],
     imports: [
         SharedModule,

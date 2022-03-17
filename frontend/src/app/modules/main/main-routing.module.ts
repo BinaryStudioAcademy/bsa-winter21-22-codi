@@ -10,6 +10,7 @@ import { ApplicationsPageComponent } from './applications-page/applicaions-page.
 import { TagApplicationsPageComponent } from './tag-applications-page/tag-applications-page.component';
 import { TagsPageComponent } from './tags-page/tags-page.component';
 import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
+import { WorkspacePageComponent } from './workspace-page/workspace-page.component';
 
 const routes: Routes = [{
     path: '',
@@ -27,6 +28,9 @@ const routes: Routes = [{
     }, {
         path: 'projects',
         component: MyProjectsPageComponent,
+    },{
+        path: 'myprojects/workspace',
+        component: WorkspacePageComponent,
     }, {
         path: 'home',
         component: HomePageComponent,

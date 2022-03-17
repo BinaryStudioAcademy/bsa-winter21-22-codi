@@ -11,16 +11,16 @@ import {NotificationService} from "@core/services/notification.service";
 @Component({
     selector: 'app-top-nav',
     templateUrl: './top-nav.component.html',
-    styleUrls: ['./top-nav.component.sass'],
+    styleUrls: ['./top-nav.component.sass', 'top-nav.compunent.style2.sass'],
 })
 export class TopNavComponent extends BaseComponent implements OnInit {
     currentUser: User;
     constructor(
         private authService: AuthService,
         private eventService: EventService,
-        private router: Router,
+        public router: Router,
         private notificationService: NotificationService,
-        private projectDialogService: ProjectCreationModalService
+        private modalService: ProjectCreationModalService,
     ) {
         super();
     }
@@ -51,6 +51,6 @@ export class TopNavComponent extends BaseComponent implements OnInit {
     }
 
     createProject() {
-        this.projectDialogService.openCreateDialog();
+        this.modalService.openCreateDialog();
     }
 }
