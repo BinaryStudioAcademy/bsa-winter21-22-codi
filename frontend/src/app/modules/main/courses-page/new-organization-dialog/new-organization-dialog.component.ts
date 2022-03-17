@@ -51,9 +51,9 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
             .subscribe(
                 (org) => {
                     createdOrg = org;
-                    this.notificationsService.showSuccessMessage('Organization successfully created');
+                    this.notificationsService.showSuccessMessage('Organization created', 'Success');
                 },
-                error => this.notificationsService.showErrorMessage('Failed to create organization'),
+                error => this.notificationsService.showErrorMessage('Failed to create organization', 'Error'),
                 () => this.modal.close(createdOrg)
             );
     }

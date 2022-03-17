@@ -63,9 +63,9 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
             .subscribe(
                 (org) => {
                     createdCourse = org;
-                    this.notificationsService.showSuccessMessage('Course successfully created');
+                    this.notificationsService.showSuccessMessage('Course created', 'Success');
                 },
-                (error) => this.notificationsService.showErrorMessage('This username have already used'),
+                (error) => this.notificationsService.showErrorMessage('This username have already used', 'Error'),
                 () => this.modal.close(createdCourse)
             );
     }

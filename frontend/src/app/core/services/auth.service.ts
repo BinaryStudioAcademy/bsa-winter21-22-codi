@@ -7,7 +7,7 @@ import {
     linkWithPopup,
     unlink
 } from '@angular/fire/auth';
-import { AuthProvider, GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { idToken } from 'rxfire/auth';
 import { Router } from '@angular/router';
 import { NotificationService } from '@core/services/notification.service';
@@ -68,10 +68,10 @@ export class AuthService {
         let provider = this.getProvider(providerId);
         return from(linkWithPopup(this.auth.currentUser!, provider)
             .then(() => {
-                this.notificationService.showSuccessMessage(`${provider.providerId} was successfully linked`);
+                this.notificationService.showSuccessMessage(`${provider.providerId} was linked`, 'Success');
             })
             .catch(err => {
-                this.notificationService.showErrorMessage('This account is already added to Codi!');
+                this.notificationService.showErrorMessage('This account is already added to Codi!', 'Error');
             }));
     }
 
@@ -92,7 +92,7 @@ export class AuthService {
     unlinkProvider(providerId: Provider) {
         return from(unlink(this.auth.currentUser!, providerId)
             .then(() => {
-                this.notificationService.showSuccessMessage(`${providerId} was successfully unlinked`);
+                this.notificationService.showSuccessMessage(`${providerId} was unlinked`, 'Success');
             }));
     }
 
