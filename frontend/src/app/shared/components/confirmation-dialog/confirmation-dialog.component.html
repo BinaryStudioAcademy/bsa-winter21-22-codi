@@ -1,11 +1,13 @@
 <div class="modal-header">
     <h4 class="modal-title">{{title}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="closeDismiss()">
-        <span aria-hidden="true">&times;</span>
-    </button>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="closeDismiss()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
 </div>
 
-<div *ngIf="options?.allowHtmlContent; else contentBody" class="modal-body"
+<div class="modal-body" *ngIf="options?.allowHtmlContent; else contentBody"
     [innerHTML]="content">
 </div>
 

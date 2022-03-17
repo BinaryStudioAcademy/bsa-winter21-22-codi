@@ -9,6 +9,9 @@ namespace Codi.Core.BL.MappingProfiles
         public ProjectProfile()
         {
             CreateMap<Project, ProjectDto>().ReverseMap();
+            CreateMap<Project, ProjectNameDto>();
+            CreateMap<NewProjectDto, Project>();
+            CreateMap<UpdateProjectDto, Project>();
         }
     }
 }

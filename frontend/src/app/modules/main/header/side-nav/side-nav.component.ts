@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProjectCreationModalService } from '@core/services/project-creation-modal.service';
 
 import { SideNavService } from '@core/services/side-nav.service';
 
@@ -8,5 +9,9 @@ import { SideNavService } from '@core/services/side-nav.service';
     styleUrls: ['./side-nav.component.sass'],
 })
 export class SideNavComponent {
-    constructor(public sideNavService: SideNavService) { }
+    constructor(public sideNavService: SideNavService, private projectDialogService: ProjectCreationModalService) { }
+
+    createProject() {
+        this.projectDialogService.openCreateDialog();
+    }
 }

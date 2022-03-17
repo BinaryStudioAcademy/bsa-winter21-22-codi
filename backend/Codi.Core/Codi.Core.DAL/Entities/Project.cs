@@ -6,6 +6,7 @@
         public string? Description { get; set; }
         public bool IsPublic { get; set; }
 
+        public Guid ProjectDocumentId { get; set; }
         public long OwnerId { get; set; }
         public User Owner { get; set; } = default!;
         public List<Thread> Threads { get; set; } = default!;

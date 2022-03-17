@@ -1,4 +1,5 @@
 @import 'src/styles/variables'
+// @import url(src/app/modules/main/header/top-nav/top-nav.compunent.style2.sass)
 
 .all
     position: fixed
@@ -16,11 +17,11 @@
 .search-container
     display: grid
     align-content: center
-    grid-template-columns:1.5rem 4fr 1fr
+    grid-template-columns:2rem 4fr 1fr
     width: 100%
     height: 35px
     border: 3px solid $base-text-color
-    border-radius: 10px
+    border-radius: $border-radius
     overflow: hidden
     background-color: transperent
     input
@@ -139,7 +140,7 @@
         width: 150px
         background-color: $primary
         border: 4px solid $primary
-        border-radius: 10px
+        border-radius: $border-radius
         height: 40px
         font-size: 20px
         font-weight: bold
@@ -163,9 +164,10 @@
     align-items: center
     grid-gap: 35px
     justify-content: flex-start
-    width: 80%
+    width: 33%
     margin-right: 5px
     transition: all 0.5s
+
 
 @media screen and ( min-width: 751px )
     .navbar-left
@@ -173,7 +175,7 @@
         align-items: center
         grid-gap: 95px
         justify-content: flex-start
-        width: 55%
+        width: 33%
         transition: all 0.5s
     .dropdown-create-button-container
         display: none

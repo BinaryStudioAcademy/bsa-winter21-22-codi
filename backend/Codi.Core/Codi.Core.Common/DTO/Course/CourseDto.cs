@@ -1,4 +1,4 @@
-﻿using Codi.Core.DAL.Entities;
+﻿using Codi.Core.Common.DTO.User;
 
 namespace Codi.Core.Common.DTO.Course
 {
@@ -9,7 +9,7 @@ namespace Codi.Core.Common.DTO.Course
         public string? DisplayName { get; set; }
         public string? Description { get; set; }
         public string? Avatar { get; set; }
-        public UserDto Owner { get; set; }
+        public UserDto Owner { get; set; } = default!;
         public DateTime CreatedAt { get; set; }
     }
 }

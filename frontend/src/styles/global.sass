@@ -15,56 +15,34 @@ ul
     min-height: calc( 100vh - 110px )
     height: auto
 
-.modal-dialog .modal-content
-    background-color: $background-panel-color
-    color: $base-text-color
+.modal-dialog
+    margin-top: $modal-dialog-margin-y-sm-up
 
-    & .modal-header .close
+    .modal-content
+        background-color: $background-panel-color
         color: $base-text-color
 
-    & .modal-header
-        border: 0
-        padding-bottom: 0
+        .modal-header .close
+            color: $base-text-color
 
-    & .modal-body
-        white-space: pre-line
+        .modal-header
+            border: 0
+            padding-bottom: 0
 
-    & .modal-footer
-        border: 0
-        padding-top: 0
-
-    & .close
-        padding: 0
-        margin: 0
-        user-select: none
-
-    & .close:not(:disabled):not(:hover):not(.disabled):focus
-        opacity: 0.5
-
-.dialog-container
-    padding: 20px
-
-    .dialog-header
-        display: flex
-        justify-content: space-between
-        align-items: flex-start
+        .modal-footer
+            border: 0
+            padding-top: 0
 
         .close
-            color: $base-text-color
-            outline: none
+            position: absolute
+            top: 0
+            right: 0
+            padding: 0
+            margin: 0
+            transform: translate(0, calc(-100% - 8px))
 
-input.form-control, textarea.form-control
-    border-color: $input-outline
-    color: $input-text-color
-    background: $background-panel-color
-
-    &:hover
-        border-color: $input-hover-outline
-
-    &:focus
-        border-color: $input-focus-outline
-        background: $background-panel-color
-        color: $input-text-color
+            button
+                box-shadow: none
 
 a
   text-decoration: none
@@ -98,25 +76,46 @@ a
         line-height: 45px
 
 .dropdown-menu
-    max-height: 140px
+    max-height: 180px
     overflow-y: auto
-    width: 200px
     border-width: 1px
     border-style: solid
     border-color: $secondary
     border-radius: 8px
     background-color: $background-panel-color
-    &::-webkit-scrollbar
-        background-color: $background-panel-color
-        width: 8px
-        border-width: 0.5px
-        border-style: solid
-        border-color: $secondary
-        border-top-right-radius: 5px
-        border-bottom-right-radius: 5px
-    &::-webkit-scrollbar-thumb
-        background-color: $primary
-        border-radius: 10px
 
 .dropdown-item
     color: $base-text-color
+
+.w100-dropdown-container
+    position: relative
+    .dropdown-menu
+        width: 100%
+
+.table
+    color: $base-text-color
+
+.page-item
+    .page-link
+        background-color: $background-panel-color
+        border-color: $background-panel-color
+    &.disabled .page-link
+        background-color: darken($background-panel-color, 7%)
+        border-color: darken($background-panel-color, 7%)
+
+::-webkit-scrollbar
+    width: 8px
+    height: 8px
+
+::-webkit-scrollbar-thumb
+    background-color: darken($primary, 5%)
+    border-radius: 36px
+
+::-webkit-scrollbar-track-piece
+    background-color: lighten($background-panel-color, 5%)
+
+::-webkit-scrollbar-corner
+  background-color: lighten($background-panel-color, 5%)
+
+::-webkit-resizer
+    background-color: darken($primary, 5%)

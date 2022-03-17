@@ -35,6 +35,9 @@ namespace Codi.Core.DAL.Context
             var invitedUsers = GenerateRandomInvitedUsers(users, projects, 100);
             var threads = GenerateRandomThreads(users, projects, lessons, 80);
             var threadComments = GenerateRandomThreadComments(users, threads, 120);
+            var tags = GenerateTags();
+            var apps = GenerateRandomApps(users, images, 30);
+            var appTags = GenerateRandomAppTags(apps, tags, 80);
 
             modelBuilder.Entity<Sample>().HasData(GenerateSamples());
 
@@ -50,6 +53,9 @@ namespace Codi.Core.DAL.Context
             modelBuilder.Entity<InvitedUser>().HasData(invitedUsers);
             modelBuilder.Entity<Thread>().HasData(threads);
             modelBuilder.Entity<ThreadComment>().HasData(threadComments);
+            modelBuilder.Entity<Tag>().HasData(tags);
+            modelBuilder.Entity<App>().HasData(apps);
+            modelBuilder.Entity<AppTag>().HasData(appTags);
         }
 
         private static IList<Sample> GenerateSamples(int count = 10)
@@ -161,7 +167,7 @@ namespace Codi.Core.DAL.Context
                 .GroupBy(cu => new { cu.UserId, cu.CourseId }).Select(g => g.First())
                 .ToList();
         }
-        
+
         public static IList<Submission> GenerateRandomSubmissions(IList<Lesson> lessons, IList<User> users, int count)
         {
             Faker.GlobalUniqueIndex = 1;
@@ -177,7 +183,7 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
         }
-        
+
         public static IList<Project> GenerateRandomProjects(IList<User> users, int count)
         {
             Faker.GlobalUniqueIndex = 1;
@@ -185,6 +191,7 @@ namespace Codi.Core.DAL.Context
             return new Faker<Project>()
                 .RuleFor(pi => pi.Id, f => f.IndexGlobal)
                 .RuleFor(pi => pi.Title, f => f.Lorem.Sentence())
+                .RuleFor(pi => pi.ProjectDocumentId, f => f.Random.Guid())
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.IsPublic, f => f.Random.Bool())
                 .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
@@ -256,5 +263,53 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
         }
+
+        public static IList<Tag> GenerateTags()
+        {
+            int id = 1;
+            return Tags
+                .Select(n => new Tag { Id = id++, Name = n, CreatedBy = 1, CreatedAt = new DateTime(2000, 1, 1) })
+                .ToList();
+        }
+
+        public static IList<App> GenerateRandomApps(IList<User> users, IList<Image> images, int count)
+        {
+            Faker.GlobalUniqueIndex = 1;
+
+            return new Faker<App>()
+                .RuleFor(pi => pi.Id, f => f.IndexGlobal)
+                .RuleFor(pi => pi.Name, f => string.Join("", f.Random.WordsArray(f.Random.Number(2, 4))))
+                .RuleFor(pi => pi.DisplayName, f => f.Lorem.Sentence())
+                .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 6)))
+                .RuleFor(pi => pi.AppDocumentId, f => f.Random.Guid())
+                .RuleFor(pi => pi.ImageId, f => f.PickRandom(images).Id)
+                .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
+                .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
+                .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
+                .Generate(count);
+        }
+        public static IList<AppTag> GenerateRandomAppTags(IList<App> apps, IList<Tag> tags, int count)
+        {
+            var randomizer = new Randomizer();
+            return Enumerable.Range(1, count + 1)
+                .Select(id => new AppTag { 
+                    Id = id, 
+                    AppId = randomizer.ListItem(apps).Id, 
+                    TagId = randomizer.ListItem(tags).Id,
+                    CreatedBy = 1,
+                    CreatedAt = new DateTime(2000, 1, 1)
+                })
+                .GroupBy(cu => new { cu.AppId, cu.TagId }).Select(g => g.First())
+                .ToList();
+        }
+
+        private static readonly string[] CourseRoles = { "admin", "member" };
+
+        private static readonly string[] Tags = {
+            "javascript", "python", "java", "c#", "php", "android", "html", "jquery", "css", "ios",
+             "mysql", "sql", "node.js", "arrays", "c", "asp.net", "reactjs", "json", ".net",
+             "swift", "python", "django", "angular", "excel", "regex", "pandas", "ruby", "wordpress", 
+             "iphone", "ajax", "linux", "xml", "asp.net-mvc", "vba", "spring", "laravel", "database",
+        };
     }
 }

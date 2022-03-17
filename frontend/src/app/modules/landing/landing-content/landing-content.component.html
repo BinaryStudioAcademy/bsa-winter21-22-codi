@@ -6,12 +6,12 @@
     <div class="promo">
         Code, create, and <br />learn together
     </div>
-    <div class="center">
+    <div class="center mt-3">
         Use our free, collaborative, in-browser IDE to code in 50+ languages - without <br /> spending a second on
         setup.
         <br />
-        <button class="button-coding" [routerLink]="['/login']" >
-            &lt;&gt;Start coding
+        <button class="button-coding" [routerLink]="['/login']">
+            &lt;&gt; Start coding
         </button>
     </div>
     <div class="heading">
@@ -75,7 +75,7 @@
                         Code right in your<br /> browser.
                     </div>
                     <div class="feature-text">
-                        <span class="feature-text-header">Embeddable, 0 setup, and collaborative.</span>
+                        <span class="feature-text-header">Embeddable, 0 setup, and collaborative. </span>
                         <span class="feature-text-content">Codi is the best tool for queckly starting, sharingm and
                             developing
                             projects in any programming language, right from your browser.</span>
@@ -93,7 +93,7 @@
                         Code together.
                     </div>
                     <div class="feature-text">
-                        <span class="feature-text-header">Jump right in.</span>
+                        <span class="feature-text-header">Jump right in. </span>
                         <span class="feature-text-content">Enjoy a Google Docs-like editing experience, where you can
                             see your collaborators` cursors.
                         </span>
@@ -113,7 +113,7 @@
                         Talk, learn, collab.
                     </div>
                     <div class="feature-text">
-                        <span class="feature-text-header">Help is just a click away.</span>
+                        <span class="feature-text-header">Help is just a click away. </span>
                         <span class="feature-text-content">
                             Instantly get help from a community of millions of other programmers and learners.
                         </span>
@@ -122,24 +122,26 @@
             </div>
         </div>
         <div id="supported-language" class="center">
-            <h1>Languages</h1>
-            <div class="language-list-content" [ngClass]="{'limitTextHeight': !showMoreLanguages}">
-                <ul *ngFor="let language of languages | keyvalue">
-                    {{ language.value }}
-                </ul>
+            <div>
+                <h1>Languages</h1>
+                <div class="language-list-content" [ngClass]="{'limitTextHeight': !showMoreLanguages}">
+                    <ul *ngFor="let language of languages | keyvalue">
+                        {{ language.value }}
+                    </ul>
+                </div>
+                <div class="align-self-start mt-2">
+                    <a type="button" class="button" (click)="showMoreItems()">
+                        {{ showMoreLanguages ? 'Less languages' : 'More languages' }}
+                    </a>
+                </div>
             </div>
-            <p>
-                <a type="button" class="button" (click)="showMoreItems()">
-                    {{ showMoreLanguages ? 'Read Less' : 'Read More' }}
-                </a>
-            </p>
         </div>
     </div>
     <div class="center start-coding">
         <h1>Get started in seconds</h1>
         <div>
             <button class="button-coding" [routerLink]="['/login']">
-                &lt;&gt;Start coding
+                &lt;&gt; Start coding
             </button>
         </div>
     </div>

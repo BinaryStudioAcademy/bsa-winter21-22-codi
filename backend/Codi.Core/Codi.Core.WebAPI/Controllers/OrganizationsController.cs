@@ -42,7 +42,7 @@ public class OrganizationsController : ControllerBase
             return BadRequest();
         }
 
-        organizationDto.OwnerId = (await _userService.GetUserByFirebaseIdAsync(this.GetUserIdFromToken())).Id;
+        organizationDto.OwnerId = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
         var organization = await _organizationService.CreateOrganizationAsync(organizationDto);
         return Ok(organization);
     }
@@ -55,7 +55,7 @@ public class OrganizationsController : ControllerBase
             return BadRequest();
         }
 
-        organizationDto.OwnerId = (await _userService.GetUserByFirebaseIdAsync(this.GetUserIdFromToken())).Id;
+        organizationDto.OwnerId = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
         var organization = await _organizationService.UpdateOrganizationAsync(organizationDto);
         return Ok(organization);
     }

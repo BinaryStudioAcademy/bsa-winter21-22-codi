@@ -33,7 +33,8 @@ namespace Codi.Core.WebAPI.Middlewares
             context.Response.StatusCode = exception switch
             {
                 ArgumentNullException => 400,
-                NotFoundException => 400,
+                NotFoundException => 404,
+                InvalidTokenException => 401,
                 _ => 500
             };
 

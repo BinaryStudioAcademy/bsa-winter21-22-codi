@@ -10,6 +10,9 @@ using MongoDB.Bson.Serialization.Conventions;
 using Microsoft.AspNetCore.Builder;
 using Codi.Core.DAL.NoSql.Seed;
 using MongoDB.Driver;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson;
 
 namespace Codi.Core.DAL
 {
@@ -33,15 +36,19 @@ namespace Codi.Core.DAL
 
         private static void AddCodiFileStorage(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<CodiFileStorageSettings>(configuration.GetSection("FileStorageDatabase"));
-
-            services.AddSingleton<IMongoContext, CodiFileStorageContext>();
-
             ConventionRegistry.Register(nameof(CamelCaseElementNameConvention), new ConventionPack { new CamelCaseElementNameConvention() }, _ => true);
             ConventionRegistry.Register(nameof(IgnoreIfNullConvention), new ConventionPack { new IgnoreIfNullConvention(true) }, _ => true);
+            BsonDefaults.GuidRepresentationMode = GuidRepresentationMode.V3;
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
+            services.Configure<CodiFileStorageSettings>(configuration.GetSection("FileStorageDatabase"));
+            services.AddSingleton<IMongoContext, CodiFileStorageContext>();
+
 
             services.AddScoped<IFileRepository, FileRepository>();
             services.AddScoped<ITemplateRepository, TemplateRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IAppRepository, AppRepository>();
         }
 
         public static IApplicationBuilder MigrateDB(this IApplicationBuilder builder)
@@ -65,8 +72,12 @@ namespace Codi.Core.DAL
             {
                 var fileRepository = scope.ServiceProvider.GetRequiredService<IFileRepository>();
                 var templateRepository = scope.ServiceProvider.GetRequiredService<ITemplateRepository>();
+                var projectRepository = scope.ServiceProvider.GetRequiredService<IProjectRepository>();
+                var appRepository = scope.ServiceProvider.GetRequiredService<IAppRepository>();
+                using var codeCoreContext = scope.ServiceProvider.GetRequiredService<CodiCoreContext>();
 
-                await CodiFileStorageSeed.SeedData(fileRepository, templateRepository);
+                await CodiFileStorageSeed.SeedData(codeCoreContext, fileRepository, 
+                    templateRepository, projectRepository, appRepository);
             }
 
             return builder;
