@@ -1,10 +1,13 @@
-<div class="dialog-container">
-    <div class="dialog-header">
-        <h3>New education Organization</h3>
-        <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
-            <span aria-hidden="true">&times;</span>
+<div class="modal-header">
+    <h3>New education Organization</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="closeDialog()">
+            <i class="fa fa-times"></i>
         </button>
     </div>
+</div>
+
+<div class="modal-body">
     <form [formGroup]="form">
         <div class="form-group">
             <label for="organization">Organization name</label>
