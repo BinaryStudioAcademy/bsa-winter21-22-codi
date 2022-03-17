@@ -31,7 +31,7 @@ namespace Codi.Core.BLL.Models
             }
             else
             {
-                source = source.Skip((pageNumber - 1) * pageSize);
+                source = source.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             }
 
             var items = await source.ToListAsync();
