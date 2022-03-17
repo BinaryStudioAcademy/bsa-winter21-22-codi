@@ -22,6 +22,7 @@ import { NewCourseDialogComponent } from './courses-page/new-course-dialog/new-c
 import {
     UpdateOrganizationDialogComponent
 } from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
+import { WorkspacePageComponent } from './workspace-page/workspace-page.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import {
         NewOrganizationDialogComponent,
         NewCourseDialogComponent,
         UpdateOrganizationDialogComponent,
+        WorkspacePageComponent,
     ],
     imports: [
         SharedModule,

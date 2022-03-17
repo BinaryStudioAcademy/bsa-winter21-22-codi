@@ -8,6 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainComponent } from './main-page/main-page.component';
 import { UserProfilePageComponent } from "@modules/main/user-profile-page/user-profile-page.component";
 import { EditUserProfilePageComponent } from "@modules/main/edit-user-profile-page/edit-user-profile-page.component";
+import { WorkspacePageComponent } from './workspace-page/workspace-page.component';
 
 const routes: Routes = [{
     path: '',
@@ -25,6 +26,9 @@ const routes: Routes = [{
     }, {
         path: 'myprojects',
         component: MyProjectsPageComponent,
+    },{
+        path: 'myprojects/workspace',
+        component: WorkspacePageComponent,
     }, {
         path: 'home',
         component: HomePageComponent,

@@ -19,7 +19,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
         private authService: AuthService,
         private eventService: EventService,
         private modalService: ProjectCreationModalService,
-        private router: Router,
+        public router: Router,
         private notificationService: NotificationService
     ) {
         super();
