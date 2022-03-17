@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Codi.Core.Common.DTO.User;
+using Codi.Core.Common.Helpers;
 using Codi.Core.DAL.Entities;
 
 namespace Codi.Core.BL.MappingProfiles
@@ -19,7 +20,8 @@ namespace Codi.Core.BL.MappingProfiles
                 .ForMember(p => p.Email,
                     o => o.MapFrom(c => c.Email ?? ""))
                 .ForMember(p => p.UserName,
-                    o => o.MapFrom(c => c.Username ?? (c.Email == null ? "" : c.Email.Substring(0, c.Email.IndexOf('@')))));
+                    o => o.MapFrom(c => c.Username ?? (c.Email == null ? "" : 
+                        UsernameHelper.OmitSpecialCharacters(c.Email.Substring(0, c.Email.IndexOf('@'))))));
         }
     }
 }

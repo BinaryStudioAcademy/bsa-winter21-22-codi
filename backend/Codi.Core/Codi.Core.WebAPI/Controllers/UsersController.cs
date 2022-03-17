@@ -1,6 +1,7 @@
 ﻿using Codi.Core.BL.Interfaces;
 using Codi.Core.Common.DTO.User;
 using Codi.Core.DAL.Entities;
+using Codi.Core.WebAPI.Extentions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,34 +12,36 @@ namespace Codi.Core.WebAPI.Controllers;
 [Route("[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly IUserService _usersService;
+    private readonly IUserService _userService;
 
-    public UsersController(IUserService usersService)
+    public UsersController(IUserService userService)
     {
-        _usersService = usersService;
+        _userService = userService;
     }
 
     [HttpPost]
     public async Task<ActionResult<UserDto>> CreateAsync([FromBody] CreateUserDto userDto)
     {
-        return Ok(await _usersService.CreateUserAsync(userDto));
+        return Ok(await _userService.CreateUserAsync(userDto));
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDto>> GetByIdAsync(long id)
     {
-        return Ok(await _usersService.GetUserByIdAsync(id));
+        return Ok(await _userService.GetUserByIdAsync(id));
     }
     
     [HttpGet("firebaseId")]
     public async Task<ActionResult<UserDto>> GetByFirebaseIdAsync(string id)
     {
-        return Ok(await _usersService.GetUserByFirebaseIdAsync(id));
+        return Ok(await _userService.GetUserByFirebaseIdAsync(id));
     }
 
     [HttpPut]
     public async Task<ActionResult<UserDto>> UpdateAsync([FromBody] UserDto userDto)
     {
-        return Ok(await _usersService.UpdateUserAsync(userDto));
+        var existingId = userDto.Id;
+        userDto.Id = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
+        return Ok(await _userService.UpdateUserAsync(existingId, userDto));
     }
 }
