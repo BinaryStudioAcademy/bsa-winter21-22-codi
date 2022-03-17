@@ -1,6 +1,6 @@
 export interface TagInfo {
     id: number;
     name: string;
-    description: string | null;
+    description?: string;
     count: number;
 }

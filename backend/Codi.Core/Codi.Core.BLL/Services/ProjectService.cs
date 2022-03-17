@@ -32,7 +32,9 @@ public class ProjectService : BaseService, IProjectService
         IQueryable<Project> projects = _context.Projects;
 
         if (predicate != null)
+        {
             projects = projects.Where(predicate);
+        }
 
         return await projects
             .ProjectTo<ProjectDto>(_mapper.ConfigurationProvider)
@@ -73,8 +75,7 @@ public class ProjectService : BaseService, IProjectService
     public async Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto)
     {
         var owner = await _context.Users
-            .Where(u => u.FirebaseId == newProjectDto.FirebaseId)
-            .FirstOrDefaultAsync();
+            .FirstOrDefaultAsync(u => u.FirebaseId == newProjectDto.FirebaseId);
 
         if (owner == null)
         {

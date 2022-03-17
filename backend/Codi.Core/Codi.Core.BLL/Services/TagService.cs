@@ -35,7 +35,7 @@ namespace Codi.Core.BLL.Services
 
             var tagInfo = _mapper.Map<TagInfoDto>(tagEntity);
 
-            tagInfo.Count = _context.AppTags.Where(at => at.TagId == tagId).Count();
+            tagInfo.Count = await _context.AppTags.CountAsync(at => at.TagId == tagId);
 
             return tagInfo;
         }

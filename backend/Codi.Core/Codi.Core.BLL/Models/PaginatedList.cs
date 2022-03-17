@@ -25,13 +25,13 @@ namespace Codi.Core.BLL.Models
         {
             var count = await source.CountAsync();
 
-            if (pageSize > 1)
-            {
-                source = source.Skip((pageNumber - 1) * pageSize);
-            };
-            if (pageSize > 0)
+            if (pageNumber == 1)
             {
                 source = source.Take(pageSize);
+            }
+            else
+            {
+                source = source.Skip((pageNumber - 1) * pageSize);
             }
 
             var items = await source.ToListAsync();

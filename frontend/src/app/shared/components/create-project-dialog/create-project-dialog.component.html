@@ -1,11 +1,17 @@
-<div class="modal-header d-flex justify-content-between align-items-start">
+<div class="modal-header d-flex justify-content-between align-items-center">
     <h3>Create project</h3>
     <div class="close">
         <button class="btn btn-outline-primary btn-sm" (click)="activeModal.close()">
             <i class="fa fa-times"></i>
         </button>
     </div>
-    <button class="btn btn-outline-primary btn-sm">Import from GitHub</button>
+    <div ngbDropdown placement="bottom-right">
+        <button class="btn btn-sm btn-outline-primary" id="importDropdown" ngbDropdownToggle>Import project</button>
+        <div ngbDropdownMenu aria-labelledby="importDropdown">
+          <button ngbDropdownItem>Import from GitHub</button>
+          <button ngbDropdownItem>Import from PC</button>
+        </div>
+      </div>
 </div>
 
 <div class="modal-body">

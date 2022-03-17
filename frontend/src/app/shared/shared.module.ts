@@ -7,7 +7,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import {CreateProjectDialogComponent} from "@shared/components/create-project-dialog/create-project-dialog.component";
-import {NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbDropdownModule, NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     imports: [
@@ -16,7 +16,8 @@ import {NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        NgbTypeaheadModule
+        NgbTypeaheadModule,
+        NgbDropdownModule
     ],
     declarations: [
         LoadingSpinnerComponent,

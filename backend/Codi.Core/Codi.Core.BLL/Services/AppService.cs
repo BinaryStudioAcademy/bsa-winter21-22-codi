@@ -6,6 +6,7 @@ using Codi.Core.BLL.Extentions;
 using Codi.Core.BLL.Interfaces;
 using Codi.Core.BLL.Models;
 using Codi.Core.Common.DTO.App;
+using Codi.Core.Common.Enums;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
@@ -29,7 +30,8 @@ public class AppService : BaseService, IAppService
     }
     public async Task<PaginatedList<AppDto>> GetAllAsync(int pageNumber, int pageSize,
             Expression<Func<App, bool>>? predicate = null,
-            Expression<Func<App, object>>? orderBy = null, bool orderByDesc = false)
+            Expression<Func<App, object>>? orderBy = null, 
+            SortOrder sortOrder = SortOrder.Ascending)
     {
         IQueryable<App> apps = _context.Apps
             .Include(a => a.Owner)
@@ -37,10 +39,16 @@ public class AppService : BaseService, IAppService
             .AsNoTracking();
 
         if (predicate != null)
+        {
             apps = apps.Where(predicate);
+        }
 
         if (orderBy != null)
-            apps = orderByDesc ? apps.OrderByDescending(orderBy) : apps.OrderBy(orderBy);
+        {
+            apps = sortOrder == SortOrder.Descending
+                ? apps.OrderByDescending(orderBy)
+                : apps.OrderBy(orderBy);
+        }
 
         return await apps
             .ProjectTo<AppDto>(_mapper.ConfigurationProvider)
@@ -48,7 +56,8 @@ public class AppService : BaseService, IAppService
     }
 
     public async Task<PaginatedList<AppDto>> GetAllWithTag(long tagId, int pageNumber, int pageSize,
-        Expression<Func<App, object>>? orderBy = null, bool orderByDesc = false, int? taleNumber = null)
+        Expression<Func<App, object>>? orderBy = null,
+        SortOrder sortOrder = SortOrder.Ascending)
     {
         List<long> appIds = await _context.AppTags
             .Where(at => at.TagId == tagId)
@@ -64,7 +73,11 @@ public class AppService : BaseService, IAppService
             .AsNoTracking();
 
         if (orderBy != null)
-            apps = orderByDesc ? apps.OrderByDescending(orderBy) : apps.OrderBy(orderBy);
+        {
+            apps = sortOrder == SortOrder.Descending
+                ? apps.OrderByDescending(orderBy)
+                : apps.OrderBy(orderBy);
+        }
 
         return await apps
             .ProjectTo<AppDto>(_mapper.ConfigurationProvider)
@@ -108,9 +121,11 @@ public class AppService : BaseService, IAppService
 
         List<Tag>? tags = null;
         if(newAppDto.Tags != null)
+        {
             tags = await _context.Tags
                 .Where(u => newAppDto.Tags.Contains(u.Id))
                 .ToListAsync();
+        }
 
         var projectDocument = await _projectsRepository.GetByIdAsync(project.ProjectDocumentId);
 
@@ -143,7 +158,7 @@ public class AppService : BaseService, IAppService
         var createdApp = _context.Add(app).Entity;
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<AppDto>(createdApp);
+        return await GetByIdAsync(createdApp.Id);
     }
 
     public async Task<AppDto> UpdateAsync(long appId, UpdateAppDto newAppDto)
@@ -160,9 +175,11 @@ public class AppService : BaseService, IAppService
 
         List<Tag>? tags = null;
         if (newAppDto.Tags != null)
+        {
             tags = await _context.Tags
                 .Where(u => newAppDto.Tags.Contains(u.Id))
                 .ToListAsync();
+        }
 
         var mergedApp = _mapper.Map(newAppDto, existedApp,
             opts => opts.AfterMap((src, dst) =>
@@ -177,7 +194,7 @@ public class AppService : BaseService, IAppService
         var updatedApp = _context.Update(mergedApp).Entity;
         await _context.SaveChangesAsync();
 
-        return _mapper.Map<AppDto>(updatedApp);
+        return await GetByIdAsync(updatedApp.Id);
     }
 
     public async Task DeleteAsync(long appId)

@@ -45,9 +45,9 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
     createProject() {
         let modalRef = this.projectDialogService.openCreateDialog();
         modalRef.closed.subscribe({
-            next: (resp) => {
+            next: (resp: Project) => {
                 if (resp) {
-                    this.projects.unshift(resp);
+                    this.loadProjects();
                 }
             }
         })

@@ -21,7 +21,7 @@ export class TagApplicationsPageComponent extends BaseComponent implements OnIni
     public tagId: number | null = null;
     public tagInfo: TagInfo | null;
 
-    countPluralMarring: {[k: string]: string} = {'=0': 'No apps.', '=1': 'one app', 'other': '# apps'};
+    countPluralMarring: { [k: string]: string } = { '=0': 'No apps.', '=1': 'one app', 'other': '# apps' };
 
     constructor(private route: ActivatedRoute,
         private appService: AppService,
@@ -38,13 +38,7 @@ export class TagApplicationsPageComponent extends BaseComponent implements OnIni
                 let tag = this.route.snapshot.params['id'];
 
                 if (tag == "all") {
-                    this.tagInfo = {
-                        id: 0,
-                        name: "All apps",
-                        description: "Discover and share amazing repls to run, comment and fork",
-                        count: this.apps?.totalCount ?? 0
-                    }
-                    this.loadApps(1, null);
+                    this.loadAllApps();
                     return;
                 }
 
@@ -60,6 +54,17 @@ export class TagApplicationsPageComponent extends BaseComponent implements OnIni
                         error: this.handleError
                     });
             });
+    }
+
+    loadAllApps() {
+        this.tagInfo = {
+            id: 0,
+            name: "All apps",
+            description: "Discover and share amazing repls to run, comment and fork",
+            count: this.apps?.totalCount ?? 0
+        }
+
+        this.loadApps(1, null);
     }
 
     loadApps(pageNumber: number, tagId: number | null) {

@@ -16,6 +16,10 @@ class AppCollection {
     apps: PaginatedList<App> | null
 }
 
+enum PreviewAppCollectionTags {
+    NET = 19, iOS = 10
+}
+
 @Component({
     selector: 'app-applications',
     templateUrl: './applicaions-page.component.html',
@@ -26,6 +30,9 @@ export class ApplicationsPageComponent extends BaseComponent implements OnInit {
     public loading = false;
     public appsCollections: AppCollection[];
 
+    public previewAppsNumber = 3;
+    public previewAppsPage = 1;
+
     constructor(private modalService: NgbModal,
         private appService: AppService,
         private notificationService: NotificationService) {
@@ -33,21 +40,23 @@ export class ApplicationsPageComponent extends BaseComponent implements OnInit {
 
         this.appsCollections = [
             {
-                appsObservable: this.appService.getAllApps(1, 3),
+                appsObservable: this.appService.getAllApps(this.previewAppsPage, this.previewAppsNumber),
                 tite: "Just published",
                 seeAllLink: "/main/apps/tag/all",
                 apps: null
             },
             {
-                appsObservable: this.appService.getAppsWithTag(19, 1, 3),
+                appsObservable: this.appService.getAppsWithTag(PreviewAppCollectionTags.NET,
+                    this.previewAppsPage, this.previewAppsNumber),
                 tite: ".NET",
-                seeAllLink: "/main/apps/tag/19",
+                seeAllLink: "/main/apps/tag/" + PreviewAppCollectionTags.NET,
                 apps: null
             },
             {
-                appsObservable: this.appService.getAppsWithTag(10, 1, 3),
+                appsObservable: this.appService.getAppsWithTag(PreviewAppCollectionTags.iOS,
+                    this.previewAppsPage, this.previewAppsNumber),
                 tite: "iOS",
-                seeAllLink: "/main/apps/tag/10",
+                seeAllLink: "/main/apps/tag/" + PreviewAppCollectionTags.iOS,
                 apps: null
             }
         ]
@@ -76,9 +85,17 @@ export class ApplicationsPageComponent extends BaseComponent implements OnInit {
     publichApp() {
         let modalRef = this.modalService.open(PublishAppDialogComponent, { centered: true });
         modalRef.closed.subscribe({
-            next: (resp) => {
+            next: (resp: App) => {
                 if (resp) {
-                    this.appsCollections[0].apps?.items.unshift(resp);
+                    this.appsCollections[0].apps!.items = [resp, ...this.appsCollections[0].apps!.items];
+
+                    if (resp.tags.some(t => t.id == PreviewAppCollectionTags.NET)) {
+                        this.appsCollections[1].apps!.items = [resp, ...this.appsCollections[1].apps!.items];
+                    }
+
+                    if (resp.tags.some(t => t.id == PreviewAppCollectionTags.iOS)) {
+                        this.appsCollections[2].apps!.items = [resp, ...this.appsCollections[2].apps!.items];
+                    }
                 }
             }
         })

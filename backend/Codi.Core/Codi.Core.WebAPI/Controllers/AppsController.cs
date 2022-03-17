@@ -1,6 +1,7 @@
 ﻿using Codi.Core.BLL.Interfaces;
 using Codi.Core.BLL.Models;
 using Codi.Core.Common.DTO.App;
+using Codi.Core.Common.Enums;
 using Codi.Core.WebAPI.Extentions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -24,7 +25,7 @@ namespace Codi.Core.WebAPI.Controllers
         public async Task<ActionResult<PaginatedList<AppDto>>> GetAllApps([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             var apps = await _appService.GetAllAsync(pageNumber, pageSize, 
-                orderBy: a => a.CreatedAt, orderByDesc: true);
+                orderBy: a => a.CreatedAt, sortOrder: SortOrder.Descending);
             return Ok(apps);
         }
 
@@ -32,7 +33,7 @@ namespace Codi.Core.WebAPI.Controllers
         public async Task<ActionResult<ICollection<AppDto>>> GetAppsWithTag(long tagId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             var apps = await _appService.GetAllWithTag(tagId, pageNumber, pageSize, 
-                orderBy: a => a.CreatedAt, orderByDesc: true);
+                orderBy: a => a.CreatedAt, sortOrder: SortOrder.Descending);
             return Ok(apps);
         }
 

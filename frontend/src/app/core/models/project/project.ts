@@ -1,7 +1,7 @@
 export interface Project {
     id: number;
     title: string;
-    description: string | null;
+    description?: string;
     isPublic: boolean;
     ownerId: number;
     createdAt: string;

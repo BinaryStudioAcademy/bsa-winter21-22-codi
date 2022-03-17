@@ -30,15 +30,12 @@ namespace Codi.Core.DAL.NoSql.Repositories
             {
                 if (node.Type == FSNodeType.File)
                 {
-                    var file = await GetByIdAsync(node.FileId!.Value);
-                    file.Id = Guid.NewGuid();
-
-                    await InsertOneAsync(file);
+                    var newFile = await DublicateFile(node.FileId!.Value);
 
                     list.Add(new FSNode
                     {
                         Type = FSNodeType.File,
-                        FileId = file.Id
+                        FileId = newFile.Id
                     });
                 }
 
@@ -54,6 +51,16 @@ namespace Codi.Core.DAL.NoSql.Repositories
             }
 
             return list;
+        }
+
+        private async Task<File> DublicateFile(Guid fileId)
+        {
+            var file = await GetByIdAsync(fileId);
+            file.Id = Guid.NewGuid();
+
+            await InsertOneAsync(file);
+
+            return file;
         }
 
         private async Task DeleteFSNodes(ICollection<FSNode> nodes)
