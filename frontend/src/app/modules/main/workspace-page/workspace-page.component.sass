@@ -1,0 +1,119 @@
+@import 'src/styles/variables'
+
+.content
+    min-height: calc( 100vh - 110px )
+    height: auto
+    display: flex
+    .explorer
+        max-width: 300px
+        width: 300px
+        min-height: calc( 100vh - 150px )
+        position: sticky
+        background-color: $background-panel-color-light
+        border-radius: $border-radius
+        .explorer-header
+            padding: 10px
+            cursor: default
+            display: flex
+            justify-content: space-between
+            font-family: $font-family-base
+            font-weight: bold
+            color: $base-text-color
+            font-size: $font-size-lg
+            align-items: center
+            .explorer-buttons
+                cursor: pointer
+                .explorer-buttons-icons
+                    width: 25px
+                    height: 25px
+                    filter: $icon-filter-grey
+                
+        .explorer-files
+            display: flex
+            flex-direction: column
+            .example-file
+                padding: 10px
+                font-family: $font-family-base
+                font-weight: bold
+                color: $primary
+                background-color: $background-color
+                border-radius: $border-radius
+                margin: 5px
+                cursor: pointer
+
+    .editor
+        width: 50%
+        margin: 0px 10px 0px 10px
+        padding-top: 10px
+        background-color: #1e1e1e
+        border-radius: $border-radius
+        .code-editor
+            width: 100%
+            border-radius: $border-radius
+            min-height: calc( 100vh - 160px )
+            background-color: #1e1e1e
+    .output
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        width: 50%
+        min-height: calc( 100vh - 150px )
+        .output-form
+            width: 100%
+            margin-bottom: 5px
+            background-color: $background-panel-color-light
+            border-radius: $border-radius
+            width: 100%
+            height: calc(60% - 5px)
+            .output-form-header
+                width: 100%
+                background-color: $background-panel-color 
+                padding: 10px
+                display: flex
+                border-top-left-radius: 10px
+                border-top-right-radius: 10px
+                justify-content: space-between
+                align-items: center
+                .output-url
+                    min-width: calc(100% - 70px)
+                    display: flex 
+                    align-items: center
+                    .output-url-text
+                        min-width: calc(100% - 40px)
+                        font-family: $font-family-base
+                        font-weight: bold
+                        border: 3px solid $base-text-color
+                        border-radius: 8px
+                        padding-left: 10px
+                .output-icon
+                    margin: 0px 5px 0px 5px
+                    width: 25px
+                    height: 25px
+                    filter: $icon-filter-grey
+                    cursor: pointer
+
+
+        .console
+            margin-top: 5px
+            height: calc(40% - 5px)
+            border-radius: $border-radius
+            background-color: $background-panel-color-light
+            .console-title
+                background-color: $background-panel-color
+                padding: 10px
+                border-top-left-radius: 10px
+                border-top-right-radius: 10px
+                font-family: $font-family-base
+                font-weight: bold
+                color: $primary
+                font-size: $font-size-lg
+                text-decoration: underline
+                text-decoration-thickness: 3px
+                cursor: pointer
+            .expample-text
+                padding: 10px
+                font-family: $font-family-base
+                font-weight: bold
+                color: $base-text-color
+                font-size: $font-size-base
+                cursor: default
