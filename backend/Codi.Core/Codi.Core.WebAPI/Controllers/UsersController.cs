@@ -40,7 +40,7 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<UserDto>> UpdateAsync([FromBody] UserDto userDto)
     {
         var existingId = userDto.Id;
-        userDto.Id = (await _userService.GetUserByFirebaseIdAsync(this.GetUserIdFromToken())).Id;
+        userDto.Id = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
         return Ok(await _userService.UpdateUserAsync(existingId, userDto));
     }
 }

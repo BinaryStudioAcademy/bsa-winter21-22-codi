@@ -60,6 +60,11 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<UserDto>(userEntity);
     }
 
+    public async Task<long> GetUserIdByFirebaseAsync(string id)
+    {
+        return (await GetUserByFirebaseIdAsync(id)).Id;
+    }
+
     public async Task<UserDto> UpdateUserAsync(long userId, UserDto userDto)
     {
         var userEntity = await _context.Users
