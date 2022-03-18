@@ -73,18 +73,22 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
             )
             .subscribe((result) => {
                 if (result === ConfirmationDialogResult.Confirm) {
-                    this.projectService
-                        .deleteProject(project.id)
-                        .pipe(takeUntil(this.unsubscribe$))
-                        .subscribe({
-                            next: () => {
-                                this.projects = this.projects.filter(p => p.id !== project.id);
-                                this.notificationService.showSuccessMessage("Project successfully deleted", "Success");
-                            },
-                            error: (error) => {
-                                this.notificationService.showErrorMessage(error.message, "Error")
-                            }
-                        });
+                    this.deleteProjectRequest(project.id)
+                }
+            });
+    }
+
+    deleteProjectRequest(projectId: number) {
+        this.projectService
+            .deleteProject(projectId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: () => {
+                    this.loadProjects();
+                    this.notificationService.showSuccessMessage("Project successfully deleted", "Success");
+                },
+                error: (error) => {
+                    this.notificationService.showErrorMessage(error.message, "Error")
                 }
             });
     }
