@@ -9,9 +9,12 @@
                 </nav>
             </div>
             <div class="project-container">
-                <div class="project-name" contenteditable="true">
-                        Project Name
-                </div>
+                <form class="form" [formGroup]="form">
+                    <input type="text" class="project-name" formControlName="ProjectName" id="projectname" placeholder='Project Name' maxlength="100">  
+                    <div class="error" *ngIf="form.controls['ProjectName'].hasError('minlength')">
+                        Project name must be between 2 and 100 characters 
+                    </div>
+                </form>
                 <div class="project-changes-history">
                     <img class="proj-changes-history-icon" src="assets/images/workspace/recent.svg" routerLink="">
                 </div>
