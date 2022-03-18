@@ -17,6 +17,7 @@ import {
     UpdateOrganizationDialogComponent
 } from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
 import { noop } from "@shared/common/utils";
+import { ConfirmationDialogResult } from '@core/models/confirmation-dialog/confirmation-dialog-result';
 
 @Component({
     selector: 'app-courses-page',
@@ -76,10 +77,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 Be careful, deleting a course cannot be undone.`,
                 {
                     centered: true,
+                    confirmButtonClass: "btn btn-danger",
+                    cancelButtonClass: "btn btn-primary",
+                    confirmButtonText: "Delete"
                 }
             )
             .subscribe((result) => {
-                if(!result) {
+                if(result === ConfirmationDialogResult.Confirm) {
                     this.coursesService
                         .delete(courseId)
                         .pipe(takeUntil(this.unsubscribe$))
@@ -104,10 +108,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 You will lose access to all of the Course's Repls and Folders.`,
                 {
                     centered: true,
+                    confirmButtonClass: "btn btn-danger",
+                    cancelButtonClass: "btn btn-primary",
+                    confirmButtonText: "Leave"
                 }
             )
             .subscribe((result) => {
-                if(!result) {
+                if(result === ConfirmationDialogResult.Confirm) {
                     this.coursesService
                         .leaveCourse(courseId)
                         .pipe(takeUntil(this.unsubscribe$))
@@ -151,10 +158,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 `Deleting ${orgName} will remove access to the Organization.\nThis cannot be undone!`,
                 {
                     centered: true,
+                    confirmButtonClass: "btn btn-danger",
+                    cancelButtonClass: "btn btn-primary",
+                    confirmButtonText: "Delete"
                 }
             )
             .subscribe((result) => {
-                if(!result) {
+                if(result === ConfirmationDialogResult.Confirm) {
                     if(!org!.courses.length) {
                         this.organizationService
                             .delete(id)
