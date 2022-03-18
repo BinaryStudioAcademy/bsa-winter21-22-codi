@@ -12,6 +12,20 @@
         overflow: hidden
         text-overflow: ellipsis
         overflow-y: hidden
+        background-color: transparent
+        border: none
+        &::placeholder
+            color: $base-text-color
+            font-family: $font-family-base
+            font-weight: bold
+
+    .error
+        position: absolute
+        z-index: 2
+        color: $danger
+        font-family: $font-family-base
+        font-weight: bold
+        left: 13%
     .proj-changes-history-icon
         padding: 10px
         filter: $icon-filter-grey
