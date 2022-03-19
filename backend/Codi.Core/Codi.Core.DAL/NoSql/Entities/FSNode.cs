@@ -8,6 +8,11 @@ namespace Codi.Core.DAL.NoSql.Entities
         public FSNodeType Type { get; set; }
         public string? Name { get; set; }
         public ObjectId? FileId { get; set; }
-        public ICollection<FSNode>? Nodes { get; set; }
+        public ICollection<FSNode> Nodes { get; set; }
+
+        public FSNode()
+        {
+            Nodes = new List<FSNode>();
+        }
     }
 }

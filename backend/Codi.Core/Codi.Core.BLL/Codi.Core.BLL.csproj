@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="LibGit2Sharp" Version="0.27.0-preview-0175" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.3" />
   </ItemGroup>
 

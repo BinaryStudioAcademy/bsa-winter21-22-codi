@@ -42,6 +42,7 @@ namespace Codi.Core.DAL
 
             services.AddScoped<IFileRepository, FileRepository>();
             services.AddScoped<ITemplateRepository, TemplateRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
         }
 
         public static IApplicationBuilder MigrateDB(this IApplicationBuilder builder)
