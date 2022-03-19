@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.Common.DTO.Organization;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Codi.Core.BL.Services;
+namespace Codi.Core.BLL.Services;
 
 public class OrganizationService : BaseService, IOrganizationService
 {

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Codi.Core.BL.Services;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.BLL.Extentions;
 using Codi.Core.BLL.Interfaces;
@@ -10,7 +9,6 @@ using Codi.Core.DAL.Entities;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using Codi.Core.BL.Interfaces;
 using Codi.Core.Common.DTO.Git;
 
 namespace Codi.Core.BLL.Services;
@@ -34,6 +32,7 @@ public class ProjectService : BaseService, IProjectService
         _projectsRepository = projectsRepository;
         _fileRepository = fileRepository;
         _templateRepository = templateRepository;
+        _gitService = gitService;
     }
 
     public async Task<ICollection<ProjectDto>> GetAllAsync(Expression<Func<Project, bool>>? predicate = null)
@@ -101,7 +100,6 @@ public class ProjectService : BaseService, IProjectService
         var projectDocument = new DAL.NoSql.Entities.Project
         {
             Id = Guid.NewGuid(),
-            TemplateId = templateDocument.Id,
             Nodes = await _fileRepository.DublicateFileStructure(templateDocument.Nodes),
         };
 

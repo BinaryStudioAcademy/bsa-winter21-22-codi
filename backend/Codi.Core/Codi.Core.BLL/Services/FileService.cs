@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.Common.DTO.File;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
 using File = Codi.Core.DAL.NoSql.Entities.File;
 
-namespace Codi.Core.BL.Services;
+namespace Codi.Core.BLL.Services;
 
 public class FileService : IFileService
 {
@@ -26,10 +26,10 @@ public class FileService : IFileService
         
         await _fileRepository.InsertOneAsync(fileCreate);
         
-        return await GetByIdAsync(fileCreate.Id.ToString());
+        return await GetByIdAsync(fileCreate.Id);
     }
     
-    public async Task<FileDto> GetByIdAsync(string id)
+    public async Task<FileDto> GetByIdAsync(Guid id)
     {
         var file = await _fileRepository.GetByIdAsync(id);
         if (file is null)

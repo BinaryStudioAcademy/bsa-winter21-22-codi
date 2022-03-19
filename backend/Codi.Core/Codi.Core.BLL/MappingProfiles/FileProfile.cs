@@ -2,7 +2,7 @@
 using Codi.Core.Common.DTO.File;
 using File = Codi.Core.DAL.NoSql.Entities.File;
 
-namespace Codi.Core.BL.MappingProfiles;
+namespace Codi.Core.BLL.MappingProfiles;
 
 public class FileProfile : Profile
 {

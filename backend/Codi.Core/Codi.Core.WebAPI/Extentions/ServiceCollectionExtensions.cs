@@ -1,6 +1,6 @@
-﻿using Codi.Core.BL.Interfaces;
-using Codi.Core.BL.MappingProfiles;
-using Codi.Core.BL.Services;
+﻿using Codi.Core.BLL.Interfaces;
+using Codi.Core.BLL.MappingProfiles;
+using Codi.Core.BLL.Services;
 using FluentValidation.AspNetCore;
 using System.Reflection;
 using Codi.Core.BLL.RabbitMQ;
@@ -11,8 +11,6 @@ using RabbitMQ.Client;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Codi.Core.WebAPI.Validators;
-using Codi.Core.BLL.Interfaces;
-using Codi.Core.BLL.Services;
 
 namespace Codi.Core.WebAPI.Extentions
 {

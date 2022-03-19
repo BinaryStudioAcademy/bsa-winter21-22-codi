@@ -1,9 +1,9 @@
 ﻿using Codi.Core.Common.DTO.File;
 
-namespace Codi.Core.BL.Interfaces;
+namespace Codi.Core.BLL.Interfaces;
 
 public interface IFileService
 {
     Task<FileDto> CreateFileAsync(CreateFileDto fileCreateDto);
-    Task<FileDto> GetByIdAsync(string id);
+    Task<FileDto> GetByIdAsync(Guid id);
 }

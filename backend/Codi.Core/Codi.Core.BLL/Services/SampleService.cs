@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Codi.Core.DAL;
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO;
 using Codi.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Codi.Core.BL.Services
+namespace Codi.Core.BLL.Services
 {
     public class SampleService : BaseService, ISampleService
     {

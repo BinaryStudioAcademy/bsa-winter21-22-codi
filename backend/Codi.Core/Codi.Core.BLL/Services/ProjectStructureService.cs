@@ -1,16 +1,15 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using AutoMapper;
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO.File;
 using Codi.Core.Common.Enums;
 using Codi.Core.DAL;
 using Codi.Core.DAL.NoSql.Entities;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
-using MongoDB.Bson;
 using File = System.IO.File;
 
-namespace Codi.Core.BL.Services;
+namespace Codi.Core.BLL.Services;
 
 public class ProjectStructureService : BaseService, IProjectStructureService
 {
@@ -100,7 +99,7 @@ public class ProjectStructureService : BaseService, IProjectStructureService
                     var fileCreated = await _fileService.CreateFileAsync(createFile);
                     var nestedFileStructure = new FSNode()
                     {
-                        FileId = new ObjectId(fileCreated.Id),
+                        FileId = fileCreated.Id,
                         Type = FSNodeType.File,
                         Name = fileName
                     };

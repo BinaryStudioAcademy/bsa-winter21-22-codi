@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO.Git;
 using LibGit2Sharp;
 
-namespace Codi.Core.BL.Services;
+namespace Codi.Core.BLL.Services;
 
 public class GitService : IGitService
 {

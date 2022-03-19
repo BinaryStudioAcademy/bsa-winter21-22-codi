@@ -1,6 +1,6 @@
 ﻿using Codi.Core.Common.DTO.Course;
 
-namespace Codi.Core.BL.Interfaces;
+namespace Codi.Core.BLL.Interfaces;
 
 public interface ICourseService
 {

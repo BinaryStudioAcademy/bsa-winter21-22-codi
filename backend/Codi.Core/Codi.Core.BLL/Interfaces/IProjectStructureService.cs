@@ -1,4 +1,4 @@
-﻿namespace Codi.Core.BL.Interfaces;
+﻿namespace Codi.Core.BLL.Interfaces;
 
 public interface IProjectStructureService
 {
