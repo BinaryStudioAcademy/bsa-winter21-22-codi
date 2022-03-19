@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import {CreateReplModalComponent} from "@shared/components/create-repl-modal/create-repl-modal.component";
-import {NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
+import { CreateProjectDialogComponent } from "@shared/components/create-project-dialog/create-project-dialog.component";
+import { NgbDropdownModule, NgbTypeaheadModule } from "@ng-bootstrap/ng-bootstrap";
 import {
     ImportGithubProjectModalComponent
 } from "@shared/components/import-github-project-modal/import-github-project-modal.component";
@@ -19,13 +19,14 @@ import {
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-        NgbTypeaheadModule
+        NgbTypeaheadModule,
+        NgbDropdownModule
     ],
     declarations: [
         LoadingSpinnerComponent,
         NotFoundComponent,
         ConfirmationDialogComponent,
-        CreateReplModalComponent,
+        CreateProjectDialogComponent,
         ImportGithubProjectModalComponent
     ],
     exports: [

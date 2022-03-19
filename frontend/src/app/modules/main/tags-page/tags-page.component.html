@@ -1,0 +1,15 @@
+<div class="content" >
+    <h1>All tags</h1>
+
+    <div *ngIf="loading" class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+    <div *ngIf="!loading" class="tags-collection mt-4">
+        <div class="tags-collection-container d-flex flex-wrap">
+            <span [routerLink]="['/main/apps/tag', tag.id]" *ngFor="let tag of tags" class="tag">{{tag.name}}</span>
+        </div>
+    </div>
+</div>

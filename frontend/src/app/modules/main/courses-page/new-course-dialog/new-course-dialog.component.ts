@@ -8,6 +8,8 @@ import { takeUntil } from "rxjs";
 import { CreateCourse } from "@core/models/course/create-course";
 import { Course } from "@core/models/course/course";
 import { Organization } from "@core/models/organization/organization";
+import { regexs } from "@shared/constants/regexs";
+import { WhiteSpaceValidator } from "@shared/validators/whitespace.validator";
 
 @Component({
     selector: 'app-new-course-dialog',
@@ -32,13 +34,16 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100)
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.title),
+                    WhiteSpaceValidator.noWhiteSpace
                 ]),
             name: new FormControl('',
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100)
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.username)
                 ]),
         });
     }
@@ -58,9 +63,9 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
             .subscribe(
                 (org) => {
                     createdCourse = org;
-                    this.notificationsService.showSuccessMessage('Course successfully created');
+                    this.notificationsService.showSuccessMessage('Course created', 'Success');
                 },
-                (error) => this.notificationsService.showErrorMessage('This username have already used'),
+                (error) => this.notificationsService.showErrorMessage('This username have already used', 'Error'),
                 () => this.modal.close(createdCourse)
             );
     }

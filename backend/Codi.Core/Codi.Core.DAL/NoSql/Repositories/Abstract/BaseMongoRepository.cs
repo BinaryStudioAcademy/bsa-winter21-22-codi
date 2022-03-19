@@ -1,7 +1,7 @@
 ﻿using Codi.Core.DAL.NoSql.Context.Abstract;
 using Codi.Core.DAL.NoSql.Entities.Abstract;
-using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
 using System.Linq.Expressions;
 
 namespace Codi.Core.DAL.NoSql.Repositories.Abstract
@@ -28,10 +28,21 @@ namespace Codi.Core.DAL.NoSql.Repositories.Abstract
             return await _collection.Find(filterExpression).ToListAsync();
         }
 
-        public async Task<TDocument> GetByIdAsync(string id)
+        public async Task<List<TNewProject>> GetAllAsync<TNewProject>(Expression<Func<TDocument, bool>> filterExpression, Expression<Func<TDocument, TNewProject>> projection)
         {
-            var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, new ObjectId(id));
+            return await _collection.Find(filterExpression).Project(projection).ToListAsync();
+        }
+
+        public async Task<TDocument> GetByIdAsync(Guid id)
+        {
+            var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, id);
             return await _collection.Find(filter).SingleOrDefaultAsync();
+        }
+
+        public async Task<TNewProject> GetByIdAsync<TNewProject>(Guid id, Expression<Func<TDocument, TNewProject>> projection)
+        {
+            var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, id);
+            return await _collection.Find(filter).Project(projection).SingleOrDefaultAsync();
         }
 
         public async Task InsertOneAsync(TDocument document)
@@ -50,10 +61,15 @@ namespace Codi.Core.DAL.NoSql.Repositories.Abstract
             await _collection.FindOneAndReplaceAsync(filter, document);
         }
 
-        public async Task DeleteByIdAsync(string id)
+        public async Task DeleteByIdAsync(Guid id)
         {
-            var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, new ObjectId(id));
+            var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, id);
             await _collection.FindOneAndDeleteAsync(filter);
+        }
+
+        public async Task DeleteManyAsync(Expression<Func<TDocument, bool>> filterExpression)
+        {
+            await _collection.DeleteManyAsync(filterExpression);
         }
     }
 }

@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {from, map, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { from, map, of } from 'rxjs';
 import {
     Auth,
     authState,
@@ -10,14 +10,14 @@ import {
     unlink,
     UserCredential
 } from '@angular/fire/auth';
-import {GithubAuthProvider, GoogleAuthProvider} from 'firebase/auth';
-import {idToken} from 'rxfire/auth';
-import {Router} from '@angular/router';
-import {NotificationService} from '@core/services/notification.service';
-import {UserService} from "@core/services/user.service";
-import {User} from "@core/models/user/user";
-import {EventService} from "@core/services/event.service";
-import {Provider} from "@shared/constants/provider";
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { idToken } from 'rxfire/auth';
+import { Router } from '@angular/router';
+import { NotificationService } from '@core/services/notification.service';
+import { UserService } from "@core/services/user.service";
+import { User } from "@core/models/user/user";
+import { EventService } from "@core/services/event.service";
+import { Provider } from "@shared/constants/provider";
 
 @Injectable({
     providedIn: 'root',
@@ -72,10 +72,10 @@ export class AuthService {
         return from(linkWithPopup(this.auth.currentUser!, provider)
             .then((credential) => {
                 this.setGithubAccessToken(credential);
-                this.notificationService.showSuccessMessage(`${provider.providerId} was successfully linked`);
+                this.notificationService.showSuccessMessage(`${provider.providerId} was linked`, 'Success');
             })
             .catch(err => {
-                this.notificationService.showErrorMessage('This account is already added to Codi!');
+                this.notificationService.showErrorMessage('This account is already added to Codi!', 'Error');
             }));
     }
 
@@ -101,7 +101,7 @@ export class AuthService {
                 if(providerId === Provider.github) {
                     localStorage.removeItem('githubToken');
                 }
-                this.notificationService.showSuccessMessage(`${providerId} was successfully unlinked`);
+                this.notificationService.showSuccessMessage(`${providerId} was unlinked`, 'Success');
             }));
     }
 

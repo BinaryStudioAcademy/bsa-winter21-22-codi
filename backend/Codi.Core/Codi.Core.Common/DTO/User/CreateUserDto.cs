@@ -1,4 +1,4 @@
-﻿namespace Codi.Core.DAL.Entities;
+﻿namespace Codi.Core.Common.DTO.User;
 
 public class CreateUserDto
 {

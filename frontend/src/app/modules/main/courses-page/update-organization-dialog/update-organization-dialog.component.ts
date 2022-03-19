@@ -7,6 +7,8 @@ import { takeUntil } from "rxjs";
 import { BaseComponent } from "@core/base/base.component";
 import { UpdateOrganization } from "@core/models/organization/update-organization";
 import { Organization } from "@core/models/organization/organization";
+import { regexs } from "@shared/constants/regexs";
+import { WhiteSpaceValidator } from "@shared/validators/whitespace.validator";
 
 @Component({
     selector: 'app-update-organization-dialog',
@@ -30,7 +32,9 @@ export class UpdateOrganizationDialogComponent extends BaseComponent implements 
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100)
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.title),
+                    WhiteSpaceValidator.noWhiteSpace
                 ]),
         });
         this.form.patchValue(this.org);
@@ -50,9 +54,9 @@ export class UpdateOrganizationDialogComponent extends BaseComponent implements 
             .subscribe(
                 (org) => {
                     updatedOrg = org;
-                    this.notificationsService.showSuccessMessage('Organization successfully updated');
+                    this.notificationsService.showSuccessMessage('Organization updated', 'Success');
                 },
-                error => this.notificationsService.showErrorMessage('Failed to update organization'),
+                error => this.notificationsService.showErrorMessage('Failed to update organization', 'Error'),
                 () => this.modal.close(updatedOrg)
             );
     }

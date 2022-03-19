@@ -11,6 +11,8 @@ using RabbitMQ.Client;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Codi.Core.WebAPI.Validators;
+using Codi.Core.BLL.Interfaces;
+using Codi.Core.BLL.Services;
 
 namespace Codi.Core.WebAPI.Extentions
 {
@@ -27,10 +29,13 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IOrganizationService, OrganizationService>();
             services.AddTransient<ICourseService, CourseService>();
+            services.AddTransient<ITemplateService, TemplateService>();
+            services.AddTransient<IProjectService, ProjectService>();
+            services.AddTransient<IAppService, AppService>();
+            services.AddTransient<ITagService, TagService>();
             services.AddTransient<IGitService, GitService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IProjectStructureService, ProjectStructureService>();
-            services.AddTransient<IProjectService, ProjectService>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

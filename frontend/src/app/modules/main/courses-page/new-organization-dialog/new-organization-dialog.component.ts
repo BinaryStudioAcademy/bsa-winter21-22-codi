@@ -7,6 +7,8 @@ import { BaseComponent } from "@core/base/base.component";
 import { CreateOrganization } from "@core/models/organization/create-organization";
 import { takeUntil } from "rxjs";
 import { Organization } from "@core/models/organization/organization";
+import { regexs } from "@shared/constants/regexs";
+import { WhiteSpaceValidator } from "@shared/validators/whitespace.validator";
 
 @Component({
     selector: 'app-new-organization-dialog',
@@ -29,7 +31,9 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100)
+                    Validators.maxLength(100),
+                    Validators.pattern(regexs.title),
+                    WhiteSpaceValidator.noWhiteSpace
                 ]),
         });
     }
@@ -47,9 +51,9 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
             .subscribe(
                 (org) => {
                     createdOrg = org;
-                    this.notificationsService.showSuccessMessage('Organization successfully created');
+                    this.notificationsService.showSuccessMessage('Organization created', 'Success');
                 },
-                error => this.notificationsService.showErrorMessage('Failed to create organization'),
+                error => this.notificationsService.showErrorMessage('Failed to create organization', 'Error'),
                 () => this.modal.close(createdOrg)
             );
     }

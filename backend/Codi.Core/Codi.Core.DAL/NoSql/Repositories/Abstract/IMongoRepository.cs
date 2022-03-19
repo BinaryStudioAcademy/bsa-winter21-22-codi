@@ -1,4 +1,5 @@
 ﻿using Codi.Core.DAL.NoSql.Entities.Abstract;
+using MongoDB.Driver;
 using System.Linq.Expressions;
 
 
@@ -11,7 +12,13 @@ namespace Codi.Core.DAL.NoSql.Repositories.Abstract
         Task<List<TDocument>> GetAllAsync(
             Expression<Func<TDocument, bool>> filterExpression);
 
-        Task<TDocument> GetByIdAsync(string id);
+        Task<List<TNewProject>> GetAllAsync<TNewProject>(
+            Expression<Func<TDocument, bool>> filterExpression,
+            Expression<Func<TDocument, TNewProject>> projection);
+
+        Task<TDocument> GetByIdAsync(Guid id);
+        Task<TNewProject> GetByIdAsync<TNewProject>(Guid id, 
+            Expression<Func<TDocument, TNewProject>> projection);
 
         Task InsertOneAsync(TDocument document);
 
@@ -19,6 +26,6 @@ namespace Codi.Core.DAL.NoSql.Repositories.Abstract
 
         Task ReplaceOneAsync(TDocument document);
 
-        Task DeleteByIdAsync(string id);
+        Task DeleteByIdAsync(Guid id);
     }
 }

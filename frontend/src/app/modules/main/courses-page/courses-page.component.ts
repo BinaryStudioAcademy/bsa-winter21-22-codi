@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { NewCourseDialogComponent } from "@modules/main/courses-page/new-course-dialog/new-course-dialog.component";
 import {
@@ -16,6 +16,7 @@ import { CourseService } from "@core/services/course.service";
 import {
     UpdateOrganizationDialogComponent
 } from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
+import { noop } from "@shared/common/utils";
 
 @Component({
     selector: 'app-courses-page',
@@ -60,7 +61,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 if(result) {
                     this.reloadOrganizations();
                 }
-            })
+            }).catch(noop);
     }
 
     deleteCourse(courseId: number, orgId: number) {
@@ -85,9 +86,9 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                         .subscribe(
                             next => {
                                 this.reloadOrganizations();
-                                this.notificationService.showSuccessMessage("Course successfully deleted");
+                                this.notificationService.showSuccessMessage("Course deleted", 'Success');
                             },
-                            error => this.notificationService.showErrorMessage("Something went wrong...")
+                            error => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
                         );
                 }
             });
@@ -113,9 +114,9 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                         .subscribe(
                             next => {
                                 this.reloadOrganizations();
-                                this.notificationService.showSuccessMessage("You have successfully left course");
+                                this.notificationService.showSuccessMessage("You have left course", 'Success');
                             },
-                            error => this.notificationService.showErrorMessage("Something went wrong...")
+                            error => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
                         );
                 }
             });
@@ -127,7 +128,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 if(result) {
                     this.reloadOrganizations();
                 }
-            })
+            }).catch(noop);
     }
 
     updateOrganization(org: Organization) {
@@ -138,7 +139,7 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                 if(result) {
                     this.reloadOrganizations();
                 }
-            })
+            }).catch(noop);
     }
 
     deleteOrganization(id: number) {
@@ -161,13 +162,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                             .subscribe(
                                 next => {
                                     this.reloadOrganizations();
-                                    this.notificationService.showSuccessMessage("Organization successfully deleted");
+                                    this.notificationService.showSuccessMessage("Organization deleted", 'Success');
                                 },
-                                error => this.notificationService.showErrorMessage("Something went wrong...")
+                                error => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
                             );
                     }
                     else {
-                        this.notificationService.showErrorMessage("You must delete all courses before this action")
+                        this.notificationService.showErrorMessage("You must delete all courses before this action", 'Error')
                     }
                 }
             });

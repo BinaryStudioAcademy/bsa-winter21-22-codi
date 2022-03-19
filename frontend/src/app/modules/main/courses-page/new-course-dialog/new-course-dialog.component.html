@@ -1,10 +1,13 @@
-<div class="dialog-container">
-    <div class="dialog-header">
-        <h3>New Course in {{org.name}}</h3>
-        <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
-            <span aria-hidden="true">&times;</span>
+<div class="modal-header">
+    <h3>New Course in {{org.name}}</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="closeDialog()">
+            <i class="fa fa-times"></i>
         </button>
     </div>
+</div>
+
+<div class="modal-body">
     <div class="remark">
         This course is in {{org.name}}. Organization owner can see the members and contents of this course.
     </div>
@@ -16,6 +19,12 @@
                 <li class="text-danger" *ngIf="form.controls['displayName'].hasError('minlength') || form.controls['displayName'].hasError('maxlength')">
                     Your course name must be between 5 and 100 characters
                 </li>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('pattern')">
+                    Your course name can only contain latin letters, digits, printable characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('noWhiteSpace')">
+                    Your course name can't contain space at the beginning or at the end
+                </li>
             </ul>
         </div>
         <div class="form-group">
@@ -24,6 +33,9 @@
             <ul>
                 <li class="text-danger" *ngIf="form.controls['name'].hasError('minlength') || form.controls['name'].hasError('maxlength')">
                     Your course-username must be between 5 and 100 characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['name'].hasError('pattern')">
+                    Your course-username can only contain latin letters, digits
                 </li>
             </ul>
             <div id="courseNameHelp" class="form-text attention">You can't change this after creating a Course! So pick carefully.</div>

@@ -32,6 +32,7 @@ div
     text-align: center
     align-items: center
 .promo
+    margin-top: 10%
     display: flex
     justify-content: center
     font-size: 60px
@@ -76,16 +77,14 @@ div
     padding: 15px
     background-color: $background-panel-color
     width: 180px
-    height: 190px
 .gradient
     background: linear-gradient(180deg,$background-panel-color 0%,$background-color 34%)
-    position:absolute
-    left:0
-    right:0
+    left: 0
+    right: 0
     width: 100%
 .features-blocks
     display: grid
-    gap: calc(var(--space-16) * 2)
+    grid-gap: 15px
     flex-wrap: wrap
     justify-content: center
     grid-template-columns: 200px 200px 200px 200px
@@ -114,3 +113,22 @@ div
     .features-blocks
         grid-template-columns: 200px 200px
         grid-template-rows: 210px 210px
+.language-list-content
+    text-align: left
+    margin-top: 20px
+    display: grid
+    grid-template-columns: repeat(5, 150px)
+ul
+    padding: 0
+    margin: 0
+@media screen and ( max-width: 1200px )
+    .language-list-content
+        display: grid
+        grid-template-columns: repeat(4, 120px)
+.limitTextHeight
+    overflow: hidden
+    height: 50px
+a
+    margin: 0
+a:hover
+    color: $primary

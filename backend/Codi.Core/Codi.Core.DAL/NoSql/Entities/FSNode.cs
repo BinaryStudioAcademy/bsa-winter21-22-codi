@@ -1,5 +1,4 @@
 ﻿using Codi.Core.Common.Enums;
-using MongoDB.Bson;
 
 namespace Codi.Core.DAL.NoSql.Entities
 {
@@ -7,7 +6,7 @@ namespace Codi.Core.DAL.NoSql.Entities
     {
         public FSNodeType Type { get; set; }
         public string? Name { get; set; }
-        public ObjectId? FileId { get; set; }
+        public Guid? FileId { get; set; }
         public ICollection<FSNode> Nodes { get; set; }
 
         public FSNode()
