@@ -5,21 +5,21 @@ import { EditUserProfilePageComponent } from "./edit-user-profile-page/edit-user
 import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
 const routes: Routes = [{
-  path: '',
-  component: UserProfilePageComponent,
-  pathMatch: 'full',
+    path: '',
+    component: UserProfilePageComponent,
+    pathMatch: 'full',
 }, {
-  path: 'account',
-  component: EditUserProfilePageComponent,
-  pathMatch: 'full',
+    path: 'account',
+    component: EditUserProfilePageComponent,
+    pathMatch: 'full',
 }, {
-  path: '**',
-  component: NotFoundComponent,
-  pathMatch: 'full'
+    path: '**',
+    component: NotFoundComponent,
+    pathMatch: 'full'
 }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class UserRoutingModule { }

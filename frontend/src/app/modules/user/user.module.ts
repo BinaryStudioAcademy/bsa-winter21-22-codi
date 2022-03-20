@@ -10,15 +10,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [
-    UserProfilePageComponent,
-    EditUserProfilePageComponent,
-  ],
-  imports: [
-    SharedModule,
-    UserRoutingModule,
-    NgbModule,
-    FormsModule,
-  ]
+    declarations: [
+        UserProfilePageComponent,
+        EditUserProfilePageComponent,
+    ],
+    imports: [
+        SharedModule,
+        UserRoutingModule,
+        NgbModule,
+        FormsModule,
+    ]
 })
 export class UserModule { }

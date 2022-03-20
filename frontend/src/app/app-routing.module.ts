@@ -31,14 +31,14 @@ const routes: Routes = [
         loadChildren: () =>
             import('./modules/user/user.module')
                 .then(m => m.UserModule),
-            ...canActivate(redirectToLogin),
+        ...canActivate(redirectToLogin),
     },            
     { 
         path: 'workspace',
         loadChildren: () => 
             import('./modules/workspace/workspace.module')
                 .then(m => m.WorkspaceModule),
-            ...canActivate(redirectToLogin),
+        ...canActivate(redirectToLogin),
     },
     {
         path: '**',

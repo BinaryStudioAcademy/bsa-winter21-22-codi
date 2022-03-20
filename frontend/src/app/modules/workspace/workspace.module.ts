@@ -9,15 +9,15 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    WorkspacePageComponent
-  ],
-  imports: [
-    SharedModule,
-    WorkspaceRoutingModule,
-    NgbModule,
-    FormsModule,
-    MonacoEditorModule,
-  ]
+    declarations: [
+        WorkspacePageComponent
+    ],
+    imports: [
+        SharedModule,
+        WorkspaceRoutingModule,
+        NgbModule,
+        FormsModule,
+        MonacoEditorModule,
+    ]
 })
 export class WorkspaceModule { }

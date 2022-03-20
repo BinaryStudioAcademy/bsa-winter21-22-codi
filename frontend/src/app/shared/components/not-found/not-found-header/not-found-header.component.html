@@ -1,5 +1,9 @@
-<div class="all">
-    <div >
-        <img class="logo" src="assets/images/Logo.svg" routerLink="/main">
+<div *ngIf="router.url.includes('/main') ; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock></ng-template>
+<ng-template #elseBlock>
+    <div class="all">
+        <div >
+            <img class="logo" src="assets/images/Logo.svg" routerLink="/main">
+        </div>
     </div>
-</div>
+</ng-template>
