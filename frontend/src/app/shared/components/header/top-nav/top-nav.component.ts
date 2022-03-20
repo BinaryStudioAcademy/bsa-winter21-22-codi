@@ -8,7 +8,7 @@ import { ProjectCreationModalService } from "@core/services/project-creation-mod
 import {Router} from "@angular/router";
 import {NotificationService} from "@core/services/notification.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
+
 
 @Component({
     selector: 'app-top-nav',
