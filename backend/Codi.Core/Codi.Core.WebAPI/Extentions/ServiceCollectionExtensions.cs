@@ -16,7 +16,7 @@ namespace Codi.Core.WebAPI.Extentions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterCustomServices(this IServiceCollection services)
+        public static void RegisterCustomServices(this IServiceCollection services, IConfiguration configuration)
         {
             services
                 .AddControllers()
@@ -34,6 +34,14 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<IGitService, GitService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IProjectStructureService, ProjectStructureService>();
+            services.AddTransient<ICredentialsService, CredentialsService>();
+            services.AddTransient<IGithubService, GithubService>();
+            
+            services.AddHttpClient<IGithubClient, GithubClient>(client =>
+            {
+                client.BaseAddress = new Uri(configuration.GetSection("githubAPI").Value);
+                client.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
+            });
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

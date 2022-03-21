@@ -1,20 +1,28 @@
 ﻿using System.Diagnostics;
+using AutoMapper;
 using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO.Git;
+using Codi.Core.DAL;
 using LibGit2Sharp;
 
 namespace Codi.Core.BLL.Services;
 
-public class GitService : IGitService
+public class GitService : BaseService, IGitService
 {
     private readonly IProjectStructureService _projectStructureService;
+    private readonly ICredentialsService _credentialsService;
     
-    public GitService(IProjectStructureService projectStructureService)
+    public GitService(
+        CodiCoreContext codiCoreContext,
+        IMapper mapper,
+        IProjectStructureService projectStructureService,
+        ICredentialsService credentialsService) : base(codiCoreContext, mapper)
     {
         _projectStructureService = projectStructureService;
+        _credentialsService = credentialsService;
     }
     
-    public async Task CloneProject(GitCloneDto gitCloneDto)
+    public async Task<Guid> CloneProject(GitCloneDto gitCloneDto)
     {
         string tempFolder = Path.Combine(Directory.GetCurrentDirectory(), "..\\GitTemp", Guid.NewGuid().ToString());
 
@@ -25,23 +33,25 @@ public class GitService : IGitService
 
         try
         {
+            var githubCredentials = await _credentialsService.GetUserCredentials(gitCloneDto.FirebaseId);
             var cloneOptions = new CloneOptions()
             {
                 CredentialsProvider = ((url, fromUrl, types) => new UsernamePasswordCredentials()
                 {
-                    Username = gitCloneDto.Login,
-                    Password = gitCloneDto.Password
+                    Username = githubCredentials.Login,
+                    Password = githubCredentials.Token
                 })
             };
             Repository.Clone(gitCloneDto.Url, tempFolder + $"\\{gitCloneDto.Title}\\", cloneOptions);
-            
+
             _projectStructureService.DeleteTempFolder(tempFolder + $"\\{gitCloneDto.Title}\\.git");
 
-            await _projectStructureService.CreateProjectStructureFromFolder(tempFolder + $"\\{gitCloneDto.Title}");
+            return await _projectStructureService.CreateProjectStructureFromFolder(tempFolder + $"\\{gitCloneDto.Title}");
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
+            return Guid.Empty;
         }
         finally
         {

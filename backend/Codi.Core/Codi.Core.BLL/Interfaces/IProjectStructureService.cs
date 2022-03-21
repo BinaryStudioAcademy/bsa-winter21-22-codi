@@ -3,5 +3,5 @@
 public interface IProjectStructureService
 {
     void DeleteTempFolder(string path);
-    Task CreateProjectStructureFromFolder(string tempFolder);
+    Task<Guid> CreateProjectStructureFromFolder(string tempFolder);
 }

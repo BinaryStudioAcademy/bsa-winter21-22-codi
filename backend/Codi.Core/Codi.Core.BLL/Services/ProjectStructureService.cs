@@ -53,7 +53,7 @@ public class ProjectStructureService : BaseService, IProjectStructureService
         }
     }
     
-    public async Task CreateProjectStructureFromFolder(string tempFolder)
+    public async Task<Guid> CreateProjectStructureFromFolder(string tempFolder)
     {
         var fileStructureRoot = new FSNode()
         {
@@ -67,6 +67,7 @@ public class ProjectStructureService : BaseService, IProjectStructureService
             Nodes = fileStructureRoot.Nodes
         };
         await _projectRepository.InsertOneAsync(projectDocument);
+        return projectDocument.Id;
     }
     
     private async Task GetFilesRecursive(string sourseDir, FSNode fileStructureRoot)

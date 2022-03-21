@@ -121,16 +121,28 @@ public class ProjectService : BaseService, IProjectService
     
     public async Task<ProjectDto> ImportProjectFromGithubAsync(GitCloneDto gitCloneDto)
     {
+        var owner = await _context.Users
+            .FirstOrDefaultAsync(u => u.FirebaseId == gitCloneDto.FirebaseId);
+
+        if (owner == null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+        var projectDocumentId = await _gitService.CloneProject(gitCloneDto);
+        if (projectDocumentId == Guid.Empty)
+        {
+            throw new InvalidOperationException("Project wasn't imported");
+        }
         var project = new Project()
         {
             Title = gitCloneDto.Title,
-            OwnerId = gitCloneDto.UserId,
+            OwnerId = owner.Id,
             CreatedAt = DateTime.Now,
-            IsPublic = gitCloneDto.IsPublic
+            IsPublic = gitCloneDto.IsPublic,
+            ProjectDocumentId = projectDocumentId
         };
         _context.Add(project);
         await _context.SaveChangesAsync();
-        await _gitService.CloneProject(gitCloneDto);
         return await GetByIdAsync(project.Id);
     }
 

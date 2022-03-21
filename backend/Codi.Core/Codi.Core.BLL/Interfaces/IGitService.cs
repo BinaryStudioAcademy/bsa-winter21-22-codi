@@ -4,5 +4,5 @@ namespace Codi.Core.BLL.Interfaces;
 
 public interface IGitService
 {
-    Task CloneProject(GitCloneDto gitCloneDto);
+    Task<Guid> CloneProject(GitCloneDto gitCloneDto);
 }
