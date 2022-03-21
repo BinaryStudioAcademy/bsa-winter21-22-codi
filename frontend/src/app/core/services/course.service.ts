@@ -3,6 +3,10 @@ import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { CreateCourse } from "@core/models/course/create-course";
 import { Course } from "@core/models/course/course";
 import { UpdateCourse } from "@core/models/course/update-course";
+import {InviteUserCourse} from "@core/models/course/invite-user-course";
+import {CourseUser} from "@core/models/course/course-user";
+import {PaginatedList} from "@core/models/paginated-list/paginated-list";
+import {DeleteUserCourse} from "@core/models/course/delete-user-course";
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +27,7 @@ export class CourseService {
     }
 
     public getCourse(name: string) {
-        return this.httpService.getRequest<Course>(`${this.routePrefix}/${name}`);
+        return this.httpService.getRequest<Course>(`${this.routePrefix}/findCourse/${name}`);
     }
 
     public delete(id: number) {
@@ -32,5 +36,31 @@ export class CourseService {
 
     public leaveCourse(courseId: number) {
         return this.httpService.deleteRequest(`${this.routePrefix}/leaveCourse/${courseId}`);
+    }
+
+    public getCourseById(id: number) {
+        return this.httpService.getRequest<Course>(`${this.routePrefix}/${id}`);
+    }
+
+    public inviteUserToCourse(courseUser: InviteUserCourse) {
+        return this.httpService.postRequest<CourseUser>(`${this.routePrefix}/invite`, courseUser);
+    }
+
+    public getCourseUsers(courseId: number, pageNumber: number, pageSize: number) {
+        return this.httpService
+            .getRequest<PaginatedList<CourseUser>>(`${this.routePrefix}/courseUsers/${courseId}`,
+            { pageNumber, pageSize });
+    }
+
+    public changeCourseUserRole(changeRole: InviteUserCourse) {
+        return this.httpService.putRequest<CourseUser>(`${this.routePrefix}/changeRole`, changeRole);
+    }
+
+    public deleteUserCourse(deleteUserCourse: DeleteUserCourse) {
+        return this.httpService.putRequest(`${this.routePrefix}/deleteUserCourse`, deleteUserCourse);
+    }
+
+    getCourseUser(courseId: number) {
+        return this.httpService.getRequest<CourseUser>(`${this.routePrefix}/courseUser/${courseId}`);
     }
 }

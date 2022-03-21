@@ -30,4 +30,8 @@ export class UserService {
             id: firebaseId
         });
     }
+
+    public getByName(name: string) {
+        return this.httpService.getRequest<any>(`${this.routePrefix}/search/${name}`);
+    }
 }

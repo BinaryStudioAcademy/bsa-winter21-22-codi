@@ -16,9 +16,10 @@ public class OrganizationService : BaseService, IOrganizationService
     {
         var organizations = await _context.Organizations
             .Include(o => o.Courses.Where(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
-            .ThenInclude(c => c.Owner)
+            .ThenInclude(cu => cu.CourseUsers)
+            .ThenInclude(c => c.User)
             .ThenInclude(u => u.Avatar)
-            .Where(o => o.OwnerId == userId || o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
+            .Where(o => o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
             .AsSplitQuery()
             .ToListAsync();
 

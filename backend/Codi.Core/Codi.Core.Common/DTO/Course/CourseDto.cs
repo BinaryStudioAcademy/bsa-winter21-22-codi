@@ -11,5 +11,6 @@ namespace Codi.Core.Common.DTO.Course
         public string? Avatar { get; set; }
         public UserDto Owner { get; set; } = default!;
         public DateTime CreatedAt { get; set; }
+        public List<CourseUserDto> CourseUsers { get; set; } = default!;
     }
 }

@@ -1,4 +1,5 @@
 import { User } from "@core/models/user/user";
+import {CourseUser} from "@core/models/course/course-user";
 
 export interface Course {
     id: number;
@@ -8,4 +9,5 @@ export interface Course {
     avatar?: string;
     owner: User;
     createdAt: Date;
+    courseUsers: CourseUser[];
 }

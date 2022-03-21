@@ -36,7 +36,7 @@
                         <div class="course-container">
                             <div class="course-info">
                                 <img class="avatar-sm" src="/assets/images/robot.png" alt="course avatar">
-                                <div class="course-name">{{course.displayName}}</div>
+                                <div class="course-name" [routerLink]="['/main/courses', course.name]">{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">
                                 <img *ngIf="course.owner?.avatar; else generic" class="avatar-sm" src="{{course.owner?.avatar}}" alt="User avatar" [routerLink]="['/main/user',course.owner.id]">

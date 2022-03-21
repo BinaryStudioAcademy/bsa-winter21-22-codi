@@ -1,0 +1,96 @@
+<div class="close">
+    <button class="btn btn-outline-primary btn-sm" (click)="modal.close()">
+        <i class="fa fa-times"></i>
+    </button>
+</div>
+<div class="modal-header d-flex justify-content-between align-items-center">
+        <h3>Manage your team's members</h3>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form">
+        <ng-template  #resultTemplate let-r="result" let-t="term">
+            <img *ngIf="r.avatar; else generic" class="avatar-invite" src="{{r.avatar}}" alt="User avatar">
+            <ng-template #generic>
+                <img class="avatar-invite" src="/assets/images/robot.png" alt="avatar">
+            </ng-template>
+            <ngb-highlight [result]="r.userName" [term]="t"></ngb-highlight>
+        </ng-template>
+        <div class="modal-input">
+                <input
+                    id="username" type="text" class="form-control" placeholder="Search by username"
+                    formControlName="inviteUserName"
+                    [ngbTypeahead]="search"
+                    [inputFormatter]="inputFormatter"
+                    [resultTemplate]="resultTemplate"
+                    [class.is-invalid]="searchFailed"
+                    [editable]="false"
+                />
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="inviteUser()">Invite</button>
+            <small *ngIf="searching" class="form-text text-muted">searching...</small>
+            <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+        </div>
+    </form>
+    <div class="team-members-container">
+        <div class="team-member">
+            <div class="member-info">
+                <div class="padding-sm">
+                    <img *ngIf="currentCourseUser.user?.avatar; else generic" class="avatar-invite"
+                         src="{{currentCourseUser.user.avatar}}" alt="User avatar">
+                    <ng-template #generic>
+                        <div class="avatar-mini generic-avatar">
+                            {{currentCourseUser.user?.userName?.substring(0,1)?.toUpperCase()}}
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="padding-sm">
+                    {{currentCourseUser.user?.userName}} (you)
+                </div>
+            </div>
+            <div class="member-permission">
+                <div class="padding-sm">
+                    {{courseRole[currentCourseUser.courseRole]}}
+                </div>
+            </div>
+        </div>
+        <div class="team-member" *ngFor="let courseUser of courseUsers?.items">
+            <div class="member-info">
+                <div class="padding-sm">
+                    <img *ngIf="courseUser.user.avatar; else generic" class="avatar-invite"
+                         src="{{courseUser.user.avatar}}" alt="User avatar">
+                    <ng-template #generic>
+                        <div class="avatar-mini generic-avatar">
+                            {{courseUser.user.userName?.substring(0,1)?.toUpperCase()}}
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="padding-sm">
+                    {{courseUser.user.userName}}
+                </div>
+            </div>
+            <div class="member-permission">
+                <div class="padding-sm">
+                    <div ngbDropdown placement="bottom-right" *ngIf="!currentCourseUser.courseRole; else forMember">
+                        <a type="button" id="roleDropdown" ngbDropdownToggle>{{courseRole[courseUser.courseRole]}}</a>
+                        <div ngbDropdownMenu aria-labelledby="roleDropdown">
+                            <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Admin)">{{courseRole[0]}}</button>
+                            <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Member)">{{courseRole[1]}}</button>
+                        </div>
+                    </div>
+                    <ng-template #forMember>
+                        {{courseRole[courseUser.courseRole]}}
+                    </ng-template>
+                </div>
+            </div>
+            <div>
+                <a type="button" style="color: #8834ee" *ngIf="!currentCourseUser.courseRole" (click)="deleteUserCourse(courseUser.user.id)" >&#10008;</a>
+            </div>
+        </div>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center mt-4"
+                    [maxSize]="6" (pageChange)="reloadCourseUsers($event)"
+                    [pageSize]="pageSize" [collectionSize]="courseUsers?.totalCount ?? 10"
+                    [page]="courseUsers?.pageNumber ?? 1" [rotate]="true">
+    </ngb-pagination>
+</div>
+
+

@@ -30,7 +30,14 @@ public class UsersController : ControllerBase
     {
         return Ok(await _userService.GetUserByIdAsync(id));
     }
-    
+
+    [HttpGet("search/{name}")]
+    public async Task<ActionResult<UserDto>> GetByNameAsync(string name)
+    {
+        var userId = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
+        return Ok(await _userService.GetUserByNameAsync(name, userId)) ;
+    }
+
     [HttpGet("firebaseId")]
     public async Task<ActionResult<UserDto>> GetByFirebaseIdAsync(string id)
     {
