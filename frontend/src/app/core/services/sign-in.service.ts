@@ -16,7 +16,7 @@ import { Router } from "@angular/router";
 import { NotificationService } from "@core/services/notification.service";
 import { RegistrationService } from "@core/services/registration.service";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
-import {User} from "@core/models/user/user";
+import { User } from "@core/models/user/user";
 
 @Injectable({
     providedIn: 'root'
@@ -35,7 +35,6 @@ export class SignInService {
 
     signInWithGithub(redirectUrl?: string) {
         const githubProvider = new GithubAuthProvider();
-        githubProvider.addScope('repo');
         return signInWithPopup(this.auth, githubProvider).then(
             (credential) => {
                 this.loginWithProviders(credential, redirectUrl);

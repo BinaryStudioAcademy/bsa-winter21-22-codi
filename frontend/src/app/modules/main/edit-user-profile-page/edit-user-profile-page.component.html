@@ -89,5 +89,36 @@
             </div>
         </div>
     </div>
+    <div class="github-credentials">
+        <div class="title">
+            Set up your Github credentials to enable ability to create projects from Github repository.
+        </div>
+        <form [formGroup]="tokenForm" class="edit-area token-area">
+            <div class="mb-3">
+                <label for="token" class="form-label">Access token</label>
+                <input formControlName="token" type="text" class="form-control" id="token">
+            </div>
+            <ul>
+                <li class="text-danger" *ngIf="tokenForm.controls['token'].hasError('required') && tokenForm.get('token')?.touched">
+                    Access token is required
+                </li>
+                <li class="text-danger" *ngIf="tokenForm.errors?.['invalidToken']">
+                    {{tokenForm.errors?.['invalidToken'].message}}
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p>
+                        Learn at <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token" target="_blank">this</a>
+                        tutorial how to generate personal access token
+                    </p>
+                </li>
+                <li>
+                    <p>Set up <strong>repo</strong> scopes</p>
+                </li>
+            </ul>
+            <button type="submit" class="btn btn-primary save" (click)="saveCredentials()" [disabled]="!tokenForm.valid">Set up</button>
+        </form>
+    </div>
   </div>
 </div>

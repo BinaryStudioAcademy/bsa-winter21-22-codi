@@ -9,8 +9,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { CreateProjectDialogComponent } from "@shared/components/create-project-dialog/create-project-dialog.component";
 import { NgbDropdownModule, NgbTypeaheadModule } from "@ng-bootstrap/ng-bootstrap";
 import {
-    ImportGithubProjectModalComponent
-} from "@shared/components/import-github-project-modal/import-github-project-modal.component";
+    ImportGithubProjectDialogComponent
+} from "@shared/components/import-github-project-dialog/import-github-project-dialog.component";
 
 @NgModule({
     imports: [
@@ -27,7 +27,7 @@ import {
         NotFoundComponent,
         ConfirmationDialogComponent,
         CreateProjectDialogComponent,
-        ImportGithubProjectModalComponent
+        ImportGithubProjectDialogComponent
     ],
     exports: [
         CommonModule,

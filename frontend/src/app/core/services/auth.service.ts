@@ -5,10 +5,7 @@ import {
     authState,
     fetchSignInMethodsForEmail,
     linkWithPopup,
-    OAuthCredential,
-    OAuthProvider,
     unlink,
-    UserCredential
 } from '@angular/fire/auth';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { idToken } from 'rxfire/auth';
@@ -70,8 +67,7 @@ export class AuthService {
     linkProvider(providerId: Provider) {
         let provider = this.getProvider(providerId);
         return from(linkWithPopup(this.auth.currentUser!, provider)
-            .then((credential) => {
-                this.setGithubAccessToken(credential);
+            .then(() => {
                 this.notificationService.showSuccessMessage(`${provider.providerId} was linked`, 'Success');
             })
             .catch(err => {
@@ -88,9 +84,7 @@ export class AuthService {
 
             }
             case Provider.github: {
-                const githubProvider = new GithubAuthProvider();
-                githubProvider.addScope('repo');
-                return githubProvider;
+                return new GithubAuthProvider();
             }
         }
     }
@@ -98,29 +92,12 @@ export class AuthService {
     unlinkProvider(providerId: Provider) {
         return from(unlink(this.auth.currentUser!, providerId)
             .then(() => {
-                if(providerId === Provider.github) {
-                    localStorage.removeItem('githubToken');
-                }
                 this.notificationService.showSuccessMessage(`${providerId} was unlinked`, 'Success');
             }));
     }
 
     getLinkedProviders() {
         return from(fetchSignInMethodsForEmail(this.auth, this.auth.currentUser?.email!));
-    }
-
-    setGithubAccessToken(credential: UserCredential) {
-        if(!this.getGithubToken() && credential.providerId === Provider.github) {
-            const oAuth = OAuthProvider.credentialFromResult(
-                credential
-            ) as OAuthCredential;
-            localStorage.setItem('githubToken', `${oAuth.accessToken}`);
-        }
-    }
-
-    getGithubToken() {
-        const value = localStorage.getItem('githubToken');
-        return value;
     }
 
     getAuthIdToken() {
