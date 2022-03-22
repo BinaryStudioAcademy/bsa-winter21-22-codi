@@ -26,16 +26,16 @@ const routes: Routes = [
                 .then(m => m.AuthModule),
         ...canActivate(redirectToMain),
     },
-    { 
-        path: 'user/:id',
+    {
+        path: '',
         loadChildren: () =>
             import('./modules/user/user.module')
                 .then(m => m.UserModule),
         ...canActivate(redirectToLogin),
-    },            
-    { 
+    },
+    {
         path: 'workspace',
-        loadChildren: () => 
+        loadChildren: () =>
             import('./modules/workspace/workspace.module')
                 .then(m => m.WorkspaceModule),
         ...canActivate(redirectToLogin),
