@@ -26,6 +26,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
     provider = Provider;
     isGoogleLinked: boolean;
     isGitHubLinked: boolean;
+    isLastProviderLinked: boolean;
 
     constructor(
         private authService: AuthService,
@@ -157,7 +158,8 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         this.authService.getLinkedProviders().subscribe((providers => {
             this.isGitHubLinked = false;
             this.isGoogleLinked = false;
-            providers.forEach(item => {
+            this.isLastProviderLinked = providers?.length === 1;
+            providers?.forEach(item => {
                 switch (item) {
                     case this.provider.google:
                         this.isGoogleLinked = true;
