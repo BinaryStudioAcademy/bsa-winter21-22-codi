@@ -96,7 +96,8 @@ export class AuthService {
     }
 
     getLinkedProviders() {
-        return from(fetchSignInMethodsForEmail(this.auth, this.auth.currentUser?.email!));
+        return of(this.auth.currentUser?.providerData
+            .map((data) => data.providerId));
     }
 
     getAuthIdToken() {

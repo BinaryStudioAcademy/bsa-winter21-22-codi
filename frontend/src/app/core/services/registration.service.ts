@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {from, Subject, takeUntil} from "rxjs";
+import { from, Subject, takeUntil } from "rxjs";
 import {
     Auth,
-    createUserWithEmailAndPassword,
+    createUserWithEmailAndPassword, sendEmailVerification,
     UserCredential
 } from "@angular/fire/auth";
 import { AuthService } from "@core/services/auth.service";
@@ -10,6 +10,7 @@ import { UserService } from "@core/services/user.service";
 import { NotificationService } from "@core/services/notification.service";
 import { Router } from "@angular/router";
 import { CreateUser } from "@core/models/user/create-user";
+import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +23,8 @@ export class RegistrationService {
         private authService: AuthService,
         private userService: UserService,
         private notificationService: NotificationService,
-        private router: Router
+        private router: Router,
+        private confirmationDialogService: ConfirmationDialogService
     ) { }
 
     signUpWithGoogle(credential: UserCredential) {
@@ -43,6 +45,7 @@ export class RegistrationService {
             username: credential.user.displayName
         } as CreateUser;
         this.saveUser(newUser);
+        this.openVerificationEmail(credential);
     }
 
     signUpWithProviders(credential: UserCredential) {
@@ -67,10 +70,7 @@ export class RegistrationService {
                     username: username
                 } as CreateUser;
                 this.saveUser(newUser);
-                this.authService.logOut().then(() => {
-                    this.router.navigate(['login'])
-                        .then(() => this.notificationService.showSuccessMessage('You have successfully register', 'Congratulate!'));
-                });
+                this.openVerificationEmail(credential);
             })
             .catch(
                 (error) => {
@@ -98,5 +98,25 @@ export class RegistrationService {
             .subscribe((user) => {
                 this.authService.setUser(user);
             });
+    }
+
+    openVerificationEmail(credential: UserCredential) {
+        this.authService.logOut().then(() => {
+            sendEmailVerification(credential.user).then(() => {
+                this.router.navigate(['login']).then(() => {
+                    this.confirmationDialogService
+                        .openConfirmationDialog(
+                            `Thanks for the registration!`,
+                            `Your account has been created and a verification email has been sent
+                    to ${credential.user?.email}. Please click on the verification link included in the email
+                    to activate your account.`,
+                            {
+                                cancelButton: false,
+                                centered: true
+                            }
+                        );
+                });
+            })
+        })
     }
 }
