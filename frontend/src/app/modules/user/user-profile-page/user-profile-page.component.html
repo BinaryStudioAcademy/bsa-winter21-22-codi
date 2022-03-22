@@ -1,0 +1,74 @@
+<app-header>
+  <div class="content">
+      <div class="container">
+        <div class="user-profile-header">
+          <div class="user-info">
+            <img *ngIf="user?.avatar; else generic" class="avatar" src="{{user.avatar}}" alt="User avatar">
+            <ng-template #generic>
+              <div class="avatar generic-avatar">
+                {{user.userName?.substring(0,1)?.toUpperCase()}}
+              </div>
+            </ng-template>
+              <div class="info">
+                <div class="d-flex">
+                  <div class="name">
+                    {{user?.firstName || user?.lastName ?
+                    (user?.firstName ?? "") + " " + (user?.lastName ?? "") : user.userName}}
+                  </div>
+                </div>
+                <div class="username">
+                  @{{user.userName}}
+                </div>
+                <p class="bio">
+                  {{user.bio}}
+                </p>
+              </div>
+          </div>
+          <button class="btn btn-primary" [routerLink]="['account']" *ngIf="currentUser.id === user.id">Edit</button>
+        </div>
+        <div class="action-info">
+          <div class="switch-buttons">
+            <a class="switch-item" href="">Repls</a>
+            <a class="switch-item" href="">Posts</a>
+          </div>
+          <div class="showcase">
+            <ngb-carousel>
+              <ng-template ngbSlide>
+                <div class="slide-header">
+                  <button class="btn show-files">Show files</button>
+                  <div class="right-header-part">
+                    <i class="fa fa-heart-o fa-2x like" aria-hidden="true"></i>
+                    <div class="likes-quantity">10</div>
+                    <button class="btn btn-success">Run</button>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+          <div class="chosen-repl">
+            <div class="repl-title">
+              <img class="repl-icon" src="assets/images/github_white.png" alt="icon">
+              <div class="repl-name">Html</div>
+            </div>
+            <i class="fa fa-cog fa-2x settings"></i>
+          </div>
+          <div class="repls">
+            <div class="searching-panel">
+              <div class="repls-title">All repls</div>
+              <input class="form-control search" type="text" placeholder="search in repls...">
+            </div>
+            <div class="repls-list">
+              <div class="repl-item">
+                <div class="repl-title">
+                  <img class="repl-icon" src="assets/images/github_white.png" alt="icon">
+                  <div class="repl-name">Title</div>
+                </div>
+                <div class="change-date">creation date: 17.02.2022</div>
+              </div>
+          </div>
+            <a class="manage" href="">Manage my repls</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</app-header>

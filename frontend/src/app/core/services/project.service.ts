@@ -33,4 +33,8 @@ export class ProjectService {
     updateProject(project: Project) {
         return this.httpService.putRequest(`${this.routePrefix}`, project)
     }
+
+    public deleteProject(id: number) {
+        return this.httpService.deleteRequest(`${this.routePrefix}/${id}`);
+    }
 }

@@ -7,6 +7,8 @@ import { EventService } from "@core/services/event.service";
 import { ProjectCreationModalService } from "@core/services/project-creation-modal.service";
 import {Router} from "@angular/router";
 import {NotificationService} from "@core/services/notification.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+
 
 @Component({
     selector: 'app-top-nav',
@@ -15,6 +17,7 @@ import {NotificationService} from "@core/services/notification.service";
 })
 export class TopNavComponent extends BaseComponent implements OnInit {
     currentUser: User;
+    form: FormGroup;
     constructor(
         private authService: AuthService,
         private eventService: EventService,
@@ -30,6 +33,14 @@ export class TopNavComponent extends BaseComponent implements OnInit {
         this.eventService.userChangedEvent$
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => this.getUser());
+        
+        this.form = new FormGroup({
+            ProjectName: new FormControl('',
+                [
+                    Validators.required,
+                    Validators.minLength(2)
+                ])
+        });
     }
 
     getUser() {
