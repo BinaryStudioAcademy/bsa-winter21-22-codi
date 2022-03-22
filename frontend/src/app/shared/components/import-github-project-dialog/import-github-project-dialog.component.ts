@@ -41,6 +41,8 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
     githubRepoSection = false;
     urlSection = false;
 
+    loading = false;
+
     constructor(
         public activeModal: NgbActiveModal,
         private modalService: NgbModal,
@@ -84,6 +86,7 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
     }
 
     submit() {
+        this.loading = true;
         let gitClone: GitClone;
         if (this.githubRepoSection) {
             let repository = this.form.value.repository;
@@ -107,10 +110,12 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(
                 (resp) => {
+                    this.loading = false;
                     this.activeModal.close(resp);
                     this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success');
                 },
                 () => {
+                    this.loading = false;
                     this.activeModal.close();
                     this.notificationService.showErrorMessage('Something was wrong', 'Error');
                 });

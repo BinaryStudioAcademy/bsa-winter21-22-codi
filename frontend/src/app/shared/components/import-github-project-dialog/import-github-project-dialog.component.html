@@ -6,7 +6,7 @@
         </button>
     </div>
     <div ngbDropdown placement="bottom-right">
-        <button class="btn btn-sm btn-outline-primary" id="importDropdown" ngbDropdownToggle>Import project</button>
+        <button class="btn btn-sm btn-outline-primary" id="importDropdown" ngbDropdownToggle [disabled]="loading">Import project</button>
         <div ngbDropdownMenu aria-labelledby="importDropdown">
             <button ngbDropdownItem (click)="openProjectFromTemplate()">Create from template</button>
             <button ngbDropdownItem>Import from PC</button>
@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<div class="modal-body">
+<div class="modal-body" [hidden]="loading">
     <form [formGroup]="form">
         <div *ngIf="githubRepoSection">
             <div class="form-group w100-dropdown-container repository-search">
@@ -48,7 +48,6 @@
             </ul>
             <div class="subheader">Paste a Repository URL to import</div>
         </div>
-
         <div class="switch-input">
             <div class="custom-control custom-radio">
                 <input class="custom-control-input" type="radio" name="import" id="repo" (click)="githubRadioClicked()" [checked]="userHasToken" [disabled]="!userHasToken">
@@ -79,7 +78,13 @@
     </form>
 </div>
 
-<div class="modal-footer">
+<div *ngIf="loading" class="loading">
+    <div class="spinner-border text-primary" role="status">
+    </div>
+    <div class="loading-subheader">Creating...</div>
+</div>
+
+<div class="modal-footer" [hidden]="loading">
     <button type="submit" [disabled]="!form.valid" (click)="submit()" class="btn btn-primary w-100">Create
         project</button>
 </div>
