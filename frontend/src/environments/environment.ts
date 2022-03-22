@@ -15,6 +15,7 @@ export const environment = {
         appId: '1:1036932788208:web:af253079f41f1930f17735',
         measurementId: 'G-RRV5VB9J2Y',
     },
+    githubAPI: 'https://api.github.com',
 };
 
 /*

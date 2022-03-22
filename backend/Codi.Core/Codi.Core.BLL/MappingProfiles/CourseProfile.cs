@@ -2,7 +2,7 @@
 using Codi.Core.Common.DTO.Course;
 using Codi.Core.DAL.Entities;
 
-namespace Codi.Core.BL.MappingProfiles
+namespace Codi.Core.BLL.MappingProfiles
 {
     public sealed class CourseProfile : Profile
     {

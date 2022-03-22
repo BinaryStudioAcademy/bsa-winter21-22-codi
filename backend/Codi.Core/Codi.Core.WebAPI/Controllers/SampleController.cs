@@ -1,4 +1,4 @@
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO;
 using Microsoft.AspNetCore.Mvc;
 

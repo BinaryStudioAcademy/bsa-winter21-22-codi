@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Codi.Core.BL.Services;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.BLL.Extentions;
 using Codi.Core.BLL.Interfaces;
@@ -10,6 +9,7 @@ using Codi.Core.DAL.Entities;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Codi.Core.Common.DTO.Git;
 
 namespace Codi.Core.BLL.Services;
 
@@ -18,13 +18,21 @@ public class ProjectService : BaseService, IProjectService
     private protected readonly IProjectRepository _projectsRepository;
     private protected readonly IFileRepository _fileRepository;
     private protected readonly ITemplateRepository _templateRepository;
+    private protected readonly IGitService _gitService;
 
-    public ProjectService(CodiCoreContext context, IMapper mapper, IFileRepository fileRepository,
-        IProjectRepository projectsRepository, ITemplateRepository templateRepository) : base(context, mapper)
+    public ProjectService(
+        CodiCoreContext context,
+        IMapper mapper,
+        IFileRepository fileRepository,
+        IProjectRepository projectsRepository,
+        ITemplateRepository templateRepository,
+        IGitService gitService
+        ) : base(context, mapper)
     {
         _projectsRepository = projectsRepository;
         _fileRepository = fileRepository;
         _templateRepository = templateRepository;
+        _gitService = gitService;
     }
 
     public async Task<ICollection<ProjectDto>> GetAllAsync(Expression<Func<Project, bool>>? predicate = null)
@@ -92,7 +100,6 @@ public class ProjectService : BaseService, IProjectService
         var projectDocument = new DAL.NoSql.Entities.Project
         {
             Id = Guid.NewGuid(),
-            TemplateId = templateDocument.Id,
             Nodes = await _fileRepository.DublicateFileStructure(templateDocument.Nodes),
         };
 
@@ -110,6 +117,33 @@ public class ProjectService : BaseService, IProjectService
         await _context.SaveChangesAsync();
 
         return _mapper.Map<ProjectDto>(createdProject);
+    }
+    
+    public async Task<ProjectDto> ImportProjectFromGithubAsync(GitCloneDto gitCloneDto)
+    {
+        var owner = await _context.Users
+            .FirstOrDefaultAsync(u => u.FirebaseId == gitCloneDto.FirebaseId);
+
+        if (owner == null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+        var projectDocumentId = await _gitService.CloneProject(gitCloneDto);
+        if (projectDocumentId == Guid.Empty)
+        {
+            throw new InvalidOperationException("Project wasn't imported");
+        }
+        var project = new Project()
+        {
+            Title = gitCloneDto.Title,
+            OwnerId = owner.Id,
+            CreatedAt = DateTime.Now,
+            IsPublic = gitCloneDto.IsPublic,
+            ProjectDocumentId = projectDocumentId
+        };
+        _context.Add(project);
+        await _context.SaveChangesAsync();
+        return await GetByIdAsync(project.Id);
     }
 
     public async Task<ProjectDto> UpdateAsync(long projectId, UpdateProjectDto newProjectDto)
@@ -153,4 +187,3 @@ public class ProjectService : BaseService, IProjectService
         await _context.SaveChangesAsync();
     }
 }
-

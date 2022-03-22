@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgbActiveModal, NgbTypeahead } from "@ng-bootstrap/ng-bootstrap";
+import {NgbActiveModal, NgbModal, NgbTypeahead} from "@ng-bootstrap/ng-bootstrap";
 import { debounceTime, distinctUntilChanged, filter, map, merge, Observable, OperatorFunction, Subject, takeUntil } from "rxjs";
 import { TemplateService } from "@core/services/template.service";
 import { Template } from "@core/models/template/template";
@@ -9,6 +9,9 @@ import { CreateProject } from "@core/models/project/create-project";
 import { NotificationService } from "@core/services/notification.service";
 import { regexs } from "@shared/constants/regexs";
 import { BaseComponent } from '@core/base/base.component';
+import {
+    ImportGithubProjectDialogComponent
+} from "@shared/components/import-github-project-dialog/import-github-project-dialog.component";
 
 @Component({
     templateUrl: './create-project-dialog.component.html',
@@ -24,6 +27,7 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
 
     constructor(
         public activeModal: NgbActiveModal,
+        private modalService: NgbModal,
         private templateService: TemplateService,
         private projectService: ProjectService,
         private notificationService: NotificationService
@@ -83,5 +87,10 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
                     this.notificationService.showErrorMessage('Something was wrong', 'Error')
                 }
             });
+    }
+
+    openGithubImport() {
+        this.activeModal.close();
+        this.modalService.open(ImportGithubProjectDialogComponent, {centered: true});
     }
 }
