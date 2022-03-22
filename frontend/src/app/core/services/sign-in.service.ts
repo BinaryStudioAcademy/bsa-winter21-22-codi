@@ -9,7 +9,7 @@ import {
     OAuthCredential,
     OAuthProvider, Auth
 } from "@angular/fire/auth";
-import { from } from "rxjs";
+import { from, take } from "rxjs";
 import { AuthService } from "@core/services/auth.service";
 import { UserService } from "@core/services/user.service";
 import { Router } from "@angular/router";
@@ -93,16 +93,17 @@ export class SignInService {
     }
 
     openVerificationEmail(email: string) {
-        this.authService.logOut();
-        this.confirmationDialogService
-            .openConfirmationDialog(
-                ``,
-                `It seems that your email is not verified. We sent a verification letter to ${email}. To continue studying with
+        this.authService.logOut().then(() => {
+            this.confirmationDialogService
+                .openConfirmationDialog(
+                    ``,
+                    `It seems that your email is not verified. We sent a verification letter to ${email}. To continue studying with
                         us check it out and verify it now!`,
-                {
-                    cancelButton: false
-                }
-            );
+                    {
+                        cancelButton: false
+                    }
+                );
+        })
     }
 
     loginWithProviders(credential: UserCredential, redirectUrl?: string): void {
@@ -130,17 +131,20 @@ export class SignInService {
 
     setUserIfVerifiedEmail(email: string, currentUser: User) {
         this.authService.currentUser$
+            .pipe(take(1))
             .subscribe((user) => {
-                if (!user?.emailVerified) {
-                    sendEmailVerification(user!).then(() => {
-                        this.openVerificationEmail(email);
-                    });
-                }
-                else {
-                    this.router.navigate(['main']).then(() => {
-                        this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-                    });
-                    this.authService.setUser(currentUser);
+                if(user){
+                    if (!user?.emailVerified) {
+                        sendEmailVerification(user!).then(() => {
+                            this.openVerificationEmail(email);
+                        });
+                    }
+                    else {
+                        this.router.navigate(['main']).then(() => {
+                            this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
+                        });
+                        this.authService.setUser(currentUser);
+                    }
                 }
             });
     }

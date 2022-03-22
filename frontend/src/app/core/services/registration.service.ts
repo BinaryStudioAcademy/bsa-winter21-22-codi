@@ -67,9 +67,10 @@ export class RegistrationService {
                     username: username
                 } as CreateUser;
                 this.saveUser(newUser);
-                this.authService.logOut();
-                this.router.navigate(['login'])
-                    .then(() => this.notificationService.showSuccessMessage('You have successfully register', 'Congratulate!'));
+                this.authService.logOut().then(() => {
+                    this.router.navigate(['login'])
+                        .then(() => this.notificationService.showSuccessMessage('You have successfully register', 'Congratulate!'));
+                });
             })
             .catch(
                 (error) => {

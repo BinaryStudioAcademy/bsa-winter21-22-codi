@@ -57,11 +57,10 @@ export class AuthService {
     }
 
     logOut() {
-        return from(this.auth.signOut().then(() => {
-            localStorage.removeItem('jwt');
-            this.user = undefined!;
-            this.eventService.userChanged(undefined!);
-        }));
+        localStorage.removeItem('jwt');
+        this.user = undefined!;
+        this.eventService.userChanged(undefined!);
+        return this.auth.signOut();
     }
 
     linkProvider(providerId: Provider) {
