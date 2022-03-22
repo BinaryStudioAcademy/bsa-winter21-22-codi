@@ -9,6 +9,9 @@ import { User } from "@core/models/user/user";
 import { NotificationService } from "@core/services/notification.service";
 import { regexs } from "@shared/constants/regexs";
 import { Provider } from "@shared/constants/provider";
+import { CredentialsService } from "@core/services/credentials.service";
+import { AccessToken } from "@core/models/credentials/access-token";
+import { userCredentialsAsyncValidator } from "@core/validators/user-credentials.async-validator";
 
 @Component({
     selector: 'app-edit-user-profile-page',
@@ -18,6 +21,7 @@ import { Provider } from "@shared/constants/provider";
 export class EditUserProfilePageComponent extends BaseComponent implements OnInit {
     user: User;
     form: FormGroup;
+    tokenForm: FormGroup;
     imageFile: File;
     provider = Provider;
     isGoogleLinked: boolean;
@@ -26,6 +30,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
     constructor(
         private authService: AuthService,
         private userService: UserService,
+        private credentialsService: CredentialsService,
         private notificationService: NotificationService,
         private router: Router
     ) {
@@ -66,6 +71,20 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
                 this.form.patchValue(user);
             });
 
+        this.tokenForm = new FormGroup({
+            token: new FormControl('', [
+                Validators.required
+            ])
+        }, {
+            asyncValidators: userCredentialsAsyncValidator(this.credentialsService)
+        });
+
+        this.credentialsService
+            .getUserAccessToken()
+            .subscribe((token) => {
+                this.tokenForm.controls['token'].setValue(token.token);
+            });
+
         this.reloadLinkedProviders();
     }
 
@@ -88,6 +107,15 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
                     this.notificationService.showSuccessMessage('User info was updated', 'Success');
                 });
             });
+    }
+
+    saveCredentials() {
+        this.credentialsService
+            .setUpUserToken(this.tokenForm.value as AccessToken)
+            .subscribe(
+                () => this.notificationService.showSuccessMessage('Your token was saved!', 'Success'),
+                (err) => this.notificationService.showErrorMessage(err.error, err.name)
+            );
     }
 
     handleFileInput(target: any) {

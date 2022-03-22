@@ -5,7 +5,7 @@ import { EditUserProfilePageComponent } from "./edit-user-profile-page/edit-user
 import { NotFoundComponent } from '@shared/components/not-found/not-found.component';
 
 const routes: Routes = [{
-    path: '',
+    path: 'user/:id',
     component: UserProfilePageComponent,
     pathMatch: 'full',
 }, {

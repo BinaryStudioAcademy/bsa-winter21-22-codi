@@ -1,0 +1,91 @@
+<div class="modal-header d-flex justify-content-between align-items-center">
+    <h3>Create project</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="activeModal.close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    <div ngbDropdown placement="bottom-right">
+        <button class="btn btn-sm btn-outline-primary" id="importDropdown" ngbDropdownToggle [disabled]="loading">Import project</button>
+        <div ngbDropdownMenu aria-labelledby="importDropdown">
+            <button ngbDropdownItem (click)="openProjectFromTemplate()">Create from template</button>
+            <button ngbDropdownItem>Import from PC</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-body" [hidden]="loading">
+    <form [formGroup]="form">
+        <div *ngIf="githubRepoSection">
+            <div class="form-group w100-dropdown-container repository-search">
+                <label for="repository">Repository</label>
+                <input id="repository" type="text" class="form-control" placeholder="click to select"
+                       [resultFormatter]="resultFormatter"
+                       [inputFormatter]="inputFormatter"
+                       formControlName="repository" [ngbTypeahead]="search"
+                       (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
+                       [editable]='false' #instance="ngbTypeahead"
+                       [class.is-invalid]="form.controls['repository'].touched && form.controls['repository'].invalid" />
+            </div>
+            <div class="subheader">Select a GitHub repository to import</div>
+        </div>
+
+        <div *ngIf="urlSection">
+            <div class="form-group w100-dropdown-container repository-search">
+                <label for="repositoryUrl">Repository URL</label>
+                <input id="repositoryUrl" type="text" class="form-control" placeholder="github.com/user/repo" formControlName="repositoryUrl"/>
+            </div>
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['repositoryUrl']?.hasError('required')">
+                    Repository URL is required
+                </li>
+                <li class="text-danger" *ngIf="form.controls['repositoryUrl']?.hasError('pattern')">
+                    Enter correct repository link. Example: https://github.com/username/repository
+                </li>
+                <li class="text-danger" *ngIf="form.controls['repositoryUrl']?.hasError('isRepositoryNonAccessible')">
+                    Repository is private or not accessible
+                </li>
+            </ul>
+            <div class="subheader">Paste a Repository URL to import</div>
+        </div>
+        <div class="switch-input">
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="import" id="repo" (click)="githubRadioClicked()" [checked]="userHasToken" [disabled]="!userHasToken">
+                <label class="custom-control-label" for="repo">
+                    via My Repositories
+                </label>
+                <div class="token-clue" [hidden]="userHasToken">
+                    To chose this option you should add your github personal access token<br/>
+                    You can add it in <a [routerLink]="['/account']" (click)="activeModal.close()">credentials settings</a>
+                </div>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="import" id="repoUrl" (click)="urlRadioClicked()" [checked]="!userHasToken">
+                <label class="custom-control-label" for="repoUrl">
+                    via Repository URL
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Privacy</label>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="isPublic" formControlName="isPublic">
+                <label class="custom-control-label" for="isPublic">Project is public</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="loading" class="loading">
+    <div class="spinner-border text-primary" role="status">
+    </div>
+    <div class="loading-subheader">Creating...</div>
+</div>
+
+<div class="modal-footer" [hidden]="loading">
+    <button type="submit" [disabled]="!form.valid" (click)="submit()" class="btn btn-primary w-100">
+        Create project
+    </button>
+</div>

@@ -5,7 +5,7 @@ import {
     authState,
     fetchSignInMethodsForEmail,
     linkWithPopup,
-    unlink
+    unlink,
 } from '@angular/fire/auth';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { idToken } from 'rxfire/auth';

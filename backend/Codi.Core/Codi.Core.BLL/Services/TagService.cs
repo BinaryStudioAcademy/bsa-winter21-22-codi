@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Codi.Core.BL.Services;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.BLL.Extentions;
 using Codi.Core.BLL.Interfaces;
@@ -7,11 +6,6 @@ using Codi.Core.Common.DTO.Tag;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Codi.Core.BLL.Services
 {
