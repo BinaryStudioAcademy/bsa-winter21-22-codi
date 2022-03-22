@@ -24,7 +24,7 @@ public class GitService : BaseService, IGitService
     
     public async Task<Guid> CloneProject(GitCloneDto gitCloneDto)
     {
-        string tempFolder = Path.Combine(Directory.GetCurrentDirectory(), "..\\GitTemp", Guid.NewGuid().ToString());
+        string tempFolder = Path.Combine(Directory.GetCurrentDirectory(), "..\\GitTemp", Guid.NewGuid().ToString().Substring(0,5));
 
         if (!Directory.Exists(tempFolder + $"\\{gitCloneDto.Title}"))
         {
