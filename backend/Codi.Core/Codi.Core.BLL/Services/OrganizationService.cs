@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Codi.Core.BL.Interfaces;
 using Codi.Core.BLL.Exceptions;
+using Codi.Core.Common.DTO.Course;
 using Codi.Core.Common.DTO.Organization;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
@@ -19,11 +20,12 @@ public class OrganizationService : BaseService, IOrganizationService
             .ThenInclude(cu => cu.CourseUsers)
             .ThenInclude(c => c.User)
             .ThenInclude(u => u.Avatar)
-            .Where(o => o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
+            .Where(o => o.OwnerId == userId || o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
             .AsSplitQuery()
             .ToListAsync();
 
-        return _mapper.Map<ICollection<OrganizationDto>>(organizations);
+
+        return  _mapper.Map<ICollection<OrganizationDto>>(organizations);
     }
 
     public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto organizationDto)
