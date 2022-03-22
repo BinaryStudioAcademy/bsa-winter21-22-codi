@@ -20,7 +20,8 @@ import { GithubRepository } from "@core/models/github/github-repository";
 import { GithubService } from "@core/services/github.service";
 import { CredentialsService } from "@core/services/credentials.service";
 import { GithubUser } from "@core/models/github/github-user";
-import {repoUrlAsyncValidator} from "@core/validators/repo-url.async-validator";
+import { repoUrlAsyncValidator } from "@core/validators/repo-url.async-validator";
+import { regexs } from "@shared/constants/regexs";
 
 @Component({
     selector: 'app-import-github-project-dialog',
@@ -87,23 +88,7 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
 
     submit() {
         this.loading = true;
-        let gitClone: GitClone;
-        if (this.githubRepoSection) {
-            let repository = this.form.value.repository;
-            gitClone = {
-                title: repository.name,
-                url: repository.url,
-                isPublic: this.form.value.isPublic
-            } as GitClone;
-        }
-        else {
-            let repositoryUrl = this.form.value.repositoryUrl;
-            gitClone = {
-                title: this.getNameFromUrl(repositoryUrl),
-                url: repositoryUrl,
-                isPublic: this.form.value.isPublic
-            } as GitClone;
-        }
+        let gitClone = this.githubRepoSection ? this.getRepositoryFromList() : this.getRepositoryFromUrl();
 
         this.projectService
             .gitProjectImport(gitClone)
@@ -157,12 +142,30 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
         this.form.addControl('repositoryUrl', new FormControl('',
             [
                 Validators.required,
-                Validators.pattern(`https:\/\/github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9_.-]+`)
+                Validators.pattern(regexs.githubUrl)
             ],
             [
                 repoUrlAsyncValidator(this.githubService),
             ]),
         );
+    }
+
+    private getRepositoryFromList() {
+        let repository = this.form.value.repository;
+        return  {
+            title: repository.name,
+            url: repository.url,
+            isPublic: this.form.value.isPublic
+        } as GitClone;
+    }
+
+    private getRepositoryFromUrl() {
+        let repositoryUrl = this.form.value.repositoryUrl;
+        return {
+            title: this.getNameFromUrl(repositoryUrl),
+            url: repositoryUrl,
+            isPublic: this.form.value.isPublic
+        } as GitClone;
     }
 
     private getRepositories() {

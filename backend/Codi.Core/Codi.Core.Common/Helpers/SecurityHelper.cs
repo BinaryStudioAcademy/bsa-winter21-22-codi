@@ -9,7 +9,8 @@ public static class SecurityHelper
 
     static SecurityHelper()
     {
-        SecretKey = Environment.GetEnvironmentVariable("SecretCodiKey");
+        var key = Environment.GetEnvironmentVariable("SecretCodiKey");
+        SecretKey = key ?? throw new InvalidOperationException("The environment variable is null");
     }
     
     public static string EncryptToken(string token)  

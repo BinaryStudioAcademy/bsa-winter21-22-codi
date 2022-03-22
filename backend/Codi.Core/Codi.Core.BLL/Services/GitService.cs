@@ -24,11 +24,12 @@ public class GitService : BaseService, IGitService
     
     public async Task<Guid> CloneProject(GitCloneDto gitCloneDto)
     {
-        string tempFolder = Path.Combine(Directory.GetCurrentDirectory(), "..\\GitTemp", Guid.NewGuid().ToString().Substring(0,5));
+        var tempFolder = GetUniqueFolderPath();
+        var destinationFolder = tempFolder + $"\\{gitCloneDto.Title}";
 
-        if (!Directory.Exists(tempFolder + $"\\{gitCloneDto.Title}"))
+        if (!Directory.Exists(destinationFolder))
         {
-            Directory.CreateDirectory(tempFolder + $"\\{gitCloneDto.Title}");
+            Directory.CreateDirectory(destinationFolder);
         }
 
         try
@@ -42,11 +43,11 @@ public class GitService : BaseService, IGitService
                     Password = githubCredentials.Token
                 })
             };
-            Repository.Clone(gitCloneDto.Url, tempFolder + $"\\{gitCloneDto.Title}\\", cloneOptions);
+            Repository.Clone(gitCloneDto.Url, destinationFolder, cloneOptions);
 
-            _projectStructureService.DeleteTempFolder(tempFolder + $"\\{gitCloneDto.Title}\\.git");
+            _projectStructureService.DeleteTempFolder($"{destinationFolder}\\.git");
 
-            return await _projectStructureService.CreateProjectStructureFromFolder(tempFolder + $"\\{gitCloneDto.Title}");
+            return await _projectStructureService.CreateProjectStructureFromFolder(destinationFolder);
         }
         catch (Exception ex)
         {
@@ -57,5 +58,10 @@ public class GitService : BaseService, IGitService
         {
             _projectStructureService.DeleteTempFolder(tempFolder);
         }
+    }
+
+    private string GetUniqueFolderPath()
+    {
+        return Path.Combine(Directory.GetCurrentDirectory(), "..\\GitTemp", Guid.NewGuid().ToString().Substring(0,5));
     }
 }

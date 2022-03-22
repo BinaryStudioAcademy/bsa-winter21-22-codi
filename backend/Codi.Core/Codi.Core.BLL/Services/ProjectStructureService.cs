@@ -117,6 +117,6 @@ public class ProjectStructureService : BaseService, IProjectStructureService
     {
         var fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read);
         using var streamReader = new StreamReader(fileStream, Encoding.UTF8);
-        return await streamReader.ReadToEndAsync().ConfigureAwait(false);
+        return await streamReader.ReadToEndAsync();
     }
 }

@@ -69,7 +69,7 @@ public class GithubClient : IGithubClient
                 missingScopes.Add("repo");
             }
 
-            if(missingScopes.Count != 0)
+            if(missingScopes.Any())
             {
                 checkDto.IsSucceed = false;
                 checkDto.Message = "Those scopes are missed: \n";
