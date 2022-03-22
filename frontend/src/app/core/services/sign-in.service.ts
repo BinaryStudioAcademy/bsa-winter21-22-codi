@@ -92,19 +92,23 @@ export class SignInService {
             );
     }
 
-    openVerificationEmailRemembering(email: string) {
+    navigateToConfirmEmail(email: string) {
         this.authService.logOut().then(() => {
-            this.confirmationDialogService
-                .openConfirmationDialog(
-                    `Verify your Email`,
-                    `It seems that your email is not verified. We sent a verification letter to ${email}. To continue studying with
-                        us check it out and verify it now!`,
-                    {
-                        cancelButton: false,
-                        centered: true
-                    }
-                );
+            this.openEmailConfirmationReminder(email);
         })
+    }
+
+    openEmailConfirmationReminder(email: string) {
+        this.confirmationDialogService
+            .openConfirmationDialog(
+                `Verify your Email`,
+                `It seems that your email is not verified. We sent a verification letter to ${email}. To continue studying with
+                        us check it out and verify it now!`,
+                {
+                    cancelButton: false,
+                    centered: true
+                }
+            );
     }
 
     loginWithProviders(credential: UserCredential, redirectUrl?: string): void {
@@ -127,7 +131,7 @@ export class SignInService {
             .subscribe((user) => {
                 if(user){
                     if (!user?.emailVerified) {
-                        this.openVerificationEmailRemembering(email);
+                        this.navigateToConfirmEmail(email);
                     }
                     else {
                         this.router.navigate(['main']).then(() => {
@@ -142,7 +146,7 @@ export class SignInService {
     signIn(email: string, password: string) {
         return from(signInWithEmailAndPassword(this.auth, email, password).then((credential) => {
             if(!credential.user.emailVerified){
-                this.openVerificationEmailRemembering(credential.user?.email!);
+                this.navigateToConfirmEmail(credential.user?.email!);
             }
             else{
                 this.router.navigate(['main']).then(() => {

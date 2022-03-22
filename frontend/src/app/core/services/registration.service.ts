@@ -45,7 +45,7 @@ export class RegistrationService {
             username: credential.user.displayName
         } as CreateUser;
         this.saveUser(newUser);
-        this.openVerificationEmail(credential);
+        this.navigateToConfirmEmail(credential);
     }
 
     signUpWithProviders(credential: UserCredential) {
@@ -70,7 +70,7 @@ export class RegistrationService {
                     username: username
                 } as CreateUser;
                 this.saveUser(newUser);
-                this.openVerificationEmail(credential);
+                this.navigateToConfirmEmail(credential);
             })
             .catch(
                 (error) => {
@@ -100,23 +100,25 @@ export class RegistrationService {
             });
     }
 
-    openVerificationEmail(credential: UserCredential) {
-        this.authService.logOut().then(() => {
-            sendEmailVerification(credential.user).then(() => {
-                this.router.navigate(['login']).then(() => {
-                    this.confirmationDialogService
-                        .openConfirmationDialog(
-                            `Thanks for the registration!`,
-                            `Your account has been created and a verification email has been sent
-                    to ${credential.user?.email}. Please click on the verification link included in the email
+    async navigateToConfirmEmail(credential: UserCredential) {
+        await this.authService.logOut();
+        await sendEmailVerification(credential.user)
+        await this.router.navigate(['login'])
+
+        this.openVerificationEmail(credential.user?.email!);
+    }
+
+    openVerificationEmail(email: string) {
+        this.confirmationDialogService
+            .openConfirmationDialog(
+                `Thanks for the registration!`,
+                `Your account has been created and a verification email has been sent
+                    to ${email}. Please click on the verification link included in the email
                     to activate your account.`,
-                            {
-                                cancelButton: false,
-                                centered: true
-                            }
-                        );
-                });
-            })
-        })
+                {
+                    cancelButton: false,
+                    centered: true
+                }
+            );
     }
 }
