@@ -11,7 +11,7 @@ public class GitService : BaseService, IGitService
 {
     private readonly IProjectStructureService _projectStructureService;
     private readonly ICredentialsService _credentialsService;
-    
+
     public GitService(
         CodiCoreContext codiCoreContext,
         IMapper mapper,
@@ -21,7 +21,7 @@ public class GitService : BaseService, IGitService
         _projectStructureService = projectStructureService;
         _credentialsService = credentialsService;
     }
-    
+
     public async Task<Guid> CloneProject(GitCloneDto gitCloneDto)
     {
         var tempFolder = GetUniqueFolderPath();
@@ -34,15 +34,7 @@ public class GitService : BaseService, IGitService
 
         try
         {
-            var githubCredentials = await _credentialsService.GetUserCredentials(gitCloneDto.FirebaseId);
-            var cloneOptions = new CloneOptions()
-            {
-                CredentialsProvider = ((url, fromUrl, types) => new UsernamePasswordCredentials()
-                {
-                    Username = githubCredentials.Login,
-                    Password = githubCredentials.Token
-                })
-            };
+            var cloneOptions = await TryGetCloneOptions(gitCloneDto);
             Repository.Clone(gitCloneDto.Url, destinationFolder, cloneOptions);
 
             _projectStructureService.DeleteTempFolder($"{destinationFolder}\\.git");
@@ -57,6 +49,27 @@ public class GitService : BaseService, IGitService
         finally
         {
             _projectStructureService.DeleteTempFolder(tempFolder);
+        }
+    }
+
+    private async Task<CloneOptions> TryGetCloneOptions(GitCloneDto gitCloneDto)
+    {
+        try
+        {
+            var githubCredentials = await _credentialsService.GetUserCredentials(gitCloneDto.FirebaseId);
+            var cloneOptions = new CloneOptions()
+            {
+                CredentialsProvider = ((url, fromUrl, types) => new UsernamePasswordCredentials()
+                {
+                    Username = githubCredentials.Login,
+                    Password = githubCredentials.Token
+                })
+            };
+            return cloneOptions;
+        }
+        catch (Exception)
+        {
+            return null;
         }
     }
 
