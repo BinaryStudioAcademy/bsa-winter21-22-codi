@@ -75,7 +75,7 @@
                             Google
                         </div>
                         <button class="btn btn-primary" (click)="isGoogleLinked ? unlinkProvider(provider.google)
-                : linkProvider(provider.google)">
+                : linkProvider(provider.google)" [disabled]="isGoogleLinked && isLastProviderLinked">
                             {{isGoogleLinked ? 'Disconnect' : 'Connect'}}
                         </button>
                     </div>
@@ -84,7 +84,7 @@
                             Github
                         </div>
                         <button class="btn btn-primary" (click)="isGitHubLinked ? unlinkProvider(provider.github)
-                : linkProvider(provider.github)">
+                : linkProvider(provider.github)" [disabled]="isGitHubLinked && isLastProviderLinked">
                             {{isGitHubLinked ? 'Disconnect' : 'Connect'}}
                         </button>
                     </div>

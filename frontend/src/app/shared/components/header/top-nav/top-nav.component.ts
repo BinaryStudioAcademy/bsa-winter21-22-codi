@@ -33,7 +33,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
         this.eventService.userChangedEvent$
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => this.getUser());
-        
+
         this.form = new FormGroup({
             ProjectName: new FormControl('',
                 [
@@ -54,7 +54,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
 
     logout() {
         this.authService.logOut()
-            .subscribe(() => {
+            .then(() => {
                 this.router.navigate(['login']).then(() => {
                     this.notificationService.showSuccessMessage('Good Luck!');
                 });
