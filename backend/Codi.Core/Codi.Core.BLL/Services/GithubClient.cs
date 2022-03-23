@@ -92,6 +92,9 @@ public class GithubClient : IGithubClient
     
     private void SetUpHttpClient(string token)
     {
-        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+        if (!string.IsNullOrEmpty(token))
+        {
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+        }
     }
 }
