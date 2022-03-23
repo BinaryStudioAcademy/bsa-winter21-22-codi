@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Codi.Core.BLL.Interfaces;
 using Codi.Core.BLL.Exceptions;
-using Codi.Core.Common.DTO.Course;
 using Codi.Core.Common.DTO.Organization;
 using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
