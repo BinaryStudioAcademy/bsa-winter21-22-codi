@@ -3,7 +3,7 @@ using Codi.Core.Common.DTO.User;
 using Codi.Core.Common.Helpers;
 using Codi.Core.DAL.Entities;
 
-namespace Codi.Core.BL.MappingProfiles
+namespace Codi.Core.BLL.MappingProfiles
 {
     public sealed class UserProfile : Profile
     {

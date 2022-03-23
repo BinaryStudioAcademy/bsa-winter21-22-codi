@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
-using Codi.Core.BL.Services;
 using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO.Template;
 using Codi.Core.DAL;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Codi.Core.BLL.Services
 {

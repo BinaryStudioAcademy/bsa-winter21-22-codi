@@ -2,7 +2,7 @@
 using Codi.Core.Common.DTO;
 using Codi.Core.DAL.Entities;
 
-namespace Codi.Core.BL.MappingProfiles
+namespace Codi.Core.BLL.MappingProfiles
 {
     public sealed class SampleProfile : Profile
     {

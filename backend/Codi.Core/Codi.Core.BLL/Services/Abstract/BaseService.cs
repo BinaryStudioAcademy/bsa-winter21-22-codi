@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Codi.Core.DAL;
 
-namespace Codi.Core.BL.Services
+namespace Codi.Core.BLL.Interfaces
 {
     public abstract class BaseService
     {

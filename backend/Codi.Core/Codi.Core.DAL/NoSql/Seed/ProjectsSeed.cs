@@ -1,11 +1,6 @@
 ﻿using Bogus;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Project = Codi.Core.DAL.NoSql.Entities.Project;
 
 namespace Codi.Core.DAL.NoSql.Seed
@@ -28,7 +23,6 @@ namespace Codi.Core.DAL.NoSql.Seed
                 projectDocuments.Add(new Project
                 {
                      Id = project.ProjectDocumentId,
-                     TemplateId = template.Id,
                      Nodes = await fileRepository.DublicateFileStructure(template.Nodes),
                 });
 

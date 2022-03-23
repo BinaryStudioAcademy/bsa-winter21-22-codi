@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Codi.Core.BL.Services;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.BLL.Extentions;
 using Codi.Core.BLL.Interfaces;

@@ -2,21 +2,20 @@ import { Injectable } from '@angular/core';
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import {
     fetchSignInMethodsForEmail,
-    sendEmailVerification,
     signInWithEmailAndPassword,
     signInWithPopup,
     UserCredential,
     OAuthCredential,
     OAuthProvider, Auth
 } from "@angular/fire/auth";
-import { from } from "rxjs";
+import { from, take } from "rxjs";
 import { AuthService } from "@core/services/auth.service";
 import { UserService } from "@core/services/user.service";
 import { Router } from "@angular/router";
 import { NotificationService } from "@core/services/notification.service";
 import { RegistrationService } from "@core/services/registration.service";
 import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
-import {User} from "@core/models/user/user";
+import { User } from "@core/models/user/user";
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +33,7 @@ export class SignInService {
     ) { }
 
     signInWithGithub(redirectUrl?: string) {
-        let githubProvider = new GithubAuthProvider();
+        const githubProvider = new GithubAuthProvider();
         return signInWithPopup(this.auth, githubProvider).then(
             (credential) => {
                 this.loginWithProviders(credential, redirectUrl);
@@ -87,20 +86,27 @@ export class SignInService {
                                 To make it possible, firstly, login with ${availableProviders ? availableProviders : 'google.com'}
                                 and link with ${pendingProvider} in user settings.`,
                 {
-                    cancelButton: false
+                    cancelButton: false,
+                    centered: true
                 }
             );
     }
 
-    openVerificationEmail(email: string) {
-        this.authService.logOut();
+    navigateToConfirmEmail(email: string) {
+        this.authService.logOut().then(() => {
+            this.openEmailConfirmationReminder(email);
+        })
+    }
+
+    openEmailConfirmationReminder(email: string) {
         this.confirmationDialogService
             .openConfirmationDialog(
-                ``,
+                `Verify your Email`,
                 `It seems that your email is not verified. We sent a verification letter to ${email}. To continue studying with
                         us check it out and verify it now!`,
                 {
-                    cancelButton: false
+                    cancelButton: false,
+                    centered: true
                 }
             );
     }
@@ -115,32 +121,24 @@ export class SignInService {
                     this.registrationService.signUpWithProviders(credential);
                 }
             }, (error) => {
-                if (!credential.user.emailVerified) {
-                    sendEmailVerification(credential.user).then(() => {
-                        this.openVerificationEmail(credential.user?.email!);
-                    });
-                    return;
-                }
                 this.registrationService.signUpWithProviders(credential);
-                this.router.navigate(['main']).then(() => {
-                    this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-                });
             });
     }
 
     setUserIfVerifiedEmail(email: string, currentUser: User) {
         this.authService.currentUser$
+            .pipe(take(1))
             .subscribe((user) => {
-                if (!user?.emailVerified) {
-                    sendEmailVerification(user!).then(() => {
-                        this.openVerificationEmail(email);
-                    });
-                }
-                else {
-                    this.router.navigate(['main']).then(() => {
-                        this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
-                    });
-                    this.authService.setUser(currentUser);
+                if(user){
+                    if (!user?.emailVerified) {
+                        this.navigateToConfirmEmail(email);
+                    }
+                    else {
+                        this.router.navigate(['main']).then(() => {
+                            this.notificationService.showSuccessMessage('You have successfully logged in', 'Welcome back!');
+                        });
+                        this.authService.setUser(currentUser);
+                    }
                 }
             });
     }
@@ -148,9 +146,7 @@ export class SignInService {
     signIn(email: string, password: string) {
         return from(signInWithEmailAndPassword(this.auth, email, password).then((credential) => {
             if(!credential.user.emailVerified){
-                sendEmailVerification(credential.user!).then(() => {
-                    this.openVerificationEmail(credential.user?.email!);
-                });
+                this.navigateToConfirmEmail(credential.user?.email!);
             }
             else{
                 this.router.navigate(['main']).then(() => {

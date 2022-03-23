@@ -1,4 +1,5 @@
-﻿using Codi.Core.Common.DTO.Project;
+using Codi.Core.Common.DTO.Project;
+using Codi.Core.Common.DTO.Git;
 using Codi.Core.DAL.Entities;
 using System.Linq.Expressions;
 
@@ -12,6 +13,7 @@ namespace Codi.Core.BLL.Interfaces
         Task<ProjectDto> GetByIdAsync(long projectId);
         Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto);
         Task<ProjectDto> UpdateAsync(long projectId, UpdateProjectDto newProjectDto);
+        Task<ProjectDto> ImportProjectFromGithubAsync(GitCloneDto gitCloneDto);
         Task DeleteAsync(long projectId);
     }
 }

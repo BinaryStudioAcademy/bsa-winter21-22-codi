@@ -4,7 +4,7 @@ using Codi.Core.Common.Enums;
 using Codi.Core.DAL.Entities;
 using System.Linq.Expressions;
 
-namespace Codi.Core.BL.Interfaces;
+namespace Codi.Core.BLL.Interfaces;
 
 public interface ICourseService
 {

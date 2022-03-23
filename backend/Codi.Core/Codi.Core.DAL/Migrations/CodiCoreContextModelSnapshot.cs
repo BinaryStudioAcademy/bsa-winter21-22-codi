@@ -10298,6 +10298,9 @@ namespace Codi.Core.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long?>("AvatarId")
                         .HasColumnType("bigint");
 
