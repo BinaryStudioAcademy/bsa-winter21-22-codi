@@ -24,8 +24,18 @@ public class OrganizationService : BaseService, IOrganizationService
             .AsSplitQuery()
             .ToListAsync();
 
+        var mergedOrganizations =  _mapper.Map<ICollection<OrganizationDto>>(organizations);
 
-        return  _mapper.Map<ICollection<OrganizationDto>>(organizations);
+        foreach(var organization in mergedOrganizations)
+        {
+            foreach(var course in organization.Courses)
+            {
+                course.IsCurrentUserAdmin = course.CourseUsers
+                    .Any(u => u.User.Id == userId && u.CourseRole == Common.Enums.CourseRole.Admin);
+            }
+        }
+
+        return  mergedOrganizations;
     }
 
     public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto organizationDto)

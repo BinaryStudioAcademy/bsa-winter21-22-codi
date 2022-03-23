@@ -100,14 +100,23 @@
                             align-self: center
                             word-wrap: anywhere
                             padding: 0 10px 0 5px
-                    .avatar-sm
-                        margin-right: 5px
                     .user-settings
                         display: flex
                         align-self: flex-start
-                        cursor: pointer
                     .course-container
                         display: flex
                         justify-content: space-between
                         align-items: center
                         padding: 20px 0
+
+.member-avatar:not(:first-child)
+    border-width: 0
+    margin-left: -20px
+    background-size: cover
+
+.team-members
+    display: flex
+    align-items: center
+
+.team-member-avatar
+    display: flex

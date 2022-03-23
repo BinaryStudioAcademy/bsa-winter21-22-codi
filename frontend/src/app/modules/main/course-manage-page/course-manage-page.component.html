@@ -20,9 +20,9 @@
         <button class="btn btn-primary" (click)="editCourse(currentCourse)">Edit</button>
     </div>
     <div class="team-members">
-        <div class="team-member-avatar" *ngIf="courseUserSize <= sizeMember; else moreMember" >
+        <div class="team-member-avatar" *ngIf="courseUserSize <= sizeMember; else moreMember">
             <div class="member-avatar" *ngFor="let courseUser of currentCourse.courseUsers">
-                <img *ngIf="courseUser.user.avatar; else generic" class="avatar-sm" src="{{courseUser.user.avatar}}" alt="User avatar">
+                <img *ngIf="courseUser.user.avatar; else generic" class="avatar-sm" src="{{courseUser.user.avatar}}" alt="avatar">
                 <ng-template #generic>
                     <div class="avatar-sm generic-avatar">
                         {{courseUser.user.userName?.substring(0,1)?.toUpperCase()}}
@@ -33,7 +33,7 @@
         <div class="team-member-avatar">
             <ng-template #moreMember>
                 <div class="member-avatar" *ngFor="let courseUser of currentCourse.courseUsers | slice: 0:3">
-                    <img *ngIf="courseUser.user.avatar; else generic" class="avatar-sm" src="{{courseUser.user.avatar}}" alt="User avatar">
+                    <img *ngIf="courseUser.user.avatar; else generic" class="avatar-sm" src="{{courseUser.user.avatar}}" alt="avatar">
                     <ng-template #generic>
                         <div class="avatar-sm generic-avatar">
                             {{courseUser.user.userName?.substring(0,1)?.toUpperCase()}}

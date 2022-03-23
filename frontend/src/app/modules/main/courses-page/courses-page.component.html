@@ -39,24 +39,49 @@
                                 <div class="course-name" [routerLink]="['/main/courses', course.name]">{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">
-                                <img *ngIf="course.owner?.avatar; else generic" class="avatar-sm" src="{{course.owner?.avatar}}" alt="User avatar" [routerLink]="['/main/user',course.owner.id]">
-                                <ng-template #generic>
-                                    <div class="avatar-sm generic-avatar" [routerLink]="['/main/user',course.owner.id]">
-                                        {{course.owner?.userName?.substring(0,1)?.toUpperCase()}}
+                                <div class="team-members">
+                                    <div class="team-member-avatar" *ngIf="course.courseUsers.length <= 3; else moreMember">
+                                        <div class="member-avatar" *ngFor="let courseUser of course.courseUsers">
+                                            <img *ngIf="courseUser.user.avatar; else generic" class="avatar-sm" src="{{courseUser.user.avatar}}" alt="avatar">
+                                            <ng-template #generic>
+                                                <div class="avatar-sm generic-avatar">
+                                                    {{courseUser.user.userName?.substring(0,1)?.toUpperCase()}}
+                                                </div>
+                                            </ng-template>
+                                        </div>
                                     </div>
-                                </ng-template>
+                                    <div class="team-member-avatar">
+                                        <ng-template #moreMember>
+                                            <div class="member-avatar" *ngFor="let courseUser of course.courseUsers | slice: 0:3">
+                                                <img *ngIf="courseUser.user.avatar; else generic" class="avatar-sm" src="{{courseUser.user.avatar}}" alt="avatar">
+                                                <ng-template #generic>
+                                                    <div class="avatar-sm generic-avatar">
+                                                        {{courseUser.user.userName?.substring(0,1)?.toUpperCase()}}
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                            <div class="avatar-member-length-sm generic-avatar right">
+                                                +{{course.courseUsers.length - 3}}
+                                            </div>
+                                        </ng-template>
+                                    </div>
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
-                                    <div class="dropdown-menu" ngbDropdownMenu>
-                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)" *ngIf="course.owner.id === user.id; else leave">
+                                    <div class="dropdown-menu" ngbDropdownMenu *ngIf="course.isCurrentUserAdmin; else leave">
+                                        <button class="btn mb-0" (click)="leaveCourse(course.id, org.id)">
+                                            Leave
+                                        </button>
+                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)">
                                             Delete
                                         </button>
-                                        <ng-template #leave>
+                                    </div>
+                                    <ng-template #leave>
+                                        <div class="dropdown-menu" ngbDropdownMenu>
                                             <button class="btn mb-0" (click)="leaveCourse(course.id, org.id)">
                                                 Leave
                                             </button>
-                                        </ng-template>
-                                    </div>
+                                        </div>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>
@@ -66,5 +91,6 @@
                 <div class="btn btn-primary mb-0" *ngIf="org.ownerId === user.id" (click)="createCourse(org)">New course</div>
             </div>
         </div>
+    </div>
     </div>
 </div>

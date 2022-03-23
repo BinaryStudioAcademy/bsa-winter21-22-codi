@@ -8,6 +8,7 @@ export interface Course {
     description?: string;
     avatar?: string;
     owner: User;
+    isCurrentUserAdmin: boolean;
     createdAt: Date;
     courseUsers: CourseUser[];
 }
