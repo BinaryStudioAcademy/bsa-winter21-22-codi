@@ -8,7 +8,7 @@
     <div ngbDropdown placement="bottom-right">
         <button class="btn btn-sm btn-outline-primary" id="importDropdown" ngbDropdownToggle>Import project</button>
         <div ngbDropdownMenu aria-labelledby="importDropdown">
-          <button ngbDropdownItem>Import from GitHub</button>
+          <button ngbDropdownItem (click)="openGithubImport()">Import from GitHub</button>
           <button ngbDropdownItem>Import from PC</button>
         </div>
       </div>

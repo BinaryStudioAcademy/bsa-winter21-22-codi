@@ -1,6 +1,6 @@
-﻿using Codi.Core.BL.Interfaces;
-using Codi.Core.BL.MappingProfiles;
-using Codi.Core.BL.Services;
+﻿using Codi.Core.BLL.Interfaces;
+using Codi.Core.BLL.MappingProfiles;
+using Codi.Core.BLL.Services;
 using FluentValidation.AspNetCore;
 using System.Reflection;
 using Codi.Core.BLL.RabbitMQ;
@@ -11,14 +11,12 @@ using RabbitMQ.Client;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Codi.Core.WebAPI.Validators;
-using Codi.Core.BLL.Interfaces;
-using Codi.Core.BLL.Services;
 
 namespace Codi.Core.WebAPI.Extentions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterCustomServices(this IServiceCollection services)
+        public static void RegisterCustomServices(this IServiceCollection services, IConfiguration configuration)
         {
             services
                 .AddControllers()
@@ -33,6 +31,17 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<IAppService, AppService>();
             services.AddTransient<ITagService, TagService>();
+            services.AddTransient<IGitService, GitService>();
+            services.AddTransient<IFileService, FileService>();
+            services.AddTransient<IProjectStructureService, ProjectStructureService>();
+            services.AddTransient<ICredentialsService, CredentialsService>();
+            services.AddTransient<IGithubService, GithubService>();
+            
+            services.AddHttpClient<IGithubClient, GithubClient>(client =>
+            {
+                client.BaseAddress = new Uri(configuration.GetSection("githubAPI").Value);
+                client.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
+            });
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

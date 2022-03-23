@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Codi.Core.BL.Interfaces;
+using Codi.Core.BLL.Interfaces;
 using Codi.Core.BLL.Exceptions;
 using Codi.Core.Common.DTO.User;
 using Codi.Core.Common.Helpers;
@@ -7,7 +7,7 @@ using Codi.Core.DAL;
 using Codi.Core.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Codi.Core.BL.Services;
+namespace Codi.Core.BLL.Services;
 
 public class UserService : BaseService, IUserService
 {

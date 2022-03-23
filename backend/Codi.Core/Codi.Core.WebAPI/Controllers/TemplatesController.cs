@@ -1,7 +1,5 @@
-﻿using Codi.Core.BL.Interfaces;
-using Codi.Core.BLL.Interfaces;
+﻿using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO.Template;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Codi.Core.WebAPI.Controllers
