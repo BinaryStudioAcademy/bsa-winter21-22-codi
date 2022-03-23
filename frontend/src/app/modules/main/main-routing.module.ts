@@ -8,7 +8,6 @@ import { ApplicationsPageComponent } from './applications-page/applicaions-page.
 import { TagApplicationsPageComponent } from './tag-applications-page/tag-applications-page.component';
 import { TagsPageComponent } from './tags-page/tags-page.component';
 import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
-import { WorkspacePageComponent } from './workspace-page/workspace-page.component';
 import { CourseManagePageComponent } from './course-manage-page/course-manage-page.component';
 
 const routes: Routes = [{

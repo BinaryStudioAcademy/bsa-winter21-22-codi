@@ -19,7 +19,6 @@ import { AppCardComponent } from './applications-page/app-card/app-card.componen
 import { TagApplicationsPageComponent } from './tag-applications-page/tag-applications-page.component';
 import { TagsPageComponent } from './tags-page/tags-page.component';
 import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
-import { WorkspacePageComponent } from './workspace-page/workspace-page.component';
 import { CourseManagePageComponent } from './course-manage-page/course-manage-page.component';
 import { CourseInviteDialogComponent } from './course-manage-page/course-invite-dialog/course-invite-dialog.component';
 import { UpdateCourseDialogComponent } from './course-manage-page/update-course-dialog/update-course-dialog.component';
@@ -38,7 +37,6 @@ import { UpdateCourseDialogComponent } from './course-manage-page/update-course-
         AppCardComponent,
         TagApplicationsPageComponent,
         TagsPageComponent,
-        WorkspacePageComponent,
         CourseManagePageComponent,
         CourseInviteDialogComponent,
         UpdateCourseDialogComponent
