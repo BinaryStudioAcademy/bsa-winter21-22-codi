@@ -111,7 +111,7 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
             .inviteUserToCourse(inviteUserToCourse)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next:(_resp) => {
+                next:(_) => {
                     this.reloadCourseUsers(this.startPage);
                     this.notificationService
                         .showSuccessMessage('User invited from course', 'Success');
@@ -130,7 +130,7 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
             .changeCourseUserRole(changeCourseUserRole)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next:(_resp) => {
+                next:(_) => {
                     this.reloadCourseUsers(this.startPage);
                     this.notificationService.showSuccessMessage('Permission changed', 'Success');
 

@@ -1,4 +1,4 @@
 export enum CourseRole {
-    Admin ,
+    Admin,
     Member
 }

@@ -65,6 +65,7 @@
                                             </div>
                                         </ng-template>
                                     </div>
+                                </div>
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu *ngIf="course.isCurrentUserAdmin; else leave">
@@ -91,6 +92,5 @@
                 <div class="btn btn-primary mb-0" *ngIf="org.ownerId === user.id" (click)="createCourse(org)">New course</div>
             </div>
         </div>
-    </div>
     </div>
 </div>
