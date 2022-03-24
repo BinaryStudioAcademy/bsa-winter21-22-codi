@@ -125,7 +125,7 @@ public class CourseService : BaseService, ICourseService
             .IgnoreQueryFilters()
             .FirstOrDefaultAsync(u => u.UserId == inviteCourseUserDto.UserId && u.CourseId == inviteCourseUserDto.CourseId);
 
-        if (existedCourseUser is not null && existedCourseUser.IsDeleted == false)
+        if (existedCourseUser is not null && !existedCourseUser.IsDeleted)
         {
             throw new InvalidOperationException($"User is already a member of course");
         }

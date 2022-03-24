@@ -70,7 +70,7 @@
             <div class="member-permission">
                 <div class="padding-sm">
                     <div ngbDropdown placement="bottom-right" *ngIf="!currentCourseUser.courseRole; else forMember">
-                        <a type="button" id="roleDropdown" ngbDropdownToggle>{{courseRole[courseUser.courseRole]}}</a>
+                        <a type="button" id="roleDropdown" class="role-change" ngbDropdownToggle>{{courseRole[courseUser.courseRole]}}</a>
                         <div ngbDropdownMenu aria-labelledby="roleDropdown">
                             <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Admin)">{{courseRole[0]}}</button>
                             <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Member)">{{courseRole[1]}}</button>
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div>
-                <a type="button" style="color: #8834ee" *ngIf="!currentCourseUser.courseRole" (click)="deleteUserCourse(courseUser.user.id)" >&#10008;</a>
+                <a type="button" class="role-change" *ngIf="!currentCourseUser.courseRole" (click)="deleteUserCourse(courseUser.user.id)" >&#10008;</a>
             </div>
         </div>
     </div>

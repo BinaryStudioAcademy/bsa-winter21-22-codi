@@ -1,8 +1,5 @@
-﻿
-
-using Codi.Core.Common.DTO.User;
+﻿using Codi.Core.Common.DTO.User;
 using Codi.Core.Common.Enums;
-
 
 namespace Codi.Core.Common.DTO.Course
 {

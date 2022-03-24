@@ -28,6 +28,7 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
     form: FormGroup;
     courseRole = CourseRole;
     pageSize: number = 5;
+    startPage: number = 1;
 
     constructor(
         public modal: NgbActiveModal,
@@ -44,7 +45,7 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(cu => this.currentCourseUser = cu);
 
-        this.reloadCourseUsers(1);
+        this.reloadCourseUsers(this.startPage);
 
         this.form = new FormGroup({
             inviteUserName: new FormControl('',
@@ -73,7 +74,7 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
         );
 
     searchUser(term: string) {
-        if (term === '') {
+        if (!term) {
             return of([]);
         }
 
@@ -100,7 +101,6 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
     }
 
     inviteUser() {
-        let invitedUser: CourseUser;
         let invitedUserId = this.form.value.inviteUserName.id;
         let inviteUserToCourse = {
             userId: invitedUserId,
@@ -111,9 +111,8 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
             .inviteUserToCourse(inviteUserToCourse)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next:(resp) => {
-                    invitedUser = resp
-                    this.reloadCourseUsers( 1 )
+                next:(_resp) => {
+                    this.reloadCourseUsers(this.startPage);
                     this.notificationService
                         .showSuccessMessage('User invited from course', 'Success');
                 },
@@ -122,7 +121,6 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
     }
 
     changeRole(id: number, role: CourseRole) {
-        let changedUserRole: CourseUser;
         let changeCourseUserRole = {
             userId: id,
             courseId: this.course.id,
@@ -132,10 +130,10 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
             .changeCourseUserRole(changeCourseUserRole)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
-                next:(resp) => {
-                    changedUserRole = resp
-                    this.reloadCourseUsers(1)
+                next:(_resp) => {
+                    this.reloadCourseUsers(this.startPage);
                     this.notificationService.showSuccessMessage('Permission changed', 'Success');
+
                 },
                 error:() =>  this.notificationService.showErrorMessage('Something went wrong', "Error")
             });
@@ -151,7 +149,7 @@ export class CourseInviteDialogComponent extends BaseComponent implements OnInit
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next:() => {
-                    this.reloadCourseUsers(1)
+                    this.reloadCourseUsers(this.startPage);
                     this.notificationService.showSuccessMessage('Remove user form the course', 'Success');
                 },
                 error:() =>  this.notificationService.showErrorMessage('Something went wrong', "Error")
