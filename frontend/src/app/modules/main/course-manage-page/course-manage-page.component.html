@@ -2,7 +2,7 @@
     <div class="back-link"><a routerLink="/main/courses">< back to all courses</a></div>
     <div class="team-profile">
         <div class="course-info">
-            <img class="avatar" src="/assets/images/robot.png" alt="course avatar">
+            <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar" (click)="editCourse(currentCourse)">
             <div class="info">
                 <div class="d-flex">
                     <div class="name">
