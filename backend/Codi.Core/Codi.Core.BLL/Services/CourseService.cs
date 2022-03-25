@@ -123,22 +123,11 @@ public class CourseService : BaseService, ICourseService
     {
         var existedCourseUser = await _context.CourseUsers
             .IgnoreQueryFilters()
-            .FirstOrDefaultAsync(u => u.UserId == inviteCourseUserDto.UserId && u.CourseId == inviteCourseUserDto.CourseId);
+            .FirstOrDefaultAsync(u => u.UserId == inviteCourseUserDto.UserId && u.CourseId == inviteCourseUserDto.CourseId && !u.IsDeleted);
 
-        if (existedCourseUser is not null && !existedCourseUser.IsDeleted)
+        if (existedCourseUser is not null)
         {
             throw new InvalidOperationException($"User is already a member of course");
-        }
-
-        if(existedCourseUser is not null && existedCourseUser.IsDeleted)
-        {
-            existedCourseUser.IsDeleted = false;
-            existedCourseUser.CourseRole = CourseRole.Member;
-            existedCourseUser.CreatedAt = DateTime.UtcNow;
-            var updatedCourseUser = _context.Update(existedCourseUser).Entity;
-            await _context.SaveChangesAsync();
-            return await GetInviteCourseUserByIdAsync(updatedCourseUser.UserId, updatedCourseUser.CourseId);
-
         }
 
         var courseUser = _mapper.Map<CourseUser>(inviteCourseUserDto, opts => opts.AfterMap((src, dst) =>
