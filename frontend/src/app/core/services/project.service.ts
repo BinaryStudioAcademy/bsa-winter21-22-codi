@@ -14,6 +14,10 @@ export class ProjectService {
 
     constructor(private httpService: CodiHttpClientService) { }
 
+    getProject(projectId: number) {
+        return this.httpService.getRequest<Project>(`${this.routePrefix}/${projectId}`);
+    }
+
     getCurrentUserProjectNames() {
         return this.httpService.getRequest<ProjectName[]>(`${this.routePrefix}/my/names`)
     }

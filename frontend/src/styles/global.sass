@@ -124,3 +124,32 @@ a
 
 ::-webkit-resizer
     background-color: darken($primary, 5%)
+
+.angular-tree-component
+    .toggle-children
+        background-image: url('~src/assets/images/workspace/expander.png')
+        height: 25px
+        width: 15px
+    .tree-node-content
+        max-width: 200px
+        padding: 1px 5px
+        font-family: $font-family-base
+        font-weight: bold
+        color: $muted-text-color
+        border-radius: $border-radius
+        cursor: pointer
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+
+
+.node-content-wrapper,
+.node-content-wrapper:hover,
+.node-content-wrapper.node-content-wrapper-active:hover,
+.node-content-wrapper-active.node-content-wrapper-focused,
+.node-content-wrapper-active
+    background: none
+    box-shadow: none
+
+.node-content-wrapper:hover
+    opacity: 75%
