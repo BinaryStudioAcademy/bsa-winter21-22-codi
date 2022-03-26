@@ -57,7 +57,7 @@ namespace Codi.Core.DAL.NoSql.Seed
             {
                 Name = "HTML, CSS, JS",
                 Language = Language.JavaScript,
-                Nodes = files.Select(f => new FSNode { Type = FSNodeType.File, FileId = f.Id }).ToList()
+                Nodes = files.Select(f => new FSNode { Name = f.Name, Type = FSNodeType.File, FileId = f.Id }).ToList()
             };
 
             await templateRepository.InsertOneAsync(template);
@@ -95,7 +95,7 @@ namespace Codi.Core.DAL.NoSql.Seed
             {
                 Name = "C#",
                 Language = Language.CSharp,
-                Nodes = files.Select(f => new FSNode { Type = FSNodeType.File, FileId = f.Id }).ToList()
+                Nodes = files.Select(f => new FSNode { Name = f.Name, Type = FSNodeType.File, FileId = f.Id }).ToList()
             };
 
             await templateRepository.InsertOneAsync(template);
