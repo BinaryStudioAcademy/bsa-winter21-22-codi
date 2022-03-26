@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h3>Edit course</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="modal.close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="course">Course name</label>
+            <input type="text" class="form-control" id="course" placeholder="What should the Course be called?" formControlName="displayName">
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('minlength') || form.controls['displayName'].hasError('maxlength')">
+                    Your course name must be between 5 and 100 characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('pattern')">
+                    Your course name can only contain latin letters, digits, printable characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('noWhiteSpace')">
+                    Your course name can't contain space at the beginning or at the end
+                </li>
+            </ul>
+        </div>
+        <label for="description" class="form-label">Description</label>
+        <textarea formControlName="description" type="text" class="form-control description" id="description" aria-describedby="descriptionHelp"></textarea>
+        <div id="descriptionHelp" class="form-text descriptionHelp" [ngClass]="{'text-danger' : form.controls['description'].value?.length > 140}">
+            * {{form.controls['description'].value?.length === null ? 0 : form.controls['description'].value?.length}} / 140 characters is allowed
+        </div>
+        <button type="submit" (click)="updateCourse()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Update course</button>
+    </form>
+</div>
+
