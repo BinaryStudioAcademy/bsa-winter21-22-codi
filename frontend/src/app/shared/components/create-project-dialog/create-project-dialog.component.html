@@ -50,7 +50,10 @@
             <label>Privacy</label>
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="isPublic" formControlName="isPublic">
-                <label class="custom-control-label" for="isPublic">Project is public</label>
+                <label class="custom-control-label" for="isPublic" *ngIf="!form.controls['isPublic'].value; else isPrivate">Project is public</label>
+                <ng-template #isPrivate>
+                    <label class="custom-control-label" for="isPublic">Project is private</label>
+                </ng-template>
             </div>
         </div>
     </form>
