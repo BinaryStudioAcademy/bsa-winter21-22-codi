@@ -26,21 +26,31 @@
                 (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
                 [editable]='false' #instance="ngbTypeahead"
                 [class.is-invalid]="form.controls['template'].touched && form.controls['template'].invalid" />
+            <div class="invalid-feedback">
+                <ul>
+                    <li *ngIf="form.controls['template'].hasError('required')">
+                        Template is required
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="title">Title</label>
             <input id="title" formControlName="title"
-                [class.is-invalid]="form.controls['title'].touched && form.controls['title'].invalid"
+                [class.is-invalid]="form.controls['title'].dirty && form.controls['title'].invalid"
                 placeholder="Name your project" class="form-control">
             <div class="invalid-feedback">
                 <ul>
+                    <li *ngIf="form.controls['title'].hasError('required')">
+                        Title is required
+                    </li>
                     <li
                         *ngIf="form.controls['title'].hasError('minlength') || form.controls['title'].hasError('maxlength')">
                         Your project name must be between 2 and 100 characters
                     </li>
                     <li *ngIf="form.controls['title'].hasError('pattern')">
-                        Your project name can only contain latin letters, digits
+                        Your project title can only contain latin letters, digits, printable characters
                     </li>
                 </ul>
             </div>
