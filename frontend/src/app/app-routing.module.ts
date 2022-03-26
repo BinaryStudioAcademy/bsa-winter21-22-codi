@@ -8,16 +8,23 @@ const redirectToMain = () => redirectLoggedInTo(['main']);
 
 const routes: Routes = [
     {
-        path: '',
-        loadChildren: () =>
-            import('./modules/landing/landing.module')
-                .then(m => m.LandingModule),
-    },
-    {
         path: 'main',
         loadChildren: () => import('./modules/main/main.module')
             .then(m => m.MainModule),
         ...canActivate(redirectToLogin),
+    },
+    {
+        path: 'workspace',
+        loadChildren: () =>
+            import('./modules/workspace/workspace.module')
+                .then(m => m.WorkspaceModule),
+        ...canActivate(redirectToLogin),
+    },
+    {
+        path: '',
+        loadChildren: () =>
+            import('./modules/landing/landing.module')
+                .then(m => m.LandingModule),
     },
     {
         path: '',
@@ -31,13 +38,6 @@ const routes: Routes = [
         loadChildren: () =>
             import('./modules/user/user.module')
                 .then(m => m.UserModule),
-        ...canActivate(redirectToLogin),
-    },
-    {
-        path: 'workspace',
-        loadChildren: () =>
-            import('./modules/workspace/workspace.module')
-                .then(m => m.WorkspaceModule),
         ...canActivate(redirectToLogin),
     },
     {
