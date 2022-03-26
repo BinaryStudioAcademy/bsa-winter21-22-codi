@@ -18,6 +18,7 @@ import {
 } from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
 import { noop } from "@shared/common/utils";
 import { ConfirmationDialogResult } from '@core/models/confirmation-dialog/confirmation-dialog-result';
+import {CourseUser} from "@core/models/course/course-user";
 
 @Component({
     selector: 'app-courses-page',

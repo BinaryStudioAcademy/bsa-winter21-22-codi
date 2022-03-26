@@ -1,0 +1,59 @@
+@import '~src/styles/variables'
+
+.container
+    max-width: 990px
+    margin: 0 auto
+
+.team-profile
+    display: flex
+    justify-content: space-between
+    padding: 16px 16px 0
+
+.course-info
+    display: flex
+    justify-content: flex-start
+    flex-wrap: wrap
+
+.info
+    padding: 0 3px 0 15px
+
+.name
+    font-size: $h2-font-size
+    color: $base-text-color
+
+.username
+    color: $muted-text-color
+
+.description
+    margin-top: 10px
+    font-size: $font-size-lg
+    max-width: 700px
+    word-wrap: anywhere
+
+.back-link
+    padding: 8px
+
+.btn
+    align-self: flex-start
+
+.team-members
+    padding-top: 24px
+    display: flex
+    align-items: center
+
+.team-member-avatar
+    padding-right: 32px
+    display: flex
+
+.line
+    width: 100%
+    display: block
+    height: 1px
+    background-color: $base-text-color
+    margin: 10px 0
+
+.member-avatar:not(:first-child)
+    border-width: 0
+    margin-left: -20px
+    background-size: cover
+

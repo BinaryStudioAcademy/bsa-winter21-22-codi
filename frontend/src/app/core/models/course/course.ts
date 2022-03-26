@@ -1,4 +1,5 @@
 import { User } from "@core/models/user/user";
+import {CourseUser} from "@core/models/course/course-user";
 
 export interface Course {
     id: number;
@@ -7,5 +8,7 @@ export interface Course {
     description?: string;
     avatar?: string;
     owner: User;
+    isCurrentUserAdmin: boolean;
     createdAt: Date;
+    courseUsers: CourseUser[];
 }
