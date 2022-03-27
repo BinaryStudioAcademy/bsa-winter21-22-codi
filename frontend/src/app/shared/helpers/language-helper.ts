@@ -5,18 +5,8 @@ const GetLanguageByExtension = (extension: string) => {
             return "csharp";
         case "cpp":
             return "c";
-        case "css":
-            return "css";
-        case "html":
-            return "html";
-        case "java":
-            return "java";
         case "js":
             return "javascript";
-        case "json":
-            return "json";
-        case "sql":
-            return "sql";
         case "py":
             return "python";
         case "ts":
@@ -24,7 +14,7 @@ const GetLanguageByExtension = (extension: string) => {
         case "yml":
             return "yaml";
         default:
-            return undefined;
+            return extension;
     }
 }
 
