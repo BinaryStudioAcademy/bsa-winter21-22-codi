@@ -8,9 +8,10 @@ import { FsNodeType } from "@core/enums/fs-node-type";
 import { FileService } from "@core/services/file.service";
 import { File } from "@core/models/file/file";
 import { FsNode } from "@core/models/structure/fs-node";
-import { GetLanguageByExtension } from "@shared/helpers/language-helper";
+import { GetLanguageByFileName } from "@shared/helpers/language-helper";
 import { Project } from "@core/models/project/project";
 import { ProjectService } from "@core/services/project.service";
+import { EditorOptions } from "@core/models/editor-options";
 
 @Component({
     selector: 'app-workspace-page',
@@ -18,7 +19,7 @@ import { ProjectService } from "@core/services/project.service";
     styleUrls: ['./workspace-page.component.sass']
 })
 export class WorkspacePageComponent extends BaseComponent implements OnInit{
-    editorOptions: any;
+    editorOptions: EditorOptions;
 
     projectId: number;
     projectInfo: Project;
@@ -85,13 +86,13 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit{
     }
 
     private setUpEditorForCurrentFile() {
-        let lang = GetLanguageByExtension(this.selectedFile?.name);
+        let lang = GetLanguageByFileName(this.selectedFile?.name);
         this.editorOptions = {
             theme: 'vs-dark',
             scrollBeyondLastLine: false,
             language: lang,
             automaticLayout: true
-        }
+        };
     }
 
     private setNextOpenedFile(file: File) {
@@ -129,8 +130,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit{
     }
 
     private isOpenedFile(fileId: string) {
-        let file = this.openedFiles.find(f => f.id === fileId);
-        return file === undefined ? false : true;
+        return this.openedFiles.some(f => f.id === fileId);
     }
 
     private getProjectStructure() {

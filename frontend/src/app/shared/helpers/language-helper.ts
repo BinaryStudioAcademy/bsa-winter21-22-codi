@@ -1,27 +1,38 @@
-const languages = [
-    { extension: "cs", value: "csharp" },
-    { extension: "csproj", value: "csharp" },
-    { extension: "cpp", value: "c" },
-    { extension: "css", value: "css" },
-    { extension: "html", value: "html" },
-    { extension: "java", value: "java" },
-    { extension: "js", value: "javascript" },
-    { extension: "json", value: "json" },
-    { extension: "sql", value: "sql" },
-    { extension: "py", value: "python" },
-    { extension: "ts", value: "typescript" },
-    { extension: "yml", value: "yaml"}
-];
+const GetLanguageByExtension = (extension: string) => {
+    switch (extension) {
+        case "cs":
+        case "csproj":
+            return "csharp";
+        case "cpp":
+            return "c";
+        case "css":
+            return "css";
+        case "html":
+            return "html";
+        case "java":
+            return "java";
+        case "js":
+            return "javascript";
+        case "json":
+            return "json";
+        case "sql":
+            return "sql";
+        case "py":
+            return "python";
+        case "ts":
+            return "typescript";
+        case "yml":
+            return "yaml";
+        default:
+            return undefined;
+    }
+}
 
-export const GetLanguageByExtension = (filename: string) => {
+export const GetLanguageByFileName = (filename: string) => {
     if(filename) {
         let index = filename.lastIndexOf('.');
         let extension = filename.substring(index + 1, filename.length + 1);
-        for (let item of languages) {
-            if(item.extension === extension) {
-                return item.value;
-            }
-        }
+        return GetLanguageByExtension(extension);
     }
 
     return undefined;
