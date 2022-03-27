@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Course\" />
     <Folder Include="DTO\Lesson\" />
     <Folder Include="DTO\Submission\" />
     <Folder Include="DTO\Thread\" />

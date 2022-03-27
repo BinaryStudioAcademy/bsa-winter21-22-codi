@@ -82,4 +82,21 @@ public class UserService : BaseService, IUserService
         await _context.SaveChangesAsync();
         return await GetUserByIdAsync(userEntity.Id);
     }
+
+    public async Task<ICollection<UserDto>> GetUserByNameAsync(string name, long userId)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new NotFoundException(nameof(User));
+        }
+           
+        var users = await _context.Users
+            .Where(u => u.UserName.Contains(name) && u.Id != userId)
+            .Take(5)
+            .Include(u => u.Avatar)
+            .ToListAsync();
+
+        return _mapper.Map<ICollection<UserDto>>(users);
+           
+    }
 }

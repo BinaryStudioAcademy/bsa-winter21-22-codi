@@ -16,13 +16,25 @@ public class OrganizationService : BaseService, IOrganizationService
     {
         var organizations = await _context.Organizations
             .Include(o => o.Courses.Where(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
-            .ThenInclude(c => c.Owner)
+            .ThenInclude(cu => cu.CourseUsers)
+            .ThenInclude(c => c.User)
             .ThenInclude(u => u.Avatar)
             .Where(o => o.OwnerId == userId || o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
             .AsSplitQuery()
             .ToListAsync();
 
-        return _mapper.Map<ICollection<OrganizationDto>>(organizations);
+        var mergedOrganizations =  _mapper.Map<ICollection<OrganizationDto>>(organizations);
+
+        foreach(var organization in mergedOrganizations)
+        {
+            foreach(var course in organization.Courses)
+            {
+                course.IsCurrentUserAdmin = course.CourseUsers
+                    .Any(u => u.User.Id == userId && u.CourseRole == Common.Enums.CourseRole.Admin);
+            }
+        }
+
+        return  mergedOrganizations;
     }
 
     public async Task<OrganizationDto> CreateOrganizationAsync(CreateOrganizationDto organizationDto)
