@@ -38,11 +38,11 @@
         <div class="form-group">
             <label for="title">Title</label>
             <input id="title" formControlName="title"
-                [class.is-invalid]="form.controls['title'].dirty && form.controls['title'].invalid"
+                [class.is-invalid]="(form.controls['title'].dirty || form.controls['title'].touched) && form.controls['title'].invalid"
                 placeholder="Name your project" class="form-control">
             <div class="invalid-feedback">
                 <ul>
-                    <li *ngIf="form.controls['title'].hasError('required')">
+                    <li *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched">
                         Title is required
                     </li>
                     <li
