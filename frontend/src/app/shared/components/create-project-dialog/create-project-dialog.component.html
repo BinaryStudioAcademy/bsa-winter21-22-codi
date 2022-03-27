@@ -47,7 +47,7 @@
                     </li>
                     <li
                         *ngIf="form.controls['title'].hasError('minlength') || form.controls['title'].hasError('maxlength')">
-                        Your project name must be between 2 and 100 characters
+                        Your project name must be between 2 and 50 characters
                     </li>
                     <li *ngIf="form.controls['title'].hasError('pattern')">
                         Your project title can only contain latin letters, digits, printable characters

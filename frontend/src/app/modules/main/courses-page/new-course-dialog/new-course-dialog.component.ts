@@ -10,6 +10,7 @@ import { Course } from "@core/models/course/course";
 import { Organization } from "@core/models/organization/organization";
 import { regexs } from "@shared/constants/regexs";
 import { WhiteSpaceValidator } from "@shared/validators/whitespace.validator";
+import {CourseNameAsyncValidator} from "@core/validators/course-name.async-validator";
 
 @Component({
     selector: 'app-new-course-dialog',
@@ -34,7 +35,7 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.title),
                     WhiteSpaceValidator.noWhiteSpace
                 ]),
@@ -42,9 +43,11 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.username)
-                ]),
+                ],
+                [CourseNameAsyncValidator(this.courseService)]
+            ),
         });
     }
 

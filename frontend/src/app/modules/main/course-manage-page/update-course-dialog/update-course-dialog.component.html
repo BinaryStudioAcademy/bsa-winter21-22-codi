@@ -10,11 +10,19 @@
 <div class="modal-body">
     <form [formGroup]="form">
         <div class="form-group">
-            <label for="course">Course name</label>
-            <input type="text" class="form-control" id="course" placeholder="What should the Course be called?" formControlName="displayName">
+            <label for="course">Course display name</label>
+            <input
+                type="text" class="form-control" id="course"
+                placeholder="What should the Course be called?"
+                formControlName="displayName"
+                [class.is-invalid]="(form.controls['displayName'].dirty || form.controls['displayName'].touched) && form.controls['displayName'].invalid"
+            >
             <ul>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('required') && form.controls['displayName'].touched">
+                    Course display name is required
+                </li>
                 <li class="text-danger" *ngIf="form.controls['displayName'].hasError('minlength') || form.controls['displayName'].hasError('maxlength')">
-                    Your course name must be between 5 and 100 characters
+                    Your course name must be between 5 and 60 characters
                 </li>
                 <li class="text-danger" *ngIf="form.controls['displayName'].hasError('pattern')">
                     Your course name can only contain latin letters, digits, printable characters

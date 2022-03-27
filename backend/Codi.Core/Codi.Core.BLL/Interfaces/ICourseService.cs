@@ -21,4 +21,5 @@ public interface ICourseService
             Expression<Func<CourseUser, object>>? orderBy = null,
             SortOrder sortOrder = SortOrder.Ascending);
     Task<CourseUserDto> ChangeCourseUserRoleAsync(InviteCourseUserDto userRole);
+    Task<bool> GetCourseNameForValidatorAsync(string name);
 }

@@ -14,10 +14,18 @@
     <form [formGroup]="form">
         <div class="form-group">
             <label for="courseName">Course display name</label>
-            <input type="text" class="form-control" id="courseName" placeholder="What should the Course be called?" formControlName="displayName">
+            <input
+                type="text" class="form-control" id="courseName"
+                placeholder="What should the Course be called?"
+                formControlName="displayName"
+                [class.is-invalid]="(form.controls['displayName'].dirty || form.controls['displayName'].touched) && form.controls['displayName'].invalid"
+            >
             <ul>
+                <li class="text-danger" *ngIf="form.controls['displayName'].hasError('required') && form.controls['displayName'].touched">
+                    Course display name is required
+                </li>
                 <li class="text-danger" *ngIf="form.controls['displayName'].hasError('minlength') || form.controls['displayName'].hasError('maxlength')">
-                    Your course name must be between 5 and 100 characters
+                    Your course name must be between 5 and 60 characters
                 </li>
                 <li class="text-danger" *ngIf="form.controls['displayName'].hasError('pattern')">
                     Your course name can only contain latin letters, digits, printable characters
@@ -29,14 +37,26 @@
         </div>
         <div class="form-group">
             <label for="courseDisplayName">Course username</label>
-            <input type="text" class="form-control" id="courseDisplayName" placeholder="course-username" aria-describedby="courseNameHelp" formControlName="name">
+            <input
+                type="text" class="form-control" id="courseDisplayName"
+                placeholder="course-username" aria-describedby="courseNameHelp"
+                formControlName="name"
+                [class.is-invalid]="(form.controls['name'].dirty || form.controls['name'].touched) && form.controls['name'].invalid"
+            >
             <ul>
+                <li class="text-danger" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">
+                    Course username is required
+                </li>
                 <li class="text-danger" *ngIf="form.controls['name'].hasError('minlength') || form.controls['name'].hasError('maxlength')">
-                    Your course-username must be between 5 and 100 characters
+                    Your course-username must be between 5 and 60 characters
                 </li>
                 <li class="text-danger" *ngIf="form.controls['name'].hasError('pattern')">
                     Your course-username can only contain latin letters, digits
                 </li>
+                <li class="text-danger" *ngIf="form.controls['name'].hasError('courseNameExists')">
+                    This course-username is already in use
+                </li>
+
             </ul>
             <div id="courseNameHelp" class="form-text attention">You can't change this after creating a Course! So pick carefully.</div>
         </div>

@@ -42,7 +42,7 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
                 [
                     Validators.required,
                     Validators.minLength(2),
-                    Validators.maxLength(100),
+                    Validators.maxLength(50),
                     Validators.pattern(regexs.title),
                 ]),
             isPublic: new FormControl(false),
