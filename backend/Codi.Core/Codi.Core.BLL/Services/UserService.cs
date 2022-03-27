@@ -99,4 +99,14 @@ public class UserService : BaseService, IUserService
         return _mapper.Map<ICollection<UserDto>>(users);
            
     }
+
+    public async Task<bool> GetEmailForValidationAsync(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            throw new NotFoundException(nameof(User));
+        }
+
+        return await _context.Users.AnyAsync(u => u.Email == email);     
+    }
 }
