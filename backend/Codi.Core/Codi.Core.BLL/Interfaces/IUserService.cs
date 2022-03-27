@@ -10,4 +10,5 @@ public interface IUserService
     Task<long> GetUserIdByFirebaseAsync(string id);
     Task<UserDto> UpdateUserAsync(long userId, UserDto user);
     Task<ICollection<UserDto>> GetUserByNameAsync(string name, long userId);
+    Task<bool> GetEmailForValidationAsync(string email);
 }

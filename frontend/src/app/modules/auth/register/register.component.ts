@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { regexs } from '@shared/constants/regexs';
 import { SignInService } from "@core/services/sign-in.service";
 import { RegistrationService } from "@core/services/registration.service";
+import {emailAsyncValidator} from "@core/validators/email.async-validator";
+import {UserService} from "@core/services/user.service";
 
 @Component({
     selector: 'app-register',
@@ -14,7 +16,8 @@ export class RegisterComponent implements OnInit {
 
     constructor(
         private signInService: SignInService,
-        private registrationService: RegistrationService
+        private registrationService: RegistrationService,
+        private userService: UserService
     ) {}
 
     ngOnInit(): void {
@@ -31,6 +34,9 @@ export class RegisterComponent implements OnInit {
                     Validators.required,
                     Validators.pattern(regexs.email),
                     Validators.maxLength(128),
+                ],
+                [
+                    emailAsyncValidator(this.userService)
                 ]),
             password: new FormControl('',
                 [
