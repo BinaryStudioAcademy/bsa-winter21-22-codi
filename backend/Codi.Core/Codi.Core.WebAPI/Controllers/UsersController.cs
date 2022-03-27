@@ -29,7 +29,21 @@ public class UsersController : ControllerBase
     {
         return Ok(await _userService.GetUserByIdAsync(id));
     }
-    
+
+    [AllowAnonymous]
+    [HttpGet("validator/{email}")]
+    public async Task<ActionResult<bool>> GetByEmailAsync(string email)
+    {
+        return Ok(await _userService.GetEmailForValidationAsync(email));
+    }
+
+    [HttpGet("search/{name}")]
+    public async Task<ActionResult<UserDto>> GetByNameAsync(string name)
+    {
+        var userId = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
+        return Ok(await _userService.GetUserByNameAsync(name, userId)) ;
+    }
+
     [HttpGet("firebaseId")]
     public async Task<ActionResult<UserDto>> GetByFirebaseIdAsync(string id)
     {

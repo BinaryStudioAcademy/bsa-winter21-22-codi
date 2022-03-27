@@ -8,8 +8,6 @@ namespace Codi.Core.DAL.Context.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<CourseUser> builder)
         {
-            builder.HasKey(cu => new { cu.UserId, cu.CourseId});
-
             builder.HasOne(cu => cu.User)
                 .WithMany(u => u.CourseUsers)
                 .HasForeignKey(cu => cu.UserId)

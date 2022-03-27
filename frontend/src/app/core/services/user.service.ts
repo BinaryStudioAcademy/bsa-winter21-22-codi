@@ -30,4 +30,12 @@ export class UserService {
             id: firebaseId
         });
     }
+
+    public getByName(name: string) {
+        return this.httpService.getRequest<any>(`${this.routePrefix}/search/${name}`);
+    }
+
+    public getUserEmail(email: string) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/validator/${email}`);
+    }
 }
