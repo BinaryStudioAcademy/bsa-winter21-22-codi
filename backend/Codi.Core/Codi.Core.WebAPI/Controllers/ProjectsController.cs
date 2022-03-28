@@ -91,6 +91,13 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(project);
         }
 
+        [HttpPost("{projectId}/run")]
+        public async Task<ActionResult<ProjectDto>> RunProject(long projectId)
+        {
+            await _projectService.SendProjectRunRequest(projectId, this.GetUserIdFromToken());
+            return Ok();
+        }
+
         [HttpPut("{projectId}")]
         public async Task<ActionResult<ProjectDto>> UpdateAsync(long projectId, UpdateProjectDto newProjectDto)
         {
