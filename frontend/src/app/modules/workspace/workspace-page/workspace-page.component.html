@@ -10,16 +10,33 @@
                 </div>
             </div>
             <div class="explorer-files">
-                <div class="example-file">
-                    HelloWorld.js
-                </div>
+                <tree-root #tree [nodes]="projectStructure?.children!" (activate)="onSelectedNode($event)">
+                    <ng-template #treeNodeTemplate let-node let-index="index">
+                        <div class="tree-node-content"
+                             [class.selected-node] = "node.data?.fileId === selectedFile?.id"
+                             (click)="openRequestedFile(node.data)">
+                            <i class="fa fa-folder mr-2" *ngIf="node.data.type === fsNodeType.folder"></i>
+                            <i class="fa fa-file mr-2" *ngIf="node.data.type === fsNodeType.file"></i>
+                            <span>{{node.data.name}}</span>
+                        </div>
+                    </ng-template>
+                </tree-root>
             </div>
         </div>
-        <div class="sizer"></div>
         <div class="editor">
-            <ngx-monaco-editor class="code-editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+            <div class="editor-tabs">
+                <div class="tab-item"  tabindex="0"
+                     *ngFor="let file of openedFiles"
+                     [class.tab-item-selected]="file.id === selectedFile?.id"
+                     (click)="openFileFromTab(file)">
+                    <div class="tab-name">{{file.name}}</div>
+                    <div class="close-tab" (click)="closeFile(file)">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            <ngx-monaco-editor class="code-editor" [options]="editorOptions" [(ngModel)]="selectedFile.content"></ngx-monaco-editor>
         </div>
-        <div class="sizer"></div>
         <div class="output">
             <div class="output-form">
                 <div class="output-form-header">
@@ -32,7 +49,7 @@
                     <div>
                         <img class="output-icon" src="assets/images/workspace/edit.svg">
                         <img class="output-icon" src="assets/images/workspace/fullscreen.svg">
-                    </div>    
+                    </div>
                 </div>
             </div>
             <div class="sizer"></div>
@@ -40,7 +57,7 @@
                 <div class="console-title">
                     Console
                 </div>
-                <div class="expample-text" contenteditable="true">
+                <div class="example-text" contenteditable="true">
                     Code 200: OK
                 </div>
             </div>

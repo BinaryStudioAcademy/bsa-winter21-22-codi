@@ -35,7 +35,7 @@ export class UpdateCourseDialogComponent extends BaseComponent implements OnInit
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.title),
                     WhiteSpaceValidator.noWhiteSpace
                 ]),

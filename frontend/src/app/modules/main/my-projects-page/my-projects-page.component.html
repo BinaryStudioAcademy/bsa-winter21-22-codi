@@ -22,7 +22,7 @@
                     <td class="min-width">
                         <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
                     </td>
-                    <td><a class="text" routerLink="/main/myprojects/workspace">{{project.title}}</a></td>
+                    <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
                     <td>{{project.createdAt | date}}</td>
                     <td class="min-width">
                         <div ngbDropdown container="body" placement="left-top">

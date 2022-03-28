@@ -104,7 +104,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
             .update(updatedUser)
             .subscribe((user) => {
                 this.authService.setUser(user);
-                this.router.navigate(['main/user', this.user.id]).then(() => {
+                this.router.navigate(['user', this.user.id]).then(() => {
                     this.notificationService.showSuccessMessage('User info was updated', 'Success');
                 });
             });

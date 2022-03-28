@@ -31,7 +31,7 @@ export class NewOrganizationDialogComponent extends BaseComponent implements OnI
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.title),
                     WhiteSpaceValidator.noWhiteSpace
                 ]),

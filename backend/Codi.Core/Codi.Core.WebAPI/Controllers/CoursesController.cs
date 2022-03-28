@@ -36,6 +36,12 @@ public class CoursesController : ControllerBase
         return Ok(course);
     }
 
+    [HttpGet("validator/{name}")]
+    public async Task<ActionResult<bool>> GetCourseNameForValidator(string name)
+    {
+        return Ok(await _courseService.GetCourseNameForValidatorAsync(name));
+    }
+
     [HttpPost]
     public async Task<ActionResult<CourseDto>> CreateAsync(CreateCourseDto courseDto)
     {

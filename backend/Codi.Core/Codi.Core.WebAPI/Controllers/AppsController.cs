@@ -38,10 +38,10 @@ namespace Codi.Core.WebAPI.Controllers
         }
 
         [HttpGet("{appId}")]
-        public async Task<ActionResult<ICollection<AppDto>>> GetAllById(long appId)
+        public async Task<ActionResult<AppDto>> GetById(long appId)
         {
-            var apps = await _appService.GetByIdAsync(appId);
-            return Ok(apps);
+            var app = await _appService.GetByIdAsync(appId);
+            return Ok(app);
         }
 
         [HttpPost]

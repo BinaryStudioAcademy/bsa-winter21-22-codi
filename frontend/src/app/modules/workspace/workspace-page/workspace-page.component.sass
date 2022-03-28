@@ -27,30 +27,43 @@
                     width: 25px
                     height: 25px
                     filter: $icon-filter-grey
-                
+
         .explorer-files
             display: flex
             flex-direction: column
-            .example-file
-                padding: 10px
-                font-family: $font-family-base
-                font-weight: bold
-                color: $primary
-                background-color: $background-color
-                border-radius: $border-radius
-                margin: 5px
-                cursor: pointer
+            padding: 0 10px
 
     .editor
         width: 50%
         margin: 0px 10px 0px 10px
-        padding-top: 10px
         background-color: #1e1e1e
         border-radius: $border-radius
+        .editor-tabs
+            display: flex
+            background-color: $background-tabs-panel-color
+            margin-bottom: 5px
+            overflow: auto
+            .tab-item
+                display: flex
+                align-items: center
+                padding: 5px 10px
+                background-color: $background-tab-color
+                margin-right: 1px
+                cursor: pointer
+                white-space: nowrap
+                &.tab-item-selected
+                    background-color: $background-selected-tab-color
+                .tab-name
+                    margin-right: 5px
+                    color: $muted-text-color
+                .close-tab
+                    color: $muted-text-color
+                    &:hover
+                        opacity: 75%
         .code-editor
             width: 100%
             border-radius: $border-radius
-            min-height: calc( 100vh - 160px )
+            height: calc(100% - 45px)
             background-color: #1e1e1e
     .output
         display: flex
@@ -67,7 +80,7 @@
             height: calc(60% - 5px)
             .output-form-header
                 width: 100%
-                background-color: $background-panel-color 
+                background-color: $background-panel-color
                 padding: 10px
                 display: flex
                 border-top-left-radius: 10px
@@ -76,7 +89,7 @@
                 align-items: center
                 .output-url
                     min-width: calc(100% - 70px)
-                    display: flex 
+                    display: flex
                     align-items: center
                     .output-url-text
                         min-width: calc(100% - 40px)
@@ -110,10 +123,13 @@
                 text-decoration: underline
                 text-decoration-thickness: 3px
                 cursor: pointer
-            .expample-text
+            .example-text
                 padding: 10px
                 font-family: $font-family-base
                 font-weight: bold
                 color: $base-text-color
                 font-size: $font-size-base
                 cursor: default
+
+.selected-node
+    background-color: $background-selected-tab-color

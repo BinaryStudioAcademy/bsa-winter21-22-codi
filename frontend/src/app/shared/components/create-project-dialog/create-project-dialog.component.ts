@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {NgbActiveModal, NgbModal, NgbTypeahead} from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbModal, NgbTypeahead } from "@ng-bootstrap/ng-bootstrap";
 import { debounceTime, distinctUntilChanged, filter, map, merge, Observable, OperatorFunction, Subject, takeUntil } from "rxjs";
 import { TemplateService } from "@core/services/template.service";
 import { Template } from "@core/models/template/template";
@@ -12,6 +12,7 @@ import { BaseComponent } from '@core/base/base.component';
 import {
     ImportGithubProjectDialogComponent
 } from "@shared/components/import-github-project-dialog/import-github-project-dialog.component";
+import { Router } from "@angular/router";
 
 @Component({
     templateUrl: './create-project-dialog.component.html',
@@ -30,7 +31,8 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
         private modalService: NgbModal,
         private templateService: TemplateService,
         private projectService: ProjectService,
-        private notificationService: NotificationService
+        private notificationService: NotificationService,
+        private router: Router
     ) {
         super();
     }
@@ -42,7 +44,7 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
                 [
                     Validators.required,
                     Validators.minLength(2),
-                    Validators.maxLength(100),
+                    Validators.maxLength(50),
                     Validators.pattern(regexs.title),
                 ]),
             isPublic: new FormControl(false),
@@ -80,7 +82,9 @@ export class CreateProjectDialogComponent extends BaseComponent implements OnIni
             .subscribe({
                 next: (resp) => {
                     this.activeModal.close(resp)
-                    this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success')
+                    this.router.navigate(['workspace', resp.id]).then(() => {
+                        this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success');
+                    });
                 },
                 error: () => {
                     this.activeModal.close()
