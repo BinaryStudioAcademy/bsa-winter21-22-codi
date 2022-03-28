@@ -79,11 +79,16 @@ public class CourseService : BaseService, ICourseService
     public async Task DeleteCourseAsync(long id)
     {
         var course = await _context.Courses
+            .Include(cu => cu.CourseUsers)
             .FirstOrDefaultAsync(o => o.Id == id);
+
         if (course is null)
         {
             throw new NotFoundException(nameof(Course), id);
         }
+        
+        _context.RemoveRange(course.CourseUsers);
+
         _context.Remove(course);
 
         await _context.SaveChangesAsync();
@@ -205,5 +210,23 @@ public class CourseService : BaseService, ICourseService
         }
 
         return await _context.Courses.AnyAsync(c => c.Name == name);
+    }
+
+    public async Task<bool> GetCourseForGuardAsync(string name, long userId)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new NotFoundException(nameof(Course));
+        }
+
+        var course = await _context.Courses.Include(cu => cu.CourseUsers).FirstOrDefaultAsync(n => n.Name == name);
+        
+        if(course is null)
+        {
+            return await Task.FromResult(false);
+        }
+
+            return course.CourseUsers.Any(u => u.UserId == userId);
+ 
     }
 }

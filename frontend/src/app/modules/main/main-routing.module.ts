@@ -9,6 +9,7 @@ import { TagApplicationsPageComponent } from './tag-applications-page/tag-applic
 import { TagsPageComponent } from './tags-page/tags-page.component';
 import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.component';
 import { CourseManagePageComponent } from './course-manage-page/course-manage-page.component';
+import {CourseGuard} from "@core/guards/course.guard";
 
 const routes: Routes = [{
     path: '',
@@ -26,6 +27,7 @@ const routes: Routes = [{
     },{
         path: 'courses/:name',
         component: CourseManagePageComponent,
+        canActivate: [CourseGuard]
     },{
         path: 'projects',
         component: MyProjectsPageComponent,

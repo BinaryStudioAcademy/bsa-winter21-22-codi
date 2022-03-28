@@ -42,7 +42,7 @@ export class UpdateCourseDialogComponent extends BaseComponent implements OnInit
             description: new FormControl('',
                 [
                     Validators.maxLength(140),
-                    Validators.pattern(/(?!^\s+$)^.*$/m)
+                    Validators.pattern(regexs.title)
                 ]),
         });
         this.form.patchValue(this.course);
