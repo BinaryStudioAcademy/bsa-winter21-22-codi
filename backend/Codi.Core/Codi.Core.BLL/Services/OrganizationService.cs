@@ -82,13 +82,20 @@ public class OrganizationService : BaseService, IOrganizationService
     public async Task DeleteOrganizationAsync(long id)
     {
         var organization = await _context.Organizations
+            .Include(c => c.Courses)
             .FirstOrDefaultAsync(o => o.Id == id);
+
         if (organization is null)
         {
             throw new NotFoundException(nameof(Organization), id);
         }
-        _context.Remove(organization);
 
-        await _context.SaveChangesAsync();
+        if(organization.Courses.Count() > 0)
+        {
+            _context.RemoveRange(organization.Courses);
+        }
+
+            _context.Remove(organization);
+            await _context.SaveChangesAsync();
     }
 }
