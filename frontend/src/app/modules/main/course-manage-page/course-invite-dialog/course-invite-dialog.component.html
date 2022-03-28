@@ -25,7 +25,7 @@
                     [class.is-invalid]="searchFailed"
                     [editable]="false"
                 />
-            <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="inviteUser()">Invite</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid || currentCourseUser.courseRole" (click)="inviteUser()">Invite</button>
             <small *ngIf="searching" class="form-text text-muted">searching...</small>
             <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
         </div>
