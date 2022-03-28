@@ -196,4 +196,14 @@ public class CourseService : BaseService, ICourseService
 
         return await GetInviteCourseUserByIdAsync(updatedCourseUser.UserId, updatedCourseUser.CourseId);
     }
+
+    public async Task<bool> GetCourseNameForValidatorAsync(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new NotFoundException(nameof(Course));
+        }
+
+        return await _context.Courses.AnyAsync(c => c.Name == name);
+    }
 }
