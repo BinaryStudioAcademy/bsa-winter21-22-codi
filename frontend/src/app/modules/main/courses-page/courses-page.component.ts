@@ -18,7 +18,6 @@ import {
 } from "@modules/main/courses-page/update-organization-dialog/update-organization-dialog.component";
 import { noop } from "@shared/common/utils";
 import { ConfirmationDialogResult } from '@core/models/confirmation-dialog/confirmation-dialog-result';
-import {CourseUser} from "@core/models/course/course-user";
 
 @Component({
     selector: 'app-courses-page',
@@ -88,13 +87,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                     this.coursesService
                         .delete(courseId)
                         .pipe(takeUntil(this.unsubscribe$))
-                        .subscribe(
-                            next => {
+                        .subscribe({
+                            next:() => {
                                 this.reloadOrganizations();
                                 this.notificationService.showSuccessMessage("Course deleted", 'Success');
                             },
-                            error => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
-                        );
+                            error:() => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
+                        });
                 }
             });
     }
@@ -119,13 +118,13 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
                     this.coursesService
                         .leaveCourse(courseId)
                         .pipe(takeUntil(this.unsubscribe$))
-                        .subscribe(
-                            next => {
+                        .subscribe({
+                            next:() => {
                                 this.reloadOrganizations();
                                 this.notificationService.showSuccessMessage("You have left course", 'Success');
                             },
-                            error => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
-                        );
+                            error:() => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
+                        });
                 }
             });
     }
@@ -153,10 +152,16 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
     deleteOrganization(id: number) {
         let org = this.organizations.find(o => o.id === id);
         let orgName = org?.name;
+        let message = (org!.courses.length > 0)
+            ? `This Organization has active Course(s).
+            Do you really want to delete Organization with all these Course(s)?
+            This process cannot be undone.`
+            : `Do you really want to delete this Organization?
+            This process cannot be undone.`;
         this.confirmationDialogService
             .openConfirmationDialog(
                 `Delete ${orgName}?`,
-                `Deleting ${orgName} will remove access to the Organization.\nThis cannot be undone!`,
+                message,
                 {
                     centered: true,
                     confirmButtonClass: "btn btn-danger",
@@ -166,21 +171,16 @@ export class CoursesPageComponent extends BaseComponent implements OnInit {
             )
             .subscribe((result) => {
                 if(result === ConfirmationDialogResult.Confirm) {
-                    if(!org!.courses.length) {
-                        this.organizationService
-                            .delete(id)
-                            .pipe(takeUntil(this.unsubscribe$))
-                            .subscribe(
-                                next => {
-                                    this.reloadOrganizations();
-                                    this.notificationService.showSuccessMessage("Organization deleted", 'Success');
-                                },
-                                error => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
-                            );
-                    }
-                    else {
-                        this.notificationService.showErrorMessage("You must delete all courses before this action", 'Error')
-                    }
+                    this.organizationService
+                        .delete(id)
+                        .pipe(takeUntil(this.unsubscribe$))
+                        .subscribe({
+                            next:() => {
+                                this.reloadOrganizations();
+                                this.notificationService.showSuccessMessage("Organization deleted", 'Success');
+                            },
+                            error:() => this.notificationService.showErrorMessage("Something went wrong...", 'Error')
+                        });
                 }
             });
     }

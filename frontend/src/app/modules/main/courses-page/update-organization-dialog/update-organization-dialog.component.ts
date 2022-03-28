@@ -51,14 +51,16 @@ export class UpdateOrganizationDialogComponent extends BaseComponent implements 
         this.organizationService
             .update(updateOrganization)
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(
-                (org) => {
+            .subscribe({
+                next:(org) => {
                     updatedOrg = org;
                     this.notificationsService.showSuccessMessage('Organization updated', 'Success');
                 },
-                error => this.notificationsService.showErrorMessage('Failed to update organization', 'Error'),
-                () => this.modal.close(updatedOrg)
-            );
+                error:() =>
+                    this.notificationsService.showErrorMessage('Failed to update organization', 'Error'),
+                complete:() =>
+                    this.modal.close(updatedOrg)
+            });
     }
 
     closeDialog() {
