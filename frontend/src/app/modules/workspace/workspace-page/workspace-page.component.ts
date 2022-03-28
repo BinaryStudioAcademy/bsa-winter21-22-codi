@@ -90,8 +90,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit{
         this.editorOptions = {
             theme: 'vs-dark',
             scrollBeyondLastLine: false,
-            language: lang,
-            automaticLayout: true
+            language: lang
         };
     }
 
