@@ -90,7 +90,7 @@ public class OrganizationService : BaseService, IOrganizationService
             throw new NotFoundException(nameof(Organization), id);
         }
 
-        if(organization.Courses.Count() > 0)
+        if(organization.Courses.Any())
         {
             _context.RemoveRange(organization.Courses);
         }
