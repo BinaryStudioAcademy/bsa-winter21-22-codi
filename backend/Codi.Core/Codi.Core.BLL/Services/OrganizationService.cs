@@ -83,6 +83,7 @@ public class OrganizationService : BaseService, IOrganizationService
     {
         var organization = await _context.Organizations
             .Include(c => c.Courses)
+            .ThenInclude(cu => cu.CourseUsers)
             .FirstOrDefaultAsync(o => o.Id == id);
 
         if (organization is null)
@@ -92,7 +93,8 @@ public class OrganizationService : BaseService, IOrganizationService
 
         if(organization.Courses.Any())
         {
-            _context.RemoveRange(organization.Courses);
+            _context.RemoveRange(organization.Courses.SelectMany(cu => cu.CourseUsers));
+            _context.RemoveRange(organization.Courses);   
         }
 
             _context.Remove(organization);

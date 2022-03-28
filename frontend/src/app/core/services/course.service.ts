@@ -67,4 +67,8 @@ export class CourseService {
     public getNameForValidator(name: string) {
         return this.httpService.getRequest<boolean>(`${this.routePrefix}/validator/${name}`);
     }
+
+    public getCourseForCheckGuard(name: string) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/guard/${name}`);
+    }
 }
