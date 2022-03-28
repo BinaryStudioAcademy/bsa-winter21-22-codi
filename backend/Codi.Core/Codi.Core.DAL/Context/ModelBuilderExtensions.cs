@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Codi.Core.Common.Enums;
 using Codi.Core.DAL.Entities;
 using Codi.Core.DAL.Entities.Common;
 using Microsoft.EntityFrameworkCore;
@@ -78,7 +79,7 @@ namespace Codi.Core.DAL.Context
 
             return new Faker<Image>()
                 .RuleFor(pi => pi.Id, f => f.IndexGlobal)
-                .RuleFor(pi => pi.URL, f => f.Image.PicsumUrl())
+                .RuleFor(pi => pi.URL, f => f.Image.LoremFlickrUrl())
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
@@ -194,6 +195,7 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.ProjectDocumentId, f => f.Random.Guid())
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.IsPublic, f => f.Random.Bool())
+                .RuleFor(pi => pi.Language, f => f.PickRandom<Language>())
                 .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
@@ -302,8 +304,6 @@ namespace Codi.Core.DAL.Context
                 .GroupBy(cu => new { cu.AppId, cu.TagId }).Select(g => g.First())
                 .ToList();
         }
-
-        private static readonly string[] CourseRoles = { "admin", "member" };
 
         private static readonly string[] Tags = {
             "javascript", "python", "java", "c#", "php", "android", "html", "jquery", "css", "ios",

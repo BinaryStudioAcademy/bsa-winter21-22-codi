@@ -18,7 +18,10 @@ namespace Codi.Core.DAL.NoSql.Seed
 
             foreach (var project in projects)
             {
-                var template = random.ListItem(templates);
+                var templatesWithProjectLanguage = templates.Where(t => t.Language == project.Language).ToList();
+                var template = templatesWithProjectLanguage.Count == 0
+                    ? random.ListItem(templates)
+                    : random.ListItem(templatesWithProjectLanguage);
 
                 projectDocuments.Add(new Project
                 {
