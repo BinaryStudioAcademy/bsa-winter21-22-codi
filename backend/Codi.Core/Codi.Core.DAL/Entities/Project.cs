@@ -1,4 +1,6 @@
-﻿namespace Codi.Core.DAL.Entities
+﻿using Codi.Core.Common.Enums;
+
+namespace Codi.Core.DAL.Entities
 {
     public class Project : AuditEntity<long>
     {
@@ -7,6 +9,7 @@
         public bool IsPublic { get; set; }
 
         public Guid ProjectDocumentId { get; set; }
+        public Language? Language { get; set; }
         public long OwnerId { get; set; }
         public User Owner { get; set; } = default!;
         public List<Thread> Threads { get; set; } = default!;
