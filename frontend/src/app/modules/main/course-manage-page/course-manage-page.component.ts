@@ -10,6 +10,7 @@ import {CourseInviteDialogComponent} from "@modules/main/course-manage-page/cour
 import {NotificationService} from "@core/services/notification.service";
 import {UpdateCourseDialogComponent} from "@modules/main/course-manage-page/update-course-dialog/update-course-dialog.component";
 import {noop} from "@shared/common/utils";
+import {CourseUser} from "@core/models/course/course-user";
 
 @Component({
     selector: 'app-course-manage-page',
@@ -18,12 +19,13 @@ import {noop} from "@shared/common/utils";
 })
 export class CourseManagePageComponent extends BaseComponent implements OnInit {
     currentCourse = {} as Course;
+    currentCourseUser = {} as CourseUser;
     currentCourseName: string;
     courseUserSize: number;
     sizeMember: number = 3;
 
     constructor(
-        private coursesService: CourseService,
+        private courseService: CourseService,
         private route: ActivatedRoute,
         private router: Router,
         private authService: AuthService,
@@ -35,26 +37,39 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         this.route.params
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(() => {
-                this.currentCourseName = this.route.snapshot.params['name'];
-                this.getCourse();
-            })
+            .subscribe({
+                next:() => {
+                    this.currentCourseName = this.route.snapshot.params['name'];
+                    this.getCourse();
+                },
+                error: () => {
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+                }
+            });
     }
 
     getCourse() {
-        this.coursesService.getCourse(this.currentCourseName)
+        this.courseService.getCourse(this.currentCourseName)
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
                 next:(resp) => {
                     this.currentCourse = resp;
                     this.courseUserSize = resp.courseUsers.length;
+                    this.getCurrentCourseUser(resp.id)
                 },
                 error: () =>
                     this.notificationService.showErrorMessage('Something went wrong', 'Error')
-
             });
+    }
+
+    getCurrentCourseUser(courseId: number) {
+        this.courseService
+            .getCourseUser(courseId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(cu => this.currentCourseUser = cu);
     }
 
     inviteMembers(currentCourse: Course) {
