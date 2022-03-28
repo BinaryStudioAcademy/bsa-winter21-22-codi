@@ -22,6 +22,7 @@ import { CredentialsService } from "@core/services/credentials.service";
 import { GithubUser } from "@core/models/github/github-user";
 import { repoUrlAsyncValidator } from "@core/validators/repo-url.async-validator";
 import { regexs } from "@shared/constants/regexs";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-import-github-project-dialog',
@@ -50,7 +51,8 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
         private projectService: ProjectService,
         private githubService: GithubService,
         private credentialsService: CredentialsService,
-        private notificationService: NotificationService
+        private notificationService: NotificationService,
+        private router: Router
     ) {
         super();
     }
@@ -97,7 +99,9 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
                 (resp) => {
                     this.loading = false;
                     this.activeModal.close(resp);
-                    this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success');
+                    this.router.navigate(['workspace', resp.id]).then(() => {
+                        this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success');
+                    });
                 },
                 () => {
                     this.loading = false;

@@ -1,12 +1,15 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using AutoMapper;
+using Codi.Core.BLL.Exceptions;
 using Codi.Core.BLL.Interfaces;
 using Codi.Core.Common.DTO.File;
+using Codi.Core.Common.DTO.Structure;
 using Codi.Core.Common.Enums;
 using Codi.Core.DAL;
 using Codi.Core.DAL.NoSql.Entities;
 using Codi.Core.DAL.NoSql.Repositories.Abstract;
+using Microsoft.EntityFrameworkCore;
 using File = System.IO.File;
 
 namespace Codi.Core.BLL.Services;
@@ -69,7 +72,21 @@ public class ProjectStructureService : BaseService, IProjectStructureService
         await _projectRepository.InsertOneAsync(projectDocument);
         return projectDocument.Id;
     }
-    
+
+    public async Task<ProjectStructureDto> GetProjectStructureByIdAsync(long projectId)
+    {
+        var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
+
+        if (project is null)
+        {
+            throw new NotFoundException(nameof(DAL.Entities.Project), projectId);
+        }
+
+        var projectDocument = await _projectRepository.GetByIdAsync(project.ProjectDocumentId);
+
+        return _mapper.Map<ProjectStructureDto>(projectDocument);
+    }
+
     private async Task GetFilesRecursive(string sourseDir, FSNode fileStructureRoot)
         {
             try

@@ -6,7 +6,7 @@ import { WorkspacePageComponent } from './workspace-page/workspace-page.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
-
+import { TreeModule } from "@circlon/angular-tree-component";
 
 @NgModule({
     declarations: [
@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
         NgbModule,
         FormsModule,
         MonacoEditorModule,
+        TreeModule
     ]
 })
 export class WorkspaceModule { }
