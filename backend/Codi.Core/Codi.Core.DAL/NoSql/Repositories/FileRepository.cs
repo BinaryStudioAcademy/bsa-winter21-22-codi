@@ -35,6 +35,7 @@ namespace Codi.Core.DAL.NoSql.Repositories
                     list.Add(new FSNode
                     {
                         Type = FSNodeType.File,
+                        Name = node.Name,
                         FileId = newFile.Id
                     });
                 }

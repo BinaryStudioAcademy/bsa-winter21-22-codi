@@ -54,7 +54,7 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
                     this.user = user
                 },
                 error => {
-                    this.router.navigate(['main/not-found']);
+                    this.router.navigate(['not-found']);
                 }
             );
     }
