@@ -63,14 +63,16 @@ export class NewCourseDialogComponent extends BaseComponent implements OnInit {
         this.courseService
             .create(createCourse)
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(
-                (org) => {
+            .subscribe({
+                next: (org) => {
                     createdCourse = org;
                     this.notificationsService.showSuccessMessage('Course created', 'Success');
                 },
-                (error) => this.notificationsService.showErrorMessage('This username have already used', 'Error'),
-                () => this.modal.close(createdCourse)
-            );
+                error:() =>
+                    this.notificationsService.showErrorMessage('This username have already used', 'Error'),
+                complete:() =>
+                    this.modal.close(createdCourse)
+            });
     }
 
     closeDialog() {

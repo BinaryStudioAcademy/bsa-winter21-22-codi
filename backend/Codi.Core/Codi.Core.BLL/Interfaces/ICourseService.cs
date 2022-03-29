@@ -22,4 +22,5 @@ public interface ICourseService
             SortOrder sortOrder = SortOrder.Ascending);
     Task<CourseUserDto> ChangeCourseUserRoleAsync(InviteCourseUserDto userRole);
     Task<bool> GetCourseNameForValidatorAsync(string name);
+    Task<bool> GetCourseForGuardAsync(string name, long userId);
 }

@@ -37,6 +37,11 @@
         <div id="descriptionHelp" class="form-text descriptionHelp" [ngClass]="{'text-danger' : form.controls['description'].value?.length > 140}">
             * {{form.controls['description'].value?.length === null ? 0 : form.controls['description'].value?.length}} / 140 characters is allowed
         </div>
+        <ul>
+            <li class="text-danger" *ngIf="form.controls['description'].hasError('pattern')">
+                Your course name can only contain latin letters, digits, printable characters
+            </li>
+        </ul>
         <button type="submit" (click)="updateCourse()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Update course</button>
     </form>
 </div>

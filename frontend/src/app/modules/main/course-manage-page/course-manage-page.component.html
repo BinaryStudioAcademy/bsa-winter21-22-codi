@@ -2,7 +2,13 @@
     <div class="back-link"><a routerLink="/main/courses">< back to all courses</a></div>
     <div class="team-profile">
         <div class="course-info">
-            <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar" (click)="editCourse(currentCourse)">
+            <img type="button" class="avatar"
+                 src="/assets/images/robot.png" alt="course avatar"
+                 *ngIf="!currentCourseUser.courseRole; else forMember"
+                 (click)="editCourse(currentCourse)">
+            <ng-template #forMember>
+                <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar">
+            </ng-template>
             <div class="info">
                 <div class="d-flex">
                     <div class="name">
@@ -17,7 +23,7 @@
                 </p>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="editCourse(currentCourse)">Edit</button>
+        <button class="btn btn-primary" [disabled]="currentCourseUser.courseRole" (click)="editCourse(currentCourse)">Edit</button>
     </div>
     <div class="team-members">
         <div class="team-member-avatar" *ngIf="courseUserSize <= sizeMember; else moreMember">
