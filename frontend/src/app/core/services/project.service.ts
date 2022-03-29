@@ -4,6 +4,7 @@ import { CreateProject } from "@core/models/project/create-project";
 import { Project } from "@core/models/project/project";
 import { ProjectName } from '@core/models/project/project-name';
 import { GitClone } from "@core/models/git/git-clone";
+import { UpdateProject } from "@core/models/project/update-project";
 
 @Injectable({
     providedIn: 'root'
@@ -34,8 +35,8 @@ export class ProjectService {
         return this.httpService.postRequest<Project>(`${this.routePrefix}/gitImport`, gitClone);
     }
 
-    updateProject(project: Project) {
-        return this.httpService.putRequest(`${this.routePrefix}`, project)
+    updateProject(projectId: number, updateProject: UpdateProject) {
+        return this.httpService.putRequest<Project>(`${this.routePrefix}/${projectId}`, updateProject);
     }
 
     public deleteProject(id: number) {

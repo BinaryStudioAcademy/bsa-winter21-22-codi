@@ -20,15 +20,30 @@ public class FileService : IFileService
         _mapper = mapper;
     }
     
-    public async Task<FileDto> CreateFileAsync(CreateFileDto fileCreateDto)
+    public async Task<FileDto> CreateFileAsync(CreateFileDto createFileDto)
     {
-        var fileCreate = _mapper.Map<File>(fileCreateDto);
+        var fileCreate = _mapper.Map<File>(createFileDto);
         
         await _fileRepository.InsertOneAsync(fileCreate);
         
         return await GetByIdAsync(fileCreate.Id);
     }
-    
+
+    public async Task<FileDto> UpdateFileAsync(UpdateFileDto updateFileDto)
+    {
+        var existedFile = await _fileRepository.GetByIdAsync(updateFileDto.Id);
+        if (existedFile is null)
+        {
+            throw new NotFoundException(nameof(File));
+        }
+
+        var mergedFile = _mapper.Map(updateFileDto, existedFile);
+
+        await _fileRepository.ReplaceOneAsync(mergedFile);
+
+        return _mapper.Map<FileDto>(await _fileRepository.GetByIdAsync(updateFileDto.Id));
+    }
+
     public async Task<FileDto> GetByIdAsync(Guid id)
     {
         var file = await _fileRepository.GetByIdAsync(id);
