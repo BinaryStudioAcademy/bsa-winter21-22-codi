@@ -34,12 +34,19 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(projects);
         }
 
+        [HttpGet("my/last")]
+        public async Task<ActionResult<ICollection<ProjectNameDto>>> GetUserLastProjects()
+        {
+            var projects = await _projectService.GetLastUserProjects(this.GetUserIdFromToken());
+            return Ok(projects);
+        }
+
         [HttpGet("my")]
         public async Task<ActionResult<ICollection<ProjectDto>>> GetUserProjects()
         {
             var projects = await _projectService.GetUserProjects(this.GetUserIdFromToken());
             return Ok(projects);
-        }
+        } 
 
         [HttpGet("{projectId}")]
         public async Task<ActionResult<ProjectDto>> GetById(long projectId)
