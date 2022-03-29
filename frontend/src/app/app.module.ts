@@ -13,6 +13,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
+import { SaveBeforeLeave } from "@core/guards/save-before-leave.guard";
 
 @NgModule({
     declarations: [
@@ -35,7 +36,7 @@ import { FormsModule } from '@angular/forms';
         FormsModule,
         MonacoEditorModule.forRoot(),
     ],
-    providers: [],
+    providers: [SaveBeforeLeave],
     bootstrap: [AppComponent],
 })
 export class AppModule { }
