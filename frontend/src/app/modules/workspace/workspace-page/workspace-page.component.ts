@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from "@core/base/base.component";
 import { ProjectStructureService } from "@core/services/project-structure.service";
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { Observable, Observer, of, Subject, takeUntil } from "rxjs";
 import { ProjectStructure } from "@core/models/structure/project-structure";
 import { FsNodeType } from "@core/enums/fs-node-type";
@@ -40,6 +40,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private projectService: ProjectService,
         private projectStructureService: ProjectStructureService,
         private confirmationDialogService: ConfirmationDialogService,
@@ -224,7 +225,10 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((res) => {
                 this.projectStructure = res;
-            })
+            },
+            (error) => {
+                this.router.navigate(['not-found']);
+            });
     }
 
     onCodeChange(event: any) {
