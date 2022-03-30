@@ -7,6 +7,6 @@ export function IconLanguageHelper (extension: number) {
         case 1:
             return 'assets/images/languages/web_project.svg';
         default:
-            return extension;
+            return 'assets/images/github_white.png';
     }
 }
