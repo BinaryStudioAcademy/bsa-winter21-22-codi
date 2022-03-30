@@ -3,6 +3,7 @@
 .container
     max-width: 990px
     margin: 0 auto
+    color: $base-text-color
 
 .team-profile
     display: flex
@@ -59,3 +60,94 @@
     margin-left: -20px
     background-size: cover
 
+.course-actions
+    display: flex
+    justify-content: space-between
+    margin-bottom: 25px
+    .add-unit-container
+        position: relative
+        .add-unit
+            padding: 10px
+            border-radius: $border-radius
+            border: 1px solid $secondary
+            background-color: $background-panel-color
+            color: $base-text-color
+            transition: .1s
+            cursor: pointer
+            max-width: fit-content
+            align-self: flex-end
+            &:hover
+                background-color: $background-panel-color-light
+            &:hover + .clue
+                display: block
+        .clue
+            display: none
+            margin-top: 1px
+            background-color: $background-panel-color
+            color: $muted-text-color
+            border-radius: $border-radius
+            padding: 5px
+            white-space: nowrap
+            position: absolute
+            right: 0%
+
+.units
+    .unit-item
+        .unit-header
+            display: flex
+            justify-content: space-between
+            align-items: center
+            margin-bottom: 5px
+            .unit-title
+                padding: 10px 0
+                font-size: $h5-font-size
+        .unit-body
+            background-color: $background-panel-color
+            border-radius: $border-radius
+            padding: 10px
+
+.projects
+    margin-bottom: 25px
+
+.title
+    font-size: $h3-font-size
+    font-weight: bold
+
+.container-items
+    background-color: $background-panel-color
+    border-radius: $border-radius
+    border: 1px solid $secondary
+    padding: 15px 15px
+    .container-header
+        display: flex
+        justify-content: space-between
+        .header-title
+            font-weight: bold
+            font-size: $font-size-sm
+            text-transform: uppercase
+            color: $muted-text-color
+    .container-body
+        .container-item
+            display: flex
+            justify-content: space-between
+            align-items: center
+            background-color: $background-panel-color
+            border-radius: $border-radius
+            border: 1px solid $secondary
+            padding: 30px 15px
+            margin-top: 10px
+            .item-title
+                font-size: $h5-font-size
+
+.empty-unit
+    cursor: pointer
+    padding: 30px 0
+    text-align: center
+    color: $primary
+    &:hover
+        color: $accent-text-color
+
+\:host ::ng-deep .dropdown-toggle
+    margin: 0 !important
+    &:after
+        display: none

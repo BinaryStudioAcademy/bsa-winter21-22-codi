@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container content">
     <div class="back-link"><a routerLink="/main/courses">< back to all courses</a></div>
     <div class="team-profile">
         <div class="course-info">
@@ -54,5 +54,83 @@
         <div><a type="button" class="button" (click)="inviteMembers(currentCourse)">Manage team members</a></div>
     </div>
     <span class="line"></span>
-    <div><button type="button" class="btn btn-primary">Create project</button></div>
+    <div class="course-actions">
+        <button type="button" class="btn btn-primary">Create project</button>
+        <div class="add-unit-container">
+            <i class="fa fa-plus add-unit"></i>
+            <div class="clue">Create unit</div>
+        </div>
+    </div>
+    <div class="projects">
+        <div class="title">Projects</div>
+        <div class="container-items">
+            <div class="container-header">
+                <div class="header-title">Title</div>
+            </div>
+            <div class="container-body">
+                <div class="container-item">
+                    <div class="item-title">
+                        Python
+                    </div>
+                    <div ngbDropdown container="body" placement="left-top">
+                        <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
+                        <div ngbDropdownMenu aria-labelledby="optionsDropdown">
+                            <button ngbDropdownItem>Edit project</button>
+                            <button ngbDropdownItem class="text-danger">Delete project</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-item">
+                    <div class="item-title">
+                        Python
+                    </div>
+                    <div ngbDropdown container="body" placement="left-top">
+                        <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
+                        <div ngbDropdownMenu aria-labelledby="optionsDropdown">
+                            <button ngbDropdownItem>Edit project</button>
+                            <button ngbDropdownItem class="text-danger">Delete project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="units">
+        <div class="title">Units</div>
+        <div class="unit-item">
+            <div class="unit-header">
+                <div class="unit-title">Learning python</div>
+                <div ngbDropdown container="body" placement="left-top">
+                    <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
+                    <div ngbDropdownMenu aria-labelledby="optionsDropdown">
+                        <button ngbDropdownItem>Edit unit</button>
+                        <button ngbDropdownItem class="text-danger">Delete unit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-items">
+                <div class="container-header">
+                    <div class="header-title">Title</div>
+                </div>
+                <div class="container-body">
+                    <div class="container-item">
+                        <div class="item-title">
+                            Variables
+                        </div>
+                        <div ngbDropdown container="body" placement="left-top">
+                            <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
+                            <div ngbDropdownMenu aria-labelledby="optionsDropdown">
+                                <button ngbDropdownItem>Edit project</button>
+                                <button ngbDropdownItem>Remove from the unit</button>
+                                <button ngbDropdownItem class="text-danger">Delete project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="empty-unit">
+                        Add a project to the unit
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
