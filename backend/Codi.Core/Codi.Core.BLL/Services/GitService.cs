@@ -25,7 +25,7 @@ public class GitService : BaseService, IGitService
     public async Task<Guid> CloneProject(GitCloneDto gitCloneDto)
     {
         var tempFolder = GetUniqueFolderPath();
-        var destinationFolder = tempFolder + $"\\{gitCloneDto.Title}";
+        var destinationFolder = Path.Combine(tempFolder, gitCloneDto.Title);
 
         if (!Directory.Exists(destinationFolder))
         {
@@ -37,7 +37,7 @@ public class GitService : BaseService, IGitService
             var cloneOptions = await TryGetCloneOptions(gitCloneDto);
             Repository.Clone(gitCloneDto.Url, destinationFolder, cloneOptions);
 
-            _projectStructureService.DeleteTempFolder($"{destinationFolder}\\.git");
+            _projectStructureService.DeleteTempFolder(Path.Combine(destinationFolder, ".git"));
 
             return await _projectStructureService.CreateProjectStructureFromFolder(destinationFolder);
         }
@@ -75,6 +75,6 @@ public class GitService : BaseService, IGitService
 
     private string GetUniqueFolderPath()
     {
-        return Path.Combine(Directory.GetCurrentDirectory(), "..\\GitTemp", Guid.NewGuid().ToString().Substring(0,5));
+        return Path.Combine(Directory.GetCurrentDirectory(), "..", "GitTemp", Guid.NewGuid().ToString().Substring(0,5));
     }
 }
