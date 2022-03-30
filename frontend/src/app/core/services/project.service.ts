@@ -4,6 +4,7 @@ import { CreateProject } from "@core/models/project/create-project";
 import { Project } from "@core/models/project/project";
 import { ProjectName } from '@core/models/project/project-name';
 import { GitClone } from "@core/models/git/git-clone";
+import {ProjectWithLanguage} from "@core/models/project/project-with-language";
 
 @Injectable({
     providedIn: 'root'
@@ -32,6 +33,10 @@ export class ProjectService {
 
     gitProjectImport(gitClone: GitClone) {
         return this.httpService.postRequest<Project>(`${this.routePrefix}/gitImport`, gitClone);
+    }
+
+    getCurrentUserLastProjects() {
+        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/last`)
     }
 
     updateProject(project: Project) {

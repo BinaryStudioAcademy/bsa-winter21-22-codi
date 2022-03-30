@@ -111,6 +111,7 @@ public class ProjectService : BaseService, IProjectService
             dst.OwnerId = owner.Id;
             dst.CreatedAt = DateTime.Now;
             dst.ProjectDocumentId = projectDocument.Id;
+            dst.Language = templateDocument.Language;
         }));
 
         var createdProject = _context.Add(project).Entity;
@@ -185,5 +186,15 @@ public class ProjectService : BaseService, IProjectService
         _context.Remove(project);
 
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId)
+    {
+        return await _context.Projects
+            .Include(p => p.Owner)
+            .Where(p => p.Owner.FirebaseId == firebaseId)
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(5)
+            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 }

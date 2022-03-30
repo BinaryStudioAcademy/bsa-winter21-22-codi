@@ -10,8 +10,9 @@ namespace Codi.Core.BLL.MappingProfiles
         {
             CreateMap<Project, ProjectDto>().ReverseMap();
             CreateMap<Project, ProjectNameDto>();
+            CreateMap<Project, ProjectWithLanguageDto>();
             CreateMap<NewProjectDto, Project>();
-            CreateMap<UpdateProjectDto, Project>();
+            CreateMap<UpdateProjectDto, Project>(); 
         }
     }
 }
