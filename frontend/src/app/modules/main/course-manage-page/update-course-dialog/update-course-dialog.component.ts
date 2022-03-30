@@ -35,14 +35,14 @@ export class UpdateCourseDialogComponent extends BaseComponent implements OnInit
                 [
                     Validators.required,
                     Validators.minLength(5),
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.title),
                     WhiteSpaceValidator.noWhiteSpace
                 ]),
             description: new FormControl('',
                 [
                     Validators.maxLength(140),
-                    Validators.pattern(/(?!^\s+$)^.*$/m)
+                    Validators.pattern(regexs.title)
                 ]),
         });
         this.form.patchValue(this.course);

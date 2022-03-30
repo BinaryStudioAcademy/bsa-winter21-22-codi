@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Codi.Core.Common\Codi.Core.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

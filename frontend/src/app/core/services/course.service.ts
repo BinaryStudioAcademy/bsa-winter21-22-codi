@@ -60,7 +60,15 @@ export class CourseService {
         return this.httpService.putRequest(`${this.routePrefix}/deleteUserCourse`, deleteUserCourse);
     }
 
-    getCourseUser(courseId: number) {
+    public getCourseUser(courseId: number) {
         return this.httpService.getRequest<CourseUser>(`${this.routePrefix}/courseUser/${courseId}`);
+    }
+
+    public getNameForValidator(name: string) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/validator/${name}`);
+    }
+
+    public getCourseForCheckGuard(name: string) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/guard/${name}`);
     }
 }

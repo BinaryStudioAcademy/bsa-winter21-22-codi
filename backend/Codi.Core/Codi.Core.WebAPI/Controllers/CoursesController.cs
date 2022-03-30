@@ -36,6 +36,19 @@ public class CoursesController : ControllerBase
         return Ok(course);
     }
 
+    [HttpGet("validator/{name}")]
+    public async Task<ActionResult<bool>> GetCourseNameForValidator(string name)
+    {
+        return Ok(await _courseService.GetCourseNameForValidatorAsync(name));
+    }
+
+    [HttpGet("guard/{name}")]
+    public async Task<ActionResult<bool>> GetCourseNameForGuard(string name)
+    {
+        var userId = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
+        return Ok(await _courseService.GetCourseForGuardAsync(name,userId));
+    }
+
     [HttpPost]
     public async Task<ActionResult<CourseDto>> CreateAsync(CreateCourseDto courseDto)
     {
@@ -123,6 +136,7 @@ public class CoursesController : ControllerBase
         await _courseService.LeaveCourseAsync(leaveCourseDto);
         return NoContent();
     }
+
     [Route("deleteUserCourse")]
     [HttpPut]
     public async Task<ActionResult> DeleteUserCourseAsync(LeaveCourseDto leaveCourseDto)

@@ -11,10 +11,18 @@
     <form [formGroup]="form">
         <div class="form-group">
             <label for="organization">Organization name</label>
-            <input type="text" class="form-control" id="organization" placeholder="What should the Organization be called?" formControlName="name">
+            <input
+                type="text" class="form-control" id="organization"
+                placeholder="What should the Organization be called?"
+                formControlName="name"
+                [class.is-invalid]="(form.controls['name'].dirty || form.controls['name'].touched) && form.controls['name'].invalid"
+            >
             <ul>
+                <li class="text-danger" *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched">
+                    Organization name is required
+                </li>
                 <li class="text-danger" *ngIf="form.controls['name'].hasError('minlength') || form.controls['name'].hasError('maxlength')">
-                    Your organization name must be between 5 and 100 characters
+                    Your organization name must be between 5 and 60 characters
                 </li>
                 <li class="text-danger" *ngIf="form.controls['name'].hasError('pattern')">
                     Your organization name can only contain latin letters, digits, printable characters
