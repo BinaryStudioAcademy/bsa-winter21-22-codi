@@ -1,37 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
 import { UserService } from "@core/services/user.service";
 import { BaseComponent } from "@core/base/base.component";
 import { ActivatedRoute, Router } from "@angular/router";
-import { takeUntil } from "rxjs";
+import {mergeAll, mergeMap, takeUntil} from "rxjs";
 import { User } from "@core/models/user/user";
 import { AuthService } from "@core/services/auth.service";
+import {ProjectService} from "@core/services/project.service";
+import {ProjectWithLanguage} from "@core/models/project/project-with-language";
+import {NotificationService} from "@core/services/notification.service";
+import {Languages} from "@shared/constants/languages";
+import {IconLanguageHelper} from "@shared/helpers/icon-language-helper";
 
 @Component({
     selector: 'app-user-profile-page',
     templateUrl: './user-profile-page.component.html',
     styleUrls: ['./user-profile-page.component.sass'],
-    providers: [NgbCarouselConfig]
 })
 export class UserProfilePageComponent extends BaseComponent implements OnInit {
 
     public currentUser = {} as User;
     public user = {} as User;
     public id: number;
+    projects: ProjectWithLanguage[] = [];
+    loading: boolean = false;
 
     constructor(
-        config: NgbCarouselConfig,
         private route: ActivatedRoute,
         private router: Router,
         private userService: UserService,
-        private authService: AuthService
+        private authService: AuthService,
+        private projectService: ProjectService,
+        private notificationService: NotificationService
     ) {
         super();
-        config.showNavigationArrows = false;
-        config.interval = 0;
     }
 
     ngOnInit(): void {
+        this.loading = true;
         this.authService
             .getCurrentUser()
             .pipe(takeUntil(this.unsubscribe$))
@@ -42,7 +47,9 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
         ).subscribe(() => {
             this.id = this.route.snapshot.params['id'];
             this.getUser();
+            this.getUserProjects();
         });
+
     }
 
     getUser() {
@@ -58,5 +65,28 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
                 }
             );
     }
+
+    getUserProjects() {
+        this.projectService.getUsersProjectsById(this.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next:(projects) => {
+                    this.loading = false;
+                    this.projects = projects;
+                },
+                error:() =>
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+            });
+    }
+
+    iconForLanguage(extension: number)  {
+        return IconLanguageHelper(extension);
+    }
+
+    forEnum(index: number) {
+        return Object.values(Languages)[index];
+    }
+
 }
+
 

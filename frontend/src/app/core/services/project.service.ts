@@ -36,7 +36,11 @@ export class ProjectService {
     }
 
     getCurrentUserLastProjects() {
-        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/last`)
+        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/last`);
+    }
+
+    getUsersProjectsById(userId: number) {
+        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/all/${userId}`);
     }
 
     updateProject(project: Project) {

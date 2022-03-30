@@ -197,4 +197,15 @@ public class ProjectService : BaseService, IProjectService
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
+
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
+    {
+        return await _context.Projects
+           .Include(p => p.Owner)
+           .Where(p => p.Owner.Id == userId)
+           .OrderByDescending(p => p.CreatedAt)
+           .Where(p => p.IsPublic)
+           .Take(5)
+           .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
+    }
 }

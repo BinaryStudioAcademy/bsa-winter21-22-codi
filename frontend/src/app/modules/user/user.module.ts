@@ -7,6 +7,7 @@ import { EditUserProfilePageComponent } from "./edit-user-profile-page/edit-user
 
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from "@core/core.module";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         UserRoutingModule,
         NgbModule,
         FormsModule,
+        CoreModule,
     ]
 })
 export class UserModule { }

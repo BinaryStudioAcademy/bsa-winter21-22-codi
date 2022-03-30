@@ -14,10 +14,13 @@ namespace Codi.Core.WebAPI.Controllers
     public class ProjectsController : ControllerBase
     {
         private readonly IProjectService _projectService;
+        private readonly IUserService _userService;
 
-        public ProjectsController(IProjectService projectService)
+        public ProjectsController(IProjectService projectService, IUserService userService)
         {
             _projectService = projectService;
+            _userService = userService;
+
         }
 
         [HttpGet]
@@ -25,6 +28,18 @@ namespace Codi.Core.WebAPI.Controllers
         {
             var projects = await _projectService.GetAllAsync();
             return Ok(projects);
+        }
+
+        [HttpGet("all/{userId}")]
+        public async Task<ActionResult<ICollection<ProjectWithLanguageDto>>> GetUserProjectsById(long userId)
+        {
+            var currentUserId = await _userService.GetUserIdByFirebaseAsync(this.GetUserIdFromToken());
+            if(currentUserId == userId)
+            {
+                return Ok(await _projectService.GetLastUserProjects(this.GetUserIdFromToken()));
+            }
+
+            return Ok(await _projectService.GetLastUserProjectsById(userId));
         }
 
         [HttpGet("my/names")]
