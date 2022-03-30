@@ -1,12 +1,11 @@
-import {ProjectLanguage} from "@core/models/project/project-language";
 
-export function IconLanguageHelper (extension: ProjectLanguage) {
+export function IconLanguageHelper (extension: number) {
 
     switch (extension) {
-        case ProjectLanguage.CSharp:
+        case 0:
+            return 'assets/images/languages/web_project.svg';
+        case 1:
             return 'assets/images/languages/csharp.svg';
-        case ProjectLanguage.JavaScript:
-            return 'assets/images/languages/java.svg';
         default:
             return extension;
     }

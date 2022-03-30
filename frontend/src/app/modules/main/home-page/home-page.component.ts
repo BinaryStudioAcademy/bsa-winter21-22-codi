@@ -5,8 +5,8 @@ import {BaseComponent} from "@core/base/base.component";
 import {takeUntil} from "rxjs";
 import {NotificationService} from "@core/services/notification.service";
 import {ProjectWithLanguage} from "@core/models/project/project-with-language";
-import {ProjectLanguage} from "@core/models/project/project-language";
 import {IconLanguageHelper} from "@shared/helpers/icon-language-helper";
+import {Languages} from "@shared/constants/languages";
 
 @Component({
     selector: 'app-home-page',
@@ -16,7 +16,6 @@ import {IconLanguageHelper} from "@shared/helpers/icon-language-helper";
 export class HomePageComponent extends BaseComponent implements OnInit{
 
     projects: ProjectWithLanguage[] = [];
-    projectLanguage = ProjectLanguage;
 
     constructor(
         private projectDialogService: ProjectCreationModalService,
@@ -46,7 +45,11 @@ export class HomePageComponent extends BaseComponent implements OnInit{
             });
     }
 
-    iconForLanguage(extension: ProjectLanguage)  {
+    iconForLanguage(extension: number)  {
         return IconLanguageHelper(extension);
+    }
+
+    forEnum(index: number) {
+        return Object.values(Languages)[index];
     }
 }
