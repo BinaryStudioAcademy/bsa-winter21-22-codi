@@ -27,24 +27,6 @@
           <button class="btn btn-primary" [routerLink]="['/account']" *ngIf="currentUser.id === user.id">Edit</button>
         </div>
         <div class="action-info">
-          <div class="switch-buttons">
-            <a class="switch-item" href="">Repls</a>
-            <a class="switch-item" href="">Posts</a>
-          </div>
-          <div class="showcase">
-            <ngb-carousel>
-              <ng-template ngbSlide>
-                <div class="slide-header">
-                  <button class="btn show-files">Show files</button>
-                  <div class="right-header-part">
-                    <i class="fa fa-heart-o fa-2x like" aria-hidden="true"></i>
-                    <div class="likes-quantity">10</div>
-                    <button class="btn btn-success">Run</button>
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-carousel>
-          </div>
           <div class="chosen-repl">
             <div class="repl-title">
               <img class="repl-icon" src="assets/images/github_white.png" alt="icon">
