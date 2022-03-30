@@ -36,9 +36,10 @@
                 </tr>
             </tbody>
         </table>
-
-        <span *ngIf="!loading && !projects.length" class="alert alert-danger" role="alert">
-            You don't have any projects. Create a new one!
-        </span>
+        <div *ngIf="!loading && !projects.length" class="d-flex justify-content-center">
+            <h4 class="text-secondary">
+                You don't have any projects. Please create a new one.
+            </h4>
+        </div>
     </div>
 </div>

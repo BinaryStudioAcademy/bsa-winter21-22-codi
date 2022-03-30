@@ -9,6 +9,7 @@ namespace Codi.Core.BLL.Interfaces
     {
         Task<ICollection<ProjectDto>> GetAllAsync(Expression<Func<Project, bool>>? predicate = null);
         Task<ICollection<ProjectNameDto>> GetUserProjectNames(string firebaseId);
+        Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId);
         Task<ICollection<ProjectDto>> GetUserProjects(string firebaseId);
         Task<ProjectDto> GetByIdAsync(long projectId);
         Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto);
