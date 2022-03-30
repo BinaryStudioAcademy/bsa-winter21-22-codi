@@ -157,7 +157,7 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
     private getRepositoryFromList() {
         let repository = this.form.value.repository;
         return  {
-            title: repository.name,
+            title: this.getNameFromUrl(repository.url),
             url: repository.url,
             isPublic: this.form.value.isPublic
         } as GitClone;
