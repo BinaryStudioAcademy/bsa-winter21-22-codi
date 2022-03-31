@@ -23,7 +23,7 @@
                 </p>
             </div>
         </div>
-        <button class="btn btn-primary" [disabled]="currentCourseUser.courseRole" (click)="editCourse(currentCourse)">Edit</button>
+        <button class="btn btn-primary" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="editCourse(currentCourse)">Edit</button>
     </div>
     <div class="team-members">
         <div class="team-member-avatar" *ngIf="courseUserSize <= sizeMember; else moreMember">
@@ -51,18 +51,18 @@
                 </div>
             </ng-template>
         </div>
-        <div><a type="button" class="button" (click)="inviteMembers(currentCourse)">Manage team members</a></div>
+        <div><a type="button" class="button" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="inviteMembers(currentCourse)">Manage team members</a></div>
     </div>
     <span class="line"></span>
-    <div class="course-actions">
+    <div class="course-actions" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
         <button type="button" class="btn btn-primary">Create project</button>
         <div class="add-unit-container">
-            <i class="fa fa-plus add-unit"></i>
+            <i class="fa fa-plus add-unit" (click)="createUnit()"></i>
             <div class="clue">Create unit</div>
         </div>
     </div>
     <div class="projects">
-        <div class="title">Projects</div>
+        <div class="title">Lessons</div>
         <div class="container-items">
             <div class="container-header">
                 <div class="header-title">Title</div>
@@ -95,16 +95,16 @@
             </div>
         </div>
     </div>
-    <div class="units">
+    <div class="units" *ngIf="units?.length">
         <div class="title">Units</div>
-        <div class="unit-item">
+        <div class="unit-item" *ngFor="let unit of units">
             <div class="unit-header">
-                <div class="unit-title">Learning python</div>
+                <div class="unit-title">{{unit.title}}</div>
                 <div ngbDropdown container="body" placement="left-top">
                     <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
                     <div ngbDropdownMenu aria-labelledby="optionsDropdown">
                         <button ngbDropdownItem>Edit unit</button>
-                        <button ngbDropdownItem class="text-danger">Delete unit</button>
+                        <button ngbDropdownItem class="text-danger" (click)="deleteUnit(unit.id)">Delete unit</button>
                     </div>
                 </div>
             </div>
@@ -113,9 +113,9 @@
                     <div class="header-title">Title</div>
                 </div>
                 <div class="container-body">
-                    <div class="container-item">
+                    <div class="container-item" *ngFor="let lesson of unit.lessons">
                         <div class="item-title">
-                            Variables
+                            {{lesson.title}}
                         </div>
                         <div ngbDropdown container="body" placement="left-top">
                             <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>

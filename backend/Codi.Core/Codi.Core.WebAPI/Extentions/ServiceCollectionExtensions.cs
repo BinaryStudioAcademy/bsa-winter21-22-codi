@@ -36,6 +36,8 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<IProjectStructureService, ProjectStructureService>();
             services.AddTransient<ICredentialsService, CredentialsService>();
             services.AddTransient<IGithubService, GithubService>();
+            services.AddTransient<IUnitService, UnitService>();
+            services.AddTransient<ILessonService, LessonService>();
             
             services.AddHttpClient<IGithubClient, GithubClient>(client =>
             {
