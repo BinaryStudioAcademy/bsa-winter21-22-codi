@@ -28,8 +28,8 @@
                         <div ngbDropdown container="body" placement="left-top">
                             <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
                             <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                              <button ngbDropdownItem>Settings</button>
-                              <button ngbDropdownItem class="text-danger" (click)="deleteProject(project)">Delete</button>
+                              <button ngbDropdownItem class="dropdown-item">Settings</button>
+                              <button ngbDropdownItem class="text-danger dropdown-item" (click)="deleteProject(project)">Delete</button>
                             </div>
                           </div>
                     </td>

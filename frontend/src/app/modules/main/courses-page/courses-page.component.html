@@ -16,8 +16,8 @@
                     <div class="btn-group" ngbDropdown role="group" *ngIf="org.ownerId === user.id">
                         <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                         <div class="dropdown-menu" ngbDropdownMenu>
-                            <button class="btn mb-0" (click)="updateOrganization(org)">Org settings</button>
-                            <button class="btn mb-0" (click)="deleteOrganization(org.id)">Delete org</button>
+                            <button class="btn mb-0 dropdown-item" (click)="updateOrganization(org)">Org settings</button>
+                            <button class="btn mb-0 dropdown-item text-danger" (click)="deleteOrganization(org.id)">Delete org</button>
                         </div>
                     </div>
                 </div>
@@ -69,16 +69,16 @@
                                 <div class="btn-group" ngbDropdown role="group">
                                     <i class="fa fa-ellipsis-v fa-lg toggle" ngbDropdownToggle></i>
                                     <div class="dropdown-menu" ngbDropdownMenu *ngIf="course.isCurrentUserAdmin; else leave">
-                                        <button class="btn mb-0" (click)="leaveCourse(course.id, org.id)">
+                                        <button class="btn mb-0 dropdown-item" (click)="leaveCourse(course.id, org.id)">
                                             Leave
                                         </button>
-                                        <button class="btn mb-0" (click)="deleteCourse(course.id, org.id)">
+                                        <button class="btn mb-0 dropdown-item text-danger" (click)="deleteCourse(course.id, org.id)">
                                             Delete
                                         </button>
                                     </div>
                                     <ng-template #leave>
                                         <div class="dropdown-menu" ngbDropdownMenu>
-                                            <button class="btn mb-0" (click)="leaveCourse(course.id, org.id)">
+                                            <button class="btn mb-0 dropdown-item" (click)="leaveCourse(course.id, org.id)">
                                                 Leave
                                             </button>
                                         </div>
