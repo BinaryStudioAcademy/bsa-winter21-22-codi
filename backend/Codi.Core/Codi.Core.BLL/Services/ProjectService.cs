@@ -109,7 +109,7 @@ public class ProjectService : BaseService, IProjectService
             opts => opts.AfterMap((src, dst) =>
         {
             dst.OwnerId = owner.Id;
-            dst.CreatedAt = DateTime.Now;
+            dst.CreatedAt = DateTime.UtcNow;
             dst.ProjectDocumentId = projectDocument.Id;
             dst.Language = templateDocument.Language;
         }));
@@ -138,7 +138,7 @@ public class ProjectService : BaseService, IProjectService
         {
             Title = gitCloneDto.Title,
             OwnerId = owner.Id,
-            CreatedAt = DateTime.Now,
+            CreatedAt = DateTime.UtcNow,
             IsPublic = gitCloneDto.IsPublic,
             ProjectDocumentId = projectDocumentId
         };
@@ -196,5 +196,14 @@ public class ProjectService : BaseService, IProjectService
             .OrderByDescending(p => p.CreatedAt)
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
+    }
+
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
+    {
+        return await _context.Projects
+           .Where(p => p.IsPublic && p.OwnerId == userId)
+           .OrderByDescending(p => p.CreatedAt)
+           .Take(5)
+           .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 }

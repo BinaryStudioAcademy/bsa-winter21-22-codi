@@ -39,7 +39,7 @@
         </div>
         <ul>
             <li class="text-danger" *ngIf="form.controls['description'].hasError('pattern')">
-                Your course name can only contain latin letters, digits, printable characters
+                Your course description can only contain latin letters, digits, printable characters
             </li>
         </ul>
         <button type="submit" (click)="updateCourse()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Update course</button>

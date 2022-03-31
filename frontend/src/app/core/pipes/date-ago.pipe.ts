@@ -8,8 +8,8 @@ export class DateAgoPipe implements PipeTransform {
 
     transform(value: any, args?: any): any {
         if (value) {
-
-            const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
+            const activationDate = this.getNowUTC();
+            const seconds = Math.floor((+activationDate - +new Date(value)) / 1000);
 
             if (seconds < 29)
 
@@ -40,5 +40,10 @@ export class DateAgoPipe implements PipeTransform {
             }
         }
         return value;
+    }
+
+    getNowUTC() {
+        const now = new Date();
+        return new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
     }
 }
