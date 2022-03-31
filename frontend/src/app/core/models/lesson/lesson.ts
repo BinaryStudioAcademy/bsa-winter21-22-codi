@@ -4,6 +4,7 @@ export interface Lesson {
     description?: string;
     dueDate: Date;
     isPublished: boolean;
+    courseId: number;
     unitId?: number;
     projectId: number;
     createdAt: Date;

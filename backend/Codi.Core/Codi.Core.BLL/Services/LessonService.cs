@@ -70,6 +70,28 @@ public class LessonService : BaseService, ILessonService
         await _context.SaveChangesAsync();
     }
 
+    public async Task LessonToUnitAsync(LessonToUnitDto lessonToUnitDto)
+    {
+        var lesson = await _context.Lessons.FirstOrDefaultAsync(l => l.Id == lessonToUnitDto.LessonId);
+
+        if (lesson is null)
+        {
+            throw new NotFoundException(nameof(Lesson), lessonToUnitDto.LessonId);
+        }
+
+        if (lessonToUnitDto.Add)
+        {
+            lesson.UnitId = lessonToUnitDto.UnitId;
+        }
+        else
+        {
+            lesson.UnitId = null;
+        }
+        
+        _context.Update(lesson);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task DeleteAsync(long lessonId)
     {
         var lesson = await _context.Lessons

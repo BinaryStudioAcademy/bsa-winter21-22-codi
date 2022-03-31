@@ -3,6 +3,7 @@ import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { CreateLesson } from "@core/models/lesson/create-lesson";
 import { Lesson } from "@core/models/lesson/lesson";
 import { PublishLesson } from "@core/models/lesson/publish-lesson";
+import { LessonToUnit } from "@core/models/lesson/lesson-to-unit";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,11 @@ export class LessonService {
     }
 
     publishLesson(lessonId: number, publish: PublishLesson) {
-        return this.httpService.patchRequest<Lesson>(`${this.routePrefix}/publish/${lessonId}`, publish);
+        return this.httpService.patchRequest(`${this.routePrefix}/publish/${lessonId}`, publish);
+    }
+
+    lessonToUnit(lessonToUnit: LessonToUnit) {
+        return this.httpService.patchRequest(`${this.routePrefix}/lessonToUnit`, lessonToUnit);
     }
 
     delete(lessonId: number) {

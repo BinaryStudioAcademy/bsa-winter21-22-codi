@@ -25,6 +25,10 @@ import {
 import { Lesson } from "@core/models/lesson/lesson";
 import { LessonService } from "@core/services/lesson.service";
 import { PublishLesson } from "@core/models/lesson/publish-lesson";
+import {
+    AddToUnitDialogComponent
+} from "@modules/main/course-manage-page/add-to-unit-dialog/add-to-unit-dialog.component";
+import { LessonToUnit } from "@core/models/lesson/lesson-to-unit";
 
 @Component({
     selector: 'app-course-manage-page',
@@ -227,6 +231,26 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
             .subscribe(() => {
                 this.reloadPageContent();
                 this.notificationService.showSuccessMessage('Lesson published', 'Success');
+            })
+    }
+
+    addToUnit(unitId: number) {
+        const modalRef = this.modalService.open(AddToUnitDialogComponent, { centered: true })
+        modalRef.componentInstance.unit = this.units.find(u => u.id === unitId);
+        modalRef.result
+            .then((result) => {
+                if(result) {
+                    this.reloadPageContent();
+                }
+            }).catch(noop);
+    }
+
+    removeFromUnit(unitId: number, lessonId: number) {
+        this.lessonService.lessonToUnit({unitId: unitId, lessonId: lessonId, add: false} as LessonToUnit)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+                this.reloadPageContent();
+                this.notificationService.showSuccessMessage('Lesson removed', 'Success');
             })
     }
 

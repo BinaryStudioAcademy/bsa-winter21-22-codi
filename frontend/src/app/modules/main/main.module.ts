@@ -26,6 +26,9 @@ import {
     CreateUnitDialogComponent
 } from "@modules/main/course-manage-page/create-unit-dialog/create-unit-dialog.component";
 import { CreateLessonDialogComponent } from './course-manage-page/create-lesson-dialog/create-lesson-dialog.component';
+import {
+    AddToUnitDialogComponent
+} from "@modules/main/course-manage-page/add-to-unit-dialog/add-to-unit-dialog.component";
 
 @NgModule({
     declarations: [
@@ -45,7 +48,8 @@ import { CreateLessonDialogComponent } from './course-manage-page/create-lesson-
         CourseInviteDialogComponent,
         UpdateCourseDialogComponent,
         CreateUnitDialogComponent,
-        CreateLessonDialogComponent
+        CreateLessonDialogComponent,
+        AddToUnitDialogComponent
     ],
     imports: [
         SharedModule,

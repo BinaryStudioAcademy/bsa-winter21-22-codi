@@ -71,7 +71,10 @@
             </div>
             <div class="container-body">
                 <div class="container-item" *ngFor="let lesson of lessons">
-                    <div class="item-title" [routerLink]="['/workspace', lesson.projectId]">
+                    <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Admin" [routerLink]="['/workspace', lesson.projectId]">
+                        {{lesson.title}}
+                    </div>
+                    <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Member">
                         {{lesson.title}}
                     </div>
                     <a class="item-submission" *ngIf="currentCourseUser.courseRole == courseRole.Member">Start Project</a>
@@ -110,7 +113,10 @@
                 </div>
                 <div class="container-body">
                     <div class="container-item" *ngFor="let lesson of unit.lessons">
-                        <div class="item-title" [routerLink]="['/workspace', lesson.projectId]">
+                        <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Admin" [routerLink]="['/workspace', lesson.projectId]">
+                            {{lesson.title}}
+                        </div>
+                        <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Member">
                             {{lesson.title}}
                         </div>
                         <a class="item-submission" *ngIf="currentCourseUser.courseRole == courseRole.Member">Start Project</a>
@@ -121,14 +127,14 @@
                                 <button ngbDropdownItem *ngIf="!lesson.isPublished" (click)="publishLesson(lesson.id, true)">Publish lesson</button>
                                 <button ngbDropdownItem *ngIf="lesson.isPublished" (click)="publishLesson(lesson.id, false)">Unpublish lesson</button>
                                 <button ngbDropdownItem>Edit lesson</button>
-                                <button ngbDropdownItem>Remove from the unit</button>
+                                <button ngbDropdownItem (click)="removeFromUnit(unit.id, lesson.id)">Remove from the unit</button>
                                 <button ngbDropdownItem class="text-danger" (click)="deleteLesson(lesson.id)">Delete lesson</button>
                             </div>
                         </div>
                     </div>
-                    <div class="empty-unit" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
-                        Add a lesson to the unit
-                    </div>
+                    <a class="empty-unit" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="addToUnit(unit.id)">
+                        Add lesson to the unit
+                    </a>
                 </div>
             </div>
         </div>

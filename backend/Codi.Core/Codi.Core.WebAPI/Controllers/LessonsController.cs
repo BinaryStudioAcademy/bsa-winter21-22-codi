@@ -41,6 +41,13 @@ public class LessonsController : ControllerBase
         await _lessonService.PublishAsync(lessonId, publishLessonDto);
         return NoContent();
     }
+    
+    [HttpPatch("lessonToUnit")]
+    public async Task<ActionResult> LessonToUnitAsync(LessonToUnitDto lessonToUnitDto)
+    {
+        await _lessonService.LessonToUnitAsync(lessonToUnitDto);
+        return NoContent();
+    }
 
     [HttpDelete("{lessonId}")]
     public async Task<ActionResult> DeleteAsync(long lessonId)
