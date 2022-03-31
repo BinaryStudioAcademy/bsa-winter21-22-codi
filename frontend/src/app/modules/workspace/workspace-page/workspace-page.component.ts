@@ -147,25 +147,15 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
 
     private setFileChanges(currentCode: string) {
         this.selectedFile.content = currentCode;
-        if(this.initialCode !== currentCode) {
-            this.setFileChanged(this.selectedFile);
-        }
-        else {
-            this.setFileUnChanged(this.selectedFile);
-        }
+        this.initialCode !== currentCode
+            ? this.setFileState(this.selectedFile, true)
+            : this.setFileState(this.selectedFile, false);
     }
 
-    private setFileChanged(file: File) {
+    private setFileState(file: File, isChanged: boolean) {
         let fileWrapper = this.projectSaverService.loadedFiles.find(w => w.file === file);
         if(fileWrapper) {
-            fileWrapper.isChanged = true;
-        }
-    }
-
-    private setFileUnChanged(file: File) {
-        let fileWrapper = this.projectSaverService.loadedFiles.find(w => w.file === file);
-        if(fileWrapper) {
-            fileWrapper.isChanged = false;
+            fileWrapper.isChanged = isChanged;
         }
     }
 
@@ -231,7 +221,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
             });
     }
 
-    onCodeChange(event: any) {
+    onCodeChange(event: string) {
         if(this.selectedFile && this.selectedFile.content !== this.currentCode) {
             this.codeChanged.next(event);
         }

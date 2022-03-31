@@ -72,7 +72,7 @@ export class ProjectSaverService implements OnDestroy {
     private saveChangedFiles() {
         let changedFiles = this.loadedFiles.filter(w => w.isChanged)
             .map(w => {
-                return {id: w.file.id, name: w.file.name, content: w.file.content} as UpdateFile
+                return w.file as UpdateFile
             });
         this.fileService.updateFiles(changedFiles)
             .pipe(takeUntil(this.unsubscribe$))
