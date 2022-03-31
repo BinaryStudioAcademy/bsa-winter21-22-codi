@@ -55,40 +55,29 @@
     </div>
     <span class="line"></span>
     <div class="course-actions" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
-        <button type="button" class="btn btn-primary">Create project</button>
+        <button type="button" class="btn btn-primary" (click)="createLesson()">Create lesson</button>
         <div class="add-unit-container">
             <i class="fa fa-plus add-unit" (click)="createUnit()"></i>
             <div class="clue">Create unit</div>
         </div>
     </div>
-    <div class="projects">
+    <div class="projects" *ngIf="lessons?.length">
         <div class="title">Lessons</div>
         <div class="container-items">
             <div class="container-header">
                 <div class="header-title">Title</div>
             </div>
             <div class="container-body">
-                <div class="container-item">
+                <div class="container-item" *ngFor="let lesson of lessons">
                     <div class="item-title">
-                        Python
+                        {{lesson.title}}
                     </div>
                     <div ngbDropdown container="body" placement="left-top">
                         <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
                         <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                            <button ngbDropdownItem>Edit project</button>
-                            <button ngbDropdownItem class="text-danger">Delete project</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-item">
-                    <div class="item-title">
-                        Python
-                    </div>
-                    <div ngbDropdown container="body" placement="left-top">
-                        <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
-                        <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                            <button ngbDropdownItem>Edit project</button>
-                            <button ngbDropdownItem class="text-danger">Delete project</button>
+                            <button ngbDropdownItem>Publish lesson</button>
+                            <button ngbDropdownItem>Edit lesson</button>
+                            <button ngbDropdownItem class="text-danger" (click)="deleteLesson(lesson.id)">Delete lesson</button>
                         </div>
                     </div>
                 </div>
@@ -114,20 +103,21 @@
                 </div>
                 <div class="container-body">
                     <div class="container-item" *ngFor="let lesson of unit.lessons">
-                        <div class="item-title">
+                        <div class="item-title" [routerLink]="['/workspace', lesson.projectId]">
                             {{lesson.title}}
                         </div>
                         <div ngbDropdown container="body" placement="left-top">
                             <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
                             <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                                <button ngbDropdownItem>Edit project</button>
+                                <button ngbDropdownItem>Publish lesson</button>
+                                <button ngbDropdownItem>Edit lesson</button>
                                 <button ngbDropdownItem>Remove from the unit</button>
-                                <button ngbDropdownItem class="text-danger">Delete project</button>
+                                <button ngbDropdownItem class="text-danger" (click)="deleteLesson(lesson.id)">Delete lesson</button>
                             </div>
                         </div>
                     </div>
                     <div class="empty-unit">
-                        Add a project to the unit
+                        Add a lesson to the unit
                     </div>
                 </div>
             </div>

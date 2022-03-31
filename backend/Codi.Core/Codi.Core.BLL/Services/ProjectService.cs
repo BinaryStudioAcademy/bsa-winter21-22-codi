@@ -84,7 +84,7 @@ public class ProjectService : BaseService, IProjectService
         return project;
     }
 
-    public async Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto)
+    public async Task<ProjectDto> CreateUserProjectAsync(NewProjectDto newProjectDto)
     {
         var owner = await _context.Users
             .FirstOrDefaultAsync(u => u.FirebaseId == newProjectDto.FirebaseId);
@@ -94,6 +94,22 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var createdProject = await CreateAsync(newProjectDto);
+        
+        var userProject = new UserProject()
+        {
+            ProjectId = createdProject.Id,
+            UserId = owner.Id
+        };
+
+        _context.Add(userProject);
+        await _context.SaveChangesAsync();
+        
+        return _mapper.Map<ProjectDto>(createdProject);
+    }
+
+    public async Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto)
+    {
         var templateDocument = await _templateRepository.GetByIdAsync(newProjectDto.TemplateId);
 
         if (templateDocument == null)
@@ -117,15 +133,6 @@ public class ProjectService : BaseService, IProjectService
         }));
 
         var createdProject = _context.Add(project).Entity;
-        await _context.SaveChangesAsync();
-
-        var userProject = new UserProject()
-        {
-            ProjectId = project.Id,
-            UserId = owner.Id
-        };
-
-        _context.Add(userProject);
         await _context.SaveChangesAsync();
 
         return _mapper.Map<ProjectDto>(createdProject);

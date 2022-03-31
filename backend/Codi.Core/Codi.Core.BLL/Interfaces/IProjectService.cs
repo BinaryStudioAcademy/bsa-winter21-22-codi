@@ -12,6 +12,7 @@ namespace Codi.Core.BLL.Interfaces
         Task<ICollection<ProjectDto>> GetUserProjects(string firebaseId);
         Task<ProjectDto> GetByIdAsync(long projectId);
         Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto);
+        Task<ProjectDto> CreateUserProjectAsync(NewProjectDto newProjectDto);
         Task<ProjectDto> UpdateAsync(long projectId, UpdateProjectDto newProjectDto);
         Task<ProjectDto> ImportProjectFromGithubAsync(GitCloneDto gitCloneDto);
         Task DeleteAsync(long projectId);

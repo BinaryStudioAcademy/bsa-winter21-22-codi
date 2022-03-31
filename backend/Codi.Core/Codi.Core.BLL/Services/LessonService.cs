@@ -36,13 +36,6 @@ public class LessonService : BaseService, ILessonService
         return await lessons.ProjectToListAsync<LessonDto>(_mapper.ConfigurationProvider);
     }
 
-    public async Task<ICollection<LessonDto>> GetAllByUnitAsync(long unitId)
-    {
-        return await _context.Lessons
-            .Where(l => l.UnitId == unitId)
-            .ProjectToListAsync<LessonDto>(_mapper.ConfigurationProvider);
-    }
-
     public async Task<LessonDto> CreateAsync(CreateLessonDto createLessonDto)
     {
         var newProject = _mapper.Map<NewProjectDto>(createLessonDto);
@@ -63,13 +56,16 @@ public class LessonService : BaseService, ILessonService
 
     public async Task DeleteAsync(long lessonId)
     {
-        var lesson = await _context.Lessons.FirstOrDefaultAsync(l => l.Id == lessonId);
+        var lesson = await _context.Lessons
+            .Include(l => l.Project)
+            .FirstOrDefaultAsync(l => l.Id == lessonId);
 
         if (lesson is null)
         {
             throw new NotFoundException(nameof(Lesson), lessonId);
         }
 
+        _context.Remove(lesson.Project);
         _context.Remove(lesson);
         await _context.SaveChangesAsync();
     }

@@ -23,6 +23,12 @@ public class LessonsController : ControllerBase
         return Ok(await _lessonService.GetAllByCourseAsync(courseId, l => l.IsPublished));
     }
 
+    [HttpGet("noUnit/{courseId}")]
+    public async Task<ActionResult<ICollection<LessonDto>>> GetCourseLessonsWithoutUnitAsync(long courseId)
+    {
+        return Ok(await _lessonService.GetAllByCourseAsync(courseId, l => l.UnitId == null));
+    }
+
     [HttpPost]
     public async Task<ActionResult<LessonDto>> CreateAsync(CreateLessonDto createLessonDto)
     {
