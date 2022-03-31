@@ -51,17 +51,21 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectNameDto>> GetUserProjectNames(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId)
+            .Select(up => up.Project)
             .ProjectToListAsync<ProjectNameDto>(_mapper.ConfigurationProvider);
     }
 
     public async Task<ICollection<ProjectDto>> GetUserProjects(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId)
+            .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
 
@@ -104,16 +108,24 @@ public class ProjectService : BaseService, IProjectService
         };
 
         await _projectsRepository.InsertOneAsync(projectDocument);
-
+        
         var project = _mapper.Map<Project>(newProjectDto,
             opts => opts.AfterMap((src, dst) =>
         {
-            dst.OwnerId = owner.Id;
             dst.CreatedAt = DateTime.Now;
             dst.ProjectDocumentId = projectDocument.Id;
         }));
 
         var createdProject = _context.Add(project).Entity;
+        await _context.SaveChangesAsync();
+
+        var userProject = new UserProject()
+        {
+            ProjectId = project.Id,
+            UserId = owner.Id
+        };
+
+        _context.Add(userProject);
         await _context.SaveChangesAsync();
 
         return _mapper.Map<ProjectDto>(createdProject);
@@ -136,13 +148,22 @@ public class ProjectService : BaseService, IProjectService
         var project = new Project()
         {
             Title = gitCloneDto.Title,
-            OwnerId = owner.Id,
             CreatedAt = DateTime.Now,
             IsPublic = gitCloneDto.IsPublic,
             ProjectDocumentId = projectDocumentId
         };
         _context.Add(project);
         await _context.SaveChangesAsync();
+        
+        var userProject = new UserProject()
+        {
+            ProjectId = project.Id,
+            UserId = owner.Id
+        };
+
+        _context.Add(userProject);
+        await _context.SaveChangesAsync();
+        
         return await GetByIdAsync(project.Id);
     }
 
@@ -165,6 +186,7 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task DeleteAsync(long projectId)
     {
+        var userProject = await _context.UserProjects.FirstOrDefaultAsync(up => up.ProjectId == projectId);
         var project = await _context.Projects.FirstOrDefaultAsync(s => s.Id == projectId);
 
         if (project == null)
@@ -182,6 +204,7 @@ public class ProjectService : BaseService, IProjectService
         await _fileRepository.DeleteFiles(projectDocument.Nodes);
         await _projectsRepository.DeleteByIdAsync(projectDocument.Id);
 
+        _context.Remove(userProject);
         _context.Remove(project);
 
         await _context.SaveChangesAsync();

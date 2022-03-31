@@ -29,10 +29,11 @@ namespace Codi.Core.DAL.Context
             var organizations = GenerateRandomOrganizations(users, 30);
             var courses = GenerateRandomCourses(images, users, organizations, 20);
             var units = GenerateRandomUnits(courses, 40);
-            var lessons = GenerateRandomLessons(units, 80);
             var courseUsers = GenerateRandomCourseUsers(courses, users, 70);
+            var projects = GenerateRandomProjects(50);
+            var userProjects = GenerateRandomUserProjects(users, projects, 50);
+            var lessons = GenerateRandomLessons(units, projects, 80);
             var submissions = GenerateRandomSubmissions(lessons, users, 100);
-            var projects = GenerateRandomProjects(users, 50);
             var invitedUsers = GenerateRandomInvitedUsers(users, projects, 100);
             var threads = GenerateRandomThreads(users, projects, lessons, 80);
             var threadComments = GenerateRandomThreadComments(users, threads, 120);
@@ -50,6 +51,7 @@ namespace Codi.Core.DAL.Context
             modelBuilder.Entity<CourseUser>().HasData(courseUsers);
             modelBuilder.Entity<Submission>().HasData(submissions);
             modelBuilder.Entity<Project>().HasData(projects);
+            modelBuilder.Entity<UserProject>().HasData(userProjects);
             modelBuilder.Entity<Organization>().HasData(organizations);
             modelBuilder.Entity<InvitedUser>().HasData(invitedUsers);
             modelBuilder.Entity<Thread>().HasData(threads);
@@ -133,7 +135,7 @@ namespace Codi.Core.DAL.Context
                 .Generate(count);
         }
 
-        public static IList<Lesson> GenerateRandomLessons(IList<Unit> units, int count)
+        public static IList<Lesson> GenerateRandomLessons(IList<Unit> units, IList<Project> projects, int count)
         {
             Faker.GlobalUniqueIndex = 1;
 
@@ -145,6 +147,7 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.IsPublished, f => f.Random.Bool())
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
+                .RuleFor(pi => pi.ProjectId, f => f.PickRandom(projects).Id)
                 .FinishWith((f, l) =>
                 {
                     var unit = f.PickRandom(units);
@@ -185,7 +188,7 @@ namespace Codi.Core.DAL.Context
                 .Generate(count);
         }
 
-        public static IList<Project> GenerateRandomProjects(IList<User> users, int count)
+        public static IList<Project> GenerateRandomProjects(int count)
         {
             Faker.GlobalUniqueIndex = 1;
 
@@ -196,12 +199,24 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.IsPublic, f => f.Random.Bool())
                 .RuleFor(pi => pi.Language, f => f.PickRandom<Language>())
-                .RuleFor(pi => pi.OwnerId, f => f.PickRandom(users).Id)
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
         }
         
+        public static IList<UserProject> GenerateRandomUserProjects(IList<User> users, IList<Project> projects, int count)
+        { 
+            Faker.GlobalUniqueIndex = 1;
+
+            return new Faker<UserProject>()
+                .RuleFor(pi => pi.Id, f => f.IndexGlobal)
+                .RuleFor(pi => pi.UserId, f => f.PickRandom(users).Id)
+                .RuleFor(pi => pi.ProjectId, f => f.PickRandom(projects).Id)
+                .Generate(count)
+                .GroupBy(up => new {up.UserId, up.ProjectId}).Select(g => g.First())
+                .ToList();
+        }
+
         public static IList<Organization> GenerateRandomOrganizations(IList<User> users, int count)
         {
             Faker.GlobalUniqueIndex = 1;

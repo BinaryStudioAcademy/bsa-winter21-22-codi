@@ -4,6 +4,7 @@ using Codi.Core.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Codi.Core.DAL.Migrations
 {
     [DbContext(typeof(CodiCoreContext))]
-    partial class CodiCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220331102616_AddSeparateProjects")]
+    partial class AddSeparateProjects
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
