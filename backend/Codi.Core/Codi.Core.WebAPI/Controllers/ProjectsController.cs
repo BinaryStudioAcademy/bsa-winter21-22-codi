@@ -92,9 +92,23 @@ namespace Codi.Core.WebAPI.Controllers
         }
 
         [HttpPost("{projectId}/run")]
-        public async Task<ActionResult<ProjectDto>> RunProject(long projectId)
+        public async Task<ActionResult> RunProject(long projectId)
         {
             await _projectService.SendProjectRunRequest(projectId, this.GetUserIdFromToken());
+            return Ok();
+        }
+
+        [HttpPost("{projectId}/stop")]
+        public async Task<ActionResult> StopProject(long projectId)
+        {
+            await _projectService.SendProjectStopRequest(projectId, this.GetUserIdFromToken());
+            return Ok();
+        }
+
+        [HttpPost("{projectId}/input")]
+        public async Task<ActionResult> ProjectInput(long projectId, [FromQuery] string value)
+        {
+            await _projectService.SendProjectInput(projectId, this.GetUserIdFromToken(), value);
             return Ok();
         }
 

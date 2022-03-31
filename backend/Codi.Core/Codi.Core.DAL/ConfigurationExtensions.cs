@@ -24,7 +24,7 @@ namespace Codi.Core.DAL
             services.AddCodiFileStorage(configuration);
         }
 
-        private static void AddCodiCoreContext(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCodiCoreContext(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionsString = configuration["ConnectionStrings:CodiCoreDBConnection"];
 
@@ -34,7 +34,7 @@ namespace Codi.Core.DAL
                     opt => opt.MigrationsAssembly(typeof(CodiCoreContext).Assembly.GetName().Name)));
         }
 
-        private static void AddCodiFileStorage(this IServiceCollection services, IConfiguration configuration)
+        public static void AddCodiFileStorage(this IServiceCollection services, IConfiguration configuration)
         {
             ConventionRegistry.Register(nameof(CamelCaseElementNameConvention), new ConventionPack { new CamelCaseElementNameConvention() }, _ => true);
             ConventionRegistry.Register(nameof(IgnoreIfNullConvention), new ConventionPack { new IgnoreIfNullConvention(true) }, _ => true);

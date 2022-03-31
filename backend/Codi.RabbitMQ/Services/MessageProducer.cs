@@ -18,7 +18,7 @@ public class MessageProducer : IMessageProducer
         _properties.Persistent = true;
     }
 
-    public void Send(string message, string type = null)
+    public void Send(string message, string? type = null)
     {
         if (!string.IsNullOrEmpty(type))
         {

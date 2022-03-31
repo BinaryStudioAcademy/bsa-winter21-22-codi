@@ -1,4 +1,6 @@
-﻿namespace Codi.Core.Common.DTO.Project
+﻿using Codi.Core.Common.Enums;
+
+namespace Codi.Core.Common.DTO.Project
 {
     public class ProjectDto
     {
@@ -7,6 +9,7 @@
         public string? Description { get; set; }
         public bool IsPublic { get; set; }
         public long OwnerId { get; set; }
+        public Language Language { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

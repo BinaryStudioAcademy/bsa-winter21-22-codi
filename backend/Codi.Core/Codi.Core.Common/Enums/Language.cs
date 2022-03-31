@@ -3,6 +3,9 @@
     public enum Language
     {
         CSharp,
-        JavaScript
+        FSharp,
+        JavaScript,
+        Goloang,
+        Python
     }
 }
