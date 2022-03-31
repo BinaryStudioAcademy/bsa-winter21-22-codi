@@ -13,7 +13,7 @@
                 <tree-root #tree [nodes]="projectStructure?.children!" (activate)="onSelectedNode($event)">
                     <ng-template #treeNodeTemplate let-node let-index="index">
                         <div class="tree-node-content"
-                             [class.selected-node] = "!selectedFile && node.data?.fileId === selectedFile.id"
+                             [class.selected-node] = "!selectedFile ? false : node.data?.fileId === selectedFile?.id"
                              (click)="openRequestedFile(node.data)">
                             <i class="fa fa-folder mr-2" *ngIf="node.data.type === fsNodeType.folder"></i>
                             <i class="fa fa-file mr-2" *ngIf="node.data.type === fsNodeType.file"></i>
