@@ -93,7 +93,7 @@ public class ProjectStructureService : BaseService, IProjectStructureService
             {
                 foreach (string directory in Directory.GetDirectories(sourseDir))
                 {
-                    var dirName = directory.Substring(directory.LastIndexOf('\\') + 1);
+                    var dirName = directory.Substring(directory.LastIndexOf(Path.DirectorySeparatorChar) + 1);
 
                     var nestedFileStructure = new FSNode()
                     {
@@ -105,8 +105,8 @@ public class ProjectStructureService : BaseService, IProjectStructureService
                 }
                 foreach (var file in Directory.GetFiles(sourseDir))
                 {
-                    var fileName = file.Substring(file.LastIndexOf('\\') + 1);
-                    var dirName = sourseDir.Substring(sourseDir.LastIndexOf('\\') + 1);
+                    var fileName = file.Substring(file.LastIndexOf(Path.DirectorySeparatorChar) + 1);
+                    var dirName = sourseDir.Substring(sourseDir.LastIndexOf(Path.DirectorySeparatorChar) + 1);
 
                     var createFile = new CreateFileDto()
                     {
