@@ -6,7 +6,7 @@
     <div class="app-card-info">
         <div class="app-card-author d-flex align-items-center mb-2">
             <img class="user-drag-none" src="{{app.owner.avatar ?? 'https://picsum.photos/id/1080/300/300'}}" alt="author avatar">
-            <a class="ml-1" [routerLink]="['/main/user', app.owner.id]">{{app.owner.userName}}</a>
+            <a class="ml-1" [routerLink]="['/user', app.owner.id]">{{app.owner.userName}}</a>
             <span class="ml-1"> &middot; {{app.createdAt | date}}</span>
         </div>
         <h4 class="app-card-title">{{app.name}}</h4>

@@ -4,4 +4,5 @@ export interface ProjectWithLanguage {
     title: string;
     createdAt: Date;
     language: number;
+    isPublic: boolean;
 }
