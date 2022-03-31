@@ -16,13 +16,13 @@
 .search-container
     display: grid
     align-content: center
-    grid-template-columns:2rem 4fr 1fr
+    grid-template-columns: 2rem 4fr 1fr
     width: 100%
     height: 35px
     border: 3px solid $base-text-color
     border-radius: $border-radius
     overflow: hidden
-    background-color: transperent
+    background-color: transparent
     input
         color: $base-text-color
 
@@ -151,19 +151,17 @@
             padding-right: 10px
             font-size: 10px
 .custom-text
-
-    color: $base-text-color
     font-weight: bold
     font-size: 20px
+    color: $input-color
     &:hover
-        color: $base-text-color
-        background-color: $background-color
+        background-color:  $background-primary-dropdown
+        color: $input-color
 .navbar-left
     display: flex
     align-items: center
     grid-gap: 35px
     justify-content: flex-start
-    width: 33%
     margin-right: 5px
     transition: all 0.5s
 
@@ -172,10 +170,9 @@
     .navbar-left
         display: flex
         align-items: center
-        grid-gap: 95px
         justify-content: flex-start
-        width: 33%
         transition: all 0.5s
+        max-width: fit-content
     .dropdown-create-button-container
         display: none
         transition: all 0.3s

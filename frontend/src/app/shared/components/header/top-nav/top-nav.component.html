@@ -8,11 +8,14 @@
                     <app-side-nav-toggler></app-side-nav-toggler>
                 </nav>
             </div>
-            <div class="project-container">=
+            <div class="project-container">
                 <form class="form" [formGroup]="form">
-                    <input type="text" class="project-name" formControlName="title" id="projectname" placeholder='Project Name' maxlength="100">
-                    <div class="error" *ngIf="form.controls['title'].hasError('minlength')">
-                        Project name must be between 2 and 100 characters
+                    <input type="text" class="project-name" formControlName="title" id="projectName" placeholder='Project Name' maxlength="100">
+                    <div class="error" *ngIf="form.controls['title'].hasError('required')">
+                        Project name is required
+                    </div>
+                    <div class="error" *ngIf="form.controls['title'].hasError('minlength') || form.controls['title'].hasError('maxlength')">
+                        Project name must be between 2 and 60 characters
                     </div>
                 </form>
                 <div class="project-changes-history">
@@ -22,13 +25,17 @@
         </div>
         <div class="navbar-center">
             <div class="buttons-container">
-                <button class="run-button-container">
+                <button class="button-item run-btn">
                     <span class="button-text">Run</span>
-                    <img class="run-button-icon" src="assets/images/workspace/runbttn.svg">
+                    <img class="button-icon run-icon" src="assets/images/workspace/runbttn.svg">
                 </button>
-                <button class="build-button-container">
+                <button class="button-item build-btn">
                     <span class="button-text">Build</span>
-                    <img class="build-button-icon" src="assets/images/workspace/buildbttn.svg">
+                    <img class="button-icon build-icon" src="assets/images/workspace/buildbttn.svg">
+                </button>
+                <button class="button-item save-btn" *ngIf="!anyChangesSaved()" (click)="saveChanges()">
+                    <span class="button-text">Save changes</span>
+                    <img class="button-icon" src="assets/images/workspace/floppy-disk.png">
                 </button>
             </div>
         </div>
@@ -78,7 +85,7 @@
             <button type="button" class="btn btn-primary w-75 d-flex justify-content-center align-items-center">
                 <span class="ml-1">Invite</span>
             </button>
-            <div class="worksapce-search-container-box">
+            <div class="workspace-search-container-box">
                 <button class="search-container-button">
                     <i class="search-icon fa fa-search"></i>
                 </button>
@@ -94,12 +101,6 @@
                 <nav class="navbar">
                     <app-side-nav-toggler></app-side-nav-toggler>
                 </nav>
-            </div>
-            <div class="search-container-box">
-            <div class="search-container">
-                <i class="search-icon fa fa-search"></i>
-                <input class="search-form" type="search" placeholder="Search">
-            </div>
             </div>
         </div>
         <div class="navbar-right">

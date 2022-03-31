@@ -28,47 +28,23 @@
     <div class="heading-content-container mt-3">
         <div class="heading-content">
             <h2>Recent</h2>
-            <a class="align-self-end" routerLink="#">See all templates</a>
+            <a class="align-self-end" routerLink="/main/projects">See all projects</a>
         </div>
         <div class="external-content-container">
-            <div class="content-container">
+            <div class="content-container" *ngFor="let project of projects" [routerLink]="['/workspace', project.id]">
                 <div class="content-container-top">
-                    <span class="text">bla bla test</span>
-                    <span class="recent-activity">12 hours ago</span>
+                    <span class="text">
+                        {{project.title}}
+                        </span>
+                    <span class="recent-activity">
+                        {{project.createdAt | dateAgo}}
+                    </span>
                 </div>
                 <div class="content-container-bottom">
                     <div class="bottom-language-container">
                         <button type="button" class="create-button">
-                            <img class="language-icon" src="assets/images/languages/web_project.svg">
-                            HTML, CSS, JS
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="content-container-top">
-                    <span class="text">Test1</span>
-                    <span class="recent-activity">20 hours ago</span>
-                </div>
-                <div class="content-container-bottom">
-                    <div class="bottom-language-container">
-                        <button type="button" class="create-button">
-                            <img class="language-icon" src="assets/images/languages/python.svg">
-                            Python
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="content-container-top">
-                    <span class="text">Longlonglonglonglonglonglongword</span>
-                    <span class="recent-activity">2 hours ago</span>
-                </div>
-                <div class="content-container-bottom">
-                    <div class="bottom-language-container">
-                        <button type="button" class="create-button">
-                            <img class="language-icon" src="assets/images/languages/java.svg">
-                            Java
+                            <img class="language-icon" [src]="iconForLanguage(project.language)" alt="lang">
+                            {{forEnum(project.language)}}
                         </button>
                     </div>
                 </div>

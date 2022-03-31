@@ -9,7 +9,6 @@
         white-space: nowrap
         max-width: 150px
         max-height: 25px
-        overflow: hidden
         text-overflow: ellipsis
         overflow-y: hidden
         background-color: transparent
@@ -25,49 +24,45 @@
         color: $danger
         font-family: $font-family-base
         font-weight: bold
-        left: 13%
     .proj-changes-history-icon
         padding: 10px
         filter: $icon-filter-grey
         &:hover
             cursor: pointer
 .navbar-center
-    width: 33%
     .buttons-container
         display: flex
         align-items: center
-        .run-button-container
+        .button-item
             padding: 10px
-            background-color: $custom-run-button-color
             border-radius: $border-radius
             margin-right: 10px
             border: none
-            .run-button-icon
+            .button-icon
                 padding: 5px
                 height: 25px
                 width: 25px
-                filter: $icon-filter-purple
-        .build-button-container
-            padding: 10px
-            background-color: $custom-build-button-color
-            margin-left: 10px
-            border-radius: $border-radius
-            border: none
-            .build-button-icon
-                padding: 5px
-                height: 25px
-                width: 25px
-                filter: $icon-filter-cyan
+                &.run-icon
+                    filter: $icon-filter-purple
+                &.build-icon
+                    filter: $icon-filter-cyan
+            &.run-btn
+                background-color: $custom-run-button-color
+            &.build-btn
+                background-color: $custom-build-button-color
+            &.save-btn
+                background-color: $custom-save-button-color
 
 .button-text
     color: $base-text-color
     font-family: $font-family-base
+    font-size: $h6-font-size
     font-weight: bold
 
-.worksapce-search-container-box
+.workspace-search-container-box
     margin-left: 10px
 
-.btn 
+.btn
     font-family: $font-family-base
     font-weight: bold
     color: $base-text-color
@@ -78,3 +73,9 @@
     background-color: $background-panel-color
     .search-icon
         color: $base-text-color
+
+@media screen and ( max-width: 1024px  )
+    .button-text
+        display: none
+    .project-name
+        width: 50px

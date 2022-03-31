@@ -49,18 +49,18 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
                 ]),
             firstName: new FormControl('',
                 [
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.name)
                 ]),
             lastName: new FormControl('',
                 [
-                    Validators.maxLength(100),
+                    Validators.maxLength(60),
                     Validators.pattern(regexs.name)
                 ]),
             bio: new FormControl('',
                 [
                     Validators.maxLength(140),
-                    Validators.pattern(/(?!^\s+$)^.*$/m)
+                    Validators.pattern(regexs.title)
                 ])
         });
 
@@ -113,10 +113,12 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
     saveCredentials() {
         this.credentialsService
             .setUpUserToken(this.tokenForm.value as AccessToken)
-            .subscribe(
-                () => this.notificationService.showSuccessMessage('Your token was saved!', 'Success'),
-                (err) => this.notificationService.showErrorMessage(err.error, err.name)
-            );
+            .subscribe({
+                next:() =>
+                    this.notificationService.showSuccessMessage('Your token was saved!', 'Success'),
+                error:(err) =>
+                    this.notificationService.showErrorMessage(err.error, err.name)
+            });
     }
 
     handleFileInput(target: any) {

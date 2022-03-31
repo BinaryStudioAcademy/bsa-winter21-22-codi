@@ -17,7 +17,10 @@
                     <div class="info">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input formControlName="userName" type="text" class="form-control" id="username">
+                            <input formControlName="userName"
+                                   type="text" class="form-control" id="username"
+                                   [class.is-invalid]="(form.controls['userName'].dirty || form.controls['userName'].touched) && form.controls['userName'].invalid"
+                            >
                             <ul>
                                 <li class="text-danger" *ngIf="form.controls['userName'].hasError('required')">
                                     Username is required
@@ -33,10 +36,14 @@
                         <div class="name-inputs">
                             <div class="mb-3 firstName">
                                 <label for="firstName" class="form-label">First name</label>
-                                <input formControlName="firstName" type="text" class="form-control" id="firstName">
+                                <input
+                                    formControlName="firstName" type="text"
+                                    class="form-control" id="firstName"
+                                    [class.is-invalid]="(form.controls['firstName'].dirty || form.controls['firstName'].touched) && form.controls['firstName'].invalid"
+                                >
                                 <ul>
                                     <li class="text-danger" *ngIf="form.controls['firstName'].hasError('maxlength')">
-                                        First name must be less than 100 characters
+                                        First name must be less than 60 characters
                                     </li>
                                     <li class="text-danger" *ngIf="form.controls['firstName'].hasError('pattern')">
                                         First name must only contain latin letters
@@ -45,10 +52,14 @@
                             </div>
                             <div class="mb-3 lastName">
                                 <label for="lastName" class="form-label">Last name</label>
-                                <input formControlName="lastName" type="text" class="form-control" id="lastName">
+                                <input
+                                    formControlName="lastName" type="text"
+                                    class="form-control" id="lastName"
+                                    [class.is-invalid]="(form.controls['lastName'].dirty || form.controls['lastName'].touched) && form.controls['lastName'].invalid"
+                                >
                                 <ul>
                                     <li class="text-danger" *ngIf="form.controls['lastName'].hasError('maxlength')">
-                                        Last name must be less than 100 characters
+                                        Last name must be less than 60 characters
                                     </li>
                                     <li class="text-danger" *ngIf="form.controls['lastName'].hasError('pattern')">
                                         Last name must only contain latin letters
@@ -62,6 +73,11 @@
                             <div id="bioHelp" class="form-text bioHelp" [ngClass]="{'text-danger' : form.controls['bio'].value?.length > 140}">
                                 * {{form.controls['bio'].value?.length === null ? 0 : form.controls['bio'].value?.length}} / 140 characters is allowed
                             </div>
+                            <ul>
+                                <li class="text-danger" *ngIf="form.controls['bio'].hasError('pattern')">
+                                    Your bio can only contain latin letters, digits, printable characters
+                                </li>
+                            </ul>
                         </div>
                         <button type="submit" class="btn btn-primary save" (click)="updateUser()" [disabled]="!form.valid">Save</button>
                     </div>

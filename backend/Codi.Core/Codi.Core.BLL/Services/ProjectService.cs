@@ -95,7 +95,7 @@ public class ProjectService : BaseService, IProjectService
         }
 
         var createdProject = await CreateAsync(newProjectDto);
-        
+
         var userProject = new UserProject()
         {
             ProjectId = createdProject.Id,
@@ -104,7 +104,7 @@ public class ProjectService : BaseService, IProjectService
 
         _context.Add(userProject);
         await _context.SaveChangesAsync();
-        
+
         return _mapper.Map<ProjectDto>(createdProject);
     }
 
@@ -124,12 +124,13 @@ public class ProjectService : BaseService, IProjectService
         };
 
         await _projectsRepository.InsertOneAsync(projectDocument);
-        
+
         var project = _mapper.Map<Project>(newProjectDto,
             opts => opts.AfterMap((src, dst) =>
         {
-            dst.CreatedAt = DateTime.Now;
+            dst.CreatedAt = DateTime.UtcNow;
             dst.ProjectDocumentId = projectDocument.Id;
+            dst.Language = templateDocument.Language;
         }));
 
         var createdProject = _context.Add(project).Entity;
@@ -155,13 +156,13 @@ public class ProjectService : BaseService, IProjectService
         var project = new Project()
         {
             Title = gitCloneDto.Title,
-            CreatedAt = DateTime.Now,
+            CreatedAt = DateTime.UtcNow,
             IsPublic = gitCloneDto.IsPublic,
             ProjectDocumentId = projectDocumentId
         };
         _context.Add(project);
         await _context.SaveChangesAsync();
-        
+
         var userProject = new UserProject()
         {
             ProjectId = project.Id,
@@ -170,7 +171,7 @@ public class ProjectService : BaseService, IProjectService
 
         _context.Add(userProject);
         await _context.SaveChangesAsync();
-        
+
         return await GetByIdAsync(project.Id);
     }
 
@@ -215,5 +216,24 @@ public class ProjectService : BaseService, IProjectService
         _context.Remove(project);
 
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId)
+    {
+        return await _context.Projects
+            .Include(p => p.Owner)
+            .Where(p => p.Owner.FirebaseId == firebaseId)
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(5)
+            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
+    }
+
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
+    {
+        return await _context.Projects
+           .Where(p => p.IsPublic && p.OwnerId == userId)
+           .OrderByDescending(p => p.CreatedAt)
+           .Take(5)
+           .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 }

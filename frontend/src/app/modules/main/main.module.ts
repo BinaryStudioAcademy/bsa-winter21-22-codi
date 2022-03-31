@@ -22,6 +22,7 @@ import { MyProjectsPageComponent } from './my-projects-page/my-projects-page.com
 import { CourseManagePageComponent } from './course-manage-page/course-manage-page.component';
 import { CourseInviteDialogComponent } from './course-manage-page/course-invite-dialog/course-invite-dialog.component';
 import { UpdateCourseDialogComponent } from './course-manage-page/update-course-dialog/update-course-dialog.component';
+import { CoreModule } from "@core/core.module";
 import {
     CreateUnitDialogComponent
 } from "@modules/main/course-manage-page/create-unit-dialog/create-unit-dialog.component";
@@ -57,6 +58,7 @@ import {
         NgbModule,
         FormsModule,
         MonacoEditorModule,
+        CoreModule,
     ],
 })
 export class MainModule { }
