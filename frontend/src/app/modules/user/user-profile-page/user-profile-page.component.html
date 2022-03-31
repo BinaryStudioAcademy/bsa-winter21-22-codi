@@ -26,49 +26,49 @@
           </div>
           <button class="btn btn-primary" [routerLink]="['/account']" *ngIf="currentUser.id === user.id">Edit</button>
         </div>
-        <div class="action-info">
-          <div class="switch-buttons">
-            <a class="switch-item" href="">Repls</a>
-            <a class="switch-item" href="">Posts</a>
-          </div>
-          <div class="showcase">
-            <ngb-carousel>
-              <ng-template ngbSlide>
-                <div class="slide-header">
-                  <button class="btn show-files">Show files</button>
-                  <div class="right-header-part">
-                    <i class="fa fa-heart-o fa-2x like" aria-hidden="true"></i>
-                    <div class="likes-quantity">10</div>
-                    <button class="btn btn-success">Run</button>
-                  </div>
-                </div>
-              </ng-template>
-            </ngb-carousel>
-          </div>
-          <div class="chosen-repl">
-            <div class="repl-title">
-              <img class="repl-icon" src="assets/images/github_white.png" alt="icon">
-              <div class="repl-name">Html</div>
-            </div>
-            <i class="fa fa-cog fa-2x settings"></i>
-          </div>
-          <div class="repls">
-            <div class="searching-panel">
-              <div class="repls-title">All repls</div>
-              <input class="form-control search" type="text" placeholder="search in repls...">
-            </div>
-            <div class="repls-list">
-              <div class="repl-item">
-                <div class="repl-title">
-                  <img class="repl-icon" src="assets/images/github_white.png" alt="icon">
-                  <div class="repl-name">Title</div>
-                </div>
-                <div class="change-date">creation date: 17.02.2022</div>
-              </div>
-          </div>
-            <a class="manage" href="">Manage my repls</a>
+        <div *ngIf="loading" class="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
           </div>
         </div>
+        <div *ngIf="!loading" class="action-info">
+          <div class="repls">
+            <div class="searching-panel">
+              <div class="repls-title">Recent projects</div>
+            </div>
+
+            <div class="mt-4">
+              <table class="table table-borderless table-dark table-hover">
+                  <tbody>
+                  <tr *ngFor="let project of projects">
+                      <td class="min-width">
+                          <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
+                      </td>
+                      <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
+                      <td>
+                          <img class="language-icon" [src]="iconForLanguage(project.language)" alt="lang">
+                          {{forEnum(project.language)}}
+                      </td>
+                      <td class="min-width">
+                          {{project.createdAt | dateAgo}}
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+                <div *ngIf="!loading && !projects.length" class="d-flex justify-content-center">
+                    <h4 class="text-secondary" *ngIf="currentUser.id === user.id; else forAnotherUser">
+                        You don't have any projects. Please create a new one.
+                    </h4>
+                    <ng-template #forAnotherUser>
+                        <h4 class="text-secondary">
+                            {{user.userName}} don't have any public projects.
+                        </h4>
+                    </ng-template>
+                </div>
+            </div>
+          </div>
+        </div>
+
       </div>
   </div>
 </app-header>

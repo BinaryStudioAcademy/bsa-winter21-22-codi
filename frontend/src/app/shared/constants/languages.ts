@@ -1,8 +1,8 @@
 export enum Languages {
-    JavaScript = "JavaScript",
-    TypeScript = "TypeScript",
     Csharp = "C#",
     HTML = "HTML, CSS, JS",
+    JavaScript = "JavaScript",
+    TypeScript = "TypeScript",
     Python = "Python",
     Cplus = "C++",
     Java = "Java",
