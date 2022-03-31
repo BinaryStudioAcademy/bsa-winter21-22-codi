@@ -29,6 +29,8 @@
                     filter: $icon-filter-grey
 
         .explorer-files
+            max-height: calc(100vh - 205px)
+            overflow-y: auto
             display: flex
             flex-direction: column
             padding: 0 10px
@@ -76,7 +78,6 @@
             margin-bottom: 5px
             background-color: $background-panel-color-light
             border-radius: $border-radius
-            width: 100%
             height: calc(60% - 5px)
             .output-form-header
                 width: 100%
