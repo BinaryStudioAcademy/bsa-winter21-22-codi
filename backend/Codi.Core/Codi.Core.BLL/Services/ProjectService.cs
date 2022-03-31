@@ -220,9 +220,11 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId)
+            .Select(up => up.Project)
             .OrderByDescending(p => p.CreatedAt)
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
@@ -230,10 +232,13 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
     {
-        return await _context.Projects
-           .Where(p => p.IsPublic && p.OwnerId == userId)
-           .OrderByDescending(p => p.CreatedAt)
-           .Take(5)
-           .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.Id == userId && up.Project.IsPublic)
+            .Select(up => up.Project)
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(5)
+            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 }
