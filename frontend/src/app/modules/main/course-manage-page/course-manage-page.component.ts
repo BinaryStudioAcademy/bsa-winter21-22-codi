@@ -24,6 +24,7 @@ import {
 } from "@modules/main/course-manage-page/create-lesson-dialog/create-lesson-dialog.component";
 import { Lesson } from "@core/models/lesson/lesson";
 import { LessonService } from "@core/services/lesson.service";
+import { PublishLesson } from "@core/models/lesson/publish-lesson";
 
 @Component({
     selector: 'app-course-manage-page',
@@ -56,7 +57,6 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         this.route.params
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe({
@@ -164,8 +164,6 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
                     this.currentCourse = resp;
                     this.courseUserSize = resp.courseUsers.length;
                     this.getCurrentCourseUser(resp.id);
-                    this.getCourseUnits();
-                    this.getCourseLessons();
                 },
                 error: () =>
                     this.notificationService.showErrorMessage('Something went wrong', 'Error')
@@ -173,34 +171,73 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
     }
 
     getCourseUnits() {
-        this.unitService.getCourseUnits(this.currentCourse.id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next:(units) => {
-                    this.units = units;
-                },
-                error: () =>
-                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
-            });
+        if(this.currentCourseUser.courseRole === CourseRole.Admin) {
+            this.unitService.getCourseUnits(this.currentCourse.id)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next:(units) => {
+                        console.log(units)
+                        this.units = units;
+                    },
+                    error: () =>
+                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
+                });
+        }
+        else {
+            this.unitService.getCoursePublishedUnits(this.currentCourse.id)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next:(units) => {
+                        this.units = units;
+                    },
+                    error: () =>
+                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
+                });
+        }
     }
 
     getCourseLessons() {
-        this.lessonService.getCourseLessonsWithoutUnit(this.currentCourse.id)
+        if(this.currentCourseUser.courseRole === CourseRole.Admin) {
+            this.lessonService.getCourseLessonsWithoutUnit(this.currentCourse.id)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next: (lessons) => {
+                        this.lessons = lessons;
+                    },
+                    error: () =>
+                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
+                });
+        }
+        else {
+            this.lessonService.getPublishedCourseLessonsAsync(this.currentCourse.id)
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe({
+                    next: (lessons) => {
+                        this.lessons = lessons;
+                    },
+                    error: () =>
+                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
+                });
+        }
+    }
+
+    publishLesson(lessonId: number, publish: boolean) {
+        this.lessonService.publishLesson(lessonId, {publish} as PublishLesson)
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next:(lessons) => {
-                    this.lessons = lessons;
-                },
-                error: () =>
-                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
-            });
+            .subscribe(() => {
+                this.reloadPageContent();
+                this.notificationService.showSuccessMessage('Lesson published', 'Success');
+            })
     }
 
     getCurrentCourseUser(courseId: number) {
         this.courseService
             .getCourseUser(courseId)
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(cu => this.currentCourseUser = cu);
+            .subscribe((cu) => {
+                this.currentCourseUser = cu;
+                this.reloadPageContent();
+            });
     }
 
     inviteMembers(currentCourse: Course) {

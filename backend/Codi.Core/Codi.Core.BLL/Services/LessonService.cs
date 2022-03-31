@@ -26,6 +26,7 @@ public class LessonService : BaseService, ILessonService
     public async Task<ICollection<LessonDto>> GetAllByCourseAsync(long courseId, Expression<Func<Lesson, bool>>? predicate = null)
     {
         IQueryable<Lesson> lessons = _context.Lessons
+            .Where(l => l.CourseId == courseId)
             .AsNoTracking();
 
         if (predicate != null)
@@ -52,6 +53,21 @@ public class LessonService : BaseService, ILessonService
         await _context.SaveChangesAsync();
 
         return _mapper.Map<LessonDto>(createdLesson);
+    }
+
+    public async Task PublishAsync(long lessonId, PublishLessonDto publishLessonDto)
+    {
+        var lesson = await _context.Lessons.FirstOrDefaultAsync(l => l.Id == lessonId);
+
+        if (lesson is null)
+        {
+            throw new NotFoundException(nameof(Lesson), lessonId);
+        }
+
+        lesson.IsPublished = publishLessonDto.Publish;
+        _context.Update(lesson);
+
+        await _context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(long lessonId)

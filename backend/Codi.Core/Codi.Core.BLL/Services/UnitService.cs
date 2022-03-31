@@ -21,6 +21,16 @@ public class UnitService : BaseService, IUnitService
 
         return _mapper.Map<ICollection<UnitDto>>(units);
     }
+    
+    public async Task<ICollection<UnitDto>> GetAllPublishedByCourseAsync(long courseId)
+    {
+        var units = await _context.Units
+            .Include(u => u.Lessons.Where(l => l.IsPublished))
+            .Where(u => u.CourseId == courseId && u.Lessons.Any(l => l.IsPublished))
+            .ToListAsync();
+
+        return _mapper.Map<ICollection<UnitDto>>(units);
+    }
 
     public async Task<UnitDto> CreateAsync(CreateUnitDto createUnitDto)
     {

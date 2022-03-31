@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { CreateLesson } from "@core/models/lesson/create-lesson";
 import { Lesson } from "@core/models/lesson/lesson";
+import { PublishLesson } from "@core/models/lesson/publish-lesson";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,14 @@ export class LessonService {
 
     getCourseLessonsWithoutUnit(courseId: number) {
         return this.httpService.getRequest<Lesson[]>(`${this.routePrefix}/noUnit/${courseId}`);
+    }
+
+    getPublishedCourseLessonsAsync(courseId: number) {
+        return this.httpService.getRequest<Lesson[]>(`${this.routePrefix}/published/${courseId}`);
+    }
+
+    publishLesson(lessonId: number, publish: PublishLesson) {
+        return this.httpService.patchRequest<Lesson>(`${this.routePrefix}/publish/${lessonId}`, publish);
     }
 
     delete(lessonId: number) {

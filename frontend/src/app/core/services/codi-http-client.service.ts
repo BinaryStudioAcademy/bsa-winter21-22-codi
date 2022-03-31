@@ -32,7 +32,13 @@ export class CodiHttpClientService {
     }
 
     public putRequest<T>(url: string, payload: object): Observable<T> {
-        return this.http.put<T>(this.buildUrl(url), payload, {
+        return this.http.patch<T>(this.buildUrl(url), payload, {
+            headers: this.getHeaders(),
+        });
+    }
+
+    public patchRequest<T>(url: string, payload: object): Observable<T> {
+        return this.http.patch<T>(this.buildUrl(url), payload, {
             headers: this.getHeaders(),
         });
     }

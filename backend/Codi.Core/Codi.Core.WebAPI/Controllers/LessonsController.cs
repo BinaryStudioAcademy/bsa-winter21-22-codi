@@ -20,7 +20,7 @@ public class LessonsController : ControllerBase
     [HttpGet("published/{courseId}")]
     public async Task<ActionResult<ICollection<LessonDto>>> GetPublishedCourseLessonsAsync(long courseId)
     {
-        return Ok(await _lessonService.GetAllByCourseAsync(courseId, l => l.IsPublished));
+        return Ok(await _lessonService.GetAllByCourseAsync(courseId, l => l.IsPublished  && l.UnitId == null));
     }
 
     [HttpGet("noUnit/{courseId}")]
@@ -33,6 +33,13 @@ public class LessonsController : ControllerBase
     public async Task<ActionResult<LessonDto>> CreateAsync(CreateLessonDto createLessonDto)
     {
         return Ok(await _lessonService.CreateAsync(createLessonDto));
+    }
+
+    [HttpPatch("publish/{lessonId}")]
+    public async Task<ActionResult> PublishAsync(long lessonId, PublishLessonDto publishLessonDto)
+    {
+        await _lessonService.PublishAsync(lessonId, publishLessonDto);
+        return NoContent();
     }
 
     [HttpDelete("{lessonId}")]

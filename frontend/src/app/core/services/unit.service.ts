@@ -22,6 +22,10 @@ export class UnitService {
         return this.httpService.getRequest<Unit[]>(`${this.routePrefix}/${courseId}`);
     }
 
+    getCoursePublishedUnits(courseId: number) {
+        return this.httpService.getRequest<Unit[]>(`${this.routePrefix}/published/${courseId}`);
+    }
+
     update(unit: UpdateUnit) {
         return this.httpService.putRequest<Unit>(`${this.routePrefix}`, unit);
     }

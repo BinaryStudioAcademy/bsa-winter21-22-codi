@@ -24,6 +24,13 @@ public class UnitsController : ControllerBase
         return Ok(units);
     }
 
+    [HttpGet("published/{courseId}")]
+    public async Task<ActionResult<ICollection<UnitDto>>> GetAllPublishedByCourseAsync(long courseId)
+    {
+        var units = await _unitService.GetAllPublishedByCourseAsync(courseId);
+        return Ok(units);
+    }
+
     [HttpPost]
     public async Task<ActionResult<UnitDto>> CreateAsync(CreateUnitDto unitDto)
     {
