@@ -9,5 +9,6 @@ namespace Codi.Core.Common.DTO.Project
         public bool IsPublic { get; set; }
         public DateTime CreatedAt { get; set; }
         public Language? Language { get; set; }
+        public uint Stars { get; set; }
     }
 }

@@ -45,6 +45,18 @@ public class GithubClient : IGithubClient
         return _mapper.Map<ICollection<GithubRepository>>(result);
     }
 
+    public async Task<GithubRepositoryFromAPI> GetRepo(string repoUrl)
+    {
+        //SetUpHttpClient(token);
+
+        _client.BaseAddress = new Uri(repoUrl);
+        var response = await _client.GetAsync(repoUrl);
+        var content = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<GithubRepositoryFromAPI>(content);
+
+        return result;
+    }
     public async Task<AccessTokenCheckDto> CheckIfTokenValid(string token)
     {
         SetUpHttpClient(token);
