@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "@core/services/user.service";
 import { BaseComponent } from "@core/base/base.component";
 import { ActivatedRoute, Router } from "@angular/router";
-import {mergeAll, mergeMap, takeUntil} from "rxjs";
+import { takeUntil } from "rxjs";
 import { User } from "@core/models/user/user";
 import { AuthService } from "@core/services/auth.service";
-import {ProjectService} from "@core/services/project.service";
-import {ProjectWithLanguage} from "@core/models/project/project-with-language";
-import {NotificationService} from "@core/services/notification.service";
-import {Languages} from "@shared/constants/languages";
-import {IconLanguageHelper} from "@shared/helpers/icon-language-helper";
+import { ProjectService } from "@core/services/project.service";
+import { ProjectWithLanguage } from "@core/models/project/project-with-language";
+import { NotificationService } from "@core/services/notification.service";
+import { Languages } from "@shared/constants/languages";
+import { IconLanguageHelper } from "@shared/helpers/icon-language-helper";
 
 @Component({
     selector: 'app-user-profile-page',
