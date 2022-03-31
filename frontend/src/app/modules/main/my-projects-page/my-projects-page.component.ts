@@ -26,7 +26,7 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
         private projectDialogService: ProjectCreationModalService,
         private confirmationDialogService: ConfirmationDialogService,
         public router: Router
-        ) {
+    ) {
         super();
     }
 
