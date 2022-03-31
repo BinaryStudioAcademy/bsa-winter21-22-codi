@@ -72,8 +72,8 @@
                     <div ngbDropdown placement="bottom-right" *ngIf="!currentCourseUser.courseRole; else forMember">
                         <a type="button" id="roleDropdown" class="role-change" ngbDropdownToggle>{{courseRole[courseUser.courseRole]}}</a>
                         <div ngbDropdownMenu aria-labelledby="roleDropdown">
-                            <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Admin)">{{courseRole[0]}}</button>
-                            <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Member)">{{courseRole[1]}}</button>
+                            <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Admin)" class="dropdown-item">{{courseRole[0]}}</button>
+                            <button ngbDropdownItem (click)="changeRole(courseUser.user.id, courseRole.Member)" class="dropdown-item">{{courseRole[1]}}</button>
                         </div>
                     </div>
                     <ng-template #forMember>
