@@ -104,7 +104,7 @@ export class CreateLessonDialogComponent extends BaseComponent implements OnInit
 
     searchTemplates: OperatorFunction<string, readonly Template[]> = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-        const clicksWithClosedPopup$ = this.templatesClick$.pipe(filter(() => !this.templateInstance.isPopupOpen()));
+        const clicksWithClosedPopup$ = this.templatesClick$.pipe(filter(() => !this.templateInstance?.isPopupOpen()));
         return merge(debouncedText$, this.templatesFocus$, clicksWithClosedPopup$).pipe(
             map(term => (term === '' ? this.templates
                 : this.templates.filter(t => t.name.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 25))
@@ -116,7 +116,7 @@ export class CreateLessonDialogComponent extends BaseComponent implements OnInit
 
     searchUnits: OperatorFunction<string, readonly Unit[]> = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-        const clicksWithClosedPopup$ = this.unitsClick$.pipe(filter(() => !this.unitInstance.isPopupOpen()));
+        const clicksWithClosedPopup$ = this.unitsClick$.pipe(filter(() => !this.unitInstance?.isPopupOpen()));
         return merge(debouncedText$, this.unitsFocus$, clicksWithClosedPopup$).pipe(
             map(term => (term === '' ? this.units
                 : this.units.filter(u => u.title.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 25))

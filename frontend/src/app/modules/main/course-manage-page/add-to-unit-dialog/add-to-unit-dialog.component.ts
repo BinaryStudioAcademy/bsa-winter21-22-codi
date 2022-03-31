@@ -53,7 +53,7 @@ export class AddToUnitDialogComponent extends BaseComponent implements OnInit {
 
     search: OperatorFunction<string, readonly Lesson[]> = (text$: Observable<string>) => {
         const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-        const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+        const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance?.isPopupOpen()));
         return merge(debouncedText$, this.focus$, clicksWithClosedPopup$).pipe(
             map(term => (term === '' ? this.lessons
                 : this.lessons.filter(l => l.title.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 25))

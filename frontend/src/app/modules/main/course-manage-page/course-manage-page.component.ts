@@ -180,7 +180,6 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe({
                     next:(units) => {
-                        console.log(units)
                         this.units = units;
                     },
                     error: () =>
@@ -286,5 +285,18 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
     private reloadPageContent() {
         this.getCourseLessons();
         this.getCourseUnits();
+    }
+
+    showLessonDescription(lesson: Lesson) {
+        this.confirmationDialogService
+            .openConfirmationDialog(
+                `${lesson.title}`,
+                `${lesson.description}`,
+                {
+                    centered: true,
+                    cancelButton: false,
+                    confirmButtonText: "Ok"
+                }
+            )
     }
 }
