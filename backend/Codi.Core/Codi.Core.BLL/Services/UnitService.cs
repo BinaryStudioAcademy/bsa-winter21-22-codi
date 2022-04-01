@@ -36,7 +36,7 @@ public class UnitService : BaseService, IUnitService
     {
         var unit = _mapper.Map<Unit>(createUnitDto, opts => opts.AfterMap((src, dst) =>
         {
-            dst.CreatedAt = DateTime.Now;
+            dst.CreatedAt = DateTime.UtcNow;
         }));
 
         var createdUnit = _context.Add(unit).Entity;

@@ -1,34 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { CourseService } from "@core/services/course.service";
-import { Course } from "@core/models/course/course";
-import { takeUntil } from "rxjs";
-import { BaseComponent } from "@core/base/base.component";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AuthService } from "@core/services/auth.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { CourseInviteDialogComponent } from "@modules/main/course-manage-page/course-invite-dialog/course-invite-dialog.component";
-import { NotificationService } from "@core/services/notification.service";
-import { UpdateCourseDialogComponent } from "@modules/main/course-manage-page/update-course-dialog/update-course-dialog.component";
-import { noop } from "@shared/common/utils";
-import { CourseUser } from "@core/models/course/course-user";
-import { CourseRole } from "@core/models/course/course-role";
-import { Unit } from "@core/models/unit/unit";
-import { UnitService } from "@core/services/unit.service";
+import {Component, OnInit} from '@angular/core';
+import {CourseService} from "@core/services/course.service";
+import {Course} from "@core/models/course/course";
+import {takeUntil} from "rxjs";
+import {BaseComponent} from "@core/base/base.component";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "@core/services/auth.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {
+    CourseInviteDialogComponent
+} from "@modules/main/course-manage-page/course-invite-dialog/course-invite-dialog.component";
+import {NotificationService} from "@core/services/notification.service";
+import {
+    UpdateCourseDialogComponent
+} from "@modules/main/course-manage-page/update-course-dialog/update-course-dialog.component";
+import {noop} from "@shared/common/utils";
+import {CourseUser} from "@core/models/course/course-user";
+import {CourseRole} from "@core/models/course/course-role";
+import {Unit} from "@core/models/unit/unit";
+import {UnitService} from "@core/services/unit.service";
 import {
     CreateUnitDialogComponent
 } from "@modules/main/course-manage-page/create-unit-dialog/create-unit-dialog.component";
-import { ConfirmationDialogResult } from "@core/models/confirmation-dialog/confirmation-dialog-result";
-import { ConfirmationDialogService } from "@core/services/confirmation-dialog.service";
+import {ConfirmationDialogResult} from "@core/models/confirmation-dialog/confirmation-dialog-result";
+import {ConfirmationDialogService} from "@core/services/confirmation-dialog.service";
 import {
     CreateLessonDialogComponent
 } from "@modules/main/course-manage-page/create-lesson-dialog/create-lesson-dialog.component";
-import { Lesson } from "@core/models/lesson/lesson";
-import { LessonService } from "@core/services/lesson.service";
-import { PublishLesson } from "@core/models/lesson/publish-lesson";
+import {Lesson} from "@core/models/lesson/lesson";
+import {LessonService} from "@core/services/lesson.service";
+import {PublishLesson} from "@core/models/lesson/publish-lesson";
 import {
     AddToUnitDialogComponent
 } from "@modules/main/course-manage-page/add-to-unit-dialog/add-to-unit-dialog.component";
-import { LessonToUnit } from "@core/models/lesson/lesson-to-unit";
+import {LessonToUnit} from "@core/models/lesson/lesson-to-unit";
 
 @Component({
     selector: 'app-course-manage-page',
@@ -175,53 +179,51 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
     }
 
     getCourseUnits() {
-        if(this.currentCourseUser.courseRole === CourseRole.Admin) {
-            this.unitService.getCourseUnits(this.currentCourse.id)
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    next:(units) => {
-                        this.units = units;
-                    },
-                    error: () =>
-                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
-                });
-        }
-        else {
-            this.unitService.getCoursePublishedUnits(this.currentCourse.id)
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    next:(units) => {
-                        this.units = units;
-                    },
-                    error: () =>
-                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
-                });
-        }
+        this.unitService.getCourseUnits(this.currentCourse.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next:(units) => {
+                    this.units = units;
+                },
+                error: () =>
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+            });
+    }
+
+    getCoursePublishedUnits() {
+        this.unitService.getCoursePublishedUnits(this.currentCourse.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next:(units) => {
+                    this.units = units;
+                },
+                error: () =>
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+            });
     }
 
     getCourseLessons() {
-        if(this.currentCourseUser.courseRole === CourseRole.Admin) {
-            this.lessonService.getCourseLessonsWithoutUnit(this.currentCourse.id)
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    next: (lessons) => {
-                        this.lessons = lessons;
-                    },
-                    error: () =>
-                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
-                });
-        }
-        else {
-            this.lessonService.getPublishedCourseLessonsAsync(this.currentCourse.id)
-                .pipe(takeUntil(this.unsubscribe$))
-                .subscribe({
-                    next: (lessons) => {
-                        this.lessons = lessons;
-                    },
-                    error: () =>
-                        this.notificationService.showErrorMessage('Something went wrong', 'Error')
-                });
-        }
+        this.lessonService.getCourseLessonsWithoutUnit(this.currentCourse.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (lessons) => {
+                    this.lessons = lessons;
+                },
+                error: () =>
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+            });
+    }
+
+    getPublishedCourseLessons() {
+        this.lessonService.getPublishedCourseLessons(this.currentCourse.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (lessons) => {
+                    this.lessons = lessons;
+                },
+                error: () =>
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+            });
     }
 
     publishLesson(lessonId: number, publish: boolean) {
@@ -283,8 +285,14 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
     }
 
     private reloadPageContent() {
-        this.getCourseLessons();
-        this.getCourseUnits();
+        if(this.currentCourseUser.courseRole === CourseRole.Admin) {
+            this.getCourseUnits();
+            this.getCourseLessons();
+        }
+        else {
+            this.getCoursePublishedUnits();
+            this.getPublishedCourseLessons();
+        }
     }
 
     showLessonDescription(lesson: Lesson) {

@@ -23,7 +23,7 @@ export class LessonService {
         return this.httpService.getRequest<Lesson[]>(`${this.routePrefix}/noUnit/${courseId}`);
     }
 
-    getPublishedCourseLessonsAsync(courseId: number) {
+    getPublishedCourseLessons(courseId: number) {
         return this.httpService.getRequest<Lesson[]>(`${this.routePrefix}/published/${courseId}`);
     }
 

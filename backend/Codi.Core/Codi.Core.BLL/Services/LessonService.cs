@@ -46,7 +46,7 @@ public class LessonService : BaseService, ILessonService
         var lesson = _mapper.Map<Lesson>(createLessonDto, opts => opts.AfterMap((src, dst) =>
         {
             dst.ProjectId = createdProject.Id;
-            dst.CreatedAt = DateTime.Now;
+            dst.CreatedAt = DateTime.UtcNow;
         }));
 
         var createdLesson = _context.Add(lesson).Entity;
@@ -79,14 +79,9 @@ public class LessonService : BaseService, ILessonService
             throw new NotFoundException(nameof(Lesson), lessonToUnitDto.LessonId);
         }
 
-        if (lessonToUnitDto.Add)
-        {
-            lesson.UnitId = lessonToUnitDto.UnitId;
-        }
-        else
-        {
-            lesson.UnitId = null;
-        }
+        lesson.UnitId = lessonToUnitDto.Add
+            ? lessonToUnitDto.UnitId
+            : null;
         
         _context.Update(lesson);
         await _context.SaveChangesAsync();
