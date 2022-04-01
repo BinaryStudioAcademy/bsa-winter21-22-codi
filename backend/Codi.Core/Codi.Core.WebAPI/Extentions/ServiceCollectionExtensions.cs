@@ -11,6 +11,7 @@ using RabbitMQ.Client;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Codi.Core.WebAPI.Validators;
+using Codi.Core.BLL.RabbitMQ.Abstract;
 
 namespace Codi.Core.WebAPI.Extentions
 {
@@ -36,6 +37,8 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddTransient<IProjectStructureService, ProjectStructureService>();
             services.AddTransient<ICredentialsService, CredentialsService>();
             services.AddTransient<IGithubService, GithubService>();
+            services.AddTransient<IUnitService, UnitService>();
+            services.AddTransient<ILessonService, LessonService>();
             
             services.AddHttpClient<IGithubClient, GithubClient>(client =>
             {
@@ -65,14 +68,34 @@ namespace Codi.Core.WebAPI.Extentions
             services.AddSingleton<IMessageProducerScopeFactory, MessageProducerScopeFactory>();
             services.AddSingleton<IMessageConsumerScopeFactory, MessageConsumerScopeFactory>();
 
-            var messageSettings = new MessageScopeSettings();
-            configuration
+            var messageSettings = configuration
                 .GetSection("Queues:ExampleQueue")
-                .Bind(messageSettings);
-            services.AddScoped<IMessageService>(provider =>
-                new MessageService(
+                .Get<MessageScopeSettings>();
+
+            services.AddScoped<BLL.RabbitMQ.Abstract.IMessageProducer>((provider =>
+                new BLL.RabbitMQ.MessageProducer(
                     provider.GetRequiredService<IMessageProducerScopeFactory>(),
-                    messageSettings));
+                    messageSettings)));
+
+
+            var projectRunSettings = configuration
+                .GetSection("Queues:RunProjectsQueue")
+                .Get<MessageScopeSettings>();
+
+            var projectStopSettings = configuration
+                .GetSection("Queues:StopProjectsQueue")
+                .Get<MessageScopeSettings>();
+
+            var projectInputSettings = configuration
+                .GetSection("Queues:ProjectInputQueue")
+                .Get<MessageScopeSettings>();
+
+            services.AddScoped<IBuilderProducer>(provider =>
+                new BuilderProducer(
+                    provider.GetRequiredService<IMessageProducerScopeFactory>(),
+                    projectRunSettings, 
+                    projectStopSettings,
+                    projectInputSettings));
         }
 
         public static void ServiceJwtFirebase(this IServiceCollection services, IConfiguration configuration)

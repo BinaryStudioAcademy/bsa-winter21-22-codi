@@ -9,4 +9,5 @@ public interface IGithubClient
     Task<ICollection<GithubRepository>> GetUserRepositories(string token);
     Task<AccessTokenCheckDto> CheckIfTokenValid(string token);
     Task<bool> CheckIfRepositoryAccessible(string repoName, string repoOwner, string token);
+    Task<GithubRepositoryFromAPI> GetRepo(string apiUrl);
 }

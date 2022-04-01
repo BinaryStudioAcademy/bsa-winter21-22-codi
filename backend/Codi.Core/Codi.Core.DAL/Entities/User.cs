@@ -12,9 +12,8 @@
         public long? AvatarId { get; set; }
         public Image? Avatar { get; set; }
         public string? AccessToken { get; set; }
-        public List<Project> Projects { get; set; } = default!;
+        public List<UserProject> UserProjects { get; set; } = default!;
         public List<CourseUser> CourseUsers { get; set; } = default!;
-        public List<InvitedUser> InvitedUsers { get; set; } = default!;
         public List<Submission> Submissions { get; set; } = default!;
         public List<ThreadComment> ThreadComments { get; set; } = default!;
         public List<Thread> Threads { get; set; } = default!;

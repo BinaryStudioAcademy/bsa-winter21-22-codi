@@ -56,12 +56,26 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(projects);
         }
 
+        [HttpGet("my/gitlast")]
+        public async Task<ActionResult<ICollection<ProjectNameDto>>> GetUserGitLastProjects()
+        {
+            var projects = await _projectService.GetLastGitUserProjects(this.GetUserIdFromToken());
+            return Ok(projects);
+        }
+
         [HttpGet("my")]
         public async Task<ActionResult<ICollection<ProjectDto>>> GetUserProjects()
         {
             var projects = await _projectService.GetUserProjects(this.GetUserIdFromToken());
             return Ok(projects);
-        } 
+        }
+
+        [HttpGet("mygit")]
+        public async Task<ActionResult<ICollection<ProjectDto>>> GetUserGitProjects()
+        {
+            var projects = await _projectService.GetUserGitProjects(this.GetUserIdFromToken());
+            return Ok(projects);
+        }
 
         [HttpGet("{projectId}")]
         public async Task<ActionResult<ProjectDto>> GetById(long projectId)
@@ -70,8 +84,14 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(app);
         }
 
+        [HttpGet("isEditable/{projectId}")]
+        public async Task<ActionResult<bool>> IsUserEditableAsync(long projectId)
+        {
+            return Ok(await _projectService.IsUserEditableAsync(this.GetUserIdFromToken(), projectId));
+        }
+
         [HttpPost]
-        public async Task<ActionResult<ProjectDto>> CreateAsync(NewProjectDto projectDto)
+        public async Task<ActionResult<ProjectDto>> CreateUserProjectAsync(NewProjectDto projectDto)
         {
             if (!ModelState.IsValid)
             {
@@ -79,16 +99,37 @@ namespace Codi.Core.WebAPI.Controllers
             }
 
             projectDto.FirebaseId = this.GetUserIdFromToken();
-            var project = await _projectService.CreateAsync(projectDto);
+            var project = await _projectService.CreateUserProjectAsync(projectDto);
             return Ok(project);
         }
-        
+
         [HttpPost("gitImport")]
         public async Task<ActionResult<ProjectDto>> GitImport(GitCloneDto gitCloneDto)
         {
             gitCloneDto.FirebaseId = this.GetUserIdFromToken();
             var project = await _projectService.ImportProjectFromGithubAsync(gitCloneDto);
             return Ok(project);
+        }
+
+        [HttpPost("{projectId}/run")]
+        public async Task<ActionResult> RunProject(long projectId)
+        {
+            await _projectService.SendProjectRunRequest(projectId, this.GetUserIdFromToken());
+            return Ok();
+        }
+
+        [HttpPost("{projectId}/stop")]
+        public async Task<ActionResult> StopProject(long projectId)
+        {
+            await _projectService.SendProjectStopRequest(projectId, this.GetUserIdFromToken());
+            return Ok();
+        }
+
+        [HttpPost("{projectId}/input")]
+        public async Task<ActionResult> ProjectInput(long projectId, [FromQuery] string value)
+        {
+            await _projectService.SendProjectInput(projectId, this.GetUserIdFromToken(), value);
+            return Ok();
         }
 
         [HttpPut("{projectId}")]

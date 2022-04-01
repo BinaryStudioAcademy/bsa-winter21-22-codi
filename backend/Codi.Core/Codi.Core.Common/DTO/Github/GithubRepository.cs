@@ -5,4 +5,5 @@ public class GithubRepository
     public string Name { get; set; } = default!;
     public string Url { get; set; } = default!;
     public GithubUser Owner { get; set; } = default!;
+    public string Language { get; set;} = default!;
 }

@@ -15,31 +15,63 @@
         </div>
     </div>
 
-    <div *ngIf="!loading" class="mt-4">
-        <table class="table table-borderless table-dark table-hover">
-            <tbody>
-                <tr *ngFor="let project of projects">
-                    <td class="min-width">
-                        <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
-                    </td>
-                    <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
-                    <td>{{project.createdAt | date}}</td>
-                    <td class="min-width">
-                        <div ngbDropdown container="body" placement="left-top">
-                            <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
-                            <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                              <button ngbDropdownItem class="dropdown-item">Settings</button>
-                              <button ngbDropdownItem class="text-danger dropdown-item" (click)="deleteProject(project)">Delete</button>
-                            </div>
-                          </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div *ngIf="!loading && !projects.length" class="d-flex justify-content-center">
-            <h4 class="text-secondary">
-                You don't have any projects. Please create a new one.
-            </h4>
+    <div *ngIf="router.url.includes('/gitprojects') ; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div *ngIf="!loading" class="mt-4">
+            <table class="table table-borderless table-dark table-hover">
+                <tbody>
+                    <tr *ngFor="let project of gitprojects">
+                        <td class="min-width">
+                            <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
+                        </td>
+                        <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
+                        <td>{{project.createdAt | date}}</td>
+                        <td class="min-width">
+                            <div ngbDropdown container="body" placement="left-top">
+                                <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
+                                <div ngbDropdownMenu aria-labelledby="optionsDropdown">
+                                  <button ngbDropdownItem class="dropdown-item">Settings</button>
+                                  <button ngbDropdownItem class="text-danger dropdown-item" (click)="deleteProject(project)">Delete</button>
+                                </div>
+                              </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="!loading && !gitprojects.length" class="d-flex justify-content-center">
+                <h4 class="text-secondary">
+                    You don't have any projects. Please create a new one.
+                </h4>
+            </div>
         </div>
-    </div>
+    </ng-template>
+    <ng-template #elseBlock>
+        <div *ngIf="!loading" class="mt-4">
+            <table class="table table-borderless table-dark table-hover">
+                <tbody>
+                    <tr *ngFor="let project of projects">
+                        <td class="min-width">
+                            <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
+                        </td>
+                        <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
+                        <td>{{project.createdAt | date}}</td>
+                        <td class="min-width">
+                            <div ngbDropdown container="body" placement="left-top">
+                                <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
+                                <div ngbDropdownMenu aria-labelledby="optionsDropdown">
+                                <button ngbDropdownItem class="dropdown-item">Settings</button>
+                                <button ngbDropdownItem class="text-danger dropdown-item" (click)="deleteProject(project)">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="!loading && !projects.length" class="d-flex justify-content-center">
+                <h4 class="text-secondary">
+                    You don't have any projects. Please create a new one.
+                </h4>
+            </div>
+        </div>
+    </ng-template>
 </div>

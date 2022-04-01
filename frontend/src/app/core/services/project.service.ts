@@ -28,8 +28,16 @@ export class ProjectService {
         return this.httpService.getRequest<Project[]>(`${this.routePrefix}/my`)
     }
 
+    getCurrentUserGitProjects() {
+        return this.httpService.getRequest<Project[]>(`${this.routePrefix}/mygit`)
+    }
+
     createProject(project: CreateProject) {
         return this.httpService.postRequest<Project>(`${this.routePrefix}`, project);
+    }
+
+    isUserEditable(projectId: number) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/isEditable/${projectId}`);
     }
 
     gitProjectImport(gitClone: GitClone) {
@@ -48,7 +56,19 @@ export class ProjectService {
         return this.httpService.putRequest<Project>(`${this.routePrefix}/${projectId}`, updateProject);
     }
 
-    public deleteProject(id: number) {
+    deleteProject(id: number) {
         return this.httpService.deleteRequest(`${this.routePrefix}/${id}`);
+    }
+
+    runProject(id: number) {
+        return this.httpService.postRequest(`${this.routePrefix}/${id}/run`, {});
+    }
+
+    stopProject(id: number) {
+        return this.httpService.postRequest(`${this.routePrefix}/${id}/stop`, {});
+    }
+
+    getCurrentUserGitLastProjects() {
+        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/gitlast`)
     }
 }

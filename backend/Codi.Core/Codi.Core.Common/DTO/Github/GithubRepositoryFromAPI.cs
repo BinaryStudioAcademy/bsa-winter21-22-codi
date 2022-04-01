@@ -2,11 +2,15 @@
 
 namespace Codi.Core.Common.DTO.Github;
 
-public class GithubRepositoryFromAPI
+public class GithubRepositoryFromAPI 
 {
     [JsonProperty("full_name")]
-    public string Name { internal get; set; } = default!;
+    public string Name {  get; set; } = default!;
     [JsonProperty("html_url")]
-    public string Url { internal get; set; } = default!;
+    public string Url {  get; set; } = default!;
     public GithubUser Owner { get; set; } = default!;
+    [JsonProperty("language")]
+    public string Language { get; set; } = default!;
+    [JsonProperty("stargazers_count")]
+    public uint Stars {  get; set; } = default!;
 }

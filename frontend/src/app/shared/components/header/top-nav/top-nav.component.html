@@ -18,20 +18,13 @@
                         Project name must be between 2 and 60 characters
                     </div>
                 </form>
-                <div class="project-changes-history">
-                    <img class="proj-changes-history-icon" src="assets/images/workspace/recent.svg" routerLink="">
-                </div>
             </div>
         </div>
         <div class="navbar-center">
             <div class="buttons-container">
-                <button class="button-item run-btn">
+                <button (click)="runProject()" class="button-item mx-3 run-btn">
                     <span class="button-text">Run</span>
                     <img class="button-icon run-icon" src="assets/images/workspace/runbttn.svg">
-                </button>
-                <button class="button-item build-btn">
-                    <span class="button-text">Build</span>
-                    <img class="button-icon build-icon" src="assets/images/workspace/buildbttn.svg">
                 </button>
                 <button class="button-item save-btn" *ngIf="!anyChangesSaved()" (click)="saveChanges()">
                     <span class="button-text">Save changes</span>
@@ -81,14 +74,6 @@
                     </div>
                 </div>
                 </div>
-            </div>
-            <button type="button" class="btn btn-primary w-75 d-flex justify-content-center align-items-center">
-                <span class="ml-1">Invite</span>
-            </button>
-            <div class="workspace-search-container-box">
-                <button class="search-container-button">
-                    <i class="search-icon fa fa-search"></i>
-                </button>
             </div>
         </div>
     </div>
