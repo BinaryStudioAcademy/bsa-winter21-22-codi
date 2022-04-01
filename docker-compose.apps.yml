@@ -46,6 +46,8 @@ services:
           - back
       environment:
           ASPNETCORE_ENVIRONMENT: 'Development'
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
 
   codi_client:
     depends_on:
