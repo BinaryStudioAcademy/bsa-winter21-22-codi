@@ -8,9 +8,8 @@ import { ProjectCreationModalService } from "@core/services/project-creation-mod
 import { ActivatedRoute, Router } from "@angular/router";
 import { NotificationService } from "@core/services/notification.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Project } from "@core/models/project/project";
 import { ProjectService } from "@core/services/project.service";
-
+import { ProjectSaverService } from "@core/services/project-saver.service";
 
 @Component({
     selector: 'app-top-nav',
@@ -19,7 +18,6 @@ import { ProjectService } from "@core/services/project.service";
 })
 export class TopNavComponent extends BaseComponent implements OnInit {
     currentUser: User;
-    projectInfo: Project | undefined;
     form: FormGroup;
     constructor(
         private authService: AuthService,
@@ -28,7 +26,8 @@ export class TopNavComponent extends BaseComponent implements OnInit {
         private notificationService: NotificationService,
         private modalService: ProjectCreationModalService,
         private route: ActivatedRoute,
-        private projectService: ProjectService
+        private projectService: ProjectService,
+        private projectSaverService: ProjectSaverService
     ) {
         super();
     }
@@ -39,37 +38,24 @@ export class TopNavComponent extends BaseComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => this.getUser());
 
-        this.form = new FormGroup({
-            title: new FormControl('',
-                [
-                    Validators.required,
-                    Validators.minLength(2)
-                ])
-        });
-
-        this.getProjectInfo();
-    }
-
-    getProjectInfo() {
         if(this.router.url.includes('/workspace')) {
-            let projectId = this.route.snapshot.params['id'];
-            this.projectService
-                .getProject(projectId)
+            this.form = new FormGroup({
+                title: new FormControl('',
+                    [
+                        Validators.required,
+                        Validators.minLength(2),
+                        Validators.maxLength(60)
+                    ])
+            });
+
+            this.getProjectInfo();
+
+            this.form.valueChanges
                 .pipe(takeUntil(this.unsubscribe$))
-                .subscribe((res) => {
-                    this.projectInfo = res;
-                    this.form.get('title')?.setValue(res.title);
+                .subscribe(() => {
+                    this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
                 })
         }
-    }
-
-    getUser() {
-        this.authService
-            .getCurrentUser()
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe((user) => {
-                this.currentUser = user;
-            })
     }
 
     logout() {
@@ -83,5 +69,34 @@ export class TopNavComponent extends BaseComponent implements OnInit {
 
     createProject() {
         this.modalService.openCreateDialog();
+    }
+
+    saveChanges() {
+        this.projectSaverService.saveChanges();
+        this.notificationService.showSuccessMessage('Project changes saved', 'Success');
+    }
+
+    anyChangesSaved() {
+        return !this.projectSaverService.isProjectChanged();
+    }
+
+    private getUser() {
+        this.authService
+            .getCurrentUser()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((user) => {
+                this.currentUser = user;
+            })
+    }
+
+    private getProjectInfo() {
+        let projectId = this.route.snapshot.params['id'];
+        this.projectService
+            .getProject(projectId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((res) => {
+                this.projectSaverService.projectInfo = res;
+                this.form.get('title')?.setValue(res.title);
+            });
     }
 }
