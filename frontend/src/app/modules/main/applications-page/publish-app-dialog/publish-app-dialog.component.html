@@ -55,11 +55,22 @@
             <label for="project">Icon(todo)</label>
             <div class="input-group mb-3">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                        aria-describedby="inputGroupFileAddon01">
+                    <input type="file"
+                           class="custom-file-input" id="inputGroupFile01"
+                           aria-describedby="inputGroupFileAddon01"
+                           accept="image/*"
+                           (change)="handleFileInput($event.target)"
+                    >
                     <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
                 </div>
             </div>
+        </div>
+        <div *ngIf="previewImage">
+            <a class="remove" type="button"  (click)="removeImage()">&#10008;</a>
+        </div>
+        <div class="app-card-image" *ngIf="previewImage">
+
+            <img class="preview-image" src="{{previewImage}}" alt="app image">
         </div>
 
         <button type="submit" [disabled]="!form.valid"  (click)="publishApp()" class="btn btn-primary w-100 mt-3">Publish app</button>
