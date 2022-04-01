@@ -1,4 +1,5 @@
 using Codi.Core.BLL.Interfaces;
+using Codi.Core.BLL.RabbitMQ.Abstract;
 using Codi.Core.Common.DTO;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace Codi.Core.WebAPI.Controllers
     [Route("[controller]")]
     public class SampleController : ControllerBase
     {
-        public SampleController(ISampleService sampleService, IMessageService messageService)
+        public SampleController(ISampleService sampleService, IMessageProducer messageService)
         {
             _sampleService = sampleService;
             _messageService = messageService;
@@ -74,6 +75,6 @@ namespace Codi.Core.WebAPI.Controllers
         }
 
         private readonly ISampleService _sampleService;
-        private readonly IMessageService _messageService;
+        private readonly IMessageProducer _messageService;
     }
 }
