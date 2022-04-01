@@ -28,6 +28,10 @@ export class ProjectService {
         return this.httpService.getRequest<Project[]>(`${this.routePrefix}/my`)
     }
 
+    getCurrentUserGitProjects() {
+        return this.httpService.getRequest<Project[]>(`${this.routePrefix}/mygit`)
+    }
+
     createProject(project: CreateProject) {
         return this.httpService.postRequest<Project>(`${this.routePrefix}`, project);
     }
@@ -58,5 +62,9 @@ export class ProjectService {
 
     stopProject(id: number) {
         return this.httpService.postRequest(`${this.routePrefix}/${id}/stop`, {});
+    }
+
+    getCurrentUserGitLastProjects() {
+        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/gitlast`)
     }
 }

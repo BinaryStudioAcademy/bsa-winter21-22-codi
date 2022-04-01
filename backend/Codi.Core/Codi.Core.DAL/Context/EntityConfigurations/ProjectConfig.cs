@@ -13,6 +13,12 @@ namespace Codi.Core.DAL.Context.EntityConfigurations
 
             builder.Property(e => e.Description)
                 .HasMaxLength(1000);
+
+            builder.Property(e => e.IsGitImported)
+                .HasDefaultValue(false);
+
+            builder.Property(e => e.Stars)
+                .HasDefaultValue(0);
         }
     }
 }

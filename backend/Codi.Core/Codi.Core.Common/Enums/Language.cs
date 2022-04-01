@@ -3,7 +3,7 @@
     public enum Language
     {
         CSharp,
-        JavaScript,
+        HTML,
         FSharp,
         Goloang,
         Python

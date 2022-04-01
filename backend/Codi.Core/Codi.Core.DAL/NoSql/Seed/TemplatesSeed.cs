@@ -84,7 +84,7 @@ namespace Codi.Core.DAL.NoSql.Seed
             var template = new Template
             {
                 Name = "HTML, CSS, JS",
-                Language = Language.JavaScript,
+                Language = Language.HTML,
                 Nodes = files.Select(f => new FSNode { Name = f.Name, Type = FSNodeType.File, FileId = f.Id }).ToList()
             };
 
