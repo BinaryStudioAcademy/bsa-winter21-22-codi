@@ -1,5 +1,6 @@
 export interface EditorOptions {
     theme: string,
     scrollBeyondLastLine: boolean,
-    language?: string
+    language?: string,
+    readOnly: boolean
 }

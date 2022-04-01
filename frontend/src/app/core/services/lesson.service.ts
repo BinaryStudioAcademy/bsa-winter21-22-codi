@@ -6,7 +6,7 @@ import { PublishLesson } from "@core/models/lesson/publish-lesson";
 import { LessonToUnit } from "@core/models/lesson/lesson-to-unit";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LessonService {
     public routePrefix = '/lessons';

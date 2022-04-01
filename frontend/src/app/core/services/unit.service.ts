@@ -5,7 +5,7 @@ import {Unit} from "@core/models/unit/unit";
 import {UpdateUnit} from "@core/models/unit/update-unit";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UnitService {
     public routePrefix = '/units';

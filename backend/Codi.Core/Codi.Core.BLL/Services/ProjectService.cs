@@ -10,6 +10,7 @@ using Codi.Core.DAL.NoSql.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Codi.Core.Common.DTO.Git;
+using Codi.Core.Common.Enums;
 
 namespace Codi.Core.BLL.Services;
 
@@ -190,6 +191,33 @@ public class ProjectService : BaseService, IProjectService
         await _context.SaveChangesAsync();
 
         return _mapper.Map<ProjectDto>(updatedProject);
+    }
+
+    public async Task<bool> IsUserEditableAsync(string firebaseId, long projectId)
+    {
+        var user = await _context.Users
+            .Include(u => u.UserProjects)
+            .FirstOrDefaultAsync(u => u.FirebaseId == firebaseId);
+
+        if (user is null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+
+        var courseUser = await _context.CourseUsers
+            .Include(cu => cu.Course)
+            .ThenInclude(c => c.Lessons)
+            .FirstOrDefaultAsync(cu => cu.UserId == user.Id && cu.Course.Lessons.Any(l => l.ProjectId == projectId));
+
+        var canEditLessonProject = false;
+        if (courseUser is not null)
+        {
+            canEditLessonProject = courseUser.CourseRole == CourseRole.Admin;
+        }
+        
+        var canEditUserProject = user.UserProjects.Any(up => up.ProjectId == projectId);
+
+        return canEditLessonProject || canEditUserProject;
     }
 
     public async Task DeleteAsync(long projectId)

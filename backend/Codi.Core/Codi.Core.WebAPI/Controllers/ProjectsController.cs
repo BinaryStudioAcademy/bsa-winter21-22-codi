@@ -70,6 +70,12 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(app);
         }
 
+        [HttpGet("isEditable/{projectId}")]
+        public async Task<ActionResult<bool>> IsUserEditableAsync(long projectId)
+        {
+            return Ok(await _projectService.IsUserEditableAsync(this.GetUserIdFromToken(), projectId));
+        }
+
         [HttpPost]
         public async Task<ActionResult<ProjectDto>> CreateUserProjectAsync(NewProjectDto projectDto)
         {

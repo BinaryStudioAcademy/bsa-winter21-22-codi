@@ -28,6 +28,10 @@ export class ProjectService {
         return this.httpService.getRequest<Project[]>(`${this.routePrefix}/my`)
     }
 
+    isUserEditable(projectId: number) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/isEditable/${projectId}`);
+    }
+
     createProject(project: CreateProject) {
         return this.httpService.postRequest<Project>(`${this.routePrefix}`, project);
     }

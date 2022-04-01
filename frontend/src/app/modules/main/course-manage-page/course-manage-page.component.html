@@ -81,8 +81,8 @@
                             </div>
                             <a class="item-description"  *ngIf="lesson?.description" (click)="showLessonDescription(lesson)">see description</a>
                         </div>
-                        <a class="item-submission" *ngIf="currentCourseUser.courseRole == courseRole.Member">Start Project</a>
-                        <a class="item-submission" *ngIf="currentCourseUser.courseRole == courseRole.Admin">View Submissions</a>
+                        <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Member">Start Project</a>
+                        <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Admin">View Submissions</a>
                         <div ngbDropdown container="body" placement="left-top" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
                             <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
                             <div ngbDropdownMenu aria-labelledby="optionsDropdown">
@@ -126,8 +126,8 @@
                                 </div>
                                 <a class="item-description"  *ngIf="lesson?.description" (click)="showLessonDescription(lesson)">see description</a>
                             </div>
-                            <a class="item-submission" *ngIf="currentCourseUser.courseRole == courseRole.Member">Start Project</a>
-                            <a class="item-submission" *ngIf="currentCourseUser.courseRole == courseRole.Admin">View Submissions</a>
+                            <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Member">Start Project</a>
+                            <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Admin">View Submissions</a>
                             <div ngbDropdown container="body" placement="left-top" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
                                 <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
                                 <div ngbDropdownMenu aria-labelledby="optionsDropdown">

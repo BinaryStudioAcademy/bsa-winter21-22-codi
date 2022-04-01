@@ -17,6 +17,7 @@ import { ProjectSaverService } from "@core/services/project-saver.service";
     styleUrls: ['./top-nav.component.sass', 'top-nav.compunent.style2.sass'],
 })
 export class TopNavComponent extends BaseComponent implements OnInit {
+    userCanEdit: boolean = false;
     currentUser: User;
     form: FormGroup;
     constructor(
@@ -80,6 +81,17 @@ export class TopNavComponent extends BaseComponent implements OnInit {
         return !this.projectSaverService.isProjectChanged();
     }
 
+    private setIsUserEditable() {
+        this.projectService.isUserEditable(this.projectSaverService?.projectInfo.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((res) => {
+                this.userCanEdit = res;
+                if(!this.userCanEdit) {
+                    this.form.controls['title'].disable();
+                }
+            });
+    }
+
     private getUser() {
         this.authService
             .getCurrentUser()
@@ -96,6 +108,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((res) => {
                 this.projectSaverService.projectInfo = res;
+                this.setIsUserEditable();
                 this.form.get('title')?.setValue(res.title);
             });
     }

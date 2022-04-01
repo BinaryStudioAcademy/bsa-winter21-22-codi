@@ -20,8 +20,8 @@ import { LessonService } from "@core/services/lesson.service";
 import { LessonToUnit } from "@core/models/lesson/lesson-to-unit";
 
 @Component({
-  selector: 'app-add-to-unit-dialog',
-  templateUrl: './add-to-unit-dialog.component.html'
+    selector: 'app-add-to-unit-dialog',
+    templateUrl: './add-to-unit-dialog.component.html'
 })
 export class AddToUnitDialogComponent extends BaseComponent implements OnInit {
     @Input() unit: Unit;

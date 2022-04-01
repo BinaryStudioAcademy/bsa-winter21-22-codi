@@ -26,9 +26,9 @@ import { CreateLesson } from "@core/models/lesson/create-lesson";
 import { LessonService } from "@core/services/lesson.service";
 
 @Component({
-  selector: 'app-create-lesson-dialog',
-  templateUrl: './create-lesson-dialog.component.html',
-  styleUrls: ['./create-lesson-dialog.component.sass']
+    selector: 'app-create-lesson-dialog',
+    templateUrl: './create-lesson-dialog.component.html',
+    styleUrls: ['./create-lesson-dialog.component.sass']
 })
 export class CreateLessonDialogComponent extends BaseComponent implements OnInit {
     @Input() course: Course;
@@ -53,11 +53,11 @@ export class CreateLessonDialogComponent extends BaseComponent implements OnInit
     form: FormGroup;
 
     constructor(public modal: NgbActiveModal,
-                private notificationService: NotificationService,
-                private projectService: ProjectService,
-                private templateService: TemplateService,
-                private unitService: UnitService,
-                private lessonService: LessonService) {
+        private notificationService: NotificationService,
+        private projectService: ProjectService,
+        private templateService: TemplateService,
+        private unitService: UnitService,
+        private lessonService: LessonService) {
         super();
     }
 
@@ -87,8 +87,8 @@ export class CreateLessonDialogComponent extends BaseComponent implements OnInit
         this.templateService.getNamesTemplate()
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((resp) => {
-                    this.templates = resp;
-                })
+                this.templates = resp;
+            })
     }
 
     loadUnits() {

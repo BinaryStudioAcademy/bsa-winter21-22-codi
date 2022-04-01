@@ -12,8 +12,8 @@ import {Unit} from "@core/models/unit/unit";
 import {Course} from "@core/models/course/course";
 
 @Component({
-  selector: 'app-create-unit-dialog',
-  templateUrl: './create-unit-dialog.component.html'
+    selector: 'app-create-unit-dialog',
+    templateUrl: './create-unit-dialog.component.html'
 })
 export class CreateUnitDialogComponent extends BaseComponent implements OnInit {
     @Input() course: Course;
