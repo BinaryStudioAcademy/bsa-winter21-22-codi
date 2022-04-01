@@ -1,0 +1,30 @@
+<div class="modal-header d-flex justify-content-between align-items-center">
+    <h3>Add lesson to {{unit.title}}</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="activeModal.close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="form-group w100-dropdown-container">
+            <label for="lesson">Lesson</label>
+
+            <input id="lesson" type="text" class="form-control" placeholder="select lesson"
+                   [resultFormatter]="resultFormatter"
+                   [inputFormatter]="inputFormatter"
+                   formControlName="lesson" [ngbTypeahead]="search"
+                   (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
+                   [editable]='false' #templateInstance="ngbTypeahead"
+                   [class.is-invalid]="form.controls['lesson'].touched && form.controls['lesson'].invalid" />
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="submit" [disabled]="!form.valid" (click)="submit()" class="btn btn-primary w-100">
+        Confirm
+    </button>
+</div>

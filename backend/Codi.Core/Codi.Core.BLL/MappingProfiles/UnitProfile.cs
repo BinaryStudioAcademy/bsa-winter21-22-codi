@@ -8,8 +8,8 @@ namespace Codi.Core.BLL.MappingProfiles
     {
         public UnitProfile()
         {
-            CreateMap<Unit, UnitDto>()
-                .ReverseMap();
+            CreateMap<Unit, UnitDto>();
+            CreateMap<CreateUnitDto, Unit>();
         }
     }
 }

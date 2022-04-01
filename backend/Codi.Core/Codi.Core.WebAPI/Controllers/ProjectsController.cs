@@ -84,8 +84,14 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(app);
         }
 
+        [HttpGet("isEditable/{projectId}")]
+        public async Task<ActionResult<bool>> IsUserEditableAsync(long projectId)
+        {
+            return Ok(await _projectService.IsUserEditableAsync(this.GetUserIdFromToken(), projectId));
+        }
+
         [HttpPost]
-        public async Task<ActionResult<ProjectDto>> CreateAsync(NewProjectDto projectDto)
+        public async Task<ActionResult<ProjectDto>> CreateUserProjectAsync(NewProjectDto projectDto)
         {
             if (!ModelState.IsValid)
             {
@@ -93,7 +99,7 @@ namespace Codi.Core.WebAPI.Controllers
             }
 
             projectDto.FirebaseId = this.GetUserIdFromToken();
-            var project = await _projectService.CreateAsync(projectDto);
+            var project = await _projectService.CreateUserProjectAsync(projectDto);
             return Ok(project);
         }
 
