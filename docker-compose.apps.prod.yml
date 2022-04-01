@@ -41,6 +41,8 @@ services:
                 ASPNETCORE_ENVIRONMENT: 'Production'
         env_file:
             - /etc/environment
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
 
     codi_frontend:
         depends_on:
