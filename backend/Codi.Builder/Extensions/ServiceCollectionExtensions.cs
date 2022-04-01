@@ -29,7 +29,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<FSharpDockerfileGenerator>();
 
         services.AddSingleton<IProjectBuilderService, ProjectBuilderService>();
-        services.AddSingleton<IDockerfileGeneratorFactory, DockerfileGeneratorFactory>();
+        services.AddSingleton<IDockerfileGeneratorFactory, DockerGeneratorFactory>();
         services.AddSingleton<IProjectFilesService, ProjectFilesService>();
         services.AddSingleton<IDockerProcessService, DockerProcessService>();
     }

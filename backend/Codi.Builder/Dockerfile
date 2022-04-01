@@ -1,11 +1,15 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 ARG PROJECT_PORT
 WORKDIR /app
 EXPOSE $PROJECT_PORT
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
 COPY ["Codi.Builder/Codi.Builder.csproj", "Codi.Builder/"]
+COPY ["Codi.Core/Codi.Core.DAL/Codi.Core.DAL.csproj", "Codi.Core/Codi.Core.DAL/"]
+COPY ["Codi.Core/Codi.Core.Common/Codi.Core.Common.csproj", "Codi.Core/Codi.Core.Common/"]
+COPY ["Codi.RabbitMQ/Codi.RabbitMQ.csproj", "Codi.RabbitMQ/"]
+
 RUN dotnet restore "Codi.Builder/Codi.Builder.csproj"
 COPY . .
 WORKDIR "/src/Codi.Builder"

@@ -9,6 +9,7 @@ COPY ["Codi.Core/Codi.Core.WebAPI/Codi.Core.WebAPI.csproj", "Codi.Core/Codi.Core
 COPY ["Codi.Core/Codi.Core.BLL/Codi.Core.BLL.csproj", "Codi.Core/Codi.Core.BLL/"]
 COPY ["Codi.Core/Codi.Core.DAL/Codi.Core.DAL.csproj", "Codi.Core/Codi.Core.DAL/"]
 COPY ["Codi.Core/Codi.Core.Common/Codi.Core.Common.csproj", "Codi.Core/Codi.Core.Common/"]
+COPY ["Codi.RabbitMQ/Codi.RabbitMQ.csproj", "Codi.RabbitMQ/"]
 
 RUN dotnet restore "Codi.Core/Codi.Core.WebAPI/Codi.Core.WebAPI.csproj"
 COPY . .
