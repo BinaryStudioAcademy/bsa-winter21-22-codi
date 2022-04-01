@@ -3,6 +3,13 @@ using Codi.Builder.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", reloadOnChange: true, optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
 builder.Services.AddHealthChecks();
 builder.Services.RegisterCodiFileStorage(builder.Configuration);
 builder.Services.RegisterCustomServices(builder.Configuration);
