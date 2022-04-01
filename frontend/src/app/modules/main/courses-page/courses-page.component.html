@@ -3,11 +3,6 @@
         <h1>Your Organizations</h1>
     </div>
     <div class="organization-type">
-        <div class="organization-type-header">
-            <i class="fa fa-book fa-lg mr-2"></i>
-            <h2 class="mr-2">Education</h2>
-            <span class="line"></span>
-        </div>
         <button class="btn btn-primary" (click)="createOrganization()">New Education Organization</button>
         <div class="organizations-collection" *ngFor="let org of organizations">
             <div class="organization">
