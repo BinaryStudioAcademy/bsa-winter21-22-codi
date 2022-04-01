@@ -77,6 +77,13 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(projects);
         }
 
+        [HttpGet("myprojects")]
+        public async Task<ActionResult<ICollection<ProjectDto>>> GetUserMyProjects()
+        {
+            var projects = await _projectService.GetUserMyProjects(this.GetUserIdFromToken());
+            return Ok(projects);
+        }
+
         [HttpGet("{projectId}")]
         public async Task<ActionResult<ProjectDto>> GetById(long projectId)
         {
