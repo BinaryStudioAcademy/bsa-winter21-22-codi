@@ -15,6 +15,5 @@ namespace Codi.Core.DAL.Entities
         public List<UserProject> UserProjects { get; set; } = default!;
         public List<Lesson> Lessons { get; set; } = default!;
         public List<Thread> Threads { get; set; } = default!;
-        public List<InvitedUser> InvitedUsers { get; set; } = default!;
     }
 }

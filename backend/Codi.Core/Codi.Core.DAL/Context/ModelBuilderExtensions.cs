@@ -34,7 +34,6 @@ namespace Codi.Core.DAL.Context
             var userProjects = GenerateRandomUserProjects(users, projects, 50);
             var lessons = GenerateRandomLessons(units, projects, 80);
             var submissions = GenerateRandomSubmissions(lessons, users, 100);
-            var invitedUsers = GenerateRandomInvitedUsers(users, projects, 100);
             var threads = GenerateRandomThreads(users, projects, lessons, 80);
             var threadComments = GenerateRandomThreadComments(users, threads, 120);
             var tags = GenerateTags();
@@ -53,7 +52,6 @@ namespace Codi.Core.DAL.Context
             modelBuilder.Entity<Project>().HasData(projects);
             modelBuilder.Entity<UserProject>().HasData(userProjects);
             modelBuilder.Entity<Organization>().HasData(organizations);
-            modelBuilder.Entity<InvitedUser>().HasData(invitedUsers);
             modelBuilder.Entity<Thread>().HasData(threads);
             modelBuilder.Entity<ThreadComment>().HasData(threadComments);
             modelBuilder.Entity<Tag>().HasData(tags);
@@ -229,21 +227,6 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
                 .Generate(count);
-        }
-
-        public static IList<InvitedUser> GenerateRandomInvitedUsers(IList<User> users, IList<Project> projects, int count)
-        {
-            Faker.GlobalUniqueIndex = 1;
-
-            return new Faker<InvitedUser>()
-                .RuleFor(pi => pi.Id, f => f.IndexGlobal)
-                .RuleFor(pi => pi.UserId, f => f.PickRandom(users).Id)
-                .RuleFor(pi => pi.ProjectId, f => f.PickRandom(projects).Id)
-                .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
-                .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))
-                .Generate(count)
-                .GroupBy(cu => new { cu.UserId, cu.ProjectId }).Select(g => g.First())
-                .ToList();
         }
 
         public static IList<Thread> GenerateRandomThreads(IList<User> users, IList<Project> projects, IList<Lesson> lessons, int count)

@@ -288,6 +288,7 @@ public class ProjectService : BaseService, IProjectService
             .Include(up => up.Project)
             .Include(up => up.User)
             .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
+            .Select(up => up.Project)
             .OrderByDescending(p => p.CreatedAt)
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);

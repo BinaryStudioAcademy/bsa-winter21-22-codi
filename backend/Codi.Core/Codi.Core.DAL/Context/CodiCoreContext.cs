@@ -12,7 +12,6 @@ namespace Codi.Core.DAL
         public DbSet<Course> Courses { get; private set; }
         public DbSet<CourseUser> CourseUsers { get; private set; }
         public DbSet<Image> Images { get; private set; }
-        public DbSet<InvitedUser> InvitedUsers { get; private set; }
         public DbSet<Lesson> Lessons { get; private set; }
         public DbSet<Organization> Organizations { get; private set; }
         public DbSet<Project> Projects { get; private set; }
