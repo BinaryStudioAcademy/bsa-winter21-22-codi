@@ -50,21 +50,20 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                         Validators.maxLength(60)
                     ])
             });
+
+            await this.buildHub.start();
+            this.buildHub.listenMessages((output) => {
+                this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
+            });
+
+            this.getProjectInfo();
+
+            this.form.valueChanges
+                .pipe(takeUntil(this.unsubscribe$))
+                .subscribe(() => {
+                    this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
+                })
         }
-
-        this.getProjectInfo();
-
-        this.form.valueChanges
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(() => {
-                this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
-            })
-
-        await this.buildHub.start();
-        this.buildHub.listenMessages((output) => {
-            this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
-            this.projectRunning = false;
-        });
     }
 
     override ngOnDestroy() {

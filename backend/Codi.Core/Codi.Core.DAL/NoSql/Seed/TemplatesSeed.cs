@@ -35,7 +35,7 @@ namespace Codi.Core.DAL.NoSql.Seed
             {
                 Language.CSharp => SeedCsharpTemplate,
                 Language.FSharp => SeedFsharpTemplate,
-                Language.JavaScript => SeedHtmlTemplate,
+                Language.HTML => SeedHtmlTemplate,
                 Language.Python => SeedPythonTemplate,
                 _ => null,
             };

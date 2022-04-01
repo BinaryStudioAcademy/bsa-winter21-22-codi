@@ -23,15 +23,16 @@ public class ProjectService : BaseService, IProjectService
     private protected readonly ITemplateRepository _templateRepository;
     private protected readonly IGitService _gitService;
     private protected readonly IBuilderProducer _builderProducer;
+    private protected readonly IGithubClient _gitClient;
     public ProjectService(
+        CodiCoreContext context,
         IMapper mapper,
         IFileRepository fileRepository,
         IProjectRepository projectsRepository,
         ITemplateRepository templateRepository,
         IGitService gitService,
         IBuilderProducer builderProducer,
-        IGithubClient gitClient
-        ) : base(context, mapper)
+        IGithubClient gitClient) : base(context, mapper)
     {
         _projectsRepository = projectsRepository;
         _fileRepository = fileRepository;

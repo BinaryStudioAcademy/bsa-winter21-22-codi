@@ -37,10 +37,18 @@ public class ProjectBuilderService : IProjectBuilderService
 
     public async Task Run(BuildProjectRequestDto buildRequest)
     {
-        var startedContainer = _workingContainers
-                .Any(c => c.ProjectId == buildRequest.ProjectId && c.UserId == buildRequest.UserId);
+        var container = _workingContainers
+                .FirstOrDefault(c => c.ProjectId == buildRequest.ProjectId && c.UserId == buildRequest.UserId);
 
-        if (startedContainer) return;
+        if (container != null)
+        {
+            Stop(new StopProjectRequestDto
+            {
+                ProjectId = container.ProjectId,
+                UserId = container.UserId,
+                TimeStamp = DateTime.Now
+            });
+        };
 
         var projectFileStructurePath = Path.Combine(
             _projectsTempFolder,
@@ -60,40 +68,13 @@ public class ProjectBuilderService : IProjectBuilderService
 
             var dockerImageResult = _dockerProcessService.BuildDockerImage(buildRequest, projectFileStructurePath);
 
-            if (dockerImageResult.Result == BuildResult.Success)
-            {
-                var containerInfo = _dockerProcessService.RunDockerImage(dockerImageResult,
-                    GetDataReciviedEventHandler(buildRequest, false),
-                    GetDataReciviedEventHandler(buildRequest, true));
-
-                _workingContainers.Add(containerInfo);
-                _logger.LogInformation($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] successfully runned");
-            }
-
-            if (dockerImageResult.Result == BuildResult.Error)
-            {
-                _outputProducer.SendProjectOutput(new ProjectOutputDto
-                {
-                    Output = dockerImageResult.Error ?? "An error occurred during the project build",
-                    IsError = true,
-                    ProjectId = buildRequest.ProjectId,
-                    TimeStamp = DateTime.Now,
-                    UserId = buildRequest.UserId,
-                });
-                _logger.LogError($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] error.\n" + dockerImageResult.Error);
-                Directory.Delete(projectFileStructurePath, true);
-            }
-
+            ProcessDockerImageResult(dockerImageResult, buildRequest);
         }
         catch (Exception ex)
         {
             _logger.LogError("Error while building and running docker image.\n" + ex.Message);
             Directory.Delete(projectFileStructurePath, true);
         }
-        //finally
-        //{
-        //    Directory.Delete(projectFileStructurePath, true);
-        //}
     }
 
     public void Stop(StopProjectRequestDto stopRequest)
@@ -164,5 +145,32 @@ public class ProjectBuilderService : IProjectBuilderService
                 });
             }
         };
+    }
+
+    private void ProcessDockerImageResult(BuildDockerImageResult dockerImageResult, BuildProjectRequestDto buildRequest)
+    {
+        if (dockerImageResult.Result == BuildResult.Success)
+        {
+            var containerInfo = _dockerProcessService.RunDockerImage(dockerImageResult,
+                GetDataReciviedEventHandler(buildRequest, false),
+                GetDataReciviedEventHandler(buildRequest, true));
+
+            _workingContainers.Add(containerInfo);
+            _logger.LogInformation($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] successfully runned");
+        }
+
+        if (dockerImageResult.Result == BuildResult.Error)
+        {
+            _outputProducer.SendProjectOutput(new ProjectOutputDto
+            {
+                Output = dockerImageResult.Error ?? "An error occurred during the project build",
+                IsError = true,
+                ProjectId = buildRequest.ProjectId,
+                TimeStamp = DateTime.Now,
+                UserId = buildRequest.UserId,
+            });
+            _logger.LogError($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] error.\n" + dockerImageResult.Error);
+            Directory.Delete(dockerImageResult.SourcePath, true);
+        }
     }
 }
