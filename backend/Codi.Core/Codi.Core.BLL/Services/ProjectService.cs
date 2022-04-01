@@ -13,6 +13,7 @@ using Codi.Core.Common.DTO.Git;
 using Codi.Core.BLL.RabbitMQ.Abstract;
 using Codi.Core.Common.DTO.Build;
 using Codi.Core.Common.Enums;
+using Codi.Core.Common.Helpers;
 
 namespace Codi.Core.BLL.Services;
 
@@ -150,11 +151,7 @@ public class ProjectService : BaseService, IProjectService
         }
         
         var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"));
-        var isValid = Enum.TryParse<Language>(projResponse.Language, out Language result);
-        if (!isValid)
-        {
-            throw new InvalidOperationException("Unsupported language");
-        }
+        var result = ProjectHelper.LanguageComparation(projResponse.Language);
         var project = new Project()
         {
             Title = gitCloneDto.Title,
