@@ -6,7 +6,7 @@ import {takeUntil} from "rxjs";
 import {NotificationService} from "@core/services/notification.service";
 import {ProjectWithLanguage} from "@core/models/project/project-with-language";
 import {IconLanguageHelper} from "@shared/helpers/icon-language-helper";
-import {Languages} from "@shared/constants/languages";
+import {Language} from "@core/enums/language";
 
 @Component({
     selector: 'app-home-page',
@@ -58,11 +58,11 @@ export class HomePageComponent extends BaseComponent implements OnInit{
             });
     }
 
-    iconForLanguage(extension: number)  {
-        return IconLanguageHelper(extension);
+    iconForLanguage(language: Language)  {
+        return IconLanguageHelper(language);
     }
 
     forEnum(index: number) {
-        return Object.values(Languages)[index];
+        return Object.values(Language)[index];
     }
 }

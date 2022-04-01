@@ -52,11 +52,6 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                     ])
             });
 
-            await this.buildHub.start();
-            this.buildHub.listenMessages((output) => {
-                this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
-            });
-
             this.getProjectInfo();
 
             this.form.valueChanges
@@ -64,6 +59,11 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                 .subscribe(() => {
                     this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
                 })
+
+            await this.buildHub.start();
+            this.buildHub.listenMessages((output) => {
+                this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
+            });
         }
     }
 
