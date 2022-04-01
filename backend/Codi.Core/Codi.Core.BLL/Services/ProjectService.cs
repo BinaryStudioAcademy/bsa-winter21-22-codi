@@ -145,16 +145,14 @@ public class ProjectService : BaseService, IProjectService
         {
             throw new InvalidOperationException("Project wasn't imported");
         }
-        var urltext = gitCloneDto.Url;
-        var apiUrl = urltext.Replace("github.com", "api.github.com/repos");
-        var projResponse = await _gitClient.GetRepo(apiUrl);
-        Language result;
-        var projLanguage = projResponse.Language;
-        if (Enum.TryParse<Language>(projLanguage, out result)){}
+        
+        var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"));
+        if (Enum.TryParse<Language>(projResponse.Language, out Language result)){}
         else
         {
             throw new InvalidOperationException("Unsupported language");
         }
+
         var project = new Project()
         {
             Title = gitCloneDto.Title,

@@ -47,8 +47,6 @@ public class GithubClient : IGithubClient
 
     public async Task<GithubRepositoryFromAPI> GetRepo(string repoUrl)
     {
-        //SetUpHttpClient(token);
-
         _client.BaseAddress = new Uri(repoUrl);
         var response = await _client.GetAsync(repoUrl);
         var content = await response.Content.ReadAsStringAsync();
