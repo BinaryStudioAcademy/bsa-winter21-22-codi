@@ -147,11 +147,12 @@ public class ProjectService : BaseService, IProjectService
         }
         
         var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"));
-        var isValid = Enum.TryParse<Language>(projResponse.Language, out Language result);
-        if (!isValid)
+        var result = projResponse.Language switch
         {
-            throw new InvalidOperationException("Unsupported language");
-        }
+            "C#" => Language.CSharp,
+            "HTML" => Language.HTML,
+            _ => throw new InvalidOperationException("Unsupported language")
+        };
         var project = new Project()
         {
             Title = gitCloneDto.Title,
