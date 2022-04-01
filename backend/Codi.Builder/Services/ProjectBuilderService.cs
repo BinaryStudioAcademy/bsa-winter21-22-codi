@@ -1,7 +1,9 @@
 ﻿using Codi.Builder.Interfaces;
 using Codi.Builder.Models;
+using Codi.Builder.RabbitMQ.Abstract;
 using Codi.Core.Common.DTO.Build;
 using Codi.Core.Common.Enums;
+using System.Diagnostics;
 
 namespace Codi.Builder.Services;
 
@@ -13,18 +15,21 @@ public class ProjectBuilderService : IProjectBuilderService
     private readonly IProjectFilesService _projectFilesService;
     private readonly IDockerfileGeneratorFactory _dockerfileGeneratorFactory;
     private readonly IDockerProcessService _dockerProcessService;
+    private readonly IOutputProducer _outputProducer;
 
     private readonly string _projectsTempFolder;
 
     public ProjectBuilderService(ILogger<ProjectBuilderService> logger,
         IProjectFilesService projectFilesService,
         IDockerfileGeneratorFactory dockerfileGeneratorFactory,
-        IDockerProcessService dockerProcessService)
+        IDockerProcessService dockerProcessService,
+        IOutputProducer outputProducer)
     {
         _logger = logger;
         _projectFilesService = projectFilesService;
         _dockerfileGeneratorFactory = dockerfileGeneratorFactory;
         _dockerProcessService = dockerProcessService;
+        _outputProducer = outputProducer;
 
         _projectsTempFolder = Path.Combine(Path.GetTempPath(), "CodiTemp", "Projects");
         _workingContainers = new List<DockerContainerInfo>();
@@ -57,25 +62,38 @@ public class ProjectBuilderService : IProjectBuilderService
 
             if (dockerImageResult.Result == BuildResult.Success)
             {
-                var containerInfo = _dockerProcessService.RunDockerImage(dockerImageResult);
+                var containerInfo = _dockerProcessService.RunDockerImage(dockerImageResult,
+                    GetDataReciviedEventHandler(buildRequest, false),
+                    GetDataReciviedEventHandler(buildRequest, true));
+
                 _workingContainers.Add(containerInfo);
                 _logger.LogInformation($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] successfully runned");
             }
 
             if (dockerImageResult.Result == BuildResult.Error)
             {
+                _outputProducer.SendProjectOutput(new ProjectOutputDto
+                {
+                    Output = dockerImageResult.Error ?? "An error occurred during the project build",
+                    IsError = true,
+                    ProjectId = buildRequest.ProjectId,
+                    TimeStamp = DateTime.Now,
+                    UserId = buildRequest.UserId,
+                });
                 _logger.LogError($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] error.\n" + dockerImageResult.Error);
+                Directory.Delete(projectFileStructurePath, true);
             }
 
         }
         catch (Exception ex)
         {
             _logger.LogError("Error while building and running docker image.\n" + ex.Message);
-        }
-        finally
-        {
             Directory.Delete(projectFileStructurePath, true);
         }
+        //finally
+        //{
+        //    Directory.Delete(projectFileStructurePath, true);
+        //}
     }
 
     public void Stop(StopProjectRequestDto stopRequest)
@@ -88,6 +106,7 @@ public class ProjectBuilderService : IProjectBuilderService
         {
             _dockerProcessService.StopContainer(container);
             _workingContainers.Remove(container);
+            Directory.Delete(container.SourcePath, true);
 
             _logger.LogInformation($"Project[ID={stopRequest.ProjectId}, userId={stopRequest.UserId}] successfully stopped");
         }
@@ -127,5 +146,23 @@ public class ProjectBuilderService : IProjectBuilderService
         {
             _logger.LogError("Error while stopping docker containers.\n" + ex.Message);
         }
+    }
+
+    private DataReceivedEventHandler GetDataReciviedEventHandler(BuildProjectRequestDto buildRequest, bool isError)
+    {
+        return (sender, args) =>
+        {
+            if (!string.IsNullOrEmpty(args.Data))
+            {
+                _outputProducer.SendProjectOutput(new ProjectOutputDto
+                {
+                    Output = args.Data,
+                    IsError = isError,
+                    ProjectId = buildRequest.ProjectId,
+                    TimeStamp = DateTime.Now,
+                    UserId = buildRequest.UserId,
+                });
+            }
+        };
     }
 }

@@ -3,7 +3,6 @@ using Codi.Builder.RabbitMQ.Abstract;
 using Codi.RabbitMQ.Interfaces;
 using Codi.RabbitMQ.Models;
 using Codi.RabbitMQ.Services;
-using Codi.Core.DAL;
 using RabbitMQ.Client;
 using Codi.Builder.Interfaces;
 using Codi.Builder.Services;
@@ -68,13 +67,21 @@ public static class ServiceCollectionExtensions
             .GetSection("Queues:ProjectInputQueue")
             .Get<MessageScopeSettings>();
 
-
         services.AddSingleton<IBuilderConsumer>(provider =>
             new BuilderConsumer(
                 provider.GetRequiredService<IMessageConsumerScopeFactory>(), 
                 projectRunSettings,
                 projectStopSettings,
                 projectInputSettings));
+
+        var projectOutputSettings = configuration
+            .GetSection("Queues:ProjectOutputQueue")
+            .Get<MessageScopeSettings>();
+
+        services.AddSingleton<IOutputProducer>(provider =>
+            new OutputProducer(
+                provider.GetRequiredService<IMessageProducerScopeFactory>(),
+                projectOutputSettings));
     }
 }
 

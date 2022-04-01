@@ -1,5 +1,6 @@
 ﻿using Codi.Builder.Interfaces;
 using Codi.Builder.Models;
+using Codi.Builder.RabbitMQ.Abstract;
 using Codi.Core.Common.DTO.Build;
 using Codi.Core.Common.Enums;
 using System;
@@ -88,7 +89,9 @@ public class DockerProcessService : IDockerProcessService
         return result;
     }
 
-    public DockerContainerInfo RunDockerImage(BuildDockerImageResult dockerImageResult)
+    public DockerContainerInfo RunDockerImage(BuildDockerImageResult dockerImageResult, 
+        DataReceivedEventHandler dataReceivedEvent,
+        DataReceivedEventHandler errorReceivedEvent)
     {
         var containerName = Guid.NewGuid().ToString();
 
@@ -104,15 +107,8 @@ public class DockerProcessService : IDockerProcessService
             }
         };
 
-        process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) =>
-        {
-            _logger.LogError(e.Data);
-        };
-
-        process.OutputDataReceived += (object sender, DataReceivedEventArgs e) =>
-        {
-            _logger.LogInformation(e.Data);
-        };
+        process.ErrorDataReceived += errorReceivedEvent;
+        process.OutputDataReceived += dataReceivedEvent;
 
         process.Start();
         process.BeginOutputReadLine();
