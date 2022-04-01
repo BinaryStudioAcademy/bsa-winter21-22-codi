@@ -75,7 +75,7 @@ public class ProjectService : BaseService, IProjectService
         return await _context.UserProjects
             .Include(up => up.Project)
             .Include(up => up.User)
-            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
+            .Where(up => up.User.FirebaseId == firebaseId)
             .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
@@ -86,6 +86,16 @@ public class ProjectService : BaseService, IProjectService
             .Include(up => up.Project)
             .Include(up => up.User)
             .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
+            .Select(up => up.Project)
+            .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
+    }
+
+    public async Task<ICollection<ProjectDto>> GetUserMyProjects(string firebaseId)
+    {
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
             .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
