@@ -27,6 +27,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
     confirmationOnLeavePage$: Observable<boolean>;
     editorOptions: EditorOptions;
 
+    userCanEdit: boolean = false;
     projectId: number;
     projectStructure: ProjectStructure;
     fsNodeType = FsNodeType;
@@ -59,6 +60,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
         ).subscribe(() => {
             this.projectId = this.route.snapshot.params['id'];
             this.getProjectStructure();
+            this.setIsUserEditable();
         });
 
         this.confirmationOnLeavePage();
@@ -112,6 +114,14 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
     canDeactivate(): boolean | Observable<boolean>
     {
         return !this.projectSaverService.isProjectChanged() ? of(true) : this.confirmationOnLeavePage$
+    }
+
+    private setIsUserEditable() {
+        this.projectService.isUserEditable(this.projectId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((res) => {
+                this.userCanEdit = res;
+            });
     }
 
     private confirmationOnLeavePage() {
@@ -169,7 +179,8 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, Com
         this.editorOptions = {
             theme: 'vs-dark',
             scrollBeyondLastLine: false,
-            language: lang
+            language: lang,
+            readOnly: !this.userCanEdit
         };
     }
 

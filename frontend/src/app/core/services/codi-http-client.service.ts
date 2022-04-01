@@ -37,6 +37,12 @@ export class CodiHttpClientService {
         });
     }
 
+    public patchRequest<T>(url: string, payload: object): Observable<T> {
+        return this.http.patch<T>(this.buildUrl(url), payload, {
+            headers: this.getHeaders(),
+        });
+    }
+
     public deleteRequest<T>(url: string, httpParams?: Params): Observable<T> {
         return this.http.delete<T>(this.buildUrl(url), {
             headers: this.getHeaders(),
