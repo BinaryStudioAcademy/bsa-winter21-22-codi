@@ -10,7 +10,10 @@ using Codi.Core.DAL.NoSql.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Codi.Core.Common.DTO.Git;
+using Codi.Core.BLL.RabbitMQ.Abstract;
+using Codi.Core.Common.DTO.Build;
 using Codi.Core.Common.Enums;
+using Codi.Core.Common.Helpers;
 
 namespace Codi.Core.BLL.Services;
 
@@ -20,8 +23,8 @@ public class ProjectService : BaseService, IProjectService
     private protected readonly IFileRepository _fileRepository;
     private protected readonly ITemplateRepository _templateRepository;
     private protected readonly IGitService _gitService;
-    private readonly IGithubClient _gitClient;
-
+    private protected readonly IBuilderProducer _builderProducer;
+    private protected readonly IGithubClient _gitClient;
     public ProjectService(
         CodiCoreContext context,
         IMapper mapper,
@@ -29,13 +32,14 @@ public class ProjectService : BaseService, IProjectService
         IProjectRepository projectsRepository,
         ITemplateRepository templateRepository,
         IGitService gitService,
-        IGithubClient gitClient
-        ) : base(context, mapper)
+        IBuilderProducer builderProducer,
+        IGithubClient gitClient) : base(context, mapper)
     {
         _projectsRepository = projectsRepository;
         _fileRepository = fileRepository;
         _templateRepository = templateRepository;
         _gitService = gitService;
+        _builderProducer = builderProducer;
         _gitClient = gitClient;
     }
 
@@ -72,7 +76,7 @@ public class ProjectService : BaseService, IProjectService
             .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
-    
+
     public async Task<ICollection<ProjectDto>> GetUserGitProjects(string firebaseId)
     {
         return await _context.UserProjects
@@ -169,12 +173,7 @@ public class ProjectService : BaseService, IProjectService
         }
         
         var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"));
-        var isValid = Enum.TryParse<Language>(projResponse.Language, out Language result);
-        if (!isValid)
-        {
-            throw new InvalidOperationException("Unsupported language");
-        }
-        
+        var result = ProjectHelper.LanguageComparation(projResponse.Language);
         var project = new Project()
         {
             Title = gitCloneDto.Title,
@@ -198,6 +197,93 @@ public class ProjectService : BaseService, IProjectService
         await _context.SaveChangesAsync();
 
         return await GetByIdAsync(project.Id);
+    }
+
+    public async Task SendProjectRunRequest(long projectId, string userId)
+    {
+        var owner = await _context.Users
+            .FirstOrDefaultAsync(u => u.FirebaseId == userId);
+
+        if (owner == null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+
+        var project = await _context.Projects
+            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+
+        if (project == null)
+        {
+            throw new NotFoundException(nameof(Project));
+        }
+
+        if(project.Language == null)
+        {
+            throw new ArgumentException("To run project, first set its language");
+        }
+
+        _builderProducer.SendRunProjectRequest(new BuildProjectRequestDto
+        {
+            ProjectId = projectId,
+            Title = project.Title,
+            Language = project.Language.Value,
+            ProjectDocumentId = project.ProjectDocumentId,
+            UserId = userId,
+            TimeStamp = DateTime.Now
+        });
+    }
+
+    public async Task SendProjectStopRequest(long projectId, string userId)
+    {
+        var owner = await _context.Users
+            .FirstOrDefaultAsync(u => u.FirebaseId == userId);
+
+        if (owner == null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+
+        var project = await _context.Projects
+            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+
+        if (project == null)
+        {
+            throw new NotFoundException(nameof(Project));
+        }
+
+        _builderProducer.SendStopProjectRequest(new StopProjectRequestDto
+        {
+            ProjectId = projectId,
+            UserId = userId,
+            TimeStamp = DateTime.Now
+        });
+    }
+
+    public async Task SendProjectInput(long projectId, string userId, string value)
+    {
+        var owner = await _context.Users
+            .FirstOrDefaultAsync(u => u.FirebaseId == userId);
+
+        if (owner == null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+
+        var project = await _context.Projects
+            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+
+        if (project == null)
+        {
+            throw new NotFoundException(nameof(Project));
+        }
+
+        _builderProducer.SendProjectInput(new ProjectInputDto
+        {
+            ProjectId = projectId,
+            UserId = userId,
+            Input = value,
+            TimeStamp = DateTime.Now
+        });
     }
 
     public async Task<ProjectDto> UpdateAsync(long projectId, UpdateProjectDto newProjectDto)
@@ -281,7 +367,7 @@ public class ProjectService : BaseService, IProjectService
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
-    
+
     public async Task<ICollection<ProjectWithLanguageDto>> GetLastGitUserProjects(string firebaseId)
     {
         return await _context.UserProjects

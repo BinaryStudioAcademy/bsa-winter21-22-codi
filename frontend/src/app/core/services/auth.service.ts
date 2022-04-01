@@ -3,7 +3,6 @@ import { from, map, of } from 'rxjs';
 import {
     Auth,
     authState,
-    fetchSignInMethodsForEmail,
     linkWithPopup,
     unlink,
 } from '@angular/fire/auth';
@@ -102,5 +101,9 @@ export class AuthService {
 
     getAuthIdToken() {
         return from(idToken(this.auth));
+    }
+
+    getAuthIdTokenPromise() {
+        return this.auth.currentUser!.getIdToken();
     }
 }

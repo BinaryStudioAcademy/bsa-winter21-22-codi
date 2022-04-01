@@ -19,6 +19,7 @@ namespace Codi.Core.DAL.NoSql.Seed
             foreach (var project in projects)
             {
                 var templatesWithProjectLanguage = templates.Where(t => t.Language == project.Language).ToList();
+
                 var template = !templatesWithProjectLanguage.Any()
                     ? random.ListItem(templates)
                     : random.ListItem(templatesWithProjectLanguage);

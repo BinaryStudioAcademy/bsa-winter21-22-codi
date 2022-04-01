@@ -19,6 +19,9 @@ namespace Codi.Core.BLL.Interfaces
         Task<ProjectDto> CreateUserProjectAsync(NewProjectDto newProjectDto);
         Task<ProjectDto> UpdateAsync(long projectId, UpdateProjectDto newProjectDto);
         Task<ProjectDto> ImportProjectFromGithubAsync(GitCloneDto gitCloneDto);
+        Task SendProjectRunRequest(long projectId, string userId);
+        Task SendProjectStopRequest(long projectId, string userId);
+        Task SendProjectInput(long projectId, string userId, string value);
         Task<bool> IsUserEditableAsync(string firebaseId, long projectId);
         Task DeleteAsync(long projectId);
     }

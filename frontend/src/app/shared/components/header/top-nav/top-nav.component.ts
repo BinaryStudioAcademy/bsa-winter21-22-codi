@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from "@core/services/auth.service";
 import { User } from "@core/models/user/user";
 import { BaseComponent } from "@core/base/base.component";
-import { takeUntil} from "rxjs";
+import { takeUntil } from "rxjs";
 import { EventService } from "@core/services/event.service";
 import { ProjectCreationModalService } from "@core/services/project-creation-modal.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -10,13 +10,15 @@ import { NotificationService } from "@core/services/notification.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProjectService } from "@core/services/project.service";
 import { ProjectSaverService } from "@core/services/project-saver.service";
+import { BuildHubService } from '@core/hubs/build-hub.service';
 
 @Component({
     selector: 'app-top-nav',
     templateUrl: './top-nav.component.html',
     styleUrls: ['./top-nav.component.sass', 'top-nav.compunent.style2.sass'],
 })
-export class TopNavComponent extends BaseComponent implements OnInit {
+export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy {
+    projectRunning: boolean = false;
     userCanEdit: boolean = false;
     currentUser: User;
     form: FormGroup;
@@ -28,18 +30,19 @@ export class TopNavComponent extends BaseComponent implements OnInit {
         private modalService: ProjectCreationModalService,
         private route: ActivatedRoute,
         private projectService: ProjectService,
-        private projectSaverService: ProjectSaverService
+        private projectSaverService: ProjectSaverService,
+        private buildHub: BuildHubService,
     ) {
         super();
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
         this.getUser();
         this.eventService.userChangedEvent$
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => this.getUser());
 
-        if(this.router.url.includes('/workspace')) {
+        if (this.router.url.includes('/workspace')) {
             this.form = new FormGroup({
                 title: new FormControl('',
                     [
@@ -47,6 +50,11 @@ export class TopNavComponent extends BaseComponent implements OnInit {
                         Validators.minLength(2),
                         Validators.maxLength(60)
                     ])
+            });
+
+            await this.buildHub.start();
+            this.buildHub.listenMessages((output) => {
+                this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
             });
 
             this.getProjectInfo();
@@ -57,6 +65,28 @@ export class TopNavComponent extends BaseComponent implements OnInit {
                     this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
                 })
         }
+    }
+
+    override ngOnDestroy() {
+
+        if (this.projectRunning) {
+            this.projectService
+                .stopProject(this.projectSaverService.projectInfo.id)
+                .subscribe()
+        }
+
+        this.buildHub.stop();
+        super.ngOnDestroy();
+    }
+
+    runProject() {
+        this.projectRunning = true;
+        this.projectService
+            .runProject(this.projectSaverService.projectInfo.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+                this.notificationService.showSuccessMessage(undefined, "Project build started");
+            })
     }
 
     logout() {

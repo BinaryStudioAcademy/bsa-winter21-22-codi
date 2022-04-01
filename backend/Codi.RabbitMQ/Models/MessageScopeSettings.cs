@@ -2,8 +2,8 @@
 
 public class MessageScopeSettings
 {
-    public string ExchangeName { get; set; }
-    public string QueueName { get; set; }
-    public string RoutingKey { get; set; }
-    public string ExchangeType { get; set; }
+    public string ExchangeName { get; set; } = default!;
+    public string QueueName { get; set; } = default!;
+    public string RoutingKey { get; set; } = default!;
+    public string ExchangeType { get; set; } = default!;
 }

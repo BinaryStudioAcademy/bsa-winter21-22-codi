@@ -56,8 +56,16 @@ export class ProjectService {
         return this.httpService.putRequest<Project>(`${this.routePrefix}/${projectId}`, updateProject);
     }
 
-    public deleteProject(id: number) {
+    deleteProject(id: number) {
         return this.httpService.deleteRequest(`${this.routePrefix}/${id}`);
+    }
+
+    runProject(id: number) {
+        return this.httpService.postRequest(`${this.routePrefix}/${id}/run`, {});
+    }
+
+    stopProject(id: number) {
+        return this.httpService.postRequest(`${this.routePrefix}/${id}/stop`, {});
     }
 
     getCurrentUserGitLastProjects() {

@@ -11,5 +11,10 @@ namespace Codi.Core.DAL.NoSql.Seed
             await ProjectsSeed.SeedProjects(codiCoreContext, fileRepository, projectRepository, templateRepository);
             await AppsSeed.SeedApps(codiCoreContext, fileRepository, projectRepository, appRepository);
         }
+
+        public static async Task EnsureTemplatesSeeded(IFileRepository fileRepository, ITemplateRepository templateRepository)
+        {
+            await TemplatesSeed.EnsureTemplatesSeeded(fileRepository, templateRepository);
+        }
     }
 }

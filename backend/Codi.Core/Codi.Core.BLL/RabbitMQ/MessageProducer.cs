@@ -1,14 +1,14 @@
-﻿using Codi.Core.BLL.Interfaces;
-using Codi.RabbitMQ.Interfaces;
+﻿using Codi.RabbitMQ.Interfaces;
 using Codi.RabbitMQ.Models;
+using IMessageProducer = Codi.Core.BLL.RabbitMQ.Abstract.IMessageProducer;
 
 namespace Codi.Core.BLL.RabbitMQ;
 
-public class MessageService : IMessageService
+public class MessageProducer : IMessageProducer
 {
     private readonly IMessageProducerScope _messageProducerScope;
     
-    public MessageService(IMessageProducerScopeFactory messageProducerScopeFactory, MessageScopeSettings messageScopeSettings)
+    public MessageProducer(IMessageProducerScopeFactory messageProducerScopeFactory, MessageScopeSettings messageScopeSettings)
     {
         _messageProducerScope = messageProducerScopeFactory.Open(messageScopeSettings);
     }
