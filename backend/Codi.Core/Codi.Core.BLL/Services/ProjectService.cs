@@ -59,25 +59,31 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectNameDto>> GetUserProjectNames(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId)
+            .Select(up => up.Project)
             .ProjectToListAsync<ProjectNameDto>(_mapper.ConfigurationProvider);
     }
 
     public async Task<ICollection<ProjectDto>> GetUserProjects(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId && !p.IsGitImported)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
+            .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
 
     public async Task<ICollection<ProjectDto>> GetUserGitProjects(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId && p.IsGitImported)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
+            .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
 
@@ -96,7 +102,7 @@ public class ProjectService : BaseService, IProjectService
         return project;
     }
 
-    public async Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto)
+    public async Task<ProjectDto> CreateUserProjectAsync(NewProjectDto newProjectDto)
     {
         var owner = await _context.Users
             .FirstOrDefaultAsync(u => u.FirebaseId == newProjectDto.FirebaseId);
@@ -106,6 +112,22 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var createdProject = await CreateAsync(newProjectDto);
+
+        var userProject = new UserProject()
+        {
+            ProjectId = createdProject.Id,
+            UserId = owner.Id
+        };
+
+        _context.Add(userProject);
+        await _context.SaveChangesAsync();
+
+        return _mapper.Map<ProjectDto>(createdProject);
+    }
+
+    public async Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto)
+    {
         var templateDocument = await _templateRepository.GetByIdAsync(newProjectDto.TemplateId);
 
         if (templateDocument == null)
@@ -124,7 +146,6 @@ public class ProjectService : BaseService, IProjectService
         var project = _mapper.Map<Project>(newProjectDto,
             opts => opts.AfterMap((src, dst) =>
         {
-            dst.OwnerId = owner.Id;
             dst.CreatedAt = DateTime.UtcNow;
             dst.ProjectDocumentId = projectDocument.Id;
             dst.Language = templateDocument.Language;
@@ -140,6 +161,7 @@ public class ProjectService : BaseService, IProjectService
     {
         var owner = await _context.Users
             .FirstOrDefaultAsync(u => u.FirebaseId == gitCloneDto.FirebaseId);
+
         if (owner == null)
         {
             throw new NotFoundException(nameof(User));
@@ -155,7 +177,6 @@ public class ProjectService : BaseService, IProjectService
         var project = new Project()
         {
             Title = gitCloneDto.Title,
-            OwnerId = owner.Id,
             CreatedAt = DateTime.UtcNow,
             IsPublic = gitCloneDto.IsPublic,
             IsGitImported = true,
@@ -165,6 +186,16 @@ public class ProjectService : BaseService, IProjectService
         };
         _context.Add(project);
         await _context.SaveChangesAsync();
+
+        var userProject = new UserProject()
+        {
+            ProjectId = project.Id,
+            UserId = owner.Id
+        };
+
+        _context.Add(userProject);
+        await _context.SaveChangesAsync();
+
         return await GetByIdAsync(project.Id);
     }
 
@@ -178,8 +209,9 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var canRun = await IsUserEditableAsync(userId, projectId);
         var project = await _context.Projects
-            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+            .FirstOrDefaultAsync(p => p.Id == projectId && (canRun || p.IsPublic));
 
         if (project == null)
         {
@@ -212,8 +244,9 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var canStop = await IsUserEditableAsync(userId, projectId);
         var project = await _context.Projects
-            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+            .FirstOrDefaultAsync(p => p.Id == projectId && (canStop || p.IsPublic));
 
         if (project == null)
         {
@@ -238,8 +271,9 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var canSend = await IsUserEditableAsync(userId, projectId);
         var project = await _context.Projects
-            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+            .FirstOrDefaultAsync(p => p.Id == projectId && (canSend || p.IsPublic));
 
         if (project == null)
         {
@@ -272,8 +306,36 @@ public class ProjectService : BaseService, IProjectService
         return _mapper.Map<ProjectDto>(updatedProject);
     }
 
+    public async Task<bool> IsUserEditableAsync(string firebaseId, long projectId)
+    {
+        var user = await _context.Users
+            .Include(u => u.UserProjects)
+            .FirstOrDefaultAsync(u => u.FirebaseId == firebaseId);
+
+        if (user is null)
+        {
+            throw new NotFoundException(nameof(User));
+        }
+
+        var courseUser = await _context.CourseUsers
+            .Include(cu => cu.Course)
+            .ThenInclude(c => c.Lessons)
+            .FirstOrDefaultAsync(cu => cu.UserId == user.Id && cu.Course.Lessons.Any(l => l.ProjectId == projectId));
+
+        var canEditLessonProject = false;
+        if (courseUser is not null)
+        {
+            canEditLessonProject = courseUser.CourseRole == CourseRole.Admin;
+        }
+        
+        var canEditUserProject = user.UserProjects.Any(up => up.ProjectId == projectId);
+
+        return canEditLessonProject || canEditUserProject;
+    }
+
     public async Task DeleteAsync(long projectId)
     {
+        var userProject = await _context.UserProjects.FirstOrDefaultAsync(up => up.ProjectId == projectId);
         var project = await _context.Projects.FirstOrDefaultAsync(s => s.Id == projectId);
 
         if (project == null)
@@ -291,6 +353,7 @@ public class ProjectService : BaseService, IProjectService
         await _fileRepository.DeleteFiles(projectDocument.Nodes);
         await _projectsRepository.DeleteByIdAsync(projectDocument.Id);
 
+        _context.Remove(userProject);
         _context.Remove(project);
 
         await _context.SaveChangesAsync();
@@ -298,9 +361,11 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId && !p.IsGitImported)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
+            .Select(up => up.Project)
             .OrderByDescending(p => p.CreatedAt)
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
@@ -308,9 +373,11 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectWithLanguageDto>> GetLastGitUserProjects(string firebaseId)
     {
-        return await _context.Projects
-            .Include(p => p.Owner)
-            .Where(p => p.Owner.FirebaseId == firebaseId && p.IsGitImported)
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
+            .Select(up => up.Project)
             .OrderByDescending(p => p.CreatedAt)
             .Take(5)
             .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
@@ -318,10 +385,13 @@ public class ProjectService : BaseService, IProjectService
 
     public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
     {
-        return await _context.Projects
-           .Where(p => p.IsPublic && p.OwnerId == userId)
-           .OrderByDescending(p => p.CreatedAt)
-           .Take(5)
-           .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.Id == userId && up.Project.IsPublic)
+            .Select(up => up.Project)
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(5)
+            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 }

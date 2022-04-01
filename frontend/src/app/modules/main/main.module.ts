@@ -23,6 +23,13 @@ import { CourseManagePageComponent } from './course-manage-page/course-manage-pa
 import { CourseInviteDialogComponent } from './course-manage-page/course-invite-dialog/course-invite-dialog.component';
 import { UpdateCourseDialogComponent } from './course-manage-page/update-course-dialog/update-course-dialog.component';
 import { CoreModule } from "@core/core.module";
+import {
+    CreateUnitDialogComponent
+} from "@modules/main/course-manage-page/create-unit-dialog/create-unit-dialog.component";
+import { CreateLessonDialogComponent } from './course-manage-page/create-lesson-dialog/create-lesson-dialog.component';
+import {
+    AddToUnitDialogComponent
+} from "@modules/main/course-manage-page/add-to-unit-dialog/add-to-unit-dialog.component";
 
 @NgModule({
     declarations: [
@@ -40,7 +47,10 @@ import { CoreModule } from "@core/core.module";
         TagsPageComponent,
         CourseManagePageComponent,
         CourseInviteDialogComponent,
-        UpdateCourseDialogComponent
+        UpdateCourseDialogComponent,
+        CreateUnitDialogComponent,
+        CreateLessonDialogComponent,
+        AddToUnitDialogComponent
     ],
     imports: [
         SharedModule,

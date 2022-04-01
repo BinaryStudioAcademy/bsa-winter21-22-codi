@@ -8,7 +8,8 @@ namespace Codi.Core.BLL.MappingProfiles
     {
         public LessonProfile()
         {
-            CreateMap<Lesson, LessonDto>().ReverseMap();
+            CreateMap<Lesson, LessonDto>();
+            CreateMap<CreateLessonDto, Lesson>();
         }
     }
 }
