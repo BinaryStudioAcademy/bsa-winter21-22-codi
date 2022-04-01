@@ -68,16 +68,21 @@ namespace Codi.Core.DAL
             var context = scope.ServiceProvider.GetRequiredService<IMongoContext>();
             var collectionNames = await context.Database.ListCollectionNames().ToListAsync();
 
+            var fileRepository = scope.ServiceProvider.GetRequiredService<IFileRepository>();
+            var templateRepository = scope.ServiceProvider.GetRequiredService<ITemplateRepository>();
+
             if (!collectionNames.Any())
             {
-                var fileRepository = scope.ServiceProvider.GetRequiredService<IFileRepository>();
-                var templateRepository = scope.ServiceProvider.GetRequiredService<ITemplateRepository>();
                 var projectRepository = scope.ServiceProvider.GetRequiredService<IProjectRepository>();
                 var appRepository = scope.ServiceProvider.GetRequiredService<IAppRepository>();
                 using var codeCoreContext = scope.ServiceProvider.GetRequiredService<CodiCoreContext>();
 
                 await CodiFileStorageSeed.SeedData(codeCoreContext, fileRepository, 
                     templateRepository, projectRepository, appRepository);
+            }
+            else
+            {
+                await CodiFileStorageSeed.EnsureTemplatesSeeded(fileRepository, templateRepository);
             }
 
             return builder;

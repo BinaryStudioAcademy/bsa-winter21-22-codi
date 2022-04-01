@@ -23,8 +23,9 @@ public class DockerfileGeneratorFactory : IDockerfileGeneratorFactory
         return language switch
         {
             Language.CSharp => _serviceProvider.GetRequiredService<CSharpDockerfileGenerator>(),
+            Language.FSharp => _serviceProvider.GetRequiredService<FSharpDockerfileGenerator>(),
             Language.Python => _serviceProvider.GetRequiredService<PythonDockerfileGenerator>(),
-            Language.Goloang => _serviceProvider.GetRequiredService<GolangDockerfileGenerator>(),
+            // Language.Goloang => _serviceProvider.GetRequiredService<GolangDockerfileGenerator>(),
             _ => throw new ArgumentException("This language is not supported yet"),
         };
     }

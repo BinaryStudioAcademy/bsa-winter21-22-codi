@@ -26,6 +26,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<CSharpDockerfileGenerator>();
         services.AddSingleton<GolangDockerfileGenerator>();
         services.AddSingleton<PythonDockerfileGenerator>();
+        services.AddSingleton<FSharpDockerfileGenerator>();
 
         services.AddSingleton<IProjectBuilderService, ProjectBuilderService>();
         services.AddSingleton<IDockerfileGeneratorFactory, DockerfileGeneratorFactory>();

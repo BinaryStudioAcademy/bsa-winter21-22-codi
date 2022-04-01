@@ -11,6 +11,34 @@ namespace Codi.Core.DAL.NoSql.Seed
         {
             await SeedHtmlTemplate(fileRepository, templateRepository);
             await SeedCsharpTemplate(fileRepository, templateRepository);
+            await SeedFsharpTemplate(fileRepository, templateRepository);
+            await SeedPythonTemplate(fileRepository, templateRepository);
+        }
+
+        public static async Task EnsureTemplatesSeeded(IFileRepository fileRepository, ITemplateRepository templateRepository)
+        {
+            var templates = await templateRepository.GetAllAsync(_ => true);
+
+            foreach (var language in Enum.GetValues<Language>())
+            {
+                if (!templates.Any(t => t.Language == language))
+                {
+                    var seeder = GetSeederByLanguage(language);
+                    if(seeder != null) await seeder.Invoke(fileRepository, templateRepository);
+                }
+            }
+        }
+
+        private static Func<IFileRepository, ITemplateRepository, Task>? GetSeederByLanguage(Language language)
+        {
+            return language switch
+            {
+                Language.CSharp => SeedCsharpTemplate,
+                Language.FSharp => SeedFsharpTemplate,
+                Language.JavaScript => SeedHtmlTemplate,
+                Language.Python => SeedPythonTemplate,
+                _ => null,
+            };
         }
 
         private static async Task SeedHtmlTemplate(IFileRepository fileRepository, ITemplateRepository templateRepository)
@@ -95,6 +123,79 @@ namespace Codi.Core.DAL.NoSql.Seed
             {
                 Name = "C#",
                 Language = Language.CSharp,
+                Nodes = files.Select(f => new FSNode { Name = f.Name, Type = FSNodeType.File, FileId = f.Id }).ToList()
+            };
+
+            await templateRepository.InsertOneAsync(template);
+        }
+
+        private static async Task SeedFsharpTemplate(IFileRepository fileRepository, ITemplateRepository templateRepository)
+        {
+            var files = new List<File>()
+            {
+                new File
+                {
+                    Name = "Program.fs",
+                    Content = @"printfn ""Hello from F#"""
+                },
+                new File
+                {
+                    Name = "FSharp.fsproj",
+                    Content =
+@"<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include=""Program.fs"" />
+  </ItemGroup>
+
+</Project>"
+                }
+            };
+
+            await fileRepository.InsertManyAsync(files);
+
+            var template = new Template
+            {
+                Name = "F#",
+                Language = Language.FSharp,
+                Nodes = files.Select(f => new FSNode { Name = f.Name, Type = FSNodeType.File, FileId = f.Id }).ToList()
+            };
+
+            await templateRepository.InsertOneAsync(template);
+        }
+
+        private static async Task SeedPythonTemplate(IFileRepository fileRepository, ITemplateRepository templateRepository)
+        {
+            var files = new List<File>()
+            {
+                new File
+                {
+                    Name = "main.py",
+                    Content = @"from fancy_text import fancy
+
+text = 'Hello World!'
+
+print(text)
+print(fancy.bold(text))"
+                },
+                new File
+                {
+                    Name = "requirements.txt",
+                    Content = @"fancy-text"
+                }
+            };
+
+            await fileRepository.InsertManyAsync(files);
+
+            var template = new Template
+            {
+                Name = "Python",
+                Language = Language.Python,
                 Nodes = files.Select(f => new FSNode { Name = f.Name, Type = FSNodeType.File, FileId = f.Id }).ToList()
             };
 

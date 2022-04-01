@@ -3,8 +3,8 @@
     public enum Language
     {
         CSharp,
-        FSharp,
         JavaScript,
+        FSharp,
         Goloang,
         Python
     }
