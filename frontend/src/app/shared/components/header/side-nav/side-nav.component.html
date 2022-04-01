@@ -1,10 +1,4 @@
 <nav id="sidebar" class="navbar" [ngClass]="{'hidden': sideNavService.hideSideNav }">
-    <div class="button-container">
-        <button type="button" class="btn btn-primary w-75 d-flex justify-content-center align-items-center" (click)="createProject()">
-            <i class="button fa fa-plus"></i>
-            <span class="ml-1">Create</span>
-        </button>
-    </div>
     <div class="navbar-nav-container">
     <ul class="navbar-nav">
         <div class="nav-item" (click)="sideNavService.toggleSideNav()" routerLink="/main/home" routerLinkActive="active">
