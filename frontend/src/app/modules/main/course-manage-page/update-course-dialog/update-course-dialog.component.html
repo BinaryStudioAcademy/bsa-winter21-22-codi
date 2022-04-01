@@ -10,6 +10,15 @@
 <div class="modal-body">
     <form [formGroup]="form">
         <div class="form-group">
+            <div class="d-flex justify-content-around pb-4">
+                <div type="button" class="avatar" (click)="file.click()">
+                    <input hidden class="file-hide" #file accept="image/*" type="file" (change)="handleFileInput($event.target)">
+                    <img *ngIf="course.avatar; else generic" class="avatar" src="{{course.avatar}}" alt="User avatar">
+                    <ng-template #generic>
+                        <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar">
+                    </ng-template>
+                </div>
+            </div>
             <label for="course">Course display name</label>
             <input
                 type="text" class="form-control" id="course"
