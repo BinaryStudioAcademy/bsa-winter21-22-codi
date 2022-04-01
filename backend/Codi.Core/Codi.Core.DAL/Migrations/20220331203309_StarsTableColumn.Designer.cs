@@ -4,6 +4,7 @@ using Codi.Core.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Codi.Core.DAL.Migrations
 {
     [DbContext(typeof(CodiCoreContext))]
-    partial class CodiCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220331203309_StarsTableColumn")]
+    partial class StarsTableColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +70,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Apps", (string)null);
+                    b.ToTable("Apps");
 
                     b.HasData(
                         new
@@ -487,7 +489,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("AppTags", (string)null);
+                    b.ToTable("AppTags");
 
                     b.HasData(
                         new
@@ -1250,7 +1252,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
 
                     b.HasData(
                         new
@@ -1547,7 +1549,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CourseUsers", (string)null);
+                    b.ToTable("CourseUsers");
 
                     b.HasData(
                         new
@@ -2216,7 +2218,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
 
                     b.HasData(
                         new
@@ -3045,7 +3047,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("InvitedUsers", (string)null);
+                    b.ToTable("InvitedUsers");
 
                     b.HasData(
                         new
@@ -3967,7 +3969,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UnitId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lessons");
 
                     b.HasData(
                         new
@@ -5035,7 +5037,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Organizations", (string)null);
+                    b.ToTable("Organizations");
 
                     b.HasData(
                         new
@@ -5362,7 +5364,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
 
                     b.HasData(
                         new
@@ -6144,7 +6146,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Samples", (string)null);
+                    b.ToTable("Samples");
 
                     b.HasData(
                         new
@@ -6277,7 +6279,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Submissions", (string)null);
+                    b.ToTable("Submissions");
 
                     b.HasData(
                         new
@@ -7507,7 +7509,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
 
                     b.HasData(
                         new
@@ -7851,7 +7853,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Threads", (string)null);
+                    b.ToTable("Threads");
 
                     b.HasData(
                         new
@@ -8850,7 +8852,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("ThreadId");
 
-                    b.ToTable("ThreadComments", (string)null);
+                    b.ToTable("ThreadComments");
 
                     b.HasData(
                         new
@@ -10084,7 +10086,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Units", (string)null);
+                    b.ToTable("Units");
 
                     b.HasData(
                         new
@@ -10502,7 +10504,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("AvatarId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new

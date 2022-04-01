@@ -198,6 +198,7 @@ namespace Codi.Core.DAL.Context
                 .RuleFor(pi => pi.ProjectDocumentId, f => f.Random.Guid())
                 .RuleFor(pi => pi.Description, f => f.Lorem.Sentences(f.Random.Number(1, 5)))
                 .RuleFor(pi => pi.IsPublic, f => f.Random.Bool())
+                .RuleFor(pi => pi.IsGitImported, f => f.Random.Bool())
                 .RuleFor(pi => pi.Language, f => f.PickRandom<Language>())
                 .RuleFor(e => e.CreatedBy, f => f.Random.Number(1, 5))
                 .RuleFor(pi => pi.CreatedAt, f => f.Date.Past(1, new DateTime(2022, 2, 2)))

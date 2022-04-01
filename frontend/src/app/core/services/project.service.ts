@@ -28,12 +28,16 @@ export class ProjectService {
         return this.httpService.getRequest<Project[]>(`${this.routePrefix}/my`)
     }
 
-    isUserEditable(projectId: number) {
-        return this.httpService.getRequest<boolean>(`${this.routePrefix}/isEditable/${projectId}`);
+    getCurrentUserGitProjects() {
+        return this.httpService.getRequest<Project[]>(`${this.routePrefix}/mygit`)
     }
 
     createProject(project: CreateProject) {
         return this.httpService.postRequest<Project>(`${this.routePrefix}`, project);
+    }
+
+    isUserEditable(projectId: number) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/isEditable/${projectId}`);
     }
 
     gitProjectImport(gitClone: GitClone) {
@@ -54,5 +58,9 @@ export class ProjectService {
 
     public deleteProject(id: number) {
         return this.httpService.deleteRequest(`${this.routePrefix}/${id}`);
+    }
+
+    getCurrentUserGitLastProjects() {
+        return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/gitlast`)
     }
 }

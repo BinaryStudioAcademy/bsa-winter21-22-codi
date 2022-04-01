@@ -4,6 +4,7 @@ using Codi.Core.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Codi.Core.DAL.Migrations
 {
     [DbContext(typeof(CodiCoreContext))]
-    partial class CodiCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220331132633_IsGitImpportedTableColumn")]
+    partial class IsGitImpportedTableColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +70,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Apps", (string)null);
+                    b.ToTable("Apps");
 
                     b.HasData(
                         new
@@ -487,7 +489,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("AppTags", (string)null);
+                    b.ToTable("AppTags");
 
                     b.HasData(
                         new
@@ -1250,7 +1252,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
 
                     b.HasData(
                         new
@@ -1547,7 +1549,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CourseUsers", (string)null);
+                    b.ToTable("CourseUsers");
 
                     b.HasData(
                         new
@@ -2216,7 +2218,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
 
                     b.HasData(
                         new
@@ -3045,7 +3047,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("InvitedUsers", (string)null);
+                    b.ToTable("InvitedUsers");
 
                     b.HasData(
                         new
@@ -3967,7 +3969,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("UnitId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lessons");
 
                     b.HasData(
                         new
@@ -5035,7 +5037,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Organizations", (string)null);
+                    b.ToTable("Organizations");
 
                     b.HasData(
                         new
@@ -5348,11 +5350,6 @@ namespace Codi.Core.DAL.Migrations
                     b.Property<Guid>("ProjectDocumentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("Stars")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasDefaultValue(0L);
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -5362,7 +5359,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
 
                     b.HasData(
                         new
@@ -5377,7 +5374,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 29L,
                             ProjectDocumentId = new Guid("783eb20f-a38c-9c37-d8d6-466fbb77b46c"),
-                            Stars = 0L,
                             Title = "Vel voluptatem temporibus ducimus iste quibusdam voluptatibus quisquam voluptatem."
                         },
                         new
@@ -5392,7 +5388,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 20L,
                             ProjectDocumentId = new Guid("b55b2d2d-16f8-ef5d-ff48-ccd1261d6a17"),
-                            Stars = 0L,
                             Title = "Rem vero quisquam quisquam a enim odit omnis consequuntur."
                         },
                         new
@@ -5407,7 +5402,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 37L,
                             ProjectDocumentId = new Guid("451040fc-cd2a-c29d-c2b5-d76ec36a50cb"),
-                            Stars = 0L,
                             Title = "Perspiciatis et repellendus pariatur ipsum asperiores voluptatem accusantium error."
                         },
                         new
@@ -5422,7 +5416,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 14L,
                             ProjectDocumentId = new Guid("f8d51488-914f-4cfa-0fe8-45c0385d8f47"),
-                            Stars = 0L,
                             Title = "Quidem iure officia assumenda id sequi recusandae."
                         },
                         new
@@ -5437,7 +5430,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 5L,
                             ProjectDocumentId = new Guid("7ad58ade-ad47-35b7-c510-42bd994a70c5"),
-                            Stars = 0L,
                             Title = "Dolor dignissimos illo et illo soluta ut repudiandae non."
                         },
                         new
@@ -5452,7 +5444,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 15L,
                             ProjectDocumentId = new Guid("bd9a6d8a-532d-7f44-b7bd-93cb29ab5f93"),
-                            Stars = 0L,
                             Title = "Ad harum inventore consequatur sit provident."
                         },
                         new
@@ -5467,7 +5458,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 3L,
                             ProjectDocumentId = new Guid("eee2d290-f822-3c2e-2699-3ad0727092c8"),
-                            Stars = 0L,
                             Title = "Fuga alias adipisci rem quasi blanditiis saepe rerum earum."
                         },
                         new
@@ -5482,7 +5472,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 39L,
                             ProjectDocumentId = new Guid("e2861ab3-762d-e8bc-d25a-a25671fa4c75"),
-                            Stars = 0L,
                             Title = "Dolor aut et illo qui culpa inventore."
                         },
                         new
@@ -5497,7 +5486,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 18L,
                             ProjectDocumentId = new Guid("e34fb4a6-c2dc-6783-162e-706e13c72f13"),
-                            Stars = 0L,
                             Title = "Omnis est non pariatur quisquam doloremque voluptatem doloremque iure."
                         },
                         new
@@ -5512,7 +5500,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 2L,
                             ProjectDocumentId = new Guid("eebb27ff-af79-d946-0935-368554860d41"),
-                            Stars = 0L,
                             Title = "Aut et rem sed vel quo beatae."
                         },
                         new
@@ -5527,7 +5514,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 12L,
                             ProjectDocumentId = new Guid("60776431-af43-7786-7195-16009e225b1f"),
-                            Stars = 0L,
                             Title = "Corporis aut officia."
                         },
                         new
@@ -5542,7 +5528,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 50L,
                             ProjectDocumentId = new Guid("e8333073-b30a-e840-df9f-cf766750108b"),
-                            Stars = 0L,
                             Title = "Et omnis est eum."
                         },
                         new
@@ -5557,7 +5542,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 22L,
                             ProjectDocumentId = new Guid("e2a7f090-4b55-9931-56f0-7ba337182376"),
-                            Stars = 0L,
                             Title = "Harum quasi a dicta qui est quod et."
                         },
                         new
@@ -5572,7 +5556,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 3L,
                             ProjectDocumentId = new Guid("0da5a201-21cf-633d-ad73-5e372556ff2c"),
-                            Stars = 0L,
                             Title = "Velit vero distinctio."
                         },
                         new
@@ -5587,7 +5570,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 27L,
                             ProjectDocumentId = new Guid("e74728cb-8bd5-e86d-d1f8-d1c83faa71a2"),
-                            Stars = 0L,
                             Title = "Nihil corrupti provident sed et."
                         },
                         new
@@ -5602,7 +5584,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 40L,
                             ProjectDocumentId = new Guid("83802a81-166b-9d49-2a57-393943ec6636"),
-                            Stars = 0L,
                             Title = "Minima minus laborum inventore consequuntur aut qui nulla ea."
                         },
                         new
@@ -5617,7 +5598,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 9L,
                             ProjectDocumentId = new Guid("9940a288-2beb-f1a2-c731-7d0c75635dba"),
-                            Stars = 0L,
                             Title = "Ex maiores quos cum enim non impedit."
                         },
                         new
@@ -5632,7 +5612,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 38L,
                             ProjectDocumentId = new Guid("19b0004a-1806-d891-cce9-bbf8aecc3235"),
-                            Stars = 0L,
                             Title = "Similique eaque repellat optio rerum iure modi aut."
                         },
                         new
@@ -5647,7 +5626,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 13L,
                             ProjectDocumentId = new Guid("49600880-e682-d923-bf84-f11fc2f25087"),
-                            Stars = 0L,
                             Title = "Quo ipsum ipsum."
                         },
                         new
@@ -5662,7 +5640,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 4L,
                             ProjectDocumentId = new Guid("72c35ee9-5b5d-4725-8929-9af7a6ff8715"),
-                            Stars = 0L,
                             Title = "Quae rerum provident est eos."
                         },
                         new
@@ -5677,7 +5654,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 48L,
                             ProjectDocumentId = new Guid("35ce22ba-607d-e41c-baac-c096e06654f3"),
-                            Stars = 0L,
                             Title = "Dolores qui vel et illum."
                         },
                         new
@@ -5692,7 +5668,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 21L,
                             ProjectDocumentId = new Guid("484f173a-bf87-0037-2747-0be5f4de2f04"),
-                            Stars = 0L,
                             Title = "Sint consequatur reprehenderit reprehenderit veritatis assumenda doloremque illo error officiis."
                         },
                         new
@@ -5707,7 +5682,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 27L,
                             ProjectDocumentId = new Guid("751df6f9-d1fe-92b0-9dc6-dc6b859139b2"),
-                            Stars = 0L,
                             Title = "Vitae illo sequi qui eum modi quis."
                         },
                         new
@@ -5722,7 +5696,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 13L,
                             ProjectDocumentId = new Guid("5fa7175d-46f7-af66-864b-6dd9303e0ade"),
-                            Stars = 0L,
                             Title = "Natus impedit doloribus pariatur assumenda et."
                         },
                         new
@@ -5737,7 +5710,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 13L,
                             ProjectDocumentId = new Guid("103dc1e0-65a3-a3d4-5413-cec4e9625d9f"),
-                            Stars = 0L,
                             Title = "Laborum dolor iusto maxime."
                         },
                         new
@@ -5752,7 +5724,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 45L,
                             ProjectDocumentId = new Guid("d98e9ad8-b87c-9139-2d29-d9ee08b33112"),
-                            Stars = 0L,
                             Title = "Aut mollitia et et ipsum aut nisi."
                         },
                         new
@@ -5767,7 +5738,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 41L,
                             ProjectDocumentId = new Guid("035b23c6-0feb-86fb-b9ad-70c421d489e5"),
-                            Stars = 0L,
                             Title = "Ad ut in molestias facere natus tenetur architecto repudiandae."
                         },
                         new
@@ -5782,7 +5752,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 27L,
                             ProjectDocumentId = new Guid("52c79a61-1978-790a-25a6-ac1b437862a8"),
-                            Stars = 0L,
                             Title = "Totam sed minima voluptatem cum necessitatibus."
                         },
                         new
@@ -5797,7 +5766,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 22L,
                             ProjectDocumentId = new Guid("eb9836ab-50fc-360e-e822-baed6a4b1a6f"),
-                            Stars = 0L,
                             Title = "Non totam rerum ea in ut facilis quidem quia voluptate."
                         },
                         new
@@ -5812,7 +5780,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 9L,
                             ProjectDocumentId = new Guid("7f53833c-e822-a238-5f16-d80e489c8846"),
-                            Stars = 0L,
                             Title = "Voluptate magni a ducimus inventore voluptatibus est et aut."
                         },
                         new
@@ -5827,7 +5794,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 50L,
                             ProjectDocumentId = new Guid("f2f8cde8-2e29-f80d-b2ef-14f15c97feda"),
-                            Stars = 0L,
                             Title = "Et omnis doloremque."
                         },
                         new
@@ -5842,7 +5808,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 39L,
                             ProjectDocumentId = new Guid("6874a4f7-6d0e-1e5a-bbdb-46593e50e882"),
-                            Stars = 0L,
                             Title = "Ut explicabo rerum ut assumenda quasi cupiditate."
                         },
                         new
@@ -5857,7 +5822,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 13L,
                             ProjectDocumentId = new Guid("54fb2225-bb77-7a06-6dfa-33c489feeb5e"),
-                            Stars = 0L,
                             Title = "Sed ut aut magni minima consectetur omnis et necessitatibus."
                         },
                         new
@@ -5872,7 +5836,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 23L,
                             ProjectDocumentId = new Guid("d56afe14-562b-f814-9064-906bbcbed9f6"),
-                            Stars = 0L,
                             Title = "Modi voluptatibus rem quo est dicta non quidem et quam."
                         },
                         new
@@ -5887,7 +5850,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 42L,
                             ProjectDocumentId = new Guid("385f6ef6-a33a-924e-953e-b9f3d14d0166"),
-                            Stars = 0L,
                             Title = "Maiores nam quidem."
                         },
                         new
@@ -5902,7 +5864,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 26L,
                             ProjectDocumentId = new Guid("ea4d49f3-844e-e0ca-e742-095c4f872257"),
-                            Stars = 0L,
                             Title = "Architecto consectetur ea exercitationem ipsum voluptas est pariatur similique sequi."
                         },
                         new
@@ -5917,7 +5878,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 33L,
                             ProjectDocumentId = new Guid("942d2556-0b4e-1ebb-5ac6-97bf34347e45"),
-                            Stars = 0L,
                             Title = "Maxime enim deleniti recusandae."
                         },
                         new
@@ -5932,7 +5892,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 42L,
                             ProjectDocumentId = new Guid("bf9fd043-8246-d269-703a-6154e4993625"),
-                            Stars = 0L,
                             Title = "Voluptatem vel eum quia officiis."
                         },
                         new
@@ -5947,7 +5906,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 4L,
                             ProjectDocumentId = new Guid("b3132ac4-c6a9-e5b5-fa6f-4142dc00055e"),
-                            Stars = 0L,
                             Title = "Labore nobis quia ea mollitia aut neque et quia vel."
                         },
                         new
@@ -5962,7 +5920,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 40L,
                             ProjectDocumentId = new Guid("52704dcf-fe36-e661-6198-b4e865b255f9"),
-                            Stars = 0L,
                             Title = "Quod culpa voluptatem molestiae explicabo quis ratione expedita."
                         },
                         new
@@ -5977,7 +5934,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 21L,
                             ProjectDocumentId = new Guid("7f4531c6-bb3a-78f7-a9c6-eb188382dd8e"),
-                            Stars = 0L,
                             Title = "Consequuntur qui assumenda eum et."
                         },
                         new
@@ -5992,7 +5948,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 48L,
                             ProjectDocumentId = new Guid("5fa8dabb-92a2-cb75-5b69-1ddf4106e2ef"),
-                            Stars = 0L,
                             Title = "A dicta totam voluptas."
                         },
                         new
@@ -6007,7 +5962,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 17L,
                             ProjectDocumentId = new Guid("e7886e74-eecf-4359-cfa2-bede5629d3ae"),
-                            Stars = 0L,
                             Title = "Aliquam ea quas."
                         },
                         new
@@ -6022,7 +5976,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 24L,
                             ProjectDocumentId = new Guid("05273f7a-f63f-2fed-4e54-97ecaecc737b"),
-                            Stars = 0L,
                             Title = "Consectetur ex ut repellat veritatis maxime."
                         },
                         new
@@ -6037,7 +5990,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 15L,
                             ProjectDocumentId = new Guid("07faf390-7f04-8d25-b0b0-6010a1c46aa1"),
-                            Stars = 0L,
                             Title = "Quisquam qui accusamus est."
                         },
                         new
@@ -6052,7 +6004,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 15L,
                             ProjectDocumentId = new Guid("6f1628b3-8e86-8fd4-66f0-ea83fe805e6a"),
-                            Stars = 0L,
                             Title = "Ratione totam et nulla odio et incidunt ut assumenda."
                         },
                         new
@@ -6067,7 +6018,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 41L,
                             ProjectDocumentId = new Guid("2f74e91f-c6a6-d8c3-20a4-e6dff9659c89"),
-                            Stars = 0L,
                             Title = "Suscipit quibusdam nulla non omnis molestiae quae delectus iusto iusto."
                         },
                         new
@@ -6082,7 +6032,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 9L,
                             ProjectDocumentId = new Guid("bb4be29d-2595-253c-7659-f0efe0b7e50e"),
-                            Stars = 0L,
                             Title = "Cupiditate voluptatem ut distinctio minima impedit sed optio."
                         },
                         new
@@ -6097,7 +6046,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 0,
                             OwnerId = 38L,
                             ProjectDocumentId = new Guid("9affecc1-b76c-3522-29e6-2fb74c54acfb"),
-                            Stars = 0L,
                             Title = "Enim fuga aperiam voluptatem ullam."
                         },
                         new
@@ -6112,7 +6060,6 @@ namespace Codi.Core.DAL.Migrations
                             Language = 1,
                             OwnerId = 22L,
                             ProjectDocumentId = new Guid("5b4e453e-4457-9174-77d3-ba511bb48635"),
-                            Stars = 0L,
                             Title = "Fuga molestiae doloremque vel."
                         });
                 });
@@ -6144,7 +6091,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Samples", (string)null);
+                    b.ToTable("Samples");
 
                     b.HasData(
                         new
@@ -6277,7 +6224,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Submissions", (string)null);
+                    b.ToTable("Submissions");
 
                     b.HasData(
                         new
@@ -7507,7 +7454,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
 
                     b.HasData(
                         new
@@ -7851,7 +7798,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Threads", (string)null);
+                    b.ToTable("Threads");
 
                     b.HasData(
                         new
@@ -8850,7 +8797,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("ThreadId");
 
-                    b.ToTable("ThreadComments", (string)null);
+                    b.ToTable("ThreadComments");
 
                     b.HasData(
                         new
@@ -10084,7 +10031,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Units", (string)null);
+                    b.ToTable("Units");
 
                     b.HasData(
                         new
@@ -10502,7 +10449,7 @@ namespace Codi.Core.DAL.Migrations
 
                     b.HasIndex("AvatarId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new

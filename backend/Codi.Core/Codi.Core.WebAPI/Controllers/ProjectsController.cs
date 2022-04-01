@@ -56,12 +56,26 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(projects);
         }
 
+        [HttpGet("my/gitlast")]
+        public async Task<ActionResult<ICollection<ProjectNameDto>>> GetUserGitLastProjects()
+        {
+            var projects = await _projectService.GetLastGitUserProjects(this.GetUserIdFromToken());
+            return Ok(projects);
+        }
+
         [HttpGet("my")]
         public async Task<ActionResult<ICollection<ProjectDto>>> GetUserProjects()
         {
             var projects = await _projectService.GetUserProjects(this.GetUserIdFromToken());
             return Ok(projects);
-        } 
+        }
+
+        [HttpGet("mygit")]
+        public async Task<ActionResult<ICollection<ProjectDto>>> GetUserGitProjects()
+        {
+            var projects = await _projectService.GetUserGitProjects(this.GetUserIdFromToken());
+            return Ok(projects);
+        }
 
         [HttpGet("{projectId}")]
         public async Task<ActionResult<ProjectDto>> GetById(long projectId)
@@ -88,7 +102,7 @@ namespace Codi.Core.WebAPI.Controllers
             var project = await _projectService.CreateUserProjectAsync(projectDto);
             return Ok(project);
         }
-        
+
         [HttpPost("gitImport")]
         public async Task<ActionResult<ProjectDto>> GitImport(GitCloneDto gitCloneDto)
         {
