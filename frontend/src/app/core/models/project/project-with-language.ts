@@ -5,4 +5,5 @@ export interface ProjectWithLanguage {
     createdAt: Date;
     language: number;
     isPublic: boolean;
+    stars: number;
 }

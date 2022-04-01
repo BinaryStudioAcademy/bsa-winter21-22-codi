@@ -54,61 +54,29 @@
     <div class="heading-content-container mt-3">
         <div class="heading-content">
             <h2>GitHub repos</h2>
-            <a class="align-self-end" routerLink="#">View all GitHub repos</a>
+            <a class="align-self-end" routerLink="/main/gitprojects">View all GitHub repos</a>
         </div>
         <div class="external-content-container">
-            <div class="content-container">
+            <div class="content-container" *ngFor="let project of gitprojects" [routerLink]="['/workspace', project.id]">
                 <div class="content-container-top">
-                    <span class="text">bator/alfa_blog</span>
-                    <div class="rating">
-                        <i class="icon fa fa-star"></i>
-                        <span class="rating-mark-zero">0</span>
-                    </div>
-                </div>
-                <div class="content-container-bottom">
-                    <div class="bottom-language-container">
-                        <button type="button" class="create-button">
-                            <img class="language-icon" src="assets/images/languages/web_project.svg">
-                            HTML, CSS, JS
-                        </button>
-                    </div>
-                    <i class="git-icon fa fa-github"></i>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="content-container-top">
-                    <span class="text">bator/AlabamaAlgorithm</span>
+                    <span class="text">
+                        {{project.title}}
+                    </span>
                     <div class="rating">
                         <i class="mark-icon fa fa-star"></i>
-                        <span class="rating-mark">4.5</span>
+                        <span class="rating-mark">
+                            {{project.stars}}
+                        </span>
                     </div>
                 </div>
                 <div class="content-container-bottom">
                     <div class="bottom-language-container">
                         <button type="button" class="create-button">
-                            <img class="language-icon" src="assets/images/languages/python.svg">
-                            Python
+                            <img class="language-icon" [src]="iconForLanguage(project.language)" alt="lang">
+                            {{forEnum(project.language)}}
                         </button>
                     </div>
-                    <i class="git-icon fa fa-github"></i>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="content-container-top">
-                    <span class="text">bator/test</span>
-                    <div class="rating">
-                        <i class="icon fa fa-star"></i>
-                        <span class="rating-mark-zero">0</span>
-                    </div>
-                </div>
-                <div class="content-container-bottom">
-                    <div class="bottom-language-container">
-                        <button type="button" class="create-button">
-                            <img class="language-icon" src="assets/images/languages/java.svg">
-                            Java
-                        </button>
-                    </div>
-                    <i class="git-icon fa fa-github"></i>
+                <i class="git-icon fa fa-github"></i>    
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ import {Languages} from "@shared/constants/languages";
 export class HomePageComponent extends BaseComponent implements OnInit{
 
     projects: ProjectWithLanguage[] = [];
+    gitprojects: ProjectWithLanguage[] = [];
 
     constructor(
         private projectDialogService: ProjectCreationModalService,
@@ -32,6 +33,7 @@ export class HomePageComponent extends BaseComponent implements OnInit{
 
     ngOnInit(): void {
         this.getAllProjects()
+        this.getAllGitProjects()
     }
 
     getAllProjects() {
@@ -40,6 +42,17 @@ export class HomePageComponent extends BaseComponent implements OnInit{
             .subscribe({
                 next:(projects) =>
                     this.projects = projects,
+                error:() =>
+                    this.notificationService.showErrorMessage('Something went wrong', 'Error')
+            });
+    }
+
+    getAllGitProjects(){
+        this.projectService.getCurrentUserGitLastProjects()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next:(gitprojects) =>
+                    this.gitprojects = gitprojects,
                 error:() =>
                     this.notificationService.showErrorMessage('Something went wrong', 'Error')
             });
