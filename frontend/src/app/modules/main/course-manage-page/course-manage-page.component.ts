@@ -231,7 +231,10 @@ export class CourseManagePageComponent extends BaseComponent implements OnInit {
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(() => {
                 this.reloadPageContent();
-                this.notificationService.showSuccessMessage('Lesson published', 'Success');
+                publish ?
+                    this.notificationService.showSuccessMessage('Lesson published', 'Success')
+                    : this.notificationService.showSuccessMessage('Lesson unpublished', 'Success')
+
             })
     }
 

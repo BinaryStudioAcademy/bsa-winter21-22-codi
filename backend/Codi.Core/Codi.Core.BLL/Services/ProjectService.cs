@@ -209,8 +209,9 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var canRun = await IsUserEditableAsync(userId, projectId);
         var project = await _context.Projects
-            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+            .FirstOrDefaultAsync(p => p.Id == projectId && (canRun || p.IsPublic));
 
         if (project == null)
         {
@@ -243,8 +244,9 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var canStop = await IsUserEditableAsync(userId, projectId);
         var project = await _context.Projects
-            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+            .FirstOrDefaultAsync(p => p.Id == projectId && (canStop || p.IsPublic));
 
         if (project == null)
         {
@@ -269,8 +271,9 @@ public class ProjectService : BaseService, IProjectService
             throw new NotFoundException(nameof(User));
         }
 
+        var canSend = await IsUserEditableAsync(userId, projectId);
         var project = await _context.Projects
-            .FirstOrDefaultAsync(p => p.Id == projectId && (p.OwnerId == owner.Id || p.IsPublic));
+            .FirstOrDefaultAsync(p => p.Id == projectId && (canSend || p.IsPublic));
 
         if (project == null)
         {
