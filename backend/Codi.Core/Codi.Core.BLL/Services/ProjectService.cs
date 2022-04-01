@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Codi.Core.Common.DTO.Git;
 using Codi.Core.Common.Enums;
+using Codi.Core.Common.Helpers;
 
 namespace Codi.Core.BLL.Services;
 
@@ -147,12 +148,7 @@ public class ProjectService : BaseService, IProjectService
         }
         
         var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"));
-        var result = projResponse.Language switch
-        {
-            "C#" => Language.CSharp,
-            "HTML" => Language.HTML,
-            _ => throw new InvalidOperationException("Unsupported language")
-        };
+        var result = ProjectHelper.LanguageComparation(projResponse.Language);
         var project = new Project()
         {
             Title = gitCloneDto.Title,
