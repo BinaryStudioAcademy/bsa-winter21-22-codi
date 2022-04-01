@@ -71,4 +71,8 @@ export class ProjectService {
     getCurrentUserGitLastProjects() {
         return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/gitlast`)
     }
+
+    getCurrentUserMyProjects() {
+        return this.httpService.getRequest<Project[]>(`${this.routePrefix}/myprojects`)
+    }
 }
