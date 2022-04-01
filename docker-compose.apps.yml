@@ -39,6 +39,7 @@ services:
         args:
           - PROJECT_PORT=5090
       container_name: 'codi_builder'
+      privileged: true
       restart: on-failure
       ports:
           - "5090:5090"

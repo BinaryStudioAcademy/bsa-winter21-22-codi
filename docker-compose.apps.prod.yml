@@ -32,6 +32,7 @@ services:
     codi_builder:
         image: tatihutii/codi_builder:latest
         container_name: 'codi_builder'
+        privileged: true
         restart: on-failure
         networks:
             - back
