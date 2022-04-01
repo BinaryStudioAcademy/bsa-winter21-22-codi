@@ -1,0 +1,92 @@
+<div class="modal-header d-flex justify-content-between align-items-center">
+    <h3>Create lesson</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="modal.close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="form-group w100-dropdown-container">
+            <label for="template">Template</label>
+
+            <input id="template" type="text" class="form-control" placeholder="Search templates"
+                   [resultFormatter]="resultTemplateFormatter"
+                   [inputFormatter]="templateInputFormatter"
+                   formControlName="template" [ngbTypeahead]="searchTemplates"
+                   (focus)="templatesFocus$.next($any($event).target.value)" (click)="templatesClick$.next($any($event).target.value)"
+                   [editable]='false' #templateInstance="ngbTypeahead"
+                   [class.is-invalid]="form.controls['template'].touched && form.controls['template'].invalid" />
+        </div>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" formControlName="title"
+                   [class.is-invalid]="(form.controls['title'].dirty || form.controls['title'].touched) && form.controls['title'].invalid"
+                   placeholder="Title" class="form-control">
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched">
+                    Title is required
+                </li>
+                <li class="text-danger"
+                    *ngIf="form.controls['title'].hasError('minlength') || form.controls['title'].hasError('maxlength')">
+                    Your lesson title must be between 2 and 50 characters
+                </li>
+                <li class="text-danger"
+                    *ngIf="form.controls['title'].hasError('pattern')">
+                    Your lesson title can only contain latin letters, digits, printable characters
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea formControlName="description" type="text" class="form-control description" id="description" aria-describedby="descriptionHelp"></textarea>
+            <div id="descriptionHelp" class="form-text descriptionHelp" [ngClass]="{'text-danger' : form.controls['description'].value?.length > 140}">
+                * {{form.controls['description'].value?.length === null ? 0 : form.controls['description'].value?.length}} / 140 characters is allowed
+            </div>
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['description'].hasError('pattern')">
+                    Your lesson description can only contain latin letters, digits, printable characters
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-group w100-dropdown-container">
+            <label for="unit">Unit</label>
+
+            <input id="unit" type="text" class="form-control" placeholder="Unit"
+                   [resultFormatter]="resultUnitFormatter"
+                   [inputFormatter]="unitInputFormatter"
+                   formControlName="unit" [ngbTypeahead]="searchUnits"
+                   (focus)="unitsFocus$.next($any($event).target.value)" (click)="unitsClick$.next($any($event).target.value)"
+                   [editable]='false' #unitInstance="ngbTypeahead"
+                   [class.is-invalid]="form.controls['unit'].touched && form.controls['unit'].invalid" />
+        </div>
+
+        <div class="form-group">
+            <label for="dueDate" class="form-label">Due Date</label>
+            <div class="calendar-container d-flex">
+                <input class="form-control" id="dueDate" placeholder="yyyy-mm-dd"
+                       name="dp" ngbDatepicker #d="ngbDatepicker"
+                       formControlName="dueDate"
+                       [minDate]="minPickerDate"
+                       [class.is-invalid]="(form.controls['dueDate'].dirty || form.controls['dueDate'].touched) && form.controls['dueDate'].invalid">
+                <i class="fa fa-calendar btn calendar" (click)="d.toggle()"></i>
+            </div>
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['dueDate']?.errors?.['ngbDate'].invalid">
+                    Due date must be YYYY-MM-DD and greater than today
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="submit" [disabled]="!form.valid" (click)="submit()" class="btn btn-primary w-100">
+        Create lesson
+    </button>
+</div>

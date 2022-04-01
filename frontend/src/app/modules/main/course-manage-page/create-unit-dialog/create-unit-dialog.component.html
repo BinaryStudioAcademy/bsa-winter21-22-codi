@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3>Create unit</h3>
+    <div class="close">
+        <button class="btn btn-outline-primary btn-sm" (click)="modal.close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="unit">What do you want to name your unit?</label>
+            <input
+                type="text" class="form-control" id="unit"
+                placeholder="title"
+                formControlName="title"
+            >
+            <ul>
+                <li class="text-danger" *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched">
+                    Unit title is required
+                </li>
+                <li class="text-danger" *ngIf="form.controls['title'].hasError('minlength') || form.controls['title'].hasError('maxlength')">
+                    Your unit title must be between 5 and 60 characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['title'].hasError('pattern')">
+                    Your unit title can only contain latin letters, digits, printable characters
+                </li>
+                <li class="text-danger" *ngIf="form.controls['title'].hasError('noWhiteSpace')">
+                    Your unit title can't contain space at the beginning or at the end
+                </li>
+            </ul>
+        </div>
+        <button type="submit" (click)="createUnit()" class="btn btn-primary w-100 mt-3" [disabled]="!form.valid">Create</button>
+    </form>
+</div>

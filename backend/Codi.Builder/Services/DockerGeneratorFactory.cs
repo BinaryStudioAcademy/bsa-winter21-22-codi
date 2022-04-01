@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Codi.Builder.Services;
 
-public class DockerfileGeneratorFactory : IDockerfileGeneratorFactory
+public class DockerGeneratorFactory : IDockerfileGeneratorFactory
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public DockerfileGeneratorFactory(IServiceProvider serviceProvider)
+    public DockerGeneratorFactory(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }

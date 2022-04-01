@@ -36,6 +36,10 @@ export class ProjectService {
         return this.httpService.postRequest<Project>(`${this.routePrefix}`, project);
     }
 
+    isUserEditable(projectId: number) {
+        return this.httpService.getRequest<boolean>(`${this.routePrefix}/isEditable/${projectId}`);
+    }
+
     gitProjectImport(gitClone: GitClone) {
         return this.httpService.postRequest<Project>(`${this.routePrefix}/gitImport`, gitClone);
     }

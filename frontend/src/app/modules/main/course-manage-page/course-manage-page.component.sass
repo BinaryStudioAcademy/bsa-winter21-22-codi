@@ -3,11 +3,13 @@
 .container
     max-width: 990px
     margin: 0 auto
+    color: $base-text-color
 
 .team-profile
     display: flex
     justify-content: space-between
     padding: 16px 16px 0
+    max-height: 140px
 
 .course-info
     display: flex
@@ -59,3 +61,110 @@
     margin-left: -20px
     background-size: cover
 
+.course-actions
+    display: flex
+    justify-content: space-between
+    margin-bottom: 25px
+    .add-unit-container
+        position: relative
+        .add-unit
+            padding: 10px
+            border-radius: $border-radius
+            border: 1px solid $secondary
+            background-color: $background-panel-color
+            color: $base-text-color
+            transition: .1s
+            cursor: pointer
+            max-width: fit-content
+            align-self: flex-end
+            &:hover
+                background-color: $background-panel-color-light
+            &:hover + .clue
+                display: block
+        .clue
+            display: none
+            margin-top: 1px
+            background-color: $background-panel-color
+            color: $muted-text-color
+            border-radius: $border-radius
+            padding: 5px
+            white-space: nowrap
+            position: absolute
+            right: 0%
+
+.units
+    .unit-item
+        .unit-header
+            display: flex
+            justify-content: space-between
+            align-items: center
+            margin-bottom: 5px
+            .unit-title
+                padding: 10px 0
+                font-size: $h5-font-size
+        .unit-body
+            background-color: $background-panel-color
+            border-radius: $border-radius
+            padding: 10px
+
+.projects
+    margin-bottom: 25px
+
+.title
+    font-size: $h3-font-size
+    font-weight: bold
+
+.container-items
+    background-color: $background-panel-color
+    border-radius: $border-radius
+    border: 1px solid $secondary
+    padding: 15px 15px
+    .container-header
+        display: grid
+        grid-template-columns: 1fr 1fr
+        .header-title
+            font-weight: bold
+            font-size: $font-size-sm
+            text-transform: uppercase
+            color: $muted-text-color
+    .container-body
+        .container-item
+            display: grid
+            grid-template-columns: 1fr 1fr 0fr
+            align-items: center
+            background-color: $background-panel-color
+            border-radius: $border-radius
+            border: 1px solid $secondary
+            padding: 30px 15px
+            margin-top: 10px
+            .item-title
+                cursor: pointer
+                font-size: $h5-font-size
+                transition: .1s
+                word-wrap: anywhere
+            .item-submission
+                cursor: pointer
+                &:hover
+                    opacity: 75%
+
+.empty-unit
+    display: block
+    cursor: pointer
+    padding: 30px 0
+    text-align: center
+
+.item-description
+    cursor: pointer
+
+\:host ::ng-deep .dropdown-toggle
+    margin: 0 !important
+    &:after
+        display: none
+
+.dropdown-menu
+    padding: 0
+.dropdown-item
+    color: $input-color
+    &:hover
+        background-color:  $background-primary-dropdown
+        color: $input-color
