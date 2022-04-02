@@ -61,7 +61,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
     }
 
     override ngOnDestroy() {
-        this.buildHub.stop();
+        // this.buildHub.stop();
         super.ngOnDestroy();
     }
 
