@@ -52,7 +52,7 @@ public class ProjectBuilderService : IProjectBuilderService
 
         var projectFileStructurePath = Path.Combine(
             _projectsTempFolder,
-            $"{buildRequest.Title}_{Path.GetFileNameWithoutExtension(Path.GetRandomFileName())}"
+            Path.GetFileNameWithoutExtension(Path.GetRandomFileName())
             );
 
         _logger.LogInformation($"Project[ID={buildRequest.ProjectId}, userId={buildRequest.UserId}] tempFolder: {projectFileStructurePath}");
