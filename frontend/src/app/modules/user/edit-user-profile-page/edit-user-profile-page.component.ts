@@ -27,6 +27,7 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
     isGoogleLinked: boolean;
     isGitHubLinked: boolean;
     isLastProviderLinked: boolean;
+    forImage: string | ArrayBuffer | null;
 
     constructor(
         private authService: AuthService,
@@ -98,7 +99,8 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
           firstName : formValue.firstName,
           lastName : formValue.lastName,
           bio: formValue.bio,
-          email: this.user.email
+          email: this.user.email,
+          avatar: this.forImage ? this.forImage : this.user.avatar
       } as User;
         this.userService
             .update(updatedUser)
@@ -138,6 +140,9 @@ export class EditUserProfilePageComponent extends BaseComponent implements OnIni
         const reader = new FileReader();
         reader.addEventListener('load', () => (this.user.avatar = reader.result as string));
         reader.readAsDataURL(this.imageFile);
+        reader.onloadend = () => {
+            this.forImage = reader.result
+        };
     }
 
     linkProvider(provider: Provider) {

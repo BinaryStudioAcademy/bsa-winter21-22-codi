@@ -20,6 +20,7 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
     public loading = false;
     public projects: Project[] = []
     public gitprojects: Project[] = []
+    public myprojects: Project[] = []
 
     constructor(private projectService: ProjectService,
         private notificationService: NotificationService,
@@ -33,6 +34,7 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
     ngOnInit(): void {
         this.loadProjects();
         this.loadGitProjects();
+        this.loadMyProjects();
     }
 
     loadProjects() {
@@ -62,6 +64,24 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (resp) => {
                     this.gitprojects = resp ?? [];
+                    this.loading = false;
+                },
+                error: (error) => {
+                    this.notificationService.showErrorMessage(error.message, "Error")
+                }
+
+            })
+    }
+
+    loadMyProjects() {
+        this.loading = true;
+
+        this.projectService
+            .getCurrentUserMyProjects()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next: (resp) => {
+                    this.myprojects = resp ?? [];
                     this.loading = false;
                 },
                 error: (error) => {

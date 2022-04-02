@@ -9,13 +9,15 @@ namespace Codi.Core.Common.Helpers
 {
     public static class ProjectHelper
     {
-        public static Language LanguageComparation(string languageString)
+        public static Language? LanguageComparation(string languageString)
         {
             return languageString switch
                 {
                     "C#" => Language.CSharp,
                     "HTML" => Language.HTML,
-                    _ => throw new InvalidOperationException("Unsupported language")
+                    "Python" => Language.Python,
+                    "F#" => Language.FSharp,
+                    _ => null
                 };
         }
         

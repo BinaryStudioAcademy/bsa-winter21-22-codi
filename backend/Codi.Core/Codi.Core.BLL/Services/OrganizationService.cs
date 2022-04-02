@@ -19,6 +19,8 @@ public class OrganizationService : BaseService, IOrganizationService
             .ThenInclude(cu => cu.CourseUsers)
             .ThenInclude(c => c.User)
             .ThenInclude(u => u.Avatar)
+            .Include(c => c.Courses)
+            .ThenInclude(a => a.Avatar)
             .Where(o => o.OwnerId == userId || o.Courses.Any(c => c.CourseUsers.Any(cu => cu.UserId == userId)))
             .AsSplitQuery()
             .ToListAsync();

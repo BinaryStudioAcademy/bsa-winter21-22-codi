@@ -25,6 +25,7 @@ public class ProjectService : BaseService, IProjectService
     private protected readonly IGitService _gitService;
     private protected readonly IBuilderProducer _builderProducer;
     private protected readonly IGithubClient _gitClient;
+    private protected readonly ICredentialsService _credentialsService;
     public ProjectService(
         CodiCoreContext context,
         IMapper mapper,
@@ -33,7 +34,8 @@ public class ProjectService : BaseService, IProjectService
         ITemplateRepository templateRepository,
         IGitService gitService,
         IBuilderProducer builderProducer,
-        IGithubClient gitClient) : base(context, mapper)
+        IGithubClient gitClient, 
+        ICredentialsService credentialsService) : base(context, mapper)
     {
         _projectsRepository = projectsRepository;
         _fileRepository = fileRepository;
@@ -41,6 +43,7 @@ public class ProjectService : BaseService, IProjectService
         _gitService = gitService;
         _builderProducer = builderProducer;
         _gitClient = gitClient;
+        _credentialsService = credentialsService;
     }
 
     public async Task<ICollection<ProjectDto>> GetAllAsync(Expression<Func<Project, bool>>? predicate = null)
@@ -72,7 +75,7 @@ public class ProjectService : BaseService, IProjectService
         return await _context.UserProjects
             .Include(up => up.Project)
             .Include(up => up.User)
-            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
+            .Where(up => up.User.FirebaseId == firebaseId)
             .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
@@ -83,6 +86,16 @@ public class ProjectService : BaseService, IProjectService
             .Include(up => up.Project)
             .Include(up => up.User)
             .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
+            .Select(up => up.Project)
+            .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
+    }
+
+    public async Task<ICollection<ProjectDto>> GetUserMyProjects(string firebaseId)
+    {
+        return await _context.UserProjects
+            .Include(up => up.Project)
+            .Include(up => up.User)
+            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
             .Select(up => up.Project)
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
@@ -171,8 +184,9 @@ public class ProjectService : BaseService, IProjectService
         {
             throw new InvalidOperationException("Project wasn't imported");
         }
-        
-        var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"));
+
+        var accessToken = await _credentialsService.GetUserAccessToken(gitCloneDto.FirebaseId);
+        var projResponse = await _gitClient.GetRepo(gitCloneDto.Url.Replace("github.com", "api.github.com/repos"), accessToken.Token);
         var result = ProjectHelper.LanguageComparation(projResponse.Language);
         var project = new Project()
         {

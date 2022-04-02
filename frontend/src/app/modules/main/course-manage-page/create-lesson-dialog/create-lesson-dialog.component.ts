@@ -136,7 +136,7 @@ export class CreateLessonDialogComponent extends BaseComponent implements OnInit
             title: formValue.title,
             description: formValue.description,
             courseId: this.course.id,
-            unitId: formValue.unit.id,
+            unitId: formValue.unit?.id,
             templateId: formValue.template.id,
             dueDate: selectedDate
         } as CreateLesson;

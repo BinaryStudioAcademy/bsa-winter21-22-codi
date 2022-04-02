@@ -1,4 +1,3 @@
-import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BaseComponent } from '@core/base/base.component';
@@ -29,6 +28,9 @@ export class PublishAppDialogComponent extends BaseComponent implements OnInit {
     userProjects: ProjectName[] = []
     tags: TagName[] = []
     selectedTags: TagName[] = []
+    imageFile: File;
+    forImage: string;
+    previewImage: string;
 
     form: FormGroup;
 
@@ -120,6 +122,7 @@ export class PublishAppDialogComponent extends BaseComponent implements OnInit {
         let newApp = this.form.value as CreateApp;
         newApp.tags = this.selectedTags.map(t => t.id);
         newApp.projectId = this.form.value.project.id;
+        newApp.image = this.forImage;
 
         this.appService.createApp(newApp)
             .pipe(takeUntil(this.unsubscribe$))
@@ -137,5 +140,32 @@ export class PublishAppDialogComponent extends BaseComponent implements OnInit {
 
     closeDialog() {
         this.modal.close();
+    }
+
+    handleFileInput(target: any) {
+        this.imageFile = target.files[0];
+
+        if (!this.imageFile) {
+            target.value = '';
+            return;
+        }
+
+        if (this.imageFile.size / 1000000 > 5) {
+            this.notificationService.showErrorMessage(`Image can't be heavier than ~5MB`);
+            target.value = '';
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.addEventListener('load', () => ( this.previewImage = reader.result as string));
+        reader.readAsDataURL(this.imageFile);
+        reader.onloadend = () => {
+            this.forImage = reader.result as string;
+        };
+    }
+
+    removeImage() {
+        this.previewImage = '';
+        this.forImage = '';
     }
 }

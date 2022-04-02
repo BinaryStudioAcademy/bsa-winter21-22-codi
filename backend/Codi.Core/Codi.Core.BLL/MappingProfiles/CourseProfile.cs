@@ -11,7 +11,8 @@ namespace Codi.Core.BLL.MappingProfiles
             CreateMap<Course, CourseDto>()
                 .ForMember(p => p.Avatar, o => o.MapFrom(c => c.Avatar == null ? "" : c.Avatar.URL));
             CreateMap<CreateCourseDto, Course>();
-            CreateMap<UpdateCourseDto, Course>();
+            CreateMap<UpdateCourseDto, Course>()
+                .ForMember(p => p.Avatar, o => o.MapFrom(c => c.Avatar == null ? null : new Image { URL = c.Avatar }));
             CreateMap<CourseUser, CourseUserDto>().ReverseMap();
             CreateMap<InviteCourseUserDto, CourseUser>(); 
         }

@@ -19,6 +19,8 @@ import {BaseComponent} from "@core/base/base.component";
 export class UpdateCourseDialogComponent extends BaseComponent implements OnInit {
     @Input() course: Course;
     form: FormGroup;
+    imageFile: File;
+    forImage: string;
 
     constructor(
         public modal: NgbActiveModal,
@@ -55,6 +57,7 @@ export class UpdateCourseDialogComponent extends BaseComponent implements OnInit
             id: this.course.id,
             displayName: formValue.displayName,
             description: formValue.description,
+            avatar: this.forImage ? this.forImage : this.course.avatar
         } as UpdateCourse;
         this.courseService.update(updateCourse)
             .pipe(takeUntil(this.unsubscribe$))
@@ -71,5 +74,27 @@ export class UpdateCourseDialogComponent extends BaseComponent implements OnInit
                     this.notificationService.showSuccessMessage('Course updated', 'Success');
                 }
             });
+    }
+
+    handleFileInput(target: any) {
+        this.imageFile = target.files[0];
+
+        if (!this.imageFile) {
+            target.value = '';
+            return;
+        }
+
+        if (this.imageFile.size / 1000000 > 5) {
+            this.notificationService.showErrorMessage(`Image can't be heavier than ~5MB`);
+            target.value = '';
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.addEventListener('load', () => (this.course.avatar = reader.result as string));
+        reader.readAsDataURL(this.imageFile);
+        reader.onloadend = () => {
+            this.forImage = reader.result as string;
+        };
     }
 }
