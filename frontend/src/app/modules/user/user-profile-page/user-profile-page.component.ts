@@ -8,8 +8,8 @@ import { AuthService } from "@core/services/auth.service";
 import { ProjectService } from "@core/services/project.service";
 import { ProjectWithLanguage } from "@core/models/project/project-with-language";
 import { NotificationService } from "@core/services/notification.service";
-import { Languages } from "@shared/constants/languages";
 import { IconLanguageHelper } from "@shared/helpers/icon-language-helper";
+import { Language } from "@core/enums/language";
 
 @Component({
     selector: 'app-user-profile-page',
@@ -84,7 +84,7 @@ export class UserProfilePageComponent extends BaseComponent implements OnInit {
     }
 
     forEnum(index: number) {
-        return Object.values(Languages)[index];
+        return Object.values(Language)[index];
     }
 
 }
