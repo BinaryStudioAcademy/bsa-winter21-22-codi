@@ -39,6 +39,7 @@ services:
         args:
           - PROJECT_PORT=5090
       container_name: 'codi_builder'
+      privileged: true
       restart: on-failure
       ports:
           - "5090:5090"
@@ -46,6 +47,8 @@ services:
           - back
       environment:
           ASPNETCORE_ENVIRONMENT: 'Development'
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
 
   codi_client:
     depends_on:

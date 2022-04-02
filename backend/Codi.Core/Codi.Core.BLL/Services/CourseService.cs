@@ -111,6 +111,7 @@ public class CourseService : BaseService, ICourseService
     public async Task<CourseDto> GetCourseByNameAsync(string courseName)
     {
         var course = await _context.Courses
+            .Include(c => c.Avatar)
             .Include(cu => cu.CourseUsers)
             .ThenInclude(u => u.User)
             .ThenInclude(a => a.Avatar)

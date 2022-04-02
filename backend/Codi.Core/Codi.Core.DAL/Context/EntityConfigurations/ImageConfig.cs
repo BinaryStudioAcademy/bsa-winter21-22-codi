@@ -6,10 +6,6 @@ namespace Codi.Core.DAL.Context.EntityConfigurations
 {
     public class ImageConfig : IEntityTypeConfiguration<Image>
     {
-        public void Configure(EntityTypeBuilder<Image> builder)
-        {
-            builder.Property(e => e.URL)
-                .HasMaxLength(2000);
-        }
+        public void Configure(EntityTypeBuilder<Image> builder) { }
     }
 }

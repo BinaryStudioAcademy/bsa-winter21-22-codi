@@ -3,12 +3,23 @@
         <div class="back-link"><a routerLink="/main/courses">< back to all courses</a></div>
         <div class="team-profile">
             <div class="course-info">
-                <img type="button" class="avatar"
-                     src="/assets/images/robot.png" alt="course avatar"
-                     *ngIf="!currentCourseUser.courseRole; else forMember"
-                     (click)="editCourse(currentCourse)">
-                <ng-template #forMember>
-                    <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar">
+                <div class="avatar" *ngIf="currentCourse.avatar; else generic">
+                    <img type="button" class="avatar"
+                         src="{{currentCourse.avatar}}" alt="course avatar"
+                         *ngIf="!currentCourseUser.courseRole; else forMember"
+                         (click)="editCourse(currentCourse)">
+                    <ng-template #forMember>
+                        <img type="button" class="avatar" src="{{currentCourse.avatar}}" alt="course avatar">
+                    </ng-template>
+                </div>
+                <ng-template #generic>
+                    <img type="button" class="avatar"
+                         src="/assets/images/robot.png" alt="course avatar"
+                         *ngIf="!currentCourseUser.courseRole; else forMember"
+                         (click)="editCourse(currentCourse)">
+                    <ng-template #forMember>
+                        <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar">
+                    </ng-template>
                 </ng-template>
                 <div class="info">
                     <div class="d-flex">

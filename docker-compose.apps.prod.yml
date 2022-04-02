@@ -32,6 +32,7 @@ services:
     codi_builder:
         image: tatihutii/codi_builder:latest
         container_name: 'codi_builder'
+        privileged: true
         restart: on-failure
         networks:
             - back
@@ -41,6 +42,8 @@ services:
                 ASPNETCORE_ENVIRONMENT: 'Production'
         env_file:
             - /etc/environment
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
 
     codi_frontend:
         depends_on:
