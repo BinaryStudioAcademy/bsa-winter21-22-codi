@@ -23,7 +23,7 @@ public class DockerProcessService : IDockerProcessService
 
     public BuildDockerImageResult BuildDockerImage(BuildProjectRequestDto request, string sourcePath)
     {
-        var processInfo = new ProcessStartInfo("docker", $"build --quiet {sourcePath} .")
+        var processInfo = new ProcessStartInfo("docker", $"build --quiet {sourcePath}")
         {
             CreateNoWindow = true,
             UseShellExecute = false,
