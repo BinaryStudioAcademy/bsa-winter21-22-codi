@@ -17,6 +17,7 @@ import { ConfirmationDialogService } from "@core/services/confirmation-dialog.se
 import { ConfirmationDialogResult } from "@core/models/confirmation-dialog/confirmation-dialog-result";
 import { NotificationService } from "@core/services/notification.service";
 import { ProjectSaverService } from "@core/services/project-saver.service";
+import { BuildHubService } from '@core/hubs/build-hub.service';
 import { FunctionsUsingCSI, NgTerminal } from 'ng-terminal';
 import { ConsoleService } from '@core/services/console.service';
 
@@ -53,12 +54,14 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
         private fileService: FileService,
         private projectSaverService: ProjectSaverService,
         private notificationService: NotificationService,
+        private buildHub: BuildHubService,
         private consoleService: ConsoleService,
     ) {
         super();
     }
 
     override ngOnDestroy() {
+        this.buildHub.stop();
         super.ngOnDestroy();
     }
 
