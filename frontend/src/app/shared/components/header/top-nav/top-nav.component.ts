@@ -59,10 +59,10 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                     this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
                 })
 
-            await this.buildHub.start();
-            this.buildHub.listenMessages((output) => {
-                this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
-            });
+            // await this.buildHub.start();
+            // this.buildHub.listenMessages((output) => {
+            //     this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
+            // });
         }
     }
 
