@@ -3,12 +3,23 @@
         <div class="back-link"><a routerLink="/main/courses">< back to all courses</a></div>
         <div class="team-profile">
             <div class="course-info">
-                <img type="button" class="avatar"
-                     src="/assets/images/robot.png" alt="course avatar"
-                     *ngIf="!currentCourseUser.courseRole; else forMember"
-                     (click)="editCourse(currentCourse)">
-                <ng-template #forMember>
-                    <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar">
+                <div class="avatar" *ngIf="currentCourse.avatar; else generic">
+                    <img type="button" class="avatar"
+                         src="{{currentCourse.avatar}}" alt="course avatar"
+                         *ngIf="!currentCourseUser.courseRole; else forMember"
+                         (click)="editCourse(currentCourse)">
+                    <ng-template #forMember>
+                        <img type="button" class="avatar" src="{{currentCourse.avatar}}" alt="course avatar">
+                    </ng-template>
+                </div>
+                <ng-template #generic>
+                    <img type="button" class="avatar"
+                         src="/assets/images/robot.png" alt="course avatar"
+                         *ngIf="!currentCourseUser.courseRole; else forMember"
+                         (click)="editCourse(currentCourse)">
+                    <ng-template #forMember>
+                        <img type="button" class="avatar" src="/assets/images/robot.png" alt="course avatar">
+                    </ng-template>
                 </ng-template>
                 <div class="info">
                     <div class="d-flex">
@@ -19,12 +30,12 @@
                     <div class="username">
                         @{{currentCourse.name}}
                     </div>
-                    <p class="description username">
+                    <p class="course-description username">
                         {{currentCourse.description}}
                     </p>
                 </div>
             </div>
-            <button class="btn btn-primary" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="editCourse(currentCourse)">Edit</button>
+            <button class="btn btn-primary edit" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="editCourse(currentCourse)">Edit</button>
         </div>
         <div class="team-members">
             <div class="team-member-avatar" *ngIf="courseUserSize <= sizeMember; else moreMember">
@@ -76,12 +87,12 @@
                             <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Admin" [routerLink]="['/workspace', lesson.projectId]">
                                 {{lesson.title}}
                             </div>
-                            <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Member">
+                            <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Member" [routerLink]="['/workspace', lesson.projectId]">
                                 {{lesson.title}}
                             </div>
                             <a class="item-description"  *ngIf="lesson?.description" (click)="showLessonDescription(lesson)">see description</a>
                         </div>
-                        <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Member">Start Project</a>
+                        <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Member" [routerLink]="['/workspace', lesson.projectId]">Start Project</a>
                         <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Admin">View Submissions</a>
                         <div ngbDropdown container="body" placement="left-top" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
                             <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
@@ -121,12 +132,12 @@
                                 <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Admin" [routerLink]="['/workspace', lesson.projectId]">
                                     {{lesson.title}}
                                 </div>
-                                <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Member">
+                                <div class="item-title" *ngIf="currentCourseUser.courseRole === courseRole.Member" [routerLink]="['/workspace', lesson.projectId]">
                                     {{lesson.title}}
                                 </div>
                                 <a class="item-description"  *ngIf="lesson?.description" (click)="showLessonDescription(lesson)">see description</a>
                             </div>
-                            <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Member">Start Project</a>
+                            <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Member" [routerLink]="['/workspace', lesson.projectId]">Start Project</a>
                             <a class="item-submission" *ngIf="currentCourseUser.courseRole === courseRole.Admin">View Submissions</a>
                             <div ngbDropdown container="body" placement="left-top" *ngIf="currentCourseUser.courseRole === courseRole.Admin">
                                 <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>

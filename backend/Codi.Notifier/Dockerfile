@@ -1,4 +1,3 @@
-
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 ARG PROJECT_PORT
 WORKDIR /app
@@ -7,6 +6,8 @@ EXPOSE $PROJECT_PORT
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
 COPY ["Codi.Notifier/Codi.Notifier.WebAPI/Codi.Notifier.WebAPI.csproj", "Codi.Notifier/Codi.Notifier.WebAPI/"]
+COPY ["Codi.Core/Codi.Core.Common/Codi.Core.Common.csproj", "Codi.Core/Codi.Core.Common/"]
+COPY ["Codi.RabbitMQ/Codi.RabbitMQ.csproj", "Codi.RabbitMQ/"]
 
 RUN dotnet restore "Codi.Notifier/Codi.Notifier.WebAPI/Codi.Notifier.WebAPI.csproj"
 COPY . .

@@ -30,7 +30,11 @@
                     <div class="course">
                         <div class="course-container">
                             <div class="course-info">
-                                <img class="avatar-sm" src="/assets/images/robot.png" alt="course avatar">
+                                <img *ngIf="course.avatar;else genericCourse" class="avatar-sm"
+                                     src="{{course.avatar}}" alt="course avatar">
+                                <ng-template #genericCourse>
+                                    <img class="avatar-sm" src="/assets/images/robot.png" alt="avatar">
+                                </ng-template>
                                 <div class="course-name" [routerLink]="['/main/courses', course.name]">{{course.displayName}}</div>
                             </div>
                             <div class="user-settings">

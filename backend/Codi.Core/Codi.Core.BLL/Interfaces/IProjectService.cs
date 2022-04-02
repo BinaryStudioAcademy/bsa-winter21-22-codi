@@ -14,6 +14,7 @@ namespace Codi.Core.BLL.Interfaces
         Task<ICollection<ProjectWithLanguageDto>> GetLastGitUserProjects(string firebaseId);
         Task<ICollection<ProjectDto>> GetUserProjects(string firebaseId);
         Task<ICollection<ProjectDto>> GetUserGitProjects(string firebaseId);
+        Task<ICollection<ProjectDto>> GetUserMyProjects(string firebaseId);
         Task<ProjectDto> GetByIdAsync(long projectId);
         Task<ProjectDto> CreateAsync(NewProjectDto newProjectDto);
         Task<ProjectDto> CreateUserProjectAsync(NewProjectDto newProjectDto);

@@ -15,7 +15,7 @@ namespace Codi.Core.BLL.MappingProfiles
                 .ForMember(p => p.Avatar, o => o.MapFrom(c => c.Avatar == null ? null : c.Avatar.URL))
                 .ForMember(p => p.FullName, o => o.MapFrom(c => $"{c.FirstName} {c.LastName}"));
             CreateMap<UserDto, User>()
-                .ForMember(p => p.Avatar, o => o.Ignore());
+                .ForMember(p => p.Avatar, o => o.MapFrom(c => c.Avatar == null ? null : new Image { URL = c.Avatar }));
             CreateMap<CreateUserDto, User>()
                 .ForMember(p => p.Email,
                     o => o.MapFrom(c => c.Email ?? ""))

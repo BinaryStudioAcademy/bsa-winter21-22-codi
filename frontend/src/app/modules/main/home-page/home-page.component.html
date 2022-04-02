@@ -28,7 +28,7 @@
     <div class="heading-content-container mt-3">
         <div class="heading-content">
             <h2>Recent</h2>
-            <a class="align-self-end" routerLink="/main/projects">See all projects</a>
+            <a class="align-self-end" routerLink="/main/myprojects">See all projects</a>
         </div>
         <div class="external-content-container">
             <div class="content-container" *ngFor="let project of projects" [routerLink]="['/workspace', project.id]">
@@ -70,13 +70,13 @@
                     </div>
                 </div>
                 <div class="content-container-bottom">
-                    <div class="bottom-language-container">
+                    <div class="bottom-language-container" *ngIf="iconForLanguage(project.language)">
                         <button type="button" class="create-button">
                             <img class="language-icon" [src]="iconForLanguage(project.language)" alt="lang">
                             {{forEnum(project.language)}}
                         </button>
                     </div>
-                <i class="git-icon fa fa-github"></i>    
+                    <i class="git-icon fa fa-github"></i>
                 </div>
             </div>
         </div>
