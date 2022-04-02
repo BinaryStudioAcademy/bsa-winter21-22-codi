@@ -39,29 +39,7 @@
             </ngx-monaco-editor>
         </div>
         <div class="output">
-            <div class="output-form">
-                <div class="output-form-header">
-                    <div class="output-url">
-                        <img class="output-icon" src="assets/images/workspace/reload.svg">
-                        <div class="output-url-text" contenteditable="true">
-                            http://ProjectName
-                        </div>
-                    </div>
-                    <div>
-                        <img class="output-icon" src="assets/images/workspace/edit.svg">
-                        <img class="output-icon" src="assets/images/workspace/fullscreen.svg">
-                    </div>
-                </div>
-            </div>
-            <div class="sizer"></div>
-            <div class="console">
-                <div class="console-title">
-                    Console
-                </div>
-                <div class="example-text" contenteditable="true">
-                    Code 200: OK
-                </div>
-            </div>
+            <ng-terminal #term></ng-terminal>
         </div>
     </div>
 </app-header>
