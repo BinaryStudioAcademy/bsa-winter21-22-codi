@@ -10,8 +10,7 @@ import { NotificationService } from "@core/services/notification.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProjectService } from "@core/services/project.service";
 import { ProjectSaverService } from "@core/services/project-saver.service";
-import { BuildHubService } from '@core/hubs/build-hub.service';
-
+import { ConsoleService } from "@core/services/console.service";
 @Component({
     selector: 'app-top-nav',
     templateUrl: './top-nav.component.html',
@@ -31,7 +30,7 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
         private route: ActivatedRoute,
         private projectService: ProjectService,
         private projectSaverService: ProjectSaverService,
-        private buildHub: BuildHubService,
+        private consoleService: ConsoleService,
     ) {
         super();
     }
@@ -60,10 +59,10 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                     this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
                 })
 
-            await this.buildHub.start();
-            this.buildHub.listenMessages((output) => {
-                this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
-            });
+            // await this.buildHub.start();
+            // this.buildHub.listenMessages((output) => {
+            //     this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
+            // });
         }
     }
 
@@ -75,18 +74,19 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                 .subscribe()
         }
 
-        this.buildHub.stop();
         super.ngOnDestroy();
     }
 
     runProject() {
-        this.projectRunning = true;
-        this.projectService
-            .runProject(this.projectSaverService.projectInfo.id)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(() => {
-                this.notificationService.showSuccessMessage(undefined, "Project build started");
-            })
+        // this.projectRunning = true;
+        // this.projectService
+        //     .runProject(this.projectSaverService.projectInfo.id)
+        //     .pipe(takeUntil(this.unsubscribe$))
+        //     .subscribe(() => {
+        //         this.notificationService.showSuccessMessage(undefined, "Project build started");
+        //     })
+
+        this.consoleService.startProject();
     }
 
     logout() {

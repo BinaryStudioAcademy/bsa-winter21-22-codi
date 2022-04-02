@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { FormsModule } from '@angular/forms';
 import { TreeModule } from "@circlon/angular-tree-component";
+import { NgTerminalModule } from 'ng-terminal';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { TreeModule } from "@circlon/angular-tree-component";
         NgbModule,
         FormsModule,
         MonacoEditorModule,
-        TreeModule
+        TreeModule,
+        NgTerminalModule
     ]
 })
 export class WorkspaceModule { }
