@@ -3,6 +3,9 @@ const GetLanguageByExtension = (extension: string) => {
         case "cs":
         case "csproj":
             return "csharp";
+        case "fs":
+        case "fsproj":
+            return "fsharp"
         case "cpp":
             return "c";
         case "js":
