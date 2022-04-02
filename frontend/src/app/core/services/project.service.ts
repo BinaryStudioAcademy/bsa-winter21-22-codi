@@ -68,6 +68,10 @@ export class ProjectService {
         return this.httpService.postRequest(`${this.routePrefix}/${id}/stop`, {});
     }
 
+    inputProject(id: number, value: string) {
+        return this.httpService.postRequest(`${this.routePrefix}/${id}/input`, {value});
+    }
+
     getCurrentUserGitLastProjects() {
         return this.httpService.getRequest<ProjectWithLanguage[]>(`${this.routePrefix}/my/gitlast`)
     }
