@@ -19,12 +19,12 @@
                     <div class="username">
                         @{{currentCourse.name}}
                     </div>
-                    <p class="description username">
+                    <p class="course-description username">
                         {{currentCourse.description}}
                     </p>
                 </div>
             </div>
-            <button class="btn btn-primary" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="editCourse(currentCourse)">Edit</button>
+            <button class="btn btn-primary edit" *ngIf="currentCourseUser.courseRole === courseRole.Admin" (click)="editCourse(currentCourse)">Edit</button>
         </div>
         <div class="team-members">
             <div class="team-member-avatar" *ngIf="courseUserSize <= sizeMember; else moreMember">
