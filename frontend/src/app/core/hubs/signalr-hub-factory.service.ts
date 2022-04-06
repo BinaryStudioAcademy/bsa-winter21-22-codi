@@ -22,6 +22,9 @@ export class SignalRHubFactoryService {
         }
 
         const hub = this.buildHub(hubUrl);
+        hub.onclose(() => {
+            this.hubLookup.delete(hubUrl);
+        })
         this.hubLookup.set(hubUrl, hub);
 
         return hub;

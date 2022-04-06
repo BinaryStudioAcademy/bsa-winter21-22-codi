@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
-import { CodiHttpClientService } from "@core/services/codi-http-client.service";
 import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ConsoleService {
-    start$ = new Subject<string>();
+    receivedOutput$ = new Subject<void>();
+    startProject$ = new Subject<void>();
+    toggleConsole$ = new Subject<void>();
+    stopContainer$ = new Subject<void>();
 
-    constructor(private httpService: CodiHttpClientService) {}
+    constructor() {}
+
+    receivedOutput() {
+        this.receivedOutput$.next();
+    }
 
     startProject() {
-        this.start$.next("started");
+        this.startProject$.next();
+    }
+
+    toggleConsole() {
+        this.toggleConsole$.next();
+    }
+
+    stopContainer() {
+        this.stopContainer$.next();
     }
 }

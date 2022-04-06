@@ -3,9 +3,9 @@
 .content
     height: 100%
     padding: 0
-    display: flex
+    display: grid
+
     .explorer
-        width: 20%
         background-color: $background-panel-color-light
         border-radius: $border-radius
         .explorer-header
@@ -33,7 +33,8 @@
             padding: 0 10px
 
     .editor
-        width: 50%
+        height: 100%
+        position: relative
         margin: 0px 10px 0px 10px
         background-color: #1e1e1e
         border-radius: $border-radius
@@ -61,11 +62,18 @@
                         opacity: 75%
         .code-editor
             width: 100%
+            height: calc(100% - 40px)
             border-radius: $border-radius
             background-color: #1e1e1e
 
     .output
-        width: 40%
+        height: calc(100% - 5px)
 
 .selected-node
     background-color: $background-selected-tab-color
+
+.content-console
+    grid-template-columns: 15% 45% 40%
+
+.content-editor
+    grid-template-columns: 20% 80%
