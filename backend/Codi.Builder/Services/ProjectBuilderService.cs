@@ -74,6 +74,14 @@ public class ProjectBuilderService : IProjectBuilderService
         {
             _logger.LogError("Error while building and running docker image.\n" + ex.Message);
             Directory.Delete(projectFileStructurePath, true);
+            _outputProducer.SendProjectOutput(new ProjectOutputDto
+            {
+                Output = ex.Message,
+                IsError = true,
+                ProjectId = buildRequest.ProjectId,
+                TimeStamp = DateTime.Now,
+                UserId = buildRequest.UserId,
+            });
         }
     }
 
@@ -114,6 +122,14 @@ public class ProjectBuilderService : IProjectBuilderService
         catch (Exception ex)
         {
             _logger.LogError("Error while input data into container.\n" + ex.Message);
+            _outputProducer.SendProjectOutput(new ProjectOutputDto
+            {
+                Output = ex.Message,
+                IsError = true,
+                ProjectId = inputDto.ProjectId,
+                TimeStamp = DateTime.Now,
+                UserId = inputDto.UserId,
+            });
         }
     }
 
@@ -133,17 +149,15 @@ public class ProjectBuilderService : IProjectBuilderService
     {
         return (sender, args) =>
         {
-            if (!string.IsNullOrEmpty(args.Data))
+            _outputProducer.SendProjectOutput(new ProjectOutputDto
             {
-                _outputProducer.SendProjectOutput(new ProjectOutputDto
-                {
-                    Output = args.Data,
-                    IsError = isError,
-                    ProjectId = buildRequest.ProjectId,
-                    TimeStamp = DateTime.Now,
-                    UserId = buildRequest.UserId,
-                });
-            }
+                Output = args.Data == null ? "\r\n" : $"{args.Data}\r\n",
+                IsError = isError,
+                ProjectId = buildRequest.ProjectId,
+                TimeStamp = DateTime.Now,
+                UserId = buildRequest.UserId,
+            });
+
         };
     }
 

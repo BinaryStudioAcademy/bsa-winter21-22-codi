@@ -10,13 +10,14 @@ import { NotificationService } from "@core/services/notification.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ProjectService } from "@core/services/project.service";
 import { ProjectSaverService } from "@core/services/project-saver.service";
-import { ConsoleService } from "@core/services/console.service";
+import { ConsoleService } from '@core/services/console.service';
 @Component({
     selector: 'app-top-nav',
     templateUrl: './top-nav.component.html',
-    styleUrls: ['./top-nav.component.sass', 'top-nav.compunent.style2.sass'],
+    styleUrls: ['./top-nav.component.sass', 'top-nav.component.style2.sass'],
 })
 export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy {
+    projectBuilding: boolean = false;
     projectRunning: boolean = false;
     userCanEdit: boolean = false;
     currentUser: User;
@@ -30,7 +31,7 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
         private route: ActivatedRoute,
         private projectService: ProjectService,
         private projectSaverService: ProjectSaverService,
-        private consoleService: ConsoleService,
+        private consoleService: ConsoleService
     ) {
         super();
     }
@@ -58,35 +59,22 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
                 .subscribe(() => {
                     this.projectSaverService.setProjectTitleIfChanged(this.form.value.title);
                 })
-
-            // await this.buildHub.start();
-            // this.buildHub.listenMessages((output) => {
-            //     this.notificationService.showInfoMessage(output.output, "Project #" + output.projectId.toString());
-            // });
-        }
-    }
-
-    override ngOnDestroy() {
-
-        if (this.projectRunning) {
-            this.projectService
-                .stopProject(this.projectSaverService.projectInfo.id)
-                .subscribe()
         }
 
-        super.ngOnDestroy();
+        this.consoleService.receivedOutput$.subscribe(() => {
+            this.projectBuilding = false;
+            this.projectRunning = true;
+        })
     }
 
     runProject() {
-        // this.projectRunning = true;
-        // this.projectService
-        //     .runProject(this.projectSaverService.projectInfo.id)
-        //     .pipe(takeUntil(this.unsubscribe$))
-        //     .subscribe(() => {
-        //         this.notificationService.showSuccessMessage(undefined, "Project build started");
-        //     })
-
+        this.projectBuilding = true;
         this.consoleService.startProject();
+    }
+
+    stopContainer(){
+        this.projectRunning = false;
+        this.consoleService.stopContainer();
     }
 
     logout() {
@@ -104,7 +92,11 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
 
     saveChanges() {
         this.projectSaverService.saveChanges();
-        this.notificationService.showSuccessMessage('Project changes saved', 'Success');
+        this.notificationService.showSuccessMessage(undefined, 'Project changes saved');
+    }
+
+    toggleConsole() {
+        this.consoleService.toggleConsole();
     }
 
     anyChangesSaved() {
@@ -116,7 +108,7 @@ export class TopNavComponent extends BaseComponent implements OnInit, OnDestroy 
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe((res) => {
                 this.userCanEdit = res;
-                if(!this.userCanEdit) {
+                if (!this.userCanEdit) {
                     this.form.controls['title'].disable();
                 }
             });

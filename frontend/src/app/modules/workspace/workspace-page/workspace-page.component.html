@@ -1,5 +1,5 @@
 <app-header>
-    <div class="content">
+    <div class="content" [class.content-console]="isConsoleShow" [class.content-editor]="!isConsoleShow">
         <div class="explorer">
             <div class="explorer-header">
                 <div>Files</div>
@@ -38,7 +38,7 @@
             <ngx-monaco-editor class="code-editor" [options]="editorOptions" [(ngModel)]="currentCode" (ngModelChange)="onCodeChange($event)">
             </ngx-monaco-editor>
         </div>
-        <div class="output">
+        <div class="output" [style.display]="isConsoleShow ? 'block' : 'none'">
             <ng-terminal #term></ng-terminal>
         </div>
     </div>

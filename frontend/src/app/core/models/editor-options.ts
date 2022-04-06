@@ -2,5 +2,7 @@ export interface EditorOptions {
     theme: string,
     scrollBeyondLastLine: boolean,
     language?: string,
-    readOnly: boolean
+    readOnly: boolean,
+    automaticLayout: boolean,
+    convertEol: boolean
 }

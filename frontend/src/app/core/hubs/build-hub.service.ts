@@ -33,12 +33,14 @@ export class BuildHubService {
     async stop() {
         await this.hubConnection?.stop();
         this.subscriptions.forEach(s => s.unsubscribe());
+        this.subscriptions = [];
+        console.log(this.hubConnection.baseUrl + " connection stopped")
     }
 
     private async init() {
         await this.hubConnection.start()
-            .then(() => console.info(`"${this.hubFactory}" successfully started.`))
-            .catch(() => console.info(`"${this.hubFactory}" failed.`));
+            .then(() => console.info(`"${this.hubConnection.baseUrl}" successfully started.`))
+            .catch(() => console.info(`"${this.hubConnection.baseUrl}" failed.`));
 
         this.hubConnection.on('ReceiveProjectOutput', (output: ProjectOutput) => {
             this.messages.next(output);

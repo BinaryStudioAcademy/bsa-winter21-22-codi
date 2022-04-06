@@ -22,13 +22,27 @@
         </div>
         <div class="navbar-center">
             <div class="buttons-container">
-                <button (click)="runProject()" class="button-item mx-3 run-btn">
-                    <span class="button-text">Run</span>
-                    <img class="button-icon run-icon" src="assets/images/workspace/runbttn.svg">
+                <button (click)="runProject()" [disabled]="projectBuilding" class="btn btn-primary mx-2 px-4">
+                    <ng-template [ngIf]="!projectBuilding">
+                        <i class="fa fa-play mr-2 text-white-50"></i>
+                        <span class="button-text">Run</span>
+                    </ng-template>
+
+                    <ng-template [ngIf]="projectBuilding">
+                        <div class="spinner-border text-white-50 spinner-border-sm mx-4" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+                    </ng-template>
                 </button>
-                <button class="button-item save-btn" *ngIf="!anyChangesSaved()" (click)="saveChanges()">
+                <button (click)="toggleConsole()" class="btn btn-primary mx-2">
+                    <i class="fa fa-terminal"></i>
+                </button>
+                <button *ngIf="projectRunning" (click)="stopContainer()" class="btn btn-danger mx-2">
+                    <i class="fa fa-stop-circle"></i>
+                </button>
+                <button class="btn btn-success mx-2" *ngIf="!anyChangesSaved()" (click)="saveChanges()">
+                    <i class="fa fa-save mr-2 text-white-50"></i>
                     <span class="button-text">Save changes</span>
-                    <img class="button-icon" src="assets/images/workspace/floppy-disk.png">
                 </button>
             </div>
         </div>

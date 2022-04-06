@@ -18,6 +18,7 @@ import { ConfirmationDialogResult } from "@core/models/confirmation-dialog/confi
 import { NotificationService } from "@core/services/notification.service";
 import { ProjectSaverService } from "@core/services/project-saver.service";
 import { FunctionsUsingCSI, NgTerminal } from 'ng-terminal';
+import { BuildHubService } from '@core/hubs/build-hub.service';
 import { ConsoleService } from '@core/services/console.service';
 
 @Component({
@@ -30,6 +31,8 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
     editorOptions: EditorOptions;
 
     userCanEdit: boolean = false;
+    projectRunning: boolean = false;
+    isConsoleShow: boolean = false;
     projectId: number;
     projectStructure: ProjectStructure;
     fsNodeType = FsNodeType;
@@ -38,11 +41,11 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
     selectedFile: File;
     initialCode: string;
     currentCode: string;
-    input: string;
+    input: string = "";
 
     codeChanged: Subject<string> = new Subject<string>();
 
-    @ViewChild('term', { static: true }) child: NgTerminal;
+    @ViewChild('term', { static: true }) terminal: NgTerminal;
 
     constructor(
         private route: ActivatedRoute,
@@ -53,45 +56,17 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
         private fileService: FileService,
         private projectSaverService: ProjectSaverService,
         private notificationService: NotificationService,
+        private buildHub: BuildHubService,
         private consoleService: ConsoleService,
     ) {
         super();
     }
 
-    override ngOnDestroy() {
+    override async ngOnDestroy() {
+        if(this.projectRunning)
+            this.stopProject();
+        await this.buildHub.stop();
         super.ngOnDestroy();
-    }
-
-
-    ngAfterViewInit() {
-        this.child.write(FunctionsUsingCSI.cursorColumn(1));
-
-        this.child.keyEventInput.subscribe(e => {
-            console.log('keyboard event:' + e.domEvent.keyCode + ', ' + e.key);
-
-            const ev = e.domEvent;
-            const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
-
-            if (ev.keyCode === 13) {
-                this.sendInput(this.input);
-                this.input = "";
-            } else if (ev.keyCode === 8) {
-                if (this.child.underlying.buffer.active.cursorX > 2) {
-                    this.child.write('\b \b');
-                }
-            } else if (printable) {
-                this.child.write(e.key);
-                this.input = this.input + e.key;
-            }
-        })
-
-    }
-
-    sendInput(input: string) {
-        this.projectService
-            .inputProject(this.projectSaverService.projectInfo.id, input)
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(() => {})
     }
 
     async ngOnInit() {
@@ -112,19 +87,88 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
                 this.setFileChanges(code)
             })
 
-        this.consoleService.start$.subscribe(() => {
-            setTimeout(() => {
-                this.child.write("Hello World!");
+        await this.buildHub.start();
+        this.buildHub.listenMessages((output) => {
+            if (!this.projectRunning) {
+                this.consoleService.receivedOutput();
+                this.projectRunning = true;
+            }
+            this.terminal.write(output.output);
+        });
 
-                this.child.write('\n' + FunctionsUsingCSI.cursorColumn(1));
-                let secs = 0;
-                setInterval(() => {
-                    secs++;
-                    this.child.write("Seconds: " + secs);
-                    this.child.write('\n' + FunctionsUsingCSI.cursorColumn(1));
-                }, 1000)
-            }, 4000)
+        this.consoleService.startProject$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+                this.projectRunning = false;
+                this.runProject();
+                if(!this.isConsoleShow) this.isConsoleShow = true;
+            })
+
+        this.consoleService.toggleConsole$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+                this.isConsoleShow = !this.isConsoleShow;
+            })
+
+        this.consoleService.stopContainer$
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+                this.projectRunning = false;
+                this.stopProject();
+            })
+    }
+
+    ngAfterViewInit() {
+        this.terminal.keyEventInput.subscribe(e => {
+            const ev = e.domEvent;
+            const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
+
+            if (ev.keyCode === 13) {
+                if (this.input !== "") this.sendInput(this.input);
+                this.input = "";
+            } else if (ev.keyCode === 8) {
+                if (this.terminal.underlying.buffer.active.cursorX > 2) {
+                    this.terminal.write('\b \b');
+                }
+            } else if (printable) {
+                this.terminal.write(e.key);
+                this.input = this.input + e.key;
+            }
         })
+    }
+
+    runProject() {
+        this.projectService
+            .runProject(this.projectSaverService.projectInfo.id)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+                this.notificationService.showSuccessMessage(undefined, "Project build started");
+                this.terminal.underlying.clear();
+            })
+    }
+
+    sendInput(input: string) {
+        this.projectService
+            .inputProject(this.projectSaverService.projectInfo.id, input)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                error: (error) => {
+                    this.notificationService.showErrorMessage(error.message, 'Error');
+                }
+            })
+    }
+
+    stopProject() {
+        this.projectService
+            .stopProject(this.projectSaverService.projectInfo.id)
+            .subscribe({
+                next: () => {
+                    this.notificationService.showSuccessMessage(undefined, "Project stopped");
+                },
+                error: (error) => {
+                    this.notificationService.showErrorMessage(error.message, 'Error');
+                }
+            })
     }
 
     onSelectedNode(event: any) {
@@ -185,7 +229,7 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
                 .subscribe((res) => {
                     if (res === ConfirmationDialogResult.Confirm) {
                         this.projectSaverService.saveChanges();
-                        this.notificationService.showSuccessMessage('Project changes saved', 'Success');
+                        this.notificationService.showSuccessMessage(undefined, 'Project changes saved');
                         observer.next(true);
                     }
                     else if (res === ConfirmationDialogResult.Cancel) {
@@ -235,7 +279,9 @@ export class WorkspacePageComponent extends BaseComponent implements OnInit, OnD
             theme: 'vs-dark',
             scrollBeyondLastLine: false,
             language: lang,
-            readOnly: !this.userCanEdit
+            readOnly: !this.userCanEdit,
+            automaticLayout: true,
+            convertEol: true
         };
     }
 

@@ -69,7 +69,7 @@ export class ProjectService {
     }
 
     inputProject(id: number, value: string) {
-        return this.httpService.postRequest(`${this.routePrefix}/${id}/input`, {value});
+        return this.httpService.postRequest(`${this.routePrefix}/${id}/input?value=${value}`, {});
     }
 
     getCurrentUserGitLastProjects() {
