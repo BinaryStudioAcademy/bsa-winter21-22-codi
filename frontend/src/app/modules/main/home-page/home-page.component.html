@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" *ngIf="!loading">
     <div class="heading-content-container">
         <div class="heading-content">
             <h2>Create</h2>
@@ -10,27 +10,32 @@
                     <i class="button fa fa-plus"></i>
                 </button>
                 <button type="button" class="create-button">
-                    <img class="language-icon" src="assets/images/languages/web_project.svg">
+                    <img class="language-icon" src="assets/images/languages/web_project.svg" alt="icon">
                     HTML, CSS, JS
                 </button>
                 <button type="button" class="create-button">
-                    <img class="language-icon" src="assets/images/languages/python.svg">
+                    <img class="language-icon" src="assets/images/languages/python.svg" alt="icon">
                     Python
                 </button>
                 <button type="button" class="create-button">
-                    <img class="language-icon" src="assets/images/languages/java.svg">
+                    <img class="language-icon" src="assets/images/languages/java.svg" alt="icon">
                     Java
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="heading-content-container mt-3">
+    <div class="heading-content-container mt-3" *ngIf="projects.length">
         <div class="heading-content">
             <h2>Recent</h2>
-            <a class="align-self-end" routerLink="/main/myprojects">See all projects</a>
+            <a class="align-self-end" routerLink="/main/projects" *ngIf="projects.length === 5">See all projects</a>
         </div>
-        <div class="external-content-container">
+        <div *ngIf="loadingProjects" class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="external-content-container" *ngIf="!loadingProjects">
             <div class="content-container" *ngFor="let project of projects" [routerLink]="['/workspace', project.id]">
                 <div class="content-container-top">
                     <span class="text">
@@ -40,7 +45,7 @@
                         {{project.createdAt | dateAgo}}
                     </span>
                 </div>
-                <div class="content-container-bottom">
+                <div class="content-container-bottom" *ngIf="project.language">
                     <div class="bottom-language-container">
                         <button type="button" class="create-button">
                             <img class="language-icon" [src]="iconForLanguage(project.language)" alt="lang">
@@ -51,29 +56,38 @@
             </div>
         </div>
     </div>
-    <div class="heading-content-container mt-3">
+    <div class="heading-content-container mt-3" *ngIf="userHasToken; else redirectForToken">
         <div class="heading-content">
             <h2>GitHub repos</h2>
-            <a class="align-self-end" routerLink="/main/gitprojects">View all GitHub repos</a>
+            <a class="align-self-end" routerLink="/main/gitprojects" *ngIf="repositories.length > 5">View all GitHub repos</a>
         </div>
-        <div class="external-content-container">
-            <div class="content-container" *ngFor="let project of gitprojects" [routerLink]="['/workspace', project.id]">
+        <div *ngIf="loadingRepo" class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="external-content-container" *ngIf="!loadingRepo">
+            <div class="content-container" *ngFor="let repo of repositories | slice: 0: 5" (click)="importedGit(repo.name, repo.url)">
                 <div class="content-container-top">
                     <span class="text">
-                        {{project.title}}
+                        {{repo.name}}
                     </span>
                     <div class="rating">
                         <i class="mark-icon fa fa-star"></i>
                         <span class="rating-mark">
-                            {{project.stars}}
+                            {{repo.stars}}
                         </span>
                     </div>
                 </div>
+
+                <div class="content-container-center" *ngIf="repo.description">
+                    <span>{{repo.description}}</span>
+                </div>
+
                 <div class="content-container-bottom">
-                    <div class="bottom-language-container" *ngIf="iconForLanguage(project.language)">
+                    <div class="bottom-language-container" *ngIf="repo.language">
                         <button type="button" class="create-button">
-                            <img class="language-icon" [src]="iconForLanguage(project.language)" alt="lang">
-                            {{forEnum(project.language)}}
+                            {{repo.language}}
                         </button>
                     </div>
                     <i class="git-icon fa fa-github"></i>
@@ -81,4 +95,19 @@
             </div>
         </div>
     </div>
+    <ng-template #redirectForToken>
+        <div class="heading-content">
+            <h2>GitHub repos</h2>
+        </div>
+        <div class="import-button">
+            <button type="button" class="btn btn-outline-primary btn-sm" [routerLink]="['/account']">Import from GitHub</button>
+        </div>
+
+    </ng-template>
+</div>
+
+<div *ngIf="loading" class="loading">
+    <div class="spinner-border text-primary" role="status">
+    </div>
+    <div class="loading-subheader">Creating...</div>
 </div>

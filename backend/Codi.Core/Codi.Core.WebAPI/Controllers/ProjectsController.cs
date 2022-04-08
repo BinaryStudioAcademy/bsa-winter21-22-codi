@@ -56,31 +56,10 @@ namespace Codi.Core.WebAPI.Controllers
             return Ok(projects);
         }
 
-        [HttpGet("my/gitlast")]
-        public async Task<ActionResult<ICollection<ProjectNameDto>>> GetUserGitLastProjects()
-        {
-            var projects = await _projectService.GetLastGitUserProjects(this.GetUserIdFromToken());
-            return Ok(projects);
-        }
-
         [HttpGet("my")]
         public async Task<ActionResult<ICollection<ProjectDto>>> GetUserProjects()
         {
             var projects = await _projectService.GetUserProjects(this.GetUserIdFromToken());
-            return Ok(projects);
-        }
-
-        [HttpGet("mygit")]
-        public async Task<ActionResult<ICollection<ProjectDto>>> GetUserGitProjects()
-        {
-            var projects = await _projectService.GetUserGitProjects(this.GetUserIdFromToken());
-            return Ok(projects);
-        }
-
-        [HttpGet("myprojects")]
-        public async Task<ActionResult<ICollection<ProjectDto>>> GetUserMyProjects()
-        {
-            var projects = await _projectService.GetUserMyProjects(this.GetUserIdFromToken());
             return Ok(projects);
         }
 

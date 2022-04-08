@@ -13,4 +13,8 @@ public class GithubRepositoryFromAPI
     public string Language { get; set; } = default!;
     [JsonProperty("stargazers_count")]
     public uint Stars {  get; set; } = default!;
+    [JsonProperty("private")]
+    public bool IsPrivate { get; set; } = default!;
+    [JsonProperty("description")]
+    public string? Description { get; set; }
 }
