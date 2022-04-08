@@ -21,7 +21,7 @@
                 <tbody>
                     <tr *ngFor="let repository of repositories">
                         <td class="min-width">
-                            <i class="mx-3 fa {{repository.isPrivate ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
+                            <i class="mx-3 fa {{repository.isPrivate ? 'fa-lock text-danger' : 'fa-unlock text-success'}}"></i>
                         </td>
                         <td><a class="text" type="button" (click)="importedGit(repository.name,repository.url)">{{repository.name}}</a></td>
                         <td>{{repository.description}}</td>
