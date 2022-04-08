@@ -35,9 +35,6 @@ const routes: Routes = [{
         path: 'gitprojects',
         component: MyProjectsPageComponent,
     },{
-        path: 'myprojects',
-        component: MyProjectsPageComponent,
-    },{
         path: 'home',
         component: HomePageComponent,
     }, {

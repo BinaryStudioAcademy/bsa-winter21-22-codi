@@ -95,19 +95,19 @@ export class ImportGithubProjectDialogComponent extends BaseComponent implements
         this.projectService
             .gitProjectImport(gitClone)
             .pipe(takeUntil(this.unsubscribe$))
-            .subscribe(
-                (resp) => {
+            .subscribe({
+                next:(resp) => {
                     this.loading = false;
                     this.activeModal.close(resp);
                     this.router.navigate(['workspace', resp.id]).then(() => {
                         this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success');
                     });
                 },
-                () => {
+                error:() => {
                     this.loading = false;
                     this.activeModal.close();
                     this.notificationService.showErrorMessage('Something was wrong', 'Error');
-                });
+                }});
     }
 
     openProjectFromTemplate() {

@@ -6,10 +6,12 @@ import { ConfirmationDialogService } from '@core/services/confirmation-dialog.se
 import { NotificationService } from '@core/services/notification.service';
 import { ProjectCreationModalService } from '@core/services/project-creation-modal.service';
 import { ProjectService } from '@core/services/project.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CreateProjectDialogComponent } from '@shared/components/create-project-dialog/create-project-dialog.component';
 import { takeUntil } from 'rxjs';
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import {GithubRepository} from "@core/models/github/github-repository";
+import {CredentialsService} from "@core/services/credentials.service";
+import {GithubService} from "@core/services/github.service";
+import {GitClone} from "@core/models/git/git-clone";
 
 @Component({
     templateUrl: './my-projects-page.component.html',
@@ -17,24 +19,26 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class MyProjectsPageComponent extends BaseComponent implements OnInit {
 
-    public loading = false;
-    public projects: Project[] = []
-    public gitprojects: Project[] = []
-    public myprojects: Project[] = []
+    loading = false;
+    projects: Project[] = []
+    repositories: GithubRepository[] = [];
+    userHasToken: boolean = false;
 
-    constructor(private projectService: ProjectService,
+    constructor(
+        private projectService: ProjectService,
         private notificationService: NotificationService,
         private projectDialogService: ProjectCreationModalService,
         private confirmationDialogService: ConfirmationDialogService,
-        public router: Router
+        public router: Router,
+        private credentialsService: CredentialsService,
+        private githubService: GithubService
     ) {
         super();
     }
 
     ngOnInit(): void {
         this.loadProjects();
-        this.loadGitProjects();
-        this.loadMyProjects();
+        this.getRepositories();
     }
 
     loadProjects() {
@@ -46,42 +50,6 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
             .subscribe({
                 next: (resp) => {
                     this.projects = resp ?? [];
-                    this.loading = false;
-                },
-                error: (error) => {
-                    this.notificationService.showErrorMessage(error.message, "Error")
-                }
-
-            })
-    }
-
-    loadGitProjects() {
-        this.loading = true;
-
-        this.projectService
-            .getCurrentUserGitProjects()
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (resp) => {
-                    this.gitprojects = resp ?? [];
-                    this.loading = false;
-                },
-                error: (error) => {
-                    this.notificationService.showErrorMessage(error.message, "Error")
-                }
-
-            })
-    }
-
-    loadMyProjects() {
-        this.loading = true;
-
-        this.projectService
-            .getCurrentUserMyProjects()
-            .pipe(takeUntil(this.unsubscribe$))
-            .subscribe({
-                next: (resp) => {
-                    this.myprojects = resp ?? [];
                     this.loading = false;
                 },
                 error: (error) => {
@@ -133,6 +101,37 @@ export class MyProjectsPageComponent extends BaseComponent implements OnInit {
                 },
                 error: (error) => {
                     this.notificationService.showErrorMessage(error.message, "Error")
+                }
+            });
+    }
+
+    private getRepositories() {
+        this.githubService
+            .getUserRepositories()
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((repositories) => {
+                this.repositories = repositories;
+            })
+    }
+
+    importedGit(title: string, url: string) {
+        this.loading = true;
+        let cloneProject = {
+            title: title,
+            url: url
+        } as GitClone;
+        this.projectService.gitProjectImport(cloneProject)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe({
+                next:(resp) => {
+                    this.loading = false;
+                    this.router.navigate(['workspace', resp.id]).then(() => {
+                        this.notificationService.showSuccessMessage(`Project "${resp.title}" created`, 'Success');
+                    });
+                },
+                error:() => {
+                    this.loading = false;
+                    this.notificationService.showErrorMessage('Something was wrong', 'Error');
                 }
             });
     }

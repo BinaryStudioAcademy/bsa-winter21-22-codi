@@ -80,24 +80,28 @@ public class ProjectService : BaseService, IProjectService
             .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
     }
 
-    public async Task<ICollection<ProjectDto>> GetUserGitProjects(string firebaseId)
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId)
     {
         return await _context.UserProjects
             .Include(up => up.Project)
             .Include(up => up.User)
-            .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
+            .Where(up => up.User.FirebaseId == firebaseId)
             .Select(up => up.Project)
-            .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(5)
+            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 
-    public async Task<ICollection<ProjectDto>> GetUserMyProjects(string firebaseId)
+    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
     {
         return await _context.UserProjects
             .Include(up => up.Project)
             .Include(up => up.User)
-            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
+            .Where(up => up.User.Id == userId && up.Project.IsPublic)
             .Select(up => up.Project)
-            .ProjectToListAsync<ProjectDto>(_mapper.ConfigurationProvider);
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(5)
+            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 
     public async Task<ProjectDto> GetByIdAsync(long projectId)
@@ -371,41 +375,5 @@ public class ProjectService : BaseService, IProjectService
         _context.Remove(project);
 
         await _context.SaveChangesAsync();
-    }
-
-    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjects(string firebaseId)
-    {
-        return await _context.UserProjects
-            .Include(up => up.Project)
-            .Include(up => up.User)
-            .Where(up => up.User.FirebaseId == firebaseId && !up.Project.IsGitImported)
-            .Select(up => up.Project)
-            .OrderByDescending(p => p.CreatedAt)
-            .Take(5)
-            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
-    }
-
-    public async Task<ICollection<ProjectWithLanguageDto>> GetLastGitUserProjects(string firebaseId)
-    {
-        return await _context.UserProjects
-            .Include(up => up.Project)
-            .Include(up => up.User)
-            .Where(up => up.User.FirebaseId == firebaseId && up.Project.IsGitImported)
-            .Select(up => up.Project)
-            .OrderByDescending(p => p.CreatedAt)
-            .Take(5)
-            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
-    }
-
-    public async Task<ICollection<ProjectWithLanguageDto>> GetLastUserProjectsById(long userId)
-    {
-        return await _context.UserProjects
-            .Include(up => up.Project)
-            .Include(up => up.User)
-            .Where(up => up.User.Id == userId && up.Project.IsPublic)
-            .Select(up => up.Project)
-            .OrderByDescending(p => p.CreatedAt)
-            .Take(5)
-            .ProjectToListAsync<ProjectWithLanguageDto>(_mapper.ConfigurationProvider);
     }
 }

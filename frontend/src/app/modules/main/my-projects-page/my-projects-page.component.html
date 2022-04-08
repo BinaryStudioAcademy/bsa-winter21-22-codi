@@ -1,13 +1,4 @@
 <div class="content">
-    <div class="projects-header">
-        <div class="projects-header-title">
-            <h1>My projects</h1>
-            <button (click)="createProject()" class="btn btn-primary">Create new</button>
-        </div>
-        <div class="muted-text">
-            <p></p>
-        </div>
-    </div>
 
     <div *ngIf="loading" class="d-flex justify-content-center">
         <div class="spinner-border text-primary" role="status">
@@ -15,38 +6,44 @@
         </div>
     </div>
 
-    <div *ngIf="router.url.includes('/gitprojects') ; then thenBlock;"></div>
-    <ng-template #thenBlock>
+    <div *ngIf="router.url.includes('/gitprojects') ; then repositoriesBlock;"></div>
+    <ng-template #repositoriesBlock>
+        <div class="projects-header">
+            <div class="projects-header-title">
+                <h1>All repositories</h1>
+            </div>
+            <div class="muted-text">
+                <p></p>
+            </div>
+        </div>
         <div *ngIf="!loading" class="mt-4">
             <table class="table table-borderless table-dark table-hover">
                 <tbody>
-                    <tr *ngFor="let project of gitprojects">
+                    <tr *ngFor="let repository of repositories">
                         <td class="min-width">
-                            <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
+                            <i class="mx-3 fa {{repository.isPrivate ? 'fa-lock text-danger' : 'fa-unlock text-success'}}"></i>
                         </td>
-                        <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
-                        <td>{{project.createdAt | date}}</td>
+                        <td><a class="text" type="button" (click)="importedGit(repository.name,repository.url)">{{repository.name}}</a></td>
+                        <td>{{repository.description}}</td>
                         <td class="min-width">
-                            <div ngbDropdown container="body" placement="left-top">
-                                <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
-                                <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                                  <button ngbDropdownItem class="dropdown-item">Settings</button>
-                                  <button ngbDropdownItem class="text-danger dropdown-item" (click)="deleteProject(project)">Delete</button>
-                                </div>
-                              </div>
+                            {{repository.language}}
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div *ngIf="!loading && !gitprojects.length" class="d-flex justify-content-center">
-                <h4 class="text-secondary">
-                    You don't have any projects. Please create a new one.
-                </h4>
-            </div>
         </div>
     </ng-template>
-    <div *ngIf="router.url.includes('/projects') ; then then1Block;"></div>
-    <ng-template #then1Block>
+    <div *ngIf="router.url.includes('/projects') ; then projectsBlock;"></div>
+    <ng-template #projectsBlock>
+        <div class="projects-header">
+            <div class="projects-header-title">
+                <h1>My projects</h1>
+                <button (click)="createProject()" class="btn btn-primary">Create new</button>
+            </div>
+            <div class="muted-text">
+                <p></p>
+            </div>
+        </div>
         <div *ngIf="!loading" class="mt-4">
             <table class="table table-borderless table-dark table-hover">
                 <tbody>
@@ -69,36 +66,6 @@
                 </tbody>
             </table>
             <div *ngIf="!loading && !projects.length" class="d-flex justify-content-center">
-                <h4 class="text-secondary">
-                    You don't have any projects. Please create a new one.
-                </h4>
-            </div>
-        </div>
-    </ng-template>
-    <div *ngIf="router.url.includes('/myprojects') ; then then2Block;"></div>
-    <ng-template #then2Block>
-        <div *ngIf="!loading" class="mt-4">
-            <table class="table table-borderless table-dark table-hover">
-                <tbody>
-                    <tr *ngFor="let project of myprojects">
-                        <td class="min-width">
-                            <i class="mx-3 fa {{project.isPublic ? 'fa-unlock text-success' : 'fa-lock text-danger'}}"></i>
-                        </td>
-                        <td><a class="text" [routerLink]="['/workspace', project.id]">{{project.title}}</a></td>
-                        <td>{{project.createdAt | date}}</td>
-                        <td class="min-width">
-                            <div ngbDropdown container="body" placement="left-top">
-                                <button class="mx-3 btn btn-outline-secondary" id="optionsDropdown" ngbDropdownToggle><i class="fa fa-ellipsis-v"></i></button>
-                                <div ngbDropdownMenu aria-labelledby="optionsDropdown">
-                                <button ngbDropdownItem class="dropdown-item">Settings</button>
-                                <button ngbDropdownItem class="text-danger dropdown-item" (click)="deleteProject(project)">Delete</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div *ngIf="!loading && !myprojects.length" class="d-flex justify-content-center">
                 <h4 class="text-secondary">
                     You don't have any projects. Please create a new one.
                 </h4>
